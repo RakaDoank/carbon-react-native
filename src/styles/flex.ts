@@ -1,0 +1,63 @@
+import {
+	StyleSheet,
+} from 'react-native'
+
+export const FlexStyle = StyleSheet.create({
+	flex_1: {
+		flexGrow: 1,
+		flexShrink: 1,
+		flexBasis: 0,
+	},
+	flex_auto: {
+		flexGrow: 1,
+		flexShrink: 1,
+		flexBasis: 'auto',
+	},
+	flex_initial: {
+		flexGrow: 0,
+		flexShrink: 1,
+		flexBasis: 'auto',
+	},
+	flex_col: {
+		flexDirection: 'column',
+	},
+	flex_row: {
+		flexDirection: 'row',
+	},
+	items_start: {
+		alignItems: 'flex-start',
+	},
+	items_center: {
+		alignItems: 'center',
+	},
+	items_end: {
+		alignItems: 'flex-end',
+	},
+	content_start: {
+		alignContent: 'flex-start',
+	},
+	content_center: {
+		alignContent: 'center',
+	},
+	content_end: {
+		alignContent: 'flex-end',
+	},
+	justify_start: {
+		justifyContent: 'flex-start',
+	},
+	justify_between: {
+		justifyContent: 'space-between',
+	},
+	justify_end: {
+		justifyContent: 'flex-end',
+	},
+	self_start: {
+		alignSelf: 'flex-start',
+	},
+	self_center: {
+		alignSelf: 'center',
+	},
+	self_end: {
+		alignSelf: 'flex-end',
+	},
+})

@@ -1,0 +1,3 @@
+export {
+	ThemeContext,
+} from './theme'

@@ -1,0 +1,16 @@
+module.exports = {
+	THIN: 'IBMPlexSans-Thin',
+	THIN_ITALIC: 'IBMPlexSans-Thin-Italic',
+	EXTRALIGHT: 'IBMPlexSans-ExtraLight',
+	EXTRALIGHT_ITALIC: 'IBMPlexSans-ExtraLight-Italic',
+	LIGHT: 'IBMPlexSans-Light',
+	LIGHT_ITALIC: 'IBMPlexSans-Light-Italic',
+	NORMAL: 'IBMPlexSans-Regular',
+	NORMAL_ITALIC: 'IBMPlexSans-Regular-Italic',
+	MEDIUM: 'IBMPlexSans-Medium-Italic',
+	MEDIUM_ITALIC: 'IBMPlexSans-Medium-Italic',
+	SEMIBOLD: 'IBMPlexSans-SemiBold',
+	SEMIBOLD_ITALIC: 'IBMPlexSans-SemiBold-Italic',
+	BOLD: 'IBMPlexSans-Bold',
+	BOLD_ITALIC: 'IBMPlexSans-Italic',
+}
