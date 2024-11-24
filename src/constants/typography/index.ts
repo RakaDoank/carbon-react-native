@@ -1,5 +1,5 @@
-import FontFamily from './font-family'
-import TypeSets from './type-sets'
+import * as FontFamily from './font-family'
+import * as TypeSets from './type-sets'
 
 export {
 	FontFamily,
