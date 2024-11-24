@@ -154,6 +154,14 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			isOpen =
 				controlled ? !!open : openSelf,
 
+			setPositionViewToAbsolute =
+				useCallback(() => {
+					if(ref.current.positionView === 'relative') {
+						ref.current.positionView = 'absolute'
+						setPositionView('absolute')
+					}
+				}, []),
+
 			onLayoutContent: NonNullable<ViewProps['onLayout']> =
 				useCallback(({ nativeEvent }) => {
 					if(ref.current.contentHeight !== nativeEvent.layout.height) {
@@ -163,13 +171,14 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 								withTiming(
 									ref.current.contentHeight,
 									undefined,
-									() => runOnJS(setPositionView)('absolute')
+									() => runOnJS(setPositionViewToAbsolute)()
 								)
 						}
 					}
 				}, [
 					heightAnimated,
 					isOpen,
+					setPositionViewToAbsolute,
 				])
 
 		useEffect(() => {
