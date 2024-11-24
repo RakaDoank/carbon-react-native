@@ -1,8 +1,10 @@
 import * as Button from './button'
 
-export * from './icon'
-export * from './text'
-
 export {
 	Button,
 }
+
+export * from './accordion'
+export * from './collapsible'
+export * from './icon'
+export * from './text'
