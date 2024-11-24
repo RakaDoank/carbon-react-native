@@ -159,7 +159,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					if(ref.current.contentHeight !== nativeEvent.layout.height) {
 						ref.current.contentHeight = nativeEvent.layout.height
 						if(isOpen) {
-							ref.current.positionView = 'absolute'
 							heightAnimated.value =
 								withTiming(
 									ref.current.contentHeight,
