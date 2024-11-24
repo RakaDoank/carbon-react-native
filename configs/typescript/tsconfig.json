@@ -24,5 +24,8 @@
 		"target": "ESNext",
 		"types": ["react-native"], // override
 		"verbatimModuleSyntax": true
-	}
+	},
+	"exclude": [
+		"lib"
+	]
 }
