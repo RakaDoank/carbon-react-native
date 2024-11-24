@@ -23,10 +23,10 @@ export function Icon({
 	try {
 		return (
 			<SvgXml
+				{ ...props }
 				xml={ IconHelper.toString(src as any) }
 				width={ width || '100%' }
 				height={ height || '100%' }
-				{ ...props }
 			/>
 		)
 	} catch(e) {
@@ -38,6 +38,7 @@ export function Icon({
 
 		return (
 			<SvgXml
+				{ ...props }
 				xml={ backupIcon }
 				width={ width || '100%' }
 				height={ height || '100%' }
