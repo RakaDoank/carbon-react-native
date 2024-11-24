@@ -19,7 +19,10 @@ module.exports = {
 
 		'eol-last': 'error',
 
-		// Let's @typescript-eslint/no-unused-vars resolve this. Otherwise, it tells us a false positive.
+		// Let @stylistic/no-multiline-empty-lines resolve this
+		'no-multiple-empty-lines': 'off',
+
+		// Let @typescript-eslint/no-unused-vars resolve this. Otherwise, it tells us a false positive.
 		// https://typescript-eslint.io/rules/#extension-rules
 		'no-unused-vars': 'off',
 
@@ -174,6 +177,9 @@ module.exports = {
 				'allowSamePrecedence': false,
 			},
 		],
+
+		// https://eslint.style/rules/default/no-multiple-empty-lines
+		'@stylistic/no-multiple-empty-lines': 'error',
 
 		// https://eslint.style/rules/default/no-trailing-spaces
 		'@stylistic/no-trailing-spaces': [
