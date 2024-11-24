@@ -57,20 +57,20 @@ const
 
 	mapFamilyStyle: Record<string, { fontFamily: string }> =
 		{
-			'100': TextStyle.THIN,
-			'100_italic': TextStyle.THIN_ITALIC,
-			'200': TextStyle.EXTRALIGHT,
-			'200_italic': TextStyle.EXTRALIGHT_ITALIC,
-			'300': TextStyle.LIGHT,
-			'300_italic': TextStyle.LIGHT,
-			'400': TextStyle.NORMAL,
-			'400_italic': TextStyle.NORMAL_ITALIC,
-			'500': TextStyle.MEDIUM,
-			'500_italic': TextStyle.MEDIUM_ITALIC,
-			'600': TextStyle.SEMIBOLD,
-			'600_italic': TextStyle.SEMIBOLD_ITALIC,
-			'700': TextStyle.BOLD,
-			'700_italic': TextStyle.BOLD_ITALIC,
+			'100': TextStyle.thin,
+			'100_italic': TextStyle.thin_italic,
+			'200': TextStyle.extralight,
+			'200_italic': TextStyle.extralight_italic,
+			'300': TextStyle.light,
+			'300_italic': TextStyle.light,
+			'400': TextStyle.normal,
+			'400_italic': TextStyle.normal_italic,
+			'500': TextStyle.medium,
+			'500_italic': TextStyle.medium_italic,
+			'600': TextStyle.semibold,
+			'600_italic': TextStyle.semibold_italic,
+			'700': TextStyle.bold,
+			'700_italic': TextStyle.bold_italic,
 		},
 
 	createTypeSetsStyle = (italic?: boolean) => {
@@ -93,7 +93,7 @@ const
 							italic
 								? `${val.fontWeight}_italic`
 								: val.fontWeight
-						] ?? TextStyle.NORMAL
+						] ?? TextStyle.normal
 					),
 				}
 				return accumulator
