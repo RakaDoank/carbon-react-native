@@ -36,12 +36,13 @@ import {
 	AccordionItemContext,
 } from './item-context'
 
-export interface AccordionItemProps extends Omit<AccordionHeaderProps, 'size' | 'flushAlignment'> {
+export interface AccordionItemProps extends Omit<AccordionHeaderProps, 'size' | 'text' | 'flushAlignment'> {
+	title?: string,
 	children?: React.ReactNode,
 }
 
 export function AccordionItem({
-	text,
+	title,
 	children,
 	style: styleProp,
 	onPress,
@@ -71,7 +72,7 @@ export function AccordionItem({
 		>
 			<AccordionHeader
 				size={ accordionContext.size }
-				text={ text }
+				text={ title }
 				flushAlignment={ accordionContext.flushAlignment }
 				onPress={ pressHandler }
 			/>
