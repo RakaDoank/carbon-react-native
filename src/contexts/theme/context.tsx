@@ -6,7 +6,9 @@ import {
 	ColorHelper,
 } from '../../helpers'
 
-import type GRAY_10 from '../../constants/color/tokens/gray-10'
+import type {
+	GRAY_10,
+} from '../../constants/color/tokens'
 
 import type {
 	ThemeType,
