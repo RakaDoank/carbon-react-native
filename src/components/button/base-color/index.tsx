@@ -28,15 +28,18 @@ import {
 	type BaseProps,
 } from '../base'
 
-import type {
-	ColorState,
-} from '../_types'
+export type BaseColorState =
+	| 'default'
+	| 'focused'
+	| 'hovered'
+	| 'pressed'
+	| 'disabled'
 
 export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconColor'> {
 	colorStateStyle: {
-		background: Record<ColorState, ViewStyle>,
-		text: Record<ColorState, TextStyle>,
-		icon: Record<ColorState, string>,
+		background: Record<BaseColorState, ViewStyle>,
+		text: Record<BaseColorState, TextStyle>,
+		icon: Record<BaseColorState, string>,
 	},
 }
 
@@ -199,7 +202,7 @@ const
 
 function getStateStyle(
 	colorStateStyle: BaseColorProps['colorStateStyle'],
-	states: Record<Exclude<ColorState, 'default'>, boolean>,
+	states: Record<Exclude<BaseColorState, 'default'>, boolean>,
 ): { background: ViewStyle, text: TextStyle, icon: string } {
 
 	if(!states.hovered && !states.pressed && !states.disabled) {

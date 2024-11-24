@@ -117,6 +117,7 @@ const
 				...FlexStyle.self_start,
 				...FlexStyle.flex_row,
 				...FlexStyle.items_center,
+				...FlexStyle.justify_between,
 				paddingLeft: SpacingConstant.spacing_05,
 			},
 			containerPR16: {
