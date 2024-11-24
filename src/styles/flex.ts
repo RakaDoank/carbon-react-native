@@ -60,4 +60,7 @@ export const FlexStyle = StyleSheet.create({
 	self_end: {
 		alignSelf: 'flex-end',
 	},
+	self_stretch: {
+		alignSelf: 'stretch',
+	},
 })

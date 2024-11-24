@@ -5,46 +5,60 @@ import {
 import * as FontFamily from '../constants/typography/font-family'
 
 export const TextStyle = StyleSheet.create({
-	THIN: {
+	thin: {
+		fontWeight: 100,
 		fontFamily: FontFamily.THIN,
 	},
-	THIN_ITALIC: {
+	thin_italic: {
+		fontWeight: 100,
 		fontFamily: FontFamily.THIN_ITALIC,
 	},
-	EXTRALIGHT: {
+	extralight: {
+		fontWeight: 200,
 		fontFamily: FontFamily.EXTRALIGHT,
 	},
-	EXTRALIGHT_ITALIC: {
+	extralight_italic: {
+		fontWeight: 200,
 		fontFamily: FontFamily.EXTRALIGHT_ITALIC,
 	},
-	LIGHT: {
+	light: {
+		fontWeight: 300,
 		fontFamily: FontFamily.LIGHT,
 	},
-	LIGHT_ITALIC: {
+	light_italic: {
+		fontWeight: 300,
 		fontFamily: FontFamily.LIGHT_ITALIC,
 	},
-	NORMAL: {
+	normal: {
+		fontWeight: 400,
 		fontFamily: FontFamily.NORMAL,
 	},
-	NORMAL_ITALIC: {
+	normal_italic: {
+		fontWeight: 400,
 		fontFamily: FontFamily.NORMAL_ITALIC,
 	},
-	MEDIUM: {
+	medium: {
+		fontWeight: 500,
 		fontFamily: FontFamily.MEDIUM,
 	},
-	MEDIUM_ITALIC: {
+	medium_italic: {
+		fontWeight: 500,
 		fontFamily: FontFamily.MEDIUM_ITALIC,
 	},
-	SEMIBOLD: {
+	semibold: {
+		fontWeight: 600,
 		fontFamily: FontFamily.SEMIBOLD,
 	},
-	SEMIBOLD_ITALIC: {
+	semibold_italic: {
+		fontWeight: 600,
 		fontFamily: FontFamily.SEMIBOLD_ITALIC,
 	},
-	BOLD: {
+	bold: {
+		fontWeight: 700,
 		fontFamily: FontFamily.BOLD,
 	},
-	BOLD_ITALIC: {
+	bold_italic: {
+		fontWeight: 700,
 		fontFamily: FontFamily.BOLD_ITALIC,
 	},
 })
