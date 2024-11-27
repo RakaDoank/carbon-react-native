@@ -11,20 +11,8 @@ import {
 } from 'react-native'
 
 import {
-	Icon,
-} from '../../icon'
-import {
-	Text,
-	type TextProps,
-} from '../../text'
-
-import {
 	SpacingConstant,
 } from '../../../constants'
-
-import type {
-	Size,
-} from '../size'
 
 import {
 	FlexStyle,
@@ -33,6 +21,20 @@ import {
 import type {
 	SharedType,
 } from '../../../types'
+
+import {
+	Icon,
+	type IconProps,
+} from '../../icon'
+
+import {
+	Text,
+	type TextProps,
+} from '../../text'
+
+import {
+	Size,
+} from '../size'
 
 export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	size?: Size,
@@ -45,20 +47,20 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	backgroundNode?: React.ReactNode,
 	style?: ViewProps['style'],
 	textStyle?: TextProps['style'],
-	iconContainerStyle?: ViewProps['style'],
+	iconStyle?: IconProps['style'],
 }
 
 export const Base = forwardRef<View, BaseProps>(
 	function Base(
 		{
-			size = 'LARGE_PRODUCTIVE',
+			size = Size.LARGE_PRODUCTIVE,
 			text,
 			icon,
 			iconColor,
 			backgroundNode,
 			style,
 			textStyle,
-			iconContainerStyle,
+			iconStyle,
 			...props
 		},
 		ref,
@@ -77,32 +79,29 @@ export const Base = forwardRef<View, BaseProps>(
 				] }
 				ref={ ref }
 			>
-				{ backgroundNode }
+				{ backgroundNode }{/* only for base-color button, and this is not valid HTML per se */}
 
 				{ !!text && (
 					<Text
 						type={ getTextType(size) }
-						style={ textStyle }
+						style={ [baseStyle.text, textStyle] }
 					>
 						{ text }
 					</Text>
 				) }
 
 				{ !!icon && (
-					<View
+					<Icon
+						src={ icon }
+						width={ iconSize }
+						height={ iconSize }
+						color={ iconColor }
 						style={ [
-							baseStyle.iconContainer,
-							getIconContainerPaddingLeft(!!text),
-							iconContainerStyle,
+							getIconMarginTop(size),
+							getIconMarginLeft(!!text),
+							iconStyle,
 						] }
-					>
-						<Icon
-							src={ icon }
-							width={ iconSize }
-							height={ iconSize }
-							color={ iconColor }
-						/>
-					</View>
+					/>
 				) }
 			</Pressable>
 		)
@@ -116,7 +115,6 @@ const
 			container: {
 				...FlexStyle.self_start,
 				...FlexStyle.flex_row,
-				...FlexStyle.items_center,
 				...FlexStyle.justify_between,
 				paddingLeft: SpacingConstant.spacing_05,
 			},
@@ -126,34 +124,51 @@ const
 			containerPR64: {
 				paddingRight: SpacingConstant.spacing_10,
 			},
-			iconContainer: {
-				flexGrow: 0,
-				flexShrink: 1,
-				flexBasis: 'auto',
+			contentContainer: {
+				...FlexStyle.flex_initial,
+				maxHeight: SpacingConstant.spacing_09,
 			},
-			iconContainerPL32: {
-				paddingLeft: SpacingConstant.spacing_07,
+			text: {
+				verticalAlign: 'middle',
+				maxHeight: 48,
+			},
+			/**
+			 * (maxHeight / 2) - (iconSize / 2)
+			 * 48 / 2 - 16 / 2
+			 * 24 - 8
+			 */
+			iconMTProductive: {
+				marginTop: 16,
+			},
+			/**
+			 * same as above, but iconSize = 20
+			 */
+			iconMTExpressive: {
+				marginTop: 14,
+			},
+			iconML32: {
+				marginLeft: SpacingConstant.spacing_07,
 			},
 		}),
 
 	sizeStyle =
 		StyleSheet.create<Record<Size, { height: number }>>({
-			SMALL: {
+			small: {
 				height: 32,
 			},
-			MEDIUM: {
+			medium: {
 				height: 40,
 			},
-			LARGE_PRODUCTIVE: {
+			large_productive: {
 				height: 48,
 			},
-			LARGE_EXPRESSIVE: {
+			large_expressive: {
 				height: 48,
 			},
-			EXTRA_LARGE: {
+			extra_large: {
 				height: 64,
 			},
-			XL2: {
+			'2xl': {
 				height: 80,
 			},
 		}),
@@ -181,11 +196,27 @@ const
 			true: 20,
 		},
 
-	mapIconContainerPLByText: Record<string, { paddingLeft: number } | null> =
+	mapIconMTByExpressive: Record<string, { marginTop: number }> =
+		{
+			false: baseStyle.iconMTProductive,
+			true: baseStyle.iconMTProductive,
+		},
+
+	mapIconMLByText: Record<string, { marginLeft: number } | null> =
 		{
 			false: null,
-			true: baseStyle.iconContainerPL32,
+			true: baseStyle.iconML32,
 		}
+
+/**
+ * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
+ * https://carbondesignsystem.com/components/button/style/#sizes
+ */
+function isExpressive(
+	buttonSize: BaseProps['size'],
+) {
+	return buttonSize === Size.LARGE_EXPRESSIVE
+}
 
 function getContainerPaddingRight(
 	text: boolean,
@@ -199,7 +230,7 @@ function getContainerPaddingRight(
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function getTextType(buttonSize: BaseProps['size']) {
-	return mapTextTypeByExpressive[`${buttonSize === 'LARGE_EXPRESSIVE'}`]
+	return mapTextTypeByExpressive[`${isExpressive(buttonSize)}`]
 }
 
 /**
@@ -207,9 +238,13 @@ function getTextType(buttonSize: BaseProps['size']) {
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function getIconSize(buttonSize: BaseProps['size']) {
-	return mapIconSizeByExpressive[`${buttonSize === 'LARGE_EXPRESSIVE'}`]
+	return mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]
 }
 
-function getIconContainerPaddingLeft(hasText: boolean) {
-	return mapIconContainerPLByText[`${hasText}`]
+function getIconMarginTop(buttonSize: BaseProps['size']) {
+	return mapIconMTByExpressive[`${isExpressive(buttonSize)}`]
+}
+
+function getIconMarginLeft(hasText: boolean) {
+	return mapIconMLByText[`${hasText}`]
 }
