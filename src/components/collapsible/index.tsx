@@ -138,13 +138,13 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					return {
 						opacity: interpolate(
 							contentContainerAnimated.value,
-							[0, 1],
+							contentContainerInterpolationRange,
 							[0, 1],
 						),
 						transform: [{
 							translateY: interpolate(
 								contentContainerAnimated.value,
-								[0, 1],
+								contentContainerInterpolationRange,
 								[-12, 0],
 							),
 						}],
@@ -271,3 +271,5 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 
 	}
 )
+
+const contentContainerInterpolationRange = [0, 1]
