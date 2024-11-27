@@ -51,11 +51,10 @@ export const Text = forwardRef<Core, TextProps>(
 )
 
 type TypeSetsStyleWithFamily =
-	Record<TypographyType.TypeSetsClass, Omit<TypographyType.TypeSetsStyle, 'fontWeight'> & { fontFamily: string }>
+	Record<TypographyType.TypeSetsClass, TypographyType.TypeSetsStyle & { fontFamily: string }>
 
 const
-
-	mapFamilyStyle: Record<string, { fontFamily: string }> =
+	mapFamilyStyle: Record<string, { fontFamily: string, fontWeight: TypographyType.TypeSetsStyle['fontWeight'] }> =
 		{
 			'100': TextStyle.thin,
 			'100_italic': TextStyle.thin_italic,
@@ -84,7 +83,10 @@ const
 						key_ as keyof TypeSetsStyleWithFamily,
 
 					val =
-						val_ as TypographyType.TypeSetsStyle
+						/**
+						 * i don't know why Typescript annotate here as TypopgrahyType.TypeSets
+						 */
+						(val_ as unknown) as TypographyType.TypeSetsStyle
 
 				accumulator[key] = {
 					...val,
