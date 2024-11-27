@@ -35,12 +35,16 @@ export type BaseColorState =
 	| 'pressed'
 	| 'disabled'
 
-export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconColor'> {
+export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconColor' | 'iconNode'> {
 	colorStateStyle: {
 		background: Record<BaseColorState, ViewStyle>,
 		text: Record<BaseColorState, TextStyle>,
 		icon: Record<BaseColorState, string>,
 	},
+	iconNode?: (
+		iconColorState: string,
+		...params: Parameters<NonNullable<BaseProps['iconNode']>>
+	) => React.ReactNode,
 }
 
 export function BaseColor({
@@ -48,6 +52,8 @@ export function BaseColor({
 	style,
 	textStyle,
 	colorStateStyle,
+	icon,
+	iconNode,
 	onBlur,
 	onFocus,
 	onHoverIn,
@@ -161,6 +167,12 @@ export function BaseColor({
 			onPressIn={ pressInHandler }
 			onPressOut={ pressOutHandler }
 			iconColor={ stateStyle.icon }
+			icon={ !iconNode ? icon : undefined }
+			iconNode={
+				iconNode
+					? (...params) => iconNode(stateStyle.icon, ...params)
+					: undefined
+			}
 			style={ [
 				stateStyle.background,
 				style,

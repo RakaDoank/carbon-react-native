@@ -42,6 +42,14 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	icon?: SharedType.CarbonIcon,
 	iconColor?: string,
 	/**
+	 * This prop is useful to custom render at the icon position.  
+	 * `iconNode` takes precedence even if `icon` prop is present.
+	 */
+	iconNode?: (
+		iconSize: number,
+		iconStyle: IconProps['style'],
+	) => React.ReactNode,
+	/**
 	 * Only for base-color button for Focus state UI purposes
 	 */
 	backgroundNode?: React.ReactNode,
@@ -57,6 +65,7 @@ export const Base = forwardRef<View, BaseProps>(
 			text,
 			icon,
 			iconColor,
+			iconNode,
 			backgroundNode,
 			style,
 			textStyle,
@@ -74,7 +83,7 @@ export const Base = forwardRef<View, BaseProps>(
 				style={ [
 					sizeStyle[size],
 					baseStyle.container,
-					getContainerPaddingRight(!!text, !!icon),
+					getContainerPaddingRight(!!text, !!icon || !!iconNode),
 					style,
 				] }
 				ref={ ref }
@@ -90,7 +99,7 @@ export const Base = forwardRef<View, BaseProps>(
 					</Text>
 				) }
 
-				{ !!icon && (
+				{ (!!icon && !iconNode) ? (
 					<Icon
 						src={ icon }
 						width={ iconSize }
@@ -102,6 +111,13 @@ export const Base = forwardRef<View, BaseProps>(
 							iconStyle,
 						] }
 					/>
+				) : iconNode?.(
+					iconSize!!,
+					[
+						getIconMarginTop(size),
+						getIconMarginLeft(!!text),
+						iconStyle,
+					]
 				) }
 			</Pressable>
 		)
