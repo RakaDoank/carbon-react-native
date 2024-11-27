@@ -109,7 +109,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			/**
 			 * Absolute position is required to keep content being rendered as it is when the container is not open (zero height)  
 			 *
-			 * We need 'relative' position when the collapsible is initially opened due to heightAnimated initial value is zero and only will be calculated after content rendered  
+			 * We need 'relative' position when the collapsible is initially opened due to heightAnimated initial value is zero and only will be calculated after content is rendered  
 			 *
 			 * This state will be changed once only from 'relative' to 'absolute'  
 			 */
