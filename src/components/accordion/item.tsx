@@ -8,33 +8,33 @@ import {
 } from 'react-native'
 
 import {
-	Easing,
-} from 'react-native-reanimated'
-
-import {
-	MotionConstant,
 	SpacingConstant,
 } from '../../constants'
-
-import {
-	Collapsible,
-	type CollapsibleProps,
-} from '../collapsible'
 
 import {
 	FlexStyle,
 } from '../../styles'
 
 import {
+	Collapsible,
+} from '../collapsible'
+
+import {
 	AccordionContext,
 } from './context'
+
 import {
 	AccordionHeader,
 	type AccordionHeaderProps,
 } from './header'
+
 import {
 	AccordionItemContext,
 } from './item-context'
+
+import {
+	AccordionMotion,
+} from './motion'
 
 export interface AccordionItemProps extends Omit<AccordionHeaderProps, 'size' | 'text' | 'flushAlignment'> {
 	title?: string,
@@ -78,7 +78,7 @@ export function AccordionItem({
 			/>
 
 			<Collapsible
-				motion={ collapsibleMotion }
+				motion={ AccordionMotion }
 				controlled
 				open={ accordionItemContext.open }
 				contentContainerStyle={ [
@@ -94,22 +94,6 @@ export function AccordionItem({
 }
 
 const
-	collapsibleMotion: CollapsibleProps['motion'] =
-		{
-			toOpen: {
-				duration: MotionConstant.Durations.fast_02,
-				easing: Easing.bezier(
-					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x1,
-					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y1,
-					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x2,
-					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y2,
-				),
-			},
-			toClose: {
-				duration: 0,
-			},
-		},
-
 	style =
 		StyleSheet.create({
 			panel: {
