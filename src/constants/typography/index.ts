@@ -1,7 +1,2 @@
-import * as FontFamily from './font-family'
-import * as TypeSets from './type-sets'
-
-export {
-	FontFamily,
-	TypeSets,
-}
+export * from './font-family'
+export * from './type-sets'
