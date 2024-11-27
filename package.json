@@ -51,6 +51,7 @@
 	"files": [
 		"src",
 		"lib",
+		"assets",
 		"configs",
 		"!**/__tests__",
 		"!**/__fixtures__",
