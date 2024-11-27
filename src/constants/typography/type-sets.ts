@@ -1,5 +1,9 @@
+import type {
+	TypographyType,
+} from '../../types'
+
 const
-	body_compact_01 =
+	body_compact_01: TypographyType.TypeSetsStyle =
 		{
 			fontSize: 14,
 			lineHeight: 18,
@@ -7,7 +11,7 @@ const
 			letterSpacing: 0.16,
 		},
 
-	body_compact_02 =
+	body_compact_02: TypographyType.TypeSetsStyle =
 		{
 			fontSize: 16,
 			lineHeight: 22,
@@ -15,7 +19,7 @@ const
 			letterSpacing: 0,
 		},
 
-	body_01 =
+	body_01: TypographyType.TypeSetsStyle =
 		{
 			fontSize: 14,
 			lineHeight: 20,
@@ -23,7 +27,7 @@ const
 			letterSpacing: 0.16,
 		},
 
-	body_02 =
+	body_02: TypographyType.TypeSetsStyle =
 		{
 			fontSize: 16,
 			lineHeight: 24,
@@ -31,10 +35,7 @@ const
 			letterSpacing: 0,
 		}
 
-/**
- * @type {import('../../types/typography').TypeSets}
- */
-module.exports = {
+export const TypeSets: TypographyType.TypeSets = {
 
 	code_01: {
 		fontSize: 12,

@@ -2,7 +2,9 @@ import {
 	StyleSheet,
 } from 'react-native'
 
-import * as FontFamily from '../constants/typography/font-family'
+import {
+	FontFamily,
+} from '../constants/typography/font-family'
 
 export const TextStyle = StyleSheet.create({
 	thin: {

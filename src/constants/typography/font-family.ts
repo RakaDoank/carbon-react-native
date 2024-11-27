@@ -1,4 +1,4 @@
-module.exports = {
+export const FontFamily = {
 	THIN: 'IBMPlexSans-Thin',
 	THIN_ITALIC: 'IBMPlexSans-Thin-Italic',
 	EXTRALIGHT: 'IBMPlexSans-ExtraLight',
