@@ -8,6 +8,7 @@ import {
 
 import {
 	Dimensions,
+	StyleSheet,
 	View,
 	type ViewProps,
 } from 'react-native'
@@ -19,6 +20,9 @@ import {
 import {
 	AccordionContext,
 } from './context'
+import {
+	AccordionHeaderBorder,
+} from './header-border'
 import {
 	AccordionItem,
 } from './item'
@@ -155,6 +159,13 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 							</AccordionItemContext.Provider>
 						)
 					}) }
+
+					{ !!children?.length && (
+						<AccordionHeaderBorder
+							flushAlignment={ flushAlignment }
+							style={ baseStyle.lastAccordionHeaderBorder }
+						/>
+					) }
 				</AccordionContext.Provider>
 			</View>
 		)
@@ -165,6 +176,13 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 export const Accordion = Object.assign(Accordion_, { Item: AccordionItem })
 
 const
+	baseStyle =
+		StyleSheet.create({
+			lastAccordionHeaderBorder: {
+				position: 'relative',
+			},
+		}),
+
 	windowWidth =
 		Dimensions.get('window').width
 
