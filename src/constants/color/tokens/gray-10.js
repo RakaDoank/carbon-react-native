@@ -2,7 +2,7 @@ const code = require('../code.json')
 const hexToRgba = require('../../../helpers/color/hex-to-rgba')
 
 /**
- * Sorry, for using snake case here, while the code.json is using camelCase, and the index.js is using upper snake_case
+ * Sorry, for using snake case here, while the code.json is using camelCase, and the index.ts is using upper snake_case
  */
 
 module.exports = {
