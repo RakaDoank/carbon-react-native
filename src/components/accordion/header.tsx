@@ -28,11 +28,11 @@ import {
 	AccordionHeaderBorder,
 } from './header-border'
 import {
-	AccordionSize,
+	Size,
 } from './size'
 
 export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'colorStateStyle'> {
-	size?: AccordionSize,
+	size?: Size,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
@@ -41,16 +41,14 @@ export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 't
 }
 
 export function AccordionHeader({
-	size = AccordionSize.MEDIUM,
+	size = Size.MEDIUM,
 	flushAlignment = false,
 	text,
 	style: styleProp,
 	...buttonProps
 }: AccordionHeaderProps) {
 
-	const
-		themeContext =
-			useContext(ThemeContext)
+	const themeContext = useContext(ThemeContext)
 
 	return (
 		<View
@@ -111,9 +109,9 @@ const
 	 * Coincidentally (or not) use same value of height  
 	 * https://carbondesignsystem.com/components/accordion/style/#sizes
 	 */
-	mapSizeToButtonSize: Record<AccordionSize, ButtonSize> =
+	mapSizeToButtonSize: Record<Size, ButtonSize> =
 		{
-			[AccordionSize.SMALL]: ButtonSize.SMALL,
-			[AccordionSize.MEDIUM]: ButtonSize.MEDIUM,
-			[AccordionSize.LARGE]: ButtonSize.LARGE_PRODUCTIVE,
+			[Size.SMALL]: ButtonSize.SMALL,
+			[Size.MEDIUM]: ButtonSize.MEDIUM,
+			[Size.LARGE]: ButtonSize.LARGE_PRODUCTIVE,
 		}

@@ -19,16 +19,16 @@ export const Durations = {
  * https://carbondesignsystem.com/elements/motion/overview/#easing
  */
 export const Easings = {
-	Standard: {
-		Productive: { x1: 0.2, y1: 0, x2: 0.38, y2: 0.9 },
-		Expressive: { x1: 0.4, y1: 0.14, x2: 0.3, y2: 1 },
+	STANDARD: {
+		PRODUCTIVE: { x1: 0.2, y1: 0, x2: 0.38, y2: 0.9 },
+		EXPRESSIVE: { x1: 0.4, y1: 0.14, x2: 0.3, y2: 1 },
 	},
-	Entrance: {
-		Productive: { x1: 0, y1: 0, x2: 0.38, y2: 0.9 },
-		Expressive: { x1: 0, y1: 0, x2: 0.3, y2: 1 },
+	ENTRANCE: {
+		PRODUCTIVE: { x1: 0, y1: 0, x2: 0.38, y2: 0.9 },
+		EXPRESSIVE: { x1: 0, y1: 0, x2: 0.3, y2: 1 },
 	},
-	Exit: {
-		Productive: { x1: 0.2, y1: 0, x2: 1, y2: 0.9 },
-		Expressive: { x1: 0.4, y1: 0.14, x2: 1, y2: 1 },
+	EXIT: {
+		PRODUCTIVE: { x1: 0.2, y1: 0, x2: 1, y2: 0.9 },
+		EXPRESSIVE: { x1: 0.4, y1: 0.14, x2: 1, y2: 1 },
 	},
 } as const

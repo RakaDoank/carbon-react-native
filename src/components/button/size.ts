@@ -1,16 +1,16 @@
 export type Size =
-	| 'SMALL'
-	| 'MEDIUM'
-	| 'LARGE_PRODUCTIVE'
-	| 'LARGE_EXPRESSIVE'
-	| 'EXTRA_LARGE'
-	| 'XL2'
+	| 'small'
+	| 'medium'
+	| 'large_productive'
+	| 'large_expressive'
+	| 'extra_large'
+	| '2xl'
 
 export const Size = {
-	SMALL: 'SMALL',
-	MEDIUM: 'MEDIUM',
-	LARGE_PRODUCTIVE: 'LARGE_PRODUCTIVE',
-	LARGE_EXPRESSIVE: 'LARGE_EXPRESSIVE',
-	EXTRA_LARGE: 'EXTRA_LARGE',
-	XL2: 'XL2',
-} as const satisfies Record<Size, Size>
+	SMALL: 'small',
+	MEDIUM: 'medium',
+	LARGE_PRODUCTIVE: 'large_productive',
+	LARGE_EXPRESSIVE: 'large_expressive',
+	EXTRA_LARGE: 'extra_large',
+	XL2: '2xl',
+} as const satisfies Record<string, Size>

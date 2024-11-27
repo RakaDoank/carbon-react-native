@@ -1,10 +1,10 @@
-export type AccordionSize =
-	| 'SMALL'
-	| 'MEDIUM'
-	| 'LARGE'
+export type Size =
+	| 'small'
+	| 'medium'
+	| 'large'
 
-export const AccordionSize = {
-	SMALL: 'SMALL',
-	MEDIUM: 'MEDIUM',
-	LARGE: 'LARGE',
-} as const satisfies Record<AccordionSize, AccordionSize>
+export const Size = {
+	SMALL: 'small',
+	MEDIUM: 'medium',
+	LARGE: 'large',
+} as const satisfies Record<string, Size>

@@ -99,10 +99,10 @@ const
 			toOpen: {
 				duration: MotionConstant.Durations.fast_02,
 				easing: Easing.bezier(
-					MotionConstant.Easings.Entrance.Productive.x1,
-					MotionConstant.Easings.Entrance.Productive.y1,
-					MotionConstant.Easings.Entrance.Productive.x2,
-					MotionConstant.Easings.Entrance.Productive.y2,
+					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x1,
+					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y1,
+					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x2,
+					MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y2,
 				),
 			},
 			toClose: {
