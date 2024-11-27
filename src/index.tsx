@@ -1,4 +1,4 @@
-export * from './bootstraps'
+export * from './carbon-react-native'
 export * from './components'
 export * from './helpers'
 export * from './styles'

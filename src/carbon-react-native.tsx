@@ -1,15 +1,15 @@
 import {
 	ThemeContextProvider,
 	type ThemeContextProviderProps,
-} from '../contexts/theme/provider'
+} from './contexts/theme/provider'
 
-export interface CarbonBootstrapProps extends ThemeContextProviderProps {
+export interface CarbonReactNativeProps extends ThemeContextProviderProps {
 }
 
-export function CarbonBootstrap({
+export function CarbonReactNative({
 	colorScheme,
 	children,
-}: CarbonBootstrapProps) {
+}: CarbonReactNativeProps) {
 
 	return (
 		<ThemeContextProvider
