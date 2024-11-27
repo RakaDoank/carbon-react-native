@@ -78,3 +78,7 @@ yarn-error.log
 lib/
 
 .env
+
+# Local Development Script
+/index.tsx
+/package-original.json
