@@ -182,7 +182,7 @@ const
 	baseStyle =
 		StyleSheet.create({
 			lastAccordionHeaderBorder: {
-				position: 'relative',
+				top: '100%',
 			},
 		}),
 
