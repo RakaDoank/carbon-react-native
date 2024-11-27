@@ -1,12 +1,21 @@
 import {
 	useContext,
+	useEffect,
+	useRef,
 } from 'react'
 
 import {
+	StyleSheet,
 	View,
 } from 'react-native'
 
-import ChevronDown from '@carbon/icons/es/chevron--down/16'
+import Animated, {
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
+} from 'react-native-reanimated'
+
+import ChevronDown from '@carbon/icons/es/chevron--down/20'
 
 import {
 	ThemeContext,
@@ -20,18 +29,33 @@ import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
 } from '../button/base-color'
+
 import {
 	Size as ButtonSize,
 } from '../button/size'
 
 import {
+	Icon,
+	type IconProps,
+} from '../icon'
+
+import {
 	AccordionHeaderBorder,
 } from './header-border'
+
+import {
+	AccordionItemContext,
+} from './item-context'
+
+import {
+	AccordionMotion,
+} from './motion'
+
 import {
 	Size,
 } from './size'
 
-export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'colorStateStyle'> {
+export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'icon' | 'colorStateStyle'> {
 	size?: Size,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
@@ -48,7 +72,12 @@ export function AccordionHeader({
 	...buttonProps
 }: AccordionHeaderProps) {
 
-	const themeContext = useContext(ThemeContext)
+	const
+		themeContext =
+			useContext(ThemeContext),
+
+		itemContext =
+			useContext(AccordionItemContext)
 
 	return (
 		<View
@@ -63,7 +92,6 @@ export function AccordionHeader({
 				{ ...buttonProps }
 				size={ mapSizeToButtonSize[size] }
 				text={ text }
-				icon={ ChevronDown }
 				colorStateStyle={{
 					background: {
 						default: { backgroundColor: 'transparent' },
@@ -97,6 +125,10 @@ export function AccordionHeader({
 						disabled: themeContext.color.icon_disabled,
 					},
 				}}
+				iconNode={
+					(...params) =>
+						iconNodeRenderer(!!itemContext.open, ...params)
+				}
 				style={ FlexStyle.self_stretch }
 			/>
 		</View>
@@ -114,4 +146,103 @@ const
 			[Size.SMALL]: ButtonSize.SMALL,
 			[Size.MEDIUM]: ButtonSize.MEDIUM,
 			[Size.LARGE]: ButtonSize.LARGE_PRODUCTIVE,
+		},
+
+	iconNodeRenderer: (
+		open: boolean,
+		...params: Parameters<NonNullable<ButtonColorProps['iconNode']>>
+	) => React.ReactNode =
+		(open, iconColorState, iconSize, iconStyle) => {
+			return (
+				<IconNode
+					open={ open }
+					color={ iconColorState }
+					size={ iconSize }
+					style={ iconStyle }
+				/>
+			)
+		},
+
+	baseStyle =
+		StyleSheet.create({
+			mt0: {
+				marginTop: 0,
+			},
+		})
+
+interface IconNodeProps {
+	open: boolean,
+	color: string,
+	size: number,
+	style?: IconProps['style'],
+}
+function IconNode({
+	open,
+	color,
+	size,
+	style,
+}: IconNodeProps) {
+
+	const
+		isMounted =
+			useRef(false),
+
+		rotateZ =
+			useSharedValue(open ? 180 : 0),
+
+		animatedStyle =
+			useAnimatedStyle(() => {
+				return {
+					transform: [{
+						rotateZ: `${rotateZ.value}deg`,
+					}],
+				}
+			})
+
+	useEffect(() => {
+		if(isMounted.current) {
+			if(open) {
+				rotateZ.value =
+					withTiming(
+						180,
+						AccordionMotion.toOpen,
+					)
+			} else {
+				rotateZ.value =
+					withTiming(
+						0,
+						AccordionMotion.toClose,
+					)
+			}
+		} else {
+			isMounted.current = true
 		}
+	}, [
+		open,
+		rotateZ,
+	])
+
+	return (
+		/**
+		 * Wrapping Icon with Animated.View is not valid HTML per se  
+		 * since this is will creating a div element inside of Button
+		 */
+		<Animated.View
+			style={ [
+				FlexStyle.flex_initial,
+				FlexStyle.self_center,
+				animatedStyle,
+				style,
+				baseStyle.mt0,
+			] }
+		>
+			<Icon
+				src={ ChevronDown }
+				color={ color }
+				width={ size }
+				height={ size }
+			/>
+		</Animated.View>
+	)
+
+}
