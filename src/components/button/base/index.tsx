@@ -106,16 +106,16 @@ export const Base = forwardRef<View, BaseProps>(
 						height={ iconSize }
 						color={ iconColor }
 						style={ [
-							getIconMarginTop(size),
-							getIconMarginLeft(!!text),
+							getIconMarginTopStyle(size),
+							getIconMarginLeftStyle(!!text),
 							iconStyle,
 						] }
 					/>
 				) : iconNode?.(
 					iconSize!!,
 					[
-						getIconMarginTop(size),
-						getIconMarginLeft(!!text),
+						getIconMarginTopStyle(size),
+						getIconMarginLeftStyle(!!text),
 						iconStyle,
 					]
 				) }
@@ -147,20 +147,6 @@ const
 			text: {
 				verticalAlign: 'middle',
 				maxHeight: 48,
-			},
-			/**
-			 * (maxHeight / 2) - (iconSize / 2)
-			 * 48 / 2 - 16 / 2
-			 * 24 - 8
-			 */
-			iconMTProductive: {
-				marginTop: 16,
-			},
-			/**
-			 * same as above, but iconSize = 20
-			 */
-			iconMTExpressive: {
-				marginTop: 14,
 			},
 			iconML32: {
 				marginLeft: SpacingConstant.spacing_07,
@@ -212,12 +198,6 @@ const
 			true: 20,
 		},
 
-	mapIconMTByExpressive: Record<string, { marginTop: number }> =
-		{
-			false: baseStyle.iconMTProductive,
-			true: baseStyle.iconMTProductive,
-		},
-
 	mapIconMLByText: Record<string, { marginLeft: number } | null> =
 		{
 			false: null,
@@ -257,10 +237,19 @@ function getIconSize(buttonSize: BaseProps['size']) {
 	return mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]
 }
 
-function getIconMarginTop(buttonSize: BaseProps['size']) {
-	return mapIconMTByExpressive[`${isExpressive(buttonSize)}`]
+function getIconMarginTopStyle(buttonSize: NonNullable<BaseProps['size']>) {
+	const
+		iconSize =
+			mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]!!,
+
+		height =
+			Math.min(sizeStyle[buttonSize].height, sizeStyle.large_productive.height) // 48 at max
+
+	return {
+		marginTop: (height / 2) - (iconSize / 2),
+	}
 }
 
-function getIconMarginLeft(hasText: boolean) {
+function getIconMarginLeftStyle(hasText: boolean) {
 	return mapIconMLByText[`${hasText}`]
 }
