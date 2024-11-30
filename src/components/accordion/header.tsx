@@ -5,7 +5,6 @@ import {
 } from 'react'
 
 import {
-	StyleSheet,
 	View,
 } from 'react-native'
 
@@ -148,6 +147,9 @@ const
 			[Size.LARGE]: ButtonSize.LARGE_PRODUCTIVE,
 		},
 
+	IconAnimated =
+		Animated.createAnimatedComponent(Icon),
+
 	iconNodeRenderer: (
 		open: boolean,
 		...params: Parameters<NonNullable<ButtonColorProps['iconNode']>>
@@ -161,14 +163,7 @@ const
 					style={ iconStyle }
 				/>
 			)
-		},
-
-	baseStyle =
-		StyleSheet.create({
-			mt0: {
-				marginTop: 0,
-			},
-		})
+		}
 
 interface IconNodeProps {
 	open: boolean,
@@ -223,26 +218,16 @@ function IconNode({
 	])
 
 	return (
-		/**
-		 * Wrapping Icon with Animated.View is not valid HTML per se  
-		 * since this is will creating a div element inside of Button
-		 */
-		<Animated.View
+		<IconAnimated
+			src={ ChevronDown }
+			color={ color }
+			width={ size }
+			height={ size }
 			style={ [
-				FlexStyle.flex_initial,
-				FlexStyle.self_center,
 				animatedStyle,
 				style,
-				baseStyle.mt0,
 			] }
-		>
-			<Icon
-				src={ ChevronDown }
-				color={ color }
-				width={ size }
-				height={ size }
-			/>
-		</Animated.View>
+		/>
 	)
 
 }
