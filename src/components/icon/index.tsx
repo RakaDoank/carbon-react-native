@@ -1,3 +1,7 @@
+import {
+	Component,
+} from 'react'
+
 import * as IconHelper from '@carbon/icon-helpers'
 
 import {
@@ -13,32 +17,32 @@ export interface IconProps extends Omit<XmlProps, 'xml'> {
 	src: SharedType.CarbonIcon,
 }
 
-export function Icon({
-	src,
-	width,
-	height,
-	...props
-}: IconProps): React.JSX.Element {
+export class Icon extends Component<IconProps> {
 
-	try {
-		return (
-			<SvgXml
-				{ ...props }
-				xml={ IconHelper.toString(src as any) }
-				width={ width || '100%' }
-				height={ height || '100%' }
-			/>
-		)
-	} catch(e) {
-
-		return (
-			<SvgXml
-				{ ...props }
-				xml={ backupIcon }
-				width={ width || '100%' }
-				height={ height || '100%' }
-			/>
-		)
+	/**
+	 * It is intentionally written in the form of React Class Component
+	 * to support `Animated.createAnimatedComponent` api from React Native Reanimated
+	 */
+	render() {
+		try {
+			return (
+				<SvgXml
+					{ ...this.props }
+					xml={ IconHelper.toString(this.props.src as any) }
+					width={ this.props.width || '100%' }
+					height={ this.props.height || '100%' }
+				/>
+			)
+		} catch(e) {
+			return (
+				<SvgXml
+					{ ...this.props }
+					xml={ backupIcon }
+					width={ this.props.width || '100%' }
+					height={ this.props.height || '100%' }
+				/>
+			)
+		}
 	}
 
 }
