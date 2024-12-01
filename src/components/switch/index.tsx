@@ -240,11 +240,10 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 						if(!controlled) {
 							if(typeof val === 'boolean') {
 								ref.current.valueSelf = val
-								setValueSelf(val)
 							} else {
 								ref.current.valueSelf = val(ref.current.valueSelf)
-								setValueSelf(ref.current.valueSelf)
 							}
+							setValueSelf(ref.current.valueSelf)
 						}
 					},
 				},

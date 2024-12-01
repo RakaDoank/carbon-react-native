@@ -196,7 +196,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							1,
 							motion.toOpen,
 						)
-					onToggle?.(true)
 				} else {
 					heightAnimated.value =
 						withTiming(
@@ -211,8 +210,8 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							0,
 							motion.toClose,
 						)
-					onToggle?.(false)
 				}
+				onToggle?.(isOpen)
 			}
 		}, [
 			isOpen,
@@ -232,11 +231,10 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						if(!controlled) {
 							if(typeof value === 'boolean') {
 								ref.current.openSelf = value
-								setOpenSelf(value)
 							} else {
 								ref.current.openSelf = value(ref.current.openSelf)
-								setOpenSelf(ref.current.openSelf)
 							}
+							setOpenSelf(ref.current.openSelf)
 						}
 					},
 				}
