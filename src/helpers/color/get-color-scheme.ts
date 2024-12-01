@@ -14,6 +14,6 @@ export function getColorScheme(
 const
 	mapScheme: Record<Extract<ColorSchemeName, string>, ThemeType.ColorScheme> =
 		{
-			light: 'GRAY_10',
-			dark: 'GRAY_100',
+			light: 'gray_10',
+			dark: 'gray_100',
 		}

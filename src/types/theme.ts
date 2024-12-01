@@ -1,1 +1,1 @@
-export type ColorScheme = 'GRAY_10' | 'GRAY_100'
+export type ColorScheme = 'gray_10' | 'gray_100'

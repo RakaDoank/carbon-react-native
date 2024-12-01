@@ -14,7 +14,7 @@ import type {
 	ThemeType,
 } from '../../types'
 
-export interface ThemeContextInterface {
+export interface ThemeContext {
 	colorScheme: ThemeType.ColorScheme,
 	/**
 	 * TODO should define strictly, instead of this below
@@ -27,7 +27,7 @@ const
 		ColorHelper.getColorScheme()
 
 export const ThemeContext =
-	createContext<ThemeContextInterface>({
+	createContext<ThemeContext>({
 		colorScheme,
 		color: ColorHelper.getColorToken(colorScheme),
 	})
