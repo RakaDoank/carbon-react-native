@@ -208,8 +208,8 @@ const
 
 	mapInnerFocusBoxActiveStyle: Record<ThemeType.ColorScheme, typeof styles['innerFocusBoxActive_GRAY_10']> =
 		{
-			GRAY_10: styles.innerFocusBoxActive_GRAY_10,
-			GRAY_100: styles.innerFocusBoxActive_GRAY_100,
+			gray_10: styles.innerFocusBoxActive_GRAY_10,
+			gray_100: styles.innerFocusBoxActive_GRAY_100,
 		}
 
 function getStateStyle(
