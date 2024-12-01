@@ -34,24 +34,18 @@ import {
 export interface CollapsibleProps extends ViewProps {
 	controlled?: boolean,
 	open?: boolean,
-	motion?: Record<'toOpen' | 'toClose', {
-		/**
-		 * In milliseconds
-		 */
-		duration?: number,
-		easing?: WithTimingConfig['easing'],
-	}>,
+	motion?: Record<'toOpen' | 'toClose', WithTimingConfig>,
 	contentContainerStyle?: ViewProps['style'],
 	onToggle?: (value: boolean) => void,
 	onOpened?: () => void,
 	onClosed?: () => void,
 }
 
-export interface CollapsibleRef {
+export interface CollapsibleRef extends View {
 	/**
 	 * This method does nothing when `controlled` prop is true
 	 */
-	setOpen: (value: boolean) => void,
+	setOpen: (value: boolean | ((value: boolean) => boolean)) => void,
 }
 
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
@@ -91,6 +85,9 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 	) {
 
 		const
+			viewRef =
+				useRef<View>(null),
+
 			ref =
 				useRef<{
 					/**
@@ -98,9 +95,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					 */
 					positionView: 'absolute' | 'relative',
 					contentHeight: number,
+					openSelf: boolean,
 				}>({
 					positionView: open ? 'relative' : 'absolute',
 					contentHeight: 0,
+					openSelf: !!open,
 				}),
 
 			[openSelf, setOpenSelf] =
@@ -226,13 +225,21 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 		])
 
 		useImperativeHandle(forwardedRef, () => {
-			return {
-				setOpen(value) {
-					if(!controlled) {
-						setOpenSelf(value)
-					}
-				},
-			}
+			return Object.assign<View, { setOpen: CollapsibleRef['setOpen'] }>(
+				viewRef.current as View,
+				{
+					setOpen(value) {
+						if(!controlled) {
+							if(typeof value === 'boolean') {
+								setOpenSelf(value)
+							} else {
+								ref.current.openSelf = value(ref.current.openSelf)
+								setOpenSelf(ref.current.openSelf)
+							}
+						}
+					},
+				}
+			)
 		}, [
 			controlled,
 		])
@@ -248,6 +255,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						: null,
 					style,
 				] }
+				ref={ viewRef }
 			>
 				<View
 					style={ [
