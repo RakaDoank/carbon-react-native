@@ -70,6 +70,8 @@ export const Base = forwardRef<View, BaseProps>(
 			style,
 			textStyle,
 			iconStyle,
+			role = 'button',
+			'aria-label': ariaLabel,
 			...props
 		},
 		ref,
@@ -80,6 +82,8 @@ export const Base = forwardRef<View, BaseProps>(
 		return (
 			<Pressable
 				{ ...props }
+				role={ role }
+				aria-label={ ariaLabel ?? text }
 				style={ [
 					sizeStyle[size],
 					baseStyle.container,
