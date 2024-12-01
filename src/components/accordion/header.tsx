@@ -50,11 +50,11 @@ import {
 } from './motion'
 
 import type {
-	Size,
+	AccordionSize,
 } from './size'
 
 export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'icon' | 'colorStateStyle'> {
-	size?: Size,
+	size?: AccordionSize,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
@@ -139,7 +139,7 @@ const
 	 * Coincidentally (or not) use same value of height  
 	 * https://carbondesignsystem.com/components/accordion/style/#sizes
 	 */
-	mapSizeToButtonSize: Record<Size, ButtonSize> =
+	mapSizeToButtonSize: Record<AccordionSize, ButtonSize> =
 		{
 			small: 'small',
 			medium: 'medium',

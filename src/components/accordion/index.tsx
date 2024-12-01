@@ -30,14 +30,14 @@ import {
 	AccordionItemContext,
 } from './item-context'
 import type {
-	Size,
+	AccordionSize,
 } from './size'
 import {
 	MarginRightStyle,
 } from './styles'
 
 export interface AccordionProps extends Omit<ViewProps, 'children'> {
-	size?: Size,
+	size?: AccordionSize,
 	controlled?: boolean,
 	open?: boolean[],
 	flushAlignment?: boolean,
