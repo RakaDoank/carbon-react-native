@@ -24,6 +24,15 @@ export const FlexStyle = StyleSheet.create({
 	flex_row: {
 		flexDirection: 'row',
 	},
+	flex_wrap: {
+		flexWrap: 'wrap',
+	},
+	flex_wrap_reverse: {
+		flexWrap: 'wrap-reverse',
+	},
+	flex_nowrap: {
+		flexWrap: 'nowrap',
+	},
 	items_start: {
 		alignItems: 'flex-start',
 	},
