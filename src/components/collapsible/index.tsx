@@ -231,6 +231,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					setOpen(value) {
 						if(!controlled) {
 							if(typeof value === 'boolean') {
+								ref.current.openSelf = value
 								setOpenSelf(value)
 							} else {
 								ref.current.openSelf = value(ref.current.openSelf)
