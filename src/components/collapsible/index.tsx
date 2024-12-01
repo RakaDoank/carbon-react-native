@@ -129,7 +129,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				useSharedValue(0),
 
 			/**
-			 * When i wrote this, i can't find any information about motion specifally for Accordion to animate the content.  
+			 * When i wrote this, i can't find any information about motion specifically for Accordion to animate the content.  
 			 * So, i just tried to make it as similar as possible how the React Carbon Design System animation behaviour that using `transition-behaviour: allow-discrete`
 			 */
 			contentContainerAnimatedStyle =
