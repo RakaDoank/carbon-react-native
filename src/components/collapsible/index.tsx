@@ -63,19 +63,19 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				toOpen: {
 					duration: MotionConstant.Durations.fast_02,
 					easing: Easing.bezier(
-						MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x1,
-						MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y1,
-						MotionConstant.Easings.ENTRANCE.PRODUCTIVE.x2,
-						MotionConstant.Easings.ENTRANCE.PRODUCTIVE.y2,
+						MotionConstant.Easings.entrance.productive.x1,
+						MotionConstant.Easings.entrance.productive.y1,
+						MotionConstant.Easings.entrance.productive.x2,
+						MotionConstant.Easings.entrance.productive.y2,
 					),
 				},
 				toClose: {
 					duration: MotionConstant.Durations.fast_02,
 					easing: Easing.bezier(
-						MotionConstant.Easings.EXIT.PRODUCTIVE.x1,
-						MotionConstant.Easings.EXIT.PRODUCTIVE.y1,
-						MotionConstant.Easings.EXIT.PRODUCTIVE.x2,
-						MotionConstant.Easings.EXIT.PRODUCTIVE.y2,
+						MotionConstant.Easings.exit.productive.x1,
+						MotionConstant.Easings.exit.productive.y1,
+						MotionConstant.Easings.exit.productive.x2,
+						MotionConstant.Easings.exit.productive.y2,
 					),
 				},
 			},
