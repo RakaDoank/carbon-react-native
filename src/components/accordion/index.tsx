@@ -29,15 +29,15 @@ import {
 import {
 	AccordionItemContext,
 } from './item-context'
-import {
-	Size,
+import type {
+	AccordionSize,
 } from './size'
 import {
 	MarginRightStyle,
 } from './styles'
 
 export interface AccordionProps extends Omit<ViewProps, 'children'> {
-	size?: Size,
+	size?: AccordionSize,
 	controlled?: boolean,
 	open?: boolean[],
 	flushAlignment?: boolean,
@@ -175,7 +175,6 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 
 export const Accordion = Object.assign(Accordion_, {
 	Item: AccordionItem,
-	Size,
 })
 
 const

@@ -28,9 +28,8 @@ import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
 } from '../button/base-color'
-
-import {
-	Size as ButtonSize,
+import type {
+	ButtonSize,
 } from '../button/size'
 
 import {
@@ -50,12 +49,12 @@ import {
 	AccordionMotion,
 } from './motion'
 
-import {
-	Size,
+import type {
+	AccordionSize,
 } from './size'
 
 export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'icon' | 'colorStateStyle'> {
-	size?: Size,
+	size?: AccordionSize,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
@@ -64,7 +63,7 @@ export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 't
 }
 
 export function AccordionHeader({
-	size = Size.MEDIUM,
+	size = 'medium',
 	flushAlignment = false,
 	text,
 	style: styleProp,
@@ -140,11 +139,11 @@ const
 	 * Coincidentally (or not) use same value of height  
 	 * https://carbondesignsystem.com/components/accordion/style/#sizes
 	 */
-	mapSizeToButtonSize: Record<Size, ButtonSize> =
+	mapSizeToButtonSize: Record<AccordionSize, ButtonSize> =
 		{
-			[Size.SMALL]: ButtonSize.SMALL,
-			[Size.MEDIUM]: ButtonSize.MEDIUM,
-			[Size.LARGE]: ButtonSize.LARGE_PRODUCTIVE,
+			small: 'small',
+			medium: 'medium',
+			large: 'large_productive',
 		},
 
 	IconAnimated =

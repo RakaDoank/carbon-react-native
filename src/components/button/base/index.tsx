@@ -32,12 +32,12 @@ import {
 	type TextProps,
 } from '../../text'
 
-import {
-	Size,
+import type {
+	ButtonSize,
 } from '../size'
 
 export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
-	size?: Size,
+	size?: ButtonSize,
 	text?: string,
 	icon?: SharedType.CarbonIcon,
 	iconColor?: string,
@@ -61,7 +61,7 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 export const Base = forwardRef<View, BaseProps>(
 	function Base(
 		{
-			size = Size.LARGE_PRODUCTIVE,
+			size = 'large_productive',
 			text,
 			icon,
 			iconColor,
@@ -154,7 +154,7 @@ const
 		}),
 
 	sizeStyle =
-		StyleSheet.create<Record<Size, { height: number }>>({
+		StyleSheet.create<Record<ButtonSize, { height: number }>>({
 			small: {
 				height: 32,
 			},
@@ -211,7 +211,7 @@ const
 function isExpressive(
 	buttonSize: BaseProps['size'],
 ) {
-	return buttonSize === Size.LARGE_EXPRESSIVE
+	return buttonSize === 'large_expressive'
 }
 
 function getContainerPaddingRight(
