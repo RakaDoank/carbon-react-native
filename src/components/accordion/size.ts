@@ -1,4 +1,4 @@
-export type AccordionSize =
+export type Size =
 	| 'small'
 	| 'medium'
 	| 'large'
