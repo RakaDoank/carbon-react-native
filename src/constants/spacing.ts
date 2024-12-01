@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
 	spacing_01: 2,
 	spacing_02: 4,
@@ -14,4 +14,4 @@ module.exports = {
 	spacing_12: 96,
 	spacing_13: 160,
 
-}
+} as const
