@@ -15,7 +15,7 @@ import {
 	type BaseColorProps,
 } from '../base-color'
 
-export interface GhostIconProps extends Omit<BaseColorProps, 'colorStateStyle' | 'icon' | 'iconContainerStyle' | 'text'> {
+export interface GhostIconProps extends Omit<BaseColorProps, 'colorStateStyle' | 'icon' | 'text'> {
 	icon: SharedType.CarbonIcon,
 	selected?: boolean,
 }

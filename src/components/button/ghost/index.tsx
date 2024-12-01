@@ -19,11 +19,12 @@ import {
 	type BaseColorProps,
 } from '../base-color'
 
-export interface GhostProps extends Omit<BaseColorProps, 'colorStateStyle' | 'iconContainerStyle'> {
+export interface GhostProps extends Omit<BaseColorProps, 'colorStateStyle'> {
 }
 
 export function Ghost({
 	text,
+	iconStyle,
 	...props
 }: GhostProps) {
 
@@ -61,7 +62,7 @@ export function Ghost({
 					disabled: themeContext.color.icon_disabled,
 				},
 			}}
-			iconContainerStyle={ mapIconContainerPLByText[`${!!text}`] }
+			iconStyle={ [ mapIconPLByText[`${!!text}`], iconStyle ] }
 		/>
 	)
 
@@ -70,13 +71,13 @@ export function Ghost({
 const
 	style =
 		StyleSheet.create({
-			iconContainerPL8: {
+			iconPL8: {
 				paddingLeft: SpacingConstant.spacing_03,
 			},
 		}),
 
-	mapIconContainerPLByText: Record<string, typeof style['iconContainerPL8'] | null> =
+	mapIconPLByText: Record<string, typeof style['iconPL8'] | null> =
 		{
 			false: null,
-			true: style.iconContainerPL8,
+			true: style.iconPL8,
 		}
