@@ -8,6 +8,8 @@ export {
 
 export * from './accordion'
 export * from './collapsible'
+export * from './form-helper-text'
+export * from './form-label'
 export * from './icon'
 export * from './switch'
 export * from './text'
