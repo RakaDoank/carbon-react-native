@@ -8,7 +8,7 @@ import type {
 
 import type {
 	AccordionHeaderProps,
-} from './header'
+} from './_header'
 
 export interface AccordionItemContext {
 	open?: boolean,

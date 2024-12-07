@@ -21,20 +21,20 @@ import {
 
 import {
 	AccordionContext,
-} from './context'
+} from './_context'
 
 import {
 	AccordionHeader,
 	type AccordionHeaderProps,
-} from './header'
+} from './_header'
 
 import {
 	AccordionItemContext,
-} from './item-context'
+} from './_item-context'
 
 import {
 	AccordionMotion,
-} from './motion'
+} from './_motion'
 
 export interface AccordionItemProps extends Omit<AccordionHeaderProps, 'size' | 'text' | 'flushAlignment'> {
 	title?: string,

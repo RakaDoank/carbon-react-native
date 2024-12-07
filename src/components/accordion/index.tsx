@@ -19,22 +19,24 @@ import {
 
 import {
 	AccordionContext,
-} from './context'
+} from './_context'
 import {
 	AccordionHeaderBorder,
-} from './header-border'
+} from './_header-border'
 import {
 	AccordionItem,
-} from './item'
+} from './_item'
 import {
 	AccordionItemContext,
-} from './item-context'
+} from './_item-context'
 import type {
 	AccordionSize,
 } from './size'
 import {
 	MarginRightStyle,
-} from './styles'
+} from './_styles'
+
+export type * from './size'
 
 export interface AccordionProps extends Omit<ViewProps, 'children'> {
 	size?: AccordionSize,

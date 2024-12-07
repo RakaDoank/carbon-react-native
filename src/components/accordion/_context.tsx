@@ -4,7 +4,7 @@ import {
 
 import type {
 	AccordionHeaderProps,
-} from './header'
+} from './_header'
 
 export interface AccordionContext {
 	size?: AccordionHeaderProps['size'],

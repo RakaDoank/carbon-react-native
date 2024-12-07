@@ -29,7 +29,7 @@ import {
 	type BaseColorProps as ButtonColorProps,
 } from '../button/base-color'
 import type {
-	Size as ButtonSize,
+	ButtonSize as ButtonSize,
 } from '../button/size'
 
 import {
@@ -39,15 +39,15 @@ import {
 
 import {
 	AccordionHeaderBorder,
-} from './header-border'
+} from './_header-border'
 
 import {
 	AccordionItemContext,
-} from './item-context'
+} from './_item-context'
 
 import {
 	AccordionMotion,
-} from './motion'
+} from './_motion'
 
 import type {
 	AccordionSize,
