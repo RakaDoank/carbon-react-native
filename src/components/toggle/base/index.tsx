@@ -3,7 +3,6 @@ import {
 	useCallback,
 	useContext,
 	useImperativeHandle,
-	useMemo,
 	useRef,
 } from 'react'
 
@@ -42,14 +41,11 @@ import {
 	Switch,
 	type SwitchProps,
 	type SwitchRef,
+	type SwitchState,
 } from '../../switch'
 
-import type {
-	ToggleState,
-} from '../state'
-
 export interface BaseProps extends Omit<ViewProps, 'children'> {
-	state?: ToggleState,
+	state?: SwitchState,
 	controlled?: boolean,
 	value?: boolean,
 	label?: string,
@@ -63,7 +59,6 @@ export interface BaseProps extends Omit<ViewProps, 'children'> {
 	pressableProps?: Omit<
 		PressableProps,
 		| 'aria-checked'
-		| 'aria-label'
 		| 'role'
 		| 'style'
 	> & {
@@ -74,20 +69,21 @@ export interface BaseProps extends Omit<ViewProps, 'children'> {
 		| 'controlled'
 		| 'value'
 		| 'onChange'
-		| 'trackColor'
-		| 'thumbColor'
 		| 'motion'
 		| 'role'
-		| 'aria-label'
 		| 'aria-checked'
 	>,
 }
 
-export interface BaseRef extends View {
+interface _BaseRef {
+	readonly value: SwitchRef['value'],
 	/**
 	 * This method does nothing if `controlled` prop is true
 	 */
 	setValue: SwitchRef['setValue'],
+}
+
+export interface BaseRef extends View, _BaseRef {
 }
 
 export const Base = forwardRef<BaseRef, BaseProps>(
@@ -103,6 +99,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			actionTextProps,
 			pressableProps,
 			switchProps,
+			style,
 			...viewProps
 		},
 		forwardedRef,
@@ -118,33 +115,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			switchRef =
 				useRef<SwitchRef>(null),
 
-			{ trackColor, thumbColor } =
-				useMemo<{
-					trackColor: SwitchProps['trackColor'],
-					thumbColor: SwitchProps['thumbColor'],
-				}>(() => {
-					const
-						trackColor_ =
-							mapSwitchTrackColorToken[state],
-
-						thumbColor_ =
-							themeContext.color[mapSwitchThumbColorToken[state]]
-
-					return {
-						trackColor: {
-							false: contextColorTransparentResolver(themeContext.color, trackColor_.false),
-							true: contextColorTransparentResolver(themeContext.color, trackColor_.true),
-						},
-						thumbColor: {
-							false: thumbColor_,
-							true: thumbColor_,
-						},
-					}
-				// eslint-disable-next-line react-hooks/exhaustive-deps
-				}, [
-					state,
-				]),
-
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
 					pressableProps?.onPress?.(event)
@@ -154,9 +124,12 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, { setValue: BaseRef['setValue'] }>(
-				viewRef.current as View,
+			return Object.assign<View, _BaseRef>(
+				(viewRef.current ?? {}) as View,
 				{
+					get value() {
+						return !!switchRef.current?.value
+					},
 					setValue(val) {
 						switchRef.current?.setValue(val)
 					},
@@ -172,6 +145,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					FlexStyle.flex_row,
 					FlexStyle.flex_wrap,
 					FlexStyle.items_center,
+					style,
 				] }
 				ref={ viewRef }
 			>
@@ -180,7 +154,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					role="switch"
 					disabled={ state !== 'normal' }
 					aria-checked={ value }
-					aria-label={ label }
+					aria-label={ pressableProps?.['aria-label'] || label }
 					onPress={ pressHandler }
 					style={ [
 						CommonStyle.absolute,
@@ -212,19 +186,15 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 				<Switch
 					{ ...switchProps }
+					aria-label={ switchProps?.['aria-label'] || label }
+					state={ state }
 					disabled={ state !== 'normal' }
 					role="none"
 					controlled={ controlled }
 					value={ value }
-					trackColor={ trackColor }
-					thumbColor={ thumbColor }
 					onChange={ onChange }
 					style={ [
 						baseStyle.switch,
-						state === 'read_only' ? [
-							baseStyle.switchReadOnly,
-							{ borderColor: themeContext.color.border_subtle_00 },
-						] : null,
 						switchProps?.style,
 					] }
 					ref={ switchRef }
@@ -258,9 +228,6 @@ const
 			switch: {
 				zIndex: 2,
 			},
-			switchReadOnly: {
-				borderWidth: 1,
-			},
 			label: {
 				marginBottom: SpacingConstant.spacing_05,
 			},
@@ -269,54 +236,16 @@ const
 			},
 		}),
 
-	mapSwitchTrackColorToken: Record<ToggleState | 'focused', Record<'false' | 'true', keyof ThemeContext['color'] | 'transparent'>> =
-		{
-			normal: {
-				false: 'toggle_off',
-				true: 'support_success',
-			},
-			disabled: {
-				false: 'button_disabled',
-				true: 'button_disabled',
-			},
-			read_only: {
-				false: 'transparent',
-				true: 'transparent',
-			},
-			focused: {
-				false: 'toggle_off',
-				true: 'support_success',
-			},
-		},
-
-	mapSwitchThumbColorToken: Record<ToggleState | 'focused', keyof ThemeContext['color']> =
-		{
-			normal: 'icon_on_color',
-			disabled: 'icon_on_color_disabled',
-			read_only: 'icon_primary',
-			focused: 'icon_on_color',
-		},
-
-	mapLabelColorToken: Record<ToggleState, keyof ThemeContext['color']> =
+	mapLabelColorToken: Record<SwitchState, keyof ThemeContext['color']> =
 		{
 			normal: 'text_secondary',
 			disabled: 'text_disabled',
 			read_only: 'text_secondary',
 		},
 
-	mapActionTextColorToken: Record<ToggleState, keyof ThemeContext['color']> =
+	mapActionTextColorToken: Record<SwitchState, keyof ThemeContext['color']> =
 		{
 			normal: 'text_primary',
 			disabled: 'text_disabled',
 			read_only: 'text_primary',
 		}
-
-function contextColorTransparentResolver(
-	contextColor: ThemeContext['color'],
-	key: keyof ThemeContext['color'] | 'transparent',
-): string {
-	if(key === 'transparent') {
-		return 'transparent'
-	}
-	return contextColor[key]
-}

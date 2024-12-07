@@ -4,6 +4,7 @@ import {
 	useContext,
 	useEffect,
 	useImperativeHandle,
+	useMemo,
 	useRef,
 	useState,
 } from 'react'
@@ -44,8 +45,14 @@ import {
 	Icon,
 } from '../icon'
 
+export type SwitchState =
+	| 'normal'
+	| 'disabled'
+	| 'read_only'
+
 export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	size?: SwitchSize,
+	state?: SwitchState,
 	controlled?: boolean,
 	value?: boolean,
 	trackColor?: Record<'false' | 'true', string>,
@@ -60,17 +67,23 @@ export interface SwitchProps extends Omit<PressableProps, 'children'> {
  */
 export type SwitchSize = 'default' | 'small'
 
-export interface SwitchRef extends View {
+interface SwitchRefBase {
+	readonly value: boolean,
 	/**
 	 * This method does nothing if `controlled` prop is true
 	 */
 	setValue: (value: boolean | ((currentValue: boolean) => boolean)) => void,
 }
 
+export interface SwitchRef extends View, SwitchRefBase {
+}
+
 export const Switch = forwardRef<SwitchRef, SwitchProps>(
 	function Switch(
 		{
+
 			size = 'default',
+			state = 'normal',
 			controlled,
 			value: valueProp,
 			trackColor: trackColorProp,
@@ -100,7 +113,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 
 			ref =
 				useRef({
-					valueSelf: !!valueProp,
+					value: !!valueProp,
 				}),
 
 			themeContext =
@@ -122,17 +135,34 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			sharedValue =
 				useSharedValue(value ? 1 : 0),
 
-			trackColor =
-				trackColorProp ?? {
-					false: themeContext.color.toggle_off,
-					true: themeContext.color.support_success,
-				},
+			{ trackColor, thumbColor } =
+				useMemo<{
+					trackColor: NonNullable<SwitchProps['trackColor']>,
+					thumbColor: NonNullable<SwitchProps['thumbColor']>,
+				}>(() => {
+					const
+						trackColor_ =
+							mapSwitchTrackColorToken[state],
 
-			thumbColor =
-				thumbColorProp ?? {
-					false: themeContext.color.icon_on_color,
-					true: themeContext.color.icon_on_color,
-				},
+						thumbColor_ =
+							themeContext.color[mapSwitchThumbColorToken[state]]
+
+					return {
+						trackColor: trackColorProp ?? {
+							false: trackColor_.false ? themeContext.color[trackColor_.false] : 'transparent',
+							true: trackColor_.true ? themeContext.color[trackColor_.true] : 'transparent',
+						},
+						thumbColor: thumbColorProp ?? {
+							false: thumbColor_,
+							true: thumbColor_,
+						},
+					}
+				// eslint-disable-next-line react-hooks/exhaustive-deps
+				}, [
+					state,
+					trackColorProp,
+					thumbColorProp,
+				]),
 
 			trackAnimatedStyle =
 				useAnimatedStyle(() => {
@@ -201,8 +231,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
-						ref.current.valueSelf = !ref.current.valueSelf
-						setValueSelf(ref.current.valueSelf)
+						ref.current.value = !ref.current.value
+						setValueSelf(ref.current.value)
 					}
 				}, [
 					controlled,
@@ -225,6 +255,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			if(!isMounted.current) {
 				isMounted.current = true
 			} else {
+				ref.current.value = value
 				onChange?.(value)
 			}
 		}, [
@@ -233,17 +264,20 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 		])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, { setValue: SwitchRef['setValue'] }>(
-				viewRef.current as View,
+			return Object.assign<View, SwitchRefBase>(
+				(viewRef.current ?? {}) as View,
 				{
+					get value() {
+						return ref.current.value
+					},
 					setValue(val) {
 						if(!controlled) {
 							if(typeof val === 'boolean') {
-								ref.current.valueSelf = val
+								ref.current.value = val
 							} else {
-								ref.current.valueSelf = val(ref.current.valueSelf)
+								ref.current.value = val(ref.current.value)
 							}
-							setValueSelf(ref.current.valueSelf)
+							setValueSelf(ref.current.value)
 						}
 					},
 				},
@@ -256,12 +290,16 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			<PressableAnimated
 				{ ...props }
 				role={ role }
-				aria-checked={ ariaChecked || value }
+				aria-checked={ ariaChecked ?? value }
 				style={ [
 					FlexStyle.justify_center,
 					baseStyle.container,
 					sizeStyle[size],
 					trackAnimatedStyle,
+					state === 'read_only' ? [
+						baseStyle.containerReadonly,
+						{ borderColor: themeContext.color.border_subtle_00 },
+					] : null,
 					style,
 				] }
 				onBlur={ blurHandler }
@@ -308,6 +346,9 @@ const
 		StyleSheet.create({
 			container: {
 				borderRadius: 24,
+			},
+			containerReadonly: {
+				borderWidth: 1,
 			},
 			thumb: {
 				borderRadius: 18,
@@ -356,6 +397,31 @@ const
 				height: sizeStyle.small.height + 6,
 			},
 		}),
+
+	mapSwitchTrackColorToken: Record<SwitchState | 'focused', Partial<Record<'false' | 'true', keyof ThemeContext['color']>>> =
+		{
+			normal: {
+				false: 'toggle_off',
+				true: 'support_success',
+			},
+			disabled: {
+				false: 'button_disabled',
+				true: 'button_disabled',
+			},
+			read_only: {},
+			focused: {
+				false: 'toggle_off',
+				true: 'support_success',
+			},
+		},
+
+	mapSwitchThumbColorToken: Record<SwitchState | 'focused', keyof ThemeContext['color']> =
+		{
+			normal: 'icon_on_color',
+			disabled: 'icon_on_color_disabled',
+			read_only: 'icon_primary',
+			focused: 'icon_on_color',
+		},
 
 	interpolationRange =
 		[0, 1],
