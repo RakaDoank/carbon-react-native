@@ -29,6 +29,11 @@ import {
 } from '../../../styles'
 
 import {
+	FormLabel,
+	type FormLabelProps,
+} from '../../form-label'
+
+import {
 	Text,
 	type TextProps,
 } from '../../text'
@@ -50,7 +55,10 @@ export interface BaseProps extends Omit<ViewProps, 'children'> {
 	label?: string,
 	actionText?: string,
 	onChange?: SwitchProps['onChange'],
-	labelProps?: Omit<TextProps, 'children'>,
+	formLabelProps?: Omit<
+		FormLabelProps,
+		| 'label'
+	>,
 	actionTextProps?: Omit<TextProps, 'children'>,
 	pressableProps?: Omit<
 		PressableProps,
@@ -91,7 +99,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			label,
 			actionText,
 			onChange,
-			labelProps,
+			formLabelProps,
 			actionTextProps,
 			pressableProps,
 			switchProps,
@@ -184,18 +192,22 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				/>
 
 				{ !!label && (
-					<Text
-						{ ...labelProps }
-						type={ labelProps?.type || 'label_01' }
+					<FormLabel
+						{ ...formLabelProps }
+						label={ label }
+						textProps={{
+							...formLabelProps?.textProps,
+							style: [
+								{ color: themeContext.color[mapLabelColorToken[state]] },
+								formLabelProps?.textProps?.style,
+							],
+						}}
 						style={ [
-							{ color: themeContext.color[mapLabelColorToken[state]] },
 							CommonStyle.w_full,
 							baseStyle.label,
-							labelProps?.style,
+							formLabelProps?.style,
 						] }
-					>
-						{ label }
-					</Text>
+					/>
 				) }
 
 				<Switch
