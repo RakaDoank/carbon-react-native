@@ -30,6 +30,7 @@ import {
 
 import {
 	Icon,
+	type IconProps,
 } from '../icon'
 
 import IconCheckmark from '@carbon/icons/es/checkmark/20'
@@ -208,14 +209,18 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					] }
 				/>
 
-				<Icon
-					src={ state === 'indeterminate' ? IconSubtract : IconCheckmark }
-					width={ checkmarkSize }
-					height={ checkmarkSize }
-					color={ iconColor }
-					stroke={ iconColor }
-					style={ state === 'unselected' ? baseStyle.checkmarkHidden : null }
-				/>
+				{ state === 'indeterminate' ? (
+					<IconSubtractComponent
+						color={ iconColor }
+						stroke={ iconColor }
+					/>
+				) : (
+					<IconCheckmarkComponent
+						color={ iconColor }
+						stroke={ iconColor }
+						style={ state === 'unselected' ? baseStyle.checkmarkHidden : null }
+					/>
+				) }
 			</Pressable>
 		)
 
@@ -226,7 +231,7 @@ const
 	size =
 		16,
 
-	checkmarkSize =
+	iconSize =
 		size - 4,
 
 	baseStyle =
@@ -355,4 +360,41 @@ function getIconColor(
 		return color.icon_primary
 	}
 	return color.icon_inverse
+}
+
+interface IconComponentProps extends Omit<IconProps, 'src'> {
+}
+
+function IconCheckmarkComponent({
+	width = iconSize,
+	height = iconSize,
+	...props
+}: IconComponentProps) {
+
+	return (
+		<Icon
+			{ ...props }
+			src={ IconCheckmark }
+			width={ width }
+			height={ height }
+		/>
+	)
+
+}
+
+function IconSubtractComponent({
+	width = iconSize,
+	height = iconSize,
+	...props
+}: IconComponentProps) {
+
+	return (
+		<Icon
+			{ ...props }
+			src={ IconSubtract }
+			width={ width }
+			height={ height }
+		/>
+	)
+
 }
