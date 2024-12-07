@@ -33,11 +33,11 @@ import {
 } from '../../text'
 
 import type {
-	Size,
+	ButtonSize,
 } from '../size'
 
 export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
-	size?: Size,
+	size?: ButtonSize,
 	text?: string,
 	icon?: SharedType.CarbonIcon,
 	iconColor?: string,
@@ -158,7 +158,7 @@ const
 		}),
 
 	sizeStyle =
-		StyleSheet.create<Record<Size, { height: number }>>({
+		StyleSheet.create<Record<ButtonSize, { height: number }>>({
 			small: {
 				height: 32,
 			},

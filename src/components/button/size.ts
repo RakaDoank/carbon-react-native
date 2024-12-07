@@ -1,4 +1,4 @@
-export type Size =
+export type ButtonSize =
 	| 'small'
 	| 'medium'
 	| 'large_productive'
