@@ -76,7 +76,7 @@ export default function YourReactComponent() {
 ```
 While this library is still in development and there is no documentation available, this library is written in TypeScript. You can just refer to this [components source](https://github.com/RakaDoank/carbon-react-native/tree/main/src/components) for a while.
 
-### Color Token
+### Accessing Color Token
 You can use current color token based on what color scheme which are `Gray 10` and `Gray 100`. It is available by using `ThemeContext` that are already provided by `CarbonReactNative`.
 ```tsx
 import {
