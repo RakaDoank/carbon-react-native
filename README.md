@@ -38,7 +38,7 @@ import {
 export default function App() {
   return (
     <CarbonReactNative>
-      { /* your app is here */ }
+      { /* the rest of your react */ }
     </CarbonReactNative>
   )
 }
@@ -114,4 +114,93 @@ const style = StyleSheet.create({
     paddingHorizontal: SpacingConstant.spacing_05,
   },
 })
+```
+
+### Change Color Scheme
+`colorScheme`: `gray_10` | `gray_100`
+
+This UI library will solve what color scheme on your project natively, with this map
+- light theme -> `gray_10`
+- dark theme -> `gray_100`
+
+If you want override the colorScheme, as an example you only want to use the `gray_100` color scheme (dark mode only), you fill the prop with `gray_100` value
+```tsx
+import {
+  CarbonReactNative,
+} from '@rakadoank/carbon-react-native'
+
+export default function App() {
+  return (
+    <CarbonReactNative colorScheme="gray_100">
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+```
+
+### Override Carbon Color Tokens
+Not recommended to override the color token that are made by Carbon, but you can still override it or just change one of the color token members.  
+> :warning: Be aware of this. All components are made also get the impact by the color token change
+```tsx
+import {
+  CarbonReactNative,
+  ColorConstant,
+} from '@rakadoank/carbon-react-native'
+
+export default function App() {
+  return (
+    <CarbonReactNative
+      overrideColor={{
+        ...ColorConstant.Tokens.GRAY_100,
+        button_primary: '#9021e5', // as an example, change button_primary from blue originally to purple
+      }}
+    >
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+```
+
+**Caveat**, if you fill this prop, `colorScheme` will means nothing, since it depends on whatever your logic here.
+
+Another example, you can still follow the light and dark theme by using `gray_10` and `gray_100` and extends it
+```tsx
+import {
+  useColorScheme,
+} from 'react-native'
+
+import {
+  CarbonReactNative,
+  ColorHelper,
+  type ThemeType,
+} from '@rakadoank/carbon-react-native'
+
+export default function App() {
+  const
+    nativeColorScheme =
+      useColorScheme(),
+
+    colorScheme =
+      ColorHelper.getColorScheme(nativeColorScheme)
+
+  return (
+    <CarbonReactNative
+      overrideColor={{
+        ...ColorHelper.getColorToken(colorScheme),
+        button_primary: customColorToken[colorScheme].button_primary,
+      }}
+    >
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+
+const customColorToken: Record<ThemeType.ColorScheme, { button_primary: string }> = {
+  gray_10: {
+    button_primary: '#9021e5',
+  },
+  gray_100: {
+    button_primary: '#a421e5'
+  },
+}
 ```
