@@ -47,12 +47,14 @@ export interface CheckboxProps extends Omit<ViewProps, 'children'> {
 	state?: CheckboxInputState,
 	interactiveState?: CheckboxInputInteractiveState,
 	label: string,
+	onChange?: CheckboxInputProps['onChange'],
 	checkboxInputProps?: Omit<
 		CheckboxInputProps,
 		| 'controlled'
 		| 'state'
 		| 'interactiveState'
 		| 'role'
+		| 'onChange'
 	>,
 	formLabelProps?: Omit<FormLabelProps, 'label'>,
 	pressableProps?: Omit<
@@ -84,6 +86,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			interactiveState = 'normal',
 			label,
 			'aria-label': ariaLabel,
+			onChange,
 			checkboxInputProps,
 			formLabelProps,
 			pressableProps,
@@ -158,6 +161,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					controlled={ controlled }
 					state={ state }
 					interactiveState={ interactiveState }
+					onChange={ onChange }
 					style={ [
 						baseStyle.checkboxInput,
 						checkboxInputProps?.style,
