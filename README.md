@@ -151,7 +151,7 @@ export default function App() {
 
 ### Override Carbon Color Tokens
 Not recommended to override the color token that are made by Carbon, but you can still override it or just change one of the color token members.  
-> :warning: Be aware of this. All components are made also get the impact by the color token change
+> :warning: Be aware of this. All components are made also get the impact of color token change
 ```tsx
 import {
   CarbonReactNative,
