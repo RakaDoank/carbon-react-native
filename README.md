@@ -14,7 +14,7 @@ This library is just a pure JavaScript usage in React Native and only depends on
 
 ## Installation
 This project is not released yet on npm registry. You have to install it manually,
-1. Clone or Download this repository and place it on your React Native project directory
+1. Clone or Download this repository and place it on your React Native project directory. You can place it wherever you want but it's have to be inside in your project directory
 2. Install the library by this command
   ```
   npm install --save ./carbon-react-native
@@ -26,6 +26,17 @@ Ensure it is the correct path based on what you're doing at the first step.
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
 - [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
 - [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
+
+4. Install the `IBM Plex Sans` font to the project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
+```js
+const path = require('path')
+
+module.exports = {
+  assets: [
+    './node_modules/@rakadoank/carbon-react-native/assets/fonts/',
+  ],
+}
+```
 
 ## Initialize
 This library depends on React Context to use the color tokens correctly based on the current color scheme. You have to wrap your whole React App once with `<CarbonReactNative>`
