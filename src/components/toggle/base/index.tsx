@@ -141,7 +141,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			<View
 				{ ...viewProps }
 				style={ [
-					FlexStyle.flex_initial,
 					FlexStyle.flex_row,
 					FlexStyle.flex_wrap,
 					FlexStyle.items_center,
