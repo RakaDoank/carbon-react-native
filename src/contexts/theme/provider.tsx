@@ -8,11 +8,10 @@ import {
 
 import {
 	ThemeContext,
-	type ThemeContextInterface,
 } from './context'
 
 export interface ThemeContextProviderProps {
-	colorScheme?: ThemeContextInterface['colorScheme'],
+	colorScheme?: ThemeContext['colorScheme'],
 	children?: React.ReactNode,
 }
 
