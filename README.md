@@ -29,8 +29,6 @@ Ensure it is the correct path based on what you're doing at the first step.
 
 4. Install the `IBM Plex Sans` font to your project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
 ```js
-const path = require('path')
-
 module.exports = {
   assets: [
     './node_modules/@rakadoank/carbon-react-native/assets/fonts/',
