@@ -36,11 +36,6 @@ import {
 import IconCheckmark from '@carbon/icons/es/checkmark/20'
 import IconSubtract from '@carbon/icons/es/subtract/20'
 
-export type CheckboxInputState =
-	| 'unselected'
-	| 'selected'
-	| 'indeterminate'
-
 export type CheckboxInputInteractiveState =
 	| 'normal'
 	| 'disabled'
@@ -55,19 +50,20 @@ export interface CheckboxInputProps extends Omit<
 	| 'style'
 > {
 	controlled?: boolean,
-	state?: CheckboxInputState,
+	value?: boolean,
+	indeterminate?: boolean,
 	interactiveState?: CheckboxInputInteractiveState,
-	onChange?: (state: CheckboxInputState) => void,
+	onChange?: (value: boolean) => void,
 	style?: ViewProps['style'],
 }
 
 interface CheckboxInputRefBase {
-	readonly stateValue: CheckboxInputState,
+	readonly value: boolean,
 	/**
 	 * This method does nothing when `controlled` prop is true  
 	 * Intentionally with postfix `Value` to avoid conflict setState method from View
 	 */
-	setStateValue: (state: CheckboxInputState | ((currentState: CheckboxInputState) => CheckboxInputState)) => void,
+	setValue: (value: boolean | ((value: boolean, indeterminate: boolean) => boolean)) => void,
 }
 
 export interface CheckboxInputRef extends View, CheckboxInputRefBase {
@@ -77,7 +73,8 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	function CheckboxInput(
 		{
 			controlled,
-			state: stateProp = 'unselected',
+			value: valueProp,
+			indeterminate: indeterminateProp,
 			interactiveState = 'normal',
 			style,
 			role = 'checkbox',
@@ -100,17 +97,25 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			ref =
 				useRef({
 					isMounted: false,
-					state: stateProp,
+					value: !!valueProp,
 				}),
 
 			[isFocused, setIsFocused] =
 				useState(false),
 
-			[stateSelf, setStateSelf] =
-				useState<CheckboxInputState>(stateProp),
+			[state, setState] =
+				useState({
+					value: !!valueProp,
+					indeterminate: !!indeterminateProp,
+				}),
 
-			state =
-				controlled ? stateProp : stateSelf,
+			value =
+				controlled ? !!valueProp : state.value,
+
+			indeterminate =
+				controlled
+					? indeterminateProp
+					: state.indeterminate,
 
 			blurHandler: NonNullable<PressableProps['onBlur']> =
 				useCallback(event => {
@@ -132,8 +137,12 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled && interactiveState !== 'read_only') {
-						ref.current.state = mapStateToggler[ref.current.state]
-						setStateSelf(ref.current.state)
+						setState(state_ => {
+							return {
+								value: state_.indeterminate ? true : !state_.value,
+								indeterminate: false,
+							}
+						})
 					}
 				}, [
 					controlled,
@@ -148,11 +157,11 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			if(!ref.current.isMounted) {
 				ref.current.isMounted = true
 			} else {
-				ref.current.state = state
-				onChange?.(state)
+				ref.current.value = value
+				onChange?.(value)
 			}
 		}, [
-			state,
+			value,
 			onChange,
 		])
 
@@ -160,17 +169,31 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			return Object.assign<View, CheckboxInputRefBase>(
 				viewRef.current as View,
 				{
-					get stateValue() {
-						return ref.current.state
+					get value() {
+						return ref.current.value
 					},
-					setStateValue(state_) {
+					setValue(value_) {
 						if(!controlled) {
-							if(typeof state_ === 'function') {
-								ref.current.state = state_(ref.current.state)
-							} else {
-								ref.current.state = state_
-							}
-							setStateSelf(ref.current.state)
+							// if(typeof value_ === 'function') {
+							// 	ref.current.value = value_(ref.current.value)
+							// } else {
+							// 	ref.current.value = value_
+							// }
+							// setState({
+							// 	value: ref.current.value,
+							// 	indeterminate: false,
+							// })
+							setState(state_ => {
+								if(typeof value_ === 'function') {
+									ref.current.value = value_(state_.value, state_.indeterminate)
+								} else {
+									ref.current.value = value_
+								}
+								return {
+									value: ref.current.value,
+									indeterminate: false,
+								}
+							})
 						}
 					},
 				},
@@ -192,7 +215,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					FlexStyle.justify_center,
 					CommonStyle.relative,
 					baseStyle.checkbox,
-					getInteractiveStateStyle(interactiveState, state, themeContext.color),
+					getInteractiveStateStyle(interactiveState, value, themeContext.color),
 					style,
 				] }
 				ref={ viewRef }
@@ -208,7 +231,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					] }
 				/>
 
-				{ state === 'indeterminate' ? (
+				{ value && indeterminate ? (
 					<IconSubtractComponent
 						color={ iconColor }
 						stroke={ iconColor }
@@ -217,7 +240,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					<IconCheckmarkComponent
 						color={ iconColor }
 						stroke={ iconColor }
-						style={ state === 'unselected' ? baseStyle.checkmarkHidden : null }
+						style={ !value ? baseStyle.checkmarkHidden : null }
 					/>
 				) }
 			</Pressable>
@@ -252,17 +275,10 @@ const
 			},
 		}),
 
-	mapStateToggler: Record<CheckboxInputState, CheckboxInputState> =
-		{
-			indeterminate: 'selected',
-			selected: 'unselected',
-			unselected: 'selected',
-		},
-
 	mapInteractiveStateStyle: Record<
 		CheckboxInputInteractiveState,
 		Record<
-			CheckboxInputState,
+			'true' | 'false',
 			Partial<Record<
 				Extract<keyof ViewStyle, 'borderColor' | 'backgroundColor'>,
 				keyof typeof GRAY_10
@@ -271,65 +287,46 @@ const
 	> =
 		{
 			normal: {
-				indeterminate: {
+				true: {
 					borderColor: 'icon_primary',
 					backgroundColor: 'icon_primary',
 				},
-				selected: {
-					borderColor: 'icon_primary',
-					backgroundColor: 'icon_primary',
-				},
-				unselected: {
+				false: {
 					borderColor: 'icon_primary',
 				},
 			},
 			disabled: {
-				indeterminate: {
+				true: {
 					borderColor: 'icon_disabled',
 					backgroundColor: 'icon_disabled',
 				},
-				selected: {
-					borderColor: 'icon_disabled',
-					backgroundColor: 'icon_disabled',
-				},
-				unselected: {
+				false: {
 					borderColor: 'icon_disabled',
 				},
 			},
 			error: {
-				indeterminate: {
+				true: {
 					borderColor: 'support_error',
 					backgroundColor: 'icon_primary',
 				},
-				selected: {
-					borderColor: 'support_error',
-					backgroundColor: 'icon_primary',
-				},
-				unselected: {
+				false: {
 					borderColor: 'support_error',
 				},
 			},
 			read_only: {
-				indeterminate: {
+				true: {
 					borderColor: 'icon_disabled',
 				},
-				selected: {
-					borderColor: 'icon_disabled',
-				},
-				unselected: {
+				false: {
 					borderColor: 'icon_disabled',
 				},
 			},
 			warning: {
-				indeterminate: {
+				true: {
 					borderColor: 'icon_primary',
 					backgroundColor: 'icon_primary',
 				},
-				selected: {
-					borderColor: 'icon_primary',
-					backgroundColor: 'icon_primary',
-				},
-				unselected: {
+				false: {
 					borderColor: 'icon_primary',
 				},
 			},
@@ -337,15 +334,15 @@ const
 
 function getInteractiveStateStyle(
 	interactiveState: CheckboxInputInteractiveState,
-	state: CheckboxInputState,
+	value: boolean,
 	color: ThemeContext['color'],
 ) {
-	const style = mapInteractiveStateStyle[interactiveState][state]
+	const style = mapInteractiveStateStyle[interactiveState][`${value}`]
 	return Object.entries(style).reduce((
 		accumulator: ViewStyle,
 		[key_, val],
 	) => {
-		const key = key_ as keyof typeof mapInteractiveStateStyle['normal']['indeterminate']
+		const key = key_ as keyof typeof mapInteractiveStateStyle['normal']['true']
 		accumulator[key] = color[val]
 		return accumulator
 	}, {})

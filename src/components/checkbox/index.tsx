@@ -34,7 +34,6 @@ import {
 	type CheckboxInputInteractiveState,
 	type CheckboxInputProps,
 	type CheckboxInputRef,
-	type CheckboxInputState,
 } from '../checkbox-input'
 
 import {
@@ -44,14 +43,17 @@ import {
 
 export interface CheckboxProps extends Omit<ViewProps, 'children'> {
 	controlled?: boolean,
-	state?: CheckboxInputState,
+	value?: boolean,
+	indeterminate?: CheckboxInputProps['indeterminate'],
 	interactiveState?: CheckboxInputInteractiveState,
 	label: string,
 	onChange?: CheckboxInputProps['onChange'],
+	onPress?: CheckboxInputProps['onPress'],
 	checkboxInputProps?: Omit<
 		CheckboxInputProps,
 		| 'controlled'
-		| 'state'
+		| 'value'
+		| 'indeterminate'
 		| 'interactiveState'
 		| 'role'
 		| 'onChange'
@@ -61,18 +63,19 @@ export interface CheckboxProps extends Omit<ViewProps, 'children'> {
 		PressableProps,
 		| 'role'
 		| 'style'
+		| 'onPress'
 	> & {
 		style?: ViewProps['style'],
 	},
 }
 
 interface CheckboxRefBase {
-	readonly stateValue: CheckboxInputState,
+	readonly value: boolean,
 	/**
 	 * This method does nothing when `controlled` prop is true  
 	 * Intentionally with postfix `Value` to avoid conflict setState method from View
 	 */
-	setStateValue: CheckboxInputRef['setStateValue'],
+	setValue: CheckboxInputRef['setValue'],
 }
 
 export interface CheckboxRef extends View, CheckboxRefBase {
@@ -82,11 +85,13 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 	function Checkbox(
 		{
 			controlled,
-			state = 'unselected',
+			value,
+			indeterminate,
 			interactiveState = 'normal',
 			label,
 			'aria-label': ariaLabel,
 			onChange,
+			onPress,
 			checkboxInputProps,
 			formLabelProps,
 			pressableProps,
@@ -108,23 +113,28 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
-					pressableProps?.onPress?.(event)
-					checkboxInputRef.current?.setStateValue(
-						currentState => mapStateToggler[currentState]
+					onPress?.(event)
+					checkboxInputRef.current?.setValue(
+						(currentValue, indeterminate_) => {
+							if(indeterminate_ && currentValue) {
+								return true
+							}
+							return !currentValue
+						}
 					)
 				}, [
-					pressableProps,
+					onPress,
 				])
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, CheckboxRefBase>(
 				(viewRef.current ?? {}) as View,
 				{
-					get stateValue() {
-						return checkboxInputRef.current!!.stateValue
+					get value() {
+						return checkboxInputRef.current!!.value
 					},
-					setStateValue(state_) {
-						checkboxInputRef.current?.setStateValue(state_)
+					setValue(value_) {
+						checkboxInputRef.current?.setValue(value_)
 					},
 				},
 			)
@@ -159,9 +169,11 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					{ ...checkboxInputProps }
 					role="none"
 					controlled={ controlled }
-					state={ state }
+					value={ value }
+					indeterminate={ indeterminate }
 					interactiveState={ interactiveState }
 					onChange={ onChange }
+					onPress={ onPress }
 					style={ [
 						baseStyle.checkboxInput,
 						checkboxInputProps?.style,
@@ -204,13 +216,6 @@ const
 				marginLeft: SpacingConstant.spacing_03,
 			},
 		}),
-
-	mapStateToggler: Record<CheckboxInputState, CheckboxInputState> =
-		{
-			indeterminate: 'selected',
-			selected: 'unselected',
-			unselected: 'selected',
-		},
 
 	mapTextColor: Record<
 		CheckboxInputInteractiveState,
