@@ -14,10 +14,6 @@ import {
 } from 'react-native'
 
 import {
-	FlexStyle,
-} from '../../styles'
-
-import {
 	AccordionContext,
 } from './_context'
 import {
@@ -133,10 +129,7 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 		return (
 			<View
 				{ ...props }
-				style={ [
-					FlexStyle.flex_initial,
-					style,
-				] }
+				style={ style }
 				onLayout={ handlerLayout }
 			>
 				<AccordionContext.Provider

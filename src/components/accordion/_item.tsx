@@ -12,10 +12,6 @@ import {
 } from '../../constants'
 
 import {
-	FlexStyle,
-} from '../../styles'
-
-import {
 	Collapsible,
 } from '../collapsible'
 
@@ -65,10 +61,7 @@ export function AccordionItem({
 	return (
 		<View
 			{ ...props }
-			style={ [
-				FlexStyle.flex_initial,
-				styleProp,
-			] }
+			style={ styleProp }
 		>
 			<AccordionHeader
 				size={ accordionContext.size }
