@@ -15,11 +15,16 @@ import {
 import {
 	AccordionContext,
 } from './_context'
+import type {
+	AccordionHeaderProps,
+} from './_header'
 import {
 	AccordionHeaderBorder,
 } from './_header-border'
 import {
 	AccordionItem,
+	type AccordionItemProps,
+	type AccordionItemRef,
 } from './_item'
 import type {
 	AccordionSize,
@@ -28,7 +33,13 @@ import {
 	MarginRightStyle,
 } from './_styles'
 
-export type * from './size'
+export type {
+	AccordionContext,
+	AccordionHeaderProps,
+	AccordionItemProps,
+	AccordionItemRef,
+	AccordionSize,
+}
 
 export interface AccordionProps extends Omit<ViewProps, 'children'> {
 	size?: AccordionSize,
