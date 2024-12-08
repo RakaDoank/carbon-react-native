@@ -14,7 +14,7 @@ This library is just a pure JavaScript usage in React Native and only depends on
 
 ## Installation
 This project is not released yet on npm registry. You have to install it manually,
-1. Clone or Download this repository and place it on your React Native project directory. You can place it wherever you want but it's have to be inside in your project directory
+1. Clone or Download this repository and place it on your React Native project directory. You can place it wherever you want but it has to be inside in your project directory
 2. Install the library by this command
   ```
   npm install --save ./carbon-react-native
