@@ -1,7 +1,6 @@
 import {
 	forwardRef,
 	useCallback,
-	useImperativeHandle,
 	useRef,
 	useState,
 } from 'react'
@@ -22,9 +21,6 @@ import {
 import {
 	AccordionItem,
 } from './_item'
-import {
-	AccordionItemContext,
-} from './_item-context'
 import type {
 	AccordionSize,
 } from './size'
@@ -36,27 +32,18 @@ export type * from './size'
 
 export interface AccordionProps extends Omit<ViewProps, 'children'> {
 	size?: AccordionSize,
-	controlled?: boolean,
-	open?: boolean[],
 	flushAlignment?: boolean,
 	children?: React.ReactNode[],
 }
 
-export interface AccordionRef {
-	/**
-	 * This method does nothing if `controlled` prop is true
-	 */
-	setOpen: (value: boolean[]) => void,
+export interface AccordionRef extends View {
 }
 
 const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 	function Accordion(
 		{
 			size,
-			controlled,
-			open: openProp,
 			flushAlignment,
-
 			children,
 			style,
 			onLayout,
@@ -76,12 +63,6 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 			[marginRightStyleKey, setMarginRightStyleKey] =
 				useState(ref.current.marginRightStyleKey),
 
-			[openSelf, setOpenSelf] =
-				useState<(boolean | undefined)[]>(openProp ?? []),
-
-			open =
-				controlled ? openProp : openSelf,
-
 			handlerLayout: NonNullable<ViewProps['onLayout']> =
 				useCallback(event => {
 					onLayout?.(event)
@@ -97,63 +78,23 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 					}
 				}, [
 					onLayout,
-				]),
-
-			onPressItemHeader =
-				useCallback((
-					index: number,
-				) => {
-					if(!controlled) {
-						setOpenSelf(currentOpenSelf => {
-							const newOpenSelf = currentOpenSelf.slice()
-							newOpenSelf[index] = !newOpenSelf[index]
-							return newOpenSelf
-						})
-					}
-				}, [
-					controlled,
 				])
-
-		useImperativeHandle(forwardedRef, () => {
-			return {
-				setOpen(value) {
-					if(!controlled) {
-						setOpenSelf(value)
-					}
-				},
-			}
-		}, [
-			controlled,
-		])
 
 		return (
 			<View
 				{ ...props }
 				style={ style }
 				onLayout={ handlerLayout }
+				ref={ forwardedRef }
 			>
 				<AccordionContext.Provider
 					value={{
 						size,
 						flushAlignment,
+						collapsibleContentContainerStyle: MarginRightStyle[marginRightStyleKey],
 					}}
 				>
-					{ children?.map((itemChildren, index) => {
-						return (
-							<AccordionItemContext.Provider
-								key={ index }
-								value={{
-									open: open?.[index],
-									onPress() {
-										onPressItemHeader(index)
-									},
-									collapsibleContentContainerStyle: MarginRightStyle[marginRightStyleKey],
-								}}
-							>
-								{ itemChildren }
-							</AccordionItemContext.Provider>
-						)
-					}) }
+					{ children }
 
 					{ !!children?.length && (
 						<AccordionHeaderBorder

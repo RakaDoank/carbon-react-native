@@ -1,10 +1,17 @@
 import {
+	forwardRef,
+	useCallback,
 	useContext,
+	useEffect,
+	useImperativeHandle,
+	useRef,
+	useState,
 } from 'react'
 
 import {
 	StyleSheet,
 	View,
+	type ViewProps,
 } from 'react-native'
 
 import {
@@ -25,66 +32,146 @@ import {
 } from './_header'
 
 import {
-	AccordionItemContext,
-} from './_item-context'
-
-import {
 	AccordionMotion,
 } from './_motion'
 
-export interface AccordionItemProps extends Omit<AccordionHeaderProps, 'size' | 'text' | 'flushAlignment'> {
+export interface AccordionItemProps extends ViewProps {
+	controlled?: boolean,
+	open?: boolean,
 	title?: string,
 	children?: React.ReactNode,
+	onChange?: (open: boolean) => void,
+	onPressHeader?: AccordionHeaderProps['onPress'],
+	accordionHeaderProps?: Omit<
+		AccordionHeaderProps,
+		| 'size'
+		| 'text'
+		| 'flushAlignment'
+		| 'onPress'
+	>
 }
 
-export function AccordionItem({
-	title,
-	children,
-	style: styleProp,
-	onPress,
-	...props
-}: AccordionItemProps) {
+interface AccordionItemRefBase {
+	readonly open: boolean,
+	/**
+	 * This method does nothing if `controlled` prop is true
+	 */
+	setOpen: (value: boolean | ((value: boolean) => boolean)) => void,
+}
 
-	const
-		accordionContext =
-			useContext(AccordionContext),
+export interface AccordionItemRef extends View, AccordionItemRefBase {
+}
 
-		accordionItemContext =
-			useContext(AccordionItemContext),
+export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
+	function AccordionItem(
+		{
+			controlled,
+			open: openProp,
+			title,
+			children,
+			style: styleProp,
+			onChange,
+			onPressHeader,
+			accordionHeaderProps,
+			...props
+		},
+		forwardedRef,
+	) {
 
-		pressHandler: AccordionHeaderProps['onPress'] =
-			event => {
-				accordionItemContext.onPress?.(event)
-				onPress?.(event)
+		const
+			accordionContext =
+				useContext(AccordionContext),
+
+			ref =
+				useRef({
+					isMounted: false,
+					open: !!openProp,
+				}),
+
+			viewRef =
+				useRef<View>(null),
+
+			[openSelf, setOpenSelf] =
+				useState(!!openProp),
+
+			open =
+				controlled ? !!openProp : openSelf,
+
+			pressHandler: NonNullable<AccordionHeaderProps['onPress']> =
+				useCallback(event => {
+					onPressHeader?.(event)
+					if(!controlled) {
+						setOpenSelf(state => !state)
+					}
+				}, [
+					controlled,
+					onPressHeader,
+				])
+
+		useEffect(() => {
+			if(!ref.current.isMounted) {
+				ref.current.isMounted = true
+			} else {
+				ref.current.open = open
+				onChange?.(open)
 			}
+		}, [
+			open,
+			onChange,
+		])
 
-	return (
-		<View
-			{ ...props }
-			style={ styleProp }
-		>
-			<AccordionHeader
-				size={ accordionContext.size }
-				text={ title }
-				flushAlignment={ accordionContext.flushAlignment }
-				onPress={ pressHandler }
-			/>
+		useImperativeHandle(forwardedRef, () => {
+			return Object.assign<View, AccordionItemRefBase>(
+				(viewRef.current ?? {}) as View,
+				{
+					get open() {
+						return ref.current.open
+					},
+					setOpen(value) {
+						if(!controlled) {
+							if(typeof value === 'boolean') {
+								ref.current.open = value
+							} else {
+								ref.current.open = value(ref.current.open)
+							}
+							setOpenSelf(ref.current.open)
+						}
+					},
+				},
+			)
+		}, [
+			controlled,
+		])
 
-			<Collapsible
-				motion={ AccordionMotion }
-				controlled
-				open={ accordionItemContext.open }
-				contentContainerStyle={ [
-					accordionItemContext.collapsibleContentContainerStyle,
-					style.panel,
-				] }
+		return (
+			<View
+				{ ...props }
+				style={ styleProp }
 			>
-				{ children }
-			</Collapsible>
-		</View>
-	)
+				<AccordionHeader
+					{ ...accordionHeaderProps }
+					size={ accordionContext.size }
+					text={ title }
+					flushAlignment={ accordionContext.flushAlignment }
+					onPress={ pressHandler }
+				/>
 
-}
+				<Collapsible
+					motion={ AccordionMotion }
+					controlled
+					open={ open }
+					contentContainerStyle={ [
+						accordionContext.collapsibleContentContainerStyle,
+						style.panel,
+					] }
+				>
+					{ children }
+				</Collapsible>
+			</View>
+		)
+
+	}
+)
 
 const
 	style =

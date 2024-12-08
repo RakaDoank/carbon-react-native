@@ -42,10 +42,6 @@ import {
 } from './_header-border'
 
 import {
-	AccordionItemContext,
-} from './_item-context'
-
-import {
 	AccordionMotion,
 } from './_motion'
 
@@ -58,12 +54,14 @@ export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 't
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
+	open?: boolean,
 	flushAlignment?: boolean,
 	text?: string,
 }
 
 export function AccordionHeader({
 	size = 'medium',
+	open,
 	flushAlignment = false,
 	text,
 	style: styleProp,
@@ -72,10 +70,7 @@ export function AccordionHeader({
 
 	const
 		themeContext =
-			useContext(ThemeContext),
-
-		itemContext =
-			useContext(AccordionItemContext)
+			useContext(ThemeContext)
 
 	return (
 		<View
@@ -125,7 +120,7 @@ export function AccordionHeader({
 				}}
 				iconNode={
 					(...params) =>
-						iconNodeRenderer(!!itemContext.open, ...params)
+						iconNodeRenderer(!!open, ...params)
 				}
 				style={ FlexStyle.self_stretch }
 			/>
