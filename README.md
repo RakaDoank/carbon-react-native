@@ -21,13 +21,13 @@ This project is not released yet on npm registry. You have to install it manuall
   ```
 Ensure it is the correct path based on what you're doing at the first step.
 
-3. Install these peer dependencies on your React Native project, (skip one of these library if already installed)
+3. Install these dependencies on your React Native project, (skip one of these library if already installed)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
 - [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
 - [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
 
-4. Install the `IBM Plex Sans` font to the project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
+4. Install the `IBM Plex Sans` font to your project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
 ```js
 const path = require('path')
 
