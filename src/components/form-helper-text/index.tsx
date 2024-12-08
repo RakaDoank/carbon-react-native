@@ -47,7 +47,6 @@ export function FormHelperText({
 		<View
 			{ ...props }
 			style={ [
-				FlexStyle.flex_initial,
 				FlexStyle.flex_row,
 				baseStyle.container,
 				style,

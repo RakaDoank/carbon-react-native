@@ -247,7 +247,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			<Animated.View
 				{ ...props }
 				style={ [
-					FlexStyle.flex_initial,
 					CommonStyle.overflow_hidden,
 					positionView === 'absolute'
 						? { height: heightAnimated }

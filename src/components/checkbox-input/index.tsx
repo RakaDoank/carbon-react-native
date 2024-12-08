@@ -188,7 +188,6 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				onFocus={ focusHandler }
 				onPress={ pressHandler }
 				style={ [
-					FlexStyle.flex_initial,
 					FlexStyle.items_center,
 					FlexStyle.justify_center,
 					CommonStyle.relative,

@@ -132,7 +132,6 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				{ ...props }
 				aria-label={ ariaLabel || label }
 				style={ [
-					FlexStyle.flex_initial,
 					FlexStyle.flex_row,
 					style,
 				] }

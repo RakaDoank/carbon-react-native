@@ -36,7 +36,6 @@ export function FormLabel({
 		<View
 			{ ...props }
 			style={ [
-				FlexStyle.flex_initial,
 				FlexStyle.flex_row,
 				baseStyle.gap,
 				style,
