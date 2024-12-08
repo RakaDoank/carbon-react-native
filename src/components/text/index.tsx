@@ -1,5 +1,6 @@
 import {
 	forwardRef,
+	useContext,
 } from 'react'
 
 import {
@@ -11,6 +12,10 @@ import {
 import {
 	TypographyConstant,
 } from '../../constants'
+
+import {
+	ThemeContext,
+} from '../../contexts'
 
 import {
 	TextStyle,
@@ -36,10 +41,15 @@ export const Text = forwardRef<Core, TextProps>(
 		ref,
 	) {
 
+		const
+			themeContext =
+				useContext(ThemeContext)
+
 		return (
 			<Core
 				{ ...props }
 				style={ [
+					{ color: themeContext.color.text_primary },
 					getTypeSetsStyle(type, italic),
 					style,
 				] }
