@@ -32,6 +32,9 @@ import {
 } from '../../styles'
 
 export interface CollapsibleProps extends ViewProps {
+	/**
+	 * Control `open` prop
+	 */
 	controlled?: boolean,
 	open?: boolean,
 	motion?: Record<'toOpen' | 'toClose', WithTimingConfig>,

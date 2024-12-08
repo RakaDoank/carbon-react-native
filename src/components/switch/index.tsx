@@ -53,6 +53,9 @@ export type SwitchState =
 export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	size?: SwitchSize,
 	state?: SwitchState,
+	/**
+	 * Control `value` prop
+	 */
 	controlled?: boolean,
 	value?: boolean,
 	trackColor?: Record<'false' | 'true', string>,

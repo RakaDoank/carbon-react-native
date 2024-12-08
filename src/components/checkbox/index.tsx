@@ -42,6 +42,9 @@ import {
 } from '../form-label'
 
 export interface CheckboxProps extends Omit<ViewProps, 'children'> {
+	/**
+	 * Control `value` and `indeterminate` prop
+	 */
 	controlled?: boolean,
 	value?: boolean,
 	indeterminate?: CheckboxInputProps['indeterminate'],

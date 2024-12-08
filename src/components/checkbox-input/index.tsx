@@ -49,6 +49,9 @@ export interface CheckboxInputProps extends Omit<
 	| 'disabled'
 	| 'style'
 > {
+	/**
+	 * Control `value` and `indeterminate` prop
+	 */
 	controlled?: boolean,
 	value?: boolean,
 	indeterminate?: boolean,

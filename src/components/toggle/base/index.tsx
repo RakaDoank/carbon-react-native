@@ -46,6 +46,9 @@ import {
 
 export interface BaseProps extends Omit<ViewProps, 'children'> {
 	state?: SwitchState,
+	/**
+	 * Control `value` prop
+	 */
 	controlled?: boolean,
 	value?: boolean,
 	label?: string,
