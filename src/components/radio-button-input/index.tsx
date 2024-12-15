@@ -228,7 +228,7 @@ type InteractiveStateStyle =
 
 const
 	size =
-		16,
+		18,
 
 	baseStyle =
 		StyleSheet.create({
