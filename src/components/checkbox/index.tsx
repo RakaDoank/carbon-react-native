@@ -91,6 +91,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			indeterminate,
 			interactiveState = 'normal',
 			label,
+			role = 'checkbox',
 			'aria-label': ariaLabel,
 			onChange,
 			onPress,
@@ -154,9 +155,9 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			>
 				<Pressable
 					{ ...pressableProps }
-					role="checkbox"
+					role={ role }
 					disabled={ interactiveState === 'disabled' }
-					aria-label={ pressableProps?.['aria-label'] || label }
+					aria-label={ pressableProps?.['aria-label'] ?? label }
 					onPress={ pressHandler }
 					style={ [
 						CommonStyle.absolute,
