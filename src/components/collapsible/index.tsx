@@ -44,11 +44,14 @@ export interface CollapsibleProps extends ViewProps {
 	onClosed?: () => void,
 }
 
-export interface CollapsibleRef extends View {
+interface CollapsibleRefBase {
 	/**
 	 * This method does nothing when `controlled` prop is true
 	 */
 	setOpen: (value: boolean | ((value: boolean) => boolean)) => void,
+}
+
+export interface CollapsibleRef extends View, CollapsibleRefBase {
 }
 
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
@@ -227,7 +230,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 		])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, { setOpen: CollapsibleRef['setOpen'] }>(
+			return Object.assign<View, CollapsibleRefBase>(
 				viewRef.current as View,
 				{
 					setOpen(value) {
