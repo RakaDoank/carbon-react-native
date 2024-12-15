@@ -75,8 +75,7 @@ export interface CheckboxProps extends Omit<ViewProps, 'children'> {
 interface CheckboxRefBase {
 	readonly value: boolean,
 	/**
-	 * This method does nothing when `controlled` prop is true  
-	 * Intentionally with postfix `Value` to avoid conflict setState method from View
+	 * This method does nothing when `controlled` prop is true
 	 */
 	setValue: CheckboxInputRef['setValue'],
 }
