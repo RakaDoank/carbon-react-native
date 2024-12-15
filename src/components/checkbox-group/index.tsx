@@ -171,8 +171,8 @@ function IconErrorRenderer(props: IconRendererProps) {
 			src={ IconWarningFilled }
 			fill={ themeContext.color.support_error }
 			stroke={ themeContext.color.background }
-			width={ 16 }
-			height={ 16 }
+			width={ 18 }
+			height={ 18 }
 		/>
 	)
 
@@ -188,8 +188,8 @@ function IconWarningRenderer(props: IconRendererProps) {
 			{ ...props }
 			src={ IconWarningAltFilled }
 			fill={ themeContext.color.support_warning }
-			width={ 16 }
-			height={ 16 }
+			width={ 18 }
+			height={ 18 }
 		/>
 	)
 
