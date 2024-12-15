@@ -70,6 +70,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			checked: checkedProp = false,
 			value,
 			interactiveState = 'normal',
+			role = 'radio',
 			onChange,
 			onBlur,
 			onFocus,
@@ -168,6 +169,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 		return (
 			<Pressable
 				{ ...props }
+				role={ role }
 				disabled={ interactiveState === 'disabled' }
 				onBlur={ blurHandler }
 				onFocus={ focusHandler }
