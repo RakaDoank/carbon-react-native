@@ -273,14 +273,13 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					get value() {
 						return ref.current.value
 					},
-					setValue(val) {
+					setValue(valueParam) {
 						if(!controlled) {
-							if(typeof val === 'boolean') {
-								ref.current.value = val
+							if(typeof valueParam === 'boolean') {
+								setValueSelf(valueParam)
 							} else {
-								ref.current.value = val(ref.current.value)
+								setValueSelf(valueParam(ref.current.value))
 							}
-							setValueSelf(ref.current.value)
 						}
 					},
 				},
