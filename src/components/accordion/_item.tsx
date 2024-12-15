@@ -44,6 +44,7 @@ export interface AccordionItemProps extends ViewProps {
 	onPressHeader?: AccordionHeaderProps['onPress'],
 	accordionHeaderProps?: Omit<
 		AccordionHeaderProps,
+		| 'open'
 		| 'size'
 		| 'text'
 		| 'flushAlignment'
@@ -150,6 +151,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 			>
 				<AccordionHeader
 					{ ...accordionHeaderProps }
+					open={ open }
 					size={ accordionContext.size }
 					text={ title }
 					flushAlignment={ accordionContext.flushAlignment }
