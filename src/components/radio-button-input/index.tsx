@@ -44,7 +44,6 @@ export interface RadioButtonInputProps extends Omit<
 	controlled?: boolean,
 	checked?: boolean,
 	value?: string | number,
-	label?: string,
 	interactiveState?: RadioButtonInputInteractiveState,
 	onChange?: (
 		checked: NonNullable<RadioButtonInputProps['checked']>,
@@ -70,9 +69,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			controlled,
 			checked: checkedProp = false,
 			value,
-			label,
 			interactiveState = 'normal',
-			'aria-label': ariaLabel,
 			onChange,
 			onBlur,
 			onFocus,
@@ -175,7 +172,6 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				onBlur={ blurHandler }
 				onFocus={ focusHandler }
 				onPress={ pressHandler }
-				aria-label={ ariaLabel ?? label }
 				style={ [
 					FlexStyle.items_center,
 					FlexStyle.justify_center,
