@@ -63,7 +63,7 @@ export interface CheckboxInputProps extends Omit<
 interface CheckboxInputRefBase {
 	readonly value: boolean,
 	/**
-	 * This method does nothing when `controlled` prop is true  
+	 * This method does nothing when `controlled` prop is true
 	 */
 	setValue: (value: boolean | ((value: boolean, indeterminate: boolean) => boolean)) => void,
 }
@@ -242,6 +242,12 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	}
 )
 
+type InteractiveStateStyle =
+	{
+		borderColor: keyof typeof GRAY_10,
+		backgroundColor?: keyof typeof GRAY_10,
+	}
+
 const
 	size =
 		16,
@@ -272,10 +278,7 @@ const
 		CheckboxInputInteractiveState,
 		Record<
 			'true' | 'false',
-			Partial<Record<
-				Extract<keyof ViewStyle, 'borderColor' | 'backgroundColor'>,
-				keyof typeof GRAY_10
-			>>
+			InteractiveStateStyle
 		>
 	> =
 		{
@@ -330,15 +333,19 @@ function getInteractiveStateStyle(
 	value: boolean,
 	color: ThemeContext['color'],
 ) {
-	const style = mapInteractiveStateStyle[interactiveState][`${value}`]
-	return Object.entries(style).reduce((
-		accumulator: ViewStyle,
-		[key_, val],
-	) => {
-		const key = key_ as keyof typeof mapInteractiveStateStyle['normal']['true']
-		accumulator[key] = color[val]
-		return accumulator
-	}, {})
+	const
+		style =
+			mapInteractiveStateStyle[interactiveState][`${value}`],
+
+		parsedStyle: ViewStyle = {
+			borderColor: color[style.borderColor],
+		}
+
+	if(style.backgroundColor) {
+		parsedStyle.backgroundColor = color[style.backgroundColor]
+	}
+
+	return parsedStyle
 }
 
 function getIconColor(
