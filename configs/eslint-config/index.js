@@ -251,8 +251,8 @@ module.exports = {
 			// Make sure no-unused-vars (Eslint natively) is off
 			'error',
 			{
-				'argsIgnorePattern': '^_',
-				'caughtErrorsIgnorePattern': '^_',
+				'argsIgnorePattern': '^___',
+				'caughtErrorsIgnorePattern': '^___',
 			// "destructuredArrayIgnorePattern": "^_"
 			},
 		],
