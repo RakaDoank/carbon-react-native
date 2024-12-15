@@ -52,13 +52,13 @@ import {
 import type {
 	RadioButtonGroupProps,
 	RadioButtonGroupRef,
-} from './types'
+} from './_types'
 
 import type {
 	RadioButtonGroupRefBase,
 } from './_types/ref-base'
 
-export type * from './types'
+export type * from './_types'
 
 const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 	function RadioButtonGroup(

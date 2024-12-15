@@ -8,13 +8,13 @@ import type {
 } from '../../form-helper-text'
 
 import type {
-	RadioButtonGroupRefBase,
-} from './ref-base'
-
-import type {
 	RadioButtonProps,
 	RadioButtonRef,
 } from '../../radio-button'
+
+import type {
+	RadioButtonGroupRefBase,
+} from './ref-base'
 
 export type RadioButtonGroupHelperTextMode =
 	| 'normal'
@@ -23,7 +23,7 @@ export type RadioButtonGroupHelperTextMode =
 
 export interface RadioButtonGroupProps extends ViewProps {
 	controlled?: boolean,
-	value?: RadioButtonProps['value'],
+	selectedValue?: RadioButtonProps['value'],
 	orientation?: 'vertical' | 'horizontal',
 	legend: string,
 	helperText?: string,
@@ -33,10 +33,7 @@ export interface RadioButtonGroupProps extends ViewProps {
 	 * Default value is true
 	 */
 	helperTextModeIcon?: boolean,
-	onChange?: (
-		value: RadioButtonGroupProps['value'],
-		index: number,
-	) => void,
+	onChange?: (value: RadioButtonGroupProps['selectedValue']) => void,
 	formHelperTextProps?: Omit<
 		FormHelperTextProps,
 		| 'text'
