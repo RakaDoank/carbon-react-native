@@ -64,7 +64,6 @@ interface CheckboxInputRefBase {
 	readonly value: boolean,
 	/**
 	 * This method does nothing when `controlled` prop is true  
-	 * Intentionally with postfix `Value` to avoid conflict setState method from View
 	 */
 	setValue: (value: boolean | ((value: boolean, indeterminate: boolean) => boolean)) => void,
 }
@@ -177,15 +176,6 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					},
 					setValue(value_) {
 						if(!controlled) {
-							// if(typeof value_ === 'function') {
-							// 	ref.current.value = value_(ref.current.value)
-							// } else {
-							// 	ref.current.value = value_
-							// }
-							// setState({
-							// 	value: ref.current.value,
-							// 	indeterminate: false,
-							// })
 							setState(state_ => {
 								if(typeof value_ === 'function') {
 									ref.current.value = value_(state_.value, state_.indeterminate)
