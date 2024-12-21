@@ -38,7 +38,6 @@ module.exports = {
 		},
 		{
 			'files': [
-				'package/**/*.js',
 				'package/**/*.jsx',
 				'package/**/*.ts',
 				'package/**/*.tsx',
