@@ -2,8 +2,8 @@
 	"name": "@rakadoank/carbon-react-native",
 	"version": "0.0.1-prealpha.1",
 	"scripts": {
-		"code-check": "npx tsc && npm run lint --fix",
-		"lint": "eslint .",
+		"code-check": "npx tsc && npm run lint",
+		"lint": "eslint . --fix",
 		"local-development": "node ./scripts/local-development",
 		"local-development-clean": "node ./scripts/local-development-clean",
 		"preinstall": "npm run local-development",
@@ -11,6 +11,7 @@
 		"setup-package-registry": "node ./scripts/setup-package-registry"
 	},
 	"devDependencies": {
+		"@docusaurus/eslint-plugin": "^3.6.3",
 		"@react-native/eslint-config": "0.76.5",
 		"@stylistic/eslint-plugin": "2.10.1",
 		"@types/node": "^22.10.2",
