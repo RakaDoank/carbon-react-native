@@ -79,6 +79,17 @@ lib/
 
 .env
 
-# Local Development Script
-/index.tsx
-/package-original.json
+# Script: setup-package-registry
+.carbon-react-native
+
+# Script: local-development
+/package/package-original.json
+
+# Docusaurus
+/docs/.docusaurus
+/docs/.cache-loader
+/docs/.build
+/docs/.env.local
+/docs/.env.development.local
+/docs/.env.test.local
+/docs/.env.production.local

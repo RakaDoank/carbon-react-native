@@ -4,7 +4,7 @@ import {
 
 import type {
 	RadioButtonGroupProps,
-} from './types'
+} from './_types'
 
 export interface RadioButtonGroupItemContext {
 	controlled?: RadioButtonGroupProps['controlled'],

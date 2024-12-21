@@ -19,7 +19,7 @@ import {
 import type {
 	RadioButtonGroupItemProps,
 	RadioButtonGroupItemRef,
-} from './types'
+} from './_types'
 
 export const RadioButtonGroupItem = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProps>(
 	function RadioButtonGroupItem(

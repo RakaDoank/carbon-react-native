@@ -19,13 +19,12 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"resolveJsonModule": true,
+		"resolvePackageJsonImports": false,
+		"rootDir": ".",
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ESNext",
-		"types": ["react-native"], // override
+		"types": [],
 		"verbatimModuleSyntax": true
-	},
-	"exclude": [
-		"lib"
-	]
+	}
 }

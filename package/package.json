@@ -1,0 +1,43 @@
+{
+	"name": "@rakadoank/carbon-react-native",
+	"version": "0.0.1-prealpha.1",
+	"scripts": {},
+	"peerDependencies": {
+		"@carbon/icons": ">=11",
+		"@carbon/icon-helpers": ">=10",
+		"react": "*",
+		"react-native": ">=0.72",
+		"react-native-reanimated": ">=3",
+		"react-native-svg": ">=15"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.6",
+		"react-native-builder-bob": "0.35.2",
+		"typescript": "5.6.3"
+	},
+	"types": "./lib/typescript/commonjs/src/index.d.ts",
+	"react-native-builder-bob": {
+		"source": "src",
+		"output": "lib",
+		"targets": [
+			[
+				"commonjs",
+				{
+					"esm": true
+				}
+			],
+			[
+				"module",
+				{
+					"esm": true
+				}
+			],
+			[
+				"typescript",
+				{
+					"esm": true
+				}
+			]
+		]
+	}
+}

@@ -287,7 +287,6 @@ module.exports = {
 	},
 
 	'ignorePatterns': [
-		'node_modules/',
 		'lib/',
 	],
 }
