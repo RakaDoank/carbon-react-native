@@ -27,7 +27,7 @@ const
 		]
 
 if(fs.existsSync(symlinkPath)) {
-	fs.rmdirSync(symlinkPath, { recursive: true })
+	fs.rmSync(symlinkPath, { recursive: true })
 }
 fs.mkdirSync(symlinkPath)
 
