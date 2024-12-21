@@ -25,6 +25,7 @@ node ./carbon-react-native/scripts/local-development
   npm install --save ./.carbon-react-native
   ```
 Ensure it is the correct path.
+
 5. Install these dependencies on your React Native project, (skip one of these library if already installed)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
