@@ -12,13 +12,21 @@ const
 	packageRegistryPath =
 		path.join(root, '.carbon-react-native'),
 
-	originalPackageJsonPath =
-		path.join(root, '/package/package-original.json')
+	packageJsonDevPath =
+		path.join(packageRegistryPath, 'package.json')
 
-if(fs.existsSync(originalPackageJsonPath)) {
-	fs.renameSync(originalPackageJsonPath, `${root}/package/package.json`)
-	fs.unlinkSync(`${packageRegistryPath}/index.tsx`)
-	console.log('Repository has been cleaned from local development\n')
-} else {
-	console.error('ERR :: package-original.json file was not found\n')
+if(fs.existsSync(packageJsonDevPath)) {
+	fs.unlinkSync(packageJsonDevPath)
 }
+
+fs.symlinkSync(
+	path.join(root, 'package', 'package.json'),
+	packageJsonDevPath,
+	'dir',
+)
+
+if(fs.existsSync(packageRegistryPath, 'index.tsx')) {
+	fs.unlinkSync(`${packageRegistryPath}/index.tsx`)
+}
+
+console.log('Package registry has been cleaned from local development\n')
