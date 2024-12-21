@@ -14,20 +14,24 @@ This library is just a pure JavaScript usage in React Native and only depends on
 
 ## Installation
 This project is not released yet on npm registry. You have to install it manually,
-1. Clone or Download this repository and place it on your React Native project directory. You can place it wherever you want but it has to be inside in your project directory
-2. Install the library by this command
+1. Clone or Download this repository
+2. Inside this project, run this command to create actual npm package
+```
+node ./carbon-react-native/scripts/local-development
+```
+3. Copy the `.carbon-react-native` directory (the output result of `local-development` command) to your project, and place it inside your React Native project directory
+4. On your project directory, install the library by this command
   ```
-  npm install --save ./carbon-react-native
+  npm install --save ./.carbon-react-native
   ```
-Ensure it is the correct path based on what you're doing at the first step.
-
-3. Install these dependencies on your React Native project, (skip one of these library if already installed)
+Ensure it is the correct path.
+5. Install these dependencies on your React Native project, (skip one of these library if already installed)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
 - [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
 - [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
 
-4. Install the `IBM Plex Sans` font to your project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
+6. Install the `IBM Plex Sans` font to your project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
 ```js
 module.exports = {
   assets: [
