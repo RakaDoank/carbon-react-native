@@ -125,7 +125,7 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 export const CheckboxGroup = Object.assign(Component, {

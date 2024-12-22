@@ -172,7 +172,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 const

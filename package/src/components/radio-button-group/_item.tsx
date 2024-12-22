@@ -87,5 +87,5 @@ export const RadioButtonGroupItem = forwardRef<RadioButtonGroupItemRef, RadioBut
 			/>
 		)
 
-	}
+	},
 )

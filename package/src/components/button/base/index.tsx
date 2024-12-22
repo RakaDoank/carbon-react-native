@@ -121,12 +121,12 @@ export const Base = forwardRef<View, BaseProps>(
 						getIconMarginTopStyle(size),
 						getIconMarginLeftStyle(!!text),
 						iconStyle,
-					]
+					],
 				) }
 			</Pressable>
 		)
 
-	}
+	},
 )
 
 const

@@ -218,7 +218,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 const

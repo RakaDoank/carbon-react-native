@@ -176,7 +176,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 								withTiming(
 									ref.current.contentHeight,
 									undefined,
-									() => runOnJS(setPositionViewToAbsolute)()
+									() => runOnJS(setPositionViewToAbsolute)(),
 								)
 						}
 					}
@@ -243,7 +243,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							setOpenSelf(ref.current.openSelf)
 						}
 					},
-				}
+				},
 			)
 		}, [
 			controlled,
@@ -281,7 +281,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			</Animated.View>
 		)
 
-	}
+	},
 )
 
 const contentContainerInterpolationRange = [0, 1]

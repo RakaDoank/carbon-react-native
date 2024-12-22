@@ -180,7 +180,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 export const RadioButtonGroup = Object.assign(Component, {

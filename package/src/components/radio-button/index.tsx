@@ -196,7 +196,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 const

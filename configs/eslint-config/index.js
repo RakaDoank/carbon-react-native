@@ -3,6 +3,7 @@ const baseRules = require('./base-rules')
 module.exports = {
 	'env': {
 		'es6': true,
+		'node': true,
 	},
 
 	'parserOptions': {
@@ -19,11 +20,34 @@ module.exports = {
 		'plugin:import/typescript',
 	],
 
+	'parser': '@typescript-eslint/parser',
+
 	'plugins': [
+		'@typescript-eslint',
 		'@stylistic',
 	],
 
 	'rules': baseRules,
+
+	'settings': {
+		'import/ignore': [
+			'react-native',
+		],
+		'import/resolver': {
+			// "node": {
+			// 	"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			// },
+			'node': true,
+			'typescript': {
+				'alwaysTryTypes': true,
+			},
+		},
+	},
+
+	'ignorePatterns': [
+		'node_modules/',
+		'lib/',
+	],
 
 	'overrides': [
 		{
@@ -45,7 +69,10 @@ module.exports = {
 			'extends': [
 				'@react-native',
 			],
-			'rules': baseRules,
+			'rules': {
+				'react/react-in-jsx-scope': 'off',
+				'semi': 'off',
+			},
 		},
 		{
 			'files': [
@@ -56,10 +83,6 @@ module.exports = {
 			],
 			'extends': [
 				'plugin:@docusaurus/recommended',
-				// Eslint Plugin Import
-				'plugin:import/errors',
-				'plugin:import/warnings',
-				'plugin:import/typescript',
 			],
 			'rules': {
 				'import/no-unresolved': [
@@ -68,35 +91,17 @@ module.exports = {
 						'ignore': ['^@docusaurus', '^@site', '^@theme'],
 					},
 				],
-			},
-			'settings': {
-				'import/resolver': {
-					'node': true,
-					'typescript': {
-						'alwaysTryTypes': true,
-					},
-				},
+				'react/react-in-jsx-scope': 'off',
 			},
 		},
-	],
-
-	'settings': {
-		'import/ignore': [
-			'react-native',
-		],
-		'import/resolver': {
-			// "node": {
-			// 	"extensions": [".js", ".jsx", ".ts", ".tsx"]
-			// },
-			'node': true,
-			'typescript': {
-				'alwaysTryTypes': true,
+		{
+			'files': [
+				'*.ts',
+				'*.tsx',
+			],
+			'rules': {
+				'no-undef': 'off',
 			},
 		},
-	},
-
-	'ignorePatterns': [
-		'node_modules/',
-		'lib/',
 	],
 }

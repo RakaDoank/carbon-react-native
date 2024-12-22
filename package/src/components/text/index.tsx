@@ -57,7 +57,7 @@ export const Text = forwardRef<Core, TextProps>(
 			/>
 		)
 
-	}
+	},
 )
 
 type TypeSetsStyleWithFamily =
@@ -86,7 +86,7 @@ const
 		return StyleSheet.create<TypeSetsStyleWithFamily>(
 			Object.entries(TypographyConstant.TypeSets).reduce((
 				accumulator: TypeSetsStyleWithFamily,
-				[key_, val_]
+				[key_, val_],
 			) => {
 				const
 					key =
@@ -109,7 +109,7 @@ const
 					),
 				}
 				return accumulator
-			}, {} as TypeSetsStyleWithFamily)
+			}, {} as TypeSetsStyleWithFamily),
 		)
 	},
 

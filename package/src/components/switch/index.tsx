@@ -340,7 +340,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			</PressableAnimated>
 		)
 
-	}
+	},
 )
 
 const

@@ -123,7 +123,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 								return true
 							}
 							return !currentValue
-						}
+						},
 					)
 				}, [
 					onPress,
@@ -203,7 +203,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 const

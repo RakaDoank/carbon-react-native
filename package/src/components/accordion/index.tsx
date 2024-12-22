@@ -117,7 +117,7 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 			</View>
 		)
 
-	}
+	},
 )
 
 export const Accordion = Object.assign(Accordion_, {

@@ -239,7 +239,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			</Pressable>
 		)
 
-	}
+	},
 )
 
 type InteractiveStateStyle =

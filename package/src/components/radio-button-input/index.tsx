@@ -160,7 +160,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 							setCheckedSelf(ref.current.checked)
 						}
 					},
-				}
+				},
 			)
 		}, [
 			controlled,
@@ -215,7 +215,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			</Pressable>
 		)
 
-	}
+	},
 )
 
 type InteractiveStateStyle =
