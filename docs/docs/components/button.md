@@ -1,0 +1,5 @@
+---
+slug: /components/button
+---
+
+# Button

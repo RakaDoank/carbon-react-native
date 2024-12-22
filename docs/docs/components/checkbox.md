@@ -1,0 +1,5 @@
+---
+slug: /components/checkbox
+---
+
+# Checkbox
