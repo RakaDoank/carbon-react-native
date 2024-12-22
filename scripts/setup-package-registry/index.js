@@ -24,6 +24,10 @@ const
 				name: 'assets',
 				path: path.join(root, '/assets'),
 			},
+			{
+				name: 'README.md',
+				path: path.join(root, 'README.md'),
+			},
 		]
 
 if(fs.existsSync(symlinkPath)) {
