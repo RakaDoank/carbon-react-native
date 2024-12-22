@@ -19,7 +19,7 @@ This project is not released yet on npm registry. You have to install it manuall
 ```
 node ./carbon-react-native/scripts/local-development
 ```
-3. Copy the `.carbon-react-native` directory (the output result of `local-development` command) to your project, and place it inside your React Native project directory
+3. Copy the `.carbon-react-native` directory (the output result of command above) to your project, and place it inside your React Native project directory
 4. On your project directory, install the library by this command
   ```
   npm install --save ./.carbon-react-native
