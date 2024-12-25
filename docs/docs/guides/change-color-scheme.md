@@ -24,7 +24,10 @@ import {
 export default function App() {
   const [isDark, setIsDark] = useState(true)
   return (
-    <CarbonReactNative colorScheme={ isDark ? 'GRAY_100' : 'GRAY_10' }>
+    <CarbonReactNative
+      colorScheme={ isDark ? 'GRAY_100' : 'GRAY_10' }
+      // pass undefined to let library solve back automatically
+    >
       { /* the rest of your react */ }
     </CarbonReactNative>
   )
