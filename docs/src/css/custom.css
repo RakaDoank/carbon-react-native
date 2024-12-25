@@ -85,7 +85,7 @@ aside[class^="theme-doc-sidebar-container"] {
 	margin-right: 16px;
 }
 
-article .breadcrumbs {
+/* article .breadcrumbs {
 	animation-name: fadeUp;
 	animation-duration: 250ms;
 	animation-fill-mode: forwards;
@@ -105,6 +105,13 @@ article > footer, .pagination-nav {
 	animation-duration: 250ms;
 	animation-fill-mode: forwards;
 	animation-delay: 155ms;
+} */
+
+.container > div > div:first-child {
+	opacity: 0;
+	animation-name: fadeUp;
+	animation-duration: 280ms;
+	animation-fill-mode: forwards;
 }
 
 /* Sidebar Menu */
@@ -117,10 +124,10 @@ article > footer, .pagination-nav {
 @keyframes fadeUp {
 	from {
 		opacity: 0;
-		transform: translateY(12px);
+		transform: translateY(1.25%) scaleY(1.025);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translateY(0) scaleY(1);
 	}
 }
