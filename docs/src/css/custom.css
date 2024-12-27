@@ -45,11 +45,14 @@
 }
 
 p code {
-	font-size: 85%;
+	font-size: 90%;
 	background-color: var(--ifm-code-background) !important;
 }
 [data-theme='dark'] p code {
 	border-color: #282a36 !important;
+}
+.theme-admonition p code {
+	border-color: transparent !important;
 }
 
 pre code {
