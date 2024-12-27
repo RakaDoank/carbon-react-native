@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
-		"start": "docusaurus start --port 4000",
+		"start": "npm run typedoc-watch && docusaurus start --port 4000",
 		"build": "docusaurus build",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
@@ -12,6 +12,7 @@
 		"serve": "docusaurus serve",
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
+		"typedoc-watch": "cross-env TYPEDOC_WATCH=true",
 		"typecheck": "tsc"
 	},
 	"dependencies": {
@@ -27,6 +28,7 @@
 		"@docusaurus/module-type-aliases": "3.6.3",
 		"@docusaurus/tsconfig": "3.6.3",
 		"@docusaurus/types": "3.6.3",
+		"cross-env": "^7.0.3",
 		"docusaurus-plugin-typedoc": "^1.1.1",
 		"typedoc": "^0.27.6",
 		"typedoc-plugin-markdown": "^4.3.3",

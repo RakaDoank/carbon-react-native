@@ -177,6 +177,7 @@ const config: Config = {
 				out: './docs/definitions',
 				entryPoints: ['../package/src'],
 				tsconfig: '../package/tsconfig.json',
+				watch: !!process.env.TYPEDOC_WATCH,
 				excludeExternals: true,
 				readme: 'none',
 				groupOrder: [
