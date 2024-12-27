@@ -95,7 +95,7 @@ const config: Config = {
 					to: '/api',
 				},
 				{
-					sidebarId: 'sidebar_components',
+					sidebarId: 'sidebar_definitions',
 					label: 'Definitions',
 					position: 'left',
 					to: '/definitions',
@@ -157,6 +157,26 @@ const config: Config = {
 			darkTheme: prismThemes.dracula,
 		},
 	} satisfies Preset.ThemeConfig,
+
+	plugins: [
+		[
+			'docusaurus-plugin-typedoc',
+			/**
+			 * https://typedoc-plugin-markdown.org/docs/options
+			 * https://typedoc.org/api/interfaces/Configuration.TypeDocOptions.html
+			 */
+			{
+				out: './docs/definitions',
+				entryPoints: ['../package/src'],
+				tsconfig: '../package/tsconfig.json',
+				excludeExternals: true,
+				readme: 'none',
+				groupOrder: [
+					'alphabetical',
+				],
+			},
+		],
+	],
 };
 
 export default config;

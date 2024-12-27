@@ -40,6 +40,15 @@ const sidebars: SidebarsConfig = {
 		},
 	],
 
+	sidebar_definitions: [
+		{
+			type: 'doc',
+			label: 'Overview',
+			id: 'definitions/index',
+		},
+		...require('./docs/definitions/typedoc-sidebar.cjs'),
+	],
+
 	// But you can create a sidebar manually
 	/*
   tutorialSidebar: [
