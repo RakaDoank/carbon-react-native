@@ -49,7 +49,7 @@ See other [variants](#variants) below
 
 ## Variants
 
-[Carbon Design System](#test) provides button in a lot of variants that have [specific purposes each variant](https://carbondesignsystem.com/components/button/usage/#variants)
+Carbon Design System provides button in a lot of variants that have [specific purposes each variant](https://carbondesignsystem.com/components/button/usage/#variants)
 
 - [`Ghost`](../definitions/namespaces/Button/functions/Ghost.md)
 - [`GhostDanger`](../definitions/namespaces/Button/functions/GhostDanger.md)
