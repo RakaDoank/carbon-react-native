@@ -1,4 +1,12 @@
-const baseRules = require('./base-rules')
+const
+	baseRules =
+		require('./base-rules'),
+
+	stylisticRules =
+		require('./stylistic-rules'),
+
+	typescriptEslintRules =
+		require('./typescript-eslint-rules')
 
 module.exports = {
 	'env': {
@@ -27,7 +35,11 @@ module.exports = {
 		'@stylistic',
 	],
 
-	'rules': baseRules,
+	'rules': {
+		...baseRules,
+		...stylisticRules,
+		...typescriptEslintRules,
+	},
 
 	'settings': {
 		'import/ignore': [
@@ -70,6 +82,7 @@ module.exports = {
 				'@react-native',
 			],
 			'rules': {
+				'no-trailing-spaces': baseRules['no-trailing-spaces'],
 				'react/react-in-jsx-scope': 'off',
 				'semi': 'off',
 			},
@@ -91,6 +104,7 @@ module.exports = {
 						'ignore': ['^@docusaurus', '^@site', '^@theme'],
 					},
 				],
+				'no-trailing-spaces': baseRules['no-trailing-spaces'],
 				'react/react-in-jsx-scope': 'off',
 			},
 		},
