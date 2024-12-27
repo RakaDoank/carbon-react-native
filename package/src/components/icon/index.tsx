@@ -17,12 +17,11 @@ export interface IconProps extends Omit<XmlProps, 'xml'> {
 	src: SharedType.CarbonIcon,
 }
 
+/**
+ * Icon component is intentionally written in the form of React Class Component to support `Animated.createAnimatedComponent` API from React Native Reanimated
+ */
 export class Icon extends Component<IconProps> {
 
-	/**
-	 * It is intentionally written in the form of React Class Component
-	 * to support `Animated.createAnimatedComponent` api from React Native Reanimated
-	 */
 	render() {
 		try {
 			return (
