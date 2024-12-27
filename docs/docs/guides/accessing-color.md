@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Accessing Color
 
-This library provides two ways to how to access color, which are [Declarative Semantic Token](#declarative-semantic-token) and [Import Color Constant](#). Read on!
+This library provides two ways to how to access color, which are [Declarative Semantic Token](#declarative-semantic-token) and [Use Color Constant](#use-color-constant). Read on!
 
 ## Declarative Semantic Token
 
@@ -15,7 +15,7 @@ Accessing color token declaratively is the most recommended way
 
 Carbon Design System provides its own semantic token that help interface communicate the intent of a given color and create predictable behavior, consistent, reusable, and scalable.
 
-Technically, all token members that based on what color scheme are live in React Context which is [`ThemeContext`](#). The context has been provided since you wrapped your React app with [`CarbonReactNative`](#) on the root tree.
+Technically, all token members that based on what color scheme are live in React Context which is [`ThemeContext`](../definitions/variables/ThemeContext.md). The context has been provided since you wrapped your React app with [`CarbonReactNative`](../definitions/functions/CarbonReactNative.md) on the root tree.
 
 Example usage
 ```tsx
@@ -52,9 +52,9 @@ It's the nature of declarative. This is make you **less writing** and **less pro
 Good to know. You can learn [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context).
 :::
 
-## Importing Color Constant
+## Use Color Constant
 
-Although, accessing color declaratively by [`ThemeContext`](#) is the most recommended. You can still access the color code and token in constants
+Although, accessing color declaratively by [`ThemeContext`](../definitions/variables/ThemeContext.md) is the most recommended. You can still access the color code and token in constants
 
 ```tsx
 import {
@@ -98,7 +98,7 @@ export default function Component() {
 In those two examples above, the `support_error` token or the `yellow40` don't dynamically change across color scheme or theme like light or dark theme. You have to write your own logic for it.
 :::
 
-If you insist, [`ThemeContext`](#) is also providing current color scheme system natively, which is `GRAY_10` or `GRAY_100` (White and Gray 90 will be included later). This is below is an example how to import color token while still follow the current color scheme
+If you insist, [`ThemeContext`](../definitions/variables/ThemeContext.md) is also providing current color scheme system natively, which is `GRAY_10` or `GRAY_100` (White and Gray 90 will be included later). This is below is an example how to import color token while still follow the current color scheme
 
 ```tsx
 import {
