@@ -7,8 +7,6 @@
 Build React Native apps with component and shared patterns using Carbon.
 
 ## Documentation
-Currently, the library is not published yet, and the documentation is not online at any servers.
-
 Documentation available with [docusaurus](https://docusaurus.io/) project on this repository under [docs](https://github.com/RakaDoank/carbon-react-native/tree/main/docs) directory. It's not completed yet, even the library, but it will be documented enough, as soon as the library is ready to use. You can start the docs web project with `npm run start` command in the [docs](https://github.com/RakaDoank/carbon-react-native/tree/main/docs) directory.
 
 ## Compatibility
