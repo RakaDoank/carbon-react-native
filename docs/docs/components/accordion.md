@@ -162,7 +162,7 @@ export default function Component() {
 
   const
     accordionFirstItemRef =
-      useRef<AccordionItemRef>(),
+      useRef<AccordionItemRef>(null),
 
     toggleAccordionFirstItem =
       () => {
