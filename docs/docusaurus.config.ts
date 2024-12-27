@@ -153,6 +153,13 @@ const config: Config = {
 		// 	],
 		// 	copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
 		// },
+		announcementBar: {
+			id: 'preview_status',
+			content: '<strong>It\'s not ready for production</strong>',
+			backgroundColor: '#f1c21b',
+			textColor: '#000000',
+			isCloseable: false,
+		},
 		prism: {
 			theme: prismThemes.github,
 			darkTheme: prismThemes.dracula,
