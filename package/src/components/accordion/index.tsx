@@ -34,7 +34,6 @@ import {
 } from './_styles'
 
 export type {
-	AccordionContext,
 	AccordionHeaderProps,
 	AccordionItemProps,
 	AccordionItemRef,
