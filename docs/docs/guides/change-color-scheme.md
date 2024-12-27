@@ -35,5 +35,5 @@ export default function App() {
 ```
 
 :::warning
-Be aware of updating a React state in the root tree. It may causes unresponsive JavaScript thread. You can refer on the React Native performance docs https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread
+Be aware of updating a React state in the root tree. It may causes unresponsive JavaScript thread. Refer to the React Native performance docs https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread
 :::
