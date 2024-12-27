@@ -139,6 +139,59 @@ export default function Component() {
 If you don't pass `controlled` prop with true value, the `open` prop value only be used once for initial render, either expanded or closed
 :::
 
+### Imperative Handle
+
+If you doesn't want re-rendering like updating state, you still can control the accordion item to reveal or hide its content, but imperatively. The `Accordion.Item` component holds `View` ref and extends the ref to provide a method to reveal or hide its content
+
+```tsx
+import {
+  useRef,
+} from 'react'
+
+import {
+  View,
+} from 'react-native'
+
+import {
+  Accordion,
+  Button,
+  type AccordionItemRef,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  const
+    accordionFirstItemRef =
+      useRef<AccordionItemRef>(),
+
+    toggleAccordionFirstItem =
+      () => {
+        accordionFirstItemRef.current?.setOpen(open => !open) // it also accepts boolean argument, instead of callback with boolean returned
+      }
+
+  return (
+    <View>
+      <Button.Primary
+        text="Toggle"
+        onPress={ toggleAccordionFirstItem }
+      />
+
+      <Accordion>
+        <Accordion.Item
+          title="Item 1"
+          ref={ accordionFirstItemRef }
+        >
+          { /* content */ }
+        </Accordion.Item>
+      </Accordion>
+    </View>
+  )
+
+}
+```
+
+See [`AccordionItemRef`](../definitions/interfaces/AccordionItemRef)
+
 ## Flush Alignment
 
 According to the [Carbon Design System](https://carbondesignsystem.com/components/accordion/usage/#alignment), use flush alignment when designing within smaller spaces on a page such as side panels or sidebars to achieve better text alignment with other content.
