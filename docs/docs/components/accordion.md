@@ -169,7 +169,7 @@ export default function Component() {
 }
 ```
 
-## Size
+## Sizes
 
 > [**AccordionSize**](../definitions/type-aliases/AccordionSize.md): `"small"` \| `"medium"` \| `"large"`
 
@@ -202,7 +202,7 @@ export default function Component() {
 ## Props
 
 ### AccordionProps
-See [AccordionProps](../definitions/interfaces/AccordionProps.md)
+See [`AccordionProps`](../definitions/interfaces/AccordionProps.md)
 
 ### AccordionItemProps
-See [AccordionItemProps](../definitions/interfaces/AccordionItemProps.md)
+See [`AccordionItemProps`](../definitions/interfaces/AccordionItemProps.md)
