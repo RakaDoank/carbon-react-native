@@ -7,7 +7,9 @@
 Build React Native apps with component and shared patterns using Carbon.
 
 ## Documentation
-Currently, the documentation is not written yet, but it will be documented soon after the development of this library is completed or in rc level.
+Currently, the library is not published yet, and the documentation is not online at any servers.
+
+Documentation available with [docusaurus](https://docusaurus.io/) project on this repository under [`docs`](https://github.com/RakaDoank/carbon-react-native/tree/main/docs) directory. It's not completed yet, even the library, but it will be documented enough, as soon as the library is ready to use. You can start the docs web project with `npm run start` command in the `docs` directory.
 
 ## Compatibility
 This library is just a pure JavaScript usage in React Native and only depends on the primitive React Native components with [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-svg](https://github.com/software-mansion/react-native-svg). It should compatible on all platforms available that can be built with React Native, but i cannot sure that. For the web only, [Carbon React](https://react.carbondesignsystem.com) is already there and do its best and solve a lot of accessibility feature.
