@@ -33,10 +33,10 @@ export default function Component() {
 
   return (
     <Text
-        type="label_01"
-        style={{ color: themeContext.color.support_error }}
+      type="label_01"
+      style={{ color: themeContext.color.support_error }}
     >
-        Lorem ipsum dolor sit amet
+      Lorem ipsum dolor sit amet
     </Text>
   )
 }
@@ -65,8 +65,8 @@ import {
 export default function Component() {
   return (
     <Text
-        type="label_01"
-        style={{ color: ColorsConstant.Tokens.GRAY_10.support_error }}
+      type="label_01"
+      style={{ color: ColorsConstant.Tokens.GRAY_10.support_error }}
     >
         Lorem ipsum dolor sit amet
     </Text>
@@ -85,8 +85,8 @@ import {
 export default function Component() {
   return (
     <Text
-        type="label_01"
-        style={{ color: ColorsConstant.Code.yellow40 }}
+      type="label_01"
+      style={{ color: ColorsConstant.Code.yellow40 }}
     >
         Lorem ipsum dolor sit amet
     </Text>
@@ -113,8 +113,8 @@ export default function Component() {
 
   return (
     <Text
-        type="label_01"
-        style={{ color: mapTextColor[colorScheme] }}
+      type="label_01"
+      style={{ color: mapTextColor[colorScheme] }}
     >
         Lorem ipsum dolor sit amet
     </Text>
@@ -122,7 +122,7 @@ export default function Component() {
 }
 
 const mapTextColor: Record<ThemeType.ColorScheme, string> = {
-    GRAY_10: ColorConstant.Tokens.GRAY_10.support_error,
-    GRAY_100: ColorConstant.Code.yellow40,
+  GRAY_10: ColorConstant.Tokens.GRAY_10.support_error,
+  GRAY_100: ColorConstant.Code.yellow40,
 }
 ```
