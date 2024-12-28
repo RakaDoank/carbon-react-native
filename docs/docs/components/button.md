@@ -175,7 +175,7 @@ export default function Component() {
 
 ### Custom Icon Node
 
-If the `icon` prop doesn't suit your needs, you can render icon (can render anything basically) at the icon position with [`iconNode`](../definitions/namespaces/Button/interfaces/BaseProps#iconnode) prop. In a case probably you want to use [`react-native-svg-transformer`](https://github.com/kristerkari/react-native-svg-transformer) and use your own SVG
+If the `icon` prop doesn't suit your needs, you can render icon (can render anything basically) at the icon position with [`iconNode`](../definitions/namespaces/Button/interfaces/BaseProps#iconnode) prop. In a case probably you want to use [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) and use your own SVG
 
 ```tsx
 import {
