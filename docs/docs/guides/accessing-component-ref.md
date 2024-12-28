@@ -78,7 +78,7 @@ export default function Component() {
       event => {
         console.log(
           'Current selected radio value is: ',
-          radioButtonGroupRef.current?.value,
+          radioButtonGroupRef.current?.selectedValue,
         )
 
         radioButtonGroupRef.current?.measure((
