@@ -1,6 +1,11 @@
 import {
+	forwardRef,
+} from 'react'
+
+import {
 	Base,
 	type BaseProps,
+	type BaseRef,
 } from '../base'
 
 export interface DefaultProps extends Omit<BaseProps, 'switchProps'> {
@@ -9,19 +14,28 @@ export interface DefaultProps extends Omit<BaseProps, 'switchProps'> {
 	switchProps?: Omit<BaseProps['switchProps'], 'size'>,
 }
 
-export function Default({
-	switchProps,
-	...props
-}: DefaultProps) {
-
-	return (
-		<Base
-			{ ...props }
-			switchProps={{
-				...switchProps,
-				size: 'default',
-			}}
-		/>
-	)
-
+export interface DefaultRef extends BaseRef {
 }
+
+export const Default = forwardRef<DefaultRef, DefaultProps>(
+	function Default(
+		{
+			switchProps,
+			...props
+		},
+		ref,
+	) {
+
+		return (
+			<Base
+				{ ...props }
+				switchProps={{
+					...switchProps,
+					size: 'default',
+				}}
+				ref={ ref }
+			/>
+		)
+
+	},
+)
