@@ -37,7 +37,7 @@ Currently, it doesn't support of [nesting](https://carbondesignsystem.com/compon
 
 > [**CheckboxGroupProps['orientation']**](../../definitions/interfaces/CheckboxGroupProps.md#orientation)?: `"vertical"` \| `"horizontal"`
 
-Checkboxes in a group will be stacked vertically, but also you can stacked horizontally. Default is `"vertical"`
+Checkboxes in a group will be stacked vertically by default, but you can make it stacked horizontally
 
 ```tsx
 import {
