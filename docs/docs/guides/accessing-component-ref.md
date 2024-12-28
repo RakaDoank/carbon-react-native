@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Accessing Component Ref
 
-Like [using core component props](./using-core-component-props.md), all components of this library is also **inherits** and **extends** the primitive or core components ref of React Native. This is make developers are able to use ref methods or all ref members that available such as `.measure()` of a `View`, and also custom methods or members of a Carbon component, such as imperative handle
+Like [using core component props](./using-core-component-props.md), all components of this library is also **inherits** and **extends** the primitive or core components ref of React Native. This is make developers are allowed to use ref methods or all ref members that available such as `.measure()` of a `View`, and also custom methods or members of a Carbon component, such as imperative handle
 
 ## Getting Component Ref
 
