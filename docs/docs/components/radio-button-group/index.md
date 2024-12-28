@@ -21,9 +21,18 @@ export default function Component() {
       legend="Group Label"
       selectedValue="soho" // second item will be selected initially
     >
-      <RadioButtonGroup.Item value="bbc"/>
-      <RadioButtonGroup.Item value="soho"/>
-      <RadioButtonGroup.Item value="prambors"/>
+      <RadioButtonGroup.Item
+        value="bbc"
+        label="Radio 1"
+      />
+      <RadioButtonGroup.Item
+        value="soho"
+        label="Radio 2"
+      />
+      <RadioButtonGroup.Item
+        value="prambors"
+        label="Radio 3"
+      />
     </RadioButtonGroup>
   )
 }
@@ -42,9 +51,18 @@ export default function Component() {
       legend="Group Label"
       selectedValue="soho" // still, second item will be selected initially
     >
-      <RadioButtonGroup.Item value={ 9 }/>
-      <RadioButtonGroup.Item value="soho"/>
-      <RadioButtonGroup.Item value={ 11 }/>
+      <RadioButtonGroup.Item
+        value={ 9 }
+        label="Radio 1"
+      />
+      <RadioButtonGroup.Item
+        value="soho"
+        label="Radio 2"
+      />
+      <RadioButtonGroup.Item
+        value={ 11 }
+        label="Radio 3"
+      />
     </RadioButtonGroup>
   )
 }
@@ -90,12 +108,15 @@ export default function Component() {
     >
       <RadioButtonGroup.Item
         value="bbc"
+        label="Radio 1"
       />
       <RadioButtonGroup.Item
         value="soho"
+        label="Radio 2"
       />
       <RadioButtonGroup.Item
         value="prambors"
+        label="Radio 3"
       />
     </RadioButtonGroup>
   )
@@ -141,14 +162,17 @@ export default function Component() {
     >
       <RadioButtonGroup.Item
         value="bbc"
+        label="Radio 1"
         onPress={ () => setSelectedValue('bbc') }
       />
       <RadioButtonGroup.Item
         value="soho"
+        label="Radio 2"
         onPress={ () => setSelectedValue('soho') }
       />
       <RadioButtonGroup.Item
         value="prambors"
+        label="Radio 3"
         onPress={ () => setSelectedValue('prambors') }
       />
     </RadioButtonGroup>
@@ -248,9 +272,11 @@ export default function Component() {
     >
       <RadioButtonGroup.Item
         label="bbc"
+        label="Radio 1"
       />
       <RadioButtonGroup.Item
         label="prambors"
+        label="Radio 2"
       />
     </RadioButtonGroup>
   )
@@ -286,12 +312,14 @@ export default function Component() {
       helperTextMode={ helperTextMode }
     >
       <RadioButtonGroup.Item
-        label="bbc"
+        value="bbc"
+        label="Radio 1"
         // you can reuse helperTextMode for interactiveState of CheckboxInput
         interactiveState={ helperTextMode }
       />
       <RadioButtonGroup.Item
-        label="prambors"
+        value="prambors"
+        label="Radio 2"
         interactiveState={ helperTextMode }
       />
     </CheckboxGroup>
