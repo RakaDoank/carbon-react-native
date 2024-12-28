@@ -68,7 +68,7 @@ export default function Component() {
       type="label_01"
       style={{ color: ColorsConstant.Tokens.GRAY_10.support_error }}
     >
-        Lorem ipsum dolor sit amet
+      Lorem ipsum dolor sit amet
     </Text>
   )
 }
@@ -88,7 +88,7 @@ export default function Component() {
       type="label_01"
       style={{ color: ColorsConstant.Code.yellow40 }}
     >
-        Lorem ipsum dolor sit amet
+      Lorem ipsum dolor sit amet
     </Text>
   )
 }
@@ -98,7 +98,7 @@ export default function Component() {
 In those two examples above, the `support_error` token or the `yellow40` don't dynamically change across color scheme or theme like light or dark theme. You have to write your own logic for it.
 :::
 
-If you insist, [`ThemeContext`](../definitions/variables/ThemeContext.md) is also providing current color scheme system natively, which is `GRAY_10` or `GRAY_100` (White and Gray 90 will be included later). This is below is an example how to import color token while still follow the current color scheme
+If you insist, [`ThemeContext`](../definitions/variables/ThemeContext.md) is also providing current color scheme system natively, which is `gray_10` or `gray_100`. This is below is an example how to import color token while still follow the current color scheme
 
 ```tsx
 import {
@@ -116,13 +116,13 @@ export default function Component() {
       type="label_01"
       style={{ color: mapTextColor[colorScheme] }}
     >
-        Lorem ipsum dolor sit amet
+      Lorem ipsum dolor sit amet
     </Text>
   )
 }
 
 const mapTextColor: Record<ThemeType.ColorScheme, string> = {
-  GRAY_10: ColorConstant.Tokens.GRAY_10.support_error,
-  GRAY_100: ColorConstant.Code.yellow40,
+  gray_10: ColorConstant.Tokens.GRAY_10.support_error,
+  gray_100: ColorConstant.Code.yellow40,
 }
 ```
