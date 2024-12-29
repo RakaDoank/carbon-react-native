@@ -88,7 +88,7 @@ module.exports = {
 	support_error: code.red60,
 	support_success: code.green50,
 	support_warning: code.yellow30,
-	support_info: code.blue30,
+	support_info: code.blue70,
 	support_error_inverse: code.red50,
 	support_success_inverse: code.green40,
 	support_warning_inverse: code.yellow30,
