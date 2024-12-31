@@ -179,6 +179,8 @@ export default function Component() {
 
 ### DefaultProps
 
+It extends the [`BaseProps`](../definitions/namespaces/Toggle/interfaces/BaseProps.md), but it makes the `label` and `actionText` are required
+
 See [`DefaultProps`](../definitions/namespaces/Toggle/interfaces/DefaultProps.md)
 
 ### SmallProps
