@@ -1,3 +1,2 @@
-export {
-	ThemeContext,
-} from './theme'
+export * from './global-config/context'
+export * from './theme/context'

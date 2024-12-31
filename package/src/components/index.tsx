@@ -1,8 +1,10 @@
 import * as Button from './button'
+import * as Notification from './notification'
 import * as Toggle from './toggle'
 
 export {
 	Button,
+	Notification,
 	Toggle,
 }
 

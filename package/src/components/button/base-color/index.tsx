@@ -16,6 +16,7 @@ import {
 } from '../../../constants'
 
 import {
+	GlobalConfigContext,
 	ThemeContext,
 } from '../../../contexts'
 
@@ -66,10 +67,14 @@ export function BaseColor({
 	onHoverOut,
 	onPressIn,
 	onPressOut,
+	android_ripple,
 	...props
 }: BaseColorProps) {
 
 	const
+		globalConfigContext =
+			useContext(GlobalConfigContext),
+
 		themeContext =
 			useContext(ThemeContext),
 
@@ -149,12 +154,21 @@ export function BaseColor({
 		stateStyle =
 			getStateStyle(
 				colorStateStyle,
-				{ ...state, disabled: !!disabled },
+				{
+					...state,
+					disabled: !!disabled,
+				},
+				android_ripple
+					? true
+					: globalConfigContext.android_buttonRippleEffect,
 			)
 
 	return (
 		<Base
 			{ ...props }
+			android_ripple={ android_ripple ?? globalConfigContext.android_buttonRippleEffect ? {
+				color: colorStateStyle.background.pressed.backgroundColor,
+			} : undefined }
 			backgroundNode={
 				<View
 					style={ [
@@ -221,6 +235,7 @@ const
 function getStateStyle(
 	colorStateStyle: BaseColorProps['colorStateStyle'],
 	states: Record<Exclude<BaseColorState, 'default'>, boolean>,
+	androidRipple?: boolean,
 ): { background: ViewStyle, text: TextStyle, icon: string } {
 
 	if(!states.hovered && !states.pressed && !states.disabled) {
@@ -241,7 +256,9 @@ function getStateStyle(
 
 	if(states.pressed) {
 		return {
-			background: colorStateStyle.background.pressed,
+			background: androidRipple
+				? colorStateStyle.background.default
+				: colorStateStyle.background.pressed,
 			text: colorStateStyle.text.pressed,
 			icon: colorStateStyle.icon.pressed,
 		}

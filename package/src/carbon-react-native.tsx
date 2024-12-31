@@ -1,24 +1,38 @@
+import type {
+	GlobalConfigContext,
+} from './contexts/global-config/context'
+import {
+	GlobalConfigContextProvider,
+} from './contexts/global-config/provider'
+
 import {
 	ThemeContextProvider,
 	type ThemeContextProviderProps,
 } from './contexts/theme/provider'
 
 export interface CarbonReactNativeProps extends ThemeContextProviderProps {
+	globalConfig?: GlobalConfigContext,
 }
 
 export function CarbonReactNative({
+	globalConfig,
 	colorScheme,
 	overrideColor,
 	children,
 }: CarbonReactNativeProps) {
 
 	return (
-		<ThemeContextProvider
-			colorScheme={ colorScheme }
-			overrideColor={ overrideColor }
+		<GlobalConfigContextProvider
+			android_buttonRippleEffect={ globalConfig?.android_buttonRippleEffect ?? true }
+			notificationColor={ globalConfig?.notificationColor ?? 'high_contrast' }
 		>
-			{ children }
-		</ThemeContextProvider>
+			<ThemeContextProvider
+				colorScheme={ colorScheme }
+				overrideColor={ overrideColor }
+			>
+				{ children }
+			</ThemeContextProvider>
+		</GlobalConfigContextProvider>
 	)
 
 }
