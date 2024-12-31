@@ -175,6 +175,15 @@ module.exports = {
 	tag_hover_green: code.green70Hover,
 	tag_border_green: code.green50,
 
+	notification_info_background: code.gray90,
+	notification_info_border: hexToRgba(code.blue50, '0.5'),
+	notification_error_background: code.gray90,
+	notification_error_border: hexToRgba(code.red40, '0.5'),
+	notification_success_background: code.gray90,
+	notification_success_border: hexToRgba(code.green40, '0.5'),
+	notification_warning_background: code.gray90,
+	notification_warning_border: hexToRgba(code.yellow50, '0.5'),
+
 	notification_background_error: code.gray90,
 	notification_background_success: code.gray90,
 	notification_background_info: code.gray90,
