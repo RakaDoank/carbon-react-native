@@ -2,7 +2,7 @@ import {
 	GlobalConfigContext,
 } from './context'
 
-export interface GlobalConfigContextProps extends GlobalConfigContext {
+export interface GlobalConfigContextProviderProps extends GlobalConfigContext {
 	children?: React.ReactNode,
 }
 
@@ -10,7 +10,7 @@ export function GlobalConfigContextProvider({
 	android_buttonRippleEffect,
 	notificationColor,
 	children,
-}: GlobalConfigContextProps) {
+}: GlobalConfigContextProviderProps) {
 
 	return (
 		<GlobalConfigContext.Provider
