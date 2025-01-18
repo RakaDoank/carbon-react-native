@@ -8,6 +8,7 @@
 		"create-package-symlink": "npm run ts-node-esm ./scripts/create-package-symlink/index.ts -- --destination",
 		"lint": "eslint . --fix",
 		"release": "echo \"TODO: It will be determined later\"",
+		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
 		"ts-node-esm": "node --experimental-specifier-resolution=node --loader ts-node/esm -r tsconfig-paths/register",
 		"type-check": "tsc --noEmit"
 	},
