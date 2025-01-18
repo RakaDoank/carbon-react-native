@@ -1,9 +1,31 @@
 {
-	"extends": "./package/tsconfig.json",
 	"compilerOptions": {
-		"rootDir": ".",
-		"types": [
-			"node"
-		]
-	}
+		"allowArbitraryExtensions": true,
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"verbatimModuleSyntax": true
+	},
+	"ts-node": {
+		"esm": true,
+		"require": ["tsconfig-paths/register"],
+		"typeCheck": true
+	},
+	"include": [
+		"scripts/**/*",
+	],
+	"exclude": [
+		"dist",
+		"node_modules"
+	]
 }
