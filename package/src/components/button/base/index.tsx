@@ -126,7 +126,7 @@ export const Base = forwardRef<View, BaseProps>(
 						] }
 					/>
 				) : iconNode?.(
-					iconSize!!,
+					iconSize!,
 					[
 						getIconMarginTopStyle(size),
 						getIconMarginLeftStyle(!!text),
@@ -254,7 +254,7 @@ function getIconSize(buttonSize: BaseProps['size']) {
 function getIconMarginTopStyle(buttonSize: NonNullable<BaseProps['size']>) {
 	const
 		iconSize =
-			mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]!!,
+			mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]!,
 
 		height =
 			Math.min(sizeStyle[buttonSize].height, sizeStyle.large_productive.height) // 48 at max

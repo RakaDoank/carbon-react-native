@@ -96,7 +96,7 @@ const
 						/**
 						 * i don't know why Typescript annotate here as TypopgrahyType.TypeSets
 						 */
-						(val_ as unknown) as TypographyType.TypeSetsStyle
+						(val_) as TypographyType.TypeSetsStyle
 
 				accumulator[key] = {
 					...val,

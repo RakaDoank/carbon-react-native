@@ -27,12 +27,12 @@ export class Icon extends Component<IconProps> {
 			return (
 				<SvgXml
 					{ ...this.props }
-					xml={ IconHelper.toString(this.props.src as any) }
+					xml={ IconHelper.toString(this.props.src as never) }
 					width={ this.props.width || '100%' }
 					height={ this.props.height || '100%' }
 				/>
 			)
-		} catch(e) {
+		} catch{
 			return (
 				<SvgXml
 					{ ...this.props }

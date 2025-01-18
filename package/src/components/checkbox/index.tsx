@@ -134,7 +134,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				(viewRef.current ?? {}) as View,
 				{
 					get value() {
-						return checkboxInputRef.current!!.value
+						return checkboxInputRef.current!.value
 					},
 					setValue(value_) {
 						checkboxInputRef.current?.setValue(value_)

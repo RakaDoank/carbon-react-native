@@ -14,6 +14,8 @@ import {
 	StyleSheet,
 	View,
 	type PressableProps,
+	type StyleProp,
+	type ViewStyle,
 } from 'react-native'
 
 import Checkmark from '@carbon/icons/es/checkmark/20'
@@ -62,7 +64,7 @@ export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	thumbColor?: Record<'false' | 'true', string>,
 	motion?: Record<'false' | 'true', WithTimingConfig>,
 	onChange?: (value: boolean) => void,
-	style?: Exclude<PressableProps['style'], Function>,
+	style?: StyleProp<ViewStyle>,
 }
 
 /**

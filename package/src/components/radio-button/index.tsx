@@ -127,7 +127,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 				(viewRef.current ?? {}) as View,
 				{
 					get checked() {
-						return radioButtonInputRef.current!!.checked
+						return radioButtonInputRef.current!.checked
 					},
 					setChecked(checked_) {
 						radioButtonInputRef.current?.setChecked(checked_)

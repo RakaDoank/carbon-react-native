@@ -178,6 +178,7 @@ function IconErrorRenderer(props: IconRendererProps) {
 
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 IconWarningAltFilled.content[0].attrs.fill = 'black'
 function IconWarningRenderer(props: IconRendererProps) {
 
