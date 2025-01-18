@@ -1,6 +1,9 @@
 import node_fs from 'node:fs'
 import node_path from 'node:path'
 import node_url from 'node:url'
+import node_child_process from 'node:child_process'
+
+node_child_process.execSync('npm run setup-package-registry')
 
 const
 	__filename =
@@ -65,7 +68,7 @@ try {
 		}
 	})
 
-	console.info('Successfully created a symlink at: ' + destination)
+	console.info('Successfully created package symlink at: ' + destination)
 
 } catch(e) {
 	throw new Error(e instanceof Error ? e.message : 'Unknown error')
