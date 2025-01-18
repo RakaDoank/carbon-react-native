@@ -12,6 +12,8 @@ import ReactHooksEslintPlugin from 'eslint-plugin-react-hooks'
 
 import DocusuarusEslintPlugin from '@docusaurus/eslint-plugin'
 
+import Globals from 'globals'
+
 export default [
 
 	{
@@ -224,6 +226,13 @@ export default [
 		},
 		rules: {
 			...DocusuarusEslintPlugin.configs.recommended.rules,
+		},
+	},
+
+	{
+		files: ['scripts/**/*.js'],
+		languageOptions: {
+			globals: Globals.node,
 		},
 	},
 
