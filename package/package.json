@@ -1,6 +1,7 @@
 {
 	"name": "@raka/carbon-react-native",
 	"version": "0.0.1-prealpha.1",
+	"type": "module",
 	"scripts": {
 		"prepare": "bob build"
 	},

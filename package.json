@@ -7,9 +7,11 @@
 		"code-check": "npm run type-check && npm run lint",
 		"create-package-symlink": "npm run ts-node-esm ./scripts/create-package-symlink/index.ts -- --destination",
 		"lint": "eslint . --fix",
+		"generate-color-token-type": "tsx ./scripts/generate-color-token-type/index.ts",
 		"release": "echo \"TODO: It will be determined later\"",
 		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
-		"ts-node-esm": "node --experimental-specifier-resolution=node --loader ts-node/esm -r tsconfig-paths/register",
+		"ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register",
+		"tsx": "tsx",
 		"type-check": "tsc --noEmit"
 	},
 	"devDependencies": {
@@ -24,6 +26,7 @@
 		"globals": "^15.14.0",
 		"ts-node": "^10.9.2",
 		"tsconfig-paths": "^4.2.0",
+		"tsx": "^4.19.2",
 		"typescript": "5.7.2",
 		"typescript-eslint": "^8.19.1"
 	}

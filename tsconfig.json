@@ -7,6 +7,7 @@
 		"baseUrl": ".",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"noEmit": true,
@@ -19,7 +20,8 @@
 	"ts-node": {
 		"esm": true,
 		"require": ["tsconfig-paths/register"],
-		"typeCheck": true
+		"typeCheck": true,
+		"experimentalSpecifierResolution": "node"
 	},
 	"include": [
 		"scripts/**/*",
