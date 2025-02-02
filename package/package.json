@@ -39,7 +39,6 @@
 		}
 	},
 	"files": [
-		"index.tsx",
 		"src",
 		"lib",
 		"assets",
