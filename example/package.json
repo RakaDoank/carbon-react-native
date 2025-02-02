@@ -6,12 +6,13 @@
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
 		"lint": "eslint .",
-		"start": "react-native start",
+		"start": "react-native-asset && react-native start",
 		"test": "jest"
 	},
 	"dependencies": {
 		"react": "18.3.1",
 		"react-native": "0.77.0",
+		"react-native-asset": "^2.1.1",
 		"react-native-gesture-handler": "^2.22.1",
 		"react-native-reanimated": "^3.16.7"
 	},
