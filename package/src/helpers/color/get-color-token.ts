@@ -8,7 +8,7 @@ export function getColorToken(
 	return mapSchemeToColorToken[ colorScheme ]()
 }
 
-const mapSchemeToColorToken: Record<ThemeType.ColorScheme, () => Awaited<typeof import('../../constants/color/tokens/gray-10')>> = {
-	gray_10: () => require('../../constants/color/tokens/gray-10'),
-	gray_100: () => require('../../constants/color/tokens/gray-100'),
+const mapSchemeToColorToken: Record<ThemeType.ColorScheme, () => Record<ThemeType.ColorToken, string>> = {
+	gray_10: () => require('../../constants/color/tokens/gray-10') as Record<ThemeType.ColorToken, string>,
+	gray_100: () => require('../../constants/color/tokens/gray-100') as Record<ThemeType.ColorToken, string>,
 }
