@@ -87,6 +87,9 @@ export default [
 						'if': {
 							'after': false,
 						},
+						'for': {
+							'after': false,
+						},
 						'catch': {
 							'after': false,
 							'before': true,
@@ -176,10 +179,11 @@ export default [
 			'**/*.mts',
 		],
 		rules: {
+			'@typescript-eslint/no-empty-object-type': 'off',
+			'@typescript-eslint/no-floating-promises': 'off',
 			'@typescript-eslint/no-require-imports': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-empty-object-type': 'off',
 		},
 	},
 
