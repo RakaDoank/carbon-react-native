@@ -1,11 +1,9 @@
-const code = require('../code.json')
-const hexToRgba = require('../../../helpers/color/hex-to-rgba')
+import code from '../code.json'
+import {
+	hexToRgba,
+} from '../../../helpers/color/hex-to-rgba'
 
-/**
- * Sorry, for using snake case here, while the code.json is using camelCase, and the index.ts is using upper snake_case
- */
-
-module.exports = {
+export const gray_100 = {
 
 	background: code.black,
 	background_hover: hexToRgba(code.gray50, '0.16'),
@@ -184,10 +182,6 @@ module.exports = {
 	notification_warning_background: code.gray90,
 	notification_warning_border: hexToRgba(code.yellow50, '0.5'),
 
-	notification_background_error: code.gray90,
-	notification_background_success: code.gray90,
-	notification_background_info: code.gray90,
-	notification_background_warning: code.gray90,
 	notification_action_hover: code.gray90Hover,
 	notification_action_tertiary_inverse: code.blue60,
 	notification_action_tertiary_inverse_active: code.gray100,
@@ -195,4 +189,4 @@ module.exports = {
 	notification_action_tertiary_inverse_text: code.white,
 	notification_action_tertiary_inverse_text_on_color_disabled: code.white,
 
-}
+} as const

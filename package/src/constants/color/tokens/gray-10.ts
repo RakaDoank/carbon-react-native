@@ -1,11 +1,9 @@
-const code = require('../code.json')
-const hexToRgba = require('../../../helpers/color/hex-to-rgba')
+import code from '../code.json'
+import {
+	hexToRgba,
+} from '../../../helpers/color/hex-to-rgba'
 
-/**
- * Sorry, for using snake case here, while the code.json is using camelCase, and the index.ts is using upper snake_case
- */
-
-module.exports = {
+export const gray_10 = {
 
 	background: code.gray10,
 	background_hover: hexToRgba(code.gray50, '0.12'),
@@ -33,6 +31,16 @@ module.exports = {
 	layer_selected_hover_03: code.gray20Hover,
 	layer_selected_inverse: code.gray100,
 	layer_selected_disabled: code.gray50,
+
+	layer_accent_01: code.gray20,
+	layer_accent_02: code.gray20,
+	layer_accent_03: code.gray20,
+	layer_accent_hover_01: code.gray20Hover,
+	layer_accent_hover_02: code.gray20Hover,
+	layer_accent_hover_03: code.gray20Hover,
+	layer_accent_active_01: code.gray40,
+	layer_accent_active_02: code.gray40,
+	layer_accent_active_03: code.gray40,
 
 	field_01: code.white,
 	field_02: code.gray10,
@@ -181,4 +189,4 @@ module.exports = {
 	notification_action_tertiary_inverse_text: code.gray100,
 	notification_action_tertiary_inverse_text_on_color_disabled: code.white,
 
-}
+} as const
