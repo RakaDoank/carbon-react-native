@@ -219,10 +219,10 @@ const
 				borderColor: 'transparent',
 			},
 			innerFocusBoxActive_GRAY_10: {
-				borderColor: ColorConstant.Tokens.GRAY_10.focus_inset,
+				borderColor: ColorConstant.Tokens.gray_10.focus_inset,
 			},
 			innerFocusBoxActive_GRAY_100: {
-				borderColor: ColorConstant.Tokens.GRAY_100.focus_inset,
+				borderColor: ColorConstant.Tokens.gray_100.focus_inset,
 			},
 		}),
 
