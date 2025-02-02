@@ -1,6 +1,9 @@
 {
 	"extends": "@react-native/typescript-config/tsconfig.json",
 	"compilerOptions": {
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"paths": {
+			"@raka/carbon-react-native": ["../package/src/index"]
+		},
 	},
 }

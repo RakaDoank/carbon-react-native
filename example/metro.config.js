@@ -23,12 +23,17 @@ const
  */
 const config = {
 
+	projectRoot,
+
 	resolver: {
 		disableHierarchicalLookup: true,
 		nodeModulesPaths: [
 			node_path.join(projectRoot, 'node_modules'),
 			node_path.join(workspaceRoot, 'node_modules'),
 		],
+		extraNodeModules: {
+			'@raka/carbon-react-native': node_path.join(workspaceRoot, 'package/src'),
+		},
 	},
 
 	watchFolders: [

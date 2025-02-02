@@ -10,7 +10,6 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"@raka/carbon-react-native": "workspace:../package",
 		"react": "18.3.1",
 		"react-native": "0.77.0",
 		"react-native-gesture-handler": "^2.22.1",
