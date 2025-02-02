@@ -1,12 +1,7 @@
-/**
- * @param {string} hexCode 
- * @param {string} opacity
- * @returns {string}
- */
-function hexToRgba(
-	hexCode,
-	opacity,
-) {
+export function hexToRgba(
+	hexCode: string,
+	opacity: string,
+): string {
 	const values = [
 		hexCode.substring(1, 3),
 		hexCode.substring(3, 5),
@@ -14,5 +9,3 @@ function hexToRgba(
 	].map((string) => parseInt(string, 16))
 	return `rgba(${values[0]},${values[1]},${values[2]},${opacity})`
 }
-
-module.exports = hexToRgba
