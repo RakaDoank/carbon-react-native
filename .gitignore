@@ -79,11 +79,15 @@ lib/
 
 .env
 
-# Script: setup-package-registry
+# Script: (old) setup-package-registry
 .carbon-react-native
 
-# Script: local-development
-/package/package-original.json
+# Script: setup-package-registry
+/package/assets
+/package/README.md
+
+# Script: generate-color-token-type
+/package/src/types/theme/color-token.ts
 
 # Docusaurus
 /docs/.docusaurus
