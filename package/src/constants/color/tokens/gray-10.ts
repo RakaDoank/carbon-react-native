@@ -1,7 +1,12 @@
-import code from '../code.json'
 import {
 	hexToRgba,
 } from '../../../helpers/color/hex-to-rgba'
+
+import type {
+	ThemeType,
+} from '../../../types'
+
+import code from '../code.json'
 
 export const gray_10 = {
 
@@ -189,4 +194,4 @@ export const gray_10 = {
 	notification_action_tertiary_inverse_text: code.gray100,
 	notification_action_tertiary_inverse_text_on_color_disabled: code.white,
 
-} as const
+} as const satisfies Record<ThemeType.ColorToken, string>
