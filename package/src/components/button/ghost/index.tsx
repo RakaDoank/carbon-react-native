@@ -4,6 +4,8 @@ import {
 
 import {
 	StyleSheet,
+	type TextStyle,
+	type ViewStyle,
 } from 'react-native'
 
 import {
@@ -15,11 +17,19 @@ import {
 } from '../../../contexts'
 
 import {
+	StyleSheet as StyleSheetColor,
+} from '../../../_style-sheet'
+
+import {
 	BaseColor,
 	type BaseColorProps,
 } from '../base-color'
 
-export interface GhostProps extends Omit<BaseColorProps, 'colorStateStyle'> {
+export interface GhostProps extends Omit<
+	BaseColorProps,
+	| 'android_rippleEffectColor'
+	| 'colorStateStyle'
+> {
 }
 
 export function Ghost({
@@ -36,23 +46,21 @@ export function Ghost({
 		<BaseColor
 			{ ...props }
 			text={ text }
+			android_rippleEffectColor={ themeContext.color.background_active }
 			colorStateStyle={{
 				background: {
-					default: { backgroundColor: 'transparent' },
-					focused: {
-						borderWidth: 1,
-						borderColor: themeContext.color.focus,
-					},
-					hovered: { backgroundColor: themeContext.color.background_hover },
-					pressed: { backgroundColor: themeContext.color.background_active },
-					disabled: { backgroundColor: 'transparent' },
+					default: colorStyle.background_default,
+					focused: colorStyle.background_pressed,
+					hovered: colorStyle.background_hovered,
+					pressed: colorStyle.background_pressed,
+					disabled: colorStyle.background_disabled,
 				},
 				text: {
-					default: { color: themeContext.color.link_primary },
-					focused: { color: themeContext.color.link_primary },
-					hovered: { color: themeContext.color.link_primary_hover },
-					pressed: { color: themeContext.color.link_primary },
-					disabled: { color: themeContext.color.text_disabled },
+					default: colorStyle.text_default,
+					focused: colorStyle.text_focused,
+					hovered: colorStyle.text_hovered,
+					pressed: colorStyle.text_pressed,
+					disabled: colorStyle.text_disabled,
 				},
 				icon: {
 					default: themeContext.color.link_primary,
@@ -69,6 +77,47 @@ export function Ghost({
 }
 
 const
+	colorStyle =
+		StyleSheetColor.create<
+			Record<
+				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
+				ViewStyle | TextStyle
+			>
+		>(color => ({
+			background_default: {
+				backgroundColor: 'transparent',
+			},
+			background_focused: {
+				borderWidth: 1,
+				borderColor: color.focus,
+			},
+			background_hovered: {
+				backgroundColor: color.background_hover,
+			},
+			background_pressed: {
+				backgroundColor: color.background_active,
+			},
+			background_disabled: {
+				backgroundColor: 'transparent',
+			},
+
+			text_default: {
+				color: color.link_primary,
+			},
+			text_focused: {
+				color: color.link_primary,
+			},
+			text_hovered: {
+				color: color.link_primary_hover,
+			},
+			text_pressed: {
+				color: color.link_primary,
+			},
+			text_disabled: {
+				color: color.text_disabled,
+			},
+		})),
+
 	style =
 		StyleSheet.create({
 			iconPL8: {

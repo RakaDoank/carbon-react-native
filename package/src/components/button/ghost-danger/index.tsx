@@ -4,6 +4,8 @@ import {
 
 import {
 	StyleSheet,
+	type TextStyle,
+	type ViewStyle,
 } from 'react-native'
 
 import {
@@ -15,11 +17,19 @@ import {
 } from '../../../contexts'
 
 import {
+	StyleSheet as StyleSheetColor,
+} from '../../../_style-sheet'
+
+import {
 	BaseColor,
 	type BaseColorProps,
 } from '../base-color'
 
-export interface GhostDangerProps extends Omit<BaseColorProps, 'colorStateStyle'> {
+export interface GhostDangerProps extends Omit<
+	BaseColorProps,
+	| 'android_rippleEffectColor'
+	| 'colorStateStyle'
+> {
 }
 
 export function GhostDanger({
@@ -36,23 +46,21 @@ export function GhostDanger({
 		<BaseColor
 			{ ...props }
 			text={ text }
+			android_rippleEffectColor={ themeContext.color.button_danger_active }
 			colorStateStyle={{
 				background: {
-					default: { backgroundColor: 'transparent' },
-					focused: {
-						borderWidth: 1,
-						borderColor: themeContext.color.focus,
-					},
-					hovered: { backgroundColor: themeContext.color.button_danger_hover },
-					pressed: { backgroundColor: themeContext.color.button_danger_active },
-					disabled: { backgroundColor: themeContext.color.button_disabled },
+					default: colorStyle.background_default,
+					focused: colorStyle.background_pressed,
+					hovered: colorStyle.background_hovered,
+					pressed: colorStyle.background_pressed,
+					disabled: colorStyle.background_disabled,
 				},
 				text: {
-					default: { color: themeContext.color.button_danger_secondary },
-					focused: { color: themeContext.color.button_danger_secondary },
-					hovered: { color: themeContext.color.text_on_color },
-					pressed: { color: themeContext.color.text_on_color },
-					disabled: { color: themeContext.color.text_disabled },
+					default: colorStyle.text_default,
+					focused: colorStyle.text_focused,
+					hovered: colorStyle.text_hovered,
+					pressed: colorStyle.text_pressed,
+					disabled: colorStyle.text_disabled,
 				},
 				icon: {
 					default: themeContext.color.button_danger_secondary,
@@ -69,6 +77,47 @@ export function GhostDanger({
 }
 
 const
+	colorStyle =
+		StyleSheetColor.create<
+			Record<
+				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
+				ViewStyle | TextStyle
+			>
+		>(color => ({
+			background_default: {
+				backgroundColor: 'transparent',
+			},
+			background_focused: {
+				borderWidth: 1,
+				borderColor: color.focus,
+			},
+			background_hovered: {
+				backgroundColor: color.button_danger_hover,
+			},
+			background_pressed: {
+				backgroundColor: color.button_danger_active,
+			},
+			background_disabled: {
+				backgroundColor: color.button_disabled,
+			},
+
+			text_default: {
+				color: color.button_danger_secondary,
+			},
+			text_focused: {
+				color: color.button_danger_secondary,
+			},
+			text_hovered: {
+				color: color.text_on_color,
+			},
+			text_pressed: {
+				color: color.text_on_color,
+			},
+			text_disabled: {
+				color: color.text_disabled,
+			},
+		})),
+
 	style =
 		StyleSheet.create({
 			iconPL8: {

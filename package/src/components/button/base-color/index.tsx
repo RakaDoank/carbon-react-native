@@ -7,6 +7,7 @@ import {
 import {
 	StyleSheet,
 	View,
+	type StyleProp,
 	type TextStyle,
 	type ViewStyle,
 } from 'react-native'
@@ -37,9 +38,10 @@ export type BaseColorState =
 	| 'disabled'
 
 export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconColor' | 'iconNode'> {
+	android_rippleEffectColor: string,
 	colorStateStyle: {
-		background: Record<BaseColorState, ViewStyle>,
-		text: Record<BaseColorState, TextStyle>,
+		background: Record<BaseColorState, StyleProp<ViewStyle>>,
+		text: Record<BaseColorState, StyleProp<TextStyle>>,
 		icon: Record<BaseColorState, string>,
 	},
 	/**
@@ -58,6 +60,7 @@ export function BaseColor({
 	disabled,
 	style,
 	textStyle,
+	android_rippleEffectColor,
 	colorStateStyle,
 	icon,
 	iconNode,
@@ -167,7 +170,8 @@ export function BaseColor({
 		<Base
 			{ ...props }
 			android_ripple={ android_ripple ?? globalConfigContext.android_buttonRippleEffect ? {
-				color: colorStateStyle.background.pressed.backgroundColor,
+				// color: colorStateStyle.background.pressed.backgroundColor,
+				color: android_rippleEffectColor,
 			} : undefined }
 			backgroundNode={
 				<View
@@ -236,7 +240,7 @@ function getStateStyle(
 	colorStateStyle: BaseColorProps['colorStateStyle'],
 	states: Record<Exclude<BaseColorState, 'default'>, boolean>,
 	androidRipple?: boolean,
-): { background: ViewStyle, text: TextStyle, icon: string } {
+): { background: StyleProp<ViewStyle>, text: StyleProp<TextStyle>, icon: string } {
 
 	if(!states.hovered && !states.pressed && !states.disabled) {
 		return {
