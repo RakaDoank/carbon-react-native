@@ -4,7 +4,6 @@ import node_url from 'node:url'
 import node_child_process from 'node:child_process'
 
 node_child_process.execSync('npm run setup-package-registry')
-node_child_process.execSync('npm run generate-color-token-type')
 
 const
 	__filename =
