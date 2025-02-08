@@ -203,6 +203,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					<ButtonBaseColor
 						{ ...iconCloseButtonProps }
 						text=""
+						android_rippleEffectColor={ themeContext.color.background_active }
 						size="large_expressive"
 						iconNode={ (iconColorState, iconSize, iconStyle) => iconCloseRenderer(iconCloseProps, iconColorState, iconSize, iconStyle) }
 						onPress={ onPressIconClose }

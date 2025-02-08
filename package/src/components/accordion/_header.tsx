@@ -49,7 +49,7 @@ import type {
 	AccordionSize,
 } from './size'
 
-export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'size' | 'text' | 'icon' | 'colorStateStyle'> {
+export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'android_rippleEffectColor' | 'size' | 'text' | 'icon' | 'colorStateStyle'> {
 	size?: AccordionSize,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
@@ -85,6 +85,7 @@ export function AccordionHeader({
 				{ ...buttonProps }
 				size={ mapSizeToButtonSize[size] }
 				text={ text }
+				android_rippleEffectColor={ themeContext.color.layer_hover_01 }
 				colorStateStyle={{
 					background: {
 						default: { backgroundColor: 'transparent' },

@@ -2,11 +2,13 @@ import {
 	useContext,
 } from 'react'
 
-import type * as GRAY_10 from '../../../constants/color/tokens/gray-10'
-
 import {
 	ThemeContext,
 } from '../../../contexts'
+
+import type {
+	ThemeType,
+} from '../../../types'
 
 import {
 	Text,
@@ -49,7 +51,7 @@ export function Subtitle({
 
 }
 
-const mapTextColor: Record<NotificationColor, keyof typeof GRAY_10> =
+const mapTextColor: Record<NotificationColor, ThemeType.ColorToken> =
 	{
 		low_contrast: 'text_primary',
 		high_contrast: 'text_inverse',

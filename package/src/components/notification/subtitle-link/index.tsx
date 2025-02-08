@@ -2,11 +2,13 @@ import {
 	useContext,
 } from 'react'
 
-import type * as GRAY_10 from '../../../constants/color/tokens/gray-10'
-
 import {
 	ThemeContext,
 } from '../../../contexts'
+
+import type {
+	ThemeType,
+} from '../../../types'
 
 import {
 	Subtitle,
@@ -48,7 +50,7 @@ export function SubtitleLink({
 
 }
 
-const mapTextColor: Record<NotificationColor, keyof typeof GRAY_10> =
+const mapTextColor: Record<NotificationColor, ThemeType.ColorToken> =
 	{
 		low_contrast: 'link_primary',
 		high_contrast: 'link_inverse',

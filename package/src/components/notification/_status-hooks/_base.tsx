@@ -2,11 +2,13 @@ import {
 	useContext,
 } from 'react'
 
-import type * as GRAY_10 from '../../../constants/color/tokens/gray-10'
-
 import {
 	ThemeContext,
 } from '../../../contexts'
+
+import type {
+	ThemeType,
+} from '../../../types'
 
 import type {
 	BaseProps,
@@ -16,8 +18,7 @@ import type {
 	NotificationColor,
 } from '../types'
 
-type ColorTokenKey = keyof typeof GRAY_10
-type ColorModifier = Record<NotificationColor, ColorTokenKey>
+type ColorModifier = Record<NotificationColor, ThemeType.ColorToken>
 
 export interface UseBaseProps {
 	color?: NotificationColor,

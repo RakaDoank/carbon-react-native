@@ -17,8 +17,6 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import type GRAY_10 from '../../constants/color/tokens/gray-10'
-
 import {
 	ThemeContext,
 } from '../../contexts'
@@ -27,6 +25,10 @@ import {
 	CommonStyle,
 	FlexStyle,
 } from '../../styles'
+
+import type {
+	ThemeType,
+} from '../../types'
 
 export type RadioButtonInputInteractiveState =
 	| 'normal'
@@ -222,7 +224,7 @@ type InteractiveStateStyle =
 	Partial<
 		Record<
 			Extract<keyof ViewStyle, 'borderColor' | 'backgroundColor'>,
-			keyof typeof GRAY_10
+			ThemeType.ColorToken
 		>
 	>
 

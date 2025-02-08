@@ -17,8 +17,6 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import type GRAY_10 from '../../constants/color/tokens/gray-10'
-
 import {
 	ThemeContext,
 } from '../../contexts'
@@ -27,6 +25,10 @@ import {
 	CommonStyle,
 	FlexStyle,
 } from '../../styles'
+
+import type {
+	ThemeType,
+} from '../../types'
 
 import {
 	Icon,
@@ -244,8 +246,8 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 
 type InteractiveStateStyle =
 	{
-		borderColor: keyof typeof GRAY_10,
-		backgroundColor?: keyof typeof GRAY_10,
+		borderColor: ThemeType.ColorToken,
+		backgroundColor?: ThemeType.ColorToken,
 	}
 
 const

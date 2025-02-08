@@ -16,18 +16,21 @@ import {
 } from 'react-native'
 
 import {
-	ThemeContext,
-} from '../../contexts'
-
-import {
 	SpacingConstant,
 } from '../../constants'
-import type GRAY_10 from '../../constants/color/tokens/gray-10'
+
+import {
+	ThemeContext,
+} from '../../contexts'
 
 import {
 	CommonStyle,
 	FlexStyle,
 } from '../../styles'
+
+import type {
+	ThemeType,
+} from '../../types'
 
 import {
 	FormLabel,
@@ -215,7 +218,7 @@ const
 
 	mapTextColor: Record<
 		RadioButtonInputInteractiveState,
-		keyof typeof GRAY_10
+		ThemeType.ColorToken
 	> =
 		{
 			normal: 'text_primary',

@@ -31,7 +31,9 @@ import {
 	FlexStyle,
 } from '../../styles'
 
-export interface CollapsibleProps extends ViewProps {
+type AnimatedViewProps = Animated.View['props']
+
+export interface CollapsibleProps extends AnimatedViewProps {
 	/**
 	 * Control `open` prop
 	 */
@@ -92,7 +94,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 
 		const
 			viewRef =
-				useRef<View>(null),
+				useRef<Animated.View>(null),
 
 			ref =
 				useRef<{
@@ -167,7 +169,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					}
 				}, []),
 
-			onLayoutContent: NonNullable<ViewProps['onLayout']> =
+			onLayoutContent: NonNullable<AnimatedViewProps['onLayout']> =
 				useCallback(({ nativeEvent }) => {
 					if(ref.current.contentHeight !== nativeEvent.layout.height) {
 						ref.current.contentHeight = nativeEvent.layout.height
