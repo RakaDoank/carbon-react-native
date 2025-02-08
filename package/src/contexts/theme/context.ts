@@ -3,6 +3,10 @@ import {
 } from 'react'
 
 import {
+	ColorSchemeGlobal,
+} from '../../globals'
+
+import {
 	ColorHelper,
 } from '../../helpers'
 
@@ -15,12 +19,8 @@ export interface ThemeContext {
 	color: Record<ThemeType.ColorToken, string>,
 }
 
-const
-	colorScheme =
-		ColorHelper.getColorScheme()
-
 export const ThemeContext =
 	createContext<ThemeContext>({
-		colorScheme,
-		color: ColorHelper.getColorToken(colorScheme),
+		colorScheme: ColorSchemeGlobal.get(),
+		color: ColorHelper.getColorToken(ColorSchemeGlobal.get()),
 	})

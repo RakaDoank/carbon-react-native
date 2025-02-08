@@ -1,5 +1,5 @@
 export * from './_carbon-react-native'
-export * from './_color-style-sheet'
+export * from './_style-sheet'
 
 export * from './components'
 export * from './contexts'

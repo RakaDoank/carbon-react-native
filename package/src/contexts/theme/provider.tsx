@@ -7,6 +7,10 @@ import {
 } from '../../helpers'
 
 import {
+	ColorSchemeGlobal,
+} from '../../globals'
+
+import {
 	ThemeContext,
 } from './context'
 
@@ -15,7 +19,7 @@ export interface ThemeContextProviderProps {
 	/**
 	 * You can override all color by your own. `colorScheme` probably means nothing due to this prop.  
 	 */
-	overrideColor?: ThemeContext['color'],
+	overrideColor?: Partial<ThemeContext['color']>,
 	children?: React.ReactNode,
 }
 
@@ -32,11 +36,16 @@ export function ThemeContextProvider({
 		colorScheme =
 			colorSchemeProp ?? ColorHelper.getColorScheme(colorSchemeUse)
 
+	ColorSchemeGlobal.set(colorScheme)
+
 	return (
 		<ThemeContext.Provider
 			value={{
 				colorScheme,
-				color: overrideColor ?? ColorHelper.getColorToken(colorScheme),
+				color: {
+					...ColorHelper.getColorToken(colorScheme),
+					...overrideColor,
+				},
 			}}
 		>
 			{ children }
