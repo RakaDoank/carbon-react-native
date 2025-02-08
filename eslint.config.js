@@ -181,6 +181,7 @@ export default [
 		rules: {
 			'@typescript-eslint/no-empty-object-type': 'off',
 			'@typescript-eslint/no-floating-promises': 'off',
+			'@typescript-eslint/no-namespace': 'off',
 			'@typescript-eslint/no-require-imports': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
