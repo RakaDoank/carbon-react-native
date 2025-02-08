@@ -89,9 +89,6 @@ pnpm-lock.yaml
 /package/assets
 /package/README.md
 
-# Script: generate-color-token-type
-/package/src/types/theme/color-token.ts
-
 # Docusaurus
 /docs/.docusaurus
 /docs/.cache-loader
