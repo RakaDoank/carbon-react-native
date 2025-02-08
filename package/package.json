@@ -17,7 +17,7 @@
 		"@react-native/typescript-config": "0.76.6",
 		"@types/react": "^18.2.6",
 		"react-native-builder-bob": "0.35.2",
-		"typescript": "5.7.2"
+		"typescript": "5.7.3"
 	},
 	"source": "./src/index.tsx",
 	"main": "./lib/commonjs/index.js",
