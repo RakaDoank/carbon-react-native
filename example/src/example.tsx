@@ -5,7 +5,7 @@ import {
 import {
 	CarbonReactNative,
 	Text as T,
-} from '@raka/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 const test = ''
 
