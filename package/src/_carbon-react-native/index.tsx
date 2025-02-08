@@ -23,8 +23,7 @@ export function CarbonReactNative({
 
 	return (
 		<GlobalConfigContextProvider
-			android_buttonRippleEffect={ globalConfig?.android_buttonRippleEffect ?? true }
-			notificationColor={ globalConfig?.notificationColor ?? 'high_contrast' }
+			{ ...globalConfig }
 		>
 			<ThemeContextProvider
 				colorScheme={ colorScheme }
