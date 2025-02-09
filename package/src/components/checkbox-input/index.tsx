@@ -18,6 +18,10 @@ import {
 } from 'react-native'
 
 import {
+	StyleSheet as StyleSheetColor,
+} from '../../_style-sheet'
+
+import {
 	ThemeContext,
 } from '../../contexts'
 
@@ -25,10 +29,6 @@ import {
 	CommonStyle,
 	FlexStyle,
 } from '../../styles'
-
-import type {
-	ThemeType,
-} from '../../types'
 
 import {
 	Icon,
@@ -210,7 +210,8 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					FlexStyle.justify_center,
 					CommonStyle.relative,
 					baseStyle.checkbox,
-					getInteractiveStateStyle(interactiveState, value, themeContext.color),
+					// getInteractiveStateStyle(interactiveState, value, themeContext.color),
+					getInteractiveStateStyle(interactiveState, value),
 					style,
 				] }
 				ref={ viewRef }
@@ -244,12 +245,6 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	},
 )
 
-type InteractiveStateStyle =
-	{
-		borderColor: ThemeType.ColorToken,
-		backgroundColor?: ThemeType.ColorToken,
-	}
-
 const
 	size =
 		18,
@@ -276,78 +271,53 @@ const
 			},
 		}),
 
-	mapInteractiveStateStyle: Record<
-		CheckboxInputInteractiveState,
-		Record<
-			'true' | 'false',
-			InteractiveStateStyle
-		>
-	> =
-		{
-			normal: {
-				true: {
-					borderColor: 'icon_primary',
-					backgroundColor: 'icon_primary',
+	interactiveStyle =
+		StyleSheetColor.create<
+			Record<`${CheckboxInputInteractiveState}_${'true' | 'false'}`, ViewStyle>
+		>(color => {
+			return {
+				normal_false: {
+					borderColor: color.icon_primary,
 				},
-				false: {
-					borderColor: 'icon_primary',
+				normal_true: {
+					backgroundColor: color.icon_primary,
+					borderColor: color.icon_primary,
 				},
-			},
-			disabled: {
-				true: {
-					borderColor: 'icon_disabled',
-					backgroundColor: 'icon_disabled',
+				disabled_false: {
+					borderColor: color.icon_disabled,
 				},
-				false: {
-					borderColor: 'icon_disabled',
+				disabled_true: {
+					backgroundColor: color.icon_disabled,
+					borderColor: color.icon_disabled,
 				},
-			},
-			error: {
-				true: {
-					borderColor: 'support_error',
-					backgroundColor: 'icon_primary',
+				error_false: {
+					borderColor: color.support_error,
 				},
-				false: {
-					borderColor: 'support_error',
+				error_true: {
+					backgroundColor: color.icon_primary,
+					borderColor: color.support_error,
 				},
-			},
-			read_only: {
-				true: {
-					borderColor: 'icon_disabled',
+				read_only_false: {
+					borderColor: color.icon_disabled,
 				},
-				false: {
-					borderColor: 'icon_disabled',
+				read_only_true: {
+					borderColor: color.icon_disabled,
 				},
-			},
-			warning: {
-				true: {
-					borderColor: 'icon_primary',
-					backgroundColor: 'icon_primary',
+				warning_false: {
+					borderColor: color.icon_primary,
 				},
-				false: {
-					borderColor: 'icon_primary',
+				warning_true: {
+					backgroundColor: color.icon_primary,
+					borderColor: color.icon_primary,
 				},
-			},
-		}
+			}
+		})
 
 function getInteractiveStateStyle(
 	interactiveState: CheckboxInputInteractiveState,
 	value: boolean,
-	color: ThemeContext['color'],
 ) {
-	const
-		style =
-			mapInteractiveStateStyle[interactiveState][`${value}`],
-
-		parsedStyle: ViewStyle = {
-			borderColor: color[style.borderColor],
-		}
-
-	if(style.backgroundColor) {
-		parsedStyle.backgroundColor = color[style.backgroundColor]
-	}
-
-	return parsedStyle
+	return interactiveStyle[`${interactiveState}_${value}`]
 }
 
 function getIconColor(

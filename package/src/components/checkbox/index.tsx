@@ -1,7 +1,6 @@
 import {
 	forwardRef,
 	useCallback,
-	useContext,
 	useImperativeHandle,
 	useRef,
 } from 'react'
@@ -16,21 +15,17 @@ import {
 } from 'react-native'
 
 import {
-	SpacingConstant,
-} from '../../constants'
+	StyleSheet as StyleSheetColor,
+} from '../../_style-sheet'
 
 import {
-	ThemeContext,
-} from '../../contexts'
+	SpacingConstant,
+} from '../../constants'
 
 import {
 	CommonStyle,
 	FlexStyle,
 } from '../../styles'
-
-import type {
-	ThemeType,
-} from '../../types'
 
 import {
 	CheckboxInput,
@@ -108,9 +103,6 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 	) {
 
 		const
-			themeContext =
-				useContext(ThemeContext),
-
 			checkboxInputRef =
 				useRef<CheckboxInputRef>(null),
 
@@ -194,7 +186,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 						...formLabelProps?.textProps,
 						type: formLabelProps?.textProps?.type || 'body_compact_01',
 						style: [
-							getTextColorStyle(interactiveState, themeContext.color),
+							textColorStyle[interactiveState],
 							formLabelProps?.textProps?.style,
 						],
 					}}
@@ -223,23 +215,25 @@ const
 			},
 		}),
 
-	mapTextColor: Record<
-		CheckboxInputInteractiveState,
-		ThemeType.ColorToken
-	> =
-		{
-			normal: 'text_primary',
-			disabled: 'text_disabled',
-			error: 'text_primary',
-			read_only: 'text_primary',
-			warning: 'text_primary',
-		}
-
-function getTextColorStyle(
-	interactiveState: CheckboxInputInteractiveState,
-	color: ThemeContext['color'],
-): TextStyle {
-	return {
-		color: color[mapTextColor[interactiveState]],
-	}
-}
+	textColorStyle =
+		StyleSheetColor.create<
+			Record<CheckboxInputInteractiveState, TextStyle>
+		>(color => {
+			return {
+				normal: {
+					color: color.text_primary,
+				},
+				disabled: {
+					color: color.text_disabled,
+				},
+				error: {
+					color: color.text_primary,
+				},
+				read_only: {
+					color: color.text_primary,
+				},
+				warning: {
+					color: color.text_primary,
+				},
+			}
+		})
