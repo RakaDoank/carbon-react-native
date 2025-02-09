@@ -13,30 +13,35 @@ import {
 } from 'react-native'
 
 import {
-	AccordionContext,
+	Context,
 } from './_context'
+
 import type {
-	AccordionHeaderProps,
+	HeaderProps,
 } from './_header'
+
 import {
-	AccordionHeaderBorder,
+	HeaderBorder,
 } from './_header-border'
+
 import {
-	AccordionItem,
-	type AccordionItemProps,
-	type AccordionItemRef,
+	Item,
+	type ItemProps,
+	type ItemRef,
 } from './_item'
+
 import type {
 	AccordionSize,
-} from './size'
+} from './types'
+
 import {
 	MarginRightStyle,
 } from './_styles'
 
 export type {
-	AccordionHeaderProps,
-	AccordionItemProps,
-	AccordionItemRef,
+	HeaderProps as AccordionHeaderProps,
+	ItemProps as AccordionItemProps,
+	ItemRef as AccordionItemRef,
 	AccordionSize,
 }
 
@@ -97,7 +102,7 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 				onLayout={ handlerLayout }
 				ref={ forwardedRef }
 			>
-				<AccordionContext.Provider
+				<Context.Provider
 					value={{
 						size,
 						flushAlignment,
@@ -107,12 +112,12 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 					{ children }
 
 					{ !!children?.length && (
-						<AccordionHeaderBorder
+						<HeaderBorder
 							flushAlignment={ flushAlignment }
 							style={ baseStyle.lastAccordionHeaderBorder }
 						/>
 					) }
-				</AccordionContext.Provider>
+				</Context.Provider>
 			</View>
 		)
 
@@ -120,7 +125,7 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 )
 
 export const Accordion = Object.assign(Accordion_, {
-	Item: AccordionItem,
+	Item: Item,
 })
 
 const

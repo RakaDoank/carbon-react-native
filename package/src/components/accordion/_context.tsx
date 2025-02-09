@@ -7,13 +7,13 @@ import type {
 } from '../collapsible'
 
 import type {
-	AccordionHeaderProps,
+	HeaderProps,
 } from './_header'
 
-export interface AccordionContext {
-	size?: AccordionHeaderProps['size'],
-	flushAlignment?: AccordionHeaderProps['flushAlignment'],
+export interface Context {
+	size?: HeaderProps['size'],
+	flushAlignment?: HeaderProps['flushAlignment'],
 	collapsibleContentContainerStyle?: CollapsibleProps['contentContainerStyle'],
 }
 
-export const AccordionContext = createContext<AccordionContext>({})
+export const Context = createContext<Context>({})

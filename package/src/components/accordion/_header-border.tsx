@@ -20,7 +20,7 @@ import {
 	CommonStyle,
 } from '../../styles'
 
-export interface AccordionHeaderBorderProps {
+export interface HeaderBorderProps {
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
@@ -28,10 +28,10 @@ export interface AccordionHeaderBorderProps {
 	style?: ViewProps['style'],
 }
 
-export function AccordionHeaderBorder({
+export function HeaderBorder({
 	flushAlignment,
 	style: styleProp,
-}: AccordionHeaderBorderProps) {
+}: HeaderBorderProps) {
 
 	const
 		themeContext =

@@ -38,18 +38,18 @@ import {
 } from '../icon'
 
 import {
-	AccordionHeaderBorder,
+	HeaderBorder,
 } from './_header-border'
 
 import {
-	AccordionMotion,
+	Motion,
 } from './_motion'
 
 import type {
 	AccordionSize,
-} from './size'
+} from './types'
 
-export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'android_rippleEffectColor' | 'size' | 'text' | 'icon' | 'colorStateStyle'> {
+export interface HeaderProps extends Omit<ButtonColorProps, 'android_rippleEffectColor' | 'size' | 'text' | 'icon' | 'colorStateStyle'> {
 	size?: AccordionSize,
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
@@ -59,14 +59,14 @@ export interface AccordionHeaderProps extends Omit<ButtonColorProps, 'android_ri
 	text?: string,
 }
 
-export function AccordionHeader({
+export function Header({
 	size = 'medium',
 	open,
 	flushAlignment = false,
 	text,
 	style: styleProp,
 	...buttonProps
-}: AccordionHeaderProps) {
+}: HeaderProps) {
 
 	const
 		themeContext =
@@ -77,7 +77,7 @@ export function AccordionHeader({
 			style={ styleProp }
 		>
 			{ /** The Border Box */}
-			<AccordionHeaderBorder
+			<HeaderBorder
 				flushAlignment={ flushAlignment }
 			/>
 
@@ -195,13 +195,13 @@ function IconNode({
 				rotateZ.value =
 					withTiming(
 						180,
-						AccordionMotion.toOpen,
+						Motion.toOpen,
 					)
 			} else {
 				rotateZ.value =
 					withTiming(
 						0,
-						AccordionMotion.toClose,
+						Motion.toClose,
 					)
 			}
 		} else {

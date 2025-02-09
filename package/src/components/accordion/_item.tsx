@@ -23,27 +23,27 @@ import {
 } from '../collapsible'
 
 import {
-	AccordionContext,
+	Context,
 } from './_context'
 
 import {
-	AccordionHeader,
-	type AccordionHeaderProps,
+	Header,
+	type HeaderProps,
 } from './_header'
 
 import {
-	AccordionMotion,
+	Motion,
 } from './_motion'
 
-export interface AccordionItemProps extends ViewProps {
+export interface ItemProps extends ViewProps {
 	controlled?: boolean,
 	open?: boolean,
 	title?: string,
 	children?: React.ReactNode,
 	onChange?: (open: boolean) => void,
-	onPressHeader?: AccordionHeaderProps['onPress'],
+	onPressHeader?: HeaderProps['onPress'],
 	accordionHeaderProps?: Omit<
-		AccordionHeaderProps,
+		HeaderProps,
 		| 'open'
 		| 'size'
 		| 'text'
@@ -60,11 +60,11 @@ interface AccordionItemRefBase {
 	setOpen: (value: boolean | ((value: boolean) => boolean)) => void,
 }
 
-export interface AccordionItemRef extends View, AccordionItemRefBase {
+export interface ItemRef extends View, AccordionItemRefBase {
 }
 
-export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
-	function AccordionItem(
+export const Item = forwardRef<ItemRef, ItemProps>(
+	function Item(
 		{
 			controlled,
 			open: openProp,
@@ -81,7 +81,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 
 		const
 			accordionContext =
-				useContext(AccordionContext),
+				useContext(Context),
 
 			ref =
 				useRef({
@@ -98,7 +98,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 			open =
 				controlled ? !!openProp : openSelf,
 
-			pressHandler: NonNullable<AccordionHeaderProps['onPress']> =
+			pressHandler: NonNullable<HeaderProps['onPress']> =
 				useCallback(event => {
 					onPressHeader?.(event)
 					if(!controlled) {
@@ -149,7 +149,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 				{ ...props }
 				style={ styleProp }
 			>
-				<AccordionHeader
+				<Header
 					{ ...accordionHeaderProps }
 					open={ open }
 					size={ accordionContext.size }
@@ -159,7 +159,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
 				/>
 
 				<Collapsible
-					motion={ AccordionMotion }
+					motion={ Motion }
 					controlled
 					open={ open }
 					contentContainerStyle={ [

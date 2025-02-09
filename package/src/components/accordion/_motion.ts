@@ -10,7 +10,7 @@ import type {
 	CollapsibleProps,
 } from '../collapsible'
 
-export const AccordionMotion: NonNullable<CollapsibleProps['motion']> =
+export const Motion: NonNullable<CollapsibleProps['motion']> =
 	{
 		toOpen: {
 			duration: MotionConstant.Durations.fast_02,
