@@ -42,7 +42,7 @@ export interface ItemProps extends ViewProps {
 	children?: React.ReactNode,
 	onChange?: (open: boolean) => void,
 	onPressHeader?: HeaderProps['onPress'],
-	accordionHeaderProps?: Omit<
+	headerProps?: Omit<
 		HeaderProps,
 		| 'open'
 		| 'size'
@@ -73,7 +73,7 @@ export const Item = forwardRef<ItemRef, ItemProps>(
 			style: styleProp,
 			onChange,
 			onPressHeader,
-			accordionHeaderProps,
+			headerProps,
 			...props
 		},
 		forwardedRef,
@@ -150,7 +150,7 @@ export const Item = forwardRef<ItemRef, ItemProps>(
 				style={ styleProp }
 			>
 				<Header
-					{ ...accordionHeaderProps }
+					{ ...headerProps }
 					open={ open }
 					size={ accordionContext.size }
 					text={ title }
