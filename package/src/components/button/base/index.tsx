@@ -146,6 +146,7 @@ const
 				...FlexStyle.self_start,
 				...FlexStyle.flex_row,
 				...FlexStyle.justify_between,
+				overflow: 'hidden',
 				paddingLeft: SpacingConstant.spacing_05,
 			},
 			containerPR16: {
