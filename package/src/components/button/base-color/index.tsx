@@ -163,7 +163,7 @@ export function BaseColor({
 				},
 				android_ripple
 					? true
-					: globalConfigContext.android_buttonRippleEffect,
+					: android_ripple === null ? false : globalConfigContext.android_buttonRippleEffect,
 			)
 
 	return (
