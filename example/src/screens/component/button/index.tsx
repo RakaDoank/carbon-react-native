@@ -118,7 +118,12 @@ export function Button() {
 					..._play,
 					androidRippleEffect: !_play.androidRippleEffect,
 				}))
-			}, [])
+			}, []),
+
+		androidRippleEffect =
+			play.androidRippleEffect
+				? undefined // default
+				: null // disable
 
 	return (
 		<ScreenTemplate
@@ -184,7 +189,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
-						android_ripple={ play.androidRippleEffect ? undefined : null }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -194,6 +199,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -203,6 +209,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -212,6 +219,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -221,6 +229,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -229,6 +238,8 @@ export function Button() {
 						size={ play.size }
 						icon={ icon }
 						text={ play.text }
+						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -238,6 +249,7 @@ export function Button() {
 						icon={ icon }
 						text={ play.text }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 
@@ -246,6 +258,7 @@ export function Button() {
 						size={ play.size }
 						icon={ icon }
 						style={ play.stretch ? style.buttonStretch : undefined }
+						android_ripple={ androidRippleEffect }
 					/>
 				</Item>
 			</View>
