@@ -7,7 +7,6 @@
 		"code-check": "npm run type-check && npm run lint",
 		"create-package-symlink": "npm run ts-node-esm ./scripts/create-package-symlink/index.ts -- --destination",
 		"lint": "eslint . --fix",
-		"generate-color-token-type": "tsx ./scripts/generate-color-token-type/index.ts",
 		"release": "echo \"TODO: It will be determined later\"",
 		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
 		"ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register",
