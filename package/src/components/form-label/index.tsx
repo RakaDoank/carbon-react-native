@@ -61,6 +61,6 @@ const
 	baseStyle =
 		StyleSheet.create({
 			gap: {
-				gap: 8,
+				columnGap: 8,
 			},
 		})
