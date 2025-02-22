@@ -1,7 +1,6 @@
 import {
 	StyleSheet,
 	type ImageStyle,
-	type StyleProp,
 	type TextStyle,
 	type ViewStyle,
 } from 'react-native'
@@ -24,7 +23,7 @@ export function create<Styles extends Record<string, Style> = Record<string, Sty
 	fn: (
 		color: Record<ThemeType.ColorToken, ThemeType.ColorToken>,
 	) => Styles,
-): Record<keyof Styles, StyleProp<Styles[keyof Styles]>> {
+): Styles {
 	const
 		styleRef =
 			fn(colorTokenStrings),
@@ -78,32 +77,32 @@ export function create<Styles extends Record<string, Style> = Record<string, Sty
 			StyleSheet.create<Record<string, Style>>(baseStyle),
 
 		coloredStyleSheet =
-			StyleSheet.create<Record<string, Style>>(coloredStyle),
+			StyleSheet.create<Record<string, Style>>(coloredStyle)
 
-		obj =
-			{} as Record<keyof Styles, StyleProp<Styles[keyof Styles]>>
+	return Object.keys(styleRef)
+		.reduce<Styles>((
+			acc,
+			styleName,
+		) => {
+			Object.defineProperty(acc, styleName, {
+				get() {
+					const colorScheme = ColorSchemeGlobal.get()
 
-	Object.keys(styleRef).forEach(styleName => {
-		Object.defineProperty(obj, styleName, {
-			get() {
-				const colorScheme = ColorSchemeGlobal.get()
+					if(colorScheme == 'gray_10') {
+						return [
+							baseStyleSheet[styleName],
+							coloredStyleSheet[`${prefixColorStyleName.gray_10}${styleName}`],
+						]
+					}
 
-				if(colorScheme == 'gray_10') {
 					return [
-						baseStyleSheet[styleName],
-						coloredStyleSheet[`${prefixColorStyleName.gray_10}${styleName}`],
+						baseStyle[styleName],
+						coloredStyleSheet[`${prefixColorStyleName.gray_100}${styleName}`],
 					]
-				}
-
-				return [
-					baseStyle[styleName],
-					coloredStyleSheet[`${prefixColorStyleName.gray_100}${styleName}`],
-				]
-			},
-		})
-	})
-
-	return obj
+				},
+			})
+			return acc
+		}, {} as never)
 }
 
 const
