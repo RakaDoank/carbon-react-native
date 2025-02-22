@@ -195,6 +195,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					controlled={ controlled }
 					value={ value }
 					onChange={ onChange }
+					onPress={ switchProps?.onPress ?? pressableProps?.onPress }
 					style={ [
 						baseStyle.switch,
 						switchProps?.style,
