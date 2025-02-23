@@ -88,6 +88,7 @@ pnpm-lock.yaml
 
 # Script: setup-package-registry
 /package/assets
+/package/LICENSE
 /package/README.md
 
 # Docusaurus
