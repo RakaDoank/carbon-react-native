@@ -2,33 +2,41 @@
   Carbon for React Native
 </h1>
 
-> This library is completely rewritten and not intended to be the replacement of the official [carbon-react-native](https://github.com/carbon-design-system/carbon-react-native). It is still in development and far from publish released.
+> This library is completely rewritten and not intended to be the replacement of the official [carbon-react-native](https://github.com/carbon-design-system/carbon-react-native)
+
+> ⚠️ It is still in development
 
 Build React Native apps with component and shared patterns using Carbon.
 
 ## Documentation
 Documentation available with [docusaurus](https://docusaurus.io/) project on this repository under [docs](https://github.com/RakaDoank/carbon-react-native/tree/main/docs) directory. It's not completed yet, even the library, but it will be documented enough, as soon as the library is ready to use. You can start the docs web project with `npm run start` command in the [docs](https://github.com/RakaDoank/carbon-react-native/tree/main/docs) directory.
 
+You can also see the [example](https://github.com/RakaDoank/carbon-react-native/tree/main/example) app.
+
 ## Compatibility
 This library is just a pure JavaScript usage in React Native and only depends on the primitive React Native components with [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-svg](https://github.com/software-mansion/react-native-svg). It should compatible on all platforms available that can be built with React Native, but i cannot sure that. For the web only, [Carbon React](https://react.carbondesignsystem.com) is already there and do its best and solve a lot of accessibility feature.
 
 ## Installation
 This project is not released yet on npm registry. You have to install it manually,
-1. Clone or Download this repository
-2. Install [pnpm](https://github.com/pnpm/pnpm) package manager if it doesn't exist on your system, and do `pnpm install` in this repoistory
-3. Inside this project, run this command to create actual npm package
-```
-npm run create-package-symlink ../to/your/react-native-project
-```
-Change the path argument, it's relative from this repository lives
 
-5. In your project directory, install the library by this command
-  ```
-  npm install --save ./.carbon-react-native
-  ```
-Ensure it is the correct path.
+With npm
+```
+npm install @audira/carbon-react-native
+```
 
-6. Install these dependencies on your React Native project, (skip one of these library if already installed)
+pnpm
+```
+pnpm install @audira/carbon-react-native
+```
+
+yarn
+```
+yarn add @audira/carbon-react-native
+```
+
+### Peer Dependencies
+
+Install these dependencies on your React Native project, (skip one of these library if already installed)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
 - [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
@@ -38,7 +46,7 @@ Ensure it is the correct path.
 ```js
 module.exports = {
   assets: [
-    './node_modules/@rakadoank/carbon-react-native/assets/fonts/',
+    './node_modules/@audira/carbon-react-native/assets/fonts/',
   ],
 }
 ```
@@ -49,7 +57,7 @@ This library depends on React Context to use the color tokens correctly based on
 // Somewhere like in your App.tsx file
 import {
   CarbonReactNative,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function App() {
   return (
