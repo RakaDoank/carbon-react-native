@@ -22,6 +22,10 @@ const
 				path: node_path.join(root, 'assets'),
 			},
 			{
+				name: 'LICENSE',
+				path: node_path.join(root, 'LICENSE'),
+			},
+			{
 				name: 'README.md',
 				path: node_path.join(root, 'README.md'),
 			},
@@ -42,6 +46,8 @@ try {
 			},
 		)
 	})
+
+	console.info('/scripts/setup-package-registry :: Package has been packed as a registry successfully')
 } catch(e) {
 	throw new Error(e instanceof Error ? e.message : 'Unknown error')
 }
