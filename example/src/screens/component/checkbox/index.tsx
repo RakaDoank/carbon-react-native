@@ -102,9 +102,6 @@ export function Checkbox() {
 					selected[index] = !selected[index]
 					return {
 						..._play,
-						...(index === 1 && {
-							indeterminate1: false,
-						}),
 						selected,
 					}
 				})
