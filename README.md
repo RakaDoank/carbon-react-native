@@ -17,9 +17,9 @@ You can also see the [example](https://github.com/RakaDoank/carbon-react-native/
 This library is just a pure JavaScript usage in React Native and only depends on the primitive React Native components with [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-svg](https://github.com/software-mansion/react-native-svg). It should compatible on all platforms available that can be built with React Native, but i cannot sure that. For the web only, [Carbon React](https://react.carbondesignsystem.com) is already there and do its best and solve a lot of accessibility feature.
 
 ## Installation
-This project is not released yet on npm registry. You have to install it manually,
+Install the library to your project
 
-With npm
+with npm
 ```
 npm install @audira/carbon-react-native
 ```
