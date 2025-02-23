@@ -28,15 +28,18 @@ const
 		]
 try {
 	additionalSources.forEach(src => {
-		const srcPath = node_path.join(packagePath, src.name)
+		const destPath = node_path.join(packagePath, src.name)
 
-		if(node_fs.existsSync(srcPath)) {
-			node_fs.rmSync(srcPath, { recursive: true })
+		if(node_fs.existsSync(destPath)) {
+			node_fs.rmSync(destPath, { recursive: true })
 		}
 
-		node_fs.symlinkSync(
+		node_fs.cpSync(
 			src.path,
-			node_path.join(packagePath, src.name),
+			destPath,
+			{
+				recursive: true,
+			},
 		)
 	})
 } catch(e) {
