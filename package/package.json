@@ -1,6 +1,6 @@
 {
 	"name": "@audira/carbon-react-native",
-	"version": "0.0.1-alpha.3",
+	"version": "0.0.1-alpha.4",
 	"type": "module",
 	"scripts": {
 		"prepare": "bob build"
@@ -34,8 +34,7 @@
 				"types": "./lib/typescript/commonjs/src/index.d.ts",
 				"react-native": "./lib/commonjs/index.native.js",
 				"default": "./lib/commonjs/index.js"
-			},
-			"default": "./src/index.tsx"
+			}
 		}
 	},
 	"files": [
@@ -47,6 +46,17 @@
 		"!**/__fixtures__",
 		"!**/__mocks__",
 		"!**/.*"
+	],
+	"keywords": [
+		"carbon-react-native",
+		"audira-carbon-react-native",
+		"carbon-components",
+		"react-native",
+		"android",
+		"ios",
+		"windows",
+		"macos",
+		"web"
 	],
 	"react-native-builder-bob": {
 		"source": "src",
