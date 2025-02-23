@@ -1,5 +1,5 @@
 {
-	"name": "@raka/carbon-react-native",
+	"name": "@audira/carbon-react-native",
 	"version": "0.0.1-prealpha.1",
 	"private": true,
 	"type": "module",
@@ -7,6 +7,7 @@
 		"code-check": "npm run type-check && npm run lint",
 		"create-package-symlink": "npm run ts-node-esm ./scripts/create-package-symlink/index.ts -- --destination",
 		"lint": "eslint . --fix",
+		"publish-package": "npm run setup-package-registry && pnpm publish --filter @audira/carbon-react-native --access public",
 		"release": "echo \"TODO: It will be determined later\"",
 		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
 		"ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register",
