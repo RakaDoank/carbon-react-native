@@ -114,7 +114,7 @@ const
 		[
 			{
 				text: 'Accordion',
-				screenName: 'home',
+				screenName: 'accordion',
 			},
 			{
 				text: 'Button',

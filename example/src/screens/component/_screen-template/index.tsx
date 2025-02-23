@@ -1,4 +1,5 @@
 import {
+	useContext,
 	useMemo,
 } from 'react'
 
@@ -13,6 +14,7 @@ import {
 	FlexStyle,
 	SpacingConstant,
 	StyleSheet,
+	ThemeContext,
 } from '@audira/carbon-react-native'
 
 import {
@@ -44,6 +46,8 @@ function Component({
 	...props
 }: ScreenTemplateProps) {
 
+	useContext(ThemeContext)
+
 	const
 		windowDimensions =
 			useWindowDimensions(),
@@ -67,6 +71,7 @@ function Component({
 		>
 			<ScrollView
 				style={ [
+					FlexStyle.flex_1,
 					style.scrollViewContent,
 				] }
 				contentContainerStyle={ style.scrollViewContentContainer }
@@ -77,7 +82,7 @@ function Component({
 			<PlaygroundController title={ title }
 				style={ [
 					FlexStyle.flex_initial,
-					!isLargeDisplay ? style.playgroundController_inCol : style.playgroundController_inRow,
+					style.playgroundController,
 				] }
 			>
 				{ playgroundNode }
@@ -101,10 +106,7 @@ const style = StyleSheet.create(color => ({
 	scrollViewContentContainer: {
 		paddingVertical: SpacingConstant.spacing_05,
 	},
-	playgroundController_inCol: {
-		height: 360,
-	},
-	playgroundController_inRow: {
-		width: 480,
+	playgroundController: {
+		flexBasis: 400,
 	},
 }))
