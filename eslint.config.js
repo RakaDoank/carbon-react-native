@@ -14,18 +14,58 @@ import DocusuarusEslintPlugin from '@docusaurus/eslint-plugin'
 
 import Globals from 'globals'
 
+import EslintPluginImportX from 'eslint-plugin-import-x'
+
+import {
+	createTypeScriptImportResolver,
+} from 'eslint-import-resolver-typescript'
+
 export default [
 
 	{
 		ignores: [
 			'**/*.md',
-			'docs/.docusaurus/*',
-			'**/dist/*',
-			'**/node_modules/*',
+			'**/*.mdx',
+			'docs/.docusaurus/',
+			'**/dist/',
+			'**/node_modules/',
 		],
 	},
 
 	EslintJs.configs.recommended,
+	EslintPluginImportX.flatConfigs.recommended,
+
+	{
+		ignores: [
+			'**/node_modules/**/*.js',
+		],
+		settings: {
+			'import-x/resolver-next': [
+				createTypeScriptImportResolver({
+					alwaysTryTypes: true,
+					project: [
+						'docs/tsconfig.json',
+						'example/tsconfig.json',
+						'package/tsconfig.json',
+					],
+				}),
+			],
+		},
+	},
+
+	{
+		files: [
+			'package/**/*.{js,jsx}',
+			'example/**/*.{js,jsx}',
+		],
+		settings: {
+			'import-x/resolver': {
+				node: {
+					extensions: ['.js', '.web.js', '.ios.js', '.android.js'],
+				},
+			},
+		},
+	},
 
 	{
 		plugins: {
@@ -36,6 +76,11 @@ export default [
 			'eol-last': 'error',
 			'semi': 'off',
 			'yoda': 'error',
+
+			'import-x/no-cycle': 'error',
+			'import-x/no-dynamic-require': 'error',
+			'import-x/no-named-as-default': 'off',
+			'import-x/no-named-as-default-member': 'off',
 
 			'@stylistic/block-spacing': 'error',
 			'@stylistic/brace-style': [
@@ -161,17 +206,6 @@ export default [
 		...conf,
 		files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
 	})),
-
-	{
-		languageOptions: {
-			parserOptions: {
-				projectService: true,
-				tsconfigRootDir: import.meta.dirname,
-				EXPERIMENTAL_useProjectService: true,
-			},
-		},
-	},
-
 	{
 		files: [
 			'**/*.ts',
@@ -195,6 +229,11 @@ export default [
 			'example/**/*.{js,jsx,ts,tsx}',
 			'package/**/*.{js,jsx,ts,tsx}',
 		],
+		settings: {
+			react: {
+				version: 'detect',
+			},
+		},
 		plugins: {
 			...ReactEslintPlugin.configs.flat['jsx-runtime'].plugins,
 			'react-hooks': fixupPluginRules(ReactHooksEslintPlugin),
@@ -238,6 +277,17 @@ export default [
 		files: ['scripts/**/*.js'],
 		languageOptions: {
 			globals: Globals.node,
+		},
+	},
+
+	{
+		languageOptions: {
+			ecmaVersion: 2020,
+			parserOptions: {
+				projectService: true,
+				tsconfigRootDir: import.meta.dirname,
+				EXPERIMENTAL_useProjectService: true,
+			},
 		},
 	},
 
