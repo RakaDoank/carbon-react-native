@@ -1,5 +1,6 @@
 import {
 	useCallback,
+	useContext,
 	useState,
 } from 'react'
 
@@ -10,6 +11,7 @@ import {
 import {
 	CheckboxGroup,
 	SpacingConstant,
+	ThemeContext,
 	type CheckboxGroupProps,
 } from '@audira/carbon-react-native'
 
@@ -20,6 +22,8 @@ import {
 } from '../_screen-template'
 
 export function Checkbox() {
+
+	useContext(ThemeContext)
 
 	const
 		[play, setPlay] =
