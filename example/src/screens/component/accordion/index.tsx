@@ -13,6 +13,7 @@ import {
 	Button,
 	SpacingConstant,
 	FlexStyle,
+	type AccordionSize,
 } from '@audira/carbon-react-native'
 
 import {
@@ -21,6 +22,7 @@ import {
 
 import {
 	ScreenTemplate,
+	type PlaygroundEnumProps,
 } from '../_screen-template'
 
 import {
@@ -35,10 +37,12 @@ export function Accordion() {
 				title: [string, string, string],
 				flushAlignment: boolean,
 				open: [boolean, boolean, boolean],
+				size: AccordionSize,
 			}>({
 				title: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur adipiscing elit'],
 				flushAlignment: false,
 				open: [false, false, false],
+				size: 'medium',
 			}),
 
 		flushAlignmentPlayHandler =
@@ -46,6 +50,14 @@ export function Accordion() {
 				setPlay(_play => ({
 					..._play,
 					flushAlignment: !_play.flushAlignment,
+				}))
+			}, []),
+
+		sizePlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+			useCallback(value => {
+				setPlay(_play => ({
+					..._play,
+					size: value as AccordionSize,
 				}))
 			}, []),
 
@@ -119,6 +131,16 @@ export function Accordion() {
 					value={ play.flushAlignment }
 					onPress={ flushAlignmentPlayHandler }
 				/>
+
+				<ScreenTemplate.PlaygroundEnum
+					label="Size"
+					selectedValue={ play.size }
+					data={ dataPlaygroundSize.map(size => ({
+						...size,
+						onPress: sizePlayHandler,
+					})) }
+				/>
+
 				<ScreenTemplate.PlaygroundText
 					label="Title 1st Item"
 					value={ play.title[0] }
@@ -138,6 +160,7 @@ export function Accordion() {
 		>
 			<CAccordion
 				flushAlignment={ play.flushAlignment }
+				size={ play.size }
 			>
 				<CAccordion.Item
 					title={ play.title[0] }
@@ -178,4 +201,20 @@ const
 			br: {
 				marginBottom: SpacingConstant.spacing_05,
 			},
-		})
+		}),
+
+	dataPlaygroundSize: Record<'label' | 'value', AccordionSize>[] =
+		[
+			{
+				label: 'small',
+				value: 'small',
+			},
+			{
+				label: 'medium',
+				value: 'medium',
+			},
+			{
+				label: 'large',
+				value: 'large',
+			},
+		]
