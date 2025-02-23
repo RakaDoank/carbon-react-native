@@ -30,8 +30,12 @@ export function Navigation() {
 					component={ HomeScreen }
 				/>
 				<Stack.Screen
-					name="accordion"
+					name="component_accordion"
 					component={ ComponentScreen.Accordion }
+				/>
+				<Stack.Screen
+					name="component_checkbox"
+					component={ ComponentScreen.Checkbox }
 				/>
 				<Stack.Screen
 					name="component_button"

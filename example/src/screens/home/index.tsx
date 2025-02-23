@@ -114,7 +114,7 @@ const
 		[
 			{
 				text: 'Accordion',
-				screenName: 'accordion',
+				screenName: 'component_accordion',
 			},
 			{
 				text: 'Button',
@@ -122,7 +122,7 @@ const
 			},
 			{
 				text: 'Checkbox',
-				screenName: 'home',
+				screenName: 'component_checkbox',
 			},
 			{
 				text: 'Icon',
