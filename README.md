@@ -42,7 +42,8 @@ Install these dependencies on your React Native project, (skip one of these libr
 - [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
 - [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
 
-7. Install the `IBM Plex Sans` font to your project with `react-native.config.js` file (create it on your root project directory if doesn't exist)
+### Font Installation
+Install the `IBM Plex Sans` font to your project with [react-native-asset](https://www.npmjs.com/package/react-native-asset). Update your `react-native.config.js` file (create it on your root project directory if doesn't exist)
 ```js
 module.exports = {
   assets: [
@@ -50,6 +51,7 @@ module.exports = {
   ],
 }
 ```
+Then, run `npx react-native-asset` to link the fonts
 
 ## Initialize
 This library depends on React Context to use the color tokens correctly based on the current color scheme. You have to wrap your whole React App once with `<CarbonReactNative>`
@@ -74,7 +76,7 @@ Not all components are available yet, but you can test one of this library's com
 ```tsx
 import {
   Button,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 import AddIcon from '@carbon/icons/es/add/20'
 
@@ -99,7 +101,7 @@ import {
 import {
   Text,
   ThemeContext,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function YourReactComponent() {
   const themeContext = useContext(ThemeContext)
@@ -123,7 +125,7 @@ import {
 
 import {
   SpacingConstant,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function YourReactComponent() {
   return (
@@ -151,7 +153,7 @@ If you want override the colorScheme, as an example you only want to use the `gr
 ```tsx
 import {
   CarbonReactNative,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function App() {
   return (
@@ -169,7 +171,7 @@ Not recommended to override the color token that are made by Carbon, but you can
 import {
   CarbonReactNative,
   ColorConstant,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function App() {
   return (
@@ -197,7 +199,7 @@ import {
   CarbonReactNative,
   ColorHelper,
   type ThemeType,
-} from '@rakadoank/carbon-react-native'
+} from '@audira/carbon-react-native'
 
 export default function App() {
   const
