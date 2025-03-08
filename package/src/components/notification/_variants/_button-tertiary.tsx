@@ -1,4 +1,8 @@
 import {
+	useContext,
+} from 'react'
+
+import {
 	StyleSheet,
 } from 'react-native'
 
@@ -7,9 +11,9 @@ import {
 } from '../../../constants'
 
 import {
-	ThemeContextProvider,
-	type ThemeContextProviderProps,
-} from '../../../contexts/theme/provider'
+	ThemeProvider,
+	type ThemeProviderProps,
+} from '../../../providers'
 
 import {
 	Tertiary,
@@ -20,22 +24,26 @@ import type {
 	NotificationColor,
 } from '../types'
 
+import {
+	VariantContext,
+} from '../_variant-context'
+
 export interface ButtonTertiaryProps extends TertiaryProps {
-	color: NotificationColor,
 }
 
 export function ButtonTertiary({
-	color,
 	size = 'small',
 	style,
 	...props
 }: ButtonTertiaryProps) {
 
+	const variantContext = useContext(VariantContext)
+
 	return (
 		/**
 		 * I don't know, is this a bad idea to nest the provider?
 		 */
-		<ThemeContextProvider colorScheme={ mapColorScheme[color] }>
+		<ThemeProvider colorScheme={ mapColorScheme[variantContext.color] }>
 			<Tertiary
 				{ ...props }
 				size={ size }
@@ -44,7 +52,7 @@ export function ButtonTertiary({
 					style,
 				] }
 			/>
-		</ThemeContextProvider>
+		</ThemeProvider>
 	)
 
 }
@@ -58,7 +66,7 @@ const
 			},
 		}),
 
-	mapColorScheme: Record<NotificationColor, ThemeContextProviderProps['colorScheme']> =
+	mapColorScheme: Record<NotificationColor, ThemeProviderProps['colorScheme']> =
 		{
 			low_contrast: 'gray_10',
 			high_contrast: 'gray_100',

@@ -1,6 +1,11 @@
 import {
 	createContext,
+	useContext,
 } from 'react'
+
+import {
+	GlobalConfigContext,
+} from '../../contexts'
 
 import type {
 	NotificationColor,
@@ -18,14 +23,18 @@ export function VariantContextProvider({
 	color,
 	children,
 }: {
-	color: NotificationColor,
+	color?: NotificationColor,
 	children?: React.ReactNode,
 }) {
+
+	const
+		globalConfigContext =
+			useContext(GlobalConfigContext)
 
 	return (
 		<VariantContext.Provider
 			value={{
-				color,
+				color: color ?? globalConfigContext.notificationColor,
 			}}
 		>
 			{ children }

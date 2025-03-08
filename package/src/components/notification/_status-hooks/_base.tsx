@@ -3,6 +3,7 @@ import {
 } from 'react'
 
 import {
+	GlobalConfigContext,
 	ThemeContext,
 } from '../../../contexts'
 
@@ -44,7 +45,7 @@ export interface UseBaseData {
 }
 
 export function useBase({
-	color = 'high_contrast',
+	color: colorProp,
 	backgroundColor,
 	borderColor,
 	leftBarColor,
@@ -55,6 +56,12 @@ export function useBase({
 }: UseBaseProps): UseBaseData {
 
 	const
+		globalConfigContext =
+			useContext(GlobalConfigContext),
+
+		color =
+			colorProp || globalConfigContext.notificationColor,
+
 		themeContext =
 			useContext(ThemeContext),
 

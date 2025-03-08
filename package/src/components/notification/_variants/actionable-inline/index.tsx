@@ -63,7 +63,7 @@ export interface ActionableInlineVariantRef extends BaseRef {
 export const ActionableInlineVariant = forwardRef<ActionableInlineVariantRef, ActionableInlineVariantProps>(
 	function ActionableInlineVariant(
 		{
-			color = 'high_contrast',
+			color,
 			icon,
 			subtitle,
 			subtitleStyle,
@@ -91,7 +91,6 @@ export const ActionableInlineVariant = forwardRef<ActionableInlineVariantRef, Ac
 						beforeButtonClose: buttonProps ? (
 							<ButtonGhost
 								{ ...buttonProps }
-								color={ color }
 							/>
 						) : undefined,
 					}}

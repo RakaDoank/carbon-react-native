@@ -63,7 +63,7 @@ export interface ActionableVariantRef extends BaseRef {
 export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVariantProps>(
 	function ActionableVariant(
 		{
-			color = 'high_contrast',
+			color,
 			icon,
 			subtitle,
 			subtitleStyle,
@@ -91,7 +91,6 @@ export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVari
 						beforeContentContainerEnd: buttonProps ? (
 							<ButtonTertiary
 								{ ...buttonProps }
-								color={ color }
 							/>
 						) : undefined,
 					}}

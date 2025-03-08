@@ -42,7 +42,7 @@ export interface CalloutVariantRef extends BaseRef {
 export const CalloutVariant = forwardRef<CalloutVariantRef, CalloutVariantProps>(
 	function CalloutVariant(
 		{
-			color = 'high_contrast',
+			color,
 			icon,
 			subtitle,
 			subtitleStyle,

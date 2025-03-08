@@ -54,7 +54,7 @@ export interface ToastVariantRef extends BaseRef {
 export const ToastVariant = forwardRef<ToastVariantRef, ToastVariantProps>(
 	function ToastVariant(
 		{
-			color = 'high_contrast',
+			color,
 			icon,
 			timestamp,
 			subtitle,
