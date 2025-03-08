@@ -170,12 +170,14 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						>
 							{ !inline ? (<>
 
-								<Text
-									type="heading_compact_01"
-									style={ titleStyle }
-								>
-									{ title }
-								</Text>
+								{ !!title && (
+									<Text
+										type="heading_compact_01"
+										style={ titleStyle }
+									>
+										{ title }
+									</Text>
+								) }
 
 								{ body }
 
