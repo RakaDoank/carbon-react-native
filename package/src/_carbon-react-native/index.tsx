@@ -1,16 +1,14 @@
 import type {
 	GlobalConfigContext,
-} from '../contexts/global-config/context'
-import {
-	GlobalConfigContextProvider,
-} from '../contexts/global-config/provider'
+} from '../contexts'
 
 import {
-	ThemeContextProvider,
-	type ThemeContextProviderProps,
-} from '../contexts/theme/provider'
+	GlobalConfigProvider,
+	ThemeProvider,
+	type ThemeProviderProps,
+} from '../providers'
 
-export interface CarbonReactNativeProps extends ThemeContextProviderProps {
+export interface CarbonReactNativeProps extends ThemeProviderProps {
 	globalConfig?: GlobalConfigContext,
 }
 
@@ -22,16 +20,16 @@ export function CarbonReactNative({
 }: CarbonReactNativeProps) {
 
 	return (
-		<GlobalConfigContextProvider
+		<GlobalConfigProvider
 			{ ...globalConfig }
 		>
-			<ThemeContextProvider
+			<ThemeProvider
 				colorScheme={ colorScheme }
 				overrideColor={ overrideColor }
 			>
 				{ children }
-			</ThemeContextProvider>
-		</GlobalConfigContextProvider>
+			</ThemeProvider>
+		</GlobalConfigProvider>
 	)
 
 }
