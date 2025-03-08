@@ -67,7 +67,6 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 				useCallback((ref: ComponentWrapperRef | null, index: number) => {
 					if(ref && !componentWrappersRef.current[index]) {
 						componentWrappersRef.current[index] = ref
-						console.log('setter ref ', componentWrappersRef.current)
 					}
 				}, []),
 
