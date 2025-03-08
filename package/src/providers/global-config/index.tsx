@@ -1,22 +1,24 @@
 import {
 	GlobalConfigContext,
-} from '../../contexts/global-config'
+} from '../../contexts'
 
-export interface GlobalConfigProviderProps extends Partial<GlobalConfigContext> {
+export interface GlobalConfigProps extends Partial<GlobalConfigContext> {
 	children?: React.ReactNode,
 }
 
-export function GlobalConfigProvider({
+export function GlobalConfig({
 	android_buttonRippleEffect = true,
 	notificationColor = 'high_contrast',
+	toastDuration = 5000,
 	children,
-}: GlobalConfigProviderProps) {
+}: GlobalConfigProps) {
 
 	return (
 		<GlobalConfigContext.Provider
 			value={{
 				android_buttonRippleEffect,
 				notificationColor,
+				toastDuration,
 			}}
 		>
 			{ children }

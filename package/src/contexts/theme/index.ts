@@ -14,13 +14,13 @@ import type {
 	ThemeType,
 } from '../../types'
 
-export interface ThemeContext {
+export interface Theme {
 	colorScheme: ThemeType.ColorScheme,
 	color: Record<ThemeType.ColorToken, string>,
 }
 
-export const ThemeContext =
-	createContext<ThemeContext>({
+export const Theme =
+	createContext<Theme>({
 		colorScheme: ColorSchemeGlobal.get(),
 		color: ColorHelper.getColorToken(ColorSchemeGlobal.get()),
 	})

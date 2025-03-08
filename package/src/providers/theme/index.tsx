@@ -12,9 +12,9 @@ import {
 
 import {
 	ThemeContext,
-} from '../../contexts/theme'
+} from '../../contexts'
 
-export interface ThemeProviderProps {
+export interface ThemeProps {
 	colorScheme?: ThemeContext['colorScheme'],
 	/**
 	 * You can override all color by your own. `colorScheme` probably means nothing due to this prop.  
@@ -23,11 +23,11 @@ export interface ThemeProviderProps {
 	children?: React.ReactNode,
 }
 
-export function ThemeProvider({
+export function Theme({
 	colorScheme: colorSchemeProp,
 	overrideColor,
 	children,
-}: ThemeProviderProps): React.JSX.Element {
+}: ThemeProps): React.JSX.Element {
 
 	const
 		colorSchemeUse =
