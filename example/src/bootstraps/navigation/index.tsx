@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/native-stack'
 
 import {
-	ComponentScreen,
+	ComponentsScreen,
 	HomeScreen,
 } from '@/screens'
 
@@ -31,15 +31,19 @@ export function Navigation() {
 				/>
 				<Stack.Screen
 					name="component_accordion"
-					component={ ComponentScreen.Accordion }
+					component={ ComponentsScreen.Accordion }
 				/>
 				<Stack.Screen
 					name="component_checkbox"
-					component={ ComponentScreen.Checkbox }
+					component={ ComponentsScreen.Checkbox }
 				/>
 				<Stack.Screen
 					name="component_button"
-					component={ ComponentScreen.Button }
+					component={ ComponentsScreen.Button }
+				/>
+				<Stack.Screen
+					name="component_radio_button"
+					component={ ComponentsScreen.RadioButton }
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

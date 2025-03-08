@@ -22,18 +22,18 @@ import {
 } from './playground-controller'
 
 export type {
-	BooleanProps as PlaygroundBooleanProps,
+	BooleanProps as ScreenPlayTemplateBooleanProps,
 } from './playground-controller/boolean'
 
 export type {
-	EnumProps as PlaygroundEnumProps,
+	EnumProps as ScreenPlayTemplateEnumProps,
 } from './playground-controller/enum'
 
 export type {
-	TextProps as PlaygroundTextProps,
+	TextProps as ScreenPlayTemplateTextProps,
 } from './playground-controller/text'
 
-export interface ScreenTemplateProps extends ViewProps {
+export interface ScreenPlayTemplateProps extends ViewProps {
 	title: string,
 	playgroundNode?: React.ReactNode,
 }
@@ -44,7 +44,7 @@ function Component({
 	playgroundNode,
 	style: styleProp,
 	...props
-}: ScreenTemplateProps) {
+}: ScreenPlayTemplateProps) {
 
 	useContext(ThemeContext)
 
@@ -92,10 +92,10 @@ function Component({
 
 }
 
-export const ScreenTemplate = Object.assign(Component, {
-	PlaygroundBoolean: PlaygroundController.Boolean,
-	PlaygroundEnum: PlaygroundController.Enum,
-	PlaygroundText: PlaygroundController.Text,
+export const ScreenPlayTemplate = Object.assign(Component, {
+	PlayBoolean: PlaygroundController.Boolean,
+	PlayEnum: PlaygroundController.Enum,
+	PlayText: PlaygroundController.Text,
 })
 
 const style = StyleSheet.create(color => ({

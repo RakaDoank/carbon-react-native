@@ -18,12 +18,9 @@ import {
 
 import {
 	CText,
+	ScreenPlayTemplate,
+	type ScreenPlayTemplateEnumProps,
 } from '@/components'
-
-import {
-	ScreenTemplate,
-	type PlaygroundEnumProps,
-} from '../_screen-template'
 
 import {
 	Item2nd,
@@ -53,7 +50,7 @@ export function Accordion() {
 				}))
 			}, []),
 
-		sizePlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+		sizePlayHandler: NonNullable<ScreenPlayTemplateEnumProps['data'][0]['onPress']> =
 			useCallback(value => {
 				setPlay(_play => ({
 					..._play,
@@ -102,7 +99,7 @@ export function Accordion() {
 			}, [])
 
 	return (
-		<ScreenTemplate
+		<ScreenPlayTemplate
 			title="Accordion"
 			playgroundNode={ (<>
 				<View
@@ -126,13 +123,13 @@ export function Accordion() {
 					/>
 				</View>
 
-				<ScreenTemplate.PlaygroundBoolean
+				<ScreenPlayTemplate.PlayBoolean
 					label="Flush Alignment"
 					value={ play.flushAlignment }
 					onPress={ flushAlignmentPlayHandler }
 				/>
 
-				<ScreenTemplate.PlaygroundEnum
+				<ScreenPlayTemplate.PlayEnum
 					label="Size"
 					selectedValue={ play.size }
 					data={ dataPlaygroundSize.map(size => ({
@@ -141,17 +138,17 @@ export function Accordion() {
 					})) }
 				/>
 
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Title 1st Item"
 					value={ play.title[0] }
 					onSubmit={ title => titlePlayHandler(title, 0) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Title 2nd Item"
 					value={ play.title[1] }
 					onSubmit={ title => titlePlayHandler(title, 1) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Title 3rd Item"
 					value={ play.title[2] }
 					onSubmit={ title => titlePlayHandler(title, 2) }
@@ -190,7 +187,7 @@ export function Accordion() {
 					</CText>
 				</CAccordion.Item>
 			</CAccordion>
-		</ScreenTemplate>
+		</ScreenPlayTemplate>
 	)
 
 }

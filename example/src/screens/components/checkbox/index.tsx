@@ -16,10 +16,10 @@ import {
 } from '@audira/carbon-react-native'
 
 import {
-	ScreenTemplate,
-	type PlaygroundEnumProps,
-	type PlaygroundTextProps,
-} from '../_screen-template'
+	ScreenPlayTemplate,
+	type ScreenPlayTemplateEnumProps,
+	type ScreenPlayTemplateTextProps,
+} from '@/components'
 
 export function Checkbox() {
 
@@ -45,7 +45,7 @@ export function Checkbox() {
 				helperTextMode: 'normal',
 			}),
 
-		orientationPlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+		orientationPlayHandler: NonNullable<ScreenPlayTemplateEnumProps['data'][0]['onPress']> =
 			useCallback(value => {
 				setPlay(_play => ({
 					..._play,
@@ -53,7 +53,7 @@ export function Checkbox() {
 				}))
 			}, []),
 
-		legendPlayHandler: NonNullable<PlaygroundTextProps['onSubmit']> =
+		legendPlayHandler: NonNullable<ScreenPlayTemplateTextProps['onSubmit']> =
 			useCallback(legend => {
 				setPlay(_play => ({
 					..._play,
@@ -61,7 +61,7 @@ export function Checkbox() {
 				}))
 			}, []),
 
-		helperTextPlayHandler: NonNullable<PlaygroundTextProps['onSubmit']> =
+		helperTextPlayHandler: NonNullable<ScreenPlayTemplateTextProps['onSubmit']> =
 			useCallback(helperText => {
 				setPlay(_play => ({
 					..._play,
@@ -69,7 +69,7 @@ export function Checkbox() {
 				}))
 			}, []),
 
-		helperTextModePlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+		helperTextModePlayHandler: NonNullable<ScreenPlayTemplateEnumProps['data'][0]['onPress']> =
 			useCallback(value => {
 				setPlay(_play => ({
 					..._play,
@@ -112,10 +112,10 @@ export function Checkbox() {
 			}, [])
 
 	return (
-		<ScreenTemplate
+		<ScreenPlayTemplate
 			title="Checkbox"
 			playgroundNode={ (<>
-				<ScreenTemplate.PlaygroundEnum
+				<ScreenPlayTemplate.PlayEnum
 					label="Orientation"
 					selectedValue={ play.orientation }
 					data={ [
@@ -132,18 +132,18 @@ export function Checkbox() {
 					] }
 				/>
 
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Legend Text"
 					value={ play.legend }
 					onSubmit={ legendPlayHandler }
 				/>
 
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Helper Text"
 					value={ play.helperText }
 					onSubmit={ helperTextPlayHandler }
 				/>
-				<ScreenTemplate.PlaygroundEnum
+				<ScreenPlayTemplate.PlayEnum
 					label="Helper Text Mode"
 					selectedValue={ play.helperTextMode }
 					data={ dataPlaygroundHelperTextMode.map(mode => ({
@@ -152,27 +152,27 @@ export function Checkbox() {
 					})) }
 				/>
 
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Item's Label 1"
 					value={ play.label[0] }
 					onSubmit={ value => labelItemPlayHandler(value, 0) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Item's Label 2"
 					value={ play.label[1] }
 					onSubmit={ value => labelItemPlayHandler(value, 1) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Item's Label 3"
 					value={ play.label[2] }
 					onSubmit={ value => labelItemPlayHandler(value, 2) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Item's Label 4"
 					value={ play.label[3] }
 					onSubmit={ value => labelItemPlayHandler(value, 3) }
 				/>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Item's Label 5"
 					value={ play.label[4] }
 					onSubmit={ value => labelItemPlayHandler(value, 4) }
@@ -244,7 +244,7 @@ export function Checkbox() {
 					label="Uncontrolled 3"
 				/>
 			</CheckboxGroup>
-		</ScreenTemplate>
+		</ScreenPlayTemplate>
 	)
 
 }

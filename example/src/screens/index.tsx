@@ -1,7 +1,7 @@
-import * as ComponentScreen from './component'
+import * as ComponentsScreen from './components'
 
 export {
-	ComponentScreen,
+	ComponentsScreen,
 }
 
 export {

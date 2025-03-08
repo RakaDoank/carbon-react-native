@@ -19,10 +19,10 @@ import {
 } from '@audira/carbon-react-native'
 
 import {
-	ScreenTemplate,
-	type PlaygroundEnumProps,
-	type PlaygroundTextProps,
-} from '../_screen-template'
+	ScreenPlayTemplate,
+	type ScreenPlayTemplateEnumProps,
+	type ScreenPlayTemplateTextProps,
+} from '@/components'
 
 import {
 	Item,
@@ -72,7 +72,7 @@ export function Button() {
 				play.iconType,
 			]),
 
-		textPlayHandler: NonNullable<PlaygroundTextProps['onSubmit']> =
+		textPlayHandler: NonNullable<ScreenPlayTemplateTextProps['onSubmit']> =
 			useCallback(text => {
 				setPlay(_play => ({
 					..._play,
@@ -80,7 +80,7 @@ export function Button() {
 				}))
 			}, []),
 
-		sizePlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+		sizePlayHandler: NonNullable<ScreenPlayTemplateEnumProps['data'][0]['onPress']> =
 			useCallback(value => {
 				setPlay(_play => ({
 					..._play,
@@ -104,7 +104,7 @@ export function Button() {
 				}))
 			}, []),
 
-		iconTypePlayHandler: NonNullable<PlaygroundEnumProps['data'][0]['onPress']> =
+		iconTypePlayHandler: NonNullable<ScreenPlayTemplateEnumProps['data'][0]['onPress']> =
 			useCallback(value => {
 				setPlay(_play => ({
 					..._play,
@@ -126,16 +126,16 @@ export function Button() {
 				: null // disable
 
 	return (
-		<ScreenTemplate
+		<ScreenPlayTemplate
 			title="Button"
 			playgroundNode={ (<>
-				<ScreenTemplate.PlaygroundText
+				<ScreenPlayTemplate.PlayText
 					label="Text"
 					value="Carbon"
 					onSubmit={ textPlayHandler }
 				/>
 
-				<ScreenTemplate.PlaygroundEnum
+				<ScreenPlayTemplate.PlayEnum
 					label="Button Size"
 					selectedValue={ play.size }
 					data={ dataPlaygroundSize.map(size => ({
@@ -144,7 +144,7 @@ export function Button() {
 					})) }
 				/>
 
-				<ScreenTemplate.PlaygroundBoolean
+				<ScreenPlayTemplate.PlayBoolean
 					label="Stretch"
 					value={ play.stretch }
 					onPress={ stretchPlayHandler }
@@ -154,13 +154,13 @@ export function Button() {
 					style={ style.mb8 }
 				/>
 
-				<ScreenTemplate.PlaygroundBoolean
+				<ScreenPlayTemplate.PlayBoolean
 					label="Use Icon"
 					value={ play.renderIcon }
 					onPress={ renderIconPlayHandler }
 				/>
 
-				<ScreenTemplate.PlaygroundEnum
+				<ScreenPlayTemplate.PlayEnum
 					label="Icon"
 					selectedValue={ play.iconType }
 					data={ dataPlaygroundIcon.map(icon => ({
@@ -169,7 +169,7 @@ export function Button() {
 					})) }
 				/>
 
-				<ScreenTemplate.PlaygroundBoolean
+				<ScreenPlayTemplate.PlayBoolean
 					label="Android Ripple Effect"
 					value={ play.androidRippleEffect }
 					onPress={ androidRippleEffectPlayHandler }
@@ -262,7 +262,7 @@ export function Button() {
 					/>
 				</Item>
 			</View>
-		</ScreenTemplate>
+		</ScreenPlayTemplate>
 	)
 
 }

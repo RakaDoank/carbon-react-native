@@ -66,13 +66,29 @@ export function Home() {
 					Components
 				</HeadingSection>
 
-				{ componentItemNavs.map(item => (
-					<ItemNav
-						key={ item.text }
-						text={ item.text }
-						onPress={ () => navigation.navigate(item.screenName) }
-					/>
-				)) }
+				<View style={ style.textBr }>
+					{ componentItemNavs.map(item => (
+						<ItemNav
+							key={ item.text }
+							text={ item.text }
+							onPress={ () => navigation.navigate(item.screenName) }
+						/>
+					)) }
+				</View>
+
+				<HeadingSection style={ style.textBr }>
+					Utilities
+				</HeadingSection>
+
+				<View>
+					{ utilityItemNavs.map(item => (
+						<ItemNav
+							key={ item.text }
+							text={ item.text }
+							onPress={ () => navigation.navigate(item.screenName) }
+						/>
+					)) }
+				</View>
 			</View>
 		</ScrollView>
 	)
@@ -125,11 +141,15 @@ const
 				screenName: 'component_checkbox',
 			},
 			{
-				text: 'Icon',
-				screenName: 'home',
-			},
-			{
 				text: 'Radio Button',
-				screenName: 'home',
+				screenName: 'component_radio_button',
+			},
+		],
+
+	utilityItemNavs: typeof componentItemNavs =
+		[
+			{
+				text: 'Toast',
+				screenName: 'component_accordion',
 			},
 		]
