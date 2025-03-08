@@ -15,6 +15,7 @@ import {
 	FlexStyle,
 	StyleSheet,
 	ThemeContext,
+	ToastProvider,
 } from '@audira/carbon-react-native'
 
 import {
@@ -26,9 +27,11 @@ export function Example() {
 	return (
 		<SafeAreaProvider>
 			<CarbonReactNative>
-				<BackgroundView>
-					<NavigationBootstrap/>
-				</BackgroundView>
+				<ToastProvider>
+					<BackgroundView>
+						<NavigationBootstrap/>
+					</BackgroundView>
+				</ToastProvider>
 			</CarbonReactNative>
 		</SafeAreaProvider>
 	)

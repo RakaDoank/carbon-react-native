@@ -9,6 +9,7 @@ import {
 import {
 	ComponentsScreen,
 	HomeScreen,
+	UtilitiesScreen,
 } from '@/screens'
 
 import type {
@@ -34,16 +35,20 @@ export function Navigation() {
 					component={ ComponentsScreen.Accordion }
 				/>
 				<Stack.Screen
-					name="component_checkbox"
-					component={ ComponentsScreen.Checkbox }
-				/>
-				<Stack.Screen
 					name="component_button"
 					component={ ComponentsScreen.Button }
 				/>
 				<Stack.Screen
+					name="component_checkbox"
+					component={ ComponentsScreen.Checkbox }
+				/>
+				<Stack.Screen
 					name="component_radio_button"
 					component={ ComponentsScreen.RadioButton }
+				/>
+				<Stack.Screen
+					name="utilities_toast"
+					component={ UtilitiesScreen.Toast }
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

@@ -150,6 +150,6 @@ const
 		[
 			{
 				text: 'Toast',
-				screenName: 'component_accordion',
+				screenName: 'utilities_toast',
 			},
 		]

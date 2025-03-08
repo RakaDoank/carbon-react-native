@@ -4,5 +4,5 @@ export type Stacks = {
 	component_checkbox?: never,
 	component_radio_button?: never,
 	home?: never,
-	utilities_toast_context?: never,
+	utilities_toast?: never,
 }
