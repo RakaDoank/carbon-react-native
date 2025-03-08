@@ -1,6 +1,10 @@
 {
 	"name": "@audira/carbon-react-native",
 	"version": "0.0.1-alpha.6",
+	"license": "MIT",
+	"homepage": "https://github.com/RakaDoank/carbon-react-native",
+	"repository": "https://github.com/RakaDoank/carbon-react-native",
+	"description": "Build React Native apps with component and shared patterns using Carbon",
 	"type": "module",
 	"scripts": {
 		"prepare": "bob build"
@@ -8,7 +12,7 @@
 	"peerDependencies": {
 		"@carbon/icons": ">=11",
 		"@carbon/icon-helpers": ">=10",
-		"react": "*",
+		"react": ">=17",
 		"react-native": ">=0.72",
 		"react-native-reanimated": ">=3",
 		"react-native-svg": ">=15"
