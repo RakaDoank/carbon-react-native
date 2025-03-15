@@ -18,9 +18,9 @@
 		"react-native-svg": ">=15"
 	},
 	"devDependencies": {
-		"@react-native/typescript-config": "0.77.1",
-		"@types/react": "^18.2.6",
-		"react-native-builder-bob": "0.35.2",
+		"@react-native/typescript-config": "0.78.0",
+		"@types/react": "^19.0.10",
+		"react-native-builder-bob": "0.37.0",
 		"typescript": "5.8.2"
 	},
 	"source": "./src/index.tsx",

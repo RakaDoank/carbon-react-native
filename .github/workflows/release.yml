@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  release:
+    name: Release Package
+    runs-on: ubuntu-22.04
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      matrix:
+        node-version: [22]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: https://registry.npmjs.org/
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+    - name: Code check
+      run: npm run code-check
+    # https://github.com/pnpm/pnpm/issues/4937
+    - name: Set up special NPM voodoo
+      if: ${{ env.NODE_AUTH_TOKEN != '' }}
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+        echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+      if: ${{ env.NODE_AUTH_TOKEN == '' }}
+      run: core.setFailed('NODE_AUTH_TOKEN was missing')
+    - name: Release to npm registry
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_CONFIG_PROVENANCE: true
+      run: |
+        npm run setup-package-registry
+        pnpm publish --filter @audira/carbon-react-native --access public --no-git-checks

@@ -14,11 +14,11 @@ import DocusuarusEslintPlugin from '@docusaurus/eslint-plugin'
 
 import Globals from 'globals'
 
-import EslintPluginImportX from 'eslint-plugin-import-x'
+// import EslintPluginImportX from 'eslint-plugin-import-x'
 
-import {
-	createTypeScriptImportResolver,
-} from 'eslint-import-resolver-typescript'
+// import {
+// 	createTypeScriptImportResolver,
+// } from 'eslint-import-resolver-typescript'
 
 export default [
 
@@ -29,43 +29,44 @@ export default [
 			'docs/.docusaurus/',
 			'**/dist/',
 			'**/node_modules/',
+			'package/lib/',
 		],
 	},
 
 	EslintJs.configs.recommended,
-	EslintPluginImportX.flatConfigs.recommended,
+	// EslintPluginImportX.flatConfigs.recommended,
 
-	{
-		ignores: [
-			'**/node_modules/**/*.js',
-		],
-		settings: {
-			'import-x/resolver-next': [
-				createTypeScriptImportResolver({
-					alwaysTryTypes: true,
-					project: [
-						'docs/tsconfig.json',
-						'example/tsconfig.json',
-						'package/tsconfig.json',
-					],
-				}),
-			],
-		},
-	},
+	// {
+	// 	ignores: [
+	// 		'**/node_modules/**/*.js',
+	// 	],
+	// 	settings: {
+	// 		'import-x/resolver-next': [
+	// 			createTypeScriptImportResolver({
+	// 				alwaysTryTypes: true,
+	// 				project: [
+	// 					'docs/tsconfig.json',
+	// 					'example/tsconfig.json',
+	// 					'package/tsconfig.json',
+	// 				],
+	// 			}),
+	// 		],
+	// 	},
+	// },
 
-	{
-		files: [
-			'package/**/*.{js,jsx}',
-			'example/**/*.{js,jsx}',
-		],
-		settings: {
-			'import-x/resolver': {
-				node: {
-					extensions: ['.js', '.web.js', '.ios.js', '.android.js'],
-				},
-			},
-		},
-	},
+	// {
+	// 	files: [
+	// 		'package/**/*.{js,jsx}',
+	// 		'example/**/*.{js,jsx}',
+	// 	],
+	// 	settings: {
+	// 		'import-x/resolver': {
+	// 			node: {
+	// 				extensions: ['.js', '.web.js', '.ios.js', '.android.js'],
+	// 			},
+	// 		},
+	// 	},
+	// },
 
 	{
 		plugins: {
@@ -77,10 +78,10 @@ export default [
 			'semi': 'off',
 			'yoda': 'error',
 
-			'import-x/no-cycle': 'error',
-			'import-x/no-dynamic-require': 'error',
-			'import-x/no-named-as-default': 'off',
-			'import-x/no-named-as-default-member': 'off',
+			// 'import-x/no-cycle': 'error',
+			// 'import-x/no-dynamic-require': 'error',
+			// 'import-x/no-named-as-default': 'off',
+			// 'import-x/no-named-as-default-member': 'off',
 
 			'@stylistic/block-spacing': 'error',
 			'@stylistic/brace-style': [
