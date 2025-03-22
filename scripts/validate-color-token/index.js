@@ -59,7 +59,7 @@ try {
 		}
 	})
 
-	console.info('/scripts/validate-color :: Color was validated correctly')
+	console.info('/scripts/validate-color :: Color Token has been validated ✓')
 } catch(err) {
 	throw new Error(`/scripts/validate-color :: ${err instanceof Error ? `[${err.name}] ${err.message}` : 'Unknown error'}`)
 }
