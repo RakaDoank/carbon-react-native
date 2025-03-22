@@ -151,7 +151,7 @@ const style = StyleSheet.create(color => {
 ```
 
 ### Elements
-You can use elements are available which are `Color`, `Spacing`, `Typography`, and `Motionn`. Refer to this [source](https://github.com/RakaDoank/carbon-react-native/tree/main/packages/carbon-react-native-elements/src)
+You can use elements are available which are `Color`, `Spacing`, `Typography`, and `Motion`. Refer to this [source](https://github.com/RakaDoank/carbon-react-native/tree/main/packages/carbon-react-native-elements/src)
 ```tsx
 import {
   StyleSheet,
