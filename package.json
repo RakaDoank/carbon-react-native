@@ -7,7 +7,7 @@
 		"builder-bob": "node ./libs/builder-bob/scripts/build.js",
 		"code-check": "npm run type-check && npm run lint",
 		"lint": "eslint .",
-		"prepack-carbon-react-native-registry": "npm run ts-node-esm ./scripts/prepack-carbon-react-native",
+		"prepack-carbon-react-native": "npm run ts-node-esm ./scripts/prepack-carbon-react-native",
 		"ts-node-esm": "node --import=./scripts/ts-node-esm-registerer.js",
 		"tsx": "tsx",
 		"type-check": "tsc --noEmit && tsc --project docs/tsconfig.json && tsc --project example/tsconfig.json && tsc --project packages/carbon-react-native/tsconfig.json && tsc --project packages/carbon-react-native-elements/tsconfig.json",
