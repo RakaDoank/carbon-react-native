@@ -13,8 +13,8 @@ This library is a dependency of [@audira/carbon-react-native](https://www.npmjs.
 #### [Motion](https://github.com/RakaDoank/carbon-react-native/tree/main/packages/carbon-react-native-elements/src/motion)
 | Namespaces    | Members                                                                                                                          |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `duration`    | `fast_01`, `fast_02`, `moderate_01`, `moderate_02`, `slow_01`, `slow_02`                                                         |
-| `easing`      | `entrance.expressive`, `entrance.productive`, `exit.expressive`, `exit.productive`, `standard.expressive`, `standard.productive` |
+| `Duration`    | `fast_01`, `fast_02`, `moderate_01`, `moderate_02`, `slow_01`, `slow_02`                                                         |
+| `Easing`      | `entrance.expressive`, `entrance.productive`, `exit.expressive`, `exit.productive`, `standard.expressive`, `standard.productive` |
 
 #### [Spacing](https://github.com/RakaDoank/carbon-react-native/tree/main/packages/carbon-react-native-elements/src/spacing)
 | Members      | Value |
