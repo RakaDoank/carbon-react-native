@@ -10,7 +10,7 @@
 		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
 		"ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register",
 		"tsx": "tsx",
-		"type-check": "tsc --noEmit && tsc --project docs/tsconfig.json && tsc --project example/tsconfig.json && tsc --project package/tsconfig.json"
+		"validate-color-token": "node ./scripts/validate-color-token"
 	},
 	"devDependencies": {
 		"@docusaurus/eslint-plugin": "^3.7.0",
