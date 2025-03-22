@@ -21,17 +21,17 @@ Install the library to your project
 
 with npm
 ```
-npm install @audira/carbon-react-native
+npm install @audira/carbon-react-native @audira/carbon-react-native-elements
 ```
 
 pnpm
 ```
-pnpm install @audira/carbon-react-native
+pnpm install @audira/carbon-react-native @audira/carbon-react-native-elements
 ```
 
 yarn
 ```
-yarn add @audira/carbon-react-native
+yarn add @audira/carbon-react-native @audira/carbon-react-native-elements
 ```
 
 ### Peer Dependencies
@@ -115,8 +115,43 @@ export default function YourReactComponent() {
 ```
 All components are also made by using `ThemeContext` by the way. All members of the color is same as the official color tokens [here](https://carbondesignsystem.com/elements/color/tokens), but it is using underscore (_) instead of dash (-).
 
-### Constants
-You can use the constants are available which are `ColorConstant`, `SpacingConstant`, `TypographyConstant`, and `MotionConstant`. Refer to this [source](https://github.com/RakaDoank/carbon-react-native/tree/main/src/constants).
+### Coloring StyleSheet
+Instead of inline styles, you can also use color token from this library's `StyleSheet`. This is also recommended way to support [React Native for Web](https://necolas.github.io/react-native-web)'s to generate CSS
+```tsx
+import {
+  useContext,
+} from 'react'
+
+import {
+  StyleSheet,
+  Text,
+  ThemeContext,
+} from '@audira/carbon-react-native'
+
+export default function YourReactComponent() {
+  /**
+   * Keep this to make `style` prop reactive on color scheme changes
+   */
+  useContext(ThemeContext)
+
+  return (
+    <Text type="label_01" style={ style.linkText }>
+      React Native
+    </Text>
+  )
+}
+
+const style = StyleSheet.create(color => {
+  return {
+    linkText: {
+      color: color.link_primary,
+    },
+  }
+})
+```
+
+### Elements
+You can use elements are available which are `Color`, `Spacing`, `Typography`, and `Motion`. Refer to this [source](https://github.com/RakaDoank/carbon-react-native/tree/main/packages/carbon-react-native-elements/src)
 ```tsx
 import {
   StyleSheet,
@@ -124,8 +159,8 @@ import {
 } from 'react-native'
 
 import {
-  SpacingConstant,
-} from '@audira/carbon-react-native'
+  Spacing,
+} from '@audira/carbon-react-native-elements'
 
 export default function YourReactComponent() {
   return (
@@ -137,7 +172,7 @@ export default function YourReactComponent() {
 
 const style = StyleSheet.create({
   container: {
-    paddingHorizontal: SpacingConstant.spacing_05,
+    paddingHorizontal: Spacing.spacing_05,
   },
 })
 ```
