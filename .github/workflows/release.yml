@@ -33,6 +33,10 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+    - name: Build carbon-react-native-elements
+      run: npm run builder-bob carbon-react-native-elements
+    - name: Build carbon-react-native
+      run: npm run builder-bob carbon-react-native
     - name: Code check
       run: npm run code-check
     # https://github.com/pnpm/pnpm/issues/4937
@@ -45,5 +49,6 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_CONFIG_PROVENANCE: true
       run: |
-        npm run setup-package-registry
+        npm run prepack-carbon-react-native
+        pnpm publish --filter @audira/carbon-react-native-elements --access public --no-git-checks
         pnpm publish --filter @audira/carbon-react-native --access public --no-git-checks

@@ -63,7 +63,7 @@ try {
 		)
 	}
 
-	console.info('/scripts/setup-package-registry :: Package has been packed as a registry successfully')
+	console.info('/scripts/prepack-carbon-react-native :: Package has been packed as a registry successfully')
 } catch(e) {
 	throw new Error(e instanceof Error ? e.message : 'Unknown error')
 }
