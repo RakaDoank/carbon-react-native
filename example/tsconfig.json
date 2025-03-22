@@ -4,7 +4,7 @@
 		"jsx": "react-jsx",
 		"paths": {
 			"@/*": ["./src/*"],
-			"@audira/carbon-react-native": ["../package/src/index"]
+			"@audira/carbon-react-native": ["../packages/carbon-react-native/src/index"]
 		},
 		"verbatimModuleSyntax": true
 	},

@@ -1,0 +1,13 @@
+export const spacing_01 = 2
+export const spacing_02 = 4
+export const spacing_03 = 8
+export const spacing_04 = 12
+export const spacing_05 = 16
+export const spacing_06 = 24
+export const spacing_07 = 32
+export const spacing_08 = 40
+export const spacing_09 = 48
+export const spacing_10 = 64
+export const spacing_11 = 80
+export const spacing_12 = 96
+export const spacing_13 = 160

@@ -7,8 +7,11 @@ import {
 import {
 	FlexStyle,
 	FormLabel,
-	SpacingConstant,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 export interface ItemProps extends ViewProps {
 	title: string,
@@ -44,9 +47,9 @@ export function Item({
 const style = StyleSheet.create({
 	item: {
 		width: '50%',
-		padding: SpacingConstant.spacing_03,
+		padding: Spacing.spacing_03,
 	},
 	formLabel: {
-		marginBottom: SpacingConstant.spacing_03,
+		marginBottom: Spacing.spacing_03,
 	},
 })

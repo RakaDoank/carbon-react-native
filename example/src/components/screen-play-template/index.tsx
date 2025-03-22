@@ -12,10 +12,13 @@ import {
 
 import {
 	FlexStyle,
-	SpacingConstant,
 	StyleSheet,
 	ThemeContext,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	PlaygroundController,
@@ -100,11 +103,11 @@ export const ScreenPlayTemplate = Object.assign(Component, {
 
 const style = StyleSheet.create(color => ({
 	scrollViewContent: {
-		paddingHorizontal: SpacingConstant.spacing_05,
+		paddingHorizontal: Spacing.spacing_05,
 		backgroundColor: color.background,
 	},
 	scrollViewContentContainer: {
-		paddingVertical: SpacingConstant.spacing_05,
+		paddingVertical: Spacing.spacing_05,
 	},
 	playgroundController: {
 		flexBasis: 400,

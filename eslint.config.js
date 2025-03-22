@@ -29,7 +29,7 @@ export default [
 			'docs/.docusaurus/',
 			'**/dist/',
 			'**/node_modules/',
-			'package/lib/',
+			'packages/*/lib/',
 		],
 	},
 
@@ -67,6 +67,13 @@ export default [
 	// 		},
 	// 	},
 	// },
+
+	{
+		files: ['libs/builder-bob/**/bob.config.js'],
+		rules: {
+			'no-undef': 'off',
+		},
+	},
 
 	{
 		plugins: {
@@ -228,7 +235,7 @@ export default [
 
 		files: [
 			'example/**/*.{js,jsx,ts,tsx}',
-			'package/**/*.{js,jsx,ts,tsx}',
+			'packages/carbon-react-native/**/*.{js,jsx,ts,tsx}',
 		],
 		settings: {
 			react: {

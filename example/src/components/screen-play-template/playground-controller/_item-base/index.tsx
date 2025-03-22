@@ -7,8 +7,11 @@ import {
 import {
 	CommonStyle,
 	FlexStyle,
-	SpacingConstant,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 export interface ItemBaseProps extends ViewProps {
 }
@@ -34,7 +37,7 @@ export function ItemBase({
 
 const style = StyleSheet.create({
 	container: {
-		paddingTop: SpacingConstant.spacing_03,
-		paddingBottom: SpacingConstant.spacing_03,
+		paddingTop: Spacing.spacing_03,
+		paddingBottom: Spacing.spacing_03,
 	},
 })

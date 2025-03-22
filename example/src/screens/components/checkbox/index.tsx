@@ -10,10 +10,13 @@ import {
 
 import {
 	CheckboxGroup,
-	SpacingConstant,
 	ThemeContext,
 	type CheckboxGroupProps,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	ScreenPlayTemplate,
@@ -253,7 +256,7 @@ const
 	style =
 		StyleSheet.create({
 			br: {
-				marginBottom: SpacingConstant.spacing_05,
+				marginBottom: Spacing.spacing_05,
 			},
 		}),
 

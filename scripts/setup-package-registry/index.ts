@@ -12,8 +12,8 @@ const
 	root =
 		node_path.resolve(__dirname, '../..'),
 
-	packagePath =
-		node_path.join(root, 'package'),
+	carbonRNPackagePath =
+		node_path.join(root, 'packages/carbon-react-native'),
 
 	additionalSources =
 		[
@@ -28,7 +28,7 @@ const
 		]
 try {
 	additionalSources.forEach(src => {
-		const destPath = node_path.join(packagePath, src.name)
+		const destPath = node_path.join(carbonRNPackagePath, src.name)
 
 		if(node_fs.existsSync(destPath)) {
 			node_fs.rmSync(destPath, { recursive: true })
@@ -48,12 +48,12 @@ try {
 		 * Keep the short README.md in the package directory, and publish to npm with the long README.md (root repository)
 		 */
 
-		const destPath = node_path.join(packagePath, 'README.md')
+		const destPath = node_path.join(carbonRNPackagePath, 'README.md')
 
 		if(node_fs.existsSync(destPath)) {
 			node_fs.renameSync(
 				destPath,
-				node_path.join(packagePath, 'README-original.md'),
+				node_path.join(carbonRNPackagePath, 'README-original.md'),
 			)
 		}
 

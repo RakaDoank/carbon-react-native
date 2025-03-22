@@ -5,9 +5,12 @@ import {
 import {
 	Accordion,
 	Button,
-	SpacingConstant,
 	type AccordionItemProps,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	CText,
@@ -50,6 +53,6 @@ const
 	style =
 		StyleSheet.create({
 			br: {
-				marginBottom: SpacingConstant.spacing_05,
+				marginBottom: Spacing.spacing_05,
 			},
 		})

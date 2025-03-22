@@ -32,7 +32,7 @@ const config = {
 			node_path.join(workspaceRoot, 'node_modules'),
 		],
 		extraNodeModules: {
-			'@audira/carbon-react-native': node_path.join(workspaceRoot, 'package/src'),
+			'@audira/carbon-react-native': node_path.join(workspaceRoot, 'packages/carbon-react-native/src'),
 		},
 	},
 

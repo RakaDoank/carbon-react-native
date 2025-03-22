@@ -14,9 +14,12 @@ import {
 	Button as CButton,
 	FlexStyle,
 	FormHelperText,
-	SpacingConstant,
 	ThemeContext,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	ScreenPlayTemplate,
@@ -271,10 +274,10 @@ const
 	style =
 		StyleSheet.create({
 			container: {
-				margin: -SpacingConstant.spacing_03,
+				margin: -Spacing.spacing_03,
 			},
 			mb8: {
-				marginBottom: SpacingConstant.spacing_03,
+				marginBottom: Spacing.spacing_03,
 			},
 			buttonStretch: {
 				alignSelf: 'stretch',

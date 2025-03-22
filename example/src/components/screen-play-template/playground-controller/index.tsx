@@ -4,9 +4,12 @@ import {
 } from 'react-native'
 
 import {
-	SpacingConstant,
 	StyleSheet,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	CText,
@@ -73,14 +76,14 @@ const
 	style =
 		StyleSheet.create(color => ({
 			container: {
-				paddingHorizontal: SpacingConstant.spacing_05,
+				paddingHorizontal: Spacing.spacing_05,
 				backgroundColor: color.field_01,
 			},
 			contentContainer: {
-				paddingVertical: SpacingConstant.spacing_07,
+				paddingVertical: Spacing.spacing_07,
 			},
 			title: {
-				marginBottom: SpacingConstant.spacing_05,
+				marginBottom: Spacing.spacing_05,
 			},
 		}))
 

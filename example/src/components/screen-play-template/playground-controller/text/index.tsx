@@ -14,10 +14,13 @@ import {
 	FlexStyle,
 	FormLabel,
 	FormHelperText,
-	SpacingConstant,
 	StyleSheet,
 	ThemeContext,
 } from '@audira/carbon-react-native'
+
+import {
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 
 import {
 	ItemBase,
@@ -108,12 +111,12 @@ export function Text({
 
 const style = StyleSheet.create(color => ({
 	label: {
-		marginBottom: SpacingConstant.spacing_03,
+		marginBottom: Spacing.spacing_03,
 	},
 	textInput: {
 		width: '100%',
 		backgroundColor: color.background,
-		padding: SpacingConstant.spacing_04,
+		padding: Spacing.spacing_04,
 		border: 0,
 		color: color.text_primary,
 	},
