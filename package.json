@@ -8,7 +8,7 @@
 		"code-check": "npm run type-check && npm run lint",
 		"lint": "eslint .",
 		"setup-package-registry": "npm run ts-node-esm ./scripts/setup-package-registry",
-		"ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register",
+		"ts-node-esm": "node --import=./scripts/_ts-node-esm-registerer.js",
 		"tsx": "tsx",
 		"type-check": "tsc --noEmit && tsc --project docs/tsconfig.json && tsc --project example/tsconfig.json && tsc --project packages/carbon-react-native/tsconfig.json && tsc --project packages/carbon-react-native-elements/tsconfig.json",
 		"validate-color-token": "node ./scripts/validate-color-token"
