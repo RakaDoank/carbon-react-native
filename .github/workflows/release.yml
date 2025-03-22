@@ -33,6 +33,8 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+    - name: Validate Color Token
+      run: npm run validate-color-token
     - name: Build carbon-react-native-elements
       run: |
         npm run prepack-carbon-react-native-elements
