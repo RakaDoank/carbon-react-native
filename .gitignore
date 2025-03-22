@@ -80,6 +80,9 @@ lib/
 
 .env
 
+# Script: prepack-carbon-react-native-elements
+/packages/carbon-react-native-elements/LICENSE
+
 # Script: prepack-carbon-react-native
 /packages/carbon-react-native/assets
 /packages/carbon-react-native/LICENSE

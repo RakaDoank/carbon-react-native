@@ -34,7 +34,9 @@ jobs:
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
     - name: Build carbon-react-native-elements
-      run: npm run builder-bob carbon-react-native-elements
+      run: |
+        npm run prepack-carbon-react-native-elements
+        npm run builder-bob carbon-react-native-elements
     - name: Build carbon-react-native
       run: |
         npm run prepack-carbon-react-native

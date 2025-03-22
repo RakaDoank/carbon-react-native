@@ -13,14 +13,10 @@ const
 		node_path.resolve(__dirname, '../..'),
 
 	carbonRNPackagePath =
-		node_path.join(root, 'packages/carbon-react-native'),
+		node_path.join(root, 'packages/carbon-react-native-elements'),
 
 	additionalSources =
 		[
-			{
-				name: 'assets',
-				path: node_path.join(root, 'assets'),
-			},
 			{
 				name: 'LICENSE',
 				path: node_path.join(root, 'LICENSE'),
@@ -43,27 +39,7 @@ try {
 		)
 	})
 
-	{
-		/**
-		 * Keep the short README.md in the package directory, and publish to npm with the long README.md (root repository)
-		 */
-
-		const destPath = node_path.join(carbonRNPackagePath, 'README.md')
-
-		if(node_fs.existsSync(destPath)) {
-			node_fs.renameSync(
-				destPath,
-				node_path.join(carbonRNPackagePath, 'README-original.md'),
-			)
-		}
-
-		node_fs.cpSync(
-			node_path.join(root, 'README.md'),
-			destPath,
-		)
-	}
-
-	console.info('/scripts/prepack-carbon-react-native :: Package has been packed successfully')
+	console.info('/scripts/prepack-carbon-react-native-elements :: Package has been packed successfully')
 } catch(e) {
 	throw new Error(e instanceof Error ? e.message : 'Unknown error')
 }
