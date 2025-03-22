@@ -1,6 +1,6 @@
 ---
 slug: /guides/using-core-component-props
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Using Core Component Props

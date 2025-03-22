@@ -1,11 +1,15 @@
 ---
 slug: /guides/accessing-color
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Accessing Color
 
 This library provides two ways to how to access color, which are [Declarative Semantic Token](#declarative-semantic-token) and [Use Color Constant](#use-color-constant). Read on!
+
+:::warning
+To support [React Native for Web](https://necolas.github.io/react-native-web), this package provides custom `StyleSheet` that includes color token. This is better way to style UIs rather than inline styles. Read [Coloring in StyleSheet](./coloring-in-stylesheet).
+:::
 
 ## Declarative Semantic Token
 
@@ -66,7 +70,7 @@ export default function Component() {
   return (
     <Text
       type="label_01"
-      style={{ color: ColorsConstant.Tokens.GRAY_10.support_error }}
+      style={{ color: ColorsConstant.Tokens.gray_10.support_error }}
     >
       Lorem ipsum dolor sit amet
     </Text>
@@ -122,7 +126,7 @@ export default function Component() {
 }
 
 const mapTextColor: Record<ThemeType.ColorScheme, string> = {
-  gray_10: ColorConstant.Tokens.GRAY_10.support_error,
+  gray_10: ColorConstant.Tokens.gray_10.support_error,
   gray_100: ColorConstant.Code.yellow40,
 }
 ```

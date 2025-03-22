@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-	title: '@rakadoank/carbon-react-native',
+	title: '@audira/carbon-react-native',
 	tagline: 'Dinosaurs are cool',
 	favicon: 'img/favicon.ico',
 
@@ -13,7 +13,7 @@ const config: Config = {
 	url: 'https://rakadoank.github.io',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/',
+	baseUrl: '/carbon-react-native',
 	trailingSlash: false,
 
 	// GitHub pages deployment config.
@@ -69,12 +69,12 @@ const config: Config = {
 
 	themeConfig: {
 		// Replace with your project's social card
-		image: 'img/docusaurus-social-card.jpg',
+		image: './img/docusaurus-social-card.jpg',
 		navbar: {
 			title: 'Carbon for React Native',
 			logo: {
 				alt: 'My Site Logo',
-				src: 'img/logo.svg',
+				src: './img/logo.svg',
 			},
 			items: [
 				{

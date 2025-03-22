@@ -1,6 +1,6 @@
 ---
 slug: /guides/change-color-scheme
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Change Color Scheme
