@@ -38,11 +38,11 @@
 		"./color/*": {
 			"import": {
 				"types": "./lib/typescript/module/src/color/*.d.ts",
-				"default": "./lib/module/color/*.js"
+				"default": "./lib/module/color/*"
 			},
 			"require": {
 				"types": "./lib/typescript/commonjs/src/color/*.d.ts",
-				"default": "./lib/commonjs/color/*.js"
+				"default": "./lib/commonjs/color/*"
 			}
 		},
 		"./motion": {
@@ -58,11 +58,11 @@
 		"./motion/*": {
 			"import": {
 				"types": "./lib/typescript/module/src/motion/*.d.ts",
-				"default": "./lib/module/motion/*.js"
+				"default": "./lib/module/motion/*"
 			},
 			"require": {
 				"types": "./lib/typescript/commonjs/src/motion/*.d.ts",
-				"default": "./lib/commonjs/motion/*.js"
+				"default": "./lib/commonjs/motion/*"
 			}
 		},
 		"./spacing": {
@@ -88,11 +88,11 @@
 		"./typography/*": {
 			"import": {
 				"types": "./lib/typescript/module/src/typography/*.d.ts",
-				"default": "./lib/module/typography/*.js"
+				"default": "./lib/module/typography/*"
 			},
 			"require": {
 				"types": "./lib/typescript/commonjs/src/typography/*.d.ts",
-				"default": "./lib/commonjs/typography/*.js"
+				"default": "./lib/commonjs/typography/*"
 			}
 		}
 	},
