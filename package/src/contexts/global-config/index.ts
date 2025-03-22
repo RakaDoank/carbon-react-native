@@ -7,9 +7,6 @@ import type {
 } from '../../components/notification/types'
 
 export interface GlobalConfig {
-	/**
-	 * @platform android
-	 */
 	android_buttonRippleEffect: boolean,
 	notificationColor: NotificationColor,
 	/**
