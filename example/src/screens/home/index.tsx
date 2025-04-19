@@ -1,8 +1,4 @@
 import {
-	useContext,
-} from 'react'
-
-import {
 	View,
 	ScrollView,
 } from 'react-native'
@@ -10,7 +6,6 @@ import {
 import {
 	StyleSheet,
 	Text,
-	ThemeContext,
 } from '@audira/carbon-react-native'
 
 import {
@@ -35,7 +30,7 @@ import {
 
 export function Home() {
 
-	useContext(ThemeContext)
+	StyleSheet.use()
 
 	const navigation = NavigationHooks.useNavigation()
 

@@ -1,5 +1,4 @@
 import {
-	useContext,
 	useMemo,
 } from 'react'
 
@@ -13,7 +12,6 @@ import {
 import {
 	FlexStyle,
 	StyleSheet,
-	ThemeContext,
 } from '@audira/carbon-react-native'
 
 import {
@@ -49,7 +47,7 @@ function Component({
 	...props
 }: ScreenPlayTemplateProps) {
 
-	useContext(ThemeContext)
+	StyleSheet.use()
 
 	const
 		windowDimensions =
