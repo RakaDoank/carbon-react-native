@@ -1,2 +1,2 @@
 export * from './ToastContext'
-export * from './ToastShowConfig'
+export * from './ToastContextShowConfig'

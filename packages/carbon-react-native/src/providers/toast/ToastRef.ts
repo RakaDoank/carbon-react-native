@@ -1,6 +1,6 @@
-import {
+import type {
 	ToastContext,
-} from '../../../contexts'
+} from '../../contexts/toast'
 
 export interface ToastRef extends ToastContext {
 }

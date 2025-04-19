@@ -3,13 +3,13 @@ import {
 } from 'react'
 
 import type {
-	ToastShowConfig,
-} from './ToastShowConfig'
+	ToastContextShowConfig,
+} from './ToastContextShowConfig'
 
 export interface ToastContext {
 	show: (
 		fn: (id: number) => React.ReactNode,
-		config?: ToastShowConfig,
+		config?: ToastContextShowConfig,
 	) => void,
 	dismiss: (id: number) => void,
 }

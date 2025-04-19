@@ -1,4 +1,4 @@
-export interface ToastShowConfig {
+export interface ToastContextShowConfig {
 	/**
 	 * Duration per component in milliseconds
 	 */

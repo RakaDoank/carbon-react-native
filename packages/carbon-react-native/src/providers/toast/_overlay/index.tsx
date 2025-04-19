@@ -36,7 +36,7 @@ import {
 
 import type {
 	ToastRef,
-} from '../_types'
+} from '../ToastRef'
 
 export interface OverlayProps {
 }
