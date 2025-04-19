@@ -130,9 +130,9 @@ import {
 
 export default function YourReactComponent() {
   /**
-   * Keep this to make `style` prop reactive on color scheme changes
+   * Keep this to make `style` prop reactive on color scheme change
    */
-  useContext(ThemeContext)
+  StyleSheet.use()
 
   return (
     <Text type="label_01" style={ style.linkText }>
@@ -141,12 +141,10 @@ export default function YourReactComponent() {
   )
 }
 
-const style = StyleSheet.create(color => {
-  return {
-    linkText: {
-      color: color.link_primary,
-    },
-  }
+const style = StyleSheet.create({
+  linkText: {
+    color: StyleSheet.color.link_primary,
+  },
 })
 ```
 
