@@ -3,6 +3,7 @@ import type {
 } from '../contexts'
 
 import {
+	BreakpointProvider,
 	GlobalConfigProvider,
 	ThemeProvider,
 	type ThemeProviderProps,
@@ -27,7 +28,9 @@ export function CarbonReactNative({
 				colorScheme={ colorScheme }
 				overrideColor={ overrideColor }
 			>
-				{ children }
+				<BreakpointProvider>
+					{ children }
+				</BreakpointProvider>
 			</ThemeProvider>
 		</GlobalConfigProvider>
 	)
