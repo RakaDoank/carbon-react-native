@@ -21,22 +21,17 @@ import type {
 type Style = ViewStyle | TextStyle | ImageStyle
 
 export function create<Styles extends Record<string, Style> = Record<string, Style>>(
-	fn: (
-		color: Record<ColorToken, ColorToken>,
-	) => Styles,
+	styles: Styles,
 ): Styles {
 	const
-		styleRef =
-			fn(colorTokenStrings),
-
 		baseStyle: Record<string, Style> =
 			{},
 
 		coloredStyle: Record<string, Style> =
 			{}
 
-	for(const styleName in styleRef) {
-		const style = styleRef[styleName]
+	for(const styleName in styles) {
+		const style = styles[styleName]
 
 		for(const styleProp_ in style) {
 			const styleProp = styleProp_ as keyof Style
@@ -80,7 +75,7 @@ export function create<Styles extends Record<string, Style> = Record<string, Sty
 		coloredStyleSheet =
 			StyleSheet.create<Record<string, Style>>(coloredStyle)
 
-	return Object.keys(styleRef)
+	return Object.keys(styles)
 		.reduce<Styles>((
 			acc,
 			styleName,
@@ -127,17 +122,6 @@ const
 			'borderBlockEndColor',
 			'borderBlockStartColor',
 		],
-
-	colorTokenStrings =
-		Object
-			.keys(Color.Token.gray_10)
-			.reduce<Partial<Record<ColorToken, ColorToken>>>((
-				acc,
-				key,
-			) => {
-				acc[key as ColorToken] = key as ColorToken
-				return acc
-			}, {}) as Required<Record<ColorToken, ColorToken>>,
 
 	prefixColorStyleName: Record<ThemeType.ColorScheme, string> =
 		{

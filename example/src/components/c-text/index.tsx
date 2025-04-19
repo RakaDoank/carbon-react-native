@@ -35,8 +35,8 @@ export const CText = forwardRef<Text, CTextProps>(
 
 )
 
-const style = StyleSheet.create(color => ({
+const style = StyleSheet.create({
 	text: {
-		color: color.text_primary,
+		color: StyleSheet.color.text_primary,
 	},
-}))
+})

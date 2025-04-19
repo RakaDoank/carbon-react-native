@@ -274,43 +274,41 @@ const
 	interactiveStyle =
 		StyleSheetColor.create<
 			Record<`${CheckboxInputInteractiveState}_${'true' | 'false'}`, ViewStyle>
-		>(color => {
-			return {
-				normal_false: {
-					borderColor: color.icon_primary,
-				},
-				normal_true: {
-					backgroundColor: color.icon_primary,
-					borderColor: color.icon_primary,
-				},
-				disabled_false: {
-					borderColor: color.icon_disabled,
-				},
-				disabled_true: {
-					backgroundColor: color.icon_disabled,
-					borderColor: color.icon_disabled,
-				},
-				error_false: {
-					borderColor: color.support_error,
-				},
-				error_true: {
-					backgroundColor: color.icon_primary,
-					borderColor: color.support_error,
-				},
-				read_only_false: {
-					borderColor: color.icon_disabled,
-				},
-				read_only_true: {
-					borderColor: color.icon_disabled,
-				},
-				warning_false: {
-					borderColor: color.icon_primary,
-				},
-				warning_true: {
-					backgroundColor: color.icon_primary,
-					borderColor: color.icon_primary,
-				},
-			}
+		>({
+			normal_false: {
+				borderColor: StyleSheetColor.color.icon_primary,
+			},
+			normal_true: {
+				backgroundColor: StyleSheetColor.color.icon_primary,
+				borderColor: StyleSheetColor.color.icon_primary,
+			},
+			disabled_false: {
+				borderColor: StyleSheetColor.color.icon_disabled,
+			},
+			disabled_true: {
+				backgroundColor: StyleSheetColor.color.icon_disabled,
+				borderColor: StyleSheetColor.color.icon_disabled,
+			},
+			error_false: {
+				borderColor: StyleSheetColor.color.support_error,
+			},
+			error_true: {
+				backgroundColor: StyleSheetColor.color.icon_primary,
+				borderColor: StyleSheetColor.color.support_error,
+			},
+			read_only_false: {
+				borderColor: StyleSheetColor.color.icon_disabled,
+			},
+			read_only_true: {
+				borderColor: StyleSheetColor.color.icon_disabled,
+			},
+			warning_false: {
+				borderColor: StyleSheetColor.color.icon_primary,
+			},
+			warning_true: {
+				backgroundColor: StyleSheetColor.color.icon_primary,
+				borderColor: StyleSheetColor.color.icon_primary,
+			},
 		})
 
 function getInteractiveStateStyle(

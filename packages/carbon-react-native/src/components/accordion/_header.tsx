@@ -135,42 +135,40 @@ const
 				`${'background' | 'text'}_${keyof ButtonColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
-		>(color => {
-			return {
-				background_default: {
-					backgroundColor: 'transparent',
-				},
-				background_focused: {
-					backgroundColor: 'transparent',
-					borderWidth: 1,
-					borderColor: color.focus,
-				},
-				background_hovered: {
-					backgroundColor: color.layer_hover_01,
-				},
-				background_pressed: {
-					backgroundColor: color.layer_hover_01,
-				},
-				background_disabled: {
-					backgroundColor: 'transparent',
-				},
+		>({
+			background_default: {
+				backgroundColor: 'transparent',
+			},
+			background_focused: {
+				backgroundColor: 'transparent',
+				borderWidth: 1,
+				borderColor: StyleSheet.color.focus,
+			},
+			background_hovered: {
+				backgroundColor: StyleSheet.color.layer_hover_01,
+			},
+			background_pressed: {
+				backgroundColor: StyleSheet.color.layer_hover_01,
+			},
+			background_disabled: {
+				backgroundColor: 'transparent',
+			},
 
-				text_default: {
-					color: color.text_primary,
-				},
-				text_focused: {
-					color: color.text_primary,
-				},
-				text_hovered: {
-					color: color.text_primary,
-				},
-				text_pressed: {
-					color: color.text_primary,
-				},
-				text_disabled: {
-					color: color.text_disabled,
-				},
-			}
+			text_default: {
+				color: StyleSheet.color.text_primary,
+			},
+			text_focused: {
+				color: StyleSheet.color.text_primary,
+			},
+			text_hovered: {
+				color: StyleSheet.color.text_primary,
+			},
+			text_pressed: {
+				color: StyleSheet.color.text_primary,
+			},
+			text_disabled: {
+				color: StyleSheet.color.text_disabled,
+			},
 		}),
 
 	/**

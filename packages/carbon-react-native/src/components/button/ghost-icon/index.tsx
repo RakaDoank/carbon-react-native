@@ -86,22 +86,22 @@ const
 				| 'background_default_selected',
 				ViewStyle | TextStyle
 			>
-		>(color => ({
+		>({
 			background_default: {
 				backgroundColor: 'transparent',
 			},
 			background_default_selected: {
-				backgroundColor: color.background_selected,
+				backgroundColor: StyleSheet.color.background_selected,
 			},
 			background_focused: {
 				borderWidth: 1,
-				borderColor: color.focus,
+				borderColor: StyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: color.background_hover,
+				backgroundColor: StyleSheet.color.background_hover,
 			},
 			background_pressed: {
-				backgroundColor: color.background_active,
+				backgroundColor: StyleSheet.color.background_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
@@ -122,4 +122,4 @@ const
 			text_disabled: {
 				color: 'transparent',
 			},
-		}))
+		})

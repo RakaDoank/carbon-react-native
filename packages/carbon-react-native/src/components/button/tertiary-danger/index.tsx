@@ -13,7 +13,7 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet as StyleSheetColor,
+	StyleSheet as CarbonStyleSheet,
 } from '../../../_style-sheet'
 
 import {
@@ -80,46 +80,46 @@ const
 		}),
 
 	colorStyle =
-		StyleSheetColor.create<
+		CarbonStyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
-		>(color => ({
+		>({
 			background_default: {
 				backgroundColor: 'transparent',
-				borderColor: color.button_danger_secondary,
+				borderColor: CarbonStyleSheet.color.button_danger_secondary,
 			},
 			background_focused: {
 				backgroundColor: 'transparent',
-				borderColor: color.focus,
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: color.button_danger_hover,
-				borderColor: color.button_danger_hover,
+				backgroundColor: CarbonStyleSheet.color.button_danger_hover,
+				borderColor: CarbonStyleSheet.color.button_danger_hover,
 			},
 			background_pressed: {
-				backgroundColor: color.button_danger_active,
-				borderColor: color.button_danger_active,
+				backgroundColor: CarbonStyleSheet.color.button_danger_active,
+				borderColor: CarbonStyleSheet.color.button_danger_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
-				borderColor: color.button_disabled,
+				borderColor: CarbonStyleSheet.color.button_disabled,
 			},
 
 			text_default: {
-				color: color.button_danger_secondary,
+				color: CarbonStyleSheet.color.button_danger_secondary,
 			},
 			text_focused: {
-				color: color.button_danger_secondary,
+				color: CarbonStyleSheet.color.button_danger_secondary,
 			},
 			text_hovered: {
-				color: color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_pressed: {
-				color: color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_disabled: {
-				color: color.text_disabled,
+				color: CarbonStyleSheet.color.text_disabled,
 			},
-		}))
+		})

@@ -101,10 +101,10 @@ export const ScreenPlayTemplate = Object.assign(Component, {
 	PlayText: PlaygroundController.Text,
 })
 
-const style = StyleSheet.create(color => ({
+const style = StyleSheet.create({
 	scrollViewContent: {
 		paddingHorizontal: Spacing.spacing_05,
-		backgroundColor: color.background,
+		backgroundColor: StyleSheet.color.background,
 	},
 	scrollViewContentContainer: {
 		paddingVertical: Spacing.spacing_05,
@@ -112,4 +112,4 @@ const style = StyleSheet.create(color => ({
 	playgroundController: {
 		flexBasis: 400,
 	},
-}))
+})

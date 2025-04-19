@@ -73,36 +73,36 @@ const
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
-		>(color => ({
+		>({
 			background_default: {
-				backgroundColor: color.button_secondary,
+				backgroundColor: StyleSheet.color.button_secondary,
 			},
 			background_focused: {
-				backgroundColor: color.button_secondary,
+				backgroundColor: StyleSheet.color.button_secondary,
 			},
 			background_hovered: {
-				backgroundColor: color.button_secondary_hover,
+				backgroundColor: StyleSheet.color.button_secondary_hover,
 			},
 			background_pressed: {
-				backgroundColor: color.button_secondary_active,
+				backgroundColor: StyleSheet.color.button_secondary_active,
 			},
 			background_disabled: {
-				backgroundColor: color.button_disabled,
+				backgroundColor: StyleSheet.color.button_disabled,
 			},
 
 			text_default: {
-				color: color.text_on_color,
+				color: StyleSheet.color.text_on_color,
 			},
 			text_focused: {
-				color: color.text_on_color,
+				color: StyleSheet.color.text_on_color,
 			},
 			text_hovered: {
-				color: color.text_on_color,
+				color: StyleSheet.color.text_on_color,
 			},
 			text_pressed: {
-				color: color.text_on_color,
+				color: StyleSheet.color.text_on_color,
 			},
 			text_disabled: {
-				color: color.text_on_color_disabled,
+				color: StyleSheet.color.text_on_color_disabled,
 			},
-		}))
+		})

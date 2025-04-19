@@ -109,15 +109,15 @@ export function Text({
 
 }
 
-const style = StyleSheet.create(color => ({
+const style = StyleSheet.create({
 	label: {
 		marginBottom: Spacing.spacing_03,
 	},
 	textInput: {
 		width: '100%',
-		backgroundColor: color.background,
+		backgroundColor: StyleSheet.color.background,
 		padding: Spacing.spacing_04,
 		border: 0,
-		color: color.text_primary,
+		color: StyleSheet.color.text_primary,
 	},
-}))
+})

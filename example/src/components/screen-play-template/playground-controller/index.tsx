@@ -74,10 +74,10 @@ export const PlaygroundController = Object.assign(Component, {
 
 const
 	style =
-		StyleSheet.create(color => ({
+		StyleSheet.create({
 			container: {
 				paddingHorizontal: Spacing.spacing_05,
-				backgroundColor: color.field_01,
+				backgroundColor: StyleSheet.color.field_01,
 			},
 			contentContainer: {
 				paddingVertical: Spacing.spacing_07,
@@ -85,5 +85,5 @@ const
 			title: {
 				marginBottom: Spacing.spacing_05,
 			},
-		}))
+		})
 

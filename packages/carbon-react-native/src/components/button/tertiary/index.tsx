@@ -13,7 +13,7 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet as StyleSheetColor,
+	StyleSheet as CarbonStyleSheet,
 } from '../../../_style-sheet'
 
 import {
@@ -80,46 +80,46 @@ const
 		}),
 
 	colorStyle =
-		StyleSheetColor.create<
+		CarbonStyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
-		>(color => ({
+		>({
 			background_default: {
 				backgroundColor: 'transparent',
-				borderColor: color.button_tertiary,
+				borderColor: CarbonStyleSheet.color.button_tertiary,
 			},
 			background_focused: {
-				backgroundColor: color.button_tertiary_hover,
-				borderColor: color.focus,
+				backgroundColor: CarbonStyleSheet.color.button_tertiary_hover,
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: color.button_tertiary_hover,
-				borderColor: color.button_tertiary_hover,
+				backgroundColor: CarbonStyleSheet.color.button_tertiary_hover,
+				borderColor: CarbonStyleSheet.color.button_tertiary_hover,
 			},
 			background_pressed: {
-				backgroundColor: color.button_tertiary_active,
-				borderColor: color.button_tertiary_active,
+				backgroundColor: CarbonStyleSheet.color.button_tertiary_active,
+				borderColor: CarbonStyleSheet.color.button_tertiary_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
-				borderColor: color.button_disabled,
+				borderColor: CarbonStyleSheet.color.button_disabled,
 			},
 
 			text_default: {
-				color: color.button_tertiary,
+				color: CarbonStyleSheet.color.button_tertiary,
 			},
 			text_focused: {
-				color: color.button_tertiary,
+				color: CarbonStyleSheet.color.button_tertiary,
 			},
 			text_hovered: {
-				color: color.text_inverse,
+				color: CarbonStyleSheet.color.text_inverse,
 			},
 			text_pressed: {
-				color: color.text_inverse,
+				color: CarbonStyleSheet.color.text_inverse,
 			},
 			text_disabled: {
-				color: color.text_disabled,
+				color: CarbonStyleSheet.color.text_disabled,
 			},
-		}))
+		})

@@ -97,23 +97,23 @@ export function Home() {
 
 const
 	style =
-		StyleSheet.create(color => ({
+		StyleSheet.create({
 			scrollView: {
-				backgroundColor: color.background,
+				backgroundColor: StyleSheet.color.background,
 			},
 			titleBg: {
 				marginBottom: 32,
 				paddingVertical: 64,
 				paddingHorizontal: 16,
-				backgroundColor: color.text_primary,
+				backgroundColor: StyleSheet.color.text_primary,
 			},
 			title: {
 				textAlign: 'center',
-				color: color.background,
+				color: StyleSheet.color.background,
 			},
 			subtitle: {
 				textAlign: 'center',
-				color: color.tag_background_blue,
+				color: StyleSheet.color.tag_background_blue,
 			},
 			wrapper: {
 				paddingHorizontal: 16,
@@ -121,7 +121,7 @@ const
 			textBr: {
 				marginBottom: 16,
 			},
-		})),
+		}),
 
 	componentItemNavs: {
 		text: string,

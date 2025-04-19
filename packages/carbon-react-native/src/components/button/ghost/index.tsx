@@ -3,7 +3,7 @@ import {
 } from 'react'
 
 import {
-	StyleSheet,
+	StyleSheet as RNStyleSheet,
 	type TextStyle,
 	type ViewStyle,
 } from 'react-native'
@@ -17,7 +17,7 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet as StyleSheetColor,
+	StyleSheet,
 } from '../../../_style-sheet'
 
 import {
@@ -78,48 +78,48 @@ export function Ghost({
 
 const
 	colorStyle =
-		StyleSheetColor.create<
+		StyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
-		>(color => ({
+		>({
 			background_default: {
 				backgroundColor: 'transparent',
 			},
 			background_focused: {
 				borderWidth: 1,
-				borderColor: color.focus,
+				borderColor: StyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: color.background_hover,
+				backgroundColor: StyleSheet.color.background_hover,
 			},
 			background_pressed: {
-				backgroundColor: color.background_active,
+				backgroundColor: StyleSheet.color.background_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
 			},
 
 			text_default: {
-				color: color.link_primary,
+				color: StyleSheet.color.link_primary,
 			},
 			text_focused: {
-				color: color.link_primary,
+				color: StyleSheet.color.link_primary,
 			},
 			text_hovered: {
-				color: color.link_primary_hover,
+				color: StyleSheet.color.link_primary_hover,
 			},
 			text_pressed: {
-				color: color.link_primary,
+				color: StyleSheet.color.link_primary,
 			},
 			text_disabled: {
-				color: color.text_disabled,
+				color: StyleSheet.color.text_disabled,
 			},
-		})),
+		}),
 
 	style =
-		StyleSheet.create({
+		RNStyleSheet.create({
 			iconPL8: {
 				paddingLeft: Spacing.spacing_03,
 			},

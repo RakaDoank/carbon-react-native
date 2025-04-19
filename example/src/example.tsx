@@ -61,8 +61,8 @@ function BackgroundView({
 
 }
 
-const style = StyleSheet.create(color => ({
+const style = StyleSheet.create({
 	rootView: {
-		backgroundColor: color.background,
+		backgroundColor: StyleSheet.color.background,
 	},
-}))
+})

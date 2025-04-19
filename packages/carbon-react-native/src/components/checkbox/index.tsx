@@ -19,7 +19,7 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as StyleSheetColor,
+	StyleSheet as CarbonStyleSheet,
 } from '../../_style-sheet'
 
 import {
@@ -216,24 +216,22 @@ const
 		}),
 
 	textColorStyle =
-		StyleSheetColor.create<
+		CarbonStyleSheet.create<
 			Record<CheckboxInputInteractiveState, TextStyle>
-		>(color => {
-			return {
-				normal: {
-					color: color.text_primary,
-				},
-				disabled: {
-					color: color.text_disabled,
-				},
-				error: {
-					color: color.text_primary,
-				},
-				read_only: {
-					color: color.text_primary,
-				},
-				warning: {
-					color: color.text_primary,
-				},
-			}
+		>({
+			normal: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			disabled: {
+				color: CarbonStyleSheet.color.text_disabled,
+			},
+			error: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			read_only: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			warning: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
 		})
