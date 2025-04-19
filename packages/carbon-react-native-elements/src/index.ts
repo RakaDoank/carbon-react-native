@@ -10,4 +10,5 @@ export {
 	Typography,
 }
 
+export * from './breakpoint'
 export type * from './types'
