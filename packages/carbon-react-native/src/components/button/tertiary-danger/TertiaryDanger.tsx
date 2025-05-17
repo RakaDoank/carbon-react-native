@@ -30,7 +30,7 @@ import type {
 	TertiaryDangerRef,
 } from './TertiaryDangerRef'
 
-export const Tertiary = forwardRef<TertiaryDangerRef, TertiaryDangerProps>(
+export const TertiaryDanger = forwardRef<TertiaryDangerRef, TertiaryDangerProps>(
 	function TertiaryDanger(
 		{
 			style,
