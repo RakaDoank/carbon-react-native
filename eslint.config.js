@@ -69,13 +69,6 @@ export default [
 	// },
 
 	{
-		files: ['libs/builder-bob/**/bob.config.js'],
-		rules: {
-			'no-undef': 'off',
-		},
-	},
-
-	{
 		plugins: {
 			'@stylistic': StylisticJs,
 		},
@@ -284,7 +277,7 @@ export default [
 	{
 		files: [
 			'scripts/**/*.js',
-			'libs/**/scripts/*.js',
+			'libs/builder-bob/**/*.js',
 		],
 		languageOptions: {
 			globals: Globals.node,
@@ -295,9 +288,11 @@ export default [
 		languageOptions: {
 			ecmaVersion: 2020,
 			parserOptions: {
-				projectService: true,
+				project: [
+					'./packages/carbon-react-native/tsconfig.json',
+					'./packages/carbon-react-native-elements/tsconfig.json',
+				],
 				tsconfigRootDir: import.meta.dirname,
-				EXPERIMENTAL_useProjectService: true,
 			},
 		},
 	},
