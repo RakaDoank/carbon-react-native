@@ -4,12 +4,12 @@ import {
 
 import type {
 	RadioButtonGroupProps,
-} from './_types'
+} from './RadioButtonGroupProps'
 
-export interface RadioButtonGroupItemContext {
-	controlled?: RadioButtonGroupProps['controlled'],
+export interface ItemContext {
+	controlled?: boolean,
 	value?: RadioButtonGroupProps['selectedValue'],
 	setValue?: (value: RadioButtonGroupProps['selectedValue']) => void,
 }
 
-export const RadioButtonGroupItemContext = createContext<RadioButtonGroupItemContext>({})
+export const ItemContext = createContext<ItemContext>({})

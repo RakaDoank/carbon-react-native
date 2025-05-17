@@ -40,7 +40,6 @@ export function Boolean({
 			<Toggle.Default
 				label={ label }
 				actionText=""
-				controlled
 				value={ value }
 				onChange={ onChange }
 				pressableProps={{

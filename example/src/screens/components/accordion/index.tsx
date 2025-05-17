@@ -165,7 +165,6 @@ export function Accordion() {
 				<CAccordion.Item
 					title={ play.title[0] }
 					open={ play.open[0] }
-					controlled
 					onPressHeader={ () => toggleItemHandler(0) }
 				>
 					<CText type="body_01">
@@ -175,14 +174,12 @@ export function Accordion() {
 				<Item2nd
 					title={ play.title[1] }
 					open={ play.open[1] }
-					controlled
 					onPressHeader={ () => toggleItemHandler(1) }
 					onPressSampleButton={ () => toggleItemHandler(1) }
 				/>
 				<CAccordion.Item
 					title={ play.title[2] }
 					open={ play.open[2] }
-					controlled
 					onPressHeader={ () => toggleItemHandler(2) }
 				>
 					<CText type="body_01">

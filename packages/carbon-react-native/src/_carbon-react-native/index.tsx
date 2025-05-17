@@ -4,10 +4,16 @@ import type {
 
 import {
 	BreakpointProvider,
+} from '../providers/breakpoint'
+
+import {
 	GlobalConfigProvider,
+} from '../providers/global-config'
+
+import {
 	ThemeProvider,
 	type ThemeProviderProps,
-} from '../providers'
+} from '../providers/theme'
 
 export interface CarbonReactNativeProps extends ThemeProviderProps {
 	globalConfig?: GlobalConfigContext,

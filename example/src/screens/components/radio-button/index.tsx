@@ -166,7 +166,6 @@ export function RadioButton() {
 				orientation={ play.orientation }
 				helperText={ play.helperText }
 				helperTextMode={ play.helperTextMode }
-				controlled
 				selectedValue={ play.selectedValue }
 			>
 				{ radioValues.map((val, index) => (

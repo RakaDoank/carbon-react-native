@@ -11,6 +11,7 @@ import {
 import {
 	CheckboxGroup,
 	ThemeContext,
+	type CheckboxProps,
 	type CheckboxGroupProps,
 } from '@audira/carbon-react-native'
 
@@ -24,6 +25,8 @@ import {
 	type ScreenPlayTemplateTextProps,
 } from '@/components'
 
+type ItemsType<T> = [T, T, T, T, T]
+
 export function Checkbox() {
 
 	useContext(ThemeContext)
@@ -33,16 +36,14 @@ export function Checkbox() {
 			useState<{
 				orientation: NonNullable<CheckboxGroupProps['orientation']>,
 				legend: string,
-				selected: [boolean, boolean, boolean, boolean, boolean],
-				indeterminate1: boolean,
-				label: [string, string, string, string, string],
+				selected: ItemsType<Exclude<CheckboxProps['value'], undefined>>,
+				label: ItemsType<string>,
 				helperText: string,
 				helperTextMode: NonNullable<CheckboxGroupProps['helperTextMode']>,
 			}>({
 				orientation: 'vertical',
 				legend: 'Group Legend',
-				selected: [false, true, false, false, false],
-				indeterminate1: true,
+				selected: [false, true, null, false, false],
 				label: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'],
 				helperText: '',
 				helperTextMode: 'normal',
@@ -83,7 +84,7 @@ export function Checkbox() {
 		labelItemPlayHandler: (label: string, index: number) => void =
 			useCallback((_label, index) => {
 				setPlay(_play => {
-					const label = _play.label.slice() as [string, string, string, string, string]
+					const label = _play.label.slice() as typeof _play['label']
 					label[index] = _label
 					return {
 						..._play,
@@ -95,18 +96,8 @@ export function Checkbox() {
 		toggleItemHandler =
 			useCallback((index: 0 | 1 | 2 | 3 | 4) => {
 				setPlay(_play => {
-					const selected = _play.selected.slice() as [boolean, boolean, boolean, boolean, boolean]
-
-					if(index === 1 && _play.indeterminate1) {
-						selected[index] = true
-						return {
-							..._play,
-							selected,
-							indeterminate1: false,
-						}
-					}
-
-					selected[index] = !selected[index]
+					const selected = _play.selected.slice() as typeof _play['selected']
+					selected[index] = selected[index] === null ? true : !selected[index]
 					return {
 						..._play,
 						selected,
@@ -191,32 +182,26 @@ export function Checkbox() {
 			>
 				<CheckboxGroup.Item
 					label={ play.label[0] }
-					controlled
 					value={ play.selected[0] }
 					onPress={ () => toggleItemHandler(0) }
 				/>
 				<CheckboxGroup.Item
 					label={ play.label[1] }
-					controlled
-					indeterminate={ play.indeterminate1 }
 					value={ play.selected[1] }
 					onPress={ () => toggleItemHandler(1) }
 				/>
 				<CheckboxGroup.Item
 					label={ play.label[2] }
-					controlled
 					value={ play.selected[2] }
 					onPress={ () => toggleItemHandler(2) }
 				/>
 				<CheckboxGroup.Item
 					label={ play.label[3] }
-					controlled
 					value={ play.selected[3] }
 					onPress={ () => toggleItemHandler(3) }
 				/>
 				<CheckboxGroup.Item
 					label={ play.label[4] }
-					controlled
 					value={ play.selected[4] }
 					onPress={ () => toggleItemHandler(4) }
 				/>
@@ -240,8 +225,7 @@ export function Checkbox() {
 				/>
 				<CheckboxGroup.Item
 					label="Uncontrolled 2"
-					indeterminate
-					value
+					value={ null }
 				/>
 				<CheckboxGroup.Item
 					label="Uncontrolled 3"

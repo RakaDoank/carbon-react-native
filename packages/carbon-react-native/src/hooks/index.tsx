@@ -1,1 +1,5 @@
-export * from './use-breakpoint'
+import * as BreakpointHook from './breakpoint'
+
+export {
+	BreakpointHook,
+}

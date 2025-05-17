@@ -31,7 +31,6 @@ export function Enum({
 			<RadioButtonGroup
 				selectedValue={ selectedValue }
 				legend={ label }
-				controlled
 			>
 				{ data.map(item => (
 					<RadioButtonGroup.Item

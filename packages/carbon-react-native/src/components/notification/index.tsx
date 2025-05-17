@@ -13,5 +13,6 @@ export {
 }
 
 export * from './base'
+export * from './NotificationColor'
 export * from './subtitle'
 export * from './subtitle-link'
