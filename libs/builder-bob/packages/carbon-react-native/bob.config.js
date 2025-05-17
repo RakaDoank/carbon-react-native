@@ -22,7 +22,6 @@ module.exports = {
 		[
 			'typescript',
 			{
-				'esm': true,
 				project: `${targetPath}/tsconfig.json`,
 			},
 		],
