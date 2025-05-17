@@ -243,8 +243,8 @@ importers:
   packages/carbon-react-native-elements:
     devDependencies:
       '@react-native/typescript-config':
-        specifier: 0.78.0
-        version: 0.78.0
+        specifier: 0.79.2
+        version: 0.79.2
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -2052,9 +2052,6 @@ packages:
 
   '@react-native/normalize-colors@0.79.2':
     resolution: {integrity: sha512-+b+GNrupWrWw1okHnEENz63j7NSMqhKeFMOyzYLBwKcprG8fqJQhDIGXfizKdxeIa5NnGSAevKL1Ev1zJ56X8w==}
-
-  '@react-native/typescript-config@0.78.0':
-    resolution: {integrity: sha512-G5+MbXvFN+R2GELDYK/kaOxEVMj+/DQRn1PxPps33V/wU/gG6zrlvDWxBaonrlGWpfmqGo87BMal1jQJ8ToSIA==}
 
   '@react-native/typescript-config@0.79.2':
     resolution: {integrity: sha512-krHAkkPRCOEhuqN3iwRUwIyE1rAnUQ9//huzUc1ukcoQ7Y4qFxM6amhNloAmYn4QH1Ay6o5At00VbEh2xoHISA==}
@@ -10803,8 +10800,6 @@ snapshots:
       - supports-color
 
   '@react-native/normalize-colors@0.79.2': {}
-
-  '@react-native/typescript-config@0.78.0': {}
 
   '@react-native/typescript-config@0.79.2': {}
 
