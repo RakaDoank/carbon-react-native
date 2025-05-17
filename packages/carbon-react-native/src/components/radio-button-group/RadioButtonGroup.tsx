@@ -47,7 +47,7 @@ import {
 
 import {
 	Item,
-} from './_item'
+} from './_Item'
 
 import type {
 	RefBase,
