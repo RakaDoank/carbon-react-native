@@ -96,16 +96,17 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 
 					if(
 						index > -1 &&
-						componentWrappersRef.current[index]
+						componentWrappersRef.current[index] &&
+						componentsConfig.current[index]
 					) {
 						componentWrappersRef.current[index].cancelX() // cancel the current delay first
 						componentWrappersRef.current[index].shiftX(
-							componentsConfig.current[index]!.width + Spacing.spacing_03,
+							componentsConfig.current[index].width + Spacing.spacing_03,
 						)
 						if(index > 0) {
 							for(let i = 0; i < index; i++) {
-								componentWrappersRef.current[i]!.shiftY(
-									-componentsConfig.current[index]!.height,
+								componentWrappersRef.current[i]?.shiftY(
+									-componentsConfig.current[index].height,
 								)
 							}
 						}
@@ -131,8 +132,9 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 
 						if(componentWrappersRef.current.length > 1) {
 							for(let i = 0; i < componentWrappersRef.current.length - 1; i++) {
-								componentWrappersRef.current[i]!.shiftY(
-									componentsConfig.current[0]!.height + Spacing.spacing_03,
+								componentWrappersRef.current[i]?.shiftY(
+									// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-extra-non-null-assertion
+									componentsConfig.current[0]!!.height + Spacing.spacing_03,
 								)
 							}
 						}
@@ -175,7 +177,7 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 			<Fragment>
 				{ components.map((component, index) => (
 					<ComponentWrapper
-						key={ componentsConfig.current[index]!.id }
+						key={ componentsConfig.current[index]?.id }
 						onLayout={ event => onLayoutComponent(event, index) }
 						onShiftedX={ () => onShiftedXComponent(index) }
 						ref={ ref => setComponentWrapperRef(ref, index) }

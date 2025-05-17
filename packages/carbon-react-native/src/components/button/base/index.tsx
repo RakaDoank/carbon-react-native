@@ -126,7 +126,7 @@ export const Base = forwardRef<View, BaseProps>(
 						] }
 					/>
 				) : iconNode?.(
-					iconSize!,
+					iconSize,
 					[
 						getIconMarginTopStyle(size),
 						getIconMarginLeftStyle(!!text),
@@ -201,19 +201,19 @@ const
 	/**
 	 * https://carbondesignsystem.com/components/button/style/#typography
 	 */
-	mapTextTypeByExpressive: Record<string, NonNullable<TextProps['type']>> =
+	mapTextTypeByExpressive: Record<'true' | 'false', NonNullable<TextProps['type']>> =
 		{
 			false: 'body_compact_01',
 			true: 'body_compact_02',
 		},
 
-	mapIconSizeByExpressive: Record<string, number> =
+	mapIconSizeByExpressive: Record<'true' | 'false', number> =
 		{
 			false: 16,
 			true: 20,
 		},
 
-	mapIconMLByText: Record<string, { marginLeft: number } | null> =
+	mapIconMLByText: Record<'true' | 'false', { marginLeft: number } | null> =
 		{
 			false: null,
 			true: baseStyle.iconML32,
@@ -223,17 +223,17 @@ const
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
-function isExpressive(
+function isExpressiveStr(
 	buttonSize: BaseProps['size'],
-) {
-	return buttonSize === 'large_expressive'
+): 'true' | 'false' {
+	return `${buttonSize === 'large_expressive'}`
 }
 
 function getContainerPaddingRight(
 	text: boolean,
 	icon: boolean,
 ) {
-	return mapContainerPR[`text[${text}]_icon[${icon}]`] as NonNullable<typeof mapContainerPR[keyof typeof mapContainerPR]>
+	return mapContainerPR[`text[${text}]_icon[${icon}]`]
 }
 
 /**
@@ -241,7 +241,7 @@ function getContainerPaddingRight(
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function getTextType(buttonSize: BaseProps['size']) {
-	return mapTextTypeByExpressive[`${isExpressive(buttonSize)}`]
+	return mapTextTypeByExpressive[isExpressiveStr(buttonSize)]
 }
 
 /**
@@ -249,13 +249,13 @@ function getTextType(buttonSize: BaseProps['size']) {
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function getIconSize(buttonSize: BaseProps['size']) {
-	return mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]
+	return mapIconSizeByExpressive[isExpressiveStr(buttonSize)]
 }
 
 function getIconMarginTopStyle(buttonSize: NonNullable<BaseProps['size']>) {
 	const
 		iconSize =
-			mapIconSizeByExpressive[`${isExpressive(buttonSize)}`]!,
+			mapIconSizeByExpressive[isExpressiveStr(buttonSize)],
 
 		height =
 			Math.min(sizeStyle[buttonSize].height, sizeStyle.large_productive.height) // 48 at max
