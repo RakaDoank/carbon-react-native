@@ -32,10 +32,13 @@ import type {
 } from './SubtitleRef'
 
 export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
-	function Subtitle({
-		style,
-		...props
-	}: SubtitleProps) {
+	function Subtitle(
+		{
+			style,
+			...props
+		},
+		ref,
+	) {
 
 		const
 			themeContext =
@@ -47,6 +50,7 @@ export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 		return (
 			<Text
 				{ ...props }
+				ref={ ref }
 				type="body_compact_01"
 				style={ [
 					{ color: themeContext.color[mapTextColor[variantContext.color]] },
