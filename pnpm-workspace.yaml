@@ -1,5 +1,11 @@
+engineStrict: true
+
+nodeLinker: hoisted
+
 packages:
   - 'docs'
-  - 'example'
-  - 'libs/*'
+  - 'builder-bob'
   - 'packages/*'
+  - 'storybook'
+
+strictPeerDependencies: false

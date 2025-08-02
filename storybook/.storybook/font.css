@@ -1,0 +1,77 @@
+@font-face {
+	font-family: "IBMPlexSans-ExtraLight";
+	font-weight: 200;
+	src: url("/fonts/IBMPlexSans-ExtraLight.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-ExtraLight-Italic";
+	font-weight: 300;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-ExtraLight-Italic.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Light";
+	font-weight: 300;
+	src: url("/fonts/IBMPlexSans-Light.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Light-Italic";
+	font-weight: 300;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-Light-Italic.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Regular";
+	font-weight: 400;
+	src: url("/fonts/IBMPlexSans-Regular.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Italic";
+	font-weight: 400;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-Italic.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Medium";
+	font-weight: 500;
+	src: url("/fonts/IBMPlexSans-Medium.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Medium-Italic";
+	font-weight: 500;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-Medium-Italic.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-SemiBold";
+	font-weight: 600;
+	src: url("/fonts/IBMPlexSans-SemiBold.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-SemiBold-Italic";
+	font-weight: 600;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-SemiBold-Italic.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Bold";
+	font-weight: 700;
+	src: url("/fonts/IBMPlexSans-Bold.woff");
+}
+
+@font-face {
+	font-family: "IBMPlexSans-Bold-Italic";
+	font-weight: 700;
+	font-style: italic;
+	src: url("/fonts/IBMPlexSans-Bold-Italic.woff");
+}

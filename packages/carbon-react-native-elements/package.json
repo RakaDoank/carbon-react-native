@@ -5,10 +5,6 @@
 	"homepage": "https://github.com/RakaDoank/carbon-react-native",
 	"repository": "https://github.com/RakaDoank/carbon-react-native",
 	"description": "Build React Native apps with component and shared patterns using Carbon",
-	"devDependencies": {
-		"@react-native/typescript-config": "0.79.2",
-		"typescript": "5.8.2"
-	},
 	"main": "./lib/commonjs/index.js",
 	"module": "./lib/module/index.js",
 	"types": "./lib/typescript/commonjs/src/index.d.ts",
