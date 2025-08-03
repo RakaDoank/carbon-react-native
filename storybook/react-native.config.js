@@ -23,6 +23,10 @@ const
 
 module.exports = {
 
+	assets: [
+		node_path.join(workspaceRoot, 'assets/fonts'),
+	],
+
 	/**
 	 * Since this repository is a monorepo setup with hoisted node_modules
 	 * We have to manually put the React Native libraries to the correct node_modules path
@@ -49,6 +53,15 @@ module.exports = {
 
 	project: {
 		ios: {
+			/**
+			 * Intentionally `false`.
+			 * Do the pod installation manually, and ensure you are not using Ruby version of macOS default
+			 * 
+			 * To install, run this command
+			 * ```bash
+			 * bundle install && bundle exec pod install
+			 * ```
+			 */
 			automaticPodsInstallation: false,
 		},
 		android: {},
