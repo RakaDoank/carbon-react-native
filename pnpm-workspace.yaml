@@ -3,7 +3,6 @@ engineStrict: true
 nodeLinker: hoisted
 
 packages:
-  - 'docs'
   - 'builder-bob'
   - 'packages/*'
   - 'storybook'
