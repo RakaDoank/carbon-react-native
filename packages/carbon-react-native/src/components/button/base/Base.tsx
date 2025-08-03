@@ -5,6 +5,7 @@ import {
 import {
 	Pressable,
 	StyleSheet,
+	View,
 } from 'react-native'
 
 import {
@@ -73,12 +74,16 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				{ backgroundNode }{/* only for base-color button, and this is not valid HTML per se */}
 
 				{ !!text && (
-					<Text
-						type={ getTextType(size) }
-						style={ [baseStyle.text, textStyle] }
+					<View
+						style={ baseStyle.textContainer }
 					>
-						{ text }
-					</Text>
+						<Text
+							type={ getTextType(size) }
+							style={ textStyle }
+						>
+							{ text }
+						</Text>
+					</View>
 				) }
 
 				{ (!!icon && !iconNode) ? (
@@ -127,8 +132,9 @@ const
 				...FlexStyle.flex_initial,
 				maxHeight: Spacing.spacing_09,
 			},
-			text: {
-				verticalAlign: 'middle',
+			textContainer: {
+				justifyContent: 'center',
+				height: '100%',
 				maxHeight: 48,
 			},
 			iconML32: {
