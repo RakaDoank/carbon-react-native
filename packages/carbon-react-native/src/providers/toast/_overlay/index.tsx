@@ -155,6 +155,9 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 						componentsConfig.current[index]?.state === 2 &&
 						index == componentsConfig.current.length - 1
 					) {
+						/**
+						 * Delete all componentsConfig, componentWrappersRef, and components (react state) when it's all done
+						 */
 						componentsConfig.current.splice(0, componentsConfig.current.length)
 						componentWrappersRef.current.splice(0, componentWrappersRef.current.length)
 						setComponents([])
