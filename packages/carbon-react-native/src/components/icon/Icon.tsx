@@ -17,7 +17,7 @@ import type {
  */
 export class Icon extends Component<IconProps> {
 
-	render() {
+	override render() {
 		try {
 			return (
 				<SvgXml
