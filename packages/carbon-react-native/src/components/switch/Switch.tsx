@@ -99,6 +99,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 
 			ref =
 				useRef({
+					onChangeEffect: false,
 					value: defaultValue ?? false,
 				}),
 
@@ -134,23 +135,23 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 							mapSwitchTrackColorToken[state],
 
 						thumbColor_ =
-							themeContext.color[mapSwitchThumbColorToken[state]]
+							mapSwitchThumbColorToken[state]
 
 					return {
 						trackColor: trackColorProp ?? {
-							false: trackColor_.false ? themeContext.color[trackColor_.false] : 'transparent',
-							true: trackColor_.true ? themeContext.color[trackColor_.true] : 'transparent',
+							false: trackColor_.false?.[themeContext.colorScheme] ?? 'transparent',
+							true: trackColor_.true?.[themeContext.colorScheme] ?? 'transparent',
 						},
 						thumbColor: thumbColorProp ?? {
-							false: thumbColor_,
-							true: thumbColor_,
+							false: thumbColor_[themeContext.colorScheme],
+							true: thumbColor_[themeContext.colorScheme],
 						},
 					}
-				// eslint-disable-next-line react-hooks/exhaustive-deps
 				}, [
 					state,
 					trackColorProp,
 					thumbColorProp,
+					themeContext.colorScheme,
 				]),
 
 			trackAnimatedStyle =
@@ -220,12 +221,15 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
-						ref.current.value = !ref.current.value
-						setValueSelf(ref.current.value)
+						ref.current.onChangeEffect = true
+						setValueSelf(self => !self)
+					} else {
+						onChange?.(!ref.current.value)
 					}
 				}, [
 					controlled,
 					onPress,
+					onChange,
 				])
 
 		useEffect(() => {
@@ -257,10 +261,11 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				(viewRef.current ?? {}) as View,
 				{
 					get value() {
-						return ref.current.value
+						return value
 					},
 					setValue(valueParam) {
 						if(!controlled) {
+							ref.current.onChangeEffect = true
 							if(typeof valueParam === 'boolean') {
 								setValueSelf(valueParam)
 							} else {
@@ -272,6 +277,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			)
 		}, [
 			controlled,
+			value,
 		])
 
 		return (
