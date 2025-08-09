@@ -10,6 +10,10 @@ import {
 } from 'react-native'
 
 import {
+	Color,
+} from '@audira/carbon-react-native-elements'
+
+import {
 	ThemeContext,
 } from '../../../contexts'
 
@@ -20,6 +24,7 @@ import {
 import {
 	BaseColor,
 	type BaseColorProps,
+	type BaseColorState,
 } from '../base-color'
 
 import type {
@@ -47,7 +52,7 @@ export const Tertiary = forwardRef<TertiaryRef, TertiaryProps>(
 			<BaseColor
 				{ ...props }
 				ref={ ref }
-				android_rippleEffectColor={ themeContext.color.button_tertiary_active }
+				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
 						default: colorStyle.background_default,
@@ -63,13 +68,7 @@ export const Tertiary = forwardRef<TertiaryRef, TertiaryProps>(
 						pressed: colorStyle.text_pressed,
 						disabled: colorStyle.text_disabled,
 					},
-					icon: {
-						default: themeContext.color.button_tertiary,
-						focused: themeContext.color.button_tertiary,
-						hovered: themeContext.color.icon_inverse,
-						pressed: themeContext.color.icon_inverse,
-						disabled: themeContext.color.icon_disabled,
-					},
+					icon: mapIconColor[themeContext.colorScheme],
 				}}
 				style={ [baseStyle.tertiary, style] }
 			/>
@@ -129,4 +128,28 @@ const
 			text_disabled: {
 				color: CarbonStyleSheet.color.text_disabled,
 			},
-		})
+		}),
+
+	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+		{
+			gray_10: {
+				default: Color.Token.gray_10.button_tertiary,
+				focused: Color.Token.gray_10.button_tertiary,
+				hovered: Color.Token.gray_10.icon_inverse,
+				pressed: Color.Token.gray_10.icon_inverse,
+				disabled: Color.Token.gray_10.icon_disabled,
+			},
+			gray_100: {
+				default: Color.Token.gray_100.button_tertiary,
+				focused: Color.Token.gray_100.button_tertiary,
+				hovered: Color.Token.gray_100.icon_inverse,
+				pressed: Color.Token.gray_100.icon_inverse,
+				disabled: Color.Token.gray_100.icon_disabled,
+			},
+		},
+
+	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.button_tertiary_active,
+			gray_100: Color.Token.gray_100.button_tertiary_active,
+		}

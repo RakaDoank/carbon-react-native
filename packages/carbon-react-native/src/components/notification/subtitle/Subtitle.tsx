@@ -3,9 +3,9 @@ import {
 	useContext,
 } from 'react'
 
-import type {
-	ColorToken,
-} from '@audira/carbon-react-native-elements'
+import {
+	StyleSheet,
+} from '../../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -40,10 +40,9 @@ export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 		ref,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext),
+		useContext(ThemeContext)
 
+		const
 			variantContext =
 				useContext(VariantContext)
 
@@ -53,7 +52,7 @@ export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 				ref={ ref }
 				type="body_compact_01"
 				style={ [
-					{ color: themeContext.color[mapTextColor[variantContext.color]] },
+					mapTextColorStyle[variantContext.color],
 					style,
 				] }
 			/>
@@ -62,8 +61,13 @@ export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 	},
 )
 
-const mapTextColor: Record<NotificationColor, ColorToken> =
-	{
-		low_contrast: 'text_primary',
-		high_contrast: 'text_inverse',
-	}
+const
+	mapTextColorStyle =
+		StyleSheet.create<Record<NotificationColor, { color: string }>>({
+			low_contrast: {
+				color: StyleSheet.color.text_primary,
+			},
+			high_contrast: {
+				color: StyleSheet.color.text_inverse,
+			},
+		})

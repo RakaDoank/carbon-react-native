@@ -20,7 +20,6 @@ import type {
 
 export function ThemeProvider({
 	colorScheme: colorSchemeProp,
-	overrideColor,
 	children,
 }: ThemeProviderProps): React.JSX.Element {
 
@@ -37,10 +36,6 @@ export function ThemeProvider({
 		<ThemeContext.Provider
 			value={{
 				colorScheme,
-				color: {
-					...ColorHelper.getColorToken(colorScheme),
-					...overrideColor,
-				},
 			}}
 		>
 			{ children }

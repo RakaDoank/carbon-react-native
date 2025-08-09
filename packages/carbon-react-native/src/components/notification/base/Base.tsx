@@ -6,11 +6,18 @@ import {
 import {
 	StyleSheet,
 	View,
+	type TextStyle,
+	type ViewStyle,
 } from 'react-native'
 
 import {
+	Color,
 	Spacing,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -162,29 +169,24 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					<ButtonBaseColor
 						{ ...iconCloseButtonProps }
 						text=""
-						android_rippleEffectColor={ themeContext.color.background_active }
+						android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 						size="large_expressive"
 						iconNode={ (iconColorState, iconSize, iconStyle) => iconCloseRenderer(iconCloseProps, iconColorState, iconSize, iconStyle) }
 						onPress={ onPressIconClose }
 						colorStateStyle={{
 							background: {
-								default: {
-									backgroundColor: 'transparent',
-								},
-								focused: {
-									borderWidth: 1,
-									borderColor: themeContext.color.focus,
-								},
-								hovered: { backgroundColor: themeContext.color.background_hover },
-								pressed: { backgroundColor: themeContext.color.background_active },
-								disabled: { backgroundColor: 'transparent' },
+								default: colorStyle.background_default,
+								focused: colorStyle.background_pressed,
+								hovered: colorStyle.background_hovered,
+								pressed: colorStyle.background_pressed,
+								disabled: colorStyle.background_disabled,
 							},
 							text: {
-								default: { color: 'transparent' },
-								focused: { color: 'transparent' },
-								hovered: { color: 'transparent' },
-								pressed: { color: 'transparent' },
-								disabled: { color: 'transparent' },
+								default: colorStyle.text_default,
+								focused: colorStyle.text_focused,
+								hovered: colorStyle.text_hovered,
+								pressed: colorStyle.text_pressed,
+								disabled: colorStyle.text_disabled,
 							},
 							/**
 							 * Means nothing since we used `iconNode` prop
@@ -242,6 +244,53 @@ const
 				paddingLeft: 0,
 			},
 		}),
+		
+	colorStyle =
+		CarbonStyleSheet.create<
+			Record<
+				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
+				ViewStyle | TextStyle
+			>
+		>({
+			background_default: {
+				backgroundColor: 'transparent',
+			},
+			background_focused: {
+				borderWidth: 1,
+				borderColor: CarbonStyleSheet.color.focus,
+			},
+			background_hovered: {
+				backgroundColor: CarbonStyleSheet.color.background_hover,
+			},
+			background_pressed: {
+				backgroundColor: CarbonStyleSheet.color.background_active,
+			},
+			background_disabled: {
+				backgroundColor: 'transparent',
+			},
+
+			text_default: {
+				color: 'transparent',
+			},
+			text_focused: {
+				color: 'transparent',
+			},
+			text_hovered: {
+				color: 'transparent',
+			},
+			text_pressed: {
+				color: 'transparent',
+			},
+			text_disabled: {
+				color: 'transparent',
+			},
+		}),
+
+	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.background_active,
+			gray_100: Color.Token.gray_100.background_active,
+		},
 
 	iconCloseRenderer: (
 		iconCloseProps: BaseProps['iconCloseProps'],

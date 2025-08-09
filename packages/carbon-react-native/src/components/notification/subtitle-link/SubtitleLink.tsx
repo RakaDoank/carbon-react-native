@@ -3,9 +3,9 @@ import {
 	useContext,
 } from 'react'
 
-import type {
-	ColorToken,
-} from '@audira/carbon-react-native-elements'
+import {
+	StyleSheet,
+} from '../../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -40,10 +40,9 @@ export const SubtitleLink = forwardRef<SubtitleLinkRef, SubtitleLinkProps>(
 		ref,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext),
+		useContext(ThemeContext)
 
+		const
 			variantContext =
 				useContext(VariantContext)
 
@@ -52,7 +51,7 @@ export const SubtitleLink = forwardRef<SubtitleLinkRef, SubtitleLinkProps>(
 				{ ...props }
 				ref={ ref }
 				style={ [
-					{ color: themeContext.color[mapTextColor[variantContext.color]] },
+					mapTextColorStyle[variantContext.color],
 					style,
 				] }
 			/>
@@ -61,8 +60,13 @@ export const SubtitleLink = forwardRef<SubtitleLinkRef, SubtitleLinkProps>(
 	},
 )
 
-const mapTextColor: Record<NotificationColor, ColorToken> =
-	{
-		low_contrast: 'link_primary',
-		high_contrast: 'link_inverse',
-	}
+const
+	mapTextColorStyle =
+		StyleSheet.create<Record<NotificationColor, { color: string }>>({
+			low_contrast: {
+				color: StyleSheet.color.link_primary,
+			},
+			high_contrast: {
+				color: StyleSheet.color.link_inverse,
+			},
+		})

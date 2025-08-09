@@ -17,7 +17,11 @@ import {
 } from 'react-native'
 
 import {
-	StyleSheet as StyleSheetColor,
+	Color,
+} from '@audira/carbon-react-native-elements'
+
+import {
+	StyleSheet as CarbonStyleSheet,
 } from '../../_style-sheet'
 
 import {
@@ -146,7 +150,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				]),
 
 			iconColor =
-				getIconColor(interactiveState, themeContext.color)
+				mapIconColor[interactiveState][themeContext.colorScheme]
 
 		useEffect(() => {
 			if(ref.current.onChangeEffect) {
@@ -200,7 +204,6 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					FlexStyle.justify_center,
 					CommonStyle.relative,
 					baseStyle.checkbox,
-					// getInteractiveStateStyle(interactiveState, value, themeContext.color),
 					getInteractiveStateStyle(interactiveState, value),
 					style,
 				] }
@@ -212,7 +215,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 						CommonStyle.overflow_hidden,
 						baseStyle.focusBox,
 						isFocused
-							? { borderColor: themeContext.color.focus }
+							? carbonStyle.focusBox
 							: null,
 					] }
 				/>
@@ -262,60 +265,81 @@ const
 		}),
 
 	interactiveStyle =
-		StyleSheetColor.create<
+		CarbonStyleSheet.create<
 			Record<`${CheckboxInputInteractiveState}_${'true' | 'false'}`, ViewStyle>
 		>({
 			normal_false: {
-				borderColor: StyleSheetColor.color.icon_primary,
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
 			normal_true: {
-				backgroundColor: StyleSheetColor.color.icon_primary,
-				borderColor: StyleSheetColor.color.icon_primary,
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
 			disabled_false: {
-				borderColor: StyleSheetColor.color.icon_disabled,
+				borderColor: CarbonStyleSheet.color.icon_disabled,
 			},
 			disabled_true: {
-				backgroundColor: StyleSheetColor.color.icon_disabled,
-				borderColor: StyleSheetColor.color.icon_disabled,
+				backgroundColor: CarbonStyleSheet.color.icon_disabled,
+				borderColor: CarbonStyleSheet.color.icon_disabled,
 			},
 			error_false: {
-				borderColor: StyleSheetColor.color.support_error,
+				borderColor: CarbonStyleSheet.color.support_error,
 			},
 			error_true: {
-				backgroundColor: StyleSheetColor.color.icon_primary,
-				borderColor: StyleSheetColor.color.support_error,
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+				borderColor: CarbonStyleSheet.color.support_error,
 			},
 			read_only_false: {
-				borderColor: StyleSheetColor.color.icon_disabled,
+				borderColor: CarbonStyleSheet.color.icon_disabled,
 			},
 			read_only_true: {
-				borderColor: StyleSheetColor.color.icon_disabled,
+				borderColor: CarbonStyleSheet.color.icon_disabled,
 			},
 			warning_false: {
-				borderColor: StyleSheetColor.color.icon_primary,
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
 			warning_true: {
-				backgroundColor: StyleSheetColor.color.icon_primary,
-				borderColor: StyleSheetColor.color.icon_primary,
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
-		})
+		}),
+
+	carbonStyle =
+		CarbonStyleSheet.create({
+			focusBox: {
+				borderColor: CarbonStyleSheet.color.focus,
+			},
+		}),
+
+	mapIconColor: Record<CheckboxInputInteractiveState, Record<ThemeContext['colorScheme'], string>> =
+		{
+			normal: {
+				gray_10: Color.Token.gray_10.icon_inverse,
+				gray_100: Color.Token.gray_100.icon_inverse,
+			},
+			disabled: {
+				gray_10: Color.Token.gray_10.icon_inverse,
+				gray_100: Color.Token.gray_100.icon_inverse,
+			},
+			error: {
+				gray_10: Color.Token.gray_10.icon_inverse,
+				gray_100: Color.Token.gray_100.icon_inverse,
+			},
+			read_only: {
+				gray_10: Color.Token.gray_10.icon_primary,
+				gray_100: Color.Token.gray_100.icon_primary,
+			},
+			warning: {
+				gray_10: Color.Token.gray_10.icon_inverse,
+				gray_100: Color.Token.gray_100.icon_inverse,
+			},
+		}
 
 function getInteractiveStateStyle(
 	interactiveState: CheckboxInputInteractiveState,
 	value: CheckboxInputValue,
 ) {
 	return interactiveStyle[`${interactiveState}_${!!value}`]
-}
-
-function getIconColor(
-	interactiveState: CheckboxInputInteractiveState,
-	color: ThemeContext['color'],
-) {
-	if(interactiveState === 'read_only') {
-		return color.icon_primary
-	}
-	return color.icon_inverse
 }
 
 interface IconComponentProps extends Omit<IconProps, 'src'> {

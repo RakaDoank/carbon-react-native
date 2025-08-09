@@ -16,9 +16,9 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import type {
-	ColorToken,
-} from '@audira/carbon-react-native-elements'
+import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -63,10 +63,9 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 		forwardedRef,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext),
+		useContext(ThemeContext)
 
+		const
 			viewRef =
 				useRef<View>(null),
 
@@ -170,12 +169,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					FlexStyle.justify_center,
 					CommonStyle.relative,
 					baseStyle.radioButton,
-					getInteractiveStateStyle(
-						'container',
-						interactiveState,
-						checked,
-						themeContext.color,
-					),
+					mapInteractiveStateStyle_[`${interactiveState}_${checked}_container`],
 					style,
 				] }
 				ref={ viewRef }
@@ -186,7 +180,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 						CommonStyle.overflow_hidden,
 						baseStyle.focusBox,
 						isFocused
-							? { borderColor: themeContext.color.focus }
+							? carbonStyle.focusBox
 							: null,
 					] }
 				/>
@@ -195,12 +189,9 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					style={ [
 						FlexStyle.flex_initial,
 						baseStyle.marker,
-						getInteractiveStateStyle(
-							'marker',
-							interactiveState,
-							checked,
-							themeContext.color,
-						),
+						checked
+							? mapInteractiveStateStyle_[`${interactiveState}_true_marker`]
+							: null,
 					] }
 				/>
 			</Pressable>
@@ -208,14 +199,6 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 
 	},
 )
-
-type InteractiveStateStyle =
-	Partial<
-		Record<
-			Extract<keyof ViewStyle, 'borderColor' | 'backgroundColor'>,
-			ColorToken
-		>
-	>
 
 const
 	size =
@@ -243,113 +226,68 @@ const
 			},
 		}),
 
-	mapInteractiveStateStyle: Record<
-		RadioButtonInputInteractiveState,
-		Record<
-			'true' | 'false',
-			{
-				container: InteractiveStateStyle,
-				marker?: InteractiveStateStyle,
-			}
-		>
-	> =
-		{
-			normal: {
-				true: {
-					container: {
-						borderColor: 'icon_primary',
-					},
-					marker: {
-						backgroundColor: 'icon_primary',
-					},
-				},
-				false: {
-					container: {
-						borderColor: 'icon_primary',
-					},
-				},
+	carbonStyle =
+		CarbonStyleSheet.create({
+			focusBox: {
+				borderColor: CarbonStyleSheet.color.focus,
 			},
-			disabled: {
-				true: {
-					container: {
-						borderColor: 'icon_disabled',
-					},
-					marker: {
-						backgroundColor: 'icon_disabled',
-					},
-				},
-				false: {
-					container: {
-						borderColor: 'icon_disabled',
-					},
-				},
+		}),
+
+	mapInteractiveStateStyle_ =
+		CarbonStyleSheet.create<
+			Record<
+				| `${RadioButtonInputInteractiveState}_true_${'container' | 'marker'}`
+				| `${RadioButtonInputInteractiveState}_false_container`,
+				ViewStyle
+			>
+		>({
+			normal_true_container: {
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
-			error: {
-				true: {
-					container: {
-						borderColor: 'support_error',
-					},
-					marker: {
-						backgroundColor: 'icon_primary',
-					},
-				},
-				false: {
-					container: {
-						borderColor: 'support_error',
-					},
-				},
+			normal_true_marker: {
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
 			},
-			read_only: {
-				true: {
-					container: {
-						borderColor: 'icon_disabled',
-					},
-					marker: {
-						backgroundColor: 'icon_primary',
-					},
-				},
-				false: {
-					container: {
-						borderColor: 'icon_disabled',
-					},
-				},
+			normal_false_container: {
+				borderColor: CarbonStyleSheet.color.icon_primary,
 			},
-			warning: {
-				true: {
-					container: {
-						borderColor: 'icon_primary',
-					},
-					marker: {
-						backgroundColor: 'icon_primary',
-					},
-				},
-				false: {
-					container: {
-						borderColor: 'icon_primary',
-					},
-				},
+
+			disabled_true_container: {
+				borderColor: CarbonStyleSheet.color.icon_disabled,
 			},
-		}
+			disabled_true_marker: {
+				backgroundColor: CarbonStyleSheet.color.icon_disabled,
+			},
+			disabled_false_container: {
+				borderColor: CarbonStyleSheet.color.icon_disabled,
+			},
 
-function getInteractiveStateStyle(
-	key: keyof typeof mapInteractiveStateStyle['normal']['true'],
-	interactiveState: RadioButtonInputInteractiveState,
-	checked: boolean,
-	color: ThemeContext['color'],
-) {
-	const
-		style =
-			mapInteractiveStateStyle[interactiveState][`${checked}`],
+			error_true_container: {
+				borderColor: CarbonStyleSheet.color.support_error,
+			},
+			error_true_marker: {
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+			},
+			error_false_container: {
+				borderColor: CarbonStyleSheet.color.support_error,
+			},
 
-		parsedStyle: ViewStyle = {}
+			read_only_true_container: {
+				borderColor: CarbonStyleSheet.color.icon_disabled,
+			},
+			read_only_true_marker: {
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+			},
+			read_only_false_container: {
+				borderColor: CarbonStyleSheet.color.icon_disabled,
+			},
 
-	if(style[key]?.backgroundColor) {
-		parsedStyle.backgroundColor = color[style[key].backgroundColor]
-	}
-
-	if(style[key]?.borderColor) {
-		parsedStyle.borderColor = color[style[key].borderColor]
-	}
-
-	return parsedStyle
-}
+			warning_true_container: {
+				borderColor: CarbonStyleSheet.color.icon_primary,
+			},
+			warning_true_marker: {
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+			},
+			warning_false_container: {
+				backgroundColor: CarbonStyleSheet.color.icon_primary,
+			},
+		})

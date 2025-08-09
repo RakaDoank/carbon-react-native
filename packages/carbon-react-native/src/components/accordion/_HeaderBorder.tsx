@@ -13,6 +13,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
+
+import {
 	ThemeContext,
 } from '../../contexts'
 
@@ -33,18 +37,14 @@ export function HeaderBorder({
 	style: styleProp,
 }: HeaderBorderProps) {
 
-	const
-		themeContext =
-			useContext(ThemeContext)
+	useContext(ThemeContext)
 
 	return (
 		<View
 			style={ [
 				CommonStyle.absolute,
 				style.borderBox,
-				{
-					borderColor: themeContext.color.border_subtle_00,
-				},
+				carbonStyle.borderBox,
 				flushAlignment
 					? {
 						left: Spacing.spacing_05,
@@ -64,5 +64,12 @@ const
 			borderBox: {
 				height: 1,
 				borderTopWidth: 1,
+			},
+		}),
+
+	carbonStyle =
+		CarbonStyleSheet.create({
+			borderBox: {
+				borderColor: CarbonStyleSheet.color.border_subtle_00,
 			},
 		})

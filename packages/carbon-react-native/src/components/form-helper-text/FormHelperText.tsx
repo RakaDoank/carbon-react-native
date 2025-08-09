@@ -9,6 +9,10 @@ import {
 } from 'react-native'
 
 import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
+
+import {
 	ThemeContext,
 } from '../../contexts'
 
@@ -42,9 +46,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 		ref,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext)
+		useContext(ThemeContext)
 
 		return (
 			<View
@@ -62,11 +64,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 					{ ...textProps }
 					type={ textProps?.type || 'helper_text_01' }
 					style={ [
-						{
-							color: error
-								? themeContext.color.text_error
-								: themeContext.color.text_primary,
-						},
+						error ? carbonStyle.textError : carbonStyle.text,
 						textProps?.style,
 					] }
 				>
@@ -85,5 +83,15 @@ const
 		StyleSheet.create({
 			container: {
 				gap: 8,
+			},
+		}),
+
+	carbonStyle =
+		CarbonStyleSheet.create({
+			text: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			textError: {
+				color: CarbonStyleSheet.color.text_error,
 			},
 		})

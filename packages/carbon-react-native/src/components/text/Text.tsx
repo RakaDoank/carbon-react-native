@@ -15,6 +15,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
+
+import {
 	ThemeContext,
 } from '../../contexts'
 
@@ -41,15 +45,13 @@ export const Text = forwardRef<TextRef, TextProps>(
 		ref,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext)
+		useContext(ThemeContext)
 
 		return (
 			<Core
 				{ ...props }
 				style={ [
-					{ color: themeContext.color.text_primary },
+					carbonStyle.text,
 					getTypeSets(type, italic),
 					style,
 				] }
@@ -106,6 +108,13 @@ const
 			}, {} as TypeSetsWithFamily),
 		)
 	},
+
+	carbonStyle =
+		CarbonStyleSheet.create({
+			text: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+		}),
 
 	TypeSets =
 		createTypeSets(),

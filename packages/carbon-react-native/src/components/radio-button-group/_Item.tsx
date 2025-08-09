@@ -35,7 +35,7 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 	) {
 
 		const
-			{ controlled, value, setValue } =
+			{ controlled, value, setValue, setOnChangeGroupEffect, onChangeGroup } =
 				useContext(ItemContext),
 
 			radioButtonRef =
@@ -45,12 +45,17 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
+						setOnChangeGroupEffect?.(true)
 						setValue?.(valueProp)
+					} else {
+						onChangeGroup?.(valueProp)
 					}
 				}, [
 					controlled,
 					valueProp,
 					setValue,
+					setOnChangeGroupEffect,
+					onChangeGroup,
 					onPress,
 				])
 

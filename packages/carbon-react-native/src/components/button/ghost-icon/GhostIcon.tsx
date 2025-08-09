@@ -9,6 +9,10 @@ import type {
 } from 'react-native'
 
 import {
+	Color,
+} from '@audira/carbon-react-native-elements'
+
+import {
 	ThemeContext,
 } from '../../../contexts'
 
@@ -19,6 +23,7 @@ import {
 import {
 	BaseColor,
 	type BaseColorProps,
+	type BaseColorState,
 } from '../base-color'
 
 import type {
@@ -46,7 +51,7 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 			<BaseColor
 				{ ...props }
 				ref={ ref }
-				android_rippleEffectColor={ themeContext.color.background_active }
+				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
 						default: selected
@@ -64,13 +69,7 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 						pressed: style.text_pressed,
 						disabled: style.text_disabled,
 					},
-					icon: {
-						default: themeContext.color.icon_primary,
-						focused: themeContext.color.icon_primary,
-						hovered: themeContext.color.icon_primary,
-						pressed: themeContext.color.icon_primary,
-						disabled: themeContext.color.icon_disabled,
-					},
+					icon: mapIconColor[themeContext.colorScheme],
 				}}
 			/>
 		)
@@ -122,4 +121,28 @@ const
 			text_disabled: {
 				color: 'transparent',
 			},
-		})
+		}),
+
+	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+		{
+			gray_10: {
+				default: Color.Token.gray_10.icon_primary,
+				focused: Color.Token.gray_10.icon_primary,
+				hovered: Color.Token.gray_10.icon_primary,
+				pressed: Color.Token.gray_10.icon_primary,
+				disabled: Color.Token.gray_10.icon_disabled,
+			},
+			gray_100: {
+				default: Color.Token.gray_100.icon_primary,
+				focused: Color.Token.gray_100.icon_primary,
+				hovered: Color.Token.gray_100.icon_primary,
+				pressed: Color.Token.gray_100.icon_primary,
+				disabled: Color.Token.gray_100.icon_disabled,
+			},
+		},
+
+	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.background_active,
+			gray_100: Color.Token.gray_100.background_active,
+		}

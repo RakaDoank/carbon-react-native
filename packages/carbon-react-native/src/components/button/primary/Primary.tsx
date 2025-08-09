@@ -9,6 +9,10 @@ import type {
 } from 'react-native'
 
 import {
+	Color,
+} from '@audira/carbon-react-native-elements'
+
+import {
 	ThemeContext,
 } from '../../../contexts'
 
@@ -19,6 +23,7 @@ import {
 import {
 	BaseColor,
 	type BaseColorProps,
+	type BaseColorState,
 } from '../base-color'
 
 import type {
@@ -43,7 +48,7 @@ export const Primary = forwardRef<PrimaryRef, PrimaryProps>(
 			<BaseColor
 				{ ...props }
 				ref={ ref }
-				android_rippleEffectColor={ themeContext.color.button_primary_active }
+				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
 						default: colorStyle.background_default,
@@ -59,13 +64,7 @@ export const Primary = forwardRef<PrimaryRef, PrimaryProps>(
 						pressed: colorStyle.text_pressed,
 						disabled: colorStyle.text_disabled,
 					},
-					icon: {
-						default: themeContext.color.icon_on_color,
-						focused: themeContext.color.icon_on_color,
-						hovered: themeContext.color.icon_on_color,
-						pressed: themeContext.color.icon_on_color,
-						disabled: themeContext.color.icon_on_color_disabled,
-					},
+					icon: mapIconColor[themeContext.colorScheme],
 				}}
 			/>
 		)
@@ -112,4 +111,28 @@ const
 			text_disabled: {
 				color: StyleSheet.color.text_on_color_disabled,
 			},
-		})
+		}),
+
+	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+		{
+			gray_10: {
+				default: Color.Token.gray_10.icon_on_color,
+				focused: Color.Token.gray_10.icon_on_color,
+				hovered: Color.Token.gray_10.icon_on_color,
+				pressed: Color.Token.gray_10.icon_on_color,
+				disabled: Color.Token.gray_10.icon_on_color_disabled,
+			},
+			gray_100: {
+				default: Color.Token.gray_100.icon_on_color,
+				focused: Color.Token.gray_100.icon_on_color,
+				hovered: Color.Token.gray_100.icon_on_color,
+				pressed: Color.Token.gray_100.icon_on_color,
+				disabled: Color.Token.gray_100.icon_on_color_disabled,
+			},
+		},
+
+	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.button_primary_active,
+			gray_100: Color.Token.gray_100.button_primary_active,
+		}

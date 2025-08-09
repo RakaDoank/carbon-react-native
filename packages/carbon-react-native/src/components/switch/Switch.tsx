@@ -29,7 +29,12 @@ import Animated, {
 
 import {
 	Motion,
+	Color,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -91,9 +96,6 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 	) {
 
 		const
-			isMounted =
-				useRef(false),
-
 			viewRef =
 				useRef<View>(null),
 
@@ -245,9 +247,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 		])
 
 		useEffect(() => {
-			if(!isMounted.current) {
-				isMounted.current = true
-			} else {
+			if(ref.current.onChangeEffect) {
+				ref.current.onChangeEffect = false
 				ref.current.value = value
 				onChange?.(value)
 			}
@@ -290,10 +291,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					baseStyle.container,
 					sizeStyle[size],
 					trackAnimatedStyle,
-					state === 'read_only' ? [
-						baseStyle.containerReadonly,
-						{ borderColor: themeContext.color.border_subtle_00 },
-					] : null,
+					state === 'read_only' ? baseStyleCarbon.containerReadonly : null,
 					style,
 				] }
 				onBlur={ blurHandler }
@@ -313,7 +311,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					{ size === 'small' && (
 						<IconAnimated
 							src={ Checkmark }
-							fill={ themeContext.color.support_success }
+							fill={ mapIconAnimatedFillColor[themeContext.colorScheme] }
 							style={ iconAnimatedStyle }
 						/>
 					) }
@@ -325,7 +323,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 							CommonStyle.absolute,
 							focusBoxSizeStyle[size],
 							baseStyle.focusBox,
-							{ borderColor: themeContext.color.focus },
+							baseStyleCarbon.focusBoxBorderColor,
 						] }
 					/>
 				) }
@@ -341,9 +339,6 @@ const
 			container: {
 				borderRadius: 24,
 			},
-			containerReadonly: {
-				borderWidth: 1,
-			},
 			thumb: {
 				borderRadius: 18,
 			},
@@ -353,6 +348,17 @@ const
 				transform: [{
 					translateX: -3,
 				}],
+			},
+		}),
+
+	baseStyleCarbon =
+		CarbonStyleSheet.create({
+			containerReadonly: {
+				borderWidth: 1,
+				borderColor: CarbonStyleSheet.color.border_subtle_00,
+			},
+			focusBoxBorderColor: {
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 		}),
 
@@ -392,29 +398,59 @@ const
 			},
 		}),
 
-	mapSwitchTrackColorToken: Record<SwitchState | 'focused', Partial<Record<'false' | 'true', keyof ThemeContext['color']>>> =
+	mapSwitchTrackColorToken: Record<SwitchState | 'focused', Partial<Record<'false' | 'true', Record<ThemeContext['colorScheme'], string>>>> =
 		{
 			normal: {
-				false: 'toggle_off',
-				true: 'support_success',
+				false: {
+					gray_10: Color.Token.gray_10.toggle_off,
+					gray_100: Color.Token.gray_100.toggle_off,
+				},
+				true: {
+					gray_10: Color.Token.gray_10.support_success,
+					gray_100: Color.Token.gray_100.support_success,
+				},
 			},
 			disabled: {
-				false: 'button_disabled',
-				true: 'button_disabled',
+				false: {
+					gray_10: Color.Token.gray_10.button_disabled,
+					gray_100: Color.Token.gray_100.button_disabled,
+				},
+				true: {
+					gray_10: Color.Token.gray_10.button_disabled,
+					gray_100: Color.Token.gray_100.button_disabled,
+				},
 			},
 			read_only: {},
 			focused: {
-				false: 'toggle_off',
-				true: 'support_success',
+				false: {
+					gray_10: Color.Token.gray_10.toggle_off,
+					gray_100: Color.Token.gray_100.toggle_off,
+				},
+				true: {
+					gray_10: Color.Token.gray_10.support_success,
+					gray_100: Color.Token.gray_100.support_success,
+				},
 			},
 		},
 
-	mapSwitchThumbColorToken: Record<SwitchState | 'focused', keyof ThemeContext['color']> =
+	mapSwitchThumbColorToken: Record<SwitchState | 'focused', Record<ThemeContext['colorScheme'], string>> =
 		{
-			normal: 'icon_on_color',
-			disabled: 'icon_on_color_disabled',
-			read_only: 'icon_primary',
-			focused: 'icon_on_color',
+			normal: {
+				gray_10: Color.Token.gray_10.icon_on_color,
+				gray_100: Color.Token.gray_100.icon_on_color,
+			},
+			disabled: {
+				gray_10: Color.Token.gray_10.icon_on_color_disabled,
+				gray_100: Color.Token.gray_100.icon_on_color_disabled,
+			},
+			read_only: {
+				gray_10: Color.Token.gray_10.icon_primary,
+				gray_100: Color.Token.gray_100.icon_primary,
+			},
+			focused: {
+				gray_10: Color.Token.gray_10.icon_on_color,
+				gray_100: Color.Token.gray_100.icon_on_color,
+			},
 		},
 
 	interpolationRange =
@@ -435,4 +471,10 @@ const
 		Animated.createAnimatedComponent(Pressable),
 
 	IconAnimated =
-		Animated.createAnimatedComponent(Icon)
+		Animated.createAnimatedComponent(Icon),
+
+	mapIconAnimatedFillColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.support_success,
+			gray_100: Color.Token.gray_100.support_success,
+		}

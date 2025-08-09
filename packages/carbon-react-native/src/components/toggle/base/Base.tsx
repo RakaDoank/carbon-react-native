@@ -11,11 +11,16 @@ import {
 	StyleSheet,
 	View,
 	type PressableProps,
+	type TextStyle,
 } from 'react-native'
 
 import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -71,10 +76,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		forwardedRef,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext),
+		useContext(ThemeContext) // keep it reactive
 
+		const
 			viewRef =
 				useRef<View>(null),
 
@@ -137,7 +141,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						textProps={{
 							...formLabelProps?.textProps,
 							style: [
-								{ color: themeContext.color[mapLabelColorToken[state]] },
+								mapFormLabelTextStyle[state],
 								formLabelProps?.textProps?.style,
 							],
 						}}
@@ -172,7 +176,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						type={ actionTextProps?.type || 'body_compact_01' }
 						style={ [
 							baseStyle.actionText,
-							{ color: themeContext.color[mapActionTextColorToken[state]] },
+							mapActionTextStyle[state],
 							actionTextProps?.style,
 						] }
 					>
@@ -202,16 +206,38 @@ const
 			},
 		}),
 
-	mapLabelColorToken: Record<SwitchState, keyof ThemeContext['color']> =
+	carbonStyle =
+		CarbonStyleSheet.create<Record<`${'formLabel' | 'actionText'}_${SwitchState}`, TextStyle>>({
+			formLabel_normal: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			formLabel_disabled: {
+				color: CarbonStyleSheet.color.text_disabled,
+			},
+			formLabel_read_only: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			actionText_normal: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			actionText_disabled: {
+				color: CarbonStyleSheet.color.text_disabled,
+			},
+			actionText_read_only: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+		}),
+
+	mapFormLabelTextStyle: Record<SwitchState, TextStyle> =
 		{
-			normal: 'text_secondary',
-			disabled: 'text_disabled',
-			read_only: 'text_secondary',
+			normal: carbonStyle.formLabel_normal,
+			disabled: carbonStyle.formLabel_disabled,
+			read_only: carbonStyle.formLabel_read_only,
 		},
 
-	mapActionTextColorToken: Record<SwitchState, keyof ThemeContext['color']> =
+	mapActionTextStyle: Record<SwitchState, TextStyle> =
 		{
-			normal: 'text_primary',
-			disabled: 'text_disabled',
-			read_only: 'text_primary',
+			normal: carbonStyle.actionText_normal,
+			disabled: carbonStyle.actionText_disabled,
+			read_only: carbonStyle.actionText_read_only,
 		}

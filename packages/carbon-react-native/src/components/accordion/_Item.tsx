@@ -2,7 +2,6 @@ import {
 	forwardRef,
 	useCallback,
 	useContext,
-	useEffect,
 	useImperativeHandle,
 	useRef,
 	useState,
@@ -57,7 +56,6 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 			title,
 			children,
 			style: styleProp,
-			onChange,
 			onPressHeader,
 			headerProps,
 			...props
@@ -71,7 +69,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 
 			ref =
 				useRef({
-					isMounted: false,
+					allowOnChangeEffect: false,
 					open: !!defaultOpen,
 				}),
 
@@ -91,24 +89,13 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				useCallback(event => {
 					onPressHeader?.(event)
 					if(!controlled) {
+						ref.current.allowOnChangeEffect = true
 						setOpenSelf(state => !state)
 					}
 				}, [
 					controlled,
 					onPressHeader,
 				])
-
-		useEffect(() => {
-			if(!ref.current.isMounted) {
-				ref.current.isMounted = true
-			} else {
-				ref.current.open = open
-				onChange?.(open)
-			}
-		}, [
-			open,
-			onChange,
-		])
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, ItemRefBase>(

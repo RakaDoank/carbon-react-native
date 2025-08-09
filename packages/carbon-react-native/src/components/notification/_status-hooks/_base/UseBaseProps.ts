@@ -1,21 +1,14 @@
 import type {
-	ColorToken,
-} from '@audira/carbon-react-native-elements'
-
-import type {
 	NotificationColor,
 } from '../../NotificationColor'
 
-type ColorModifier = Record<NotificationColor, ColorToken>
-
 export interface UseBaseProps {
 	color?: NotificationColor,
-	backgroundColor: ColorModifier,
-	borderColor: ColorModifier,
-	leftBarColor: ColorModifier,
-	iconColor: ColorModifier,
-	iconCloseColor: ColorModifier,
-	titleColor: ColorModifier,
+	style: Record<NotificationColor, Record<'backgroundColor' | 'borderTopColor' | 'borderRightColor' | 'borderBottomColor', string>>,
+	leftBarStyle: Record<NotificationColor, { backgroundColor: string }>,
+	titleStyle: Record<NotificationColor, { color: string }>,
+	iconColor: Record<NotificationColor, string>,
+	iconCloseColor: Record<NotificationColor, string>,
 	/**
 	 * true to use background color for top-right-bottom border.  
 	 * Currently for actionable variant

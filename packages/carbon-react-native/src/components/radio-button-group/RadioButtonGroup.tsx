@@ -18,6 +18,7 @@ import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
 import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
 
 import {
+	Color,
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
@@ -222,7 +223,19 @@ const
 				...FlexStyle.flex_wrap,
 				flexDirection: 'row',
 			},
-		})
+		}),
+
+	mapIconErrorFillColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.support_error,
+			gray_100: Color.Token.gray_10.support_error,
+		},
+
+	mapIconWarningFillColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.support_warning,
+			gray_100: Color.Token.gray_100.support_warning,
+		}
 
 interface IconRendererProps extends Omit<IconProps, 'src' | 'fill' | 'width' | 'height'> {
 }
@@ -235,7 +248,7 @@ function IconErrorRenderer(props: IconRendererProps) {
 		<Icon
 			{ ...props }
 			src={ IconWarningFilled }
-			fill={ themeContext.color.support_error }
+			fill={ mapIconErrorFillColor[themeContext.colorScheme] }
 			width={ 18 }
 			height={ 18 }
 		/>
@@ -253,7 +266,7 @@ function IconWarningRenderer(props: IconRendererProps) {
 		<Icon
 			{ ...props }
 			src={ IconWarningAltFilled }
-			fill={ themeContext.color.support_warning }
+			fill={ mapIconWarningFillColor[themeContext.colorScheme] }
 			width={ 18 }
 			height={ 18 }
 		/>

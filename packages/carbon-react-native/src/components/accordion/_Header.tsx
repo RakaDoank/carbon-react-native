@@ -20,6 +20,10 @@ import Animated, {
 import ChevronDown from '@carbon/icons/es/chevron--down/20'
 
 import {
+	Color,
+} from '@audira/carbon-react-native-elements'
+
+import {
 	StyleSheet,
 } from '../../_style-sheet'
 
@@ -34,6 +38,7 @@ import {
 import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
+	type BaseColorState as ButtonColorState,
 } from '../button/base-color'
 
 import type {
@@ -87,7 +92,7 @@ export function Header({
 				{ ...buttonProps }
 				size={ mapSizeToButtonSize[size] }
 				text={ text }
-				android_rippleEffectColor={ themeContext.color.layer_hover_01 }
+				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
 						default: style.background_default,
@@ -103,13 +108,7 @@ export function Header({
 						pressed: style.text_pressed,
 						disabled: style.text_disabled,
 					},
-					icon: {
-						default: themeContext.color.icon_primary,
-						focused: themeContext.color.icon_primary,
-						hovered: themeContext.color.icon_primary,
-						pressed: themeContext.color.icon_primary,
-						disabled: themeContext.color.icon_disabled,
-					},
+					icon: mapIconColor[themeContext.colorScheme],
 				}}
 				iconNode={
 					(...params) =>
@@ -164,6 +163,30 @@ const
 				color: StyleSheet.color.text_disabled,
 			},
 		}),
+
+	mapIconColor: Record<ThemeContext['colorScheme'], Record<ButtonColorState, string>> =
+		{
+			gray_10: {
+				default: Color.Token.gray_10.icon_primary,
+				focused: Color.Token.gray_10.icon_primary,
+				hovered: Color.Token.gray_10.icon_primary,
+				pressed: Color.Token.gray_10.icon_primary,
+				disabled: Color.Token.gray_10.icon_disabled,
+			},
+			gray_100: {
+				default: Color.Token.gray_100.icon_primary,
+				focused: Color.Token.gray_100.icon_primary,
+				hovered: Color.Token.gray_100.icon_primary,
+				pressed: Color.Token.gray_100.icon_primary,
+				disabled: Color.Token.gray_100.icon_disabled,
+			},
+		},
+
+	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+		{
+			gray_10: Color.Token.gray_10.layer_hover_01,
+			gray_100: Color.Token.gray_100.layer_hover_01,
+		},
 
 	/**
 	 * Coincidentally (or not) use same value of height  

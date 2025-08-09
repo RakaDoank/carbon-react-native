@@ -22,7 +22,6 @@ export interface CarbonReactNativeProps extends ThemeProviderProps {
 export function CarbonReactNative({
 	globalConfig,
 	colorScheme,
-	overrideColor,
 	children,
 }: CarbonReactNativeProps) {
 
@@ -32,7 +31,6 @@ export function CarbonReactNative({
 		>
 			<ThemeProvider
 				colorScheme={ colorScheme }
-				overrideColor={ overrideColor }
 			>
 				<BreakpointProvider>
 					{ children }

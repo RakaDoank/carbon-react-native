@@ -1,6 +1,7 @@
 import {
 	forwardRef,
 	useCallback,
+	useContext,
 	useImperativeHandle,
 	useRef,
 } from 'react'
@@ -20,6 +21,10 @@ import {
 import {
 	StyleSheet as CarbonStyleSheet,
 } from '../../_style-sheet'
+
+import {
+	ThemeContext,
+} from '../../contexts'
 
 import {
 	CommonStyle,
@@ -67,6 +72,8 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 		},
 		forwardedRef,
 	) {
+
+		useContext(ThemeContext)
 
 		const
 			checkboxInputRef =

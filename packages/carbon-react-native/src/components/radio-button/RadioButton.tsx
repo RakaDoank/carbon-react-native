@@ -16,8 +16,11 @@ import {
 
 import {
 	Spacing,
-	type ColorToken,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	StyleSheet as CarbonStyleSheet,
+} from '../../_style-sheet'
 
 import {
 	ThemeContext,
@@ -71,10 +74,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 		forwardedRef,
 	) {
 
-		const
-			themeContext =
-				useContext(ThemeContext),
+		useContext(ThemeContext)
 
+		const
 			radioButtonInputRef =
 				useRef<RadioButtonInputRef>(null),
 
@@ -151,7 +153,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 						...formLabelProps?.textProps,
 						type: formLabelProps?.textProps?.type || 'body_compact_01',
 						style: [
-							getTextColorStyle(interactiveState, themeContext.color),
+							textColorStyle[interactiveState],
 							formLabelProps?.textProps?.style,
 						],
 					}}
@@ -180,23 +182,23 @@ const
 			},
 		}),
 
-	mapTextColor: Record<
-		RadioButtonInputInteractiveState,
-		ColorToken
-	> =
-		{
-			normal: 'text_primary',
-			disabled: 'text_disabled',
-			error: 'text_primary',
-			read_only: 'text_primary',
-			warning: 'text_primary',
-		}
-
-function getTextColorStyle(
-	interactiveState: RadioButtonInputInteractiveState,
-	color: ThemeContext['color'],
-): TextStyle {
-	return {
-		color: color[mapTextColor[interactiveState]],
-	}
-}
+	textColorStyle =
+		CarbonStyleSheet.create<
+			Record<RadioButtonInputInteractiveState, TextStyle>
+		>({
+			normal: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			disabled: {
+				color: CarbonStyleSheet.color.text_disabled,
+			},
+			error: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			read_only: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+			warning: {
+				color: CarbonStyleSheet.color.text_primary,
+			},
+		})

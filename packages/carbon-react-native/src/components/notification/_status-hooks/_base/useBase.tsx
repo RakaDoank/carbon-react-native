@@ -3,6 +3,10 @@ import {
 } from 'react'
 
 import {
+	StyleSheet,
+} from 'react-native'
+
+import {
 	GlobalConfigContext,
 	ThemeContext,
 } from '../../../../contexts'
@@ -17,59 +21,54 @@ import type {
 
 export function useBase({
 	color: colorProp,
-	backgroundColor,
-	borderColor,
-	leftBarColor,
-	iconColor,
+	style,
+	leftBarStyle,
 	iconCloseColor,
-	titleColor,
+	iconColor,
+	titleStyle,
 	transparentBorderColor,
 }: UseBaseProps): UseBaseData {
+
+	useContext(ThemeContext) // Keep it reactive
 
 	const
 		globalConfigContext =
 			useContext(GlobalConfigContext),
 
 		color =
-			colorProp || globalConfigContext.notificationColor,
-
-		themeContext =
-			useContext(ThemeContext),
-
-		borderColorStr =
-			themeContext.color[borderColor[color]],
-
-		backgroundColorStr =
-			themeContext.color[backgroundColor[color]]
+			colorProp || globalConfigContext.notificationColor
 
 	return {
-		titleStyle: {
-			color: themeContext.color[titleColor[color]],
-		},
 		iconProps: {
-			color: themeContext.color[iconColor[color]],
+			color: iconColor[color],
 		},
 		iconCloseProps: {
-			color: themeContext.color[iconCloseColor[color]],
+			color: iconCloseColor[color],
 		},
-		leftBarStyle: {
-			backgroundColor: themeContext.color[leftBarColor[color]],
-		},
-		style: {
-			backgroundColor: backgroundColorStr,
-			borderTopWidth: 1,
-			borderRightWidth: 1,
-			borderBottomWidth: 1,
-			...(!transparentBorderColor ? {
-				borderTopColor: borderColorStr,
-				borderRightColor: borderColorStr,
-				borderBottomColor: borderColorStr,
-			} : {
-				borderTopColor: backgroundColorStr,
-				borderRightColor: backgroundColorStr,
-				borderBottomColor: backgroundColorStr,
-			}),
-		},
+		titleStyle: titleStyle[color],
+		leftBarStyle: leftBarStyle[color],
+		style: [
+			styleSheet.base,
+			style[color],
+			transparentBorderColor
+				? styleSheet.baseTransparentBorder
+				: null,
+		],
 	}
 
 }
+
+const
+	styleSheet =
+		StyleSheet.create({
+			base: {
+				borderTopWidth: 1,
+				borderRightWidth: 1,
+				borderBottomWidth: 1,
+			},
+			baseTransparentBorder: {
+				borderTopColor: 'transparent',
+				borderRightColor: 'transparent',
+				borderBottomColor: 'transparent',
+			},
+		})
