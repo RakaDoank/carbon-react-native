@@ -80,7 +80,9 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					onPress?.(event)
 					if(checkboxInputRef.current) {
 						checkboxInputRef.current.setValue(
-							checkboxInputRef.current.value,
+							checkboxInputRef.current.value === null
+								? true
+								: !checkboxInputRef.current.value,
 						)
 					}
 				}, [
