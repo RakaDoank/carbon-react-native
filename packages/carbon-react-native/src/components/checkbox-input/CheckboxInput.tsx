@@ -83,7 +83,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 
 			ref =
 				useRef({
-					isMounted: false,
+					onChangeEffect: false,
 					value: typeof valueProp == 'boolean' || typeof valueProp == 'object'
 						? valueProp
 						: typeof defaultValue == 'boolean' || typeof defaultValue == 'object'
@@ -130,22 +130,27 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
 					onPress?.(event)
-					if(!controlled && interactiveState !== 'read_only') {
-						setValueSelf(self => self === null ? true : !self)
+					if(interactiveState !== 'read_only') {
+						if(!controlled) {
+							ref.current.onChangeEffect = true
+							setValueSelf(self => self === null ? true : !self)
+						} else {
+							onChange?.(ref.current.value === null ? true : !ref.current.value)
+						}
 					}
 				}, [
 					controlled,
 					interactiveState,
 					onPress,
+					onChange,
 				]),
 
 			iconColor =
 				getIconColor(interactiveState, themeContext.color)
 
 		useEffect(() => {
-			if(!ref.current.isMounted) {
-				ref.current.isMounted = true
-			} else {
+			if(ref.current.onChangeEffect) {
+				ref.current.onChangeEffect = false
 				ref.current.value = value
 				onChange?.(value)
 			}
@@ -159,10 +164,11 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				viewRef.current as View,
 				{
 					get value() {
-						return ref.current.value
+						return value
 					},
 					setValue(value_) {
 						if(!controlled) {
+							ref.current.onChangeEffect = true
 							setValueSelf(self => {
 								if(typeof value_ === 'function') {
 									ref.current.value = value_(self)
@@ -176,6 +182,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				},
 			)
 		}, [
+			value,
 			controlled,
 		])
 
