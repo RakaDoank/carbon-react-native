@@ -167,7 +167,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 						return value
 					},
 					setValue(value_) {
-						if(!controlled) {
+						if(!controlled && interactiveState !== 'read_only') {
 							ref.current.onChangeEffect = true
 							setValueSelf(self => {
 								if(typeof value_ === 'function') {
@@ -184,6 +184,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 		}, [
 			value,
 			controlled,
+			interactiveState,
 		])
 
 		return (
