@@ -26,7 +26,6 @@ export default [
 		ignores: [
 			'**/*.md',
 			'**/*.mdx',
-			'docs/.docusaurus/',
 			'**/dist/',
 			'**/node_modules/',
 			'packages/*/lib/',
