@@ -20,7 +20,7 @@ export interface CheckboxProps extends Omit<ViewProps, 'children'> {
 	onPress?: CheckboxInputProps['onPress'],
 	checkboxInputProps?: Omit<
 		CheckboxInputProps,
-		| 'controlled'
+		| 'defaultValue'
 		| 'value'
 		| 'indeterminate'
 		| 'interactiveState'
