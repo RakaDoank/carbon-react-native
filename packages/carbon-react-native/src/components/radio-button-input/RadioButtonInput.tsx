@@ -72,7 +72,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 
 			ref =
 				useRef({
-					isMounted: false,
+					onChangeEffect: false,
 					checked: defaultChecked ?? false,
 				}),
 
@@ -108,19 +108,23 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
+						ref.current.onChangeEffect = true
 						setCheckedSelf(true)
+					} else {
+						onChange?.(!ref.current.checked, value)
 					}
 				}, [
 					controlled,
 					onPress,
+					onChange,
+					value,
 				])
 
 		useEffect(() => {
-			if(!ref.current.isMounted) {
-				ref.current.isMounted = true
-			} else {
+			if(ref.current.onChangeEffect) {
+				ref.current.onChangeEffect = false
 				ref.current.checked = checked
-				onChange?.(checked, value)
+				onChange?.(ref.current.checked, value)
 			}
 		}, [
 			checked,
@@ -133,10 +137,11 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				(viewRef.current ?? {}) as View,
 				{
 					get checked() {
-						return ref.current.checked
+						return checked
 					},
 					setChecked(checked_) {
 						if(!controlled) {
+							ref.current.onChangeEffect = true
 							if(typeof checked_ === 'boolean') {
 								ref.current.checked = checked_
 							} else {
@@ -149,6 +154,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			)
 		}, [
 			controlled,
+			checked,
 		])
 
 		return (

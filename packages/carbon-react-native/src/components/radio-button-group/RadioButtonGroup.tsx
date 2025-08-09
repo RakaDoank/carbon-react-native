@@ -1,5 +1,6 @@
 import {
 	forwardRef,
+	useCallback,
 	useContext,
 	useEffect,
 	useImperativeHandle,
@@ -87,7 +88,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 
 			ref =
 				useRef({
-					isMounted: false,
+					onChangeEffect: false,
 					selectedValue: defaultSelectedValue,
 				}),
 
@@ -98,13 +99,16 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 				typeof selectedValueProp !== 'undefined',
 
 			selectedValue =
-				controlled ? selectedValueProp : selectedValueSelf
+				controlled ? selectedValueProp : selectedValueSelf,
+
+			setOnChangeGroupEffect: NonNullable<ItemContext['setOnChangeGroupEffect']> =
+				useCallback(value => {
+					ref.current.onChangeEffect = value
+				}, [])
 
 		useEffect(() => {
-			if(!ref.current.isMounted) {
-				ref.current.isMounted = true
-			} else {
-				ref.current.selectedValue = selectedValue
+			if(ref.current.onChangeEffect) {
+				ref.current.onChangeEffect = false
 				onChange?.(selectedValue)
 			}
 		}, [
@@ -121,6 +125,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 					},
 					setSelectedValue(valueParam) {
 						if(!controlled) {
+							ref.current.onChangeEffect = true
 							if(typeof valueParam !== 'function') {
 								setSelectedValueSelf(valueParam)
 							} else {
@@ -157,6 +162,8 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 							controlled,
 							value: selectedValue,
 							setValue: setSelectedValueSelf,
+							setOnChangeGroupEffect,
+							onChangeGroup: onChange,
 						}}
 					>
 						{ children }
