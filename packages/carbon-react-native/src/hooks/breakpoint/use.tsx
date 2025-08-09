@@ -20,7 +20,6 @@ export function use(): Use {
 
 	const
 		breakpoint =
-			// eslint-disable-next-line react-hooks/rules-of-hooks
 			useContext(BreakpointContext)
 
 	return {

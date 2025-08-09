@@ -244,7 +244,7 @@ const
 				paddingLeft: 0,
 			},
 		}),
-		
+
 	colorStyle =
 		CarbonStyleSheet.create<
 			Record<

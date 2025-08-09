@@ -1,1 +1,1 @@
-declare module '@carbon/icons/es'
+declare module '@carbon/icons*'
