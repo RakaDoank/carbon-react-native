@@ -10,8 +10,6 @@ import ReactNativeEslintPlugin from 'eslint-plugin-react-native'
 import ReactEslintPlugin from 'eslint-plugin-react'
 import ReactHooksEslintPlugin from 'eslint-plugin-react-hooks'
 
-import DocusuarusEslintPlugin from '@docusaurus/eslint-plugin'
-
 import Globals from 'globals'
 
 // import EslintPluginImportX from 'eslint-plugin-import-x'
@@ -262,16 +260,6 @@ export default [
 			'react/no-did-update-set-state': 'warn',
 			'react/no-unstable-nested-components': 'warn',
 			'react-native/no-inline-styles': 'warn',
-		},
-	},
-
-	{
-		files: ['docs/docs/**/*.{md,mdx}'],
-		plugins: {
-			'@docusaurus': fixupPluginRules(DocusuarusEslintPlugin),
-		},
-		rules: {
-			...DocusuarusEslintPlugin.configs.recommended.rules,
 		},
 	},
 
