@@ -296,7 +296,6 @@ export default [
 			ecmaVersion: 2020,
 			parserOptions: {
 				project: [
-					'./docs/tsconfig.json',
 					'./packages/carbon-react-native/tsconfig.json',
 					'./packages/carbon-react-native-elements/tsconfig.json',
 					'./storybook/tsconfig.json',
