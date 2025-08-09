@@ -2,4 +2,4 @@ import type {
 	SwitchState,
 } from '../switch/SwitchState'
 
-export type ToggleState = SwitchState
+export type State = SwitchState

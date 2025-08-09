@@ -16,14 +16,14 @@ import type {
 } from '../../text/TextProps'
 
 import type {
-	ToggleState,
-} from '../ToggleState'
+	State,
+} from '../State'
 
 export interface BaseProps extends Omit<ViewProps, 'children'> {
 	/**
 	 * @default 'normal'
 	 */
-	state?: ToggleState,
+	state?: State,
 	defaultValue?: boolean,
 	value?: boolean,
 	label?: string,
