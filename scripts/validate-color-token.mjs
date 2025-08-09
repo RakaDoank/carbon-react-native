@@ -33,7 +33,7 @@ try {
 		gray100File =
 			node_fs
 				.readFileSync(
-					node_path.join(root, 'packages/carbon-react-native-elements/src/color/token/gray-10.ts'),
+					node_path.join(root, 'packages/carbon-react-native-elements/src/color/token/gray-100.ts'),
 					{ encoding: 'utf8' },
 				)
 				.toString(),
