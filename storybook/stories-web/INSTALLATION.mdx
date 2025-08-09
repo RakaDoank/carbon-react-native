@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Installation"/>
+
+# Installation
+
+Install the library to your project
+
+with npm
+```
+npm install @audira/carbon-react-native @audira/carbon-react-native-elements
+```
+
+pnpm
+```
+pnpm install @audira/carbon-react-native @audira/carbon-react-native-elements
+```
+
+yarn
+```
+yarn add @audira/carbon-react-native @audira/carbon-react-native-elements
+```
+
+## Peer Dependencies
+
+Install these dependencies on your React Native project, (skip one of these library if already installed)
+- [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
+- [react-native-svg](https://github.com/software-mansion/react-native-svg)
+- [@carbon/icons](https://www.npmjs.com/package/@carbon/icons)
+- [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
+
+## Font Installation
+Install the `IBM Plex Sans` font to your project with [react-native-asset](https://www.npmjs.com/package/react-native-asset). Update your `react-native.config.js` file (create it on your root project directory if doesn't exist)
+```js
+module.exports = {
+  assets: [
+    './node_modules/@audira/carbon-react-native/assets/fonts/',
+  ],
+}
+```
+Then, run `npx react-native-asset` to link the fonts
+
+## Initialize
+This library depends on React Context to use the color tokens correctly based on the current color scheme. You have to wrap your whole React App once with `<CarbonReactNative>`
+```tsx
+// Somewhere like in your App.tsx file
+import {
+  CarbonReactNative,
+} from '@audira/carbon-react-native'
+
+export default function App() {
+  return (
+    <CarbonReactNative>
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+```

@@ -91,6 +91,9 @@ importers:
 
   storybook:
     dependencies:
+      '@carbon/icons':
+        specifier: '>=11'
+        version: 11.64.0
       '@react-native-async-storage/async-storage':
         specifier: 2.2.0
         version: 2.2.0(react-native@0.80.1(@babel/core@7.28.0)(@react-native-community/cli@19.1.1(typescript@5.9.2))(@types/react@19.1.9)(react@19.1.0))

@@ -46,6 +46,10 @@ export default {
 				color: /(background|color)$/i,
 				date: /Date$/i,
 			},
+			expanded: true,
+		},
+		docs: {
+			codePanel: true,
 		},
 	},
 

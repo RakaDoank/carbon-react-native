@@ -1,8 +1,11 @@
 body {
 	min-height: 100vh;
-	display: flex !important;
+	position: relative;
 }
 
 #storybook-root {
-	flex: 1 1 auto;
+	display: flex;
+	flex-shrink: 0;
+	flex-basis: auto;
+	flex-direction: column;
 }
