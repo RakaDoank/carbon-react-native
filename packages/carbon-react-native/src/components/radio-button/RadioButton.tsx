@@ -84,7 +84,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
 					onPress?.(event)
-					radioButtonInputRef.current?.setChecked(self => !self)
+					radioButtonInputRef.current?.setChecked(true)
 				}, [
 					onPress,
 				])
