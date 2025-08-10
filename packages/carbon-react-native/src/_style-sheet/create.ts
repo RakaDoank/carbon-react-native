@@ -139,11 +139,11 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 				const colorStr = (style as Style)[styleProp] as string
 
 				coloredStyle[coloredStyleName_G10][styleProp] =
-					Color.Token.gray_10[colorStr as ColorToken] as never ||
+					Color.Token.gray_10.all[colorStr as ColorToken] as never ||
 					colorStr
 
 				coloredStyle[coloredStyleName_G100][styleProp] =
-					Color.Token.gray_100[colorStr as ColorToken] as never ||
+					Color.Token.gray_100.all[colorStr as ColorToken] as never ||
 					colorStr
 
 			} else {
@@ -193,7 +193,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 				},
 			})
 			return acc
-		}, {} as never)
+		}, {} as Styles)
 }
 
 const
