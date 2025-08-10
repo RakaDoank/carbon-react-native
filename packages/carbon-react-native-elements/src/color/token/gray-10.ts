@@ -1,3 +1,7 @@
+import type {
+	ColorToken,
+} from '../../types'
+
 import * as code from '../code'
 
 import {
@@ -375,4 +379,4 @@ export const all = {
 	notification_action_tertiary_inverse_hover,
 	notification_action_tertiary_inverse_text,
 	notification_action_tertiary_inverse_text_on_color_disabled,
-}
+} as const satisfies Record<ColorToken, string>
