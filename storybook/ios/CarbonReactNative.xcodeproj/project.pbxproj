@@ -7,62 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BC2098051B14459A033EE9B /* IBMPlexSans-ExtraLight-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28F17B31AB9742D0BAD96A82 /* IBMPlexSans-ExtraLight-Italic.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-CarbonReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-CarbonReactNative.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		C0639A259BCD43B3A64D42AD /* IBMPlexSans-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68620FC477BD486BB73F897A /* IBMPlexSans-Bold-Italic.ttf */; };
-		9A9F9F2439FC4133B146935C /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655F49A212BA40D69FF2429A /* IBMPlexSans-Bold.ttf */; };
-		0BC2098051B14459A033EE9B /* IBMPlexSans-ExtraLight-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28F17B31AB9742D0BAD96A82 /* IBMPlexSans-ExtraLight-Italic.ttf */; };
-		7B7D27275F2D440BAE7A1C13 /* IBMPlexSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4F2A133B1D4B7EAF4DC701 /* IBMPlexSans-ExtraLight.ttf */; };
-		C6876F2528B34080B5568277 /* IBMPlexSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14A419B240E94182B609B96E /* IBMPlexSans-Italic.ttf */; };
-		9A7FF90CD5C54187A91DCA1A /* IBMPlexSans-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CB56DDEF71143E9A7D8D2D8 /* IBMPlexSans-Light-Italic.ttf */; };
 		261BA579B2324C6EB7264A22 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC7E1D598D824D418DD1CC9C /* IBMPlexSans-Light.ttf */; };
-		D26D4AE5DF3843C986D5BD59 /* IBMPlexSans-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AAA7DA00ED742E696C41484 /* IBMPlexSans-Medium-Italic.ttf */; };
 		309C0F48D5DD472592C5F353 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A89BF0E8B3D48F19A151661 /* IBMPlexSans-Medium.ttf */; };
-		F803B5F025C947D8AA571B2C /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF1D3099DFC8458DA5CE1417 /* IBMPlexSans-Regular.ttf */; };
-		AAA43EC24B5543F297474590 /* IBMPlexSans-SemiBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99BD2EB6C9BC4147BDFF550C /* IBMPlexSans-SemiBold-Italic.ttf */; };
-		98C4FDE6791B42D98B2A3152 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D49C2CAD4D4F8EB4369BBB /* IBMPlexSans-SemiBold.ttf */; };
-		C34E2B26ED934D199BB81F0D /* IBMPlexSans-Thin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB4B8AB1326D4FA99E60F515 /* IBMPlexSans-Thin-Italic.ttf */; };
+		501FA4BA63B2DF16EA3783B2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		7B7D27275F2D440BAE7A1C13 /* IBMPlexSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4F2A133B1D4B7EAF4DC701 /* IBMPlexSans-ExtraLight.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8A9EDC7688354195ACB1EFB1 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8CCFBA213F40A5BA7064D9 /* IBMPlexSans-Thin.ttf */; };
+		98C4FDE6791B42D98B2A3152 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D49C2CAD4D4F8EB4369BBB /* IBMPlexSans-SemiBold.ttf */; };
+		9A7FF90CD5C54187A91DCA1A /* IBMPlexSans-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CB56DDEF71143E9A7D8D2D8 /* IBMPlexSans-Light-Italic.ttf */; };
+		9A9F9F2439FC4133B146935C /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655F49A212BA40D69FF2429A /* IBMPlexSans-Bold.ttf */; };
+		AAA43EC24B5543F297474590 /* IBMPlexSans-SemiBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99BD2EB6C9BC4147BDFF550C /* IBMPlexSans-SemiBold-Italic.ttf */; };
+		C0639A259BCD43B3A64D42AD /* IBMPlexSans-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68620FC477BD486BB73F897A /* IBMPlexSans-Bold-Italic.ttf */; };
+		C34E2B26ED934D199BB81F0D /* IBMPlexSans-Thin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB4B8AB1326D4FA99E60F515 /* IBMPlexSans-Thin-Italic.ttf */; };
+		C6876F2528B34080B5568277 /* IBMPlexSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14A419B240E94182B609B96E /* IBMPlexSans-Italic.ttf */; };
+		D26D4AE5DF3843C986D5BD59 /* IBMPlexSans-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AAA7DA00ED742E696C41484 /* IBMPlexSans-Medium-Italic.ttf */; };
+		F803B5F025C947D8AA571B2C /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF1D3099DFC8458DA5CE1417 /* IBMPlexSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = CarbonReactNative;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AAA7DA00ED742E696C41484 /* IBMPlexSans-Medium-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Medium-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Medium-Italic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CarbonReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarbonReactNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CarbonReactNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = CarbonReactNative/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		14A419B240E94182B609B96E /* IBMPlexSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Italic.ttf"; sourceTree = "<group>"; };
+		1A89BF0E8B3D48F19A151661 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Medium.ttf"; path = "../../assets/fonts/IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		28F17B31AB9742D0BAD96A82 /* IBMPlexSans-ExtraLight-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-ExtraLight-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-ExtraLight-Italic.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-CarbonReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonReactNative.debug.xcconfig"; path = "Target Support Files/Pods-CarbonReactNative/Pods-CarbonReactNative.debug.xcconfig"; sourceTree = "<group>"; };
+		4CB56DDEF71143E9A7D8D2D8 /* IBMPlexSans-Light-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Light-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Light-Italic.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-CarbonReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbonReactNative.release.xcconfig"; path = "Target Support Files/Pods-CarbonReactNative/Pods-CarbonReactNative.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-CarbonReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarbonReactNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		655F49A212BA40D69FF2429A /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Bold.ttf"; path = "../../assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
+		68620FC477BD486BB73F897A /* IBMPlexSans-Bold-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Bold-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		6B8CCFBA213F40A5BA7064D9 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Thin.ttf"; path = "../../assets/fonts/IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CarbonReactNative/AppDelegate.swift; sourceTree = "<group>"; };
+		76D49C2CAD4D4F8EB4369BBB /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-SemiBold.ttf"; path = "../../assets/fonts/IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CarbonReactNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99BD2EB6C9BC4147BDFF550C /* IBMPlexSans-SemiBold-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-SemiBold-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-SemiBold-Italic.ttf"; sourceTree = "<group>"; };
+		AE4F2A133B1D4B7EAF4DC701 /* IBMPlexSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-ExtraLight.ttf"; path = "../../assets/fonts/IBMPlexSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		AF1D3099DFC8458DA5CE1417 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Regular.ttf"; path = "../../assets/fonts/IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		CB4B8AB1326D4FA99E60F515 /* IBMPlexSans-Thin-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Thin-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Thin-Italic.ttf"; sourceTree = "<group>"; };
+		DC7E1D598D824D418DD1CC9C /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Light.ttf"; path = "../../assets/fonts/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		68620FC477BD486BB73F897A /* IBMPlexSans-Bold-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Bold-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Bold-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		655F49A212BA40D69FF2429A /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Bold.ttf"; path = "../../assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		28F17B31AB9742D0BAD96A82 /* IBMPlexSans-ExtraLight-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-ExtraLight-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-ExtraLight-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AE4F2A133B1D4B7EAF4DC701 /* IBMPlexSans-ExtraLight.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-ExtraLight.ttf"; path = "../../assets/fonts/IBMPlexSans-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		14A419B240E94182B609B96E /* IBMPlexSans-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4CB56DDEF71143E9A7D8D2D8 /* IBMPlexSans-Light-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Light-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Light-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DC7E1D598D824D418DD1CC9C /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Light.ttf"; path = "../../assets/fonts/IBMPlexSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0AAA7DA00ED742E696C41484 /* IBMPlexSans-Medium-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Medium-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Medium-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1A89BF0E8B3D48F19A151661 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Medium.ttf"; path = "../../assets/fonts/IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AF1D3099DFC8458DA5CE1417 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Regular.ttf"; path = "../../assets/fonts/IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		99BD2EB6C9BC4147BDFF550C /* IBMPlexSans-SemiBold-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-SemiBold-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-SemiBold-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		76D49C2CAD4D4F8EB4369BBB /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-SemiBold.ttf"; path = "../../assets/fonts/IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CB4B8AB1326D4FA99E60F515 /* IBMPlexSans-Thin-Italic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Thin-Italic.ttf"; path = "../../assets/fonts/IBMPlexSans-Thin-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6B8CCFBA213F40A5BA7064D9 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Thin.ttf"; path = "../../assets/fonts/IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,14 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356F01AD99517003FC87E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00E356F11AD99517003FC87E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* CarbonReactNative */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,17 +118,8 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3B4392A12AC88292D35C810B /* Pods-CarbonReactNative.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-CarbonReactNative.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		9D016998D9144A81B5A306D7 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				68620FC477BD486BB73F897A /* IBMPlexSans-Bold-Italic.ttf */,
 				655F49A212BA40D69FF2429A /* IBMPlexSans-Bold.ttf */,
@@ -164,8 +137,17 @@
 				6B8CCFBA213F40A5BA7064D9 /* IBMPlexSans-Thin.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
 			path = "";
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-CarbonReactNative.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-CarbonReactNative.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -223,13 +205,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		00E356EC1AD99517003FC87E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +225,7 @@
 				98C4FDE6791B42D98B2A3152 /* IBMPlexSans-SemiBold.ttf in Resources */,
 				C34E2B26ED934D199BB81F0D /* IBMPlexSans-Thin-Italic.ttf in Resources */,
 				8A9EDC7688354195ACB1EFB1 /* IBMPlexSans-Thin.ttf in Resources */,
+				501FA4BA63B2DF16EA3783B2 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,14 +316,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* CarbonReactNative */;
-			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
@@ -473,7 +441,14 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -538,7 +513,13 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
