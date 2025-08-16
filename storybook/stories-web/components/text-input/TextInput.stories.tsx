@@ -15,7 +15,7 @@ import {
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/TextInput',
+	title: 'Components/Text Input',
 } satisfies Meta
 
 const commonStoryObj: StoryObj<TextInputFieldProps> = {
