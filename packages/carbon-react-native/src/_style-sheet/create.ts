@@ -24,30 +24,14 @@ import {
 	breakpoint as breakpointStyleProps,
 } from './breakpoint'
 
-type Style = ViewStyle | TextStyle | ImageStyle
+type Style = ViewStyle & TextStyle & ImageStyle
 type StyleBreakpoint =
 	Partial<
 		Record<
 			BreakpointToken,
 			Omit<
-				ViewStyle | TextStyle | ImageStyle,
-				| 'backgroundColor'
-				| 'borderColor'
-				| 'borderEndColor'
-				| 'borderStartColor'
-				| 'borderTopColor'
-				| 'borderBottomColor'
-				| 'borderLeftColor'
-				| 'borderRightColor'
-				| 'borderBlockColor'
-				| 'borderBlockEndColor'
-				| 'borderBlockStartColor'
-				| 'color'
-				| 'overlayColor'
-				| 'textDecorationColor'
-				| 'textShadowColor'
-				| 'tintColor'
-				| 'shadowColor'
+				ViewStyle & TextStyle & ImageStyle,
+				(typeof colorStyleProps)[number]
 			>
 		>
 	>
@@ -107,7 +91,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 		const style = styles[name]
 
 		for(const _styleProp_ in style) {
-			if(breakpointStyleProps[_styleProp_ as keyof StyleBreakpoint]) {
+			if((breakpointStyleProps as Record<string, string>)[_styleProp_]) {
 
 				containBreakpointStyle = true
 				breakpointStyle[`${_styleProp_}${name}`] = (style as StyleBreakpoint)[_styleProp_] as Style
@@ -121,7 +105,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 
 				const
 					styleProp =
-						_styleProp_ as keyof Style,
+						_styleProp_ as (typeof colorStyleProps)[number],
 
 					coloredStyleName_G10 =
 						`${prefixColorStyleName.gray_10}${name}`,
@@ -211,12 +195,13 @@ const
 			'borderBlockEndColor',
 			'borderBlockStartColor',
 			'color',
+			'outlineColor',
 			'overlayColor',
 			'textDecorationColor',
 			'textShadowColor',
 			'tintColor',
 			'shadowColor',
-		],
+		] as const,
 
 	prefixColorStyleName: Record<ThemeType.ColorScheme, string> =
 		{
