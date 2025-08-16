@@ -24,13 +24,13 @@ import {
 	breakpoint as breakpointStyleProps,
 } from './breakpoint'
 
-type Style = ViewStyle & TextStyle & ImageStyle
+type Style = ViewStyle | TextStyle | ImageStyle
 type StyleBreakpoint =
 	Partial<
 		Record<
 			BreakpointToken,
 			Omit<
-				ViewStyle & TextStyle & ImageStyle,
+				ViewStyle | TextStyle | ImageStyle,
 				(typeof colorStyleProps)[number]
 			>
 		>
@@ -90,13 +90,13 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 	for(const name in styles) {
 		const style = styles[name]
 
-		for(const _styleProp_ in style) {
-			if((breakpointStyleProps as Record<string, string>)[_styleProp_]) {
+		for(const styleProp in style) {
+			if((breakpointStyleProps as Record<string, string>)[styleProp]) {
 
 				containBreakpointStyle = true
-				breakpointStyle[`${_styleProp_}${name}`] = (style as StyleBreakpoint)[_styleProp_] as Style
+				breakpointStyle[`${styleProp}${name}`] = (style as StyleBreakpoint)[styleProp] as Style
 
-			} else if(colorStyleProps.indexOf(_styleProp_ as keyof Style) > -1) {
+			} else if(colorStyleProps.indexOf(styleProp as keyof Style) > -1) {
 
 				/**
 				 * Resolve color string to the Carbon color (if any) for style prop or attribute that contain 'color' in the name like 'color', 'backgroundColor', 'borderColor', etc
@@ -104,9 +104,6 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 				 */
 
 				const
-					styleProp =
-						_styleProp_ as (typeof colorStyleProps)[number],
-
 					coloredStyleName_G10 =
 						`${prefixColorStyleName.gray_10}${name}`,
 
@@ -120,13 +117,13 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 					coloredStyle[coloredStyleName_G100] = {}
 				}
 
-				const colorStr = (style as Style)[styleProp] as string
+				const colorStr = (style as Record<(typeof colorStyleProps)[number], string>)[styleProp as (typeof colorStyleProps)[number]]
 
-				coloredStyle[coloredStyleName_G10][styleProp] =
+				coloredStyle[coloredStyleName_G10][styleProp as keyof Style] =
 					Color.Token.gray_10.all[colorStr as ColorToken] as never ||
 					colorStr
 
-				coloredStyle[coloredStyleName_G100][styleProp] =
+				coloredStyle[coloredStyleName_G100][styleProp as keyof Style] =
 					Color.Token.gray_100.all[colorStr as ColorToken] as never ||
 					colorStr
 
