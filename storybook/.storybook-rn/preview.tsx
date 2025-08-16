@@ -1,16 +1,28 @@
+import {
+	StyleSheet,
+	ScrollView,
+	StatusBar,
+} from 'react-native'
+
 import type {
+	Decorator,
 	Preview,
 } from '@storybook/react-native'
 
 import {
 	CarbonReactNative,
+	StyleSheet as CarbonStyleSheet,
 } from '@audira/carbon-react-native'
+
+StatusBar.setBarStyle('dark-content')
 
 export default {
 	decorators: [
 		Story => (
 			<CarbonReactNative>
-				<Story/>
+				<Body
+					Story={ Story }
+				/>
 			</CarbonReactNative>
 		),
 	],
@@ -21,3 +33,35 @@ export default {
 		},
 	},
 } satisfies Preview
+
+interface BodyProps {
+	Story: Parameters<Decorator>[0],
+}
+function Body(props: BodyProps) {
+
+	CarbonStyleSheet.use()
+
+	return (
+		<ScrollView
+			style={ [styleSheet.root, carbonStyleSheet.root] }
+		>
+			<props.Story/>
+		</ScrollView>
+	)
+
+}
+
+const
+	styleSheet =
+		StyleSheet.create({
+			root: {
+				padding: 16,
+			},
+		}),
+
+	carbonStyleSheet =
+		CarbonStyleSheet.create({
+			root: {
+				backgroundColor: CarbonStyleSheet.color.background,
+			},
+		})
