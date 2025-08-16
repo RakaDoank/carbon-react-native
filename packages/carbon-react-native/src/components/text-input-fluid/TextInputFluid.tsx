@@ -1,0 +1,168 @@
+import {
+	forwardRef,
+	useContext,
+} from 'react'
+
+import {
+	StyleSheet,
+} from 'react-native'
+
+import {
+	Color,
+	Spacing,
+} from '@audira/carbon-react-native-elements'
+
+import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
+import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
+
+import {
+	ThemeContext,
+} from '../../contexts'
+
+import type {
+	ThemeType,
+} from '../../types'
+
+import {
+	FormHelperText,
+} from '../form-helper-text'
+
+import {
+	FormLabel,
+} from '../form-label'
+
+import {
+	Icon,
+} from '../icon'
+
+import {
+	TextInputField,
+} from '../text-input-field'
+
+import type {
+	TextInputFluidProps,
+} from './TextInputFluidProps'
+
+import type {
+	TextInputFluidRef,
+} from './TextInputFluidRef'
+
+export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>(
+	function TextInputFluid(
+		{
+			label,
+			helperText,
+			interactiveState,
+			style,
+			textInputStyle,
+			...textInputFieldProps
+		},
+		ref,
+	) {
+
+		const
+			themeContext =
+				useContext(ThemeContext)
+
+		return (
+			<TextInputField
+				ref={ ref }
+				{ ...textInputFieldProps }
+				size="medium"
+				interactiveState={ interactiveState }
+				hideInteractiveStateIcon
+				blockStartNode={
+					<FormLabel
+						label={ label }
+						style={ styleSheet.label }
+					/>
+				}
+				blockEndNode={
+					!!helperText?.length && (
+						<FormHelperText
+							text="Lorem ipsum"
+							style={ styleSheet.helperText }
+							textTrailing={
+								interactiveState === 'invalid' ? (
+									<Icon
+										src={ IconWarningFilled16 }
+										width={ 16 }
+										height={ 16 }
+										fill={ mapIconInvalidColor[themeContext.colorScheme] }
+									/>
+								) : interactiveState === 'warning' ? (
+									<Icon
+										src={ IconWarningAltFilled16 }
+										width={ 16 }
+										height={ 16 }
+										fill={ mapIconWarningColor[themeContext.colorScheme] }
+									/>
+								) : undefined
+							}
+						/>
+					)
+				}
+				style={ [
+					styleSheet.textInputFluid,
+					helperText?.length
+						? styleSheet.textInputFieldAutoHeight
+						: styleSheet.textInputFieldStaticHeight,
+					style,
+				] }
+				textInputStyle={ [
+					helperText?.length
+						? styleSheet.rnTextInputNoBorderBottom
+						: undefined,
+					textInputStyle,
+				] }
+			/>
+		)
+
+	},
+)
+
+const
+	styleSheet =
+		StyleSheet.create({
+			textInputFluid: {
+				paddingTop: 13,
+			},
+			textInputFieldStaticHeight: {
+				height: Spacing.spacing_10,
+			},
+			textInputFieldAutoHeight: {
+				height: 'auto',
+			},
+			label: {
+				paddingLeft: Spacing.spacing_05,
+				paddingRight: Spacing.spacing_05,
+			},
+			rnTextInputNoBorderBottom: {
+				marginLeft: Spacing.spacing_05,
+				marginRight: Spacing.spacing_05,
+				paddingLeft: 0,
+				paddingRight: 0,
+			},
+			helperText: {
+				flexGrow: 1,
+				flexShrink: 1,
+				flexBasis: 'auto',
+				justifyContent: 'space-between',
+				paddingTop: Spacing.spacing_03,
+				paddingBottom: Spacing.spacing_03,
+				paddingLeft: Spacing.spacing_05,
+				paddingRight: Spacing.spacing_05,
+			},
+		}),
+
+	mapIconInvalidColor: Record<ThemeType.ColorScheme, string> =
+		{
+			gray_10: Color.Token.gray_10.support_error,
+			gray_100: Color.Token.gray_100.support_error,
+		},
+
+	mapIconWarningColor: Record<ThemeType.ColorScheme, string> =
+		{
+			gray_10: Color.Token.gray_10.support_warning,
+			gray_100: Color.Token.gray_100.support_warning,
+		}
