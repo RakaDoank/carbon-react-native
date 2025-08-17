@@ -16,6 +16,10 @@ import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
 import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
 
 import {
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
+
+import {
 	ThemeContext,
 } from '../../contexts'
 
@@ -81,7 +85,10 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 					!!helperText?.length && (
 						<FormHelperText
 							text="Lorem ipsum"
-							style={ styleSheet.helperText }
+							style={ [
+								FlexStyleSheet.flex_initial,
+								styleSheet.helperText,
+							] }
 							textTrailing={
 								interactiveState === 'invalid' ? (
 									<Icon
@@ -105,8 +112,8 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 				style={ [
 					styleSheet.textInputFluid,
 					helperText?.length
-						? styleSheet.textInputFieldAutoHeight
-						: styleSheet.textInputFieldStaticHeight,
+						? styleSheet.textInputFieldHeight96
+						: styleSheet.textInputFieldHeight64,
 					style,
 				] }
 				textInputStyle={ [
@@ -127,11 +134,11 @@ const
 			textInputFluid: {
 				paddingTop: 13,
 			},
-			textInputFieldStaticHeight: {
+			textInputFieldHeight64: {
 				height: Spacing.spacing_10,
 			},
-			textInputFieldAutoHeight: {
-				height: 'auto',
+			textInputFieldHeight96: {
+				minHeight: Spacing.spacing_12,
 			},
 			label: {
 				paddingLeft: Spacing.spacing_05,
@@ -144,9 +151,6 @@ const
 				paddingRight: 0,
 			},
 			helperText: {
-				flexGrow: 1,
-				flexShrink: 1,
-				flexBasis: 'auto',
 				justifyContent: 'space-between',
 				paddingTop: Spacing.spacing_03,
 				paddingBottom: Spacing.spacing_03,
