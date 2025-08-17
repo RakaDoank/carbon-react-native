@@ -82,7 +82,7 @@ const
 				borderStyle: 'solid',
 				fontFamily: 'IBMPlexSans-Regular',
 				fontSize: Typography.TypeSets.body_compact_01.fontSize,
-				lineHeight: Typography.TypeSets.body_compact_01.fontSize,
+				lineHeight: Typography.TypeSets.body_compact_01.lineHeight,
 				...Platform.select({
 					web: {
 						outlineStyle: 'none',
