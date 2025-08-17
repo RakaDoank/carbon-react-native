@@ -15,16 +15,16 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	TextStyle,
-} from '../../styles'
+	TextStyleSheet,
+} from '../../_internal/style-sheets'
 
 import type {
 	TextProps,
@@ -68,20 +68,20 @@ type TypeSetsWithFamily =
 const
 	mapFamilyStyle: Record<string, { fontFamily: string, fontWeight: TypeSets['fontWeight'] }> =
 		{
-			'100': TextStyle.thin,
-			'100_italic': TextStyle.thin_italic,
-			'200': TextStyle.extralight,
-			'200_italic': TextStyle.extralight_italic,
-			'300': TextStyle.light,
-			'300_italic': TextStyle.light,
-			'400': TextStyle.normal,
-			'400_italic': TextStyle.normal_italic,
-			'500': TextStyle.medium,
-			'500_italic': TextStyle.medium_italic,
-			'600': TextStyle.semibold,
-			'600_italic': TextStyle.semibold_italic,
-			'700': TextStyle.bold,
-			'700_italic': TextStyle.bold_italic,
+			'100': TextStyleSheet.thin,
+			'100_italic': TextStyleSheet.thin_italic,
+			'200': TextStyleSheet.extralight,
+			'200_italic': TextStyleSheet.extralight_italic,
+			'300': TextStyleSheet.light,
+			'300_italic': TextStyleSheet.light,
+			'400': TextStyleSheet.normal,
+			'400_italic': TextStyleSheet.normal_italic,
+			'500': TextStyleSheet.medium,
+			'500_italic': TextStyleSheet.medium_italic,
+			'600': TextStyleSheet.semibold,
+			'600_italic': TextStyleSheet.semibold_italic,
+			'700': TextStyleSheet.bold,
+			'700_italic': TextStyleSheet.bold_italic,
 		},
 
 	createTypeSets = (italic?: boolean) => {
@@ -101,7 +101,7 @@ const
 							italic
 								? `${val.fontWeight}_italic`
 								: val.fontWeight
-						] ?? TextStyle.normal
+						] ?? TextStyleSheet.normal
 					),
 				}
 				return accumulator

@@ -27,8 +27,8 @@ import {
 } from '../../contexts'
 
 import {
-	FlexStyle,
-} from '../../styles'
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	FormHelperText,
@@ -220,7 +220,7 @@ const
 				flexDirection: 'column',
 			},
 			horizontal: {
-				...FlexStyle.flex_wrap,
+				...FlexStyleSheet.flex_wrap,
 				flexDirection: 'row',
 			},
 		}),

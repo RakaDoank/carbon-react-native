@@ -4,7 +4,7 @@ import {
 
 import {
 	GlobalConfigContext,
-} from '../../contexts'
+} from '../../_internal/contexts'
 
 import {
 	VariantContext,

@@ -31,8 +31,11 @@ import {
 
 import {
 	GlobalConfigContext,
-	type ToastContextShowConfig,
-} from '../../../contexts'
+} from '../../../_internal/contexts'
+
+import type {
+	ToastContextShowConfig,
+} from '../../../contexts/toast/ToastContextShowConfig'
 
 import type {
 	ToastRef,

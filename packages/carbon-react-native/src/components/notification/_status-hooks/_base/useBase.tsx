@@ -8,6 +8,9 @@ import {
 
 import {
 	GlobalConfigContext,
+} from '../../../../_internal/contexts'
+
+import {
 	ThemeContext,
 } from '../../../../contexts'
 

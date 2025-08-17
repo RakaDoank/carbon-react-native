@@ -31,8 +31,8 @@ import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
 import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,

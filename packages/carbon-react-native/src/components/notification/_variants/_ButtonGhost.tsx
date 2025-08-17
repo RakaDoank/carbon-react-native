@@ -12,11 +12,8 @@ import {
 
 import {
 	ThemeProvider,
-} from '../../../providers/theme/ThemeProvider'
-
-import type {
-	ThemeProviderProps,
-} from '../../../providers/theme/ThemeProviderProps'
+	type ThemeProviderProps,
+} from '../../../_internal/providers/theme'
 
 import {
 	Ghost,

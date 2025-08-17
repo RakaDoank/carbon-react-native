@@ -25,9 +25,9 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	CommonStyle,
-	FlexStyle,
-} from '../../styles'
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import type {
 	AnimatedViewProps,
@@ -247,7 +247,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			<Animated.View
 				{ ...props }
 				style={ [
-					CommonStyle.overflow_hidden,
+					CommonStyleSheet.overflow_hidden,
 					positionView === 'absolute'
 						? { height: heightAnimated }
 						: null,
@@ -257,13 +257,13 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			>
 				<View
 					style={ [
-						CommonStyle.w_full,
+						CommonStyleSheet.w_full,
 						{ position: positionView },
 					] }
 				>
 					<Animated.View
 						style={ [
-							FlexStyle.flex_initial,
+							FlexStyleSheet.flex_initial,
 							contentContainerAnimatedStyle,
 							contentContainerStyle,
 						] }

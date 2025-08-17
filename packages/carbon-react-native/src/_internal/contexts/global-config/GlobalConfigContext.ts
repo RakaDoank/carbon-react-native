@@ -4,7 +4,7 @@ import {
 
 import type {
 	NotificationColor,
-} from '../../components/notification/NotificationColor'
+} from '../../../components/notification/NotificationColor'
 
 export interface GlobalConfigContext {
 	android_buttonRippleEffect: boolean,

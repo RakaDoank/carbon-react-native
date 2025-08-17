@@ -14,7 +14,7 @@ import {
 import {
 	BreakpointGlobal,
 	ColorSchemeGlobal,
-} from '../globals'
+} from '../_internal/globals'
 
 import type {
 	ThemeType,

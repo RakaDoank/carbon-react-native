@@ -1,10 +1,8 @@
-export * from './_carbon-react-native'
-export * from './_style-sheet'
-
+export * from './carbon-react-native'
+export * from './carbon-style-sheet'
 export * from './components'
 export * from './contexts'
 export * from './helpers'
 export * from './hooks'
 export * from './providers'
-export * from './styles'
 export * from './types'

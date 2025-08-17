@@ -9,8 +9,8 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet,
-} from '../../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../../carbon-style-sheet'
 
 import {
 	ThemeContext,
@@ -62,38 +62,38 @@ export function useSuccess({
 
 const
 	statusStyle =
-		StyleSheet.create<Record<NotificationColor, UseBaseProps['style'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['style'][NotificationColor]>>({
 			low_contrast: {
-				backgroundColor: StyleSheet.color.notification_success_background,
-				borderTopColor: StyleSheet.color.notification_success_border,
-				borderRightColor: StyleSheet.color.notification_success_border,
-				borderBottomColor: StyleSheet.color.notification_success_border,
+				backgroundColor: CarbonStyleSheet.color.notification_success_background,
+				borderTopColor: CarbonStyleSheet.color.notification_success_border,
+				borderRightColor: CarbonStyleSheet.color.notification_success_border,
+				borderBottomColor: CarbonStyleSheet.color.notification_success_border,
 			},
 			high_contrast: {
-				backgroundColor: StyleSheet.color.background_inverse,
-				borderTopColor: StyleSheet.color.background_inverse,
-				borderRightColor: StyleSheet.color.background_inverse,
-				borderBottomColor: StyleSheet.color.background_inverse,
+				backgroundColor: CarbonStyleSheet.color.background_inverse,
+				borderTopColor: CarbonStyleSheet.color.background_inverse,
+				borderRightColor: CarbonStyleSheet.color.background_inverse,
+				borderBottomColor: CarbonStyleSheet.color.background_inverse,
 			},
 		}),
 
 	titleStyle =
-		StyleSheet.create<Record<NotificationColor, UseBaseProps['titleStyle'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['titleStyle'][NotificationColor]>>({
 			low_contrast: {
-				color: StyleSheet.color.text_primary,
+				color: CarbonStyleSheet.color.text_primary,
 			},
 			high_contrast: {
-				color: StyleSheet.color.text_inverse,
+				color: CarbonStyleSheet.color.text_inverse,
 			},
 		}),
 
 	leftBarStyle =
-		StyleSheet.create<Record<NotificationColor, UseBaseProps['leftBarStyle'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['leftBarStyle'][NotificationColor]>>({
 			low_contrast: {
-				backgroundColor: StyleSheet.color.support_success,
+				backgroundColor: CarbonStyleSheet.color.support_success,
 			},
 			high_contrast: {
-				backgroundColor: StyleSheet.color.support_success_inverse,
+				backgroundColor: CarbonStyleSheet.color.support_success_inverse,
 			},
 		}),
 

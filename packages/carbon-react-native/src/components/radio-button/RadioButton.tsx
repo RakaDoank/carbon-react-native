@@ -19,17 +19,17 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	CommonStyle,
-	FlexStyle,
-} from '../../styles'
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	FormLabel,
@@ -110,7 +110,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 				{ ...props }
 				aria-label={ ariaLabel || label }
 				style={ [
-					FlexStyle.flex_row,
+					FlexStyleSheet.flex_row,
 					style,
 				] }
 				ref={ viewRef }
@@ -122,9 +122,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 					aria-label={ pressableProps?.['aria-label'] ?? label }
 					onPress={ pressHandler }
 					style={ [
-						CommonStyle.absolute,
-						CommonStyle.w_full,
-						CommonStyle.h_full,
+						CommonStyleSheet.absolute,
+						CommonStyleSheet.w_full,
+						CommonStyleSheet.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }

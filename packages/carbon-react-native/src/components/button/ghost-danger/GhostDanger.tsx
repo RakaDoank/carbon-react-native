@@ -19,8 +19,8 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	BaseColor,

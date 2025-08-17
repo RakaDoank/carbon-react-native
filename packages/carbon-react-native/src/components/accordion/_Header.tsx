@@ -24,16 +24,16 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	FlexStyle,
-} from '../../styles'
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	BaseColor as ButtonColor,
@@ -114,7 +114,7 @@ export function Header({
 					(...params) =>
 						iconNodeRenderer(!!open, ...params)
 				}
-				style={ FlexStyle.self_stretch }
+				style={ FlexStyleSheet.self_stretch }
 			/>
 		</View>
 	)
@@ -123,7 +123,7 @@ export function Header({
 
 const
 	style =
-		StyleSheet.create<
+		CarbonStyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof ButtonColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
@@ -135,32 +135,32 @@ const
 			background_focused: {
 				backgroundColor: 'transparent',
 				borderWidth: 1,
-				borderColor: StyleSheet.color.focus,
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: StyleSheet.color.layer_hover_01,
+				backgroundColor: CarbonStyleSheet.color.layer_hover_01,
 			},
 			background_pressed: {
-				backgroundColor: StyleSheet.color.layer_hover_01,
+				backgroundColor: CarbonStyleSheet.color.layer_hover_01,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
 			},
 
 			text_default: {
-				color: StyleSheet.color.text_primary,
+				color: CarbonStyleSheet.color.text_primary,
 			},
 			text_focused: {
-				color: StyleSheet.color.text_primary,
+				color: CarbonStyleSheet.color.text_primary,
 			},
 			text_hovered: {
-				color: StyleSheet.color.text_primary,
+				color: CarbonStyleSheet.color.text_primary,
 			},
 			text_pressed: {
-				color: StyleSheet.color.text_primary,
+				color: CarbonStyleSheet.color.text_primary,
 			},
 			text_disabled: {
-				color: StyleSheet.color.text_disabled,
+				color: CarbonStyleSheet.color.text_disabled,
 			},
 		}),
 

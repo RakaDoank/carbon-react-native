@@ -16,16 +16,16 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../../contexts'
 
 import {
-	FlexStyle,
-} from '../../../styles'
+	FlexStyleSheet,
+} from '../../../_internal/style-sheets'
 
 import {
 	BaseColor as ButtonBaseColor,
@@ -85,7 +85,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			<View
 				{ ...props }
 				style={ [
-					FlexStyle.flex_row,
+					FlexStyleSheet.flex_row,
 					style,
 				] }
 				ref={ ref }
@@ -99,11 +99,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 				<View
 					style={ [
-						FlexStyle.flex_auto,
-						FlexStyle.flex_row,
+						FlexStyleSheet.flex_auto,
+						FlexStyleSheet.flex_row,
 						!inline
 							? baseStyle.leftContainerNonInline
-							: FlexStyle.items_center,
+							: FlexStyleSheet.items_center,
 						leftContainerStyle,
 					] }
 				>
@@ -128,7 +128,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					{ (!!title || !!body) && (
 						<View
 							style={ [
-								FlexStyle.flex_auto,
+								FlexStyleSheet.flex_auto,
 								contentContainerStyle,
 							] }
 						>
@@ -200,7 +200,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							},
 						}}
 						style={ [
-							FlexStyle.justify_center,
+							FlexStyleSheet.justify_center,
 							baseStyle.buttonIconClose,
 							iconCloseButtonProps?.style,
 						] }

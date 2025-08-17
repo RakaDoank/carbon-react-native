@@ -8,8 +8,8 @@ import {
 } from 'react-native'
 
 import {
-	FlexStyle,
-} from '../../styles'
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	Text,
@@ -41,7 +41,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 				{ ...props }
 				ref={ ref }
 				style={ [
-					FlexStyle.flex_row,
+					FlexStyleSheet.flex_row,
 					baseStyle.gap,
 					style,
 				] }

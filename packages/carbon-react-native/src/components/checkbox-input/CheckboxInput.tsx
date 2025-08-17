@@ -21,17 +21,17 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	CommonStyle,
-	FlexStyle,
-} from '../../styles'
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	Icon,
@@ -200,9 +200,9 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				onFocus={ focusHandler }
 				onPress={ pressHandler }
 				style={ [
-					FlexStyle.items_center,
-					FlexStyle.justify_center,
-					CommonStyle.relative,
+					FlexStyleSheet.items_center,
+					FlexStyleSheet.justify_center,
+					CommonStyleSheet.relative,
 					baseStyle.checkbox,
 					getInteractiveStateStyle(interactiveState, value),
 					style,
@@ -211,8 +211,8 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			>
 				<View
 					style={ [
-						CommonStyle.absolute,
-						CommonStyle.overflow_hidden,
+						CommonStyleSheet.absolute,
+						CommonStyleSheet.overflow_hidden,
 						baseStyle.focusBox,
 						isFocused
 							? carbonStyle.focusBox

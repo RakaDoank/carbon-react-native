@@ -18,7 +18,7 @@ import {
 	use as _use,
 } from './use'
 
-export namespace StyleSheet {
+export namespace CarbonStyleSheet {
 
 	export const absoluteFill = RNStyleSheet.absoluteFill
 
@@ -27,11 +27,15 @@ export namespace StyleSheet {
 	export const compose = RNStyleSheet.compose
 
 	/**
-	 * Use `Breakpoint` from the `carbon-react-native-elements` to get the actual value of each breakpoint.  
-	 * This is just a constant name.
+	 * This is a namespace for breakpoint constant names for the StyleSheet.create()  
+	 * Use `Breakpoint` from the `carbon-react-native-elements` to get the actual breakpoint value instead
 	 */
 	export const breakpoint = _breakpoint
 
+	/**
+	 * This is a namespace for color constant names for the StyleSheet.create()  
+	 * Use `Color` from the `carbon-react-native-elements` to get the actual color value instead
+	 */
 	export const color = _color
 
 	export const create = _create

@@ -4,11 +4,11 @@ import {
 
 import {
 	ThemeContext,
-} from '../../contexts/theme'
+} from '../../../contexts'
 
 import {
 	ColorHelper,
-} from '../../helpers'
+} from '../../../helpers'
 
 import {
 	ColorSchemeGlobal,

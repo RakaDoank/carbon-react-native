@@ -19,17 +19,17 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../../contexts'
 
 import {
-	CommonStyle,
-	FlexStyle,
-} from '../../../styles'
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../../_internal/style-sheets'
 
 import {
 	FormLabel,
@@ -111,9 +111,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			<View
 				{ ...viewProps }
 				style={ [
-					FlexStyle.flex_row,
-					FlexStyle.flex_wrap,
-					FlexStyle.items_center,
+					FlexStyleSheet.flex_row,
+					FlexStyleSheet.flex_wrap,
+					FlexStyleSheet.items_center,
 					style,
 				] }
 				ref={ viewRef }
@@ -126,9 +126,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					aria-label={ pressableProps?.['aria-label'] || label }
 					onPress={ pressHandler }
 					style={ [
-						CommonStyle.absolute,
-						CommonStyle.w_full,
-						CommonStyle.h_full,
+						CommonStyleSheet.absolute,
+						CommonStyleSheet.w_full,
+						CommonStyleSheet.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -146,7 +146,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							],
 						}}
 						style={ [
-							CommonStyle.w_full,
+							CommonStyleSheet.w_full,
 							baseStyle.label,
 							formLabelProps?.style,
 						] }

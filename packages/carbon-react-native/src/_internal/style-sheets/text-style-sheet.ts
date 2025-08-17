@@ -2,7 +2,7 @@ import {
 	StyleSheet,
 } from 'react-native'
 
-export const TextStyle = StyleSheet.create({
+export const TextStyleSheet = StyleSheet.create({
 	thin: {
 		fontWeight: 100,
 		fontFamily: 'IBMPlexSans-Thin',

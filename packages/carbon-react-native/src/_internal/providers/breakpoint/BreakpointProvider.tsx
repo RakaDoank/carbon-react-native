@@ -8,7 +8,7 @@ import {
 
 import {
 	BreakpointContext,
-} from '../../contexts/breakpoint'
+} from '../../../contexts/breakpoint'
 
 import {
 	BreakpointGlobal,

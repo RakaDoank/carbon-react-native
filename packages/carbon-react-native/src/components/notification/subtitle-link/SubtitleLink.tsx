@@ -4,8 +4,8 @@ import {
 } from 'react'
 
 import {
-	StyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	ThemeContext,
@@ -62,11 +62,11 @@ export const SubtitleLink = forwardRef<SubtitleLinkRef, SubtitleLinkProps>(
 
 const
 	mapTextColorStyle =
-		StyleSheet.create<Record<NotificationColor, { color: string }>>({
+		CarbonStyleSheet.create<Record<NotificationColor, { color: string }>>({
 			low_contrast: {
-				color: StyleSheet.color.link_primary,
+				color: CarbonStyleSheet.color.link_primary,
 			},
 			high_contrast: {
-				color: StyleSheet.color.link_inverse,
+				color: CarbonStyleSheet.color.link_inverse,
 			},
 		})

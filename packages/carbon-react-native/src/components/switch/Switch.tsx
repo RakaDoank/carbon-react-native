@@ -33,17 +33,17 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	CommonStyle,
-	FlexStyle,
-} from '../../styles'
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	Icon,
@@ -287,7 +287,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				role={ role }
 				aria-checked={ ariaChecked ?? value }
 				style={ [
-					FlexStyle.justify_center,
+					FlexStyleSheet.justify_center,
 					baseStyle.container,
 					sizeStyle[size],
 					trackAnimatedStyle,
@@ -301,8 +301,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			>
 				<Animated.View
 					style={ [
-						FlexStyle.items_center,
-						FlexStyle.justify_center,
+						FlexStyleSheet.items_center,
+						FlexStyleSheet.justify_center,
 						baseStyle.thumb,
 						thumbSizeStyle[size],
 						thumbAnimatedStyle,
@@ -320,7 +320,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				{ isFocused && (
 					<View
 						style={ [
-							CommonStyle.absolute,
+							CommonStyleSheet.absolute,
 							focusBoxSizeStyle[size],
 							baseStyle.focusBox,
 							baseStyleCarbon.focusBoxBorderColor,

@@ -2,7 +2,7 @@ import {
 	StyleSheet,
 } from 'react-native'
 
-export const FlexStyle = StyleSheet.create({
+export const FlexStyleSheet = StyleSheet.create({
 	flex_1: {
 		flexGrow: 1,
 		flexShrink: 1,

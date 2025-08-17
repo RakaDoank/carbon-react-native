@@ -9,16 +9,16 @@ import {
 } from 'react-native'
 
 import {
-	StyleSheet as CarbonStyleSheet,
-} from '../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../contexts'
 
 import {
-	FlexStyle,
-} from '../../styles'
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	Text,
@@ -53,7 +53,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 				{ ...props }
 				ref={ ref }
 				style={ [
-					FlexStyle.flex_row,
+					FlexStyleSheet.flex_row,
 					baseStyle.container,
 					style,
 				] }

@@ -13,8 +13,8 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
-	FlexStyle,
-} from '../../../styles'
+	FlexStyleSheet,
+} from '../../../_internal/style-sheets'
 
 import {
 	Icon,
@@ -116,9 +116,9 @@ const
 	baseStyle =
 		StyleSheet.create({
 			container: {
-				...FlexStyle.self_start,
-				...FlexStyle.flex_row,
-				...FlexStyle.justify_between,
+				...FlexStyleSheet.self_start,
+				...FlexStyleSheet.flex_row,
+				...FlexStyleSheet.justify_between,
 				overflow: 'hidden',
 				paddingLeft: Spacing.spacing_05,
 			},
@@ -129,7 +129,7 @@ const
 				paddingRight: Spacing.spacing_10,
 			},
 			contentContainer: {
-				...FlexStyle.flex_initial,
+				...FlexStyleSheet.flex_initial,
 				maxHeight: Spacing.spacing_09,
 			},
 			textContainer: {

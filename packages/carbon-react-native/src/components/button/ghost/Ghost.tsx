@@ -4,7 +4,7 @@ import {
 } from 'react'
 
 import {
-	StyleSheet as RNStyleSheet,
+	StyleSheet,
 	type TextStyle,
 	type ViewStyle,
 } from 'react-native'
@@ -19,8 +19,8 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	BaseColor,
@@ -82,7 +82,7 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 
 const
 	colorStyle =
-		StyleSheet.create<
+		CarbonStyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
@@ -93,37 +93,37 @@ const
 			},
 			background_focused: {
 				borderWidth: 1,
-				borderColor: StyleSheet.color.focus,
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: StyleSheet.color.background_hover,
+				backgroundColor: CarbonStyleSheet.color.background_hover,
 			},
 			background_pressed: {
-				backgroundColor: StyleSheet.color.background_active,
+				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',
 			},
 
 			text_default: {
-				color: StyleSheet.color.link_primary,
+				color: CarbonStyleSheet.color.link_primary,
 			},
 			text_focused: {
-				color: StyleSheet.color.link_primary,
+				color: CarbonStyleSheet.color.link_primary,
 			},
 			text_hovered: {
-				color: StyleSheet.color.link_primary_hover,
+				color: CarbonStyleSheet.color.link_primary_hover,
 			},
 			text_pressed: {
-				color: StyleSheet.color.link_primary,
+				color: CarbonStyleSheet.color.link_primary,
 			},
 			text_disabled: {
-				color: StyleSheet.color.text_disabled,
+				color: CarbonStyleSheet.color.text_disabled,
 			},
 		}),
 
 	style =
-		RNStyleSheet.create({
+		StyleSheet.create({
 			iconPL8: {
 				paddingLeft: Spacing.spacing_03,
 			},

@@ -17,8 +17,8 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	BaseColor,
@@ -74,42 +74,42 @@ export const Primary = forwardRef<PrimaryRef, PrimaryProps>(
 
 const
 	colorStyle =
-		StyleSheet.create<
+		CarbonStyleSheet.create<
 			Record<
 				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
 		>({
 			background_default: {
-				backgroundColor: StyleSheet.color.button_primary,
+				backgroundColor: CarbonStyleSheet.color.button_primary,
 			},
 			background_focused: {
-				backgroundColor: StyleSheet.color.button_primary,
+				backgroundColor: CarbonStyleSheet.color.button_primary,
 			},
 			background_hovered: {
-				backgroundColor: StyleSheet.color.button_primary_hover,
+				backgroundColor: CarbonStyleSheet.color.button_primary_hover,
 			},
 			background_pressed: {
-				backgroundColor: StyleSheet.color.button_primary_active,
+				backgroundColor: CarbonStyleSheet.color.button_primary_active,
 			},
 			background_disabled: {
-				backgroundColor: StyleSheet.color.button_disabled,
+				backgroundColor: CarbonStyleSheet.color.button_disabled,
 			},
 
 			text_default: {
-				color: StyleSheet.color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_focused: {
-				color: StyleSheet.color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_hovered: {
-				color: StyleSheet.color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_pressed: {
-				color: StyleSheet.color.text_on_color,
+				color: CarbonStyleSheet.color.text_on_color,
 			},
 			text_disabled: {
-				color: StyleSheet.color.text_on_color_disabled,
+				color: CarbonStyleSheet.color.text_on_color_disabled,
 			},
 		}),
 

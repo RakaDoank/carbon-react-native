@@ -17,8 +17,8 @@ import {
 } from '../../../contexts'
 
 import {
-	StyleSheet,
-} from '../../../_style-sheet'
+	CarbonStyleSheet,
+} from '../../../carbon-style-sheet'
 
 import {
 	BaseColor,
@@ -79,7 +79,7 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 
 const
 	style =
-		StyleSheet.create<
+		CarbonStyleSheet.create<
 			Record<
 				| `${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`
 				| 'background_default_selected',
@@ -90,17 +90,17 @@ const
 				backgroundColor: 'transparent',
 			},
 			background_default_selected: {
-				backgroundColor: StyleSheet.color.background_selected,
+				backgroundColor: CarbonStyleSheet.color.background_selected,
 			},
 			background_focused: {
 				borderWidth: 1,
-				borderColor: StyleSheet.color.focus,
+				borderColor: CarbonStyleSheet.color.focus,
 			},
 			background_hovered: {
-				backgroundColor: StyleSheet.color.background_hover,
+				backgroundColor: CarbonStyleSheet.color.background_hover,
 			},
 			background_pressed: {
-				backgroundColor: StyleSheet.color.background_active,
+				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
 			background_disabled: {
 				backgroundColor: 'transparent',

@@ -2,7 +2,7 @@ import {
 	StyleSheet,
 } from 'react-native'
 
-export const CommonStyle = StyleSheet.create({
+export const CommonStyleSheet = StyleSheet.create({
 	w_full: {
 		width: '100%',
 	},
