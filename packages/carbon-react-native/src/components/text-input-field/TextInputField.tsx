@@ -25,6 +25,7 @@ import {
 	Color,
 	Motion,
 	Spacing,
+	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
 
 import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
@@ -45,6 +46,10 @@ import type {
 import {
 	Icon,
 } from '../icon'
+
+import {
+	LayerContext,
+} from '../layer'
 
 import {
 	RNTextInput,
@@ -127,6 +132,9 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 			themeContext =
 				useContext(ThemeContext),
 
+			layerContextLevel =
+				useContext(LayerContext),
+
 			viewRef =
 				useRef<View>(null),
 
@@ -182,6 +190,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					styleSheet.textInputField,
 					carbonStyleSheet.textInputField,
 					textInputFieldSizeStyleSheet[size],
+					textInputFieldByLayerStyleSheet[layerContextLevel],
 					interactiveState === 'invalid'
 						? carbonStyleSheet.invalidOutlineColor
 						: focusOutlineStyle,
@@ -334,6 +343,19 @@ const
 			},
 			invalidOutlineColor: {
 				outlineColor: CarbonStyleSheet.color.support_error,
+			},
+		}),
+
+	textInputFieldByLayerStyleSheet =
+		CarbonStyleSheet.create<Record<ColorLayerLevel, ViewStyle>>({
+			1: {
+				backgroundColor: CarbonStyleSheet.color.field_01,
+			},
+			2: {
+				backgroundColor: CarbonStyleSheet.color.field_02,
+			},
+			3: {
+				backgroundColor: CarbonStyleSheet.color.field_03,
 			},
 		}),
 

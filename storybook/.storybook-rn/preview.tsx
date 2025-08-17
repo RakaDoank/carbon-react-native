@@ -11,7 +11,7 @@ import type {
 
 import {
 	CarbonReactNative,
-	StyleSheet as CarbonStyleSheet,
+	CarbonStyleSheet,
 } from '@audira/carbon-react-native'
 
 StatusBar.setBarStyle('dark-content')

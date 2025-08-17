@@ -53,4 +53,10 @@ export default {
 		},
 	},
 
+	initialGlobals: {
+		backgrounds: {
+			value: 'light',
+		},
+	},
+
 } satisfies Preview
