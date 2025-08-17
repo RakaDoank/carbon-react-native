@@ -84,7 +84,7 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 				blockEndNode={
 					!!helperText?.length && (
 						<FormHelperText
-							text="Lorem ipsum"
+							text={ helperText }
 							style={ [
 								FlexStyleSheet.flex_initial,
 								styleSheet.helperText,
