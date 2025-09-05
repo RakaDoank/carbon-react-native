@@ -2,7 +2,7 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from '@storybook/react-native'
 
 import {
 	Accordion as _Accordion,
@@ -10,8 +10,6 @@ import {
 	type AccordionProps,
 	type AccordionSize,
 } from '@audira/carbon-react-native'
-
-import './style.css'
 
 export default {
 	title: 'Components/Accordion',

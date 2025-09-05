@@ -11,8 +11,8 @@ export default {
 	staticDirs: ['../public'],
 
 	stories: [
-		"../stories-web/**/*.mdx",
-		"../stories-web/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		"../stories/**/*.mdx",
+		"../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
 	],
 
 	addons: [

@@ -1,24 +1,24 @@
 import type {
 	Meta,
 	StoryObj,
-} from '@storybook/react-native-web-vite'
+} from '@storybook/react-native'
 
 import {
-	RadioButton as _RadioButton,
-	RadioButtonInput as _RadioButtonInput,
-	RadioButtonGroup as _RadioButtonGroup,
-	type RadioButtonInputProps,
-	type RadioButtonInputInteractiveState,
-	type RadioButtonProps,
-	type RadioButtonGroupProps,
-	type RadioButtonGroupHelperTextMode,
+	Checkbox as _Checkbox,
+	CheckboxInput as _CheckboxInput,
+	CheckboxGroup as _CheckboxGroup,
+	type CheckboxInputProps,
+	type CheckboxInputInteractiveState,
+	type CheckboxProps,
+	type CheckboxGroupProps,
+	type CheckboxGroupHelperTextMode,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Radio Button',
+	title: 'Components/Checkbox',
 } satisfies Meta
 
-const interactiveStateArgTypes: NonNullable<StoryObj<RadioButtonInputProps>['argTypes']>[keyof NonNullable<StoryObj<RadioButtonInputProps>['argTypes']>] = {
+const interactiveStateArgTypes: NonNullable<StoryObj<CheckboxInputProps>['argTypes']>[keyof NonNullable<StoryObj<CheckboxInputProps>['argTypes']>] = {
 	control: 'select',
 	options: [
 		'normal',
@@ -26,12 +26,12 @@ const interactiveStateArgTypes: NonNullable<StoryObj<RadioButtonInputProps>['arg
 		'error',
 		'read_only',
 		'warning',
-	] satisfies RadioButtonInputInteractiveState[],
+	] satisfies CheckboxInputInteractiveState[],
 }
 
-export const RadioButton: StoryObj<RadioButtonProps> = {
+export const Checkbox: StoryObj<CheckboxProps> = {
 	args: {
-		label: 'Label',
+		label: 'Lorem ipsum',
 		interactiveState: 'normal',
 	},
 	argTypes: {
@@ -42,14 +42,14 @@ export const RadioButton: StoryObj<RadioButtonProps> = {
 	},
 	render(args) {
 		return (
-			<_RadioButton
+			<_Checkbox
 				{ ...args }
 			/>
 		)
 	},
 }
 
-export const RadioButtonInput: StoryObj<RadioButtonInputProps> = {
+export const CheckboxInput: StoryObj<CheckboxInputProps> = {
 	args: {
 		interactiveState: 'normal',
 	},
@@ -58,14 +58,14 @@ export const RadioButtonInput: StoryObj<RadioButtonInputProps> = {
 	},
 	render(args) {
 		return (
-			<_RadioButtonInput
+			<_CheckboxInput
 				{ ...args }
 			/>
 		)
 	},
 }
 
-export const RadioButtonGroup: StoryObj<RadioButtonGroupProps> = {
+export const CheckboxGroup: StoryObj<CheckboxGroupProps> = {
 	args: {
 		orientation: 'vertical',
 		legend: 'Legend Text',
@@ -82,7 +82,7 @@ export const RadioButtonGroup: StoryObj<RadioButtonGroupProps> = {
 			options: [
 				'vertical',
 				'horizontal',
-			] satisfies RadioButtonGroupProps['orientation'][],
+			] satisfies CheckboxGroupProps['orientation'][],
 		},
 		helperText: {
 			control: 'text',
@@ -93,7 +93,7 @@ export const RadioButtonGroup: StoryObj<RadioButtonGroupProps> = {
 				'normal',
 				'error',
 				'warning',
-			] satisfies RadioButtonGroupHelperTextMode[],
+			] satisfies CheckboxGroupHelperTextMode[],
 		},
 		helperTextModeIcon: {
 			control: 'boolean',
@@ -102,22 +102,19 @@ export const RadioButtonGroup: StoryObj<RadioButtonGroupProps> = {
 	},
 	render(args) {
 		return (
-			<_RadioButtonGroup
+			<_CheckboxGroup
 				{ ...args }
 			>
-				<_RadioButtonGroup.Item
-					value="bbc"
+				<_CheckboxGroup.Item
 					label="Item 1"
 				/>
-				<_RadioButtonGroup.Item
-					value="soho"
+				<_CheckboxGroup.Item
 					label="Item 2"
 				/>
-				<_RadioButtonGroup.Item
-					value="prambors"
+				<_CheckboxGroup.Item
 					label="Item 3"
 				/>
-			</_RadioButtonGroup>
+			</_CheckboxGroup>
 		)
 	},
 }

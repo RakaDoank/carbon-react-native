@@ -1,7 +1,7 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from '@storybook/react-native'
 
 import {
 	useContext,
@@ -13,8 +13,6 @@ import {
 	ToastContext,
 	ToastProvider,
 } from '@audira/carbon-react-native'
-
-import './style.css'
 
 export default {
 	title: 'Utilities/Toast',

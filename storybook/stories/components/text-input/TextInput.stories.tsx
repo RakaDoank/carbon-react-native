@@ -1,7 +1,7 @@
 import type {
 	Meta,
 	StoryObj,
-} from '@storybook/react-native'
+} from '@storybook/react-native-web-vite'
 
 import {
 	TextInput as CarbonTextInput,

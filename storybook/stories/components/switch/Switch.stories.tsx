@@ -1,7 +1,7 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from '@storybook/react-native'
 
 import {
 	Switch as _Switch,
