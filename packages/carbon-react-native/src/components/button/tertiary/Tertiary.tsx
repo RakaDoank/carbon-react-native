@@ -56,7 +56,7 @@ export const Tertiary = forwardRef<TertiaryRef, TertiaryProps>(
 				colorStateStyle={{
 					background: {
 						default: colorStyle.background_default,
-						focused: colorStyle.background_pressed,
+						focused: colorStyle.background_focused,
 						hovered: colorStyle.background_hovered,
 						pressed: colorStyle.background_pressed,
 						disabled: colorStyle.background_disabled,

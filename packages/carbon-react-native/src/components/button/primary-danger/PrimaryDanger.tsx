@@ -52,7 +52,7 @@ export const PrimaryDanger = forwardRef<PrimaryDangerRef, PrimaryDangerProps>(
 				colorStateStyle={{
 					background: {
 						default: style.background_default,
-						focused: style.background_pressed,
+						focused: style.background_focused,
 						hovered: style.background_hovered,
 						pressed: style.background_pressed,
 						disabled: style.background_disabled,
