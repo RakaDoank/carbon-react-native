@@ -1,4 +1,9 @@
 import {
+	useContext,
+	useEffect,
+} from 'react'
+
+import {
 	StyleSheet,
 	ScrollView,
 	StatusBar,
@@ -12,9 +17,8 @@ import type {
 import {
 	CarbonReactNative,
 	CarbonStyleSheet,
+	ThemeContext,
 } from '@audira/carbon-react-native'
-
-StatusBar.setBarStyle('dark-content')
 
 export default {
 	decorators: [
@@ -39,7 +43,19 @@ interface BodyProps {
 }
 function Body(props: BodyProps) {
 
-	CarbonStyleSheet.use()
+	const
+		themeContext =
+			useContext(ThemeContext)
+
+	useEffect(() => {
+		StatusBar.setBarStyle(
+			themeContext.colorScheme == 'gray_10'
+				? 'dark-content'
+				: 'light-content',
+		)
+	}, [
+		themeContext.colorScheme,
+	])
 
 	return (
 		<ScrollView

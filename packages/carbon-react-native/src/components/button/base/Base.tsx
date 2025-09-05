@@ -47,6 +47,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			iconProps,
 			iconNode,
 			backgroundNode,
+			InlineLoading,
+			inlineLoadingProps,
 			style,
 			role = 'button',
 			'aria-label': ariaLabel,
@@ -70,39 +72,50 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				] }
 				ref={ ref }
 			>
-				{ backgroundNode }{/* only for base-color button, and this is not valid HTML per se */}
+				{ backgroundNode }{/* only for base-color button, and this is not valid HTML per se (?) */}
 
-				{ !!text && (
-					<View
-						style={ baseStyle.textContainer }
-					>
-						<Text
-							{ ...textProps }
-							type={ getTextType(size) }
+				{ !InlineLoading || inlineLoadingProps?.state === 'inactive' ? (<>
+					{ !!text && (
+						<View
+							style={ baseStyle.textContainer }
 						>
-							{ text }
-						</Text>
-					</View>
-				) }
+							<Text
+								{ ...textProps }
+								type={ getTextType(size) }
+							>
+								{ text }
+							</Text>
+						</View>
+					) }
 
-				{ (!!icon && !iconNode) ? (
-					<Icon
-						{ ...iconProps }
-						src={ icon }
-						width={ iconProps?.width ?? iconSize }
-						height={ iconProps?.height ?? iconSize }
-						style={ [
+					{ (!!icon && !iconNode) ? (
+						<Icon
+							{ ...iconProps }
+							src={ icon }
+							width={ iconProps?.width ?? iconSize }
+							height={ iconProps?.height ?? iconSize }
+							style={ [
+								getIconMarginTopStyle(size),
+								getIconMarginLeftStyle(!!text),
+								iconProps?.style,
+							] }
+						/>
+					) : iconNode?.(
+						iconSize,
+						[
 							getIconMarginTopStyle(size),
 							getIconMarginLeftStyle(!!text),
-							iconProps?.style,
+						],
+					) }
+				</>) : (
+					<InlineLoading
+						{ ...inlineLoadingProps }
+						text={ inlineLoadingProps?.text || text || '' }
+						style={ [
+							baseStyle.inlineLoading,
+							inlineLoadingProps?.style,
 						] }
 					/>
-				) : iconNode?.(
-					iconSize,
-					[
-						getIconMarginTopStyle(size),
-						getIconMarginLeftStyle(!!text),
-					],
 				) }
 			</Pressable>
 		)
@@ -137,6 +150,10 @@ const
 			},
 			iconML32: {
 				marginLeft: Spacing.spacing_07,
+			},
+			inlineLoading: {
+				height: '100%',
+				maxHeight: 48,
 			},
 		}),
 

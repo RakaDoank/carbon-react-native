@@ -12,6 +12,10 @@ import type {
 } from '../../icon/IconProps'
 
 import type {
+	InlineLoadingProps,
+} from '../../inline-loading/InlineLoadingProps'
+
+import type {
 	TextProps,
 } from '../../text/TextProps'
 
@@ -47,5 +51,14 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	 * Only for base-color button for Focus state UI purposes
 	 */
 	backgroundNode?: React.ReactNode,
+	/**
+	 * Pass this `InlineLoading` component to render the loading inside of button.  
+	 * The Text of Button will be used if `inlineLoadingProps.text` is empty.  
+	 * If you pass `inlineLoadingProps.state` with `inactive` value, the `InlineLoading` component will not be rendered.
+	 */
+	InlineLoading?: React.FunctionComponent<InlineLoadingProps>,
+	inlineLoadingProps?: Omit<InlineLoadingProps, 'text'> & {
+		text?: string,
+	},
 	style?: ViewProps['style'],
 }

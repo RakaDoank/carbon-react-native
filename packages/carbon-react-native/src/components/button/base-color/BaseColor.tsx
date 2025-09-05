@@ -58,6 +58,8 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 			icon,
 			iconProps,
 			iconNode,
+			InlineLoading,
+			inlineLoadingProps,
 			onBlur,
 			onFocus,
 			onHoverIn,
@@ -173,7 +175,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				backgroundNode={
 					<View
 						style={ [
-							styles.innerFocusBox,
+							styleSheet.innerFocusBox,
 							state.focused
 								? mapInnerFocusBoxActiveStyle[themeContext.colorScheme]
 								: null,
@@ -201,8 +203,12 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 						? (...params) => iconNode(stateStyle.icon, ...params)
 						: undefined
 				}
+				InlineLoading={ InlineLoading }
+				inlineLoadingProps={ inlineLoadingProps }
 				style={ [
-					stateStyle.background,
+					!InlineLoading || inlineLoadingProps?.state === 'inactive'
+						? stateStyle.background
+						: styleSheet.withInlineLoading,
 					style,
 				] }
 			/>
@@ -212,8 +218,11 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 )
 
 const
-	styles =
+	styleSheet =
 		StyleSheet.create({
+			withInlineLoading: {
+				borderColor: 'transparent',
+			},
 			innerFocusBox: {
 				position: 'absolute',
 				top: 2,
@@ -231,10 +240,10 @@ const
 			},
 		}),
 
-	mapInnerFocusBoxActiveStyle: Record<ThemeType.ColorScheme, typeof styles['innerFocusBoxActive_GRAY_10']> =
+	mapInnerFocusBoxActiveStyle: Record<ThemeType.ColorScheme, typeof styleSheet['innerFocusBoxActive_GRAY_10']> =
 		{
-			gray_10: styles.innerFocusBoxActive_GRAY_10,
-			gray_100: styles.innerFocusBoxActive_GRAY_100,
+			gray_10: styleSheet.innerFocusBoxActive_GRAY_10,
+			gray_100: styleSheet.innerFocusBoxActive_GRAY_100,
 		}
 
 function getStateStyle(
