@@ -76,6 +76,7 @@ export const GhostIcon: StoryFn<Button.GhostIconProps> = args => {
 	return (
 		<Button.GhostIcon
 			{ ...args }
+			icon={ args.icon ?? Add20 }
 		/>
 	)
 }
