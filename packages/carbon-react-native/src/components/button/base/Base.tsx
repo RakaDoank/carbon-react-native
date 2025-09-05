@@ -42,13 +42,12 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		{
 			size = 'large_productive',
 			text,
+			textProps,
 			icon,
-			iconColor,
+			iconProps,
 			iconNode,
 			backgroundNode,
 			style,
-			textStyle,
-			iconStyle,
 			role = 'button',
 			'aria-label': ariaLabel,
 			...props
@@ -78,8 +77,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						style={ baseStyle.textContainer }
 					>
 						<Text
+							{ ...textProps }
 							type={ getTextType(size) }
-							style={ textStyle }
 						>
 							{ text }
 						</Text>
@@ -88,14 +87,14 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 				{ (!!icon && !iconNode) ? (
 					<Icon
+						{ ...iconProps }
 						src={ icon }
-						width={ iconSize }
-						height={ iconSize }
-						color={ iconColor }
+						width={ iconProps?.width ?? iconSize }
+						height={ iconProps?.height ?? iconSize }
 						style={ [
 							getIconMarginTopStyle(size),
 							getIconMarginLeftStyle(!!text),
-							iconStyle,
+							iconProps?.style,
 						] }
 					/>
 				) : iconNode?.(
@@ -103,7 +102,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					[
 						getIconMarginTopStyle(size),
 						getIconMarginLeftStyle(!!text),
-						iconStyle,
 					],
 				) }
 			</Pressable>

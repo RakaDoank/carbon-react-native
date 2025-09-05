@@ -1,6 +1,5 @@
 import type {
 	PressableProps,
-	TextProps,
 	ViewProps,
 } from 'react-native'
 
@@ -10,7 +9,11 @@ import type {
 
 import type {
 	IconProps,
-} from '../../icon'
+} from '../../icon/IconProps'
+
+import type {
+	TextProps,
+} from '../../text/TextProps'
 
 import type {
 	ButtonSize,
@@ -23,8 +26,9 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	 */
 	size?: ButtonSize,
 	text?: string,
+	textProps?: Omit<TextProps, 'type' | 'children'>,
 	icon?: SharedType.CarbonIcon,
-	iconColor?: string,
+	iconProps?: Omit<IconProps, 'src'>,
 	/**
 	 * This prop is useful to custom render at the icon position.  
 	 * `iconNode` takes precedence even if {@linkcode icon} prop is present.
@@ -35,7 +39,7 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 		 */
 		iconSize: number,
 		/**
-		 * Use this param to keep icon style nicely center aligned vertically with text
+		 * Use this style to keep icon style nicely center aligned vertically with text
 		 */
 		iconStyle: IconProps['style'],
 	) => React.ReactNode,
@@ -44,6 +48,4 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	 */
 	backgroundNode?: React.ReactNode,
 	style?: ViewProps['style'],
-	textStyle?: TextProps['style'],
-	iconStyle?: IconProps['style'],
 }

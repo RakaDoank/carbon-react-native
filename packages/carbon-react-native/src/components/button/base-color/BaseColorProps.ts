@@ -12,7 +12,7 @@ import type {
 	BaseColorState,
 } from './BaseColorState'
 
-export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconColor' | 'iconNode'> {
+export interface BaseColorProps extends Omit<BaseProps, 'backgroundNode' | 'iconNode'> {
 	android_rippleEffectColor: string,
 	colorStateStyle: {
 		background: Record<BaseColorState, StyleProp<ViewStyle>>,

@@ -40,7 +40,7 @@ export const GhostDanger = forwardRef<GhostDangerRef, GhostDangerProps>(
 	function GhostDanger(
 		{
 			text,
-			iconStyle,
+			iconProps,
 			...props
 		},
 		ref,
@@ -73,7 +73,10 @@ export const GhostDanger = forwardRef<GhostDangerRef, GhostDangerProps>(
 					},
 					icon: mapIconColor[themeContext.colorScheme],
 				}}
-				iconStyle={ [ mapIconPLByText[`${!!text}`], iconStyle ] }
+				iconProps={{
+					...iconProps,
+					style: [mapIconPLByText[`${!!text}`], iconProps?.style],
+				}}
 			/>
 		)
 

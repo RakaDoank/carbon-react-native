@@ -52,10 +52,11 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 		{
 			disabled,
 			style,
-			textStyle,
+			textProps,
 			android_rippleEffectColor,
 			colorStateStyle,
 			icon,
+			iconProps,
 			iconNode,
 			onBlur,
 			onFocus,
@@ -186,8 +187,15 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				onHoverOut={ hoverOutHandler }
 				onPressIn={ pressInHandler }
 				onPressOut={ pressOutHandler }
-				iconColor={ stateStyle.icon }
+				textProps={{
+					...textProps,
+					style: [stateStyle.text, textProps?.style],
+				}}
 				icon={ !iconNode ? icon : undefined }
+				iconProps={{
+					...iconProps,
+					color: iconProps?.color ?? stateStyle.icon,
+				}}
 				iconNode={
 					iconNode
 						? (...params) => iconNode(stateStyle.icon, ...params)
@@ -196,10 +204,6 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				style={ [
 					stateStyle.background,
 					style,
-				] }
-				textStyle={ [
-					stateStyle.text,
-					textStyle,
 				] }
 			/>
 		)
