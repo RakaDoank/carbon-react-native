@@ -6,6 +6,7 @@ import {
 } from 'react'
 
 import {
+	Platform,
 	StyleSheet,
 	View,
 	type StyleProp,
@@ -256,7 +257,7 @@ function getStateStyle(
 
 	if(states.pressed) {
 		return {
-			background: androidRipple
+			background: androidRipple && Platform.OS == 'android'
 				? colorStateStyle.background.default
 				: colorStateStyle.background.pressed,
 			text: colorStateStyle.text.pressed,
