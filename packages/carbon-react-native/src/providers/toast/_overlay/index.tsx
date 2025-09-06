@@ -229,7 +229,11 @@ const
 				top: Spacing.spacing_03,
 				left: '100%',
 				width: 'auto',
-				flexDirection: 'row',
+				...Platform.select({
+					web: {
+						flexDirection: 'row',
+					},
+				}),
 			},
 		}),
 
