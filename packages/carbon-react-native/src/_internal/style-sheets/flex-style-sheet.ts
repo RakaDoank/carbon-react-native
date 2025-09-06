@@ -21,8 +21,14 @@ export const FlexStyleSheet = StyleSheet.create({
 	flex_col: {
 		flexDirection: 'column',
 	},
+	flex_col_reverse: {
+		flexDirection: 'column-reverse',
+	},
 	flex_row: {
 		flexDirection: 'row',
+	},
+	flex_row_reverse: {
+		flexDirection: 'row-reverse',
 	},
 	flex_wrap: {
 		flexWrap: 'wrap',
