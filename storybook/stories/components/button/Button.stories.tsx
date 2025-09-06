@@ -49,7 +49,7 @@ export default {
 				'large_expressive',
 				'extra_large',
 				'2xl',
-			] satisfies Button.ButtonSize[],
+			] satisfies Button.Size[],
 		},
 	},
 } satisfies Meta<Button.BaseProps>

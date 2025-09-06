@@ -1,5 +1,6 @@
 import {
 	forwardRef,
+	useContext,
 } from 'react'
 
 import {
@@ -11,6 +12,10 @@ import {
 import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	ButtonGroupContext,
+} from '../../../_internal/components/button-group'
 
 import {
 	FlexStyleSheet,
@@ -26,8 +31,8 @@ import {
 } from '../../text'
 
 import type {
-	ButtonSize,
-} from '../ButtonSize'
+	Size,
+} from '../Size'
 
 import type {
 	BaseProps,
@@ -40,7 +45,7 @@ import type {
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
 		{
-			size = 'large_productive',
+			size: sizeProp,
 			text,
 			textProps,
 			icon,
@@ -57,7 +62,15 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		ref,
 	) {
 
-		const iconSize = getIconSize(size)
+		const
+			buttonGroupContext =
+				useContext(ButtonGroupContext),
+
+			size =
+				sizeProp ?? buttonGroupContext.size ?? 'large_productive',
+
+			iconSize =
+				getIconSize(size)
 
 		return (
 			<Pressable
@@ -65,8 +78,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				role={ role }
 				aria-label={ ariaLabel ?? text }
 				style={ [
-					sizeStyle[size],
+					FlexStyleSheet.flex_row,
+					FlexStyleSheet.justify_between,
+					FlexStyleSheet.self_start,
 					baseStyle.container,
+					sizeStyle[size],
 					getContainerPaddingRight(!!text, !!icon || !!iconNode),
 					style,
 				] }
@@ -127,9 +143,6 @@ const
 	baseStyle =
 		StyleSheet.create({
 			container: {
-				...FlexStyleSheet.self_start,
-				...FlexStyleSheet.flex_row,
-				...FlexStyleSheet.justify_between,
 				overflow: 'hidden',
 				paddingLeft: Spacing.spacing_05,
 			},
@@ -158,7 +171,7 @@ const
 		}),
 
 	sizeStyle =
-		StyleSheet.create<Record<ButtonSize, { height: number }>>({
+		StyleSheet.create<Record<Size, { height: number }>>({
 			small: {
 				height: 32,
 			},
@@ -179,12 +192,20 @@ const
 			},
 		}),
 
-	mapContainerPR: Record<string, { paddingRight: number }> =
+	mapContainerPR: {
+		[HasText in `${boolean}`]: {
+			[HasIcon in `${boolean}`]: BaseProps['style']
+		}
+	} =
 		{
-			'text[false]_icon[false]': baseStyle.containerPR16,
-			'text[true]_icon[false]': baseStyle.containerPR64,
-			'text[false]_icon[true]': baseStyle.containerPR16,
-			'text[true]_icon[true]': baseStyle.containerPR16,
+			false: {
+				false: baseStyle.containerPR16,
+				true: baseStyle.containerPR16,
+			},
+			true: {
+				false: baseStyle.containerPR64,
+				true: baseStyle.containerPR16,
+			},
 		},
 
 	/**
@@ -213,41 +234,41 @@ const
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function isExpressiveStr(
-	buttonSize: BaseProps['size'],
+	Size: BaseProps['size'],
 ): 'true' | 'false' {
-	return `${buttonSize === 'large_expressive'}`
+	return `${Size === 'large_expressive'}`
 }
 
 function getContainerPaddingRight(
 	text: boolean,
 	icon: boolean,
 ) {
-	return mapContainerPR[`text[${text}]_icon[${icon}]`]
+	return mapContainerPR[`${text}`][`${icon}`]
 }
 
 /**
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
-function getTextType(buttonSize: BaseProps['size']) {
-	return mapTextTypeByExpressive[isExpressiveStr(buttonSize)]
+function getTextType(size: BaseProps['size']) {
+	return mapTextTypeByExpressive[isExpressiveStr(size)]
 }
 
 /**
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
-function getIconSize(buttonSize: BaseProps['size']) {
-	return mapIconSizeByExpressive[isExpressiveStr(buttonSize)]
+function getIconSize(size: BaseProps['size']) {
+	return mapIconSizeByExpressive[isExpressiveStr(size)]
 }
 
-function getIconMarginTopStyle(buttonSize: NonNullable<BaseProps['size']>) {
+function getIconMarginTopStyle(size: NonNullable<BaseProps['size']>) {
 	const
 		iconSize =
-			mapIconSizeByExpressive[isExpressiveStr(buttonSize)],
+			mapIconSizeByExpressive[isExpressiveStr(size)],
 
 		height =
-			Math.min(sizeStyle[buttonSize].height, sizeStyle.large_productive.height) // 48 at max
+			Math.min(sizeStyle[size].height, sizeStyle.large_productive.height) // 48 at max
 
 	return {
 		marginTop: (height / 2) - (iconSize / 2),

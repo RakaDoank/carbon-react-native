@@ -42,8 +42,8 @@ import {
 } from '../button/base-color'
 
 import type {
-	ButtonSize as ButtonSize,
-} from '../button/ButtonSize'
+	Size as ButtonSize,
+} from '../button/Size'
 
 import {
 	Icon,

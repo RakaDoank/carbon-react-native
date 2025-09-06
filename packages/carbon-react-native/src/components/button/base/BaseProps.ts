@@ -20,15 +20,15 @@ import type {
 } from '../../text/TextProps'
 
 import type {
-	ButtonSize,
-} from '../ButtonSize'
+	Size,
+} from '../Size'
 
 export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	/**
 	 * Refer to https://carbondesignsystem.com/components/button/style/#sizes  
 	 * Default is `large_productive`
 	 */
-	size?: ButtonSize,
+	size?: Size,
 	text?: string,
 	textProps?: Omit<TextProps, 'type' | 'children'>,
 	icon?: SharedType.CarbonIcon,
