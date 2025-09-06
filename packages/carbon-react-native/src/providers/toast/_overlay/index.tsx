@@ -9,6 +9,7 @@ import {
 } from 'react'
 
 import {
+	Platform,
 	StyleSheet,
 	type LayoutChangeEvent,
 	type ViewProps,
@@ -126,8 +127,19 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 						componentWrappersRef.current[index]
 					) {
 						componentsConfig.current[index].state = 1
-						componentsConfig.current[index].width = event.nativeEvent.layout.width
-						componentsConfig.current[index].height = event.nativeEvent.layout.height
+						if(Platform.OS == 'web') {
+							// @ts-expect-error Web DOM
+							const target = event.nativeEvent.target as HTMLDivElement
+							/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+							// @ts-expect-error Web DOM
+							componentsConfig.current[index].width = target.children?.[0]?.clientWidth
+							// @ts-expect-error Web DOM
+							componentsConfig.current[index].height = target.children?.[0]?.clientWidth
+							/* eslint-enable @typescript-eslint/no-unsafe-member-access */
+						} else {
+							componentsConfig.current[index].width = event.nativeEvent.layout.width
+							componentsConfig.current[index].height = event.nativeEvent.layout.height
+						}
 
 						componentWrappersRef.current[index].shiftX(
 							-componentsConfig.current[index].width - Spacing.spacing_03,
@@ -216,7 +228,8 @@ const
 				position: 'absolute',
 				top: Spacing.spacing_03,
 				left: '100%',
-				alignSelf: 'flex-start',
+				width: 'auto',
+				flexDirection: 'row',
 			},
 		}),
 
