@@ -36,10 +36,7 @@ import type {
 
 export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 	function GhostIcon(
-		{
-			selected,
-			...props
-		},
+		props,
 		ref,
 	) {
 
@@ -54,9 +51,7 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
-						default: selected
-							? style.background_default
-							: style.background_default_selected,
+						default: style.background_default,
 						focused: style.background_focused,
 						hovered: style.background_hovered,
 						pressed: style.background_pressed,
@@ -81,16 +76,12 @@ const
 	style =
 		CarbonStyleSheet.create<
 			Record<
-				| `${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`
-				| 'background_default_selected',
+				| `${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
 				ViewStyle | TextStyle
 			>
 		>({
 			background_default: {
 				backgroundColor: 'transparent',
-			},
-			background_default_selected: {
-				backgroundColor: CarbonStyleSheet.color.background_selected,
 			},
 			background_focused: {
 				borderWidth: 1,

@@ -19,6 +19,5 @@ export interface GhostIconProps extends Omit<
 	| 'inlineLoadingProps'
 > {
 	icon: SharedType.CarbonIcon,
-	selected?: boolean,
 	inlineLoadingProps?: Omit<InlineLoadingProps, 'text'>,
 }
