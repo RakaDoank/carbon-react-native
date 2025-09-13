@@ -231,7 +231,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 									Component: items.SecondaryComponent,
 								}}
 								item3={{
-									...items.Secondary1,
+									...items.Secondary3,
 									Component: items.SecondaryComponent,
 								}}
 							/>
@@ -278,7 +278,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 							/>
 						) : (
 							// 2 Buttons without primary button
-							(items.Ghost && items.Tertiary)
+							items.Ghost && items.Tertiary
 						) ? (
 							<Renderer2
 								item1={ items.Ghost }
