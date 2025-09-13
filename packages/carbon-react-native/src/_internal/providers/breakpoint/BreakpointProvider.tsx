@@ -3,12 +3,12 @@ import {
 } from 'react-native'
 
 import {
-	Breakpoint,
-} from '@audira/carbon-react-native-elements'
-
-import {
 	BreakpointContext,
 } from '../../../contexts/breakpoint'
+
+import {
+	BreakpointHelper,
+} from '../../../helpers'
 
 import {
 	BreakpointGlobal,
@@ -27,17 +27,7 @@ export function BreakpointProvider({
 			useWindowDimensions(),
 
 		breakpoint =
-			windowDimensions.width < Breakpoint.medium.value.px ? (
-				'small'
-			) : windowDimensions.width < Breakpoint.large.value.px ? (
-				'medium'
-			) : windowDimensions.width < Breakpoint.x_large.value.px ? (
-				'large'
-			) : windowDimensions.width < Breakpoint.max.value.px ? (
-				'x_large'
-			) : (
-				'max'
-			)
+			BreakpointHelper.getToken(windowDimensions.width)
 
 	BreakpointGlobal.set(breakpoint)
 
