@@ -140,6 +140,9 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				(items.Ghost && items.Secondary && items.Primary) ||
 				(items.Secondary1 && items.Secondary2 && items.Primary) ||
 				(items.Tertiary1 && items.Tertiary2 && items.Primary),
+			// not included for type check fix
+			// (TertiaryDanger && Tertiary && Primary)
+			// (TertiaryDanger && Tertiary1 && Tertiary2)
 
 			is3ButtonsWithoutPrimary =
 				(items.Tertiary1 && items.Tertiary2 && items.Tertiary3) ||
@@ -174,7 +177,11 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 					>
 						{ /* eslint-disable @stylistic/indent */ }
 						{ (
-							// 3 Buttons
+							// 3 Buttons with Primary
+							// - Tertiary | Secondary | Primary
+							// - Ghost | Secondary | Primary
+							// - Secondary1 | Secondary2 | Primary
+							// - Tertiary1 | Tertiary2 | Primary
 							is3ButtonsWithPrimary
 						) ? (
 							<Renderer3
@@ -184,6 +191,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 							/>
 						) : (
 							// 3 buttons [fix type check]
+							// - TertiaryDanger | Tertiary | Primary
 							items.TertiaryDanger && items.Tertiary && items.Primary
 						) ? (
 							<Renderer3
@@ -193,6 +201,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 							/>
 						) : (
 							// 3 buttons without primary [fix type check]
+							// - Tertiary1 | Tertiary2 | Tertiary3
 							items.Tertiary1 && items.Tertiary2 && items.Tertiary3
 						) ? (
 							<Renderer3
@@ -211,6 +220,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 							/>
 						) : (
 							// 3 buttons without primary [fix type check]
+							// - TertiaryDanger | Tertiary1 | Tertiary2
 							items.TertiaryDanger && items.Tertiary1 && items.Tertiary2
 						) ? (
 							<Renderer3
