@@ -25,6 +25,7 @@ export default {
 			pluginReactOptions: {
 				babel: {
 					plugins: [
+						'@babel/plugin-transform-export-namespace-from',
 						'react-native-reanimated/plugin',
 					],
 				},

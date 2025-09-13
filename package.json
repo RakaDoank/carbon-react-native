@@ -17,7 +17,7 @@
 		"@react-native/eslint-config": "0.80.1",
 		"@stylistic/eslint-plugin": "^5.2.3",
 		"@types/node": "^22",
-		"@types/react": "19.1.9",
+		"@types/react": "19.1.13",
 		"eslint": "^9.33.0",
 		"eslint-import-resolver-typescript": "^4.4.4",
 		"eslint-plugin-import-x": "^4.16.1",
