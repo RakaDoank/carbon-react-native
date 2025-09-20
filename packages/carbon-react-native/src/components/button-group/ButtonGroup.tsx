@@ -40,7 +40,8 @@ import {
 
 
 /**
- * @experimental
+ * @experimental Consider this component is an experimental component. We are not sure that static type of `items` prop to compose button variants is a good choice.
+ * 
  * Button groups can consist of different button variants depending on the product use case.  
  * The order of this union below (from left to right, e.g 'secondary' > 'primary') will be same as the actual render (if `verticalStack` true, it will be bottom to top)
  * 
