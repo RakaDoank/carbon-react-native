@@ -6,13 +6,13 @@ import {
 	GlobalConfigContext,
 } from '../../_internal/contexts'
 
+import type {
+	NotificationColor,
+} from './NotificationColor'
 import {
 	VariantContext,
 } from './_variant-context'
 
-import type {
-	NotificationColor,
-} from './NotificationColor'
 
 export function VariantContextProvider({
 	color,

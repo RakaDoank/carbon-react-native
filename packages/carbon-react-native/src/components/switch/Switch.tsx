@@ -16,8 +16,12 @@ import {
 	type PressableProps,
 } from 'react-native'
 
-import Checkmark from '@carbon/icons/es/checkmark/20'
 
+import {
+	Color,
+	Motion,
+} from '@audira/carbon-react-native-elements'
+import Checkmark from '@carbon/icons/es/checkmark/20'
 import Animated, {
 	Easing,
 	interpolate,
@@ -27,31 +31,22 @@ import Animated, {
 	withTiming,
 } from 'react-native-reanimated'
 
-import {
-	Motion,
-	Color,
-} from '@audira/carbon-react-native-elements'
-
-import {
-	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
-
-import {
-	ThemeContext,
-} from '../../contexts'
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+import {
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
+import {
+	ThemeContext,
+} from '../../contexts'
 
 import {
 	Icon,
 } from '../icon'
 
-import type {
-	RefBase,
-} from './_RefBase'
 
 import type {
 	SwitchProps,
@@ -68,6 +63,9 @@ import type {
 import type {
 	SwitchState,
 } from './SwitchState'
+import type {
+	RefBase,
+} from './_RefBase'
 
 export const Switch = forwardRef<SwitchRef, SwitchProps>(
 	function Switch(
@@ -259,7 +257,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get value() {
 						return value
@@ -420,7 +419,8 @@ const
 					gray_100: Color.Token.gray_100.button_disabled,
 				},
 			},
-			read_only: {},
+			read_only: {
+			},
 			focused: {
 				false: {
 					gray_10: Color.Token.gray_10.toggle_off,

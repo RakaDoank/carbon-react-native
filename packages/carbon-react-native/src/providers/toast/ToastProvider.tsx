@@ -9,10 +9,6 @@ import {
 	ToastContext,
 } from '../../contexts'
 
-import {
-	Overlay,
-	type OverlayRef,
-} from './_overlay'
 
 import type {
 	ToastProviderProps,
@@ -21,6 +17,10 @@ import type {
 import type {
 	ToastRef,
 } from './ToastRef'
+import {
+	Overlay,
+	type OverlayRef,
+} from './_overlay'
 
 export const ToastProvider = forwardRef<ToastRef, ToastProviderProps>(
 	function ToastProvider(

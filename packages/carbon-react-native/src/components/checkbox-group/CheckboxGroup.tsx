@@ -9,25 +9,29 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
-import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
-
 import {
 	Color,
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
-import {
-	ThemeContext,
-} from '../../contexts'
+import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
+import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
 
 import {
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
 import {
+	ThemeContext,
+} from '../../contexts'
+
+import {
 	Checkbox,
 } from '../checkbox'
+
+import {
+	FormHelperText,
+} from '../form-helper-text'
 
 import {
 	FormLabel,
@@ -37,10 +41,6 @@ import {
 	Icon,
 	type IconProps,
 } from '../icon'
-
-import {
-	FormHelperText,
-} from '../form-helper-text'
 
 import type {
 	CheckboxGroupProps,

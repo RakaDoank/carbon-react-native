@@ -9,6 +9,9 @@ import {
 } from 'react-native'
 
 import {
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
+import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
 
@@ -16,9 +19,6 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-import {
-	FlexStyleSheet,
-} from '../../_internal/style-sheets'
 
 import {
 	Text,

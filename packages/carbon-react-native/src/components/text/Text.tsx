@@ -4,16 +4,19 @@ import {
 } from 'react'
 
 import {
-	Text as Core,
 	StyleSheet,
+	Text as Core,
 } from 'react-native'
 
 import {
 	Typography,
-	type TypeSetsToken,
 	type TypeSets,
+	type TypeSetsToken,
 } from '@audira/carbon-react-native-elements'
 
+import {
+	TextStyleSheet,
+} from '../../_internal/style-sheets'
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -22,9 +25,6 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-import {
-	TextStyleSheet,
-} from '../../_internal/style-sheets'
 
 import type {
 	TextProps,
@@ -63,10 +63,14 @@ export const Text = forwardRef<TextRef, TextProps>(
 )
 
 type TypeSetsWithFamily =
-	Record<TypeSetsToken, TypeSets & { fontFamily: string }>
+	Record<TypeSetsToken, TypeSets & {
+		fontFamily: string
+	}>
 
 const
-	mapFamilyStyle: Record<string, { fontFamily: string, fontWeight: TypeSets['fontWeight'] }> =
+	mapFamilyStyle: Record<string, {
+		fontFamily: string, fontWeight: TypeSets['fontWeight']
+	}> =
 		{
 			'100': TextStyleSheet.thin,
 			'100_italic': TextStyleSheet.thin_italic,
@@ -105,7 +109,8 @@ const
 					),
 				}
 				return accumulator
-			}, {} as TypeSetsWithFamily),
+			}, {
+			} as TypeSetsWithFamily),
 		)
 	},
 

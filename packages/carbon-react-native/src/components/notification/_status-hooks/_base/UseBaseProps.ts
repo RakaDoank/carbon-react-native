@@ -5,8 +5,12 @@ import type {
 export interface UseBaseProps {
 	color?: NotificationColor,
 	style: Record<NotificationColor, Record<'backgroundColor' | 'borderTopColor' | 'borderRightColor' | 'borderBottomColor', string>>,
-	leftBarStyle: Record<NotificationColor, { backgroundColor: string }>,
-	titleStyle: Record<NotificationColor, { color: string }>,
+	leftBarStyle: Record<NotificationColor, {
+		backgroundColor: string
+	}>,
+	titleStyle: Record<NotificationColor, {
+		color: string
+	}>,
 	iconColor: Record<NotificationColor, string>,
 	iconCloseColor: Record<NotificationColor, string>,
 	/**

@@ -16,22 +16,18 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import {
-	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
-
-import {
-	ThemeContext,
-} from '../../contexts'
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+import {
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
+import {
+	ThemeContext,
+} from '../../contexts'
 
-import type {
-	RefBase,
-} from './_RefBase'
 
 import type {
 	RadioButtonInputInteractiveState,
@@ -44,6 +40,9 @@ import type {
 import type {
 	RadioButtonInputRef,
 } from './RadioButtonInputRef'
+import type {
+	RefBase,
+} from './_RefBase'
 
 export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInputProps>(
 	function RadioButtonInput(
@@ -133,7 +132,8 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get checked() {
 						return checked

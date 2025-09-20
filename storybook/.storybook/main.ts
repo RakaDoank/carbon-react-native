@@ -35,9 +35,11 @@ export default {
 
 	viteFinal(config) {
 		config.resolve = {
-			...config.resolve ?? {},
+			...config.resolve ?? {
+			},
 			alias: {
-				...config.resolve?.alias ?? {},
+				...config.resolve?.alias ?? {
+				},
 				'@audira/carbon-react-native': node_path.join(workspaceRoot, 'packages/carbon-react-native/src'),
 				'@audira/carbon-react-native-elements': node_path.join(workspaceRoot, 'packages/carbon-react-native-elements/src'),
 			},

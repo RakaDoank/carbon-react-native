@@ -19,6 +19,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../../_internal/style-sheets'
+import {
 	CarbonStyleSheet,
 } from '../../../carbon-style-sheet'
 
@@ -26,36 +30,31 @@ import {
 	ThemeContext,
 } from '../../../contexts'
 
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from '../../../_internal/style-sheets'
 
 import {
 	FormLabel,
 } from '../../form-label'
 
 import {
-	Text,
-} from '../../text'
-
-import {
 	Switch,
 	type SwitchRef,
 	type SwitchState,
 } from '../../switch'
+import {
+	Text,
+} from '../../text'
 
-import type {
-	RefBase,
-} from './_RefBase'
 
 import type {
 	BaseProps,
 } from './BaseProps'
-
 import type {
 	BaseRef,
 } from './BaseRef'
+import type {
+	RefBase,
+} from './_RefBase'
+
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
@@ -95,7 +94,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get value() {
 						return !!switchRef.current?.value

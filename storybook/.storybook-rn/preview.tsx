@@ -4,9 +4,9 @@ import {
 } from 'react'
 
 import {
-	StyleSheet,
 	ScrollView,
 	StatusBar,
+	StyleSheet,
 } from 'react-native'
 
 import type {

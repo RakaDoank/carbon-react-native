@@ -20,21 +20,6 @@ import {
 	Collapsible,
 } from '../collapsible'
 
-import {
-	Context,
-} from './_context'
-
-import {
-	Header,
-} from './_Header'
-
-import type {
-	ItemRefBase,
-} from './_ItemRefBase'
-
-import {
-	Motion,
-} from './_motion'
 
 import type {
 	AccordionHeaderProps,
@@ -47,6 +32,18 @@ import type {
 import type {
 	AccordionItemRef,
 } from './AccordionItemRef'
+import {
+	Header,
+} from './_Header'
+import type {
+	ItemRefBase,
+} from './_ItemRefBase'
+import {
+	Context,
+} from './_context'
+import {
+	Motion,
+} from './_motion'
 
 export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 	function Item(
@@ -99,7 +96,8 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, ItemRefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get open() {
 						return ref.current.open

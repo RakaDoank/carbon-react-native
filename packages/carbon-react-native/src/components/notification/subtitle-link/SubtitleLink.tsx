@@ -11,9 +11,6 @@ import {
 	ThemeContext,
 } from '../../../contexts'
 
-import {
-	Subtitle,
-} from '../subtitle'
 
 import type {
 	NotificationColor,
@@ -22,6 +19,9 @@ import type {
 import {
 	VariantContext,
 } from '../_variant-context'
+import {
+	Subtitle,
+} from '../subtitle'
 
 import type {
 	SubtitleLinkProps,
@@ -62,7 +62,9 @@ export const SubtitleLink = forwardRef<SubtitleLinkRef, SubtitleLinkProps>(
 
 const
 	mapTextColorStyle =
-		CarbonStyleSheet.create<Record<NotificationColor, { color: string }>>({
+		CarbonStyleSheet.create<Record<NotificationColor, {
+			color: string
+		}>>({
 			low_contrast: {
 				color: CarbonStyleSheet.color.link_primary,
 			},

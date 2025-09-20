@@ -14,21 +14,21 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
-import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
-
 import {
 	Color,
 	Spacing,
 } from '@audira/carbon-react-native-elements'
+import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
+import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
 
-import {
-	ThemeContext,
-} from '../../contexts'
 
 import {
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+import {
+	ThemeContext,
+} from '../../contexts'
+
 
 import {
 	FormHelperText,
@@ -43,25 +43,22 @@ import {
 	type IconProps,
 } from '../icon'
 
+import type {
+	RadioButtonGroupProps,
+} from './RadioButtonGroupProps'
+import type {
+	RadioButtonGroupRef,
+} from './RadioButtonGroupRef'
+import {
+	Item,
+} from './_Item'
+import type {
+	RefBase,
+} from './_RefBase'
 import {
 	ItemContext,
 } from './_item-context'
 
-import {
-	Item,
-} from './_Item'
-
-import type {
-	RefBase,
-} from './_RefBase'
-
-import type {
-	RadioButtonGroupProps,
-} from './RadioButtonGroupProps'
-
-import type {
-	RadioButtonGroupRef,
-} from './RadioButtonGroupRef'
 
 const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 	function RadioButtonGroup(
@@ -119,7 +116,8 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get selectedValue() {
 						return ref.current.selectedValue

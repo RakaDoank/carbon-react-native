@@ -1,8 +1,3 @@
-import type {
-	Meta,
-	StoryFn,
-} from '@storybook/react-native-web-vite'
-
 import {
 	useContext,
 } from 'react'
@@ -11,6 +6,11 @@ import {
 	StyleSheet,
 	type ViewStyle,
 } from 'react-native'
+
+import type {
+	Meta,
+	StoryFn,
+} from '@storybook/react-native-web-vite'
 
 import {
 	CarbonStyleSheet,

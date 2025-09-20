@@ -25,7 +25,8 @@ module.exports = {
 			 */
 			automaticPodsInstallation: false,
 		},
-		android: {},
+		android: {
+		},
 	},
 
 }

@@ -11,6 +11,9 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	VariantContextProvider,
+} from '../../_VariantContextProvider'
+import {
 	Base,
 } from '../../base'
 
@@ -19,9 +22,6 @@ import {
 	type SubtitleProps,
 } from '../../subtitle'
 
-import {
-	VariantContextProvider,
-} from '../../_VariantContextProvider'
 
 import type {
 	ToastVariantProps,

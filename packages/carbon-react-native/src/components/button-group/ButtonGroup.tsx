@@ -20,6 +20,12 @@ import {
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
+import type {
+	ButtonGroupProps,
+} from './ButtonGroupProps'
+import type {
+	ButtonGroupRef,
+} from './ButtonGroupRef'
 import {
 	Context,
 } from './_context'
@@ -32,13 +38,6 @@ import {
 	Renderer3,
 } from './_renderer-3'
 
-import type {
-	ButtonGroupProps,
-} from './ButtonGroupProps'
-
-import type {
-	ButtonGroupRef,
-} from './ButtonGroupRef'
 
 /**
  * @experimental
@@ -151,7 +150,9 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 
 		return (
 			<ButtonGroupContext.Provider
-				value={{ size }}
+				value={{
+					size,
+				}}
 			>
 				<Context.Provider
 					value={{

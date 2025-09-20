@@ -111,10 +111,12 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 						`${prefixColorStyleName.gray_100}${name}`
 
 				if(!coloredStyle[coloredStyleName_G10]) {
-					coloredStyle[coloredStyleName_G10] = {}
+					coloredStyle[coloredStyleName_G10] = {
+					}
 				}
 				if(!coloredStyle[coloredStyleName_G100]) {
-					coloredStyle[coloredStyleName_G100] = {}
+					coloredStyle[coloredStyleName_G100] = {
+					}
 				}
 
 				const colorStr = (style as Record<(typeof colorStyleProps)[number], string>)[styleProp as (typeof colorStyleProps)[number]]
@@ -174,7 +176,8 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 				},
 			})
 			return acc
-		}, {} as Styles)
+		}, {
+		} as Styles)
 }
 
 const

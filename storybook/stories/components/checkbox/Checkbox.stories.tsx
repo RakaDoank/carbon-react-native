@@ -5,13 +5,13 @@ import type {
 
 import {
 	Checkbox as _Checkbox,
-	CheckboxInput as _CheckboxInput,
 	CheckboxGroup as _CheckboxGroup,
-	type CheckboxInputProps,
-	type CheckboxInputInteractiveState,
-	type CheckboxProps,
-	type CheckboxGroupProps,
+	CheckboxInput as _CheckboxInput,
 	type CheckboxGroupHelperTextMode,
+	type CheckboxGroupProps,
+	type CheckboxInputInteractiveState,
+	type CheckboxInputProps,
+	type CheckboxProps,
 } from '@audira/carbon-react-native'
 
 export default {

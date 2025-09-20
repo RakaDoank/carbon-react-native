@@ -2,14 +2,14 @@ const
 	node_path =
 		require('node:path'),
 
+	withStoryBook =
+		require('@storybook/react-native/metro/withStorybook'),
+
 	{
 		getDefaultConfig,
 		mergeConfig,
 	} =
 		require('@react-native/metro-config'),
-
-	withStoryBook =
-		require('@storybook/react-native/metro/withStorybook'),
 
 	defaultConfig =
 		getDefaultConfig(__dirname),

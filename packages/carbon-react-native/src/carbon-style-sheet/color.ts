@@ -9,4 +9,5 @@ export const color =
 		.reduce<Record<ColorToken, ColorToken>>((acc, key) => {
 			acc[key as ColorToken] = key as ColorToken
 			return acc
-		}, {} as Record<ColorToken, ColorToken>)
+		}, {
+		} as Record<ColorToken, ColorToken>)

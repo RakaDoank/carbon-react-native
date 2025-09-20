@@ -12,14 +12,6 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-import Animated, {
-	Easing,
-	interpolateColor,
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-	type WithTimingConfig,
-} from 'react-native-reanimated'
 
 import {
 	Color,
@@ -30,6 +22,14 @@ import {
 
 import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
 import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
+import Animated, {
+	Easing,
+	interpolateColor,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
+	type WithTimingConfig,
+} from 'react-native-reanimated'
 
 import {
 	CarbonStyleSheet,
@@ -51,9 +51,6 @@ import {
 	LayerContext,
 } from '../layer'
 
-import {
-	RNTextInput,
-} from './_rn-text-input'
 
 import type {
 	TextInputFieldProps,
@@ -66,6 +63,9 @@ import type {
 import type {
 	TextInputFieldSize,
 } from './TextInputFieldSize'
+import {
+	RNTextInput,
+} from './_rn-text-input'
 
 export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>(
 	function TextInputField(
@@ -173,7 +173,8 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 
 		useImperativeHandle(ref, () => {
 			return Object.assign(
-				viewRef.current ?? {} as View,
+				viewRef.current ?? {
+				} as View,
 				{
 					get textInput() {
 						return textInputRef.current ?? undefined

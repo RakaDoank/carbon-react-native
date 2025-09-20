@@ -7,10 +7,10 @@ import {
 	TextArea as CarbonTextArea,
 	TextAreaField as CarbonTextAreaField,
 	TextAreaFluid as CarbonTextAreaFluid,
-	type TextAreaFieldProps,
 	type TextAreaFieldInteractiveState,
-	type TextAreaProps,
+	type TextAreaFieldProps,
 	type TextAreaFluidProps,
+	type TextAreaProps,
 } from '@audira/carbon-react-native'
 
 export default {

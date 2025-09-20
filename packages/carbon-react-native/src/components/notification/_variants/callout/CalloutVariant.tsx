@@ -3,6 +3,9 @@ import {
 } from 'react'
 
 import {
+	VariantContextProvider,
+} from '../../_VariantContextProvider'
+import {
 	Base,
 } from '../../base'
 
@@ -10,9 +13,6 @@ import {
 	Subtitle,
 } from '../../subtitle'
 
-import {
-	VariantContextProvider,
-} from '../../_VariantContextProvider'
 
 import type {
 	CalloutVariantProps,

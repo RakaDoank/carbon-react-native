@@ -45,7 +45,9 @@ try {
 	if(node_fs.existsSync(libPath)) {
 		node_fs.rmSync(
 			node_path.join(packages[pkg], 'lib'),
-			{ recursive: true },
+			{
+				recursive: true,
+			},
 		)
 	}
 

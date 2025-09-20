@@ -27,7 +27,9 @@ try {
 		const destPath = node_path.join(carbonRNPackagePath, src.name)
 
 		if(node_fs.existsSync(destPath)) {
-			node_fs.rmSync(destPath, { recursive: true })
+			node_fs.rmSync(destPath, {
+				recursive: true,
+			})
 		}
 
 		node_fs.cpSync(

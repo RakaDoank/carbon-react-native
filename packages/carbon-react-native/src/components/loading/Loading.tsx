@@ -5,25 +5,24 @@ import {
 	useEffect,
 } from 'react'
 
-import Animated, {
-	cancelAnimation,
-	Easing,
-	useAnimatedStyle,
-	useSharedValue,
-	withRepeat,
-	withTiming,
-} from 'react-native-reanimated'
-
-import Svg, {
-	Circle,
-	type SvgProps,
-} from 'react-native-svg'
 
 import {
 	Color,
 	Motion,
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
+import Animated, {
+	Easing,
+	cancelAnimation,
+	useAnimatedStyle,
+	useSharedValue,
+	withRepeat,
+	withTiming,
+} from 'react-native-reanimated'
+import Svg, {
+	Circle,
+	type SvgProps,
+} from 'react-native-svg'
 
 import {
 	ThemeContext,
@@ -33,9 +32,6 @@ import {
 	LayerContext,
 } from '../layer'
 
-import {
-	loadingProgress,
-} from './_loading-progress'
 
 import type {
 	LoadingProps,
@@ -48,6 +44,9 @@ import type {
 import type {
 	LoadingType,
 } from './LoadingType'
+import {
+	loadingProgress,
+} from './_loading-progress'
 
 export const Loading = forwardRef<LoadingRef, LoadingProps>(
 	function Loading(

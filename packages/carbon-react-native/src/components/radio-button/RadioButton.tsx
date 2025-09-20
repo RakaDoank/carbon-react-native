@@ -19,6 +19,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
+import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
 
@@ -26,10 +30,6 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from '../../_internal/style-sheets'
 
 import {
 	FormLabel,
@@ -42,16 +42,15 @@ import {
 } from '../radio-button-input'
 
 import type {
-	RefBase,
-} from './_RefBase'
-
-import type {
 	RadioButtonProps,
 } from './RadioButtonProps'
-
 import type {
 	RadioButtonRef,
 } from './RadioButtonRef'
+import type {
+	RefBase,
+} from './_RefBase'
+
 
 export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 	function RadioButton(
@@ -93,7 +92,8 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get checked() {
 						return radioButtonInputRef.current!.checked

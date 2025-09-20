@@ -2,11 +2,11 @@ import {
 	useContext,
 } from 'react'
 
-import Icon from '@carbon/icons/es/information--filled/20'
-
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
+import Icon from '@carbon/icons/es/information--filled/20'
+
 
 import {
 	CarbonStyleSheet,

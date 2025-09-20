@@ -63,7 +63,9 @@ export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 
 const
 	mapTextColorStyle =
-		CarbonStyleSheet.create<Record<NotificationColor, { color: string }>>({
+		CarbonStyleSheet.create<Record<NotificationColor, {
+			color: string
+		}>>({
 			low_contrast: {
 				color: CarbonStyleSheet.color.text_primary,
 			},

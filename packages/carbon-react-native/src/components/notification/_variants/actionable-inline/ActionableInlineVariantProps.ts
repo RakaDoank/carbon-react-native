@@ -1,10 +1,10 @@
 import type {
+	NotificationColor,
+} from '../../NotificationColor'
+import type {
 	BaseProps,
 } from '../../base/BaseProps'
 
-import type {
-	NotificationColor,
-} from '../../NotificationColor'
 
 import type {
 	SubtitleProps,

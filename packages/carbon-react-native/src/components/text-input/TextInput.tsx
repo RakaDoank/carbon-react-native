@@ -26,9 +26,6 @@ import {
 	type TextInputFieldRef,
 } from '../text-input-field'
 
-import type {
-	TextInputRefBase,
-} from './_TextInputRefBase'
 
 import type {
 	TextInputProps,
@@ -37,6 +34,9 @@ import type {
 import type {
 	TextInputRef,
 } from './TextInputRef'
+import type {
+	TextInputRefBase,
+} from './_TextInputRefBase'
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 	function TextInput(
@@ -109,7 +109,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 
 		useImperativeHandle(ref, () => {
 			return Object.assign<View, TextInputRefBase>(
-				viewRef.current ?? {} as View,
+				viewRef.current ?? {
+				} as View,
 				{
 					get textInputField() {
 						return textInputFieldRef.current ?? undefined

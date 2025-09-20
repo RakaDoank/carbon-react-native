@@ -11,6 +11,9 @@ import {
 	View,
 } from 'react-native'
 
+import {
+	Motion,
+} from '@audira/carbon-react-native-elements'
 import Animated, {
 	Easing,
 	interpolate,
@@ -20,15 +23,18 @@ import Animated, {
 	withTiming,
 } from 'react-native-reanimated'
 
-import {
-	Motion,
-} from '@audira/carbon-react-native-elements'
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
+import type {
+	CollapsibleProps,
+} from './CollapsibleProps'
+import type {
+	CollapsibleRef,
+} from './CollapsibleRef'
 import type {
 	AnimatedViewProps,
 } from './_AnimatedViewProps'
@@ -37,13 +43,6 @@ import type {
 	RefBase,
 } from './_RefBase'
 
-import type {
-	CollapsibleProps,
-} from './CollapsibleProps'
-
-import type {
-	CollapsibleRef,
-} from './CollapsibleRef'
 
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 	function Collapsible(
@@ -249,7 +248,9 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				style={ [
 					CommonStyleSheet.overflow_hidden,
 					positionView === 'absolute'
-						? { height: heightAnimated }
+						? {
+							height: heightAnimated,
+						}
 						: null,
 					style,
 				] }
@@ -258,7 +259,9 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				<View
 					style={ [
 						CommonStyleSheet.w_full,
-						{ position: positionView },
+						{
+							position: positionView,
+						},
 					] }
 				>
 					<Animated.View

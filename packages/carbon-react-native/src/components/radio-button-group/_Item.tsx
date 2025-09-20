@@ -12,9 +12,6 @@ import {
 	type RadioButtonRef,
 } from '../radio-button'
 
-import {
-	ItemContext,
-} from './_item-context'
 
 import type {
 	RadioButtonGroupItemProps,
@@ -23,6 +20,9 @@ import type {
 import type {
 	RadioButtonGroupItemRef,
 } from './RadioButtonGroupItemRef'
+import {
+	ItemContext,
+} from './_item-context'
 
 export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProps>(
 	function Item(
@@ -60,8 +60,11 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<RadioButtonRef, { setChecked: RadioButtonRef['setChecked'] }>(
-				(radioButtonRef.current ?? {}) as RadioButtonRef,
+			return Object.assign<RadioButtonRef, {
+				setChecked: RadioButtonRef['setChecked']
+			}>(
+				(radioButtonRef.current ?? {
+				}) as RadioButtonRef,
 				{
 					setChecked(checkedParam) {
 						if(!controlled) {

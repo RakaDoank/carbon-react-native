@@ -1,6 +1,6 @@
 import {
-	forwardRef,
 	Fragment,
+	forwardRef,
 	useCallback,
 	useContext,
 	useImperativeHandle,
@@ -15,20 +15,20 @@ import {
 	type ViewProps,
 } from 'react-native'
 
+import {
+	Motion,
+	Spacing,
+} from '@audira/carbon-react-native-elements'
 import Animated, {
-	cancelAnimation,
 	Easing,
-	runOnUI,
+	cancelAnimation,
 	runOnJS,
+	runOnUI,
 	useSharedValue,
 	withDelay,
 	withTiming,
 } from 'react-native-reanimated'
 
-import {
-	Motion,
-	Spacing,
-} from '@audira/carbon-react-native-elements'
 
 import {
 	GlobalConfigContext,

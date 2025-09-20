@@ -8,8 +8,8 @@ import {
 } from '@audira/carbon-react-native'
 
 import {
-	AiGenerate20,
 	Add20,
+	AiGenerate20,
 	CarbonForIbmProduct20,
 } from '@carbon/icons/es'
 

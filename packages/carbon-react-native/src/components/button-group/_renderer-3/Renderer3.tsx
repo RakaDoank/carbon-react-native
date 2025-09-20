@@ -45,13 +45,25 @@ export function Renderer3<
 			useContext(Context),
 
 		props1 =
-			Object.defineProperty({ ...item1 }, 'Component', { value: undefined }),
+			Object.defineProperty({
+				...item1,
+			}, 'Component', {
+				value: undefined,
+			}),
 
 		props2 =
-			Object.defineProperty({ ...item2 }, 'Component', { value: undefined }),
+			Object.defineProperty({
+				...item2,
+			}, 'Component', {
+				value: undefined,
+			}),
 
 		props3 =
-			Object.defineProperty({ ...item3 }, 'Component', { value: undefined }),
+			Object.defineProperty({
+				...item3,
+			}, 'Component', {
+				value: undefined,
+			}),
 
 		lastTwoButtonStyle =
 			mapLastTwoButtonStyle[`${context.verticalStack}`]

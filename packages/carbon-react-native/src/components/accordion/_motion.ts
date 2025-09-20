@@ -1,10 +1,10 @@
 import {
+	Motion as Motion_,
+} from '@audira/carbon-react-native-elements'
+import {
 	Easing,
 } from 'react-native-reanimated'
 
-import {
-	Motion as Motion_,
-} from '@audira/carbon-react-native-elements'
 
 import type {
 	CollapsibleProps,

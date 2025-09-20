@@ -1,7 +1,7 @@
 import {
 	forwardRef,
-	useContext,
 	useCallback,
+	useContext,
 	useState,
 } from 'react'
 
@@ -250,7 +250,9 @@ function getStateStyle(
 	colorStateStyle: BaseColorProps['colorStateStyle'],
 	states: Record<Exclude<BaseColorState, 'default'>, boolean>,
 	androidRipple?: boolean,
-): { background: StyleProp<ViewStyle>, text: StyleProp<TextStyle>, icon: string } {
+): {
+	background: StyleProp<ViewStyle>, text: StyleProp<TextStyle>, icon: string
+} {
 
 	if(!states.hovered && !states.pressed && !states.disabled) {
 		return {

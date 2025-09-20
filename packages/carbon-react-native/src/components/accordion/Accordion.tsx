@@ -12,10 +12,13 @@ import {
 	type ViewProps,
 } from 'react-native'
 
-import {
-	Context,
-} from './_context'
 
+import type {
+	AccordionProps,
+} from './AccordionProps'
+import type {
+	AccordionRef,
+} from './AccordionRef'
 import {
 	HeaderBorder,
 } from './_HeaderBorder'
@@ -24,13 +27,10 @@ import {
 	Item,
 } from './_Item'
 
-import type {
-	AccordionProps,
-} from './AccordionProps'
 
-import type {
-	AccordionRef,
-} from './AccordionRef'
+import {
+	Context,
+} from './_context'
 
 import {
 	MarginRightStyle,

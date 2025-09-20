@@ -20,30 +20,25 @@ import {
 	Color,
 } from '@audira/carbon-react-native-elements'
 
-import {
-	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
 
-import {
-	ThemeContext,
-} from '../../contexts'
+import IconCheckmark from '@carbon/icons/es/checkmark/20'
+import IconSubtract from '@carbon/icons/es/subtract/20'
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
-
+import {
+	CarbonStyleSheet,
+} from '../../carbon-style-sheet'
+import {
+	ThemeContext,
+} from '../../contexts'
 import {
 	Icon,
 	type IconProps,
 } from '../icon'
 
-import IconCheckmark from '@carbon/icons/es/checkmark/20'
-import IconSubtract from '@carbon/icons/es/subtract/20'
-
-import type {
-	RefBase,
-} from './_RefBase'
 
 import type {
 	CheckboxInputInteractiveState,
@@ -60,6 +55,9 @@ import type {
 import type {
 	CheckboxInputValue,
 } from './CheckboxInputValue'
+import type {
+	RefBase,
+} from './_RefBase'
 
 export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	function CheckboxInput(

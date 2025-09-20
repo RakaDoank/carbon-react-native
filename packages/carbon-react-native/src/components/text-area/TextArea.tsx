@@ -26,9 +26,6 @@ import {
 	type TextAreaFieldRef,
 } from '../text-area-field'
 
-import type {
-	TextAreaRefBase,
-} from './_TextAreaRefBase'
 
 import type {
 	TextAreaProps,
@@ -37,6 +34,9 @@ import type {
 import type {
 	TextAreaRef,
 } from './TextAreaRef'
+import type {
+	TextAreaRefBase,
+} from './_TextAreaRefBase'
 
 export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 	function TextArea(
@@ -107,7 +107,8 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 
 		useImperativeHandle(ref, () => {
 			return Object.assign<View, TextAreaRefBase>(
-				viewRef.current ?? {} as View,
+				viewRef.current ?? {
+				} as View,
 				{
 					get textAreaField() {
 						return textInputFieldRef.current ?? undefined

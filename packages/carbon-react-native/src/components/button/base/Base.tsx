@@ -171,7 +171,9 @@ const
 		}),
 
 	sizeStyle =
-		StyleSheet.create<Record<Size, { height: number }>>({
+		StyleSheet.create<Record<Size, {
+			height: number
+		}>>({
 			small: {
 				height: 32,
 			},
@@ -223,7 +225,9 @@ const
 			true: 20,
 		},
 
-	mapIconMLByText: Record<'true' | 'false', { marginLeft: number } | null> =
+	mapIconMLByText: Record<'true' | 'false', {
+		marginLeft: number
+	} | null> =
 		{
 			false: null,
 			true: baseStyle.iconML32,

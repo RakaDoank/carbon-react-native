@@ -14,4 +14,5 @@ export interface ItemContext {
 	onChangeGroup?: RadioButtonGroupProps['onChange'],
 }
 
-export const ItemContext = createContext<ItemContext>({})
+export const ItemContext = createContext<ItemContext>({
+})

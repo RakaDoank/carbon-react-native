@@ -16,4 +16,5 @@ export interface Context {
 	collapsibleContentContainerStyle?: CollapsibleProps['contentContainerStyle'],
 }
 
-export const Context = createContext<Context>({})
+export const Context = createContext<Context>({
+})

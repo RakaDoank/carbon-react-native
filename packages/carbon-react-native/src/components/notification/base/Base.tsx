@@ -15,6 +15,11 @@ import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
+import IconClose from '@carbon/icons/es/close/20'
+
+import {
+	FlexStyleSheet,
+} from '../../../_internal/style-sheets'
 import {
 	CarbonStyleSheet,
 } from '../../../carbon-style-sheet'
@@ -23,9 +28,6 @@ import {
 	ThemeContext,
 } from '../../../contexts'
 
-import {
-	FlexStyleSheet,
-} from '../../../_internal/style-sheets'
 
 import {
 	BaseColor as ButtonBaseColor,
@@ -48,7 +50,6 @@ import type {
 	BaseRef,
 } from './BaseRef'
 
-import IconClose from '@carbon/icons/es/close/20'
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(

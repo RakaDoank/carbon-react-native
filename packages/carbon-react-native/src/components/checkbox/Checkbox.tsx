@@ -19,6 +19,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	CommonStyleSheet,
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
+import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
 
@@ -26,10 +30,6 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from '../../_internal/style-sheets'
 
 import {
 	CheckboxInput,
@@ -42,16 +42,15 @@ import {
 } from '../form-label'
 
 import type {
-	RefBase,
-} from './_RefBase'
-
-import type {
 	CheckboxProps,
 } from './CheckboxProps'
-
 import type {
 	CheckboxRef,
 } from './CheckboxRef'
+import type {
+	RefBase,
+} from './_RefBase'
+
 
 export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 	function Checkbox(
@@ -98,7 +97,8 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, RefBase>(
-				(viewRef.current ?? {}) as View,
+				(viewRef.current ?? {
+				}) as View,
 				{
 					get value() {
 						return checkboxInputRef.current!.value

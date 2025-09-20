@@ -10,6 +10,10 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
+import {
+	Color,
+} from '@audira/carbon-react-native-elements'
+import ChevronDown from '@carbon/icons/es/chevron--down/20'
 import Animated, {
 	useAnimatedStyle,
 	useSharedValue,
@@ -17,12 +21,10 @@ import Animated, {
 	type AnimatedProps,
 } from 'react-native-reanimated'
 
-import ChevronDown from '@carbon/icons/es/chevron--down/20'
 
 import {
-	Color,
-} from '@audira/carbon-react-native-elements'
-
+	FlexStyleSheet,
+} from '../../_internal/style-sheets'
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -31,25 +33,28 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-import {
-	FlexStyleSheet,
-} from '../../_internal/style-sheets'
 
+import type {
+	Size as ButtonSize,
+} from '../button/Size'
 import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
 	type BaseColorState as ButtonColorState,
 } from '../button/base-color'
 
-import type {
-	Size as ButtonSize,
-} from '../button/Size'
 
 import {
 	Icon,
 	type IconProps,
 } from '../icon'
 
+import type {
+	AccordionHeaderProps,
+} from './AccordionHeaderProps'
+import type {
+	AccordionSize,
+} from './AccordionSize'
 import {
 	HeaderBorder,
 } from './_HeaderBorder'
@@ -58,13 +63,6 @@ import {
 	Motion,
 } from './_motion'
 
-import type {
-	AccordionHeaderProps,
-} from './AccordionHeaderProps'
-
-import type {
-	AccordionSize,
-} from './AccordionSize'
 
 export function Header({
 	size = 'medium',

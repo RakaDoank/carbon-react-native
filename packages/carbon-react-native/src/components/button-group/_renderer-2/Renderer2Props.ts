@@ -10,6 +10,10 @@ export interface Renderer2Props<
 	Props1 extends ViewProps = BaseProps,
 	Props2 extends ViewProps = BaseProps,
 > {
-	item1: Props1 & { Component: React.FunctionComponent<Props1> },
-	item2: Props2 & { Component: React.FunctionComponent<Props2> },
+	item1: Props1 & {
+		Component: React.FunctionComponent<Props1>
+	},
+	item2: Props2 & {
+		Component: React.FunctionComponent<Props2>
+	},
 }
