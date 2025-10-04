@@ -5,7 +5,7 @@ import {
 import {
 	StyleSheet,
 	View,
-	type ViewProps,
+	type ViewStyle,
 } from 'react-native'
 
 import {
@@ -14,7 +14,7 @@ import {
 
 import {
 	ButtonGroupContext,
-} from '../../_internal/components/button-group'
+} from '../../_internal/contexts'
 
 import {
 	FlexStyleSheet,
@@ -23,108 +23,21 @@ import {
 import type {
 	ButtonGroupProps,
 } from './ButtonGroupProps'
+
 import type {
 	ButtonGroupRef,
 } from './ButtonGroupRef'
-import {
-	Context,
-} from './_context'
 
-import {
-	Renderer2,
-} from './_renderer-2'
-
-import {
-	Renderer3,
-} from './_renderer-3'
-
-
-/**
- * @experimental Consider this component is an experimental component. We are not sure that static type of `items` prop to compose button variants is a good choice.
- * 
- * Button groups can consist of different button variants depending on the product use case.  
- * The order of this union below (from left to right, e.g 'secondary' > 'primary') will be same as the actual render (if `verticalStack` true, it will be bottom to top)
- * 
- * 2 Buttons:
- * - `Secondary` > `Primary`
- * - `Tertiary` > `Primary`
- * - `Ghost` > `Primary`
- * - `TertiaryDanger` > `Primary`
- * - `Secondary` > `PrimaryDanger`
- * - `Ghost` > `PrimaryDanger`
- * 
- * 3 Buttons:
- * - `Tertiary` > `Secondary` > `Primary`
- * - `Ghost` > `Secondary` > `Primary`
- * - `Secondary1` > `Secondary2` > `Primary`
- * - `Tertiary1` > `Tertiary2` > `Primary`
- * - `TertiaryDanger` > `Tertiary` > `Primary`
- * 
- * 2 Buttons without primary button
- * - `Tertiary1` > `Tertiary2`
- * - `Ghost` > `Tertiary`
- * - `Ghost1` > `Ghost2`
- * 
- * 3 Buttons without primary button
- * - `Tertiary1` > `Tertiary2` > `Tertiary3`
- * - `TertiaryDanger` > `Tertiary1` > `Tertiary2`
- *
- * @example
- * ```tsx
- * return (
- * 	<ButtonGroup
- * 		fluid
- * 		items={{
- * 			Secondary: {
- * 				Component: Button.Secondary,
- * 				text: 'Secondary',
- * 			},
- * 			Primary: {
- * 				Component: Button.Primary,
- * 				text: 'Primary',
- * 			},
- * 		}}
- * 		// OR
- * 		items={{
- * 			Tertiary: {
- * 				Component: Button.Tertiary,
- * 				text: 'Tertiary',
- * 			},
- * 			Secondary: {
- * 				Component: Button.Secondary,
- * 				text: 'Secondary',
- * 			},
- * 			Primary: {
- * 				Component: Button.Primary,
- * 				text: 'Primary',
- * 			},
- * 		}}
- * 		// OR
- * 		items={{
- * 			Component: Button.Tertiary,
- * 			Tertiary1: {
- * 				text: 'Tertiary 1',
- * 			},
- * 			Tertiary2: {
- * 				text: 'Tertiary 2',
- * 			},
- * 			Tertiary3: {
- * 				text: 'Tertiary 3',
- * 			},
- * 		}}
- * 	/>
- * )
- * ```
- * 
- * @see https://carbondesignsystem.com/components/button/usage/#button-groups
- */
 export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 	function ButtonGroup(
 		{
+			button1,
+			button2,
+			button3,
+			oneAlone,
 			size = 'large_productive',
-			items,
-			fluid = false,
-			verticalStack = false,
+			fluid,
+			vertical,
 			style,
 			...props
 		},
@@ -132,174 +45,55 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 	) {
 
 		const
-			/**
-			 * not included with `TertiaryDanger` > `Tertiary` > `Primary` combination
-			 */
-			is3ButtonsWithPrimary =
-				(items.Tertiary && items.Secondary && items.Primary) ||
-				(items.Ghost && items.Secondary && items.Primary) ||
-				(items.Secondary1 && items.Secondary2 && items.Primary) ||
-				(items.Tertiary1 && items.Tertiary2 && items.Primary),
-			// not included for type check fix
-			// (TertiaryDanger && Tertiary && Primary)
-			// (TertiaryDanger && Tertiary1 && Tertiary2)
+			styleFlexDir =
+				mapStyleFlexDir[`${!!vertical}`],
 
-			is3ButtonsWithoutPrimary =
-				(items.Tertiary1 && items.Tertiary2 && items.Tertiary3) ||
-				(items.TertiaryDanger && items.Tertiary1 && items.Tertiary2) ||
-				(items.Secondary1 && items.Secondary2 && items.Secondary3)
+			styleFluid =
+				mapStyleFluid[`${!!fluid}`]
 
 		return (
 			<ButtonGroupContext.Provider
 				value={{
 					size,
+					fluid,
+					vertical,
 				}}
 			>
-				<Context.Provider
-					value={{
-						fluid,
-						verticalStack,
-					}}
+				<View
+					ref={ ref }
+					{ ...props }
+					style={ [
+						styleFlexDir,
+						styleFluid,
+						oneAlone ? FlexStyleSheet.justify_between : undefined,
+						style,
+					] }
 				>
-					<View
-						ref={ ref }
-						{ ...props }
-						style={ [
-							mapStyleByFluid[`${!!fluid}`],
-
-							mapStyleByVerticalStack[`${!!verticalStack}`],
-
-							// Place the Ghost button alone at the container's start
-							fluid && (is3ButtonsWithPrimary || is3ButtonsWithoutPrimary) && !!items.Ghost
-								? FlexStyleSheet.justify_between
-								: undefined,
-
-							style,
-						] }
-					>
-						{ /* eslint-disable @stylistic/indent */ }
-						{ (
-							// 3 Buttons with Primary
-							// - Tertiary | Secondary | Primary
-							// - Ghost | Secondary | Primary
-							// - Secondary1 | Secondary2 | Primary
-							// - Tertiary1 | Tertiary2 | Primary
-							is3ButtonsWithPrimary
-						) ? (
-							<Renderer3
-								item1={ items.Tertiary ?? items.Ghost ?? items.Secondary1 ?? items.Tertiary1 }
-								item2={ items.Secondary ?? items.Secondary2 ?? items.Tertiary2 }
-								item3={ items.Primary }
-							/>
-						) : (
-							// 3 buttons [fix type check]
-							// - TertiaryDanger | Tertiary | Primary
-							items.TertiaryDanger && items.Tertiary && items.Primary
-						) ? (
-							<Renderer3
-								item1={ items.TertiaryDanger }
-								item2={ items.Tertiary }
-								item3={ items.Primary }
-							/>
-						) : (
-							// 3 buttons without primary [fix type check]
-							// - Tertiary1 | Tertiary2 | Tertiary3
-							items.Tertiary1 && items.Tertiary2 && items.Tertiary3
-						) ? (
-							<Renderer3
-								item1={{
-									...items.Tertiary1,
-									Component: items.TertiaryComponent,
-								}}
-								item2={{
-									...items.Tertiary2,
-									Component: items.TertiaryComponent,
-								}}
-								item3={{
-									...items.Tertiary3,
-									Component: items.TertiaryComponent,
-								}}
-							/>
-						) : (
-							// 3 buttons without primary [fix type check]
-							// - TertiaryDanger | Tertiary1 | Tertiary2
-							items.TertiaryDanger && items.Tertiary1 && items.Tertiary2
-						) ? (
-							<Renderer3
-								item1={ items.TertiaryDanger }
-								item2={ items.Tertiary1 }
-								item3={ items.Tertiary2 }
-							/>
-						) : (
-							items.Secondary1 && items.Secondary2 && items.Secondary3
-						) ? (
-							<Renderer3
-								item1={{
-									...items.Secondary1,
-									Component: items.SecondaryComponent,
-								}}
-								item2={{
-									...items.Secondary2,
-									Component: items.SecondaryComponent,
-								}}
-								item3={{
-									...items.Secondary3,
-									Component: items.SecondaryComponent,
-								}}
-							/>
-						) : (
-							// 2 Buttons
-							(items.Secondary && items.Primary) ||
-							(items.Tertiary && items.Primary) ||
-							(items.Ghost && items.Primary) ||
-							(items.TertiaryDanger && items.Primary) ||
-							(items.Secondary && items.PrimaryDanger) ||
-							(items.Ghost && items.PrimaryDanger)
-						) ? (
-							<Renderer2
-								item1={ items.Secondary ?? items.Tertiary ?? items.Ghost ?? items.TertiaryDanger }
-								item2={ items.Primary ?? items.PrimaryDanger }
-							/>
-						) : (
-							// 2 Buttons without primary button
-							'TertiaryComponent' in items && items.Tertiary1 && items.Tertiary2
-						) ? (
-							<Renderer2
-								item1={{
-									...items.Tertiary1,
-									Component: items.TertiaryComponent,
-								}}
-								item2={{
-									...items.Tertiary2,
-									Component: items.TertiaryComponent,
-								}}
-							/>
-						) : (
-							// 2 Buttons without primary button
-							'GhostComponent' in items && items.Ghost1 && items.Ghost2
-						) ? (
-							<Renderer2
-								item1={{
-									...items.Ghost1,
-									Component: items.GhostComponent,
-								}}
-								item2={{
-									...items.Ghost2,
-									Component: items.GhostComponent,
-								}}
-							/>
-						) : (
-							// 2 Buttons without primary button
-							items.Ghost && items.Tertiary
-						) ? (
-							<Renderer2
-								item1={ items.Ghost }
-								item2={ items.Tertiary }
-							/>
-						) : null }
-						{ /* eslint-enable @stylistic/indent */ }
-					</View>
-				</Context.Provider>
+					{ !oneAlone || vertical ? (<>
+						{ button1 }
+						{ button2 }
+						{ button3 }
+					</>) : (<>
+						<View
+							style={ [
+								styleSheet.firstButtonContainer,
+							] }
+						>
+							{ button1 }
+						</View>
+						<View
+							style={ [
+								styleFlexDir,
+								styleFluid,
+								styleSheet.lastTwoButttonContainer,
+								FlexStyleSheet.justify_end,
+							] }
+						>
+							{ button2 }
+							{ button3 }
+						</View>
+					</>) }
+				</View>
 			</ButtonGroupContext.Provider>
 		)
 
@@ -315,16 +109,22 @@ const
 			fluidGroup: {
 				gap: 1,
 			},
+			firstButtonContainer: {
+				width: '25%',
+			},
+			lastTwoButttonContainer: {
+				width: '50%',
+			},
 		}),
 
-	mapStyleByFluid: Record<`${boolean}`, ViewProps['style']> =
-		{
-			false: styleSheet.fixedGroup,
-			true: styleSheet.fluidGroup,
-		},
-
-	mapStyleByVerticalStack: Record<`${boolean}`, ViewProps['style']> =
+	mapStyleFlexDir: { [IsVertical in `${boolean}`]: ViewStyle } =
 		{
 			false: FlexStyleSheet.flex_row,
 			true: FlexStyleSheet.flex_col_reverse,
+		},
+
+	mapStyleFluid: { [IsFluid in `${boolean}`]: ViewStyle } =
+		{
+			false: styleSheet.fixedGroup,
+			true: styleSheet.fluidGroup,
 		}

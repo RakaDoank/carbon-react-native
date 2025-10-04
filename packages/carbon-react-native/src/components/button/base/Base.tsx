@@ -7,6 +7,7 @@ import {
 	Pressable,
 	StyleSheet,
 	View,
+	type ViewProps,
 } from 'react-native'
 
 import {
@@ -15,7 +16,7 @@ import {
 
 import {
 	ButtonGroupContext,
-} from '../../../_internal/components/button-group'
+} from '../../../_internal/contexts'
 
 import {
 	FlexStyleSheet,
@@ -80,9 +81,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.justify_between,
-					FlexStyleSheet.self_start,
 					baseStyle.container,
 					sizeStyle[size],
+					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
 					getContainerPaddingRight(!!text, !!icon || !!iconNode),
 					style,
 				] }
@@ -231,6 +232,22 @@ const
 		{
 			false: null,
 			true: baseStyle.iconML32,
+		},
+
+	mapStyleInButtonGroup: {
+		[IsVertical in `${boolean}`]: {
+			[IsFluid in `${boolean}`]: ViewProps['style']
+		}
+	} =
+		{
+			false: {
+				false: FlexStyleSheet.self_start,
+				true: FlexStyleSheet.flex_1,
+			},
+			true: {
+				false: FlexStyleSheet.self_stretch,
+				true: FlexStyleSheet.self_stretch,
+			},
 		}
 
 /**
