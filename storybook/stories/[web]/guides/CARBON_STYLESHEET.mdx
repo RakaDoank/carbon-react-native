@@ -1,0 +1,66 @@
+import {
+	Meta,
+} from '@storybook/addon-docs/blocks'
+
+<Meta
+	title="Guides/CarbonStyleSheet"
+/>
+
+# CarbonStyleSheet
+
+This module is same as the React Native's StyleSheet. The difference is to help you to style the component with the correct color token based on the `colorScheme`, and the current breakpoint declaratively without to implement manual conditional if-else, or key-value pairs of the current `colorScheme` and the current breakpoint.
+
+```tsx
+import { View } from 'react-native'
+import {
+  CarbonStyleSheet,
+  Text,
+} from '@audira/carbon-react-native'
+
+export function YourComponent() {
+  CarbonStyleSheet.use() // Keep your components reactive on `colorScheme` and breakpoint change
+
+  return (
+    <View
+      style={ styleSheet.container }
+    >
+      <View>
+        <Text style={ styleSheet.text }>
+          First Text
+        </Text>
+      </View>
+
+      <View>
+        <Text style={ styleSheet.text }>
+          Second Text
+        </Text>
+      </View>
+    </View>
+  )
+}
+
+const styleSheet = CarbonStyleSheet.create({
+  container: {
+    gap: 8,
+    [CarbonStyleSheet.breakpoint.small]: {
+      // For `small` breakpoint, it will has this style
+      flexDirection: 'column',
+    },
+    [CarbonStyleSheet.breakpoint.medium]: {
+      // For the 'medium' breakpoint and larger breakpoint, it will has this style
+      flexDirection: 'row',
+    },
+  },
+  text: {
+    // In `gray_10` scheme, it will be colored with `#161616`
+    // In `gray_100` scheme, it will be colored with `#f4f4f4`
+    // You can check `text_primary` color at `Color.Token.gray_10.text_primary` and `Color.Token.gray_100.text_primary`
+    color: CarbonStyleSheet.color.text_primary,
+  },
+})
+
+```
+
+## Explanation
+
+This module is iterating all your style class name and its properties to check if it contains Carbon color token key, and breakpoint key, and then add other static styles internally regarding the color schemes and breakpoints. It will returns with [getter property](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) with your own property name to check what is the current color scheme and the current breakpoint through global scope variable before it returns its value with a help of React hook to notify your components that color scheme or breakpoint or both have been changed.

@@ -4,6 +4,8 @@ import type {
 } from '@storybook/react-native-web-vite'
 
 import {
+	Button,
+	ButtonGroup,
 	Modal as CarbonModal,
 	ModalContent,
 	Text,
@@ -33,13 +35,33 @@ export const Modal: StoryFn<ModalProps> = args => {
 		<CarbonModal
 			{ ...args }
 		>
-			<ModalContent
-
-			>
+			<ModalContent>
 				<Text type="body_01">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et mauris quis massa varius blandit nec sit amet libero. Ut vel sodales felis, ac tincidunt neque. Curabitur euismod, odio pretium imperdiet fermentum, lectus nunc dignissim nisl, quis varius velit nulla facilisis eros. Curabitur tincidunt lacus ut leo vehicula, nec lacinia mauris suscipit.
+					These texts here (with the &lt;Text&gt; component) are wrapped by &lt;ModalContent&gt; component.{'\n\n'}
+
+					These buttons below are actually a &lt;ButtonGroup&gt; component. You can manually provide the &lt;ButtonGroup&gt; by yourself in the &lt;Modal&gt; as the last element.
 				</Text>
 			</ModalContent>
+
+			<ButtonGroup
+				fluid
+				oneAlone
+				button1={
+					<Button.Ghost
+						text="Ghost"
+					/>
+				}
+				button2={
+					<Button.Secondary
+						text="Secondary"
+					/>
+				}
+				button3={
+					<Button.Primary
+						text="Primary"
+					/>
+				}
+			/>
 		</CarbonModal>
 	)
 }
