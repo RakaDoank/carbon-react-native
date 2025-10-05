@@ -10,6 +10,7 @@ export function GlobalConfigProvider({
 	android_buttonRippleEffect,
 	notificationColor,
 	toastDuration,
+	rtl,
 	children,
 }: GlobalConfigProviderProps) {
 
@@ -19,6 +20,7 @@ export function GlobalConfigProvider({
 				android_buttonRippleEffect,
 				notificationColor,
 				toastDuration,
+				rtl,
 			}}
 		>
 			{ children }

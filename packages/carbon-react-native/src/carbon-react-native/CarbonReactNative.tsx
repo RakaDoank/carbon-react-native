@@ -13,6 +13,7 @@ export function CarbonReactNative({
 	android_buttonRippleEffect = true,
 	notificationColor = 'high_contrast',
 	toastDuration = 5000,
+	rtl = false,
 
 	// ThemeProviderProps
 	colorScheme,
@@ -25,6 +26,7 @@ export function CarbonReactNative({
 			android_buttonRippleEffect={ android_buttonRippleEffect }
 			notificationColor={ notificationColor }
 			toastDuration={ toastDuration }
+			rtl={ rtl }
 		>
 			<ThemeProvider
 				colorScheme={ colorScheme }

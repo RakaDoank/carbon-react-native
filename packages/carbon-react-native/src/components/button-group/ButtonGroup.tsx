@@ -1,5 +1,6 @@
 import {
 	forwardRef,
+	useContext,
 } from 'react'
 
 import {
@@ -14,6 +15,7 @@ import {
 
 import {
 	ButtonGroupContext,
+	GlobalConfigContext,
 } from '../../_internal/contexts'
 
 import {
@@ -45,8 +47,11 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 	) {
 
 		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
 			styleFlexDir =
-				mapStyleFlexDir[`${!!vertical}`],
+				mapStyleFlexDir[`${!!vertical}`][`${!!globalConfigContext.rtl}`],
 
 			styleFluid =
 				mapStyleFluid[`${!!fluid}`]
@@ -117,10 +122,20 @@ const
 			},
 		}),
 
-	mapStyleFlexDir: { [IsVertical in `${boolean}`]: ViewStyle } =
+	mapStyleFlexDir: {
+		[IsVertical in `${boolean}`]: {
+			[RTL in `${boolean}`]: ViewStyle
+		}
+	} =
 		{
-			false: FlexStyleSheet.flex_row,
-			true: FlexStyleSheet.flex_col_reverse,
+			false: {
+				false: FlexStyleSheet.flex_row,
+				true: FlexStyleSheet.flex_row_reverse,
+			},
+			true: {
+				false: FlexStyleSheet.flex_col_reverse,
+				true: FlexStyleSheet.flex_col_reverse,
+			},
 		},
 
 	mapStyleFluid: { [IsFluid in `${boolean}`]: ViewStyle } =

@@ -16,6 +16,7 @@ import {
 
 import {
 	ButtonGroupContext,
+	GlobalConfigContext,
 } from '../../../_internal/contexts'
 
 import {
@@ -64,6 +65,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 	) {
 
 		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
 			buttonGroupContext =
 				useContext(ButtonGroupContext),
 
@@ -71,7 +75,10 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				sizeProp ?? buttonGroupContext.size ?? 'large_productive',
 
 			iconSize =
-				getIconSize(size)
+				getIconSize(size),
+
+			iconMarginStyle =
+				mapIconMarginStyle[`${globalConfigContext.rtl}`][`${!!text}`]
 
 		return (
 			<Pressable
@@ -79,12 +86,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				role={ role }
 				aria-label={ ariaLabel ?? text }
 				style={ [
-					FlexStyleSheet.flex_row,
 					FlexStyleSheet.justify_between,
 					baseStyle.container,
+					mapContainerStyle[`${globalConfigContext.rtl}`][`${!!text}`][`${!!icon || !!iconNode}`],
 					sizeStyle[size],
 					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
-					getContainerPaddingRight(!!text, !!icon || !!iconNode),
 					style,
 				] }
 				ref={ ref }
@@ -113,7 +119,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							height={ iconProps?.height ?? iconSize }
 							style={ [
 								getIconMarginTopStyle(size),
-								getIconMarginLeftStyle(!!text),
+								iconMarginStyle,
 								iconProps?.style,
 							] }
 						/>
@@ -121,7 +127,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						iconSize,
 						[
 							getIconMarginTopStyle(size),
-							getIconMarginLeftStyle(!!text),
+							iconMarginStyle,
 						],
 					) }
 				</>) : (
@@ -145,14 +151,38 @@ const
 		StyleSheet.create({
 			container: {
 				overflow: 'hidden',
+			},
+
+			/**
+			 * - LTR Start Padding
+			 * - RTL End Padding with icon
+			 */
+			containerPL05: {
 				paddingLeft: Spacing.spacing_05,
 			},
-			containerPR16: {
+
+			/**
+			 * - RTL End Padding without icon
+			 */
+			containerPL10: {
+				paddingLeft: Spacing.spacing_10,
+			},
+
+			/**
+			 * - LTR End Padding with icon
+			 * - RTL Start Padding
+			 */
+			containerPR05: {
 				paddingRight: Spacing.spacing_05,
 			},
-			containerPR64: {
+
+			/**
+			 * - LTR End Padding without icon
+			 */
+			containerPR10: {
 				paddingRight: Spacing.spacing_10,
 			},
+
 			contentContainer: {
 				...FlexStyleSheet.flex_initial,
 				maxHeight: Spacing.spacing_09,
@@ -162,9 +192,20 @@ const
 				height: '100%',
 				maxHeight: 48,
 			},
+
+			/**
+			 * LTR
+			 */
 			iconML32: {
 				marginLeft: Spacing.spacing_07,
 			},
+			/**
+			 * RTL
+			 */
+			iconMR32: {
+				marginRight: Spacing.spacing_07,
+			},
+
 			inlineLoading: {
 				height: '100%',
 				maxHeight: 48,
@@ -195,19 +236,33 @@ const
 			},
 		}),
 
-	mapContainerPR: {
-		[HasText in `${boolean}`]: {
-			[HasIcon in `${boolean}`]: BaseProps['style']
+	mapContainerStyle: {
+		[RTL in `${boolean}`]: {
+			[HasText in `${boolean}`]: {
+				[HasIcon in `${boolean}`]: BaseProps['style']
+			}
 		}
 	} =
 		{
 			false: {
-				false: baseStyle.containerPR16,
-				true: baseStyle.containerPR16,
+				false: {
+					false:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
+					true:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
+				},
+				true: {
+					false:	[FlexStyleSheet.flex_row, baseStyle.containerPR10, baseStyle.containerPL05],
+					true:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
+				},
 			},
 			true: {
-				false: baseStyle.containerPR64,
-				true: baseStyle.containerPR16,
+				false: {
+					false:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
+					true:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
+				},
+				true: {
+					false:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL10, baseStyle.containerPR05],
+					true:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
+				},
 			},
 		},
 
@@ -226,12 +281,20 @@ const
 			true: 20,
 		},
 
-	mapIconMLByText: Record<'true' | 'false', {
-		marginLeft: number
-	} | null> =
+	mapIconMarginStyle: {
+		[RTL in `${boolean}`]: {
+			[HasText in `${boolean}`]: ViewProps['style']
+		}
+	} =
 		{
-			false: null,
-			true: baseStyle.iconML32,
+			false: {
+				false: null,
+				true: baseStyle.iconML32,
+			},
+			true: {
+				false: null,
+				true: baseStyle.iconMR32,
+			},
 		},
 
 	mapStyleInButtonGroup: {
@@ -260,12 +323,12 @@ function isExpressiveStr(
 	return `${Size === 'large_expressive'}`
 }
 
-function getContainerPaddingRight(
-	text: boolean,
-	icon: boolean,
-) {
-	return mapContainerPR[`${text}`][`${icon}`]
-}
+// function getContainerPaddingRight(
+// 	text: boolean,
+// 	icon: boolean,
+// ) {
+// 	return mapContainerEndPR[`${text}`][`${icon}`]
+// }
 
 /**
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
@@ -294,8 +357,4 @@ function getIconMarginTopStyle(size: NonNullable<BaseProps['size']>) {
 	return {
 		marginTop: (height / 2) - (iconSize / 2),
 	}
-}
-
-function getIconMarginLeftStyle(hasText: boolean) {
-	return mapIconMLByText[`${hasText}`]
 }
