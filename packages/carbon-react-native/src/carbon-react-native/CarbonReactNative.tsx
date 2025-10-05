@@ -9,14 +9,22 @@ import type {
 } from './CarbonReactNativeProps'
 
 export function CarbonReactNative({
-	globalConfig,
+	// GlobalConfigProviderProps
+	android_buttonRippleEffect = true,
+	notificationColor = 'high_contrast',
+	toastDuration = 5000,
+
+	// ThemeProviderProps
 	colorScheme,
+
 	children,
 }: CarbonReactNativeProps) {
 
 	return (
 		<GlobalConfigProvider
-			{ ...globalConfig }
+			android_buttonRippleEffect={ android_buttonRippleEffect }
+			notificationColor={ notificationColor }
+			toastDuration={ toastDuration }
 		>
 			<ThemeProvider
 				colorScheme={ colorScheme }

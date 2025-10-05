@@ -7,9 +7,9 @@ import type {
 } from './GlobalConfigProviderProps'
 
 export function GlobalConfigProvider({
-	android_buttonRippleEffect = true,
-	notificationColor = 'high_contrast',
-	toastDuration = 5000,
+	android_buttonRippleEffect,
+	notificationColor,
+	toastDuration,
 	children,
 }: GlobalConfigProviderProps) {
 

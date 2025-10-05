@@ -1,11 +1,7 @@
 import type {
-	GlobalConfigContext,
-} from '../_internal/contexts'
-
-import {
-	type ThemeProviderProps,
+	GlobalConfigProviderProps,
+	ThemeProviderProps,
 } from '../_internal/providers'
 
-export interface CarbonReactNativeProps extends ThemeProviderProps {
-	globalConfig?: GlobalConfigContext,
+export interface CarbonReactNativeProps extends Partial<GlobalConfigProviderProps>, ThemeProviderProps {
 }

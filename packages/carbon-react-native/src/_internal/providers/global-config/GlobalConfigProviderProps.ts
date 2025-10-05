@@ -2,6 +2,6 @@ import type {
 	GlobalConfigContext,
 } from '../../contexts'
 
-export interface GlobalConfigProviderProps extends Partial<GlobalConfigContext> {
+export interface GlobalConfigProviderProps extends GlobalConfigContext {
 	children?: React.ReactNode,
 }
