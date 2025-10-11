@@ -221,9 +221,10 @@ const
 				borderColor: 'transparent',
 			},
 			marker: {
-				borderRadius: size,
 				width: size / 2,
 				height: size / 2,
+				borderRadius: size,
+				overflow: 'hidden',
 			},
 		}),
 
