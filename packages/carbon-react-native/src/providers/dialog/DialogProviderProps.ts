@@ -11,7 +11,7 @@ import type {
 } from './_controller/_overlay/OverlayProps'
 
 export interface DialogProviderProps {
-	overlayProps?: Omit<OverlayProps, 'animationConfig' | 'type'>,
+	overlayProps?: Omit<OverlayProps, 'animationConfig'>,
 	/**
 	 * @default DialogAnimationConfigs.CarbonReact
 	 */
