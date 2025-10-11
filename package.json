@@ -5,8 +5,8 @@
 	"scripts": {
 		"builder-bob": "node builder-bob/scripts/build.js",
 		"code-check": "npm run type-check && npm run lint",
+		"init-ibm-fonts-storybook-web": "node ./scripts/init-ibm-fonts-storybook-web.mjs",
 		"lint": "eslint .",
-		"fonts-copy-to-storybook": "node ./scripts/fonts-copy-to-storybook.mjs",
 		"prepack-carbon-react-native": "node ./scripts/prepack-carbon-react-native.mjs",
 		"prepack-carbon-react-native-elements": "node ./scripts/prepack-carbon-react-native-elements.mjs",
 		"type-check": "tsc --project packages/carbon-react-native/tsconfig.json && tsc --project packages/carbon-react-native-elements/tsconfig.json && tsc --project storybook/tsconfig.json",
@@ -25,6 +25,7 @@
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-native": "^5.0.0",
 		"globals": "^16.4.0",
+		"ttf2woff": "3.0.0",
 		"typescript": "5.9.2",
 		"typescript-eslint": "^8.46.0"
 	},

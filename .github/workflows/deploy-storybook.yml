@@ -31,8 +31,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
-      - name: Fonts Copy to Storybook
-        run: npm run fonts-copy-to-storybook
+      - name: Init IBM Fonts to Storybook Web
+        run: npm run init-ibm-fonts-storybook-web
       - name: Deploy
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
