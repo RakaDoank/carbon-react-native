@@ -1,9 +1,14 @@
+import {
+	useContext,
+} from 'react'
+
 import type {
 	Meta,
 	StoryFn,
 } from '@storybook/react-native-web-vite'
 
 import {
+	BreakpointContext,
 	Button,
 	ButtonGroup,
 	Modal as CarbonModal,
@@ -31,6 +36,11 @@ export default {
 } satisfies Meta<ModalProps>
 
 export const Modal: StoryFn<ModalProps> = args => {
+
+	const
+		breakpoint =
+			useContext(BreakpointContext)
+
 	return (
 		<CarbonModal
 			{ ...args }
@@ -43,25 +53,43 @@ export const Modal: StoryFn<ModalProps> = args => {
 				</Text>
 			</ModalContent>
 
-			<ButtonGroup
-				fluid
-				oneAlone
-				button1={
-					<Button.Ghost
-						text="Ghost"
-					/>
-				}
-				button2={
-					<Button.Secondary
-						text="Secondary"
-					/>
-				}
-				button3={
-					<Button.Primary
-						text="Primary"
-					/>
-				}
-			/>
+			{ breakpoint == 'small' ? (
+				// This is just an example
+				// Smaller window (phone) is too narrow to fit three buttons
+				<ButtonGroup
+					fluid
+					button1={
+						<Button.Secondary
+							text="Secondary"
+						/>
+					}
+					button2={
+						<Button.Primary
+							text="Primary"
+						/>
+					}
+				/>
+			) : (
+				<ButtonGroup
+					fluid
+					oneAlone
+					button1={
+						<Button.Ghost
+							text="Ghost"
+						/>
+					}
+					button2={
+						<Button.Secondary
+							text="Secondary"
+						/>
+					}
+					button3={
+						<Button.Primary
+							text="Primary"
+						/>
+					}
+				/>
+			) }
 		</CarbonModal>
 	)
 }

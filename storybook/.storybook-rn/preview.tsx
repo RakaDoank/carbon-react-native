@@ -41,7 +41,9 @@ export default {
 interface BodyProps {
 	Story: Parameters<Decorator>[0],
 }
-function Body(props: BodyProps) {
+function Body({
+	Story,
+}: BodyProps) {
 
 	const
 		themeContext =
@@ -60,8 +62,9 @@ function Body(props: BodyProps) {
 	return (
 		<ScrollView
 			style={ [styleSheet.root, carbonStyleSheet.root] }
+			contentContainerStyle={ styleSheet.scrollContentContainer }
 		>
-			<props.Story/>
+			<Story/>
 		</ScrollView>
 	)
 
@@ -71,7 +74,13 @@ const
 	styleSheet =
 		StyleSheet.create({
 			root: {
+				flex: 1,
+			},
+			scrollContentContainer: {
 				padding: 16,
+				flexGrow: 1,
+				flexShrink: 1,
+				flexBasis: 'auto',
 			},
 		}),
 

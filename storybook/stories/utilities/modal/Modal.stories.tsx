@@ -8,6 +8,7 @@ import type {
 } from '@storybook/react-native'
 
 import {
+	BreakpointContext,
 	Button,
 	ButtonGroup,
 	DialogContext,
@@ -29,6 +30,9 @@ export default {
 export const Modal: StoryFn = () => {
 
 	const
+		breakpoint =
+			useContext(BreakpointContext),
+
 		dialogContext =
 			useContext(DialogContext),
 
@@ -44,25 +48,43 @@ export const Modal: StoryFn = () => {
 								},
 							}}
 						>
-							<ButtonGroup
-								fluid
-								oneAlone
-								button1={
-									<Button.Ghost
-										text="Ghost"
-									/>
-								}
-								button2={
-									<Button.Secondary
-										text="Secondary"
-									/>
-								}
-								button3={
-									<Button.Primary
-										text="Primary"
-									/>
-								}
-							/>
+							{ breakpoint == 'small' ? (
+								// This is just an example
+								// Smaller window (phone) is too narrow to fit three buttons
+								<ButtonGroup
+									fluid
+									button1={
+										<Button.Secondary
+											text="Secondary"
+										/>
+									}
+									button2={
+										<Button.Primary
+											text="Primary"
+										/>
+									}
+								/>
+							) : (
+								<ButtonGroup
+									fluid
+									oneAlone
+									button1={
+										<Button.Ghost
+											text="Ghost"
+										/>
+									}
+									button2={
+										<Button.Secondary
+											text="Secondary"
+										/>
+									}
+									button3={
+										<Button.Primary
+											text="Primary"
+										/>
+									}
+								/>
+							) }
 						</CarbonModal>
 					),
 				})
@@ -122,7 +144,7 @@ export const ModalStack: StoryFn = () => {
 								}
 								button2={
 									<Button.Primary
-										text="Open Second Modal"
+										text="Second Modal"
 										onPress={ showModal2 }
 									/>
 								}
