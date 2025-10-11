@@ -1,0 +1,94 @@
+import {
+	Meta,
+} from '@storybook/addon-docs/blocks'
+
+<Meta
+	title="Guides/Color Scheme"
+/>
+
+# Color Scheme
+
+Currently, this component library is based on the `Gray 10` and the `Gray 100` of [IBM Color Themes](https://carbondesignsystem.com/elements/color/overview/#themes). Probably in the future, it will also supports for the `White`, and the `Gray 90` theme.
+
+## Change the Color Scheme
+
+Like the most app, there is a option to change your app look, like Light Mode or Dark Mode or other mode probably.
+
+This library is already detected what color scheme in the user system natively with [`useColorScheme`](https://reactnative.dev/docs/usecolorscheme) hook, and it's resolved with this map
+- `"light"` -> `gray_10`
+- `"dark"` -> `gray_100`
+- `undefined` -> System Default (`light` or `dark`) -> `gray_10` or `gray_100`
+
+You are able to change color scheme by your own logic. Like you want have a feature to control the color scheme by user with three options, such as System Default, Light, and Dark.
+
+On the `<CarbonReactNative>` in the root of React tree, you can pass `colorScheme` prop with `gray_10` or `gray_100` value
+
+```tsx
+import {
+  CarbonReactNative,
+} from '@audira/carbon-react-native'
+
+export default function App() {
+  const [isDark, setIsDark] = useState(true)
+  return (
+    <CarbonReactNative
+      colorScheme={ isDark ? 'gray_100' : 'gray_10' }
+      // pass undefined or omit the prop to let library solve back automatically
+    >
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+```
+
+Be aware of updating a React state in the root tree. It may causes unresponsive JavaScript thread. Refer to the React Native performance docs at [https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread](https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread)
+
+## App Background Color
+
+Since the `<CarbonReactNative>` is not rendering anything to the root element, your app may looks strange with the components of this library or kind of unlined with the Carbon guidelines. To fix this, basically you can render a `<View>` at your root element, and give the correct background to the view with [CarbonStyleSheet](?path=/docs/guides-carbonstylesheet--docs)
+
+```tsx
+import {
+  View,
+} from 'react-native'
+
+import {
+  CarbonReactNative,
+  CarbonStyleSheet,
+} from '@audira/carbon-react-native'
+
+export default function App() {
+  const [isDark, setIsDark] = useState(true)
+  return (
+    <CarbonReactNative
+      colorScheme={ isDark ? 'gray_100' : 'gray_10' }
+    >
+      <RootView>
+        { /* the rest of your react */ }
+      </RootView>
+    </CarbonReactNative>
+  )
+}
+
+interface RootViewProps {
+  children?: React.ReactNode,
+}
+
+function RootView({ children }: RootViewProps) {
+  CarbonStyleSheet.use() // Keep your components reactive on `colorScheme` with this hook
+  return (
+    <View
+      style={ carbonStyleSheet.rootView }
+    >
+      { children }
+    </View>
+  )
+}
+
+const carbonStyleSheet = CarbonStyleSheet.create({
+  rootView: {
+    backgroundColor: CarbonStyleSheet.color.background,
+  },
+})
+
+```

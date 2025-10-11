@@ -1,0 +1,175 @@
+import {
+	Meta,
+} from '@storybook/addon-docs/blocks'
+
+<Meta
+	title="Guides/Fonts Installation"
+/>
+
+# Fonts Installation
+
+To use this component library, you have to include the `IBM Plex Sans` font to your project
+
+## Android & iOS
+
+For Android & iOS platform, you may use [Expo Font](https://docs.expo.dev/versions/latest/sdk/font) if you are using Expo, or you can use [react-native-asset](https://www.npmjs.com/package/react-native-asset) if your React Native app were bootstrapped with [@react-native-community/cli](https://github.com/react-native-community/cli) (known as Bare React Native)
+
+### Expo (with Expo Font)
+Follow the [Expo Font docs](https://docs.expo.dev/versions/latest/sdk/font). Update each font files path (all the weight variants) individually to
+
+`./node_modules/@audira/carbon-react-native/assets/fonts`
+
+In your app.json
+
+```json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Thin.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Thin-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-ExtraLight.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-ExtraLight-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Light.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Light-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Regular.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Medium.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Medium-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-SemiBold.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-SemiBold-Italic.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Bold.ttf",
+            "./node_modules/@audira/carbon-react-native/assets/fonts/IBMPlexSans-Bold-Italic.ttf",
+          ]
+        }
+      ]
+    ]
+  }
+}
+```
+
+It's recommended to embed font files at build time which is more efficient than `useFonts` or `loadAsync`.
+
+### Bare React Native
+Install the `IBM Plex Sans` font to your project with [react-native-asset](https://www.npmjs.com/package/react-native-asset). Update your `react-native.config.js` file (create it on your root project directory if doesn't exist)
+```js
+module.exports = {
+  assets: [
+    './node_modules/@audira/carbon-react-native/assets/fonts',
+  ],
+}
+```
+Then, run `npx react-native-asset` to link the fonts
+
+## Web
+
+For web, this is just same like the other webs. You have to include the fonts on your static or public directory of your web.
+
+Download the IBM Plex font (`ibm-plex-sans.zip`) at [https://github.com/IBM/plex/releases/latest](https://github.com/IBM/plex/releases/latest). Unarchive the file, and the find the `.woff` and `.woff2` font files at `/ibm-plex-sans/fonts/complete`.
+
+Create new CSS file (e.g fonts.css), place it to your static or public directory, and add this `@font-face` CSS rule to your file
+```css
+/* Make sure these font files path below are correctly pointing to your font files that live in your static or public directory of your web */
+
+@font-face {
+  font-family: "IBMPlexSans-ExtraLight";
+  font-weight: 200;
+  src: url("/fonts/IBMPlexSans-ExtraLight.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-ExtraLight-Italic";
+  font-weight: 300;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-ExtraLight-Italic.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Light";
+  font-weight: 300;
+  src: url("/fonts/IBMPlexSans-Light.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Light-Italic";
+  font-weight: 300;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-Light-Italic.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Regular";
+  font-weight: 400;
+  src: url("/fonts/IBMPlexSans-Regular.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Italic";
+  font-weight: 400;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-Italic.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Medium";
+  font-weight: 500;
+  src: url("/fonts/IBMPlexSans-Medium.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Medium-Italic";
+  font-weight: 500;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-Medium-Italic.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-SemiBold";
+  font-weight: 600;
+  src: url("/fonts/IBMPlexSans-SemiBold.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-SemiBold-Italic";
+  font-weight: 600;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-SemiBold-Italic.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Bold";
+  font-weight: 700;
+  src: url("/fonts/IBMPlexSans-Bold.woff");
+}
+
+@font-face {
+  font-family: "IBMPlexSans-Bold-Italic";
+  font-weight: 700;
+  font-style: italic;
+  src: url("/fonts/IBMPlexSans-Bold-Italic.woff");
+}
+
+/* Please, do not modify the font-family, font-weight, and the font-style because it's have to be the same to the `<Text>` component style internally */
+```
+
+Then, somewhere in your React Native Web entry file of JavaScript, import the CSS
+```tsx
+// Somewhere in your entry JavaScript file
+
+import './fonts.css' // Change the path to the correct one of your CSS file
+```
+> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can import the @font-face CSS rule file with JavaScript from your [Root layout](https://docs.expo.dev/router/basics/layout/#root-layout) file
+
+Or traditionally, you can import it with the [External Resource Link Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) or you may know it as `<link>` element in HTML
+```html
+<html>
+  <head>
+    <!-- Change the href path to where your CSS file live statically -->
+    <link href="/fonts.css" rel="stylesheet"/>
+  </head>
+</html>
+```
+> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can include the &lt;link&gt; element in your [Root HTML](https://docs.expo.dev/workflow/web/#root-html) file
