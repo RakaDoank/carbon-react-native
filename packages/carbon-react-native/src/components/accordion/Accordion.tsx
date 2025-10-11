@@ -39,7 +39,7 @@ import {
 const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 	function Accordion(
 		{
-			size,
+			size = 'medium',
 			flushAlignment,
 			children,
 			style,
@@ -93,12 +93,10 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 				>
 					{ children }
 
-					{ !!children?.length && (
-						<HeaderBorder
-							flushAlignment={ flushAlignment }
-							style={ baseStyle.lastAccordionHeaderBorder }
-						/>
-					) }
+					<HeaderBorder
+						flushAlignment={ flushAlignment }
+						style={ baseStyle.lastAccordionHeaderBorder }
+					/>
 				</Context.Provider>
 			</View>
 		)
