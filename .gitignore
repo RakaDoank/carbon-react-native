@@ -104,6 +104,7 @@ yarn-error.log
 ## libs/builder-bob
 /builder-bob/bob.config.js
 
+/storybook/.dist
 /storybook/public/fonts
 
 ## react-native-asset Android Fonts

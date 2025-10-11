@@ -1,0 +1,45 @@
+import {
+	Meta,
+	Canvas,
+  Stories,
+} from '@storybook/addon-docs/blocks'
+
+import * as ExampleStories from './Example.stories'
+
+<Meta
+	of={ ExampleStories }
+	title="Guides/Right to Left (RTL)"
+	name="Right to Left (RTL)"
+/>
+
+# Right-to-Left (RTL)
+
+> ⚠️ In development of supporting to all components
+
+Over 2 billion people read and write in right-to-left (RTL) languages like Arabic, Hebrew, Farsi and Urdu. Layouts should support both left-to-right (LTR) and RTL languages through mirroring and other best practices to ensure content is easy for global audiences to understand and navigate.
+
+Not only the text, it also affects how the component renders.
+
+<Stories/>
+
+## Configuration
+
+Similar to the [Change Color Scheme](?path=/docs/guides-change-color-scheme--docs), to use the RTL, give the `rtl` prop with `true` value to the `<CarbonReactNative>`
+
+```tsx
+import {
+  CarbonReactNative,
+} from '@rakadoank/carbon-react-native'
+
+export default function App() {
+  return (
+    <CarbonReactNative
+      rtl
+    >
+      { /* the rest of your react */ }
+    </CarbonReactNative>
+  )
+}
+```
+
+> Be aware of updating a React state in the root tree. It may causes unresponsive JavaScript thread. Refer to the React Native performance docs at [https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread](https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread)

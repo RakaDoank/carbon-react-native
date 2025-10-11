@@ -50,6 +50,9 @@ export default {
 		},
 		docs: {
 			codePanel: true,
+			toc: {
+				headingSelector: 'h1, h2, h3',
+			},
 		},
 	},
 

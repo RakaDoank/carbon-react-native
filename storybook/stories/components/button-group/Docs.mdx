@@ -1,0 +1,86 @@
+import {
+  ArgTypes,
+  Canvas,
+  Controls,
+  Meta,
+  Stories,
+} from '@storybook/addon-docs/blocks'
+
+import * as ButtonGroupStories from './ButtonGroup.stories'
+
+<Meta
+  of={ ButtonGroupStories }
+/>
+
+# Button Group
+
+Button groups are a useful way of aligning buttons that have a relationship. Group the buttons logically into sets based on usage and importance. Too many calls to action will overwhelm and confuse users so they should be avoided.
+
+```tsx
+import {
+  Button,
+  ButtonGroup,
+} from '@audira/carbon-react-native'
+
+export default function Component() {
+
+  return (
+    <ButtonGroup
+      button1={
+        <Button.Tertiary
+          text="Button 1"
+        />
+      }
+      button2={
+        <Button.Primary
+          text="Button 2"
+        />
+      }
+    />
+  )
+
+}
+```
+
+## Props
+
+See [ButtonGroupProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/button-group/ButtonGroupProps.ts)
+
+<Canvas
+  of={ ButtonGroupStories.ButtonGroup }
+/>
+
+<Controls
+  of={ ButtonGroupStories.ButtonGroup }
+/>
+
+## Recommended Button Group Combinations
+
+Button groups can consist of different button variants depending on the product use case. IBM recommends the following combination of button groups
+
+- Button groups with primary button
+  - 2 buttons
+    - `Secondary` - `Primary`
+    - `Tertiary` - `Primary`
+    - `Ghost` - `Primary`
+    - `TertiaryDanger` - `Primary`
+    - `Secondary` - `PrimaryDanger`
+    - `Ghost` - `PrimaryDanger`
+  - 3 buttons
+    - `Tertiary` - `Secondary` - `Primary`
+    - `Ghost` - `Secondary` - `Primary` (with `oneAlone` prop)
+    - `Secondary` - `Secondary` - `Primary`
+    - `Tertiary` - `Tertiary` - `Primary`
+    - `TertiaryDanger` - `Tertiary` - `Primary`
+- Button groups without a primary button
+  - 2 buttons
+    - `Tertiary` - `Tertiary`
+    - `Ghost` - `Tertiary`
+    - `Ghost` - `Ghost`
+  - 3 buttons
+    - `Tertiary` - `Tertiary` - `Tertiary`
+    - `TertiaryDanger` - `Tertiary` - `Tertiary`
+
+(Format: `button1` - `button2` - `button3`)
+
+See [https://carbondesignsystem.com/components/button/usage](https://carbondesignsystem.com/components/button/usage)

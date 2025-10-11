@@ -1,0 +1,59 @@
+import {
+  ArgTypes,
+  Meta,
+  Canvas,
+  Stories,
+} from '@storybook/addon-docs/blocks'
+
+import * as AccordionStories from './Accordion.stories'
+
+<Meta
+  of={ AccordionStories }
+/>
+
+# Accordion
+
+Accordion is a group of vertically list of headers that can reveal or hide associated sections of content. You can use accordion by using `Accordion` as parent, and `Accordion.Item` as children.
+
+```tsx
+import {
+  Accordion,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  return (
+    <Accordion
+      size="medium"
+      flushAlignment={ false }
+    >
+      <Accordion.Item
+        title="Item 1 Title"
+        defaultOpen // let open by default
+      >
+        {/* your content */}
+      </Accordion.Item>
+
+      <Accordion.Item
+        title="Item 2 Title"
+      >
+        { /* your content */ }
+      </Accordion.Item>
+    </Accordion>
+  )
+
+}
+```
+
+<Stories/>
+
+## Props
+
+<ArgTypes
+  of={ AccordionStories.Accordion }
+  exclude={ ['_title_1', '_title_2', '_title_3', 'children'] }
+/>
+
+See
+  - [AccordionProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/accordion/AccordionProps.ts)
+  - [AccordionItemProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/accordion/AccordionItemProps.ts)

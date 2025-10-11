@@ -1,0 +1,170 @@
+import {
+  ArgTypes,
+  Meta,
+  Stories,
+} from '@storybook/addon-docs/blocks'
+
+import * as ButtonStories from './Button.stories'
+
+<Meta
+  of={ ButtonStories }
+/>
+
+# Button
+
+Button is a clickable or pressable element that are used to trigger actions. Button in this library is using [`Pressable`](https://reactnative.dev/docs/pressable) as the core components
+
+```tsx
+import {
+  View,
+} from 'react-native'
+
+import {
+  Button,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  return (
+    <View>
+      <Button.Primary
+        text="Hello World"
+      />
+      <Button.Tertiary
+        text="Hello World 2"
+      />
+    </View>
+  )
+
+}
+```
+
+<Stories
+  title="Variants"
+/>
+
+## Sizes
+
+> [**Button.Size**](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/button/Size.ts): `"small"` \| `"medium"` \| `"large_productive"` \| `"large_expressive"` \| `"extra_large"` \| `"2xl"`
+
+Carbon provides size options. Simply, you can pass [`size`](../definitions/namespaces/Button/interfaces/BaseProps.md#size) prop value with one of the options. Default is `large_production`
+
+```tsx
+import {
+  Button,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+  return (
+    <Button.Primary
+      size="extra_large"
+      text="Add World"
+    />
+  )
+}
+```
+
+## Render Icon
+
+Button component provides a prop to render an icon with its correct color of icon in each variant and shrink or grow the icon size in each size option of button. You can just simply import an icon of `@carbon/icons` package, and pass it
+
+```tsx
+import {
+  Button,
+} from '@rakadoank/carbon-react-native'
+
+import AddIcon from '@carbon/icons/es/add/20'
+
+export default function Component() {
+  return (
+    <Button.Primary
+      text="Add World"
+      icon={ AddIcon }
+    />
+  )
+}
+```
+
+### Icon Only
+
+You can use button with icon only. Just omit the text
+
+```tsx
+import {
+  Button,
+} from '@rakadoank/carbon-react-native'
+
+import AddIcon from '@carbon/icons/es/add/20'
+
+export default function Component() {
+  return (
+    <Button.Primary
+      // text="Add World"
+      icon={ AddIcon }
+      aria-label="Add World"
+    />
+  )
+}
+```
+
+> For accessibility reasons, it's better to provide [`aria-label`](https://reactnative.dev/docs/view#aria-label) prop value if button is only rendering an icon
+
+### Custom Icon Node
+
+If the `icon` prop doesn't suit your needs, you can render icon (can render anything basically) at the icon position with [`iconNode`](../definitions/namespaces/Button/interfaces/BaseProps#iconnode) prop. In a case probably you want to use [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) and use your own SVG
+
+```tsx
+import {
+  useState,
+} from 'react'
+
+import {
+  Button,
+  ColorConstant,
+  Icon,
+} from '@rakadoank/carbon-react-native'
+
+// Importing a SVG file
+import AddIcon from '@carbon/icons/svg/add/32/add.svg'
+
+export default function Component() {
+
+  return (
+    <Button.Primary
+      text="Hello World"
+      iconNode={ customIconRenderer }
+    />
+  )
+
+}
+
+const customIconRenderer: Button.PrimaryProps['iconNode'] = (
+  iconColorState,
+  iconSize,
+  iconStyle,
+) => {
+  return (
+    <AddIcon
+      color={ iconColorState }
+      width={ iconSize }
+      height={ iconSize }
+      /**
+       * use the `iconStyle` to keep icon style nicely center aligned vertically with text
+       */
+      style={ iconStyle }
+    />
+  )
+}
+```
+
+## "Button" is a Namespace
+
+Keep it in mind, that [`Button`](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/button/index.tsx) is just a namespace, while the `Button.Primary`, `Button.Tertiary`, and other variants are the actual component. In addition, to import any button definitions like interfaces such as `PrimaryProps` or type aliases, you also use the `Button` keyword in the front, like [`Button.PrimaryProps`](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/button/primary/PrimaryProps.ts)
+
+## Props
+
+See [BaseProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/button/base/BaseProps.ts)
+
+<ArgTypes
+  exclude={ ['backgroundNode', 'style'] }
+/>

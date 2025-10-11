@@ -4,23 +4,23 @@ import type {
 	StorybookConfig,
 } from '@storybook/react-native-web-vite'
 
-const workspaceRoot = node_path.join(__dirname, '../..')
+const workspaceRoot = node_path.join(__dirname, '..', '..')
 
 export default {
 
 	staticDirs: ['../public'],
 
 	stories: [
-		"../stories/**/*.mdx",
-		"../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		'../stories/**/*.mdx',
+		'../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
 	],
 
 	addons: [
-		"@storybook/addon-docs",
+		'@storybook/addon-docs',
 	],
 
 	framework: {
-		name: "@storybook/react-native-web-vite",
+		name: '@storybook/react-native-web-vite',
 		options: {
 			pluginReactOptions: {
 				babel: {
@@ -40,8 +40,8 @@ export default {
 			alias: {
 				...config.resolve?.alias ?? {
 				},
-				'@audira/carbon-react-native': node_path.join(workspaceRoot, 'packages/carbon-react-native/src'),
-				'@audira/carbon-react-native-elements': node_path.join(workspaceRoot, 'packages/carbon-react-native-elements/src'),
+				'@audira/carbon-react-native': node_path.join(workspaceRoot, 'packages', 'carbon-react-native', 'src'),
+				'@audira/carbon-react-native-elements': node_path.join(workspaceRoot, 'packages', 'carbon-react-native-elements', 'src'),
 			},
 		}
 

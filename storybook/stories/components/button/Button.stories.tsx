@@ -15,6 +15,7 @@ import {
 
 export default {
 	title: 'Components/Button',
+	component: Button.Base,
 	args: {
 		text: 'Lorem Ipsum',
 		size: 'large_productive',
