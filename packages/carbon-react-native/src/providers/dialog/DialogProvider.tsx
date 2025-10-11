@@ -1,7 +1,5 @@
 import {
-	Suspense,
 	forwardRef,
-	lazy,
 	useCallback,
 	useImperativeHandle,
 	useRef,
@@ -25,13 +23,10 @@ import type {
 	DialogProviderRef,
 } from './DialogProviderRef'
 
-import type {
-	ControllerRef,
-} from './_controller/ControllerRef'
-
-const Controller = lazy(async () => ({
-	default: await import('./_controller/Controller').then(mod => mod.Controller),
-}))
+import {
+	Controller,
+	type ControllerRef,
+} from './_controller'
 
 export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>(
 	function DialogProvider(
@@ -115,16 +110,14 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 				{ children }
 
 				{ mountController && (
-					<Suspense fallback={ null }>
-						<Controller
-							ref={ setControllerRef }
-							animationConfig={ animationConfig }
-							modalProps={ modalProps }
-							overlayProps={ overlayProps }
-							overlayTouchDismiss={ overlayTouchDismiss }
-							onEmpty={ onEmpty }
-						/>
-					</Suspense>
+					<Controller
+						ref={ setControllerRef }
+						animationConfig={ animationConfig }
+						modalProps={ modalProps }
+						overlayProps={ overlayProps }
+						overlayTouchDismiss={ overlayTouchDismiss }
+						onEmpty={ onEmpty }
+					/>
 				) }
 			</DialogContext.Provider>
 		)

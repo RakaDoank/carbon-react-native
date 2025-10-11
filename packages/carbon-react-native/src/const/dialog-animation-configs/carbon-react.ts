@@ -18,6 +18,7 @@ import type {
 export const CarbonReact = {
 	duration: Motion.Duration.moderate_02,
 	modalAnimatedStyle(sharedValue, inputRange) {
+		'worklet'
 		return {
 			opacity: interpolate(
 				sharedValue.value,
