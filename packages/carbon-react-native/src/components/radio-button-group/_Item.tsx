@@ -12,7 +12,6 @@ import {
 	type RadioButtonRef,
 } from '../radio-button'
 
-
 import type {
 	RadioButtonGroupItemProps,
 } from './RadioButtonGroupItemProps'
@@ -20,6 +19,7 @@ import type {
 import type {
 	RadioButtonGroupItemRef,
 } from './RadioButtonGroupItemRef'
+
 import {
 	ItemContext,
 } from './_item-context'

@@ -16,18 +16,18 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
+
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 import type {
 	RadioButtonInputInteractiveState,
@@ -40,6 +40,7 @@ import type {
 import type {
 	RadioButtonInputRef,
 } from './RadioButtonInputRef'
+
 import type {
 	RefBase,
 } from './_RefBase'

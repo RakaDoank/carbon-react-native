@@ -16,12 +16,13 @@ import {
 	type PressableProps,
 } from 'react-native'
 
-
 import {
 	Color,
 	Motion,
 } from '@audira/carbon-react-native-elements'
+
 import Checkmark from '@carbon/icons/es/checkmark/20'
+
 import Animated, {
 	Easing,
 	interpolate,
@@ -31,14 +32,15 @@ import Animated, {
 	withTiming,
 } from 'react-native-reanimated'
 
-
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
+
 import {
 	ThemeContext,
 } from '../../contexts'
@@ -46,7 +48,6 @@ import {
 import {
 	Icon,
 } from '../icon'
-
 
 import type {
 	SwitchProps,
@@ -63,6 +64,7 @@ import type {
 import type {
 	SwitchState,
 } from './SwitchState'
+
 import type {
 	RefBase,
 } from './_RefBase'

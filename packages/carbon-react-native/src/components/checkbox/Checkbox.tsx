@@ -22,6 +22,7 @@ import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -29,7 +30,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 import {
 	CheckboxInput,
@@ -44,9 +44,11 @@ import {
 import type {
 	CheckboxProps,
 } from './CheckboxProps'
+
 import type {
 	CheckboxRef,
 } from './CheckboxRef'
+
 import type {
 	RefBase,
 } from './_RefBase'

@@ -22,6 +22,7 @@ import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -29,7 +30,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 import {
 	FormLabel,
@@ -44,13 +44,14 @@ import {
 import type {
 	RadioButtonProps,
 } from './RadioButtonProps'
+
 import type {
 	RadioButtonRef,
 } from './RadioButtonRef'
+
 import type {
 	RefBase,
 } from './_RefBase'
-
 
 export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 	function RadioButton(

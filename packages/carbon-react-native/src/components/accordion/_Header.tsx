@@ -13,14 +13,15 @@ import {
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
+
 import ChevronDown from '@carbon/icons/es/chevron--down/20'
+
 import Animated, {
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
 	type AnimatedProps,
 } from 'react-native-reanimated'
-
 
 import {
 	FlexStyleSheet,
@@ -52,9 +53,11 @@ import {
 import type {
 	AccordionHeaderProps,
 } from './AccordionHeaderProps'
+
 import type {
 	AccordionSize,
 } from './AccordionSize'
+
 import {
 	HeaderBorder,
 } from './_HeaderBorder'
@@ -62,7 +65,6 @@ import {
 import {
 	Motion,
 } from './_motion'
-
 
 export function Header({
 	size = 'medium',
@@ -81,7 +83,7 @@ export function Header({
 		<View
 			style={ styleProp }
 		>
-			{ /** The Border Box */}
+			{ /* The Border Box */ }
 			<HeaderBorder
 				flushAlignment={ flushAlignment }
 			/>

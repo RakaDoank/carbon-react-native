@@ -5,12 +5,12 @@ import {
 	useEffect,
 } from 'react'
 
-
 import {
 	Color,
 	Motion,
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
+
 import Animated, {
 	Easing,
 	cancelAnimation,
@@ -19,6 +19,7 @@ import Animated, {
 	withRepeat,
 	withTiming,
 } from 'react-native-reanimated'
+
 import Svg, {
 	Circle,
 	type SvgProps,
@@ -31,7 +32,6 @@ import {
 import {
 	LayerContext,
 } from '../layer'
-
 
 import type {
 	LoadingProps,
