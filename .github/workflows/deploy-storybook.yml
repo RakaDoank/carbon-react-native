@@ -1,0 +1,42 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches:
+      - deploy-storybook
+  pull_request:
+    branches:
+      - deploy-storybook
+
+jobs:
+  deploy-storybook:
+    name: Deploy Storybook to GitHub Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    strategy:
+      matrix:
+        node-version: [22]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+          cache: 'pnpm'
+      - name: Fonts Copy to Storybook
+        run: npm run fonts-copy-to-storybook
+      - name: Deploy
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          install_command: pnpm install --frozen-lockfile
+          build_command: cd storybook && npm run storybook:build
+          path: ./storybook/.dist
+          checkout: false
