@@ -17,7 +17,7 @@
 		"@react-native/eslint-config": "0.81.4",
 		"@stylistic/eslint-plugin": "^5.4.0",
 		"@types/node": "^22",
-		"@types/react": "19.1.13",
+		"@types/react": "19.2.2",
 		"@unrs/resolver-binding-darwin-arm64": "^1.11.1",
 		"eslint": "^9.37.0",
 		"eslint-import-resolver-typescript": "4.4.4",
