@@ -345,7 +345,6 @@ export default [
 		settings: {
 			'import-x/resolver-next': [
 				EslintImportResolverTypeScript.createTypeScriptImportResolver({
-					alwaysTryTypes: true,
 					project: './storybook/tsconfig.json',
 				}),
 			],

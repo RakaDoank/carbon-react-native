@@ -21,7 +21,6 @@
 		".storybook/**/*",
 		".storybook-rn/**/*",
 		"stories/**/*",
-		"stories-web/**/*",
 		"types/**/*"
 	]
 }
