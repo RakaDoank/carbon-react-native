@@ -219,15 +219,13 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					<IconSubtract
 						width={ iconSize }
 						height={ iconSize }
-						color={ iconColor }
-						stroke={ iconColor }
+						fill={ iconColor }
 					/>
 				) : (
 					<IconCheckmark
 						width={ iconSize }
 						height={ iconSize }
-						color={ iconColor }
-						stroke={ iconColor }
+						fill={ iconColor }
 						style={ !value ? baseStyle.checkmarkHidden : null }
 					/>
 				) }

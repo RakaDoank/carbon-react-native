@@ -272,7 +272,7 @@ function IconNode({
 
 	return (
 		<AnimatedSvgChevronDown
-			color={ color }
+			fill={ color }
 			width={ size }
 			height={ size }
 			style={ [

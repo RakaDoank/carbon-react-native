@@ -80,13 +80,13 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 					<IconErrorFilled
 						width={ 16 }
 						height={ 16 }
-						color={ mapIconErrorColor[themeContext.colorScheme] }
+						fill={ mapIconErrorColor[themeContext.colorScheme] }
 					/>
 				) : state == 'finished' ? (
 					<IconCheckmarkFilled
 						width={ 16 }
 						height={ 16 }
-						color={ mapIconCheckmarkColor[themeContext.colorScheme] }
+						fill={ mapIconCheckmarkColor[themeContext.colorScheme] }
 					/>
 				) : null }
 

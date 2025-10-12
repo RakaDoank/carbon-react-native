@@ -167,7 +167,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						text=""
 						android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 						size="large_expressive"
-						iconNode={ (iconColorState, iconSize, iconStyle) => iconCloseRenderer(iconCloseProps, iconColorState, iconSize, iconStyle) }
+						Icon={ IconClose }
+						iconProps={ iconCloseProps }
 						onPress={ onPressIconClose }
 						colorStateStyle={{
 							background: {
@@ -286,25 +287,4 @@ const
 		{
 			gray_10: Color.Token.gray_10.background_active,
 			gray_100: Color.Token.gray_100.background_active,
-		},
-
-	iconCloseRenderer: (
-		iconCloseProps: BaseProps['iconCloseProps'],
-		...params: Parameters<NonNullable<BaseColorProps['iconNode']>>
-	) => React.ReactNode =
-		(
-			iconCloseProps,
-			___iconColorState,
-			___iconSize,
-			iconStyle,
-		) => {
-			return (
-				<IconClose
-					{ ...iconCloseProps }
-					style={ [
-						iconStyle,
-						iconCloseProps?.style,
-					] }
-				/>
-			)
 		}

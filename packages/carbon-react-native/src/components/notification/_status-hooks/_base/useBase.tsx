@@ -43,10 +43,10 @@ export function useBase({
 
 	return {
 		iconProps: {
-			color: iconColor[color],
+			fill: iconColor[color],
 		},
 		iconCloseProps: {
-			color: iconCloseColor[color],
+			fill: iconCloseColor[color],
 		},
 		titleStyle: titleStyle[color],
 		leftBarStyle: leftBarStyle[color],

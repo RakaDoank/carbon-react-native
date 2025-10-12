@@ -196,7 +196,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				Icon={ !iconNode ? Icon : undefined }
 				iconProps={{
 					...iconProps,
-					color: iconProps?.color ?? stateStyle.icon,
+					fill: iconProps?.fill ?? stateStyle.icon,
 				}}
 				iconNode={
 					iconNode
