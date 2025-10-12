@@ -168,7 +168,7 @@ export default [
 							'after': false,
 						},
 						'catch': {
-							'after': false,
+							'after': true,
 							'before': true,
 						},
 					},
