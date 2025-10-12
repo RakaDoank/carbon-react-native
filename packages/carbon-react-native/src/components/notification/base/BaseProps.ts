@@ -3,12 +3,12 @@ import type {
 } from 'react-native'
 
 import type {
-	BaseColorProps,
-} from '../../button/base-color'
+	SvgProps,
+} from 'react-native-svg'
 
 import type {
-	IconProps,
-} from '../../icon/IconProps'
+	BaseColorProps,
+} from '../../button/base-color'
 
 import type {
 	TextProps,
@@ -23,15 +23,14 @@ export interface BaseProps extends Omit<ViewProps, 'children'> {
 	body?: React.ReactNode,
 	inline?: boolean,
 
-	icon?: IconProps['src'],
-	iconProps?: Omit<IconProps, 'src' | 'width' | 'height'>,
+	Icon?: BaseColorProps['Icon'],
+	iconProps?: Omit<SvgProps, 'width' | 'height'>,
 	iconContainerStyle?: ViewProps['style'],
 
 	iconClose?: boolean,
 	onPressIconClose?: BaseColorProps['onPress'],
 	iconCloseProps?: Omit<
-		IconProps,
-		| 'src'
+		SvgProps,
 		| 'width'
 		| 'height'
 	>,

@@ -7,5 +7,5 @@ import type {
 } from '../_base/UseBaseData'
 
 export interface UseSuccessData extends UseBaseData {
-	icon: NonNullable<BaseProps['icon']>,
+	Icon: NonNullable<BaseProps['Icon']>,
 }

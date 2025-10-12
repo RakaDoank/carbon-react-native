@@ -19,9 +19,8 @@ import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
-import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
-
-import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
+import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
+import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
 
 import {
 	FlexStyleSheet,
@@ -38,11 +37,6 @@ import {
 import {
 	FormLabel,
 } from '../form-label'
-
-import {
-	Icon,
-	type IconProps,
-} from '../icon'
 
 import type {
 	RadioButtonGroupProps,
@@ -94,6 +88,9 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 					onChangeEffect: false,
 					selectedValue: defaultSelectedValue,
 				}),
+
+			themeContext =
+				useContext(ThemeContext),
 
 			[selectedValueSelf, setSelectedValueSelf] =
 				useState(ref.current.selectedValue),
@@ -181,9 +178,17 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 						text={ helperText }
 						textLeading={
 							helperTextModeIcon && helperTextMode === 'error' ? (
-								<IconErrorRenderer/>
+								<IconWarningFilled
+									fill={ mapIconErrorFillColor[themeContext.colorScheme] }
+									width={ 18 }
+									height={ 18 }
+								/>
 							) : helperTextModeIcon && helperTextMode === 'warning' ? (
-								<IconWarningRenderer/>
+								<IconWarningAltFilled
+									fill={ mapIconWarningFillColor[themeContext.colorScheme] }
+									width={ 18 }
+									height={ 18 }
+								/>
 							) : formHelperTextProps?.textLeading
 						}
 						style={ [
@@ -239,40 +244,3 @@ const
 			gray_10: Color.Token.gray_10.support_warning,
 			gray_100: Color.Token.gray_100.support_warning,
 		}
-
-interface IconRendererProps extends Omit<IconProps, 'src' | 'fill' | 'width' | 'height'> {
-}
-
-function IconErrorRenderer(props: IconRendererProps) {
-
-	const themeContext = useContext(ThemeContext)
-
-	return (
-		<Icon
-			{ ...props }
-			src={ IconWarningFilled }
-			fill={ mapIconErrorFillColor[themeContext.colorScheme] }
-			width={ 18 }
-			height={ 18 }
-		/>
-	)
-
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-IconWarningAltFilled.content[0].attrs.fill = 'black'
-function IconWarningRenderer(props: IconRendererProps) {
-
-	const themeContext = useContext(ThemeContext)
-
-	return (
-		<Icon
-			{ ...props }
-			src={ IconWarningAltFilled }
-			fill={ mapIconWarningFillColor[themeContext.colorScheme] }
-			width={ 18 }
-			height={ 18 }
-		/>
-	)
-
-}

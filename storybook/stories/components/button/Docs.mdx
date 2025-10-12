@@ -66,20 +66,49 @@ export default function Component() {
 
 ## Render Icon
 
-Button component provides a prop to render an icon with its correct color of icon in each variant and shrink or grow the icon size in each size option of button. You can just simply import an icon of `@carbon/icons` package, and pass it
+Button component provides a prop to render an icon with its correct color of icon in each variant and shrink or grow the icon size in each size option of button. You can just simply import an icon of `@carbon/icons` package, and pass it with two ways
+
+### Transformed SVG of @carbon/icons
+> Recommended way of using icon that has been transformed at build time
 
 ```tsx
 import {
   Button,
 } from '@audira/carbon-react-native'
 
-import AddIcon from '@carbon/icons/es/add/20'
+import AddIcon from '@carbon/icons/svg/32/add.svg'
 
 export default function Component() {
   return (
     <Button.Primary
       text="Add World"
-      icon={ AddIcon }
+      Icon={ AddIcon }
+    />
+  )
+}
+```
+
+### JavaScript of @carbon/icons
+> Not recommended because it performs transform icon in the runtime
+```tsx
+import {
+  Button,
+  Icon,
+} from '@audira/carbon-react-native'
+
+import AddIcon from '@carbon/icons/es/add/20'
+
+const AddIconComponent = (
+  <Icon
+    src={ AddIcon }
+  />
+)
+
+export default function Component() {
+  return (
+    <Button.Primary
+      text="Add World"
+      Icon={ AddIconComponent }
     />
   )
 }

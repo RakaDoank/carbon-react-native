@@ -20,25 +20,21 @@ import {
 	Color,
 } from '@audira/carbon-react-native-elements'
 
-
-import IconCheckmark from '@carbon/icons/es/checkmark/20'
-import IconSubtract from '@carbon/icons/es/subtract/20'
+import IconCheckmark from '@carbon/icons/svg/32/checkmark.svg'
+import IconSubtract from '@carbon/icons/svg/32/subtract.svg'
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
+
 import {
 	ThemeContext,
 } from '../../contexts'
-import {
-	Icon,
-	type IconProps,
-} from '../icon'
-
 
 import type {
 	CheckboxInputInteractiveState,
@@ -55,6 +51,7 @@ import type {
 import type {
 	CheckboxInputValue,
 } from './CheckboxInputValue'
+
 import type {
 	RefBase,
 } from './_RefBase'
@@ -219,12 +216,16 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				/>
 
 				{ value && indeterminate ? (
-					<IconSubtractComponent
+					<IconSubtract
+						width={ iconSize }
+						height={ iconSize }
 						color={ iconColor }
 						stroke={ iconColor }
 					/>
 				) : (
-					<IconCheckmarkComponent
+					<IconCheckmark
+						width={ iconSize }
+						height={ iconSize }
 						color={ iconColor }
 						stroke={ iconColor }
 						style={ !value ? baseStyle.checkmarkHidden : null }
@@ -338,41 +339,4 @@ function getInteractiveStateStyle(
 	value: CheckboxInputValue,
 ) {
 	return interactiveStyle[`${interactiveState}_${!!value}`]
-}
-
-interface IconComponentProps extends Omit<IconProps, 'src'> {
-}
-
-function IconCheckmarkComponent({
-	width = iconSize,
-	height = iconSize,
-	...props
-}: IconComponentProps) {
-
-	return (
-		<Icon
-			{ ...props }
-			src={ IconCheckmark }
-			width={ width }
-			height={ height }
-		/>
-	)
-
-}
-
-function IconSubtractComponent({
-	width = iconSize,
-	height = iconSize,
-	...props
-}: IconComponentProps) {
-
-	return (
-		<Icon
-			{ ...props }
-			src={ IconSubtract }
-			width={ width }
-			height={ height }
-		/>
-	)
-
 }

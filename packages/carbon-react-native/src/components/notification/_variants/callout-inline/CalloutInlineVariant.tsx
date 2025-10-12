@@ -5,6 +5,7 @@ import {
 import {
 	VariantContextProvider,
 } from '../../_VariantContextProvider'
+
 import {
 	Base,
 } from '../../base'
@@ -12,7 +13,6 @@ import {
 import {
 	Subtitle,
 } from '../../subtitle'
-
 
 import type {
 	CalloutInlineVariantProps,
@@ -26,7 +26,7 @@ export const CalloutInlineVariant = forwardRef<CalloutInlineVariantRef, CalloutI
 	function CalloutInlineVariant(
 		{
 			color,
-			icon,
+			Icon,
 			subtitle,
 			subtitleStyle,
 			...props
@@ -39,7 +39,7 @@ export const CalloutInlineVariant = forwardRef<CalloutInlineVariantRef, CalloutI
 				<Base
 					{ ...props }
 					inline
-					icon={ icon }
+					Icon={ Icon }
 					iconClose={ false }
 					body={
 						subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number') ? (

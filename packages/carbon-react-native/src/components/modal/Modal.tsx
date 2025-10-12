@@ -16,7 +16,7 @@ import {
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
 
-import IconClose from '@carbon/icons/es/close/20'
+import IconClose from '@carbon/icons/svg/32/close.svg'
 
 import {
 	ModalContext,
@@ -141,7 +141,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 
 					<ButtonGhostIcon
 						{ ...buttonCloseProps }
-						icon={ IconClose }
+						Icon={ IconClose }
 						style={ [
 							CommonStyleSheet.absolute,
 							styleSheet.iconClose,

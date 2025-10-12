@@ -14,8 +14,12 @@ import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
-import IconWarningAltFilled from '@carbon/icons/es/warning--alt--filled/16'
-import IconWarningFilled from '@carbon/icons/es/warning--filled/16'
+import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
+import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+
+import type {
+	SvgProps,
+} from 'react-native-svg'
 
 import {
 	FlexStyleSheet,
@@ -36,11 +40,6 @@ import {
 import {
 	FormLabel,
 } from '../form-label'
-
-import {
-	Icon,
-	type IconProps,
-} from '../icon'
 
 import type {
 	CheckboxGroupProps,
@@ -158,17 +157,26 @@ const
 			gray_100: Color.Token.gray_100.support_warning,
 		}
 
-interface IconRendererProps extends Omit<IconProps, 'src' | 'fill' | 'width' | 'height'> {
+interface IconRendererProps extends Omit<SvgProps, 'src' | 'fill' | 'width' | 'height'> {
 }
 
 function IconErrorRenderer(props: IconRendererProps) {
 
 	const themeContext = useContext(ThemeContext)
 
+	// return (
+	// 	<Icon
+	// 		{ ...props }
+	// 		src={ IconWarningFilled }
+	// 		fill={ mapIconErrorFillColor[themeContext.colorScheme] }
+	// 		stroke={ mapIconErrorStrokeColor[themeContext.colorScheme] }
+	// 		width={ 18 }
+	// 		height={ 18 }
+	// 	/>
+	// )
 	return (
-		<Icon
+		<IconWarningFilled
 			{ ...props }
-			src={ IconWarningFilled }
 			fill={ mapIconErrorFillColor[themeContext.colorScheme] }
 			stroke={ mapIconErrorStrokeColor[themeContext.colorScheme] }
 			width={ 18 }
@@ -178,16 +186,24 @@ function IconErrorRenderer(props: IconRendererProps) {
 
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-IconWarningAltFilled.content[0].attrs.fill = 'black'
+// // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+// IconWarningAltFilled.content[0].attrs.fill = 'black'
 function IconWarningRenderer(props: IconRendererProps) {
 
 	const themeContext = useContext(ThemeContext)
 
+	// return (
+	// 	<Icon
+	// 		{ ...props }
+	// 		src={ IconWarningAltFilled }
+	// 		fill={ mapIconWarningFillColor[themeContext.colorScheme] }
+	// 		width={ 18 }
+	// 		height={ 18 }
+	// 	/>
+	// )
 	return (
-		<Icon
+		<IconWarningAltFilled
 			{ ...props }
-			src={ IconWarningAltFilled }
 			fill={ mapIconWarningFillColor[themeContext.colorScheme] }
 			width={ 18 }
 			height={ 18 }

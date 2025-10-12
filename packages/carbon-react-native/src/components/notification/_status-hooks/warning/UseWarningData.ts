@@ -7,5 +7,5 @@ import type {
 } from '../_base/UseBaseData'
 
 export interface UseWarningData extends UseBaseData {
-	icon: NonNullable<BaseProps['icon']>,
+	Icon: NonNullable<BaseProps['Icon']>,
 }

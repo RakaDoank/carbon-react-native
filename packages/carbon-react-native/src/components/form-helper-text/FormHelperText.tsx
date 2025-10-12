@@ -11,6 +11,7 @@ import {
 import {
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -18,7 +19,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 import {
 	Text,

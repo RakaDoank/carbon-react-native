@@ -15,10 +15,10 @@ import {
 import {
 	CarbonStyleSheet,
 } from '../../../carbon-style-sheet'
+
 import {
 	ThemeContext,
 } from '../../../contexts'
-
 
 import {
 	BaseColor,

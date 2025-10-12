@@ -5,6 +5,7 @@ import {
 import {
 	VariantContextProvider,
 } from '../../_VariantContextProvider'
+
 import {
 	Base,
 } from '../../base'
@@ -12,7 +13,6 @@ import {
 import {
 	Subtitle,
 } from '../../subtitle'
-
 
 import {
 	ButtonTertiary,
@@ -30,7 +30,7 @@ export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVari
 	function ActionableVariant(
 		{
 			color,
-			icon,
+			Icon,
 			subtitle,
 			subtitleStyle,
 			buttonProps,
@@ -44,7 +44,7 @@ export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVari
 				<Base
 					{ ...props }
 					inline={ false }
-					icon={ icon }
+					Icon={ Icon }
 					iconClose
 					body={
 						subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number') ? (

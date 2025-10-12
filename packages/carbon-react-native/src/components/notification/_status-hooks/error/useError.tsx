@@ -5,8 +5,8 @@ import {
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
-import Icon from '@carbon/icons/es/error--filled/20'
 
+import Icon from '@carbon/icons/svg/32/error--filled.svg'
 
 import {
 	CarbonStyleSheet,
@@ -55,7 +55,7 @@ export function useError({
 
 	return {
 		...data,
-		icon: Icon,
+		Icon,
 	}
 
 }

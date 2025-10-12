@@ -33,7 +33,7 @@ export const Error = forwardRef<ErrorRef, ErrorProps>(
 	) {
 
 		const {
-			icon,
+			Icon,
 			iconProps: iconPropsData,
 			iconCloseProps: iconClosePropsData,
 			titleStyle,
@@ -48,7 +48,7 @@ export const Error = forwardRef<ErrorRef, ErrorProps>(
 			<CalloutInlineVariant
 				{ ...props }
 				color={ color }
-				icon={ icon }
+				Icon={ Icon }
 				iconProps={{
 					...iconProps,
 					...iconPropsData,

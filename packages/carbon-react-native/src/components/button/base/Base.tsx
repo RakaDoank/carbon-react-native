@@ -24,10 +24,6 @@ import {
 } from '../../../_internal/style-sheets'
 
 import {
-	Icon,
-} from '../../icon'
-
-import {
 	Text,
 	type TextProps,
 } from '../../text'
@@ -50,7 +46,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			size: sizeProp,
 			text,
 			textProps,
-			icon,
+			Icon,
 			iconProps,
 			iconNode,
 			backgroundNode,
@@ -88,7 +84,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				style={ [
 					FlexStyleSheet.justify_between,
 					baseStyle.container,
-					mapContainerStyle[`${globalConfigContext.rtl}`][`${!!text}`][`${!!icon || !!iconNode}`],
+					mapContainerStyle[`${globalConfigContext.rtl}`][`${!!text}`][`${!!Icon || !!iconNode}`],
 					sizeStyle[size],
 					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
 					style,
@@ -111,10 +107,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						</View>
 					) }
 
-					{ (!!icon && !iconNode) ? (
+					{ (!!Icon && !iconNode) ? (
 						<Icon
 							{ ...iconProps }
-							src={ icon }
 							width={ iconProps?.width ?? iconSize }
 							height={ iconProps?.height ?? iconSize }
 							style={ [

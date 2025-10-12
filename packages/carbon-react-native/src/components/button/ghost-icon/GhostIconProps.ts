@@ -1,8 +1,4 @@
 import type {
-	SharedType,
-} from '../../../types'
-
-import type {
 	InlineLoadingProps,
 } from '../../inline-loading/InlineLoadingProps'
 
@@ -14,10 +10,8 @@ export interface GhostIconProps extends Omit<
 	BaseColorProps,
 	| 'android_rippleEffectColor'
 	| 'colorStateStyle'
-	| 'icon'
 	| 'text'
 	| 'inlineLoadingProps'
 > {
-	icon: SharedType.CarbonIcon,
 	inlineLoadingProps?: Omit<InlineLoadingProps, 'text'>,
 }

@@ -4,12 +4,8 @@ import type {
 } from 'react-native'
 
 import type {
-	SharedType,
-} from '../../../types'
-
-import type {
-	IconProps,
-} from '../../icon/IconProps'
+	SvgProps,
+} from 'react-native-svg'
 
 import type {
 	InlineLoadingProps,
@@ -31,8 +27,8 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	size?: Size,
 	text?: string,
 	textProps?: Omit<TextProps, 'type' | 'children'>,
-	icon?: SharedType.CarbonIcon,
-	iconProps?: Omit<IconProps, 'src'>,
+	Icon?: React.FunctionComponent<SvgProps>,
+	iconProps?: Omit<SvgProps, 'children'>,
 	/**
 	 * This prop is useful to custom render at the icon position.  
 	 * `iconNode` takes precedence even if {@linkcode icon} prop is present.
@@ -45,7 +41,7 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 		/**
 		 * Use this style to keep icon style nicely center aligned vertically with text
 		 */
-		iconStyle: IconProps['style'],
+		iconStyle: SvgProps['style'],
 	) => React.ReactNode,
 	/**
 	 * Only for base-color button for Focus state UI purposes

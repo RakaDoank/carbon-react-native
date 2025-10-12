@@ -4,6 +4,8 @@ import type {
 	StorybookConfig,
 } from '@storybook/react-native-web-vite'
 
+import VitePluginSVGR from 'vite-plugin-svgr'
+
 const workspaceRoot = node_path.join(__dirname, '..', '..')
 
 export default {
@@ -44,6 +46,34 @@ export default {
 				'@audira/carbon-react-native-elements': node_path.join(workspaceRoot, 'packages', 'carbon-react-native-elements', 'src'),
 			},
 		}
+
+		config.plugins = [
+			...config.plugins ?? [],
+			VitePluginSVGR({
+				include: [
+					/\.svg$/,
+				],
+				svgrOptions: {
+					native: true,
+					exportType: 'default',
+					svgoConfig: {
+						plugins: [{
+							name: 'preset-default',
+							params: {
+								overrides: {
+									convertColors: false,
+									inlineStyles: {
+										onlyMatchedOnce: false,
+									},
+									removeUnknownsAndDefaults: false,
+									removeViewBox: false, // By default it's removed. Keep the viewBox in svg.
+								},
+							},
+						}],
+					},
+				},
+			}),
+		]
 
 		return config
 	},

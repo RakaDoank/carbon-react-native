@@ -55,7 +55,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 			textProps,
 			android_rippleEffectColor,
 			colorStateStyle,
-			icon,
+			Icon,
 			iconProps,
 			iconNode,
 			InlineLoading,
@@ -193,7 +193,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					...textProps,
 					style: [stateStyle.text, textProps?.style],
 				}}
-				icon={ !iconNode ? icon : undefined }
+				Icon={ !iconNode ? Icon : undefined }
 				iconProps={{
 					...iconProps,
 					color: iconProps?.color ?? stateStyle.icon,

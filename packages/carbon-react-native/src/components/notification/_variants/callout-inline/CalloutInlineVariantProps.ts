@@ -20,7 +20,7 @@ export interface CalloutInlineVariantProps extends Omit<
 	| 'leftContainerStyle'
 > {
 	color?: NotificationColor,
-	icon: NonNullable<BaseProps['icon']>,
+	Icon: NonNullable<BaseProps['Icon']>,
 	subtitle: React.ReactNode,
 	subtitleStyle?: SubtitleProps['style'],
 }

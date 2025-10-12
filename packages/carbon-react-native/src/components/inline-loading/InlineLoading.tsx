@@ -12,8 +12,8 @@ import {
 	Color,
 } from '@audira/carbon-react-native-elements'
 
-import IconCheckmarkFilled from '@carbon/icons/es/checkmark--filled/20'
-import IconErrorFilled from '@carbon/icons/es/error--filled/20'
+import IconCheckmarkFilled from '@carbon/icons/svg/32/checkmark--filled.svg'
+import IconErrorFilled from '@carbon/icons/svg/32/error--filled.svg'
 
 import {
 	FlexStyleSheet,
@@ -26,10 +26,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
-import {
-	Icon,
-} from '../icon'
 
 import {
 	Loading,
@@ -81,15 +77,13 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 						type="small"
 					/>
 				) : state == 'error' ? (
-					<Icon
-						src={ IconErrorFilled }
+					<IconErrorFilled
 						width={ 16 }
 						height={ 16 }
 						color={ mapIconErrorColor[themeContext.colorScheme] }
 					/>
 				) : state == 'finished' ? (
-					<Icon
-						src={ IconCheckmarkFilled }
+					<IconCheckmarkFilled
 						width={ 16 }
 						height={ 16 }
 						color={ mapIconCheckmarkColor[themeContext.colorScheme] }

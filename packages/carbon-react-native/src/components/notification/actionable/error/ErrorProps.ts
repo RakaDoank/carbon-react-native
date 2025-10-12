@@ -2,7 +2,7 @@ import type {
 	ActionableVariantProps,
 } from '../../_variants/actionable'
 
-export interface ErrorProps extends Omit<ActionableVariantProps, 'icon'> {
+export interface ErrorProps extends Omit<ActionableVariantProps, 'Icon'> {
 	iconProps?: Omit<
 		NonNullable<ActionableVariantProps['iconProps']>,
 		| 'color'

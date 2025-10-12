@@ -7,11 +7,9 @@ import {
 	Button,
 } from '@audira/carbon-react-native'
 
-import {
-	Add20,
-	AiGenerate20,
-	CarbonForIbmProduct20,
-} from '@carbon/icons/es'
+import Add from '@carbon/icons/svg/32/add.svg'
+import AiGenerate from '@carbon/icons/svg/32/ai-generate.svg'
+import CarbonForIbmProduct from '@carbon/icons/svg/32/carbon-for-ibm-product.svg'
 
 export default {
 	title: 'Components/Button',
@@ -19,14 +17,15 @@ export default {
 	args: {
 		text: 'Lorem Ipsum',
 		size: 'large_productive',
-		icon: 'none',
+		// @ts-expect-error Re mapping
+		Icon: 'none',
 	},
 	argTypes: {
 		text: {
 			type: 'string',
 			control: 'text',
 		},
-		icon: {
+		Icon: {
 			control: 'select',
 			options: [
 				'none',
@@ -36,9 +35,9 @@ export default {
 			],
 			mapping: {
 				'none': undefined,
-				'Add20': Add20,
-				'AiGenerate20': AiGenerate20,
-				'CarbonForIbmProduct20': CarbonForIbmProduct20,
+				'add.svg': Add,
+				'ai-generate.svg': AiGenerate,
+				'carbon-for-ibm-product.svg': CarbonForIbmProduct,
 			},
 		},
 		size: {
@@ -77,7 +76,7 @@ export const GhostIcon: StoryFn<Button.GhostIconProps> = args => {
 	return (
 		<Button.GhostIcon
 			{ ...args }
-			icon={ args.icon ?? Add20 }
+			Icon={ args.Icon ?? Add }
 		/>
 	)
 }

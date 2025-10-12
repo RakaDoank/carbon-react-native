@@ -5,8 +5,8 @@ import {
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
-import Icon from '@carbon/icons/es/information--filled/20'
 
+import Icon from '@carbon/icons/svg/32/information--filled.svg'
 
 import {
 	CarbonStyleSheet,
@@ -55,7 +55,7 @@ export function useInformational({
 
 	return {
 		...data,
-		icon: Icon,
+		Icon,
 	}
 
 }

@@ -14,18 +14,22 @@ import {
 	Color,
 } from '@audira/carbon-react-native-elements'
 
-import ChevronDown from '@carbon/icons/es/chevron--down/20'
+import ChevronDown from '@carbon/icons/svg/32/chevron--down.svg'
 
 import Animated, {
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
-	type AnimatedProps,
 } from 'react-native-reanimated'
+
+import type {
+	SvgProps,
+} from 'react-native-svg'
 
 import {
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -34,21 +38,15 @@ import {
 	ThemeContext,
 } from '../../contexts'
 
-
 import type {
 	Size as ButtonSize,
 } from '../button/Size'
+
 import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
 	type BaseColorState as ButtonColorState,
 } from '../button/base-color'
-
-
-import {
-	Icon,
-	type IconProps,
-} from '../icon'
 
 import type {
 	AccordionHeaderProps,
@@ -199,11 +197,11 @@ const
 			large: 'large_productive',
 		},
 
-	IconAnimated =
+	AnimatedSvgChevronDown =
 		/**
 		 * 
 		 */
-		Animated.createAnimatedComponent(Icon as never) as unknown as React.ComponentClass<AnimatedProps<IconProps>>,
+		Animated.createAnimatedComponent(ChevronDown),
 
 	iconNodeRenderer: (
 		open: boolean,
@@ -224,7 +222,7 @@ interface IconNodeProps {
 	open: boolean,
 	color: string,
 	size: number,
-	style?: IconProps['style'],
+	style?: SvgProps['style'],
 }
 function IconNode({
 	open,
@@ -273,8 +271,7 @@ function IconNode({
 	])
 
 	return (
-		<IconAnimated
-			src={ ChevronDown }
+		<AnimatedSvgChevronDown
 			color={ color }
 			width={ size }
 			height={ size }

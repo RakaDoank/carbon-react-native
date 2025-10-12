@@ -21,7 +21,7 @@ import {
 	Motion,
 } from '@audira/carbon-react-native-elements'
 
-import Checkmark from '@carbon/icons/es/checkmark/20'
+import IconCheckmark from '@carbon/icons/svg/32/checkmark.svg'
 
 import Animated, {
 	Easing,
@@ -44,10 +44,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
-import {
-	Icon,
-} from '../icon'
 
 import type {
 	SwitchProps,
@@ -310,8 +306,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					] }
 				>
 					{ size === 'small' && (
-						<IconAnimated
-							src={ Checkmark }
+						<IconCheckmarkAnimated
 							fill={ mapIconAnimatedFillColor[themeContext.colorScheme] }
 							style={ iconAnimatedStyle }
 						/>
@@ -472,8 +467,8 @@ const
 	PressableAnimated =
 		Animated.createAnimatedComponent(Pressable),
 
-	IconAnimated =
-		Animated.createAnimatedComponent(Icon),
+	IconCheckmarkAnimated =
+		Animated.createAnimatedComponent(IconCheckmark),
 
 	mapIconAnimatedFillColor: Record<ThemeContext['colorScheme'], string> =
 		{

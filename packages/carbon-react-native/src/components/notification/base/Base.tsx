@@ -15,11 +15,12 @@ import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
-import IconClose from '@carbon/icons/es/close/20'
+import IconClose from '@carbon/icons/svg/32/close.svg'
 
 import {
 	FlexStyleSheet,
 } from '../../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../../carbon-style-sheet'
@@ -28,15 +29,10 @@ import {
 	ThemeContext,
 } from '../../../contexts'
 
-
 import {
 	BaseColor as ButtonBaseColor,
 	type BaseColorProps,
 } from '../../button/base-color'
-
-import {
-	Icon,
-} from '../../icon'
 
 import {
 	Text,
@@ -58,7 +54,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			body,
 			inline,
 
-			icon,
+			Icon,
 			iconProps,
 			iconContainerStyle,
 
@@ -108,7 +104,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						leftContainerStyle,
 					] }
 				>
-					{ !!icon && (
+					{ !!Icon && (
 						<View
 							style={ [
 								baseStyle.iconContainer,
@@ -117,7 +113,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						>
 							<Icon
 								{ ...iconProps }
-								src={ icon }
 								width={ 20 }
 								height={ 20 }
 							/>
@@ -304,7 +299,7 @@ const
 			iconStyle,
 		) => {
 			return (
-				<IconClosePart
+				<IconClose
 					{ ...iconCloseProps }
 					style={ [
 						iconStyle,
@@ -313,16 +308,3 @@ const
 				/>
 			)
 		}
-
-interface IconClosePartProps extends NonNullable<BaseProps['iconCloseProps']> {
-}
-function IconClosePart(props: IconClosePartProps) {
-	return (
-		<Icon
-			{ ...props }
-			src={ IconClose }
-			width={ 20 }
-			height={ 20 }
-		/>
-	)
-}

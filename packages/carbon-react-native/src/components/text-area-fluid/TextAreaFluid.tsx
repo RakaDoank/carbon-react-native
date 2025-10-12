@@ -12,8 +12,8 @@ import {
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
-import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
-import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
+import IconWarningAltFilled16 from '@carbon/icons/svg/32/warning--alt--filled.svg'
+import IconWarningFilled16 from '@carbon/icons/svg/32/warning--filled.svg'
 
 import {
 	FlexStyleSheet,
@@ -34,10 +34,6 @@ import {
 import {
 	FormLabel,
 } from '../form-label'
-
-import {
-	Icon,
-} from '../icon'
 
 import {
 	TextAreaField,
@@ -90,15 +86,13 @@ export const TextAreaFluid = forwardRef<TextAreaFluidRef, TextAreaFluidProps>(
 							] }
 							textTrailing={
 								interactiveState === 'invalid' ? (
-									<Icon
-										src={ IconWarningFilled16 }
+									<IconWarningFilled16
 										width={ 16 }
 										height={ 16 }
 										fill={ mapIconInvalidColor[themeContext.colorScheme] }
 									/>
 								) : interactiveState === 'warning' ? (
-									<Icon
-										src={ IconWarningAltFilled16 }
+									<IconWarningAltFilled16
 										width={ 16 }
 										height={ 16 }
 										fill={ mapIconWarningColor[themeContext.colorScheme] }

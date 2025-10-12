@@ -33,7 +33,7 @@ export const Success = forwardRef<SuccessRef, SuccessProps>(
 	) {
 
 		const {
-			icon,
+			Icon,
 			iconProps: iconPropsData,
 			iconCloseProps: iconClosePropsData,
 			titleStyle,
@@ -49,7 +49,7 @@ export const Success = forwardRef<SuccessRef, SuccessProps>(
 			<CalloutVariant
 				{ ...props }
 				color={ color }
-				icon={ icon }
+				Icon={ Icon }
 				iconProps={{
 					...iconProps,
 					...iconPropsData,

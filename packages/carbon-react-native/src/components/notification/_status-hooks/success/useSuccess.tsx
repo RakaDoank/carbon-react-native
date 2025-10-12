@@ -5,8 +5,8 @@ import {
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
-import Icon from '@carbon/icons/es/checkmark--filled/20'
 
+import Icon from '@carbon/icons/svg/32/checkmark--filled.svg'
 
 import {
 	CarbonStyleSheet,
@@ -55,7 +55,7 @@ export function useSuccess({
 
 	return {
 		...data,
-		icon: Icon,
+		Icon,
 	}
 
 }

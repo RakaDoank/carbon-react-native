@@ -20,8 +20,9 @@ import {
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
 
-import IconWarningAltFilled16 from '@carbon/icons/es/warning--alt--filled/16'
-import IconWarningFilled16 from '@carbon/icons/es/warning--filled/16'
+import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
+import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+
 import Animated, {
 	Easing,
 	interpolateColor,
@@ -44,13 +45,8 @@ import type {
 } from '../../types'
 
 import {
-	Icon,
-} from '../icon'
-
-import {
 	LayerContext,
 } from '../layer'
-
 
 import type {
 	TextInputFieldProps,
@@ -63,6 +59,7 @@ import type {
 import type {
 	TextInputFieldSize,
 } from './TextInputFieldSize'
+
 import {
 	RNTextInput,
 } from './_rn-text-input'
@@ -249,8 +246,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 				/>
 
 				{ !hideInteractiveStateIcon && interactiveState === 'invalid' ? (
-					<Icon
-						src={ IconWarningFilled16 }
+					<IconWarningFilled
 						width={ 16 }
 						height={ 16 }
 						fill={ mapIconInvalidColor[themeContext.colorScheme] }
@@ -260,8 +256,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 						] }
 					/>
 				) : !hideInteractiveStateIcon && interactiveState === 'warning' ? (
-					<Icon
-						src={ IconWarningAltFilled16 }
+					<IconWarningAltFilled
 						width={ 16 }
 						height={ 16 }
 						fill={ mapIconWarningColor[themeContext.colorScheme] }

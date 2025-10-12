@@ -33,7 +33,7 @@ export const Informational = forwardRef<InformationalRef, InformationalProps>(
 	) {
 
 		const {
-			icon,
+			Icon,
 			iconProps: iconPropsData,
 			iconCloseProps: iconClosePropsData,
 			titleStyle,
@@ -48,7 +48,7 @@ export const Informational = forwardRef<InformationalRef, InformationalProps>(
 			<ActionableInlineVariant
 				{ ...props }
 				color={ color }
-				icon={ icon }
+				Icon={ Icon }
 				iconProps={{
 					...iconProps,
 					...iconPropsData,

@@ -24,7 +24,7 @@ export interface ActionableInlineVariantProps extends Omit<
 	| 'leftContainerStyle'
 > {
 	color?: NotificationColor,
-	icon: NonNullable<BaseProps['icon']>,
+	Icon: NonNullable<BaseProps['Icon']>,
 	/**
 	 * Fill the button prop to render an button action in the notification component  
 	 * Props are similar like you're calling an button component `<Button.Ghost text="button"/>`, just without the JSX

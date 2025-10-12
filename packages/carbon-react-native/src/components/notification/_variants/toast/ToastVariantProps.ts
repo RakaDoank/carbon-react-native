@@ -20,7 +20,7 @@ export interface ToastVariantProps extends Omit<
 	| 'leftContainerStyle'
 > {
 	color?: NotificationColor,
-	icon: NonNullable<BaseProps['icon']>,
+	Icon: NonNullable<BaseProps['Icon']>,
 	/**
 	 * Override timestamp text with this prop
 	 */

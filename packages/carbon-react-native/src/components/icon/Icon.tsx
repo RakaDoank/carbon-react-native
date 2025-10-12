@@ -27,7 +27,7 @@ export class Icon extends Component<IconProps> {
 					height={ this.props.height || '100%' }
 				/>
 			)
-		} catch{
+		} catch {
 			return (
 				<SvgXml
 					{ ...this.props }

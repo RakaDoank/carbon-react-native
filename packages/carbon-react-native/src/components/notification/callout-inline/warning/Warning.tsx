@@ -33,7 +33,7 @@ export const Warning = forwardRef<WarningRef, WarningProps>(
 	) {
 
 		const {
-			icon,
+			Icon,
 			iconProps: iconPropsData,
 			iconCloseProps: iconClosePropsData,
 			titleStyle,
@@ -48,7 +48,7 @@ export const Warning = forwardRef<WarningRef, WarningProps>(
 			<CalloutInlineVariant
 				{ ...props }
 				color={ color }
-				icon={ icon }
+				Icon={ Icon }
 				iconProps={{
 					...iconProps,
 					...iconPropsData,
