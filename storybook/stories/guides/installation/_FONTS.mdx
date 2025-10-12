@@ -3,10 +3,10 @@ import {
 } from '@storybook/addon-docs/blocks'
 
 <Meta
-	title="Guides/Fonts Installation"
+	title="Guides/Installation/Fonts"
 />
 
-# Fonts Installation
+# Fonts
 
 To use this component library, you have to include the `IBM Plex Sans` font to your project
 
@@ -51,7 +51,7 @@ In your app.json
 }
 ```
 
-It's recommended to embed font files at build time which is more efficient than `useFonts` or `loadAsync`.
+> This is recommended way to embed font files at build time which is more efficient than `useFonts` or `loadAsync`.
 
 ### Bare React Native
 Install the `IBM Plex Sans` font to your project with [react-native-asset](https://www.npmjs.com/package/react-native-asset). Update your `react-native.config.js` file (create it on your root project directory if doesn't exist)
@@ -155,15 +155,11 @@ Create new CSS file (e.g fonts.css), place it to your static or public directory
 /* Please, do not modify the font-family, font-weight, and the font-style because it's have to be the same to the `<Text>` component style internally */
 ```
 
-Then, somewhere in your React Native Web entry file of JavaScript, import the CSS
-```tsx
-// Somewhere in your entry JavaScript file
+Then, we have to include the CSS in your project with two ways. Choose one of following way
 
-import './fonts.css' // Change the path to the correct one of your CSS file
-```
-> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can import the @font-face CSS rule file with JavaScript from your [Root layout](https://docs.expo.dev/router/basics/layout/#root-layout) file
+### External Resource Link Element
+Traditionally, you can include it to your web with the [External Resource Link Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) or you may know it as `<link>` element in HTML
 
-Or traditionally, you can import it with the [External Resource Link Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) or you may know it as `<link>` element in HTML
 ```html
 <html>
   <head>
@@ -173,3 +169,13 @@ Or traditionally, you can import it with the [External Resource Link Element](ht
 </html>
 ```
 > In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can include the &lt;link&gt; element in your [Root HTML](https://docs.expo.dev/workflow/web/#root-html) file
+
+### Import the CSS from JavaScript Entry
+If your project can support importing CSS. Import the CSS globally. Likely, it's in the root layout of your React app. It should've been applied to the entire page.
+
+```tsx
+// Somewhere in your entry JavaScript file
+
+import './fonts.css' // Change the path to the correct one of your CSS file
+```
+> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can import the @font-face CSS rule file with JavaScript from your [Root layout](https://docs.expo.dev/router/basics/layout/#root-layout) file

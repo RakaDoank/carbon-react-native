@@ -1,0 +1,126 @@
+import {
+	Meta,
+} from '@storybook/addon-docs/blocks'
+
+<Meta
+	title="Guides/Installation/SVG Transformer"
+	name="SVG Transformer"
+/>
+
+# SVG Transformer
+
+This component library relies on transformed SVG files in [react-native-svg](https://github.com/software-mansion/react-native-svg) to use `@carbon/icons` internally, e.g. the checkmark icon for the `Checkbox` component, chevron icon for the `Accordion` component, etc.
+
+To accomplish the SVG transform, you have to follow this guide
+
+## Android, iOS, Windows, macOS
+
+> Although, this library is not supported for Windows due to [react-native-reanimated issue#6386](https://github.com/software-mansion/react-native-reanimated/discussions/6386#discussioncomment-10273839)
+
+Fortunately, [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) to accomplish this SVG transform by tweaking the Metro bundler. Simply, visit the [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) repository to install the library in your React Native app.
+
+## Web
+
+If you are using [Expo Web with Metro bundler](https://docs.expo.dev/guides/customizing-metro/#web-support), you can also use [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) by paper.
+
+It's a bit effort to accomplish the SVG transform in React Native for Web if your web project is using [Webpack](https://webpack.js.org), or [Vite](https://vite.dev), or probably other bundlers.
+
+> Same effort that we've put into this library documentation website that built with [Storybook for React Native Web](https://storybook.js.org/docs/get-started/frameworks/react-native-web-vite?renderer=react-native-web) with Vite
+
+### Webpack
+
+For Webpack bundler, you can use [@svgr/webpack](https://react-svgr.com/docs/webpack). Install [@svgr/webpack](https://react-svgr.com/docs/webpack) as a development dependency in your project, and see this sample config below
+
+```js
+// webpack.config.js
+
+module.exports = {
+  /**
+   * Assume there are other configurations here
+   * Combine your configurations with this sample configuration
+   */
+
+  module: {
+    rules: [
+      // other rules
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: [{
+          loader: '@svgr/webpack',
+          options: {
+            native: true,
+            exportType: 'default',
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      convertColors: false,
+                      inlineStyles: {
+                        onlyMatchedOnce: false,
+                      },
+                      removeUnknownsAndDefaults: false,
+                      removeViewBox: false,
+                    },
+                  },
+                }
+              ],
+            },
+          },
+        }]
+      }
+    ],
+  },
+}
+```
+
+### Vite
+
+For Vite, you can use [vite-plugin-svgr](https://www.npmjs.com/package/vite-plugin-svgr). Install the [vite-plugin-svgr](https://www.npmjs.com/package/vite-plugin-svgr) as a development dependency in your project, and see this sample config below
+
+```js
+// vite.config.js
+
+import VitePluginSVGR from 'vite-plugin-svgr'
+
+export default {
+  /**
+   * Assume there are other configurations here
+   * Combine your configurations with this sample configuration
+   */
+
+  plugins: [
+    // other plugins
+    VitePluginSVGR({
+      include: [
+        /\.svg$/,
+      ],
+      svgrOptions: {
+        native: true,
+        exportType: 'default',
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'preset-default',
+              params: {
+                overrides: {
+                  convertColors: false,
+                  inlineStyles: {
+                    onlyMatchedOnce: false,
+                  },
+                  removeUnknownsAndDefaults: false,
+                  removeViewBox: false,
+                },
+              },
+            }
+          ],
+        },
+      },
+    })
+  ],
+}
+```
+
+> This documentation website is also using the [vite-plugin-svgr](https://www.npmjs.com/package/vite-plugin-svgr). Check out our Storybook React Native Web with Vite final configuration [here](https://github.com/RakaDoank/carbon-react-native/blob/main/storybook/.storybook/main.ts).

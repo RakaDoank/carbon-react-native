@@ -3,12 +3,13 @@ import {
 } from '@storybook/addon-docs/blocks'
 
 <Meta
-  title="Installation"
+  title="Guides/Installation"
+  name="Installation"
 />
 
 # Installation
 
-Install the library to your project
+Install these libraries to your project
 
 npm
 ```
@@ -34,7 +35,16 @@ Install these dependencies on your React Native project, (skip one of these libr
 - [@carbon/icon-helpers](https://www.npmjs.com/package/@carbon/icon-helpers)
 
 ## Fonts Installation
-Install the `IBM Plex Sans` font to your React Native app. See the [Fonts Installation](?path=/docs/guides-fonts-installation--docs) guide
+
+Install the `IBM Plex Sans` font to your React Native app.
+
+See the [Fonts](?path=/docs/guides-installation-fonts--docs) installation guide.
+
+## SVG Transformer
+
+This component library relies on transformed SVG files in [react-native-svg](https://github.com/software-mansion/react-native-svg) to use `@carbon/icons` internally, e.g. the checkmark icon for the `Checkbox` component, chevron icon for the `Accordion` component, etc.
+
+See [SVG Transformer](?path=/docs/guides-installation-svg-transformer--svg-transformer) guide.
 
 ## React Initialization
 This library depends with some React contexts like the color scheme to use the color tokens correctly based on the current color scheme. You have to wrap your whole React App once with `<CarbonReactNative>`
