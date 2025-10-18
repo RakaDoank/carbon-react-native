@@ -28,6 +28,7 @@ const config = {
 	projectRoot: __dirname,
 
 	resolver: {
+		assetExts: defaultConfig.resolver.assetExts.filter(ext => ext !== 'svg'),
 		extraNodeModules: {
 			'@audira/carbon-react-native': node_path.join(root, 'packages/carbon-react-native/src'),
 			'@audira/carbon-react-native-elements': node_path.join(root, 'packages/carbon-react-native-elements/src'),
@@ -36,6 +37,14 @@ const config = {
 			node_path.join(root, 'storybook/node_modules'),
 			node_path.join(root, 'node_modules'),
 		],
+		sourceExts: [
+			...defaultConfig.resolver.sourceExts ?? [],
+			'svg',
+		],
+	},
+
+	transformer: {
+		babelTransformerPath: require.resolve('react-native-svg-transformer/react-native'),
 	},
 
 	watchFolders: [
