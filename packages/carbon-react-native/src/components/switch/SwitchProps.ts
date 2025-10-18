@@ -1,11 +1,12 @@
 import type {
+	EasingFunction,
 	PressableProps,
 	StyleProp,
 	ViewStyle,
 } from 'react-native'
 
 import type {
-	WithTimingConfig,
+	EasingFunctionFactory,
 } from 'react-native-reanimated'
 
 import type {
@@ -32,7 +33,13 @@ export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	value?: boolean,
 	trackColor?: Record<'false' | 'true', string>,
 	thumbColor?: Record<'false' | 'true', string>,
-	motion?: Record<'false' | 'true', WithTimingConfig>,
+	motion?: Record<'false' | 'true', {
+		duration: number,
+		/**
+		 * `EasingFunctionFactory` is the return type of the `Easing.bezier` of React Native Reanimated
+		 */
+		easing?: EasingFunction | EasingFunctionFactory,
+	}>,
 	onChange?: (value: boolean) => void,
 	style?: StyleProp<ViewStyle>,
 }

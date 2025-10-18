@@ -15,6 +15,7 @@ import {
 import {
 	CommonStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -22,7 +23,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 export interface HeaderBorderProps {
 	/**

@@ -1,7 +1,5 @@
 import {
 	useContext,
-	useEffect,
-	useRef,
 } from 'react'
 
 import {
@@ -13,18 +11,6 @@ import {
 import {
 	Color,
 } from '@audira/carbon-react-native-elements'
-
-import ChevronDown from '@carbon/icons/svg/32/chevron--down.svg'
-
-import Animated, {
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-} from 'react-native-reanimated'
-
-import type {
-	SvgProps,
-} from 'react-native-svg'
 
 import {
 	FlexStyleSheet,
@@ -61,8 +47,8 @@ import {
 } from './_HeaderBorder'
 
 import {
-	Motion,
-} from './_motion'
+	Chevron,
+} from './_chevron'
 
 export function Header({
 	size = 'medium',
@@ -197,19 +183,13 @@ const
 			large: 'large_productive',
 		},
 
-	AnimatedSvgChevronDown =
-		/**
-		 * 
-		 */
-		Animated.createAnimatedComponent(ChevronDown),
-
 	iconNodeRenderer: (
 		open: boolean,
 		...params: Parameters<NonNullable<ButtonColorProps['iconNode']>>
 	) => React.ReactNode =
 		(open, iconColorState, iconSize, iconStyle) => {
 			return (
-				<IconNode
+				<Chevron
 					open={ open }
 					color={ iconColorState }
 					size={ iconSize }
@@ -217,69 +197,3 @@ const
 				/>
 			)
 		}
-
-interface IconNodeProps {
-	open: boolean,
-	color: string,
-	size: number,
-	style?: SvgProps['style'],
-}
-function IconNode({
-	open,
-	color,
-	size,
-	style,
-}: IconNodeProps) {
-
-	const
-		isMounted =
-			useRef(false),
-
-		rotateZ =
-			useSharedValue(open ? 180 : 0),
-
-		animatedStyle =
-			useAnimatedStyle(() => {
-				return {
-					transform: [{
-						rotateZ: `${rotateZ.value}deg`,
-					}],
-				}
-			})
-
-	useEffect(() => {
-		if(isMounted.current) {
-			if(open) {
-				rotateZ.value =
-					withTiming(
-						180,
-						Motion.toOpen,
-					)
-			} else {
-				rotateZ.value =
-					withTiming(
-						0,
-						Motion.toClose,
-					)
-			}
-		} else {
-			isMounted.current = true
-		}
-	}, [
-		open,
-		rotateZ,
-	])
-
-	return (
-		<AnimatedSvgChevronDown
-			fill={ color }
-			width={ size }
-			height={ size }
-			style={ [
-				animatedStyle,
-				style,
-			] }
-		/>
-	)
-
-}

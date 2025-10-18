@@ -26,7 +26,6 @@ import {
 	type TextInputFieldRef,
 } from '../text-input-field'
 
-
 import type {
 	TextInputProps,
 } from './TextInputProps'
@@ -34,6 +33,7 @@ import type {
 import type {
 	TextInputRef,
 } from './TextInputRef'
+
 import type {
 	TextInputRefBase,
 } from './_TextInputRefBase'
@@ -47,9 +47,10 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 			// hoist the `TextInputFieldProps`
 			size = 'medium',
 			interactiveState = 'normal',
+			textInputStyle,
 			// -----
 
-			// hoist the actual `TextInputProps` of React Native
+			// hoist TextInputProps of React Native
 			allowFontScaling,
 			autoCapitalize,
 			autoComplete,
@@ -94,6 +95,40 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 			maxFontSizeMultiplier,
 			// -----
 
+			// hoist TextInputAndroidProps
+			cursorColor,
+			selectionHandleColor,
+			importantForAutofill,
+			disableFullscreenUI,
+			inlineImageLeft,
+			inlineImagePadding,
+			numberOfLines,
+			returnKeyLabel,
+			textBreakStrategy,
+			underlineColorAndroid,
+			textAlignVertical,
+			showSoftInputOnFocus,
+			verticalAlign,
+			// -----
+
+			// hoist TextInputIOSProps
+			disableKeyboardShortcuts,
+			clearButtonMode,
+			clearTextOnFocus,
+			dataDetectorTypes,
+			enablesReturnKeyAutomatically,
+			keyboardAppearance,
+			passwordRules,
+			rejectResponderTermination,
+			selectionState,
+			spellCheck,
+			textContentType,
+			scrollEnabled,
+			lineBreakStrategyIOS,
+			lineBreakModeIOS,
+			smartInsertDelete,
+			// -----
+
 			style: viewStyleProp,
 			...viewProps
 		},
@@ -134,6 +169,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 					ref={ textInputFieldRef }
 					size={ size }
 					interactiveState={ interactiveState }
+					style={ textInputStyle }
+
 					allowFontScaling={ allowFontScaling }
 					autoCapitalize={ autoCapitalize }
 					autoComplete={ autoComplete }
@@ -176,6 +213,36 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 					inputAccessoryViewID={ inputAccessoryViewID }
 					inputAccessoryViewButtonLabel={ inputAccessoryViewButtonLabel }
 					maxFontSizeMultiplier={ maxFontSizeMultiplier }
+
+					cursorColor={ cursorColor }
+					selectionHandleColor={ selectionHandleColor }
+					importantForAutofill={ importantForAutofill }
+					disableFullscreenUI={ disableFullscreenUI }
+					inlineImageLeft={ inlineImageLeft }
+					inlineImagePadding={ inlineImagePadding }
+					numberOfLines={ numberOfLines }
+					returnKeyLabel={ returnKeyLabel }
+					textBreakStrategy={ textBreakStrategy }
+					underlineColorAndroid={ underlineColorAndroid }
+					textAlignVertical={ textAlignVertical }
+					showSoftInputOnFocus={ showSoftInputOnFocus }
+					verticalAlign={ verticalAlign }
+
+					disableKeyboardShortcuts={ disableKeyboardShortcuts }
+					clearButtonMode={ clearButtonMode }
+					clearTextOnFocus={ clearTextOnFocus }
+					dataDetectorTypes={ dataDetectorTypes }
+					enablesReturnKeyAutomatically={ enablesReturnKeyAutomatically }
+					keyboardAppearance={ keyboardAppearance }
+					passwordRules={ passwordRules }
+					rejectResponderTermination={ rejectResponderTermination }
+					selectionState={ selectionState }
+					spellCheck={ spellCheck }
+					textContentType={ textContentType }
+					scrollEnabled={ scrollEnabled }
+					lineBreakStrategyIOS={ lineBreakStrategyIOS }
+					lineBreakModeIOS={ lineBreakModeIOS }
+					smartInsertDelete={ smartInsertDelete }
 				/>
 
 				{ !!helperText?.length && (

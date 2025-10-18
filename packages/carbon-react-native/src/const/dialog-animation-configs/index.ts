@@ -1,3 +1,7 @@
-export * from './carbon-react'
-export * from './fade-bottom-up'
-export * from './fade-bottom-up-2'
+import * as Animated from './animated'
+import * as Reanimated from './reanimated'
+
+export {
+	Animated,
+	Reanimated,
+}

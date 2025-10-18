@@ -12,9 +12,17 @@ import {
 	StyleSheet,
 } from 'react-native'
 
+import {
+	DialogAnimationConfigs,
+} from '../../../const'
+
 import type {
 	DialogData,
 } from '../../../contexts/dialog/DialogData'
+
+import type {
+	DialogProviderAnimationConfig,
+} from '../DialogProviderAnimationConfig'
 
 import type {
 	ControllerProps,
@@ -37,7 +45,8 @@ import {
 export const Controller = forwardRef<ControllerRef, ControllerProps>(
 	function Controller(
 		{
-			animationConfig,
+			animatedConfig,
+			reanimatedConfig,
 			modalProps,
 			overlayProps,
 			overlayTouchDismiss,
@@ -164,8 +173,11 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 			<Overlay
 				ref={ overlayRef }
 				{ ...overlayProps }
-				defaultAnimationConfig={{
-					duration: typeof animationConfig.duration === 'number' ? animationConfig.duration : animationConfig.duration?.[0],
+				animationConfig={{
+					duration:
+						getSingleAnimationConfigDuration(animatedConfig?.duration) ??
+						getSingleAnimationConfigDuration(reanimatedConfig?.duration) ??
+						DialogAnimationConfigs.Animated.CarbonReact.duration,
 				}}
 			>
 				{ data.map((item, index) => {
@@ -173,7 +185,8 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 						<Modal
 							{ ...modalProps }
 							key={ index }
-							defaultAnimationConfig={ animationConfig }
+							animatedConfig={ animatedConfig }
+							reanimatedConfig={ reanimatedConfig }
 							ref={ modalRef => setModalRef(modalRef, index) }
 						>
 							{ (item.overlayTouchDismiss ?? overlayTouchDismiss) && (
@@ -199,3 +212,15 @@ type DialogDataState =
 		// | 'type'
 		| 'stack'
 	>
+
+function getSingleAnimationConfigDuration(duration: DialogProviderAnimationConfig['duration']) {
+	if(typeof duration === 'number') {
+		return duration
+	}
+
+	if(duration) {
+		return duration[0]
+	}
+
+	return undefined
+}

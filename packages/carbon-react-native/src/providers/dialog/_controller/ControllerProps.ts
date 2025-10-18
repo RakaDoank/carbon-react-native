@@ -9,5 +9,6 @@ export interface ControllerProps extends Omit<
 	| 'animationConfig'
 > {
 	onEmpty: () => void,
-	animationConfig: NonNullable<DialogProviderProps['animationConfig']>,
+	animatedConfig?: DialogProviderProps['animatedConfig'],
+	reanimatedConfig?: DialogProviderProps['reanimatedConfig'],
 }

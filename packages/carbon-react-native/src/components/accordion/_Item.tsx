@@ -20,7 +20,6 @@ import {
 	Collapsible,
 } from '../collapsible'
 
-
 import type {
 	AccordionHeaderProps,
 } from './AccordionHeaderProps'
@@ -32,15 +31,19 @@ import type {
 import type {
 	AccordionItemRef,
 } from './AccordionItemRef'
+
 import {
 	Header,
 } from './_Header'
+
 import type {
 	ItemRefBase,
 } from './_ItemRefBase'
+
 import {
 	Context,
 } from './_context'
+
 import {
 	Motion,
 } from './_motion'

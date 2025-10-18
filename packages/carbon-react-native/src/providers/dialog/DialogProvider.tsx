@@ -7,10 +7,6 @@ import {
 } from 'react'
 
 import {
-	DialogAnimationConfigs,
-} from '../../const'
-
-import {
 	DialogContext,
 	type DialogData,
 } from '../../contexts/dialog'
@@ -32,7 +28,8 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 	function DialogProvider(
 		{
 			children,
-			animationConfig = DialogAnimationConfigs.CarbonReact,
+			animatedConfig,
+			reanimatedConfig,
 			modalProps,
 			overlayProps,
 			overlayTouchDismiss,
@@ -112,7 +109,8 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 				{ mountController && (
 					<Controller
 						ref={ setControllerRef }
-						animationConfig={ animationConfig }
+						animatedConfig={ animatedConfig }
+						reanimatedConfig={ reanimatedConfig }
 						modalProps={ modalProps }
 						overlayProps={ overlayProps }
 						overlayTouchDismiss={ overlayTouchDismiss }

@@ -9,6 +9,7 @@ import {
 
 import {
 	Spacing,
+	Typography,
 } from '@audira/carbon-react-native-elements'
 
 import {
@@ -24,9 +25,10 @@ import type {
 } from './TextAreaFieldRef'
 
 export const TextAreaField = forwardRef<TextAreaFieldRef, TextAreaFieldProps>(
-	function TextArea(
+	function(
 		{
 			style,
+			textAlignVertical = 'top',
 			textInputStyle,
 			...props
 		},
@@ -38,6 +40,7 @@ export const TextAreaField = forwardRef<TextAreaFieldRef, TextAreaFieldProps>(
 				ref={ ref }
 				{ ...props }
 				multiline
+				textAlignVertical={ textAlignVertical }
 				style={ [
 					styleSheet.textAreaField,
 					style,
@@ -62,6 +65,7 @@ const
 			rnTextInput: {
 				paddingTop: 11,
 				paddingBottom: 11,
+				height: Typography.TypeSets.body_compact_01.lineHeight * 4 + 22,
 				...Platform.select({
 					web: {
 						resize: 'vertical',

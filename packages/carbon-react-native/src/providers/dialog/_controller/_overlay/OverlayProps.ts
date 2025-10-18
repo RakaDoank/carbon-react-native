@@ -3,7 +3,7 @@ import type {
 } from 'react-native'
 
 export interface OverlayProps extends ViewProps {
-	defaultAnimationConfig: {
+	animationConfig: {
 		duration?: number,
 	},
 }

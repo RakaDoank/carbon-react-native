@@ -26,7 +26,6 @@ import {
 	type TextAreaFieldRef,
 } from '../text-area-field'
 
-
 import type {
 	TextAreaProps,
 } from './TextAreaProps'
@@ -34,6 +33,7 @@ import type {
 import type {
 	TextAreaRef,
 } from './TextAreaRef'
+
 import type {
 	TextAreaRefBase,
 } from './_TextAreaRefBase'
@@ -46,9 +46,10 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 
 			// hoist the `TextAreaFieldProps`
 			interactiveState = 'normal',
+			textInputStyle,
 			// -----
 
-			// hoist the actual `TextInputProps` of React Native
+			// hoist TextInputProps of React Native
 			allowFontScaling,
 			autoCapitalize,
 			autoComplete,
@@ -92,6 +93,40 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 			maxFontSizeMultiplier,
 			// -----
 
+			// hoist TextInputAndroidProps
+			cursorColor,
+			selectionHandleColor,
+			importantForAutofill,
+			disableFullscreenUI,
+			inlineImageLeft,
+			inlineImagePadding,
+			numberOfLines,
+			returnKeyLabel,
+			textBreakStrategy,
+			underlineColorAndroid,
+			textAlignVertical,
+			showSoftInputOnFocus,
+			verticalAlign,
+			// -----
+
+			// hoist TextInputIOSProps
+			disableKeyboardShortcuts,
+			clearButtonMode,
+			clearTextOnFocus,
+			dataDetectorTypes,
+			enablesReturnKeyAutomatically,
+			keyboardAppearance,
+			passwordRules,
+			rejectResponderTermination,
+			selectionState,
+			spellCheck,
+			textContentType,
+			scrollEnabled,
+			lineBreakStrategyIOS,
+			lineBreakModeIOS,
+			smartInsertDelete,
+			// -----
+
 			style: viewStyleProp,
 			...viewProps
 		},
@@ -131,6 +166,8 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 				<TextAreaField
 					ref={ textInputFieldRef }
 					interactiveState={ interactiveState }
+					style={ textInputStyle }
+
 					allowFontScaling={ allowFontScaling }
 					autoCapitalize={ autoCapitalize }
 					autoComplete={ autoComplete }
@@ -172,6 +209,36 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 					inputAccessoryViewID={ inputAccessoryViewID }
 					inputAccessoryViewButtonLabel={ inputAccessoryViewButtonLabel }
 					maxFontSizeMultiplier={ maxFontSizeMultiplier }
+
+					cursorColor={ cursorColor }
+					selectionHandleColor={ selectionHandleColor }
+					importantForAutofill={ importantForAutofill }
+					disableFullscreenUI={ disableFullscreenUI }
+					inlineImageLeft={ inlineImageLeft }
+					inlineImagePadding={ inlineImagePadding }
+					numberOfLines={ numberOfLines }
+					returnKeyLabel={ returnKeyLabel }
+					textBreakStrategy={ textBreakStrategy }
+					underlineColorAndroid={ underlineColorAndroid }
+					textAlignVertical={ textAlignVertical }
+					showSoftInputOnFocus={ showSoftInputOnFocus }
+					verticalAlign={ verticalAlign }
+
+					disableKeyboardShortcuts={ disableKeyboardShortcuts }
+					clearButtonMode={ clearButtonMode }
+					clearTextOnFocus={ clearTextOnFocus }
+					dataDetectorTypes={ dataDetectorTypes }
+					enablesReturnKeyAutomatically={ enablesReturnKeyAutomatically }
+					keyboardAppearance={ keyboardAppearance }
+					passwordRules={ passwordRules }
+					rejectResponderTermination={ rejectResponderTermination }
+					selectionState={ selectionState }
+					spellCheck={ spellCheck }
+					textContentType={ textContentType }
+					scrollEnabled={ scrollEnabled }
+					lineBreakStrategyIOS={ lineBreakStrategyIOS }
+					lineBreakModeIOS={ lineBreakModeIOS }
+					smartInsertDelete={ smartInsertDelete }
 				/>
 
 				{ !!helperText?.length && (

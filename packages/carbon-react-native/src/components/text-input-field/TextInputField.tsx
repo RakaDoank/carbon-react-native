@@ -12,25 +12,14 @@ import {
 	type ViewStyle,
 } from 'react-native'
 
-
 import {
 	Color,
-	Motion,
 	Spacing,
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
 
 import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
 import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
-
-import Animated, {
-	Easing,
-	interpolateColor,
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-	type WithTimingConfig,
-} from 'react-native-reanimated'
 
 import {
 	CarbonStyleSheet,
@@ -61,8 +50,16 @@ import type {
 } from './TextInputFieldSize'
 
 import {
+	AnimatedView,
+} from './_animated-view'
+
+import {
 	RNTextInput,
 } from './_rn-text-input'
+
+import {
+	useAnimation,
+} from './_use-animation'
 
 export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>(
 	function TextInputField(
@@ -75,7 +72,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 			style,
 			textInputStyle,
 
-			// hoist the actual TextInputProps of React Native
+			// hoist TextInputProps of React Native
 			allowFontScaling,
 			autoCapitalize,
 			autoComplete,
@@ -120,6 +117,40 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 			maxFontSizeMultiplier,
 			// -----
 
+			// hoist TextInputAndroidProps
+			cursorColor,
+			selectionHandleColor,
+			importantForAutofill,
+			disableFullscreenUI,
+			inlineImageLeft,
+			inlineImagePadding,
+			numberOfLines,
+			returnKeyLabel,
+			textBreakStrategy,
+			underlineColorAndroid,
+			textAlignVertical,
+			showSoftInputOnFocus,
+			verticalAlign,
+			// -----
+
+			// hoist TextInputIOSProps
+			disableKeyboardShortcuts,
+			clearButtonMode,
+			clearTextOnFocus,
+			dataDetectorTypes,
+			enablesReturnKeyAutomatically,
+			keyboardAppearance,
+			passwordRules,
+			rejectResponderTermination,
+			selectionState,
+			spellCheck,
+			textContentType,
+			scrollEnabled,
+			lineBreakStrategyIOS,
+			lineBreakModeIOS,
+			smartInsertDelete,
+			// -----
+
 			...viewProps
 		},
 		ref,
@@ -138,35 +169,15 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 			textInputRef =
 				useRef<TextInput>(null),
 
-			/**
-			 * 0 = Blurred
-			 * 1 = Focused
-			 */
-			focusValue =
-				useSharedValue(0),
-
-			focusOutlineStyle =
-				useAnimatedStyle(() => {
-					return {
-						outlineColor: interpolateColor(
-							focusValue.value,
-							[0, 1],
-							['transparent', mapOutlineColorFocus[themeContext.colorScheme]],
-						),
-					}
-				}),
-
-			onFocus: TextInputFieldProps['onFocus'] =
-				event => {
-					focusValue.value = withTiming(1, timingConfig)
-					onFocusProp?.(event)
-				},
-
-			onBlur: TextInputFieldProps['onBlur'] =
-				event => {
-					focusValue.value = withTiming(0, timingConfig)
-					onBlurProp?.(event)
-				}
+			{
+				focusOutlineStyle,
+				blurHandler,
+				focusHandler,
+			} =
+				useAnimation({
+					onBlur: onBlurProp,
+					onFocus: onFocusProp,
+				})
 
 		useImperativeHandle(ref, () => {
 			return Object.assign(
@@ -181,7 +192,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 		}, [])
 
 		return (
-			<Animated.View
+			<AnimatedView
 				ref={ ref }
 				{ ...viewProps }
 				style={ [
@@ -200,6 +211,8 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 				<RNTextInput
 					ref={ textInputRef }
 					interactiveState={ interactiveState }
+					style={ textInputStyle }
+
 					allowFontScaling={ allowFontScaling }
 					autoCapitalize={ autoCapitalize }
 					autoComplete={ autoComplete }
@@ -216,7 +229,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					inputMode={ inputMode }
 					maxLength={ maxLength }
 					multiline={ multiline }
-					onBlur={ onBlur }
+					onBlur={ blurHandler }
 					onChange={ onChange }
 					onChangeText={ onChangeText }
 					onContentSizeChange={ onContentSizeChange }
@@ -224,7 +237,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					onPress={ onPress }
 					onPressIn={ onPressIn }
 					onPressOut={ onPressOut }
-					onFocus={ onFocus }
+					onFocus={ focusHandler }
 					onSelectionChange={ onSelectionChange }
 					onSubmitEditing={ onSubmitEditing }
 					onScroll={ onScroll }
@@ -242,7 +255,36 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					inputAccessoryViewID={ inputAccessoryViewID }
 					inputAccessoryViewButtonLabel={ inputAccessoryViewButtonLabel }
 					maxFontSizeMultiplier={ maxFontSizeMultiplier }
-					style={ textInputStyle }
+
+					cursorColor={ cursorColor }
+					selectionHandleColor={ selectionHandleColor }
+					importantForAutofill={ importantForAutofill }
+					disableFullscreenUI={ disableFullscreenUI }
+					inlineImageLeft={ inlineImageLeft }
+					inlineImagePadding={ inlineImagePadding }
+					numberOfLines={ numberOfLines }
+					returnKeyLabel={ returnKeyLabel }
+					textBreakStrategy={ textBreakStrategy }
+					underlineColorAndroid={ underlineColorAndroid }
+					textAlignVertical={ textAlignVertical }
+					showSoftInputOnFocus={ showSoftInputOnFocus }
+					verticalAlign={ verticalAlign }
+
+					disableKeyboardShortcuts={ disableKeyboardShortcuts }
+					clearButtonMode={ clearButtonMode }
+					clearTextOnFocus={ clearTextOnFocus }
+					dataDetectorTypes={ dataDetectorTypes }
+					enablesReturnKeyAutomatically={ enablesReturnKeyAutomatically }
+					keyboardAppearance={ keyboardAppearance }
+					passwordRules={ passwordRules }
+					rejectResponderTermination={ rejectResponderTermination }
+					selectionState={ selectionState }
+					spellCheck={ spellCheck }
+					textContentType={ textContentType }
+					scrollEnabled={ scrollEnabled }
+					lineBreakStrategyIOS={ lineBreakStrategyIOS }
+					lineBreakModeIOS={ lineBreakModeIOS }
+					smartInsertDelete={ smartInsertDelete }
 				/>
 
 				{ !hideInteractiveStateIcon && interactiveState === 'invalid' ? (
@@ -268,30 +310,13 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 				) : undefined }
 
 				{ blockEndNode }
-			</Animated.View>
+			</AnimatedView>
 		)
 
 	},
 )
 
 const
-	timingConfig: WithTimingConfig =
-		{
-			duration: Motion.Duration.fast_01,
-			easing: Easing.bezier(
-				Motion.Easing.standard.productive.x1,
-				Motion.Easing.standard.productive.y1,
-				Motion.Easing.standard.productive.x2,
-				Motion.Easing.standard.productive.y2,
-			),
-		},
-
-	mapOutlineColorFocus: Record<ThemeType.ColorScheme, string> =
-		{
-			gray_10: Color.Token.gray_10.focus,
-			gray_100: Color.Token.gray_100.focus,
-		},
-
 	styleSheet =
 		StyleSheet.create({
 			textInputField: {
