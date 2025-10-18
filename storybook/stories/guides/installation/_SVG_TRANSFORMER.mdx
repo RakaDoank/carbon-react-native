@@ -9,21 +9,17 @@ import {
 
 # SVG Transformer
 
-This component library relies on transformed SVG files in [react-native-svg](https://github.com/software-mansion/react-native-svg) to use `@carbon/icons` internally, e.g. the checkmark icon for the `Checkbox` component, chevron icon for the `Accordion` component, etc.
+This component library relies on transformed SVG files of `@carbon/icons` in [react-native-svg](https://github.com/software-mansion/react-native-svg) markup internally, e.g. the checkmark icon for the `Checkbox` component, chevron icon for the `Accordion` component, etc.
 
 To accomplish the SVG transform, you have to follow this guide
 
 ## Android, iOS, Windows, macOS
 
-> Although, this library is not supported for Windows due to [react-native-reanimated issue#6386](https://github.com/software-mansion/react-native-reanimated/discussions/6386#discussioncomment-10273839)
-
 Fortunately, [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) to accomplish this SVG transform by tweaking the Metro bundler. Simply, visit the [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) repository to install the library in your React Native app.
 
 ## Web
 
-If you are using [Expo Web with Metro bundler](https://docs.expo.dev/guides/customizing-metro/#web-support), you can also use [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) by paper.
-
-It's a bit effort to accomplish the SVG transform in React Native for Web if your web project is using [Webpack](https://webpack.js.org), or [Vite](https://vite.dev), or probably other bundlers.
+If you are using [Expo Web with Metro bundler](https://docs.expo.dev/guides/customizing-metro/#web-support), you can also use [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer) by paper. Otherwise, you have to configure the SVG transform in React Native for Web manually if your web project is using [Webpack](https://webpack.js.org), or [Vite](https://vite.dev), or probably other bundlers.
 
 > Same effort that we've put into this library documentation website that built with [Storybook for React Native Web](https://storybook.js.org/docs/get-started/frameworks/react-native-web-vite?renderer=react-native-web) with Vite
 
