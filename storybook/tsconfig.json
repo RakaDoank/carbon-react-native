@@ -6,6 +6,7 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"allowUnreachableCode": false,
+		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"],
 		"noEmit": true,
 		"noImplicitAny": true,
 		"paths": {
