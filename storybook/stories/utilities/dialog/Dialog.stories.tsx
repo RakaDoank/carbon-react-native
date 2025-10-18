@@ -17,7 +17,7 @@ import {
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Utilities/Modal',
+	title: 'Utilities/Dialog',
 	decorators: Story => {
 		return (
 			<DialogProvider>
@@ -27,7 +27,7 @@ export default {
 	},
 } satisfies Meta
 
-export const Modal: StoryFn = () => {
+export const Dialog: StoryFn = () => {
 
 	const
 		breakpoint =
@@ -36,7 +36,7 @@ export const Modal: StoryFn = () => {
 		dialogContext =
 			useContext(DialogContext),
 
-		showModal =
+		showDialog =
 			() => {
 				dialogContext.show({
 					component: (
@@ -92,20 +92,20 @@ export const Modal: StoryFn = () => {
 
 	return (
 		<Button.Primary
-			text="Launch Modal"
-			onPress={ showModal }
+			text="Launch Dialog"
+			onPress={ showDialog }
 		/>
 	)
 
 }
 
-export const ModalStack: StoryFn = () => {
+export const DialogStack: StoryFn = () => {
 
 	const
 		dialogContext =
 			useContext(DialogContext),
 
-		showModal2 =
+		showDialog2 =
 			() => {
 				dialogContext.show({
 					stack: true,
@@ -122,7 +122,7 @@ export const ModalStack: StoryFn = () => {
 				})
 			},
 
-		showModal =
+		showDialog =
 			() => {
 				dialogContext.show({
 					component: (
@@ -144,8 +144,8 @@ export const ModalStack: StoryFn = () => {
 								}
 								button2={
 									<Button.Primary
-										text="Second Modal"
-										onPress={ showModal2 }
+										text="Second Dialog"
+										onPress={ showDialog2 }
 									/>
 								}
 							/>
@@ -156,8 +156,8 @@ export const ModalStack: StoryFn = () => {
 
 	return (
 		<Button.Primary
-			text="Launch Modal"
-			onPress={ showModal }
+			text="Launch Dialog"
+			onPress={ showDialog }
 		/>
 	)
 
