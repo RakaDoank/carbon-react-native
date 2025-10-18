@@ -15,6 +15,7 @@ import {
 } from 'react-native'
 
 import {
+	Color,
 	Spacing,
 } from '@audira/carbon-react-native-elements'
 
@@ -22,14 +23,10 @@ import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../../_internal/style-sheets'
-import {
-	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
 
 import {
 	ThemeContext,
 } from '../../../contexts'
-
 
 import {
 	FormLabel,
@@ -40,21 +37,22 @@ import {
 	type SwitchRef,
 	type SwitchState,
 } from '../../switch'
+
 import {
 	Text,
 } from '../../text'
 
-
 import type {
 	BaseProps,
 } from './BaseProps'
+
 import type {
 	BaseRef,
 } from './BaseRef'
+
 import type {
 	RefBase,
 } from './_RefBase'
-
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
@@ -75,14 +73,15 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		forwardedRef,
 	) {
 
-		useContext(ThemeContext) // keep it reactive
-
 		const
 			viewRef =
 				useRef<View>(null),
 
 			switchRef =
 				useRef<SwitchRef>(null),
+
+			themeContext =
+				useContext(ThemeContext),
 
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
@@ -141,7 +140,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						textProps={{
 							...formLabelProps?.textProps,
 							style: [
-								mapFormLabelTextStyle[state],
+								mapFormLabelTextStyle[themeContext.colorScheme][state],
 								formLabelProps?.textProps?.style,
 							],
 						}}
@@ -176,7 +175,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						type={ actionTextProps?.type || 'body_compact_01' }
 						style={ [
 							baseStyle.actionText,
-							mapActionTextStyle[state],
+							mapActionTextStyle[themeContext.colorScheme][state],
 							actionTextProps?.style,
 						] }
 					>
@@ -206,38 +205,80 @@ const
 			},
 		}),
 
-	carbonStyle =
-		CarbonStyleSheet.create<Record<`${'formLabel' | 'actionText'}_${SwitchState}`, TextStyle>>({
-			formLabel_normal: {
-				color: CarbonStyleSheet.color.text_primary,
-			},
-			formLabel_disabled: {
-				color: CarbonStyleSheet.color.text_disabled,
-			},
-			formLabel_read_only: {
-				color: CarbonStyleSheet.color.text_primary,
-			},
-			actionText_normal: {
-				color: CarbonStyleSheet.color.text_primary,
-			},
-			actionText_disabled: {
-				color: CarbonStyleSheet.color.text_disabled,
-			},
-			actionText_read_only: {
-				color: CarbonStyleSheet.color.text_primary,
-			},
-		}),
-
-	mapFormLabelTextStyle: Record<SwitchState, TextStyle> =
+	coloringStyle: {
+		[ColorScheme in ThemeContext['colorScheme']]: Record<`${'formLabel' | 'actionText'}_${SwitchState}`, TextStyle>
+	} =
 		{
-			normal: carbonStyle.formLabel_normal,
-			disabled: carbonStyle.formLabel_disabled,
-			read_only: carbonStyle.formLabel_read_only,
+			gray_10: {
+				formLabel_normal: {
+					color: Color.Token.gray_10.text_primary,
+				},
+				formLabel_disabled: {
+					color: Color.Token.gray_10.text_disabled,
+				},
+				formLabel_read_only: {
+					color: Color.Token.gray_10.text_primary,
+				},
+				actionText_normal: {
+					color: Color.Token.gray_10.text_primary,
+				},
+				actionText_disabled: {
+					color: Color.Token.gray_10.text_disabled,
+				},
+				actionText_read_only: {
+					color: Color.Token.gray_10.text_primary,
+				},
+			},
+			gray_100: {
+				formLabel_normal: {
+					color: Color.Token.gray_100.text_primary,
+				},
+				formLabel_disabled: {
+					color: Color.Token.gray_100.text_disabled,
+				},
+				formLabel_read_only: {
+					color: Color.Token.gray_100.text_primary,
+				},
+				actionText_normal: {
+					color: Color.Token.gray_100.text_primary,
+				},
+				actionText_disabled: {
+					color: Color.Token.gray_100.text_disabled,
+				},
+				actionText_read_only: {
+					color: Color.Token.gray_100.text_primary,
+				},
+			},
 		},
 
-	mapActionTextStyle: Record<SwitchState, TextStyle> =
+	mapFormLabelTextStyle: {
+		[ColorScheme in ThemeContext['colorScheme']]: Record<SwitchState, TextStyle>
+	} =
 		{
-			normal: carbonStyle.actionText_normal,
-			disabled: carbonStyle.actionText_disabled,
-			read_only: carbonStyle.actionText_read_only,
+			gray_10: {
+				normal: coloringStyle.gray_10.formLabel_normal,
+				disabled: coloringStyle.gray_10.formLabel_disabled,
+				read_only: coloringStyle.gray_10.formLabel_read_only,
+			},
+			gray_100: {
+				normal: coloringStyle.gray_100.formLabel_normal,
+				disabled: coloringStyle.gray_100.formLabel_disabled,
+				read_only: coloringStyle.gray_100.formLabel_read_only,
+			},
+		},
+
+	mapActionTextStyle: {
+		[ColorScheme in ThemeContext['colorScheme']]: Record<SwitchState, TextStyle>
+	} =
+		{
+			gray_10: {
+				normal: coloringStyle.gray_10.actionText_normal,
+				disabled: coloringStyle.gray_10.actionText_disabled,
+				read_only: coloringStyle.gray_10.actionText_read_only,
+			},
+			gray_100: {
+				normal: coloringStyle.gray_100.actionText_normal,
+				disabled: coloringStyle.gray_100.actionText_disabled,
+				read_only: coloringStyle.gray_100.actionText_read_only,
+			},
 		}
