@@ -11,6 +11,7 @@ import {
 
 export default {
 	title: 'Components/Loading',
+	component: CarbonLoading,
 	args: {
 		type: 'large',
 	},

@@ -4,22 +4,18 @@ import type {
 } from '@storybook/react-native'
 
 import {
-	RadioButton as CarbonRadioButton,
+	RadioButtonInput as CarbonRadioButtonInput,
 	type RadioButtonInputInteractiveState,
-	type RadioButtonProps,
+	type RadioButtonInputProps,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Radio Button',
-	component: CarbonRadioButton,
+	title: 'Components/Radio Button/Radio Button Input',
+	component: CarbonRadioButtonInput,
 	args: {
-		label: 'Label',
 		interactiveState: 'normal',
 	},
 	argTypes: {
-		label: {
-			control: 'text',
-		},
 		interactiveState: {
 			control: 'select',
 			options: [
@@ -31,11 +27,11 @@ export default {
 			] satisfies RadioButtonInputInteractiveState[],
 		},
 	},
-} satisfies Meta<RadioButtonProps>
+} satisfies Meta<RadioButtonInputProps>
 
-export const RadioButton: StoryFn<RadioButtonProps> = args => {
+export const RadioButtonInput: StoryFn<RadioButtonInputProps> = args => {
 	return (
-		<CarbonRadioButton
+		<CarbonRadioButtonInput
 			{ ...args }
 		/>
 	)

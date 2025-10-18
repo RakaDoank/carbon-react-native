@@ -12,6 +12,7 @@ import {
 
 export default {
 	title: 'Components/Switch',
+	component: _Switch,
 	args: {
 		size: 'default',
 		state: 'normal',

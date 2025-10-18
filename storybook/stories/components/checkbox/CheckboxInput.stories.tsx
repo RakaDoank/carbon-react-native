@@ -4,22 +4,18 @@ import type {
 } from '@storybook/react-native'
 
 import {
-	Checkbox as CarbonCheckbox,
+	CheckboxInput as CarbonCheckboxInput,
 	type CheckboxInputInteractiveState,
-	type CheckboxProps,
+	type CheckboxInputProps,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Checkbox',
-	component: CarbonCheckbox,
+	title: 'Components/Checkbox/Checkbox Input',
+	component: CarbonCheckboxInput,
 	args: {
-		label: 'Lorem ipsum',
 		interactiveState: 'normal',
 	},
 	argTypes: {
-		label: {
-			control: 'text',
-		},
 		interactiveState: {
 			control: 'select',
 			options: [
@@ -31,11 +27,11 @@ export default {
 			] satisfies CheckboxInputInteractiveState[],
 		},
 	},
-} satisfies Meta<CheckboxProps>
+} satisfies Meta<CheckboxInputProps>
 
-export const Checkbox: StoryFn<CheckboxProps> = args => {
+export const CheckboxInput: StoryFn<CheckboxInputProps> = args => {
 	return (
-		<CarbonCheckbox
+		<CarbonCheckboxInput
 			{ ...args }
 		/>
 	)

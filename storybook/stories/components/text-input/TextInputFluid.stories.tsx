@@ -4,19 +4,18 @@ import type {
 } from '@storybook/react-native'
 
 import {
-	TextArea as CarbonTextArea,
-	type TextAreaFieldInteractiveState,
-	type TextAreaProps,
+	TextInputFluid as CarbonTextInputFluid,
+	type TextInputFieldInteractiveState,
+	type TextInputFluidProps,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Text Area',
-	component: CarbonTextArea,
+	title: 'Components/Text Input/Text Input Fluid',
+	component: CarbonTextInputFluid,
 	args: {
 		label: 'Label',
 		interactiveState: 'normal',
 		placeholder: 'Placeholder text',
-		helperText: '',
 	},
 	argTypes: {
 		label: {
@@ -30,20 +29,17 @@ export default {
 				'invalid',
 				'read_only',
 				'warning',
-			] satisfies TextAreaFieldInteractiveState[],
+			] satisfies TextInputFieldInteractiveState[],
 		},
 		placeholder: {
 			control: 'text',
 		},
-		helperText: {
-			control: 'text',
-		},
 	},
-} satisfies Meta<TextAreaProps>
+} satisfies Meta<TextInputFluidProps>
 
-export const TextArea: StoryFn<TextAreaProps> = args => {
+export const TextInputFluid: StoryFn<TextInputFluidProps> = args => {
 	return (
-		<CarbonTextArea
+		<CarbonTextInputFluid
 			{ ...args }
 		/>
 	)

@@ -4,14 +4,14 @@ import type {
 } from '@storybook/react-native'
 
 import {
-	TextArea as CarbonTextArea,
+	TextAreaFluid as CarbonTextAreaFluid,
 	type TextAreaFieldInteractiveState,
-	type TextAreaProps,
+	type TextAreaFluidProps,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Text Area',
-	component: CarbonTextArea,
+	title: 'Components/Text Area/Text Area Fluid',
+	component: CarbonTextAreaFluid,
 	args: {
 		label: 'Label',
 		interactiveState: 'normal',
@@ -39,11 +39,11 @@ export default {
 			control: 'text',
 		},
 	},
-} satisfies Meta<TextAreaProps>
+} satisfies Meta<TextAreaFluidProps>
 
-export const TextArea: StoryFn<TextAreaProps> = args => {
+export const TextAreaFluid: StoryFn<TextAreaFluidProps> = args => {
 	return (
-		<CarbonTextArea
+		<CarbonTextAreaFluid
 			{ ...args }
 		/>
 	)

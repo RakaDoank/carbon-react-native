@@ -4,25 +4,21 @@ import type {
 } from '@storybook/react-native'
 
 import {
-	TextInput as CarbonTextInput,
+	TextInputField as CarbonTextInputField,
 	type TextInputFieldInteractiveState,
+	type TextInputFieldProps,
 	type TextInputFieldSize,
-	type TextInputProps,
 } from '@audira/carbon-react-native'
 
 export default {
-	title: 'Components/Text Input',
-	component: CarbonTextInput,
+	title: 'Components/Text Input/Text Input Field',
+	component: CarbonTextInputField,
 	args: {
-		label: 'Label',
 		size: 'medium',
 		interactiveState: 'normal',
 		placeholder: 'Placeholder text',
 	},
 	argTypes: {
-		label: {
-			control: 'text',
-		},
 		size: {
 			control: 'select',
 			options: [
@@ -45,11 +41,11 @@ export default {
 			control: 'text',
 		},
 	},
-} satisfies Meta<TextInputProps>
+} satisfies Meta<TextInputFieldProps>
 
-export const TextInput: StoryFn<TextInputProps> = args => {
+export const TextInputField: StoryFn<TextInputFieldProps> = args => {
 	return (
-		<CarbonTextInput
+		<CarbonTextInputField
 			{ ...args }
 		/>
 	)

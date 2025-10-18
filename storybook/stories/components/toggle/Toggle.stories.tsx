@@ -9,6 +9,7 @@ import {
 
 export default {
 	title: 'Components/Toggle',
+	component: Toggle.Base,
 	args: {
 		label: 'Label',
 		state: 'normal',
