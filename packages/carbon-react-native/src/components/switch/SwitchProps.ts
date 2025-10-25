@@ -6,10 +6,6 @@ import type {
 } from 'react-native'
 
 import type {
-	EasingFunctionFactory,
-} from 'react-native-reanimated'
-
-import type {
 	SwitchSize,
 } from './SwitchSize'
 
@@ -35,10 +31,7 @@ export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	thumbColor?: Record<'false' | 'true', string>,
 	motion?: Record<'false' | 'true', {
 		duration: number,
-		/**
-		 * `EasingFunctionFactory` is the return type of the `Easing.bezier` of React Native Reanimated
-		 */
-		easing?: EasingFunction | EasingFunctionFactory,
+		easing?: EasingFunction,
 	}>,
 	onChange?: (value: boolean) => void,
 	style?: StyleProp<ViewStyle>,

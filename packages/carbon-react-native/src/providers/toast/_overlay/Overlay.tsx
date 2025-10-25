@@ -96,7 +96,7 @@ export const Overlay = forwardRef<OverlayRef>(
 						if(index > 0) {
 							for(let i = 0; i < index; i++) {
 								componentWrappersRef.current[i]?.shiftY(
-									-componentsConfig.current[index].height,
+									-componentsConfig.current[index].height - Spacing.spacing_03,
 								)
 							}
 						}
@@ -109,10 +109,9 @@ export const Overlay = forwardRef<OverlayRef>(
 					index: number,
 				) => {
 					if(
-						componentsConfig.current[index]?.state === 0 &&
+						componentsConfig.current[index] &&
 						componentWrappersRef.current[index]
 					) {
-						componentsConfig.current[index].state = 1
 						if(Platform.OS == 'web') {
 							// @ts-expect-error Web DOM
 							const target = event.nativeEvent.target as HTMLDivElement
@@ -146,19 +145,20 @@ export const Overlay = forwardRef<OverlayRef>(
 				useCallback((
 					index: number,
 				) => {
+					if(componentsConfig.current[index]) {
+						componentsConfig.current[index].state++
+					}
+
 					if(componentsConfig.current[index]?.state === 1) {
-						componentsConfig.current[index].state = 2
 						componentWrappersRef.current[index]?.shiftX(
 							componentsConfig.current[index].width + Spacing.spacing_03,
 							componentsConfig.current[index].duration ?? globalConfigContext.toastDuration,
 						)
 					} else if(
 						componentsConfig.current[index]?.state === 2 &&
-						index == componentsConfig.current.length - 1
+						!componentsConfig.current.some(config => config.state < 2) // somehow, the state may increase to "3" when it's dismissed by click/press. only god knows it.
 					) {
-						/**
-						 * Delete all componentsConfig, componentWrappersRef, and components (react state) when it's all done
-						 */
+						// Delete all componentsConfig, componentWrappersRef, and components (react state) when it's all done
 						componentsConfig.current.splice(0, componentsConfig.current.length)
 						componentWrappersRef.current.splice(0, componentWrappersRef.current.length)
 						setComponents([])
@@ -197,9 +197,9 @@ export const Overlay = forwardRef<OverlayRef>(
 
 type ComponentConfig = ToastContextShowConfig & {
 	/**
-	 * 0 = mounted and still hidden from screen  
-	 * 1 = start appearing transition
-	 * 2 = start hiding transition (with delay) and will be unmounted
+	 * - 0 = mounted and still hidden from screen  
+	 * - 1 = showed
+	 * - 2 = hidden
 	*/
 	state: 0 | 1 | 2,
 	id: number,

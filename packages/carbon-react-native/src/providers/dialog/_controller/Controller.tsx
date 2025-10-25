@@ -45,8 +45,7 @@ import {
 export const Controller = forwardRef<ControllerRef, ControllerProps>(
 	function Controller(
 		{
-			animatedConfig,
-			reanimatedConfig,
+			animationConfig,
 			modalProps,
 			overlayProps,
 			overlayTouchDismiss,
@@ -175,9 +174,8 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 				{ ...overlayProps }
 				animationConfig={{
 					duration:
-						getSingleAnimationConfigDuration(animatedConfig?.duration) ??
-						getSingleAnimationConfigDuration(reanimatedConfig?.duration) ??
-						DialogAnimationConfigs.Animated.CarbonReact.duration,
+						getSingleAnimationConfigDuration(animationConfig?.duration) ??
+						DialogAnimationConfigs.CarbonReact.duration,
 				}}
 			>
 				{ data.map((item, index) => {
@@ -185,8 +183,7 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 						<Modal
 							{ ...modalProps }
 							key={ index }
-							animatedConfig={ animatedConfig }
-							reanimatedConfig={ reanimatedConfig }
+							animationConfig={ animationConfig }
 							ref={ modalRef => setModalRef(modalRef, index) }
 						>
 							{ (item.overlayTouchDismiss ?? overlayTouchDismiss) && (

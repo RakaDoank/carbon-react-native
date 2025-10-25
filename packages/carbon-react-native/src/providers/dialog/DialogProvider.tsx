@@ -28,8 +28,7 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 	function DialogProvider(
 		{
 			children,
-			animatedConfig,
-			reanimatedConfig,
+			animationConfig,
 			modalProps,
 			overlayProps,
 			overlayTouchDismiss,
@@ -109,8 +108,7 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 				{ mountController && (
 					<Controller
 						ref={ setControllerRef }
-						animatedConfig={ animatedConfig }
-						reanimatedConfig={ reanimatedConfig }
+						animationConfig={ animationConfig }
 						modalProps={ modalProps }
 						overlayProps={ overlayProps }
 						overlayTouchDismiss={ overlayTouchDismiss }

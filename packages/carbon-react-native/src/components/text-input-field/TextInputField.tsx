@@ -6,6 +6,8 @@ import {
 } from 'react'
 
 import {
+	Animated,
+	Easing,
 	StyleSheet,
 	TextInput,
 	type View,
@@ -14,6 +16,7 @@ import {
 
 import {
 	Color,
+	Motion,
 	Spacing,
 	type ColorLayerLevel,
 } from '@audira/carbon-react-native-elements'
@@ -50,16 +53,8 @@ import type {
 } from './TextInputFieldSize'
 
 import {
-	AnimatedView,
-} from './_animated-view'
-
-import {
 	RNTextInput,
 } from './_rn-text-input'
-
-import {
-	useAnimation,
-} from './_use-animation'
 
 export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>(
 	function TextInputField(
@@ -168,16 +163,40 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 
 			textInputRef =
 				useRef<TextInput>(null),
+			/**
+			 * 0 = Blurred
+			 * 1 = Focused
+			 */
+			focusAnimatedValue =
+				useRef(new Animated.Value(0)),
 
-			{
-				focusOutlineStyle,
-				blurHandler,
-				focusHandler,
-			} =
-				useAnimation({
-					onBlur: onBlurProp,
-					onFocus: onFocusProp,
-				})
+			focusHandler: TextInputFieldProps['onFocus'] =
+				event => {
+					Animated
+						.timing(
+							focusAnimatedValue.current,
+							{
+								toValue: 1,
+								...timingConfig,
+							},
+						)
+						.start()
+					onFocusProp?.(event)
+				},
+
+			blurHandler: TextInputFieldProps['onBlur'] =
+				event => {
+					Animated
+						.timing(
+							focusAnimatedValue.current,
+							{
+								toValue: 0,
+								...timingConfig,
+							},
+						)
+						.start()
+					onBlurProp?.(event)
+				}
 
 		useImperativeHandle(ref, () => {
 			return Object.assign(
@@ -192,7 +211,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 		}, [])
 
 		return (
-			<AnimatedView
+			<Animated.View
 				ref={ ref }
 				{ ...viewProps }
 				style={ [
@@ -202,7 +221,12 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					textInputFieldByLayerStyleSheet[layerContextLevel],
 					interactiveState === 'invalid'
 						? carbonStyleSheet.invalidOutlineColor
-						: focusOutlineStyle,
+						: {
+							outlineColor: focusAnimatedValue.current.interpolate({
+								inputRange: [0, 1],
+								outputRange: ['transparent', mapOutlineColorFocus[themeContext.colorScheme]],
+							}),
+						},
 					style,
 				] }
 			>
@@ -310,7 +334,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 				) : undefined }
 
 				{ blockEndNode }
-			</AnimatedView>
+			</Animated.View>
 		)
 
 	},
@@ -390,4 +414,22 @@ const
 		{
 			gray_10: Color.Token.gray_10.support_warning,
 			gray_100: Color.Token.gray_100.support_warning,
-		}
+		},
+
+	mapOutlineColorFocus: Record<ThemeType.ColorScheme, string> =
+		{
+			gray_10: Color.Token.gray_10.focus,
+			gray_100: Color.Token.gray_100.focus,
+		},
+
+	timingConfig =
+		{
+			duration: Motion.Duration.fast_01,
+			easing: Easing.bezier(
+				Motion.Easing.standard.productive.x1,
+				Motion.Easing.standard.productive.y1,
+				Motion.Easing.standard.productive.x2,
+				Motion.Easing.standard.productive.y2,
+			),
+			useNativeDriver: false, // outlineColor doesn't support native driver
+		} as const satisfies Omit<Animated.TimingAnimationConfig, 'toValue'>

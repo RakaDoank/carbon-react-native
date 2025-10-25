@@ -3,23 +3,12 @@ import type {
 	ViewProps,
 } from 'react-native'
 
-import type {
-	EasingFunctionFactory,
-} from 'react-native-reanimated'
-
-import type {
-	AnimatedViewProps,
-} from './_AnimatedViewProps'
-
-export interface CollapsibleProps extends AnimatedViewProps {
+export interface CollapsibleProps extends ViewProps {
 	defaultOpen?: boolean,
 	open?: boolean,
 	motion?: Record<'toOpen' | 'toClose', {
 		duration: number,
-		/**
-		 * `EasingFunctionFactory` is the return type of the `Easing.bezier` of React Native Reanimated
-		 */
-		easing?: EasingFunction | EasingFunctionFactory,
+		easing?: EasingFunction,
 	}>,
 	contentContainerStyle?: ViewProps['style'],
 	onToggle?: (value: boolean) => void,

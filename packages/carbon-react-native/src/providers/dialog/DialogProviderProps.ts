@@ -1,10 +1,6 @@
 import type {
-	DialogProviderAnimatedConfig,
-} from './DialogProviderAnimatedConfig'
-
-import type {
-	DialogProviderReanimatedConfig,
-} from './DialogProviderReanimatedConfig'
+	DialogProviderAnimationConfig,
+} from './DialogProviderAnimationConfig'
 
 import type {
 	ModalProps,
@@ -17,18 +13,9 @@ import type {
 export interface DialogProviderProps {
 	overlayProps?: Omit<OverlayProps, 'animationConfig'>,
 	/**
-	 * @default DialogAnimationConfigs.Reanimated.CarbonReact
-	 * @platform windows
-	 * @platform web
+	 * @default DialogAnimationConfigs.CarbonReact
 	 */
-	animatedConfig?: DialogProviderAnimatedConfig,
-	/**
-	 * @default DialogAnimationConfigs.Animated.CarbonReact
-	 * @platform ios
-	 * @platform android
-	 * @platform macos
-	 */
-	reanimatedConfig?: DialogProviderReanimatedConfig,
+	animationConfig?: DialogProviderAnimationConfig,
 	modalProps?: Omit<ModalProps, 'animationConfig'>,
 	children?: React.ReactNode,
 	/**
