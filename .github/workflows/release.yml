@@ -45,11 +45,6 @@ jobs:
           npm run builder-bob carbon-react-native
       - name: Code check
         run: npm run code-check
-      # https://github.com/pnpm/pnpm/issues/4937
-      - name: Set up special NPM voodoo
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
       - name: Release to npm registry
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
