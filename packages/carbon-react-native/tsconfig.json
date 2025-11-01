@@ -4,10 +4,11 @@
 		"../../tsconfig.json"
 	],
 	"compilerOptions": {
+		"baseUrl": ".",
 		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"]
 	},
 	"include": [
-		"src/**/*",
-		"carbon-icons.d.ts"
+		"./src/**/*",
+		"./carbon-icons.d.ts"
 	]
 }
