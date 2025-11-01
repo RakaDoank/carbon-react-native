@@ -21,7 +21,7 @@
 	"include": [
 		".storybook/**/*",
 		".storybook-rn/**/*",
-		"stories/**/*",
-		"types/**/*"
+		"./stories/**/*",
+		"./types/**/*"
 	]
 }
