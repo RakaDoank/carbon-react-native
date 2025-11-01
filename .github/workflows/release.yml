@@ -46,8 +46,6 @@ jobs:
       - name: Code check
         run: npm run code-check
       - name: Release to npm registry
-        env:
-          NPM_CONFIG_PROVENANCE: true
         run: |
           pnpm publish --filter @audira/carbon-react-native-elements --access public --no-git-checks
           pnpm publish --filter @audira/carbon-react-native --access public --no-git-checks
