@@ -164,6 +164,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 						],
 					}}
 					style={ [
+						FlexStyleSheet.flex_1,
 						baseStyle.label,
 						formLabelProps?.style,
 					] }

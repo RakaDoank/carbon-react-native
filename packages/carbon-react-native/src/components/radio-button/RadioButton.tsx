@@ -159,6 +159,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 						],
 					}}
 					style={ [
+						FlexStyleSheet.flex_1,
 						baseStyle.label,
 						formLabelProps?.style,
 					] }
