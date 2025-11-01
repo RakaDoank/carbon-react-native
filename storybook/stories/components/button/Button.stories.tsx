@@ -29,9 +29,9 @@ export default {
 			control: 'select',
 			options: [
 				'none',
-				'Add20',
-				'AiGenerate20',
-				'CarbonForIbmProduct20',
+				'add.svg',
+				'ai-generate.svg',
+				'carbon-for-ibm-product.svg',
 			],
 			mapping: {
 				'none': undefined,

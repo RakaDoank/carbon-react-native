@@ -17,10 +17,10 @@ import {
 import {
 	CarbonStyleSheet,
 } from '../../../carbon-style-sheet'
+
 import {
 	ThemeContext,
 } from '../../../contexts'
-
 
 import {
 	BaseColor,
@@ -58,18 +58,18 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
-						default: colorStyle.background_default,
-						focused: colorStyle.background_focused,
-						hovered: colorStyle.background_hovered,
-						pressed: colorStyle.background_pressed,
-						disabled: colorStyle.background_disabled,
+						default: backgroundStyleSheet.default,
+						focused: backgroundStyleSheet.focused,
+						hovered: backgroundStyleSheet.hovered,
+						pressed: backgroundStyleSheet.pressed,
+						disabled: backgroundStyleSheet.disabled,
 					},
 					text: {
-						default: colorStyle.text_default,
-						focused: colorStyle.text_focused,
-						hovered: colorStyle.text_hovered,
-						pressed: colorStyle.text_pressed,
-						disabled: colorStyle.text_disabled,
+						default: textStyleSheet.default,
+						focused: textStyleSheet.focused,
+						hovered: textStyleSheet.hovered,
+						pressed: textStyleSheet.pressed,
+						disabled: textStyleSheet.disabled,
 					},
 					icon: mapIconColor[themeContext.colorScheme],
 				}}
@@ -84,43 +84,45 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 )
 
 const
-	colorStyle =
+	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<
-				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
-				ViewStyle | TextStyle
-			>
+			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
 		>({
-			background_default: {
+			default: {
 				backgroundColor: 'transparent',
 			},
-			background_focused: {
+			focused: {
 				borderWidth: 1,
 				borderColor: CarbonStyleSheet.color.focus,
 			},
-			background_hovered: {
+			hovered: {
 				backgroundColor: CarbonStyleSheet.color.background_hover,
 			},
-			background_pressed: {
+			pressed: {
 				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
-			background_disabled: {
+			disabled: {
 				backgroundColor: 'transparent',
 			},
+		}),
 
-			text_default: {
+	textStyleSheet =
+		CarbonStyleSheet.create<
+			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+		>({
+			default: {
 				color: CarbonStyleSheet.color.link_primary,
 			},
-			text_focused: {
+			focused: {
 				color: CarbonStyleSheet.color.link_primary,
 			},
-			text_hovered: {
+			hovered: {
 				color: CarbonStyleSheet.color.link_primary_hover,
 			},
-			text_pressed: {
+			pressed: {
 				color: CarbonStyleSheet.color.link_primary,
 			},
-			text_disabled: {
+			disabled: {
 				color: CarbonStyleSheet.color.text_disabled,
 			},
 		}),

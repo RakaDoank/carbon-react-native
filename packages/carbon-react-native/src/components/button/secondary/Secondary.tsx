@@ -51,18 +51,18 @@ export const Secondary = forwardRef<SecondaryRef, SecondaryProps>(
 				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
-						default: style.background_default,
-						focused: style.background_focused,
-						hovered: style.background_hovered,
-						pressed: style.background_pressed,
-						disabled: style.background_disabled,
+						default: backgroundStyleSheet.default,
+						focused: backgroundStyleSheet.focused,
+						hovered: backgroundStyleSheet.hovered,
+						pressed: backgroundStyleSheet.pressed,
+						disabled: backgroundStyleSheet.disabled,
 					},
 					text: {
-						default: style.text_default,
-						focused: style.text_focused,
-						hovered: style.text_hovered,
-						pressed: style.text_pressed,
-						disabled: style.text_disabled,
+						default: textStyleSheet.default,
+						focused: textStyleSheet.focused,
+						hovered: textStyleSheet.hovered,
+						pressed: textStyleSheet.pressed,
+						disabled: textStyleSheet.disabled,
 					},
 					icon: mapIconColor[themeContext.colorScheme],
 				}}
@@ -73,42 +73,44 @@ export const Secondary = forwardRef<SecondaryRef, SecondaryProps>(
 )
 
 const
-	style =
+	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<
-				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
-				ViewStyle | TextStyle
-			>
+			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
 		>({
-			background_default: {
+			default: {
 				backgroundColor: CarbonStyleSheet.color.button_secondary,
 			},
-			background_focused: {
+			focused: {
 				backgroundColor: CarbonStyleSheet.color.button_secondary,
 			},
-			background_hovered: {
+			hovered: {
 				backgroundColor: CarbonStyleSheet.color.button_secondary_hover,
 			},
-			background_pressed: {
+			pressed: {
 				backgroundColor: CarbonStyleSheet.color.button_secondary_active,
 			},
-			background_disabled: {
+			disabled: {
 				backgroundColor: CarbonStyleSheet.color.button_disabled,
 			},
+		}),
 
-			text_default: {
+	textStyleSheet =
+		CarbonStyleSheet.create<
+			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+		>({
+			default: {
 				color: CarbonStyleSheet.color.text_on_color,
 			},
-			text_focused: {
+			focused: {
 				color: CarbonStyleSheet.color.text_on_color,
 			},
-			text_hovered: {
+			hovered: {
 				color: CarbonStyleSheet.color.text_on_color,
 			},
-			text_pressed: {
+			pressed: {
 				color: CarbonStyleSheet.color.text_on_color,
 			},
-			text_disabled: {
+			disabled: {
 				color: CarbonStyleSheet.color.text_on_color_disabled,
 			},
 		}),

@@ -4,7 +4,7 @@ import {
 
 import {
 	StyleSheet,
-	type ViewStyle,
+	type TextStyle,
 } from 'react-native'
 
 import type {
@@ -83,7 +83,7 @@ const
 		}),
 
 	testComponentBgLevelStyleSheet =
-		CarbonStyleSheet.create<Record<ColorLayerLevel, ViewStyle>>({
+		CarbonStyleSheet.create<Record<ColorLayerLevel, TextStyle>>({
 			1: {
 				backgroundColor: CarbonStyleSheet.color.layer_01,
 			},

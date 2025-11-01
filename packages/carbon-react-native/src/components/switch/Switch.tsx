@@ -27,6 +27,10 @@ import {
 import IconCheckmark from '@carbon/icons/svg/32/checkmark.svg'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
@@ -94,6 +98,9 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					onChangeEffect: false,
 					value: defaultValue ?? false,
 				}),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext),
 
 			themeContext =
 				useContext(ThemeContext),
@@ -175,6 +182,27 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					controlled,
 					onPress,
 					onChange,
+				]),
+
+			transformInterpolationOutputRange =
+				useMemo(() => {
+					const ltr = [
+						/**
+						 * i can't find how IBM tell this gap between the container and the thumb/handle
+						 * i have to look at the Carbon React just to find this padding (they are using inset-inline-start there)
+						 */
+						3,
+						sizeStyle[size].width - thumbSizeStyle[size].width - 3,
+					]
+
+					if(globalConfigContext.rtl) {
+						return ltr.reverse()
+					}
+
+					return ltr
+				}, [
+					size,
+					globalConfigContext.rtl,
 				])
 
 		useEffect(() => {
@@ -275,14 +303,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 							transform: [{
 								translateX: sharedValue.current.interpolate({
 									inputRange: interpolationRange,
-									outputRange: [
-										/**
-										 * i can't find how IBM tell this gap between the container and the thumb/handle
-										 * i have to look at the Carbon React just to find this padding (they are using inset-inline-start there)
-										 */
-										3,
-										sizeStyle[size].width - thumbSizeStyle[size].width - 3,
-									],
+									outputRange: transformInterpolationOutputRange,
 								}),
 							}],
 							backgroundColor: sharedValue.current.interpolate({

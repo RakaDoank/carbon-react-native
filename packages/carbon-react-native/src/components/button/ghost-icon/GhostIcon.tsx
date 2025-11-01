@@ -3,9 +3,9 @@ import {
 	useContext,
 } from 'react'
 
-import type {
-	TextStyle,
-	ViewStyle,
+import {
+	StyleSheet,
+	type ViewStyle,
 } from 'react-native'
 
 import {
@@ -51,18 +51,18 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
-						default: style.background_default,
-						focused: style.background_focused,
-						hovered: style.background_hovered,
-						pressed: style.background_pressed,
-						disabled: style.background_disabled,
+						default: backgroundStyleSheet.default,
+						focused: backgroundStyleSheet.focused,
+						hovered: backgroundStyleSheet.hovered,
+						pressed: backgroundStyleSheet.pressed,
+						disabled: backgroundStyleSheet.disabled,
 					},
 					text: {
-						default: style.text_default,
-						focused: style.text_focused,
-						hovered: style.text_hovered,
-						pressed: style.text_pressed,
-						disabled: style.text_disabled,
+						default: style.text,
+						focused: style.text,
+						hovered: style.text,
+						pressed: style.text,
+						disabled: style.text,
 					},
 					icon: mapIconColor[themeContext.colorScheme],
 				}}
@@ -73,43 +73,31 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 )
 
 const
-	style =
+	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<
-				| `${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
-				ViewStyle | TextStyle
-			>
+			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
 		>({
-			background_default: {
+			default: {
 				backgroundColor: 'transparent',
 			},
-			background_focused: {
+			focused: {
 				borderWidth: 1,
 				borderColor: CarbonStyleSheet.color.focus,
 			},
-			background_hovered: {
+			hovered: {
 				backgroundColor: CarbonStyleSheet.color.background_hover,
 			},
-			background_pressed: {
+			pressed: {
 				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
-			background_disabled: {
+			disabled: {
 				backgroundColor: 'transparent',
 			},
+		}),
 
-			text_default: {
-				color: 'transparent',
-			},
-			text_focused: {
-				color: 'transparent',
-			},
-			text_hovered: {
-				color: 'transparent',
-			},
-			text_pressed: {
-				color: 'transparent',
-			},
-			text_disabled: {
+	style =
+		StyleSheet.create({
+			text: {
 				color: 'transparent',
 			},
 		}),

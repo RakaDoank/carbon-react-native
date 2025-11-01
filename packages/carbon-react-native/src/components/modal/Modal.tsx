@@ -19,6 +19,7 @@ import {
 import IconClose from '@carbon/icons/svg/32/close.svg'
 
 import {
+	GlobalConfigContext,
 	ModalContext,
 } from '../../_internal/contexts'
 
@@ -75,6 +76,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 			'aria-label': ariaLabel,
 			'aria-labelledby': ariaLabelledBy,
 			style,
+			dir,
 			...props
 		},
 		ref,
@@ -83,6 +85,9 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 		const
 			breakpoint =
 				useContext(BreakpointContext),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext),
 
 			/**
 			 * Based on carbon modal spec, the background color is based on the current layer level.  
@@ -113,9 +118,11 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					{ ...props }
 					aria-label={ ariaLabel ?? label }
 					aria-labelledBy={ ariaLabelledBy ?? label }
+					dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 					style={ [
 						bgLayerStyleSheet[`bg_${layerContextLevel}`],
 						styleSheetBySizeAndBreakpoint.modal,
+						globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 						style,
 					] }
 				>
@@ -145,6 +152,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 						style={ [
 							CommonStyleSheet.absolute,
 							styleSheet.iconClose,
+							globalConfigContext.rtl ? styleSheet.iconCloseRtl : styleSheet.iconCloseLtr,
 							buttonCloseProps?.style,
 						] }
 					/>
@@ -167,8 +175,13 @@ const
 			},
 			iconClose: {
 				top: 0,
-				right: 0,
 				backgroundColor: 'transparent',
+			},
+			iconCloseLtr: {
+				right: 0,
+			},
+			iconCloseRtl: {
+				left: 0,
 			},
 		}),
 
@@ -255,8 +268,8 @@ const
 						width: '36%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				max: StyleSheet.create({
@@ -264,8 +277,8 @@ const
 						width: '36%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 			},
@@ -284,8 +297,8 @@ const
 						width: '84%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				large: StyleSheet.create({
@@ -293,8 +306,8 @@ const
 						width: '60%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				x_large: StyleSheet.create({
@@ -302,8 +315,8 @@ const
 						width: '48%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				max: StyleSheet.create({
@@ -311,8 +324,8 @@ const
 						width: '48%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 			},
@@ -331,8 +344,8 @@ const
 						width: '96%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				large: StyleSheet.create({
@@ -340,8 +353,8 @@ const
 						width: '84%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				x_large: StyleSheet.create({
@@ -349,8 +362,8 @@ const
 						width: '72%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 				max: StyleSheet.create({
@@ -358,8 +371,8 @@ const
 						width: '72%',
 					},
 					headerTextContainer: {
-						paddingLeft: Spacing.spacing_05,
-						paddingRight: '20%',
+						paddingStart: Spacing.spacing_05,
+						paddingEnd: '20%',
 					},
 				}),
 			},

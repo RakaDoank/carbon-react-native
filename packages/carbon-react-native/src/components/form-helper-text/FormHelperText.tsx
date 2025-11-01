@@ -9,6 +9,11 @@ import {
 } from 'react-native'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
@@ -41,6 +46,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 			textTrailing,
 			textProps,
 			style,
+			dir,
 			...props
 		},
 		ref,
@@ -48,13 +54,19 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 
 		useContext(ThemeContext)
 
+		const
+			globalConfigContext =
+				useContext(GlobalConfigContext)
+
 		return (
 			<View
 				{ ...props }
 				ref={ ref }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					baseStyle.container,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			>

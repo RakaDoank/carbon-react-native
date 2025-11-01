@@ -13,12 +13,12 @@ import {
 export const MarginRightStyle =
 	StyleSheet.create({
 		large: {
-			paddingRight: '25%',
+			paddingEnd: '25%',
 		},
 		range_420_640: {
-			paddingRight: Spacing.spacing_10,
+			paddingEnd: Spacing.spacing_10,
 		},
 		small: {
-			paddingRight: Spacing.spacing_05,
+			paddingEnd: Spacing.spacing_05,
 		},
 	})

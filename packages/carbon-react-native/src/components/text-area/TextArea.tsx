@@ -166,7 +166,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 				<TextAreaField
 					ref={ textInputFieldRef }
 					interactiveState={ interactiveState }
-					style={ textInputStyle }
+					textInputStyle={ textInputStyle }
 
 					allowFontScaling={ allowFontScaling }
 					autoCapitalize={ autoCapitalize }

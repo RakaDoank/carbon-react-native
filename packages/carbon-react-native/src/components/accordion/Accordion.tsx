@@ -12,13 +12,14 @@ import {
 	type ViewProps,
 } from 'react-native'
 
-
 import type {
 	AccordionProps,
 } from './AccordionProps'
+
 import type {
 	AccordionRef,
 } from './AccordionRef'
+
 import {
 	HeaderBorder,
 } from './_HeaderBorder'
@@ -26,7 +27,6 @@ import {
 import {
 	Item,
 } from './_Item'
-
 
 import {
 	Context,

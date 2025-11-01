@@ -12,10 +12,14 @@ export default {
 	component: Toggle.Base,
 	args: {
 		label: 'Label',
+		actionText: '',
 		state: 'normal',
 	},
 	argTypes: {
 		label: {
+			control: 'text',
+		},
+		actionText: {
 			control: 'text',
 		},
 		state: {

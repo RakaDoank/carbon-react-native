@@ -55,6 +55,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			style,
 			role = 'button',
 			'aria-label': ariaLabel,
+			dir,
 			...props
 		},
 		ref,
@@ -74,17 +75,20 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				getIconSize(size),
 
 			iconMarginStyle =
-				mapIconMarginStyle[`${globalConfigContext.rtl}`][`${!!text}`]
+				mapIconMarginStyle[`${!!globalConfigContext.rtl}`][`${!!text}`]
 
 		return (
 			<Pressable
 				{ ...props }
 				role={ role }
 				aria-label={ ariaLabel ?? text }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
+					FlexStyleSheet.flex_row,
 					FlexStyleSheet.justify_between,
 					baseStyle.container,
-					mapContainerStyle[`${globalConfigContext.rtl}`][`${!!text}`][`${!!Icon || !!iconNode}`],
+					globalConfigContext.rtl ? baseStyle.containerRtl : undefined,
+					mapContainerStyle[`${!!text}`][`${!!Icon || !!iconNode}`],
 					sizeStyle[size],
 					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
 					style,
@@ -112,6 +116,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							{ ...iconProps }
 							width={ iconProps?.width ?? iconSize }
 							height={ iconProps?.height ?? iconSize }
+							dir={ globalConfigContext.rtl ? 'rtl' : undefined }
 							style={ [
 								getIconMarginTopStyle(size),
 								iconMarginStyle,
@@ -147,57 +152,39 @@ const
 			container: {
 				overflow: 'hidden',
 			},
-
-			/**
-			 * - LTR Start Padding
-			 * - RTL End Padding with icon
-			 */
-			containerPL05: {
-				paddingLeft: Spacing.spacing_05,
+			containerRtl: {
+				direction: 'rtl',
 			},
 
 			/**
-			 * - RTL End Padding without icon
+			 * Start Padding
 			 */
-			containerPL10: {
-				paddingLeft: Spacing.spacing_10,
+			containerPaddingStart: {
+				paddingStart: Spacing.spacing_05,
 			},
-
 			/**
-			 * - LTR End Padding with icon
-			 * - RTL Start Padding
+			 * End Padding with icon
 			 */
-			containerPR05: {
-				paddingRight: Spacing.spacing_05,
+			containerPaddingEnd05: {
+				paddingEnd: Spacing.spacing_05,
 			},
-
 			/**
-			 * - LTR End Padding without icon
+			 * End Padding without icon
 			 */
-			containerPR10: {
-				paddingRight: Spacing.spacing_10,
+			containerPaddingEnd10: {
+				paddingEnd: Spacing.spacing_10,
 			},
 
-			contentContainer: {
-				...FlexStyleSheet.flex_initial,
-				maxHeight: Spacing.spacing_09,
-			},
 			textContainer: {
 				justifyContent: 'center',
 				height: '100%',
 				maxHeight: 48,
 			},
 
-			/**
-			 * LTR
-			 */
-			iconML32: {
+			iconMarginLTR: {
 				marginLeft: Spacing.spacing_07,
 			},
-			/**
-			 * RTL
-			 */
-			iconMR32: {
+			iconMarginRTL: {
 				marginRight: Spacing.spacing_07,
 			},
 
@@ -232,32 +219,18 @@ const
 		}),
 
 	mapContainerStyle: {
-		[RTL in `${boolean}`]: {
-			[HasText in `${boolean}`]: {
-				[HasIcon in `${boolean}`]: BaseProps['style']
-			}
+		[HasText in `${boolean}`]: {
+			[HasIcon in `${boolean}`]: BaseProps['style']
 		}
 	} =
 		{
 			false: {
-				false: {
-					false:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
-					true:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
-				},
-				true: {
-					false:	[FlexStyleSheet.flex_row, baseStyle.containerPR10, baseStyle.containerPL05],
-					true:	[FlexStyleSheet.flex_row, baseStyle.containerPR05, baseStyle.containerPL05],
-				},
+				false:	[baseStyle.containerPaddingEnd05, baseStyle.containerPaddingStart],
+				true:	[baseStyle.containerPaddingEnd05, baseStyle.containerPaddingStart],
 			},
 			true: {
-				false: {
-					false:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
-					true:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
-				},
-				true: {
-					false:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL10, baseStyle.containerPR05],
-					true:	[FlexStyleSheet.flex_row_reverse, baseStyle.containerPL05, baseStyle.containerPR05],
-				},
+				false:	[baseStyle.containerPaddingEnd10, baseStyle.containerPaddingStart],
+				true:	[baseStyle.containerPaddingEnd05, baseStyle.containerPaddingStart],
 			},
 		},
 
@@ -284,11 +257,11 @@ const
 		{
 			false: {
 				false: null,
-				true: baseStyle.iconML32,
+				true: baseStyle.iconMarginLTR,
 			},
 			true: {
 				false: null,
-				true: baseStyle.iconMR32,
+				true: baseStyle.iconMarginRTL,
 			},
 		},
 

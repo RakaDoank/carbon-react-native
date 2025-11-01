@@ -8,7 +8,6 @@ import {
 	StyleSheet,
 	TextInput,
 	type TextStyle,
-	type ViewStyle,
 } from 'react-native'
 
 import {
@@ -16,6 +15,14 @@ import {
 	Spacing,
 	Typography,
 } from '@audira/carbon-react-native-elements'
+
+import {
+	GlobalConfigContext,
+} from '../../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
+} from '../../../_internal/style-sheets'
 
 import {
 	ThemeContext,
@@ -44,6 +51,7 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 			editable,
 			style,
 			placeholderTextColor,
+			dir,
 			...props
 		},
 		ref,
@@ -51,7 +59,10 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 
 		const
 			themeContext =
-				useContext(ThemeContext)
+				useContext(ThemeContext),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext)
 
 		return (
 			<TextInput
@@ -59,9 +70,11 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 				{ ...props }
 				editable={ interactiveState === 'disabled' || interactiveState === 'read_only' ? false : editable }
 				placeholderTextColor={ placeholderTextColor ?? mapPlaceholderTextColor[themeContext.colorScheme] }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
-					styleSheet.rnTextInput as ViewStyle,
+					styleSheet.rnTextInput as unknown as never, // FIXME: i don't know the correct type
 					mapStateStyleSheet[themeContext.colorScheme][interactiveState],
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			/>

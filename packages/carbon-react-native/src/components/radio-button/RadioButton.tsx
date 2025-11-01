@@ -19,6 +19,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
@@ -69,6 +73,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			formLabelProps,
 			pressableProps,
 			style,
+			dir,
 			...props
 		},
 		forwardedRef,
@@ -79,6 +84,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 		const
 			radioButtonInputRef =
 				useRef<RadioButtonInputRef>(null),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext),
 
 			viewRef =
 				useRef<View>(null),
@@ -110,8 +118,10 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			<View
 				{ ...props }
 				aria-label={ ariaLabel || label }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -180,7 +190,7 @@ const
 				zIndex: 2,
 			},
 			label: {
-				marginLeft: Spacing.spacing_03,
+				marginStart: Spacing.spacing_03,
 			},
 		}),
 

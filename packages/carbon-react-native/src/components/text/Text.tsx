@@ -6,17 +6,24 @@ import {
 import {
 	StyleSheet,
 	Text as Core,
+	type StyleProp,
+	type TextStyle,
 } from 'react-native'
 
 import {
 	Typography,
-	type TypeSets,
 	type TypeSetsToken,
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
 	TextStyleSheet,
 } from '../../_internal/style-sheets'
+
 import {
 	CarbonStyleSheet,
 } from '../../carbon-style-sheet'
@@ -24,7 +31,6 @@ import {
 import {
 	ThemeContext,
 } from '../../contexts'
-
 
 import type {
 	TextProps,
@@ -39,7 +45,9 @@ export const Text = forwardRef<TextRef, TextProps>(
 		{
 			type,
 			italic = false,
+			weight,
 			style,
+			dir,
 			...props
 		},
 		ref,
@@ -47,12 +55,18 @@ export const Text = forwardRef<TextRef, TextProps>(
 
 		useContext(ThemeContext)
 
+		const
+			globalConfigContext =
+				useContext(GlobalConfigContext)
+
 		return (
 			<Core
 				{ ...props }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					carbonStyle.text,
-					getTypeSets(type, italic),
+					getFontStyle(type, italic, weight),
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ ref }
@@ -62,55 +76,60 @@ export const Text = forwardRef<TextRef, TextProps>(
 	},
 )
 
-type TypeSetsWithFamily =
-	Record<TypeSetsToken, TypeSets & {
-		fontFamily: string
-	}>
+type TypeSetsStyle = Record<TypeSetsToken, TextStyle>
+type WeightType = NonNullable<TextProps['weight']>
 
 const
-	mapFamilyStyle: Record<string, {
-		fontFamily: string, fontWeight: TypeSets['fontWeight']
-	}> =
+	mapFamilyStyle: {
+		[Weight in WeightType]: TextStyle
+	} =
 		{
-			'100': TextStyleSheet.thin,
-			'100_italic': TextStyleSheet.thin_italic,
-			'200': TextStyleSheet.extralight,
-			'200_italic': TextStyleSheet.extralight_italic,
-			'300': TextStyleSheet.light,
-			'300_italic': TextStyleSheet.light,
-			'400': TextStyleSheet.normal,
-			'400_italic': TextStyleSheet.normal_italic,
-			'500': TextStyleSheet.medium,
-			'500_italic': TextStyleSheet.medium_italic,
-			'600': TextStyleSheet.semibold,
-			'600_italic': TextStyleSheet.semibold_italic,
-			'700': TextStyleSheet.bold,
-			'700_italic': TextStyleSheet.bold_italic,
+			100: TextStyleSheet.thin,
+			200: TextStyleSheet.extralight,
+			300: TextStyleSheet.light,
+			400: TextStyleSheet.normal,
+			500: TextStyleSheet.medium,
+			600: TextStyleSheet.semibold,
+			700: TextStyleSheet.bold,
+			800: TextStyleSheet.bold,
+			900: TextStyleSheet.bold,
 		},
 
-	createTypeSets = (italic?: boolean) => {
-		return StyleSheet.create<TypeSetsWithFamily>(
+	mapFamilyItalicStyle: {
+		[Weight in WeightType]: TextStyle
+	} =
+		{
+			100: TextStyleSheet.thin_italic,
+			200: TextStyleSheet.extralight_italic,
+			300: TextStyleSheet.light_italic,
+			400: TextStyleSheet.normal_italic,
+			500: TextStyleSheet.medium_italic,
+			600: TextStyleSheet.semibold_italic,
+			700: TextStyleSheet.bold_italic,
+			800: TextStyleSheet.bold_italic,
+			900: TextStyleSheet.bold_italic,
+		},
+
+	createTypeSetsStyle = (italic?: boolean) => {
+		return StyleSheet.create<TypeSetsStyle>(
 			Object.entries(Typography.TypeSets).reduce((
-				accumulator: TypeSetsWithFamily,
+				accumulator: TypeSetsStyle,
 				[key_, val],
 			) => {
 				const
 					key =
-						key_ as keyof TypeSetsWithFamily
+						key_ as keyof TypeSetsStyle
 
 				accumulator[key] = {
 					...val,
 					...(
-						mapFamilyStyle[
-							italic
-								? `${val.fontWeight}_italic`
-								: val.fontWeight
-						] ?? TextStyleSheet.normal
+						italic
+							? mapFamilyItalicStyle[val.fontWeight]
+							: mapFamilyStyle[val.fontWeight]
 					),
 				}
 				return accumulator
-			}, {
-			} as TypeSetsWithFamily),
+			}, {} as TypeSetsStyle),
 		)
 	},
 
@@ -121,23 +140,28 @@ const
 			},
 		}),
 
-	TypeSets =
-		createTypeSets(),
+	typeSetsStyle =
+		createTypeSetsStyle(),
 
 	typeSetsItalicStyle =
-		createTypeSets(true)
+		createTypeSetsStyle(true)
 
-function getTypeSets(
+function getFontStyle(
 	type?: TextProps['type'],
 	italic?: boolean,
-) {
+	overrideWeight?: TextProps['weight'],
+): StyleProp<TextStyle> {
 	if(!type) {
 		return null
+	}
+
+	if(italic && overrideWeight) {
+		return [typeSetsItalicStyle[type], mapFamilyItalicStyle[overrideWeight]]
 	}
 
 	if(italic) {
 		return typeSetsItalicStyle[type]
 	}
 
-	return TypeSets[type]
+	return typeSetsStyle[type]
 }

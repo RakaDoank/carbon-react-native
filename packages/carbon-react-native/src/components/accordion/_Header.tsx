@@ -79,18 +79,18 @@ export function Header({
 				android_rippleEffectColor={ mapAndroidRippleEffectColor[themeContext.colorScheme] }
 				colorStateStyle={{
 					background: {
-						default: style.background_default,
-						focused: style.background_pressed,
-						hovered: style.background_hovered,
-						pressed: style.background_pressed,
-						disabled: style.background_disabled,
+						default: backgroundStyleSheet.default,
+						focused: backgroundStyleSheet.focused,
+						hovered: backgroundStyleSheet.hovered,
+						pressed: backgroundStyleSheet.pressed,
+						disabled: backgroundStyleSheet.disabled,
 					},
 					text: {
-						default: style.text_default,
-						focused: style.text_focused,
-						hovered: style.text_hovered,
-						pressed: style.text_pressed,
-						disabled: style.text_disabled,
+						default: textStyleSheet.default,
+						focused: textStyleSheet.focused,
+						hovered: textStyleSheet.hovered,
+						pressed: textStyleSheet.pressed,
+						disabled: textStyleSheet.disabled,
 					},
 					icon: mapIconColor[themeContext.colorScheme],
 				}}
@@ -106,44 +106,46 @@ export function Header({
 }
 
 const
-	style =
+	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<
-				`${'background' | 'text'}_${keyof ButtonColorProps['colorStateStyle']['text']}`,
-				ViewStyle | TextStyle
-			>
+			Record<keyof ButtonColorProps['colorStateStyle']['background'], ViewStyle>
 		>({
-			background_default: {
+			default: {
 				backgroundColor: 'transparent',
 			},
-			background_focused: {
+			focused: {
 				backgroundColor: 'transparent',
 				borderWidth: 1,
 				borderColor: CarbonStyleSheet.color.focus,
 			},
-			background_hovered: {
+			hovered: {
 				backgroundColor: CarbonStyleSheet.color.layer_hover_01,
 			},
-			background_pressed: {
+			pressed: {
 				backgroundColor: CarbonStyleSheet.color.layer_hover_01,
 			},
-			background_disabled: {
+			disabled: {
 				backgroundColor: 'transparent',
 			},
+		}),
 
-			text_default: {
+	textStyleSheet =
+		CarbonStyleSheet.create<
+			Record<keyof ButtonColorProps['colorStateStyle']['text'], TextStyle>
+		>({
+			default: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
-			text_focused: {
+			focused: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
-			text_hovered: {
+			hovered: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
-			text_pressed: {
+			pressed: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
-			text_disabled: {
+			disabled: {
 				color: CarbonStyleSheet.color.text_disabled,
 			},
 		}),

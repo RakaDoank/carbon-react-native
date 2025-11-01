@@ -19,6 +19,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
@@ -69,6 +73,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			formLabelProps,
 			pressableProps,
 			style,
+			dir,
 			...props
 		},
 		forwardedRef,
@@ -77,6 +82,9 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 		useContext(ThemeContext)
 
 		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
 			checkboxInputRef =
 				useRef<CheckboxInputRef>(null),
 
@@ -116,8 +124,10 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			<View
 				{ ...props }
 				aria-label={ ariaLabel || label }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -185,7 +195,7 @@ const
 				zIndex: 2,
 			},
 			label: {
-				marginLeft: Spacing.spacing_03,
+				marginStart: Spacing.spacing_03,
 			},
 		}),
 

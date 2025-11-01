@@ -20,6 +20,10 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
+} from '../../../_internal/contexts'
+
+import {
 	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../../_internal/style-sheets'
@@ -68,6 +72,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			pressableProps,
 			switchProps,
 			style,
+			dir,
 			...viewProps
 		},
 		forwardedRef,
@@ -82,6 +87,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 			themeContext =
 				useContext(ThemeContext),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext),
 
 			pressHandler: NonNullable<PressableProps['onPress']> =
 				useCallback(event => {
@@ -109,10 +117,12 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		return (
 			<View
 				{ ...viewProps }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.flex_wrap,
 					FlexStyleSheet.items_center,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -162,8 +172,10 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					value={ value }
 					onChange={ onChange }
 					onPress={ switchProps?.onPress ?? pressableProps?.onPress }
+					dir={ switchProps?.dir ?? globalConfigContext.rtl ? 'ltr' : undefined } // Fix
 					style={ [
 						baseStyle.switch,
+						globalConfigContext.rtl ? baseStyle.ltr : undefined, // Fix
 						switchProps?.style,
 					] }
 					ref={ switchRef }
@@ -201,7 +213,13 @@ const
 				marginBottom: Spacing.spacing_05,
 			},
 			actionText: {
-				marginLeft: Spacing.spacing_03, // same for both size
+				marginStart: Spacing.spacing_03, // same for both size
+			},
+			/**
+			 * Fix
+			 */
+			ltr: {
+				direction: 'ltr',
 			},
 		}),
 

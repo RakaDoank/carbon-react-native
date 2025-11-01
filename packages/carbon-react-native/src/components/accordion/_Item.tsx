@@ -17,6 +17,14 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
+} from '../../_internal/style-sheets'
+
+import {
 	Collapsible,
 } from '../collapsible'
 
@@ -64,6 +72,9 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 	) {
 
 		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
 			accordionContext =
 				useContext(Context),
 
@@ -138,7 +149,9 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				<Collapsible
 					motion={ Motion }
 					open={ open }
+					dir={ globalConfigContext.rtl ? 'rtl' : undefined }
 					contentContainerStyle={ [
+						globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 						accordionContext.collapsibleContentContainerStyle,
 						style.panel,
 					] }

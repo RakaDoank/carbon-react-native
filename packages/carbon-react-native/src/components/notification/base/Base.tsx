@@ -6,7 +6,6 @@ import {
 import {
 	StyleSheet,
 	View,
-	type TextStyle,
 	type ViewStyle,
 } from 'react-native'
 
@@ -18,6 +17,11 @@ import {
 import IconClose from '@carbon/icons/svg/32/close.svg'
 
 import {
+	GlobalConfigContext,
+} from '../../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../../_internal/style-sheets'
 
@@ -71,18 +75,26 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			contentContainerStyle,
 
 			style,
+			dir,
 			...props
 		},
 		ref,
 	) {
 
-		const themeContext = useContext(ThemeContext)
+		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
+			themeContext =
+				useContext(ThemeContext)
 
 		return (
 			<View
 				{ ...props }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ ref }
@@ -147,7 +159,13 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 									type="heading_compact_01"
 									style={ [baseStyle.inlineTextWrapper, titleStyle] }
 								>
-									{ title }{ title && body ? ' ' : '' }{ body }
+									{ !globalConfigContext.rtl
+										? (
+											<>{ title }{ title && body ? ' ' : '' }{ body }</>
+										)
+										: (
+											<>{ body }{ title && body ? ' ' : '' }{ title }</>
+										) }
 								</Text>
 
 							) }
@@ -172,18 +190,18 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						onPress={ onPressIconClose }
 						colorStateStyle={{
 							background: {
-								default: colorStyle.background_default,
-								focused: colorStyle.background_pressed,
-								hovered: colorStyle.background_hovered,
-								pressed: colorStyle.background_pressed,
-								disabled: colorStyle.background_disabled,
+								default: backgroundStyleSheet.default,
+								focused: backgroundStyleSheet.focused,
+								hovered: backgroundStyleSheet.hovered,
+								pressed: backgroundStyleSheet.pressed,
+								disabled: backgroundStyleSheet.disabled,
 							},
 							text: {
-								default: colorStyle.text_default,
-								focused: colorStyle.text_focused,
-								hovered: colorStyle.text_hovered,
-								pressed: colorStyle.text_pressed,
-								disabled: colorStyle.text_disabled,
+								default: baseStyle.text,
+								focused: baseStyle.text,
+								hovered: baseStyle.text,
+								pressed: baseStyle.text,
+								disabled: baseStyle.text,
 							},
 							/**
 							 * Means nothing since we used `iconNode` prop
@@ -219,8 +237,8 @@ const
 				width: 3,
 			},
 			iconContainer: {
-				marginLeft: Spacing.spacing_05,
-				marginRight: Spacing.spacing_05,
+				marginStart: Spacing.spacing_05,
+				marginEnd: Spacing.spacing_05,
 			},
 			leftContainerNonInline: {
 				marginTop: Spacing.spacing_05,
@@ -240,46 +258,30 @@ const
 				paddingBottom: 0,
 				paddingLeft: 0,
 			},
+			text: {
+				color: 'transparent',
+			},
 		}),
 
-	colorStyle =
+	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<
-				`${'background' | 'text'}_${keyof BaseColorProps['colorStateStyle']['text']}`,
-				ViewStyle | TextStyle
-			>
+			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
 		>({
-			background_default: {
+			default: {
 				backgroundColor: 'transparent',
 			},
-			background_focused: {
+			focused: {
 				borderWidth: 1,
 				borderColor: CarbonStyleSheet.color.focus,
 			},
-			background_hovered: {
+			hovered: {
 				backgroundColor: CarbonStyleSheet.color.background_hover,
 			},
-			background_pressed: {
+			pressed: {
 				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
-			background_disabled: {
+			disabled: {
 				backgroundColor: 'transparent',
-			},
-
-			text_default: {
-				color: 'transparent',
-			},
-			text_focused: {
-				color: 'transparent',
-			},
-			text_hovered: {
-				color: 'transparent',
-			},
-			text_pressed: {
-				color: 'transparent',
-			},
-			text_disabled: {
-				color: 'transparent',
 			},
 		}),
 

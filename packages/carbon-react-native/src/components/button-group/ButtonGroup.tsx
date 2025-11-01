@@ -19,6 +19,7 @@ import {
 } from '../../_internal/contexts'
 
 import {
+	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
@@ -41,6 +42,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 			fluid,
 			vertical,
 			style,
+			dir,
 			...props
 		},
 		ref,
@@ -51,10 +53,13 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				useContext(GlobalConfigContext),
 
 			styleFlexDir =
-				mapStyleFlexDir[`${!!vertical}`][`${!!globalConfigContext.rtl}`],
+				mapStyleFlexDir[`${!!vertical}`],
 
 			styleFluid =
-				mapStyleFluid[`${!!fluid}`]
+				mapStyleFluid[`${!!fluid}`],
+
+			rtlStyle =
+				globalConfigContext.rtl && !vertical ? CommonStyleSheet.rtl : undefined
 
 		return (
 			<ButtonGroupContext.Provider
@@ -67,10 +72,12 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				<View
 					ref={ ref }
 					{ ...props }
+					dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 					style={ [
 						styleFlexDir,
 						styleFluid,
 						oneAlone ? FlexStyleSheet.justify_between : undefined,
+						rtlStyle,
 						style,
 					] }
 				>
@@ -92,6 +99,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 								styleFluid,
 								styleSheet.lastTwoButttonContainer,
 								FlexStyleSheet.justify_end,
+								rtlStyle,
 							] }
 						>
 							{ button2 }
@@ -123,19 +131,11 @@ const
 		}),
 
 	mapStyleFlexDir: {
-		[IsVertical in `${boolean}`]: {
-			[RTL in `${boolean}`]: ViewStyle
-		}
+		[IsVertical in `${boolean}`]: ViewStyle
 	} =
 		{
-			false: {
-				false: FlexStyleSheet.flex_row,
-				true: FlexStyleSheet.flex_row_reverse,
-			},
-			true: {
-				false: FlexStyleSheet.flex_col_reverse,
-				true: FlexStyleSheet.flex_col_reverse,
-			},
+			false: FlexStyleSheet.flex_row,
+			true: FlexStyleSheet.flex_col_reverse,
 		},
 
 	mapStyleFluid: { [IsFluid in `${boolean}`]: ViewStyle } =

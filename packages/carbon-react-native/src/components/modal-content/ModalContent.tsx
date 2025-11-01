@@ -15,8 +15,13 @@ import {
 } from '@audira/carbon-react-native-elements'
 
 import {
+	GlobalConfigContext,
 	ModalContext,
 } from '../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
+} from '../../_internal/style-sheets'
 
 import {
 	BreakpointContext,
@@ -35,6 +40,7 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 		{
 			fullWidth,
 			style,
+			dir,
 			...props
 		},
 		ref,
@@ -45,16 +51,21 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 				useContext(BreakpointContext),
 
 			modalContext =
-				useContext(ModalContext)
+				useContext(ModalContext),
+
+			globalConfigContext =
+				useContext(GlobalConfigContext)
 
 		return (
 			<View
 				ref={ ref }
 				{ ...props }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
 				style={ [
 					styleSheet.modalContent,
 					mapStyleSheetBySizeAndBreakpoint[modalContext.size][breakpoint],
 					fullWidth ? styleSheet.fullWidth : undefined,
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			/>
@@ -70,7 +81,7 @@ const
 				marginBottom: Spacing.spacing_09,
 			},
 			fullWidth: {
-				paddingRight: Spacing.spacing_05,
+				paddingEnd: Spacing.spacing_05,
 			},
 		}),
 
@@ -82,90 +93,90 @@ const
 		{
 			extra_small: StyleSheet.create({
 				small: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				medium: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				x_large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				max: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 			}),
 			small: {
 				small: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				medium: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				x_large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				max: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 			},
 			medium: {
 				small: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				medium: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				x_large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				max: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 			},
 			large: {
 				small: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: Spacing.spacing_05,
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: Spacing.spacing_05,
 				},
 				medium: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				x_large: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 				max: {
-					paddingLeft: Spacing.spacing_05,
-					paddingRight: '20%',
+					paddingStart: Spacing.spacing_05,
+					paddingEnd: '20%',
 				},
 			},
 		}

@@ -22,6 +22,11 @@ import type {
 } from 'react-native-svg'
 
 import {
+	GlobalConfigContext,
+} from '../../_internal/contexts'
+
+import {
+	CommonStyleSheet,
 	FlexStyleSheet,
 } from '../../_internal/style-sheets'
 
@@ -60,15 +65,24 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 			formHelperTextProps,
 			children,
 			style,
+			dir,
 			...props
 		},
 		ref,
 	) {
 
+		const
+			globalConfigContext =
+				useContext(GlobalConfigContext)
+
 		return (
 			<View
 				{ ...props }
-				style={ style }
+				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				style={ [
+					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
+					style,
+				] }
 				ref={ ref }
 			>
 				<FormLabel

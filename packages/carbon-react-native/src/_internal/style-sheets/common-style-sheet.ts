@@ -18,4 +18,7 @@ export const CommonStyleSheet = StyleSheet.create({
 	relative: {
 		position: 'relative',
 	},
+	rtl: {
+		direction: 'rtl',
+	},
 })

@@ -169,7 +169,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 					ref={ textInputFieldRef }
 					size={ size }
 					interactiveState={ interactiveState }
-					style={ textInputStyle }
+					textInputStyle={ textInputStyle }
 
 					allowFontScaling={ allowFontScaling }
 					autoCapitalize={ autoCapitalize }
