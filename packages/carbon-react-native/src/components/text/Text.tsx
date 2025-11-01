@@ -163,5 +163,9 @@ function getFontStyle(
 		return typeSetsItalicStyle[type]
 	}
 
+	if(overrideWeight) {
+		return [typeSetsStyle[type], mapFamilyStyle[overrideWeight]]
+	}
+
 	return typeSetsStyle[type]
 }
