@@ -1,6 +1,6 @@
-import node_fs from 'node:fs'
-import node_path from 'node:path'
-import node_url from 'node:url'
+import node_fs from "node:fs"
+import node_path from "node:path"
+import node_url from "node:url"
 
 const
 	__filename =
@@ -10,16 +10,16 @@ const
 		node_path.dirname(__filename),
 
 	root =
-		node_path.resolve(__dirname, '..'),
+		node_path.resolve(__dirname, ".."),
 
 	carbonRNPackagePath =
-		node_path.join(root, 'packages/carbon-react-native-elements'),
+		node_path.join(root, "packages/carbon-react-native-elements"),
 
 	additionalSources =
 		[
 			{
-				name: 'LICENSE',
-				path: node_path.join(root, 'LICENSE'),
+				name: "LICENSE",
+				path: node_path.join(root, "LICENSE"),
 			},
 		]
 try {
@@ -41,7 +41,7 @@ try {
 		)
 	})
 
-	console.info('/scripts/prepack-carbon-react-native-elements :: Package has been packed successfully')
+	console.info("/scripts/prepack-carbon-react-native-elements :: Package has been packed successfully")
 } catch(e) {
-	throw new Error(e instanceof Error ? e.message : 'Unknown error')
+	throw new Error(e instanceof Error ? e.message : "Unknown error")
 }

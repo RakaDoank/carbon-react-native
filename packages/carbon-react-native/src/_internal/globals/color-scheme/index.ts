@@ -1,6 +1,6 @@
 import {
 	ColorHelper,
-} from '../../../helpers'
+} from "../../../helpers"
 
 let colorScheme = ColorHelper.getColorScheme()
 

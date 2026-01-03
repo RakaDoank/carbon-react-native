@@ -1,14 +1,14 @@
 import {
 	Color,
 	type ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import type {
 	ThemeContext,
-} from '../../contexts/theme'
+} from "../../contexts/theme"
 
 export const MapCircleBackgroundColor: {
-	[Layer in ColorLayerLevel]: Record<ThemeContext['colorScheme'], string>
+	[Layer in ColorLayerLevel]: Record<ThemeContext["colorScheme"], string>
 } =
 	{
 		1: {

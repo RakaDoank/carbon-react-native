@@ -3,24 +3,24 @@ import {
 	useCallback,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	ToastContext,
-} from '../../contexts'
+} from "../../contexts"
 
 
 import type {
 	ToastProviderProps,
-} from './ToastProviderProps'
+} from "./ToastProviderProps"
 
 import type {
 	ToastRef,
-} from './ToastRef'
+} from "./ToastRef"
 import {
 	Overlay,
 	type OverlayRef,
-} from './_overlay'
+} from "./_overlay"
 
 export const ToastProvider = forwardRef<ToastRef, ToastProviderProps>(
 	function ToastProvider(
@@ -34,12 +34,12 @@ export const ToastProvider = forwardRef<ToastRef, ToastProviderProps>(
 			overlayRef =
 				useRef<OverlayRef>(null),
 
-			show: ToastContext['show'] =
+			show: ToastContext["show"] =
 				useCallback((...args) => {
 					overlayRef.current?.show(...args)
 				}, []),
 
-			dismiss: ToastContext['dismiss'] =
+			dismiss: ToastContext["dismiss"] =
 				useCallback((...args) => {
 					overlayRef.current?.dismiss(...args)
 				}, [])

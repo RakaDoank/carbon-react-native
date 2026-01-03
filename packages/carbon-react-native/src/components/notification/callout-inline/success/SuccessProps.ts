@@ -1,14 +1,14 @@
 import type {
 	ToastVariantProps,
-} from '../../_variants/toast'
+} from "../../_variants/toast"
 
-export interface SuccessProps extends Omit<ToastVariantProps, 'icon'> {
+export interface SuccessProps extends Omit<ToastVariantProps, "icon"> {
 	iconProps?: Omit<
-		NonNullable<ToastVariantProps['iconProps']>,
-		| 'color'
+		NonNullable<ToastVariantProps["iconProps"]>,
+		| "color"
 	>,
 	iconCloseProps?: Omit<
-		NonNullable<ToastVariantProps['iconCloseProps']>,
-		| 'color'
+		NonNullable<ToastVariantProps["iconCloseProps"]>,
+		| "color"
 	>,
 }

@@ -1,3 +1,3 @@
 export type LoadingType =
-	| 'large'
-	| 'small'
+	| "large"
+	| "small"

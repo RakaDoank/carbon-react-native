@@ -1,15 +1,15 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import type {
 	NotificationColor,
-} from './NotificationColor'
+} from "./NotificationColor"
 
 export interface VariantContext {
 	color: NotificationColor,
 }
 
 export const VariantContext = createContext<VariantContext>({
-	color: 'high_contrast',
+	color: "high_contrast",
 })

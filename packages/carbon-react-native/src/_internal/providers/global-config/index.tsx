@@ -1,2 +1,2 @@
-export * from './GlobalConfigProvider'
-export * from './GlobalConfigProviderProps'
+export * from "./GlobalConfigProvider"
+export * from "./GlobalConfigProviderProps"

@@ -1,22 +1,22 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	useError,
-} from '../../_status-hooks'
+} from "../../_status-hooks"
 
 import {
 	ActionableInlineVariant,
-} from '../../_variants'
+} from "../../_variants"
 
 import type {
 	ErrorProps,
-} from './ErrorProps'
+} from "./ErrorProps"
 
 import type {
 	ErrorRef,
-} from './ErrorRef'
+} from "./ErrorRef"
 
 export const Error = forwardRef<ErrorRef, ErrorProps>(
 	function Error(

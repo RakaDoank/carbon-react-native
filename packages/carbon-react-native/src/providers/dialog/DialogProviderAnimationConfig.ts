@@ -2,7 +2,7 @@ import type {
 	Animated,
 	EasingFunction,
 	ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 export interface DialogProviderAnimationConfig {
 	/**

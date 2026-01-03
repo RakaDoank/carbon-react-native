@@ -1,30 +1,30 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	VariantContextProvider,
-} from '../../_VariantContextProvider'
+} from "../../_VariantContextProvider"
 
 import {
 	Base,
-} from '../../base'
+} from "../../base"
 
 import {
 	Subtitle,
-} from '../../subtitle'
+} from "../../subtitle"
 
 import {
 	ButtonTertiary,
-} from '../_ButtonTertiary'
+} from "../_ButtonTertiary"
 
 import type {
 	ActionableVariantProps,
-} from './ActionableVariantProps'
+} from "./ActionableVariantProps"
 
 import type {
 	ActionableVariantRef,
-} from './ActionableVariantRef'
+} from "./ActionableVariantRef"
 
 export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVariantProps>(
 	function ActionableVariant(
@@ -47,7 +47,7 @@ export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVari
 					Icon={ Icon }
 					iconClose
 					body={
-						subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number') ? (
+						subtitle && (typeof subtitle === "string" || typeof subtitle === "number") ? (
 							<Subtitle style={ subtitleStyle }>
 								{ subtitle }
 							</Subtitle>

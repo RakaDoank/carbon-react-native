@@ -6,33 +6,33 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Platform,
 	type LayoutChangeEvent,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import type {
 	ToastContextShowConfig,
-} from '../../../contexts/toast/ToastContextShowConfig'
+} from "../../../contexts/toast/ToastContextShowConfig"
 
 import type {
 	OverlayRef,
-} from './OverlayRef'
+} from "./OverlayRef"
 
 import {
 	ComponentWrapper,
 	type ComponentWrapperRef,
-} from './_component-wrapper'
+} from "./_component-wrapper"
 
 export const Overlay = forwardRef<OverlayRef>(
 	function(
@@ -60,7 +60,7 @@ export const Overlay = forwardRef<OverlayRef>(
 					}
 				}, []),
 
-			show: OverlayRef['show'] =
+			show: OverlayRef["show"] =
 				useCallback((
 					fn,
 					config,
@@ -80,7 +80,7 @@ export const Overlay = forwardRef<OverlayRef>(
 					])
 				}, []),
 
-			dismiss: OverlayRef['dismiss'] =
+			dismiss: OverlayRef["dismiss"] =
 				useCallback(id => {
 					const index = componentsConfig.current.findIndex(c => c.id == id)
 
@@ -112,15 +112,15 @@ export const Overlay = forwardRef<OverlayRef>(
 						componentsConfig.current[index] &&
 						componentWrappersRef.current[index]
 					) {
-						if(Platform.OS == 'web') {
+						if(Platform.OS == "web") {
 							// @ts-expect-error Web DOM
 							const target = event.nativeEvent.target as HTMLDivElement
-							/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 							// @ts-expect-error Web DOM
 							componentsConfig.current[index].width = target.children?.[0]?.clientWidth
 							// @ts-expect-error Web DOM
 							componentsConfig.current[index].height = target.children?.[0]?.clientHeight
-							/* eslint-enable @typescript-eslint/no-unsafe-member-access */
+
 						} else {
 							componentsConfig.current[index].width = event.nativeEvent.layout.width
 							componentsConfig.current[index].height = event.nativeEvent.layout.height

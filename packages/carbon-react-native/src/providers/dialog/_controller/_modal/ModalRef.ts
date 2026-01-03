@@ -1,6 +1,6 @@
 import type {
 	Interpolation,
-} from './_Interpolation'
+} from "./_Interpolation"
 
 export interface ModalRef {
 	toState: (value: Interpolation) => Promise<void>,

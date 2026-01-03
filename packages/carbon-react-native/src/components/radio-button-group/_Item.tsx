@@ -4,25 +4,25 @@ import {
 	useContext,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	RadioButton,
 	type RadioButtonProps,
 	type RadioButtonRef,
-} from '../radio-button'
+} from "../radio-button"
 
 import type {
 	RadioButtonGroupItemProps,
-} from './RadioButtonGroupItemProps'
+} from "./RadioButtonGroupItemProps"
 
 import type {
 	RadioButtonGroupItemRef,
-} from './RadioButtonGroupItemRef'
+} from "./RadioButtonGroupItemRef"
 
 import {
 	ItemContext,
-} from './_item-context'
+} from "./_item-context"
 
 export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProps>(
 	function Item(
@@ -41,7 +41,7 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 			radioButtonRef =
 				useRef<RadioButtonRef>(null),
 
-			pressHandler: NonNullable<RadioButtonProps['onPress']> =
+			pressHandler: NonNullable<RadioButtonProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
@@ -61,7 +61,7 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<RadioButtonRef, {
-				setChecked: RadioButtonRef['setChecked']
+				setChecked: RadioButtonRef["setChecked"]
 			}>(
 				(radioButtonRef.current ?? {
 				}) as RadioButtonRef,
@@ -70,7 +70,7 @@ export const Item = forwardRef<RadioButtonGroupItemRef, RadioButtonGroupItemProp
 						if(!controlled) {
 							let checked: boolean
 
-							if(typeof checkedParam === 'boolean') {
+							if(typeof checkedParam === "boolean") {
 								checked = checkedParam
 							} else {
 								checked = checkedParam(!!radioButtonRef.current?.checked)

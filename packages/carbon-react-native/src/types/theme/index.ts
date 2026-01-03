@@ -1,1 +1,1 @@
-export type * from './ColorScheme'
+export type * from "./ColorScheme"

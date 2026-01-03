@@ -1,26 +1,26 @@
 /**
  * Relative from libs/bob.config.js
  */
-const targetPath = '../packages/carbon-react-native-elements'
+const targetPath = "../packages/carbon-react-native-elements"
 
 module.exports = {
 	source: `${targetPath}/src`,
 	output: `${targetPath}/lib`,
 	targets: [
 		[
-			'commonjs',
+			"commonjs",
 			{
-				'esm': true,
+				"esm": true,
 			},
 		],
 		[
-			'module',
+			"module",
 			{
-				'esm': true,
+				"esm": true,
 			},
 		],
 		[
-			'typescript',
+			"typescript",
 			{
 				project: `${targetPath}/tsconfig.json`,
 			},

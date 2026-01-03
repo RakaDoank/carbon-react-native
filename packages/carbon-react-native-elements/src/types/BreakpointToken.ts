@@ -1,6 +1,6 @@
 export type BreakpointToken =
-	| 'small'
-	| 'medium'
-	| 'large'
-	| 'x_large'
-	| 'max'
+	| "small"
+	| "medium"
+	| "large"
+	| "x_large"
+	| "max"

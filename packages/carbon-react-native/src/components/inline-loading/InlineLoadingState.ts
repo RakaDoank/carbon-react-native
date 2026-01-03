@@ -1,5 +1,5 @@
 export type InlineLoadingState =
-	| 'active'
-	| 'inactive'
-	| 'error'
-	| 'finished'
+	| "active"
+	| "inactive"
+	| "error"
+	| "finished"

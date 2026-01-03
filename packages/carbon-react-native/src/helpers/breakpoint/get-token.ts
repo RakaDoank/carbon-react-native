@@ -1,20 +1,20 @@
 import {
 	Breakpoint,
 	type BreakpointToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 export function getToken(
 	windowWidth: number,
 ): BreakpointToken {
 	return windowWidth < Breakpoint.medium.value.px ? (
-		'small'
+		"small"
 	) : windowWidth < Breakpoint.large.value.px ? (
-		'medium'
+		"medium"
 	) : windowWidth < Breakpoint.x_large.value.px ? (
-		'large'
+		"large"
 	) : windowWidth < Breakpoint.max.value.px ? (
-		'x_large'
+		"x_large"
 	) : (
-		'max'
+		"max"
 	)
 }

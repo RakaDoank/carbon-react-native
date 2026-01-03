@@ -1,1 +1,1 @@
-export * from './GlobalConfigContext'
+export * from "./GlobalConfigContext"

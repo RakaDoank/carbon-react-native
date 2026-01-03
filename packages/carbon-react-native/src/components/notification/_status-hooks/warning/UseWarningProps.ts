@@ -1,8 +1,8 @@
 import type {
 	UseBaseProps,
-} from '../_base/UseBaseProps'
+} from "../_base/UseBaseProps"
 
 export interface UseWarningProps {
-	color?: UseBaseProps['color'],
-	transparentBorderColor?: UseBaseProps['transparentBorderColor'],
+	color?: UseBaseProps["color"],
+	transparentBorderColor?: UseBaseProps["transparentBorderColor"],
 }

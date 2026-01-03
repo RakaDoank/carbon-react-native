@@ -1,15 +1,15 @@
 import {
 	Easing,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Motion,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import type {
 	DialogProviderAnimationConfig,
-} from '../../providers/dialog/DialogProviderAnimationConfig'
+} from "../../providers/dialog/DialogProviderAnimationConfig"
 
 /**
  * Same animation style like `@carbon/react` library

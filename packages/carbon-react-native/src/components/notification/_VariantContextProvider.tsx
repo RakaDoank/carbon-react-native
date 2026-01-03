@@ -1,17 +1,17 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import type {
 	NotificationColor,
-} from './NotificationColor'
+} from "./NotificationColor"
 import {
 	VariantContext,
-} from './_variant-context'
+} from "./_variant-context"
 
 
 export function VariantContextProvider({

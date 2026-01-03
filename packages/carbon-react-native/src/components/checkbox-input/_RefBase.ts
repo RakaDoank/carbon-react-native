@@ -1,6 +1,6 @@
 import type {
 	CheckboxInputValue,
-} from './CheckboxInputValue'
+} from "./CheckboxInputValue"
 
 export interface RefBase {
 	readonly value: CheckboxInputValue,

@@ -2,41 +2,41 @@ import {
 	forwardRef,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	FormHelperText,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import {
 	TextInputField,
 	type TextInputFieldRef,
-} from '../text-input-field'
+} from "../text-input-field"
 
 import type {
 	TextInputProps,
-} from './TextInputProps'
+} from "./TextInputProps"
 
 import type {
 	TextInputRef,
-} from './TextInputRef'
+} from "./TextInputRef"
 
 import type {
 	TextInputRefBase,
-} from './_TextInputRefBase'
+} from "./_TextInputRefBase"
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 	function TextInput(
@@ -45,8 +45,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 			helperText,
 
 			// hoist the `TextInputFieldProps`
-			size = 'medium',
-			interactiveState = 'normal',
+			size = "medium",
+			interactiveState = "normal",
 			textInputStyle,
 			// -----
 
@@ -248,7 +248,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 				{ !!helperText?.length && (
 					<FormHelperText
 						text={ helperText }
-						error={ interactiveState === 'invalid' }
+						error={ interactiveState === "invalid" }
 						style={ styleSheet.helperText }
 					/>
 				) }

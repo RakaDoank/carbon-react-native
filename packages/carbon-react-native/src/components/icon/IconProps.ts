@@ -1,11 +1,11 @@
 import type {
 	XmlProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	SharedType,
-} from '../../types'
+} from "../../types"
 
-export interface IconProps extends Omit<XmlProps, 'xml'> {
+export interface IconProps extends Omit<XmlProps, "xml"> {
 	src: SharedType.CarbonIcon,
 }

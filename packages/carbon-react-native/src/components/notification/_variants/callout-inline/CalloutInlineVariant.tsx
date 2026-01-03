@@ -1,26 +1,26 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	VariantContextProvider,
-} from '../../_VariantContextProvider'
+} from "../../_VariantContextProvider"
 
 import {
 	Base,
-} from '../../base'
+} from "../../base"
 
 import {
 	Subtitle,
-} from '../../subtitle'
+} from "../../subtitle"
 
 import type {
 	CalloutInlineVariantProps,
-} from './CalloutInlineVariantProps'
+} from "./CalloutInlineVariantProps"
 
 import type {
 	CalloutInlineVariantRef,
-} from './CalloutInlineVariantRef'
+} from "./CalloutInlineVariantRef"
 
 export const CalloutInlineVariant = forwardRef<CalloutInlineVariantRef, CalloutInlineVariantProps>(
 	function CalloutInlineVariant(
@@ -42,7 +42,7 @@ export const CalloutInlineVariant = forwardRef<CalloutInlineVariantRef, CalloutI
 					Icon={ Icon }
 					iconClose={ false }
 					body={
-						subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number') ? (
+						subtitle && (typeof subtitle === "string" || typeof subtitle === "number") ? (
 							<Subtitle style={ subtitleStyle }>
 								{ subtitle }
 							</Subtitle>

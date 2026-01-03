@@ -7,7 +7,7 @@ import {
 	useMemo,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
@@ -17,58 +17,58 @@ import {
 	View,
 	type EasingFunction,
 	type PressableProps,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Motion,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconCheckmark from '@carbon/icons/svg/32/checkmark.svg'
+import IconCheckmark from "@carbon/icons/svg/32/checkmark.svg"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	SwitchProps,
-} from './SwitchProps'
+} from "./SwitchProps"
 
 import type {
 	SwitchRef,
-} from './SwitchRef'
+} from "./SwitchRef"
 
 import type {
 	SwitchSize,
-} from './SwitchSize'
+} from "./SwitchSize"
 
 import type {
 	SwitchState,
-} from './SwitchState'
+} from "./SwitchState"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const Switch = forwardRef<SwitchRef, SwitchProps>(
 	function(
 		{
 
-			size = 'default',
-			state = 'normal',
+			size = "default",
+			state = "normal",
 			defaultValue,
 			value: valueProp,
 			trackColor: trackColorProp,
@@ -78,8 +78,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				true: motionDefault,
 			},
 			style,
-			role = 'switch',
-			'aria-checked': ariaChecked,
+			role = "switch",
+			"aria-checked": ariaChecked,
 			onChange,
 			onBlur,
 			onFocus,
@@ -112,7 +112,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				useState(ref.current.value),
 
 			controlled =
-				typeof valueProp === 'boolean',
+				typeof valueProp === "boolean",
 
 			value =
 				controlled ? !!valueProp : valueSelf,
@@ -126,8 +126,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 
 			{ trackColor, thumbColor } =
 				useMemo<{
-					trackColor: NonNullable<SwitchProps['trackColor']>,
-					thumbColor: NonNullable<SwitchProps['thumbColor']>,
+					trackColor: NonNullable<SwitchProps["trackColor"]>,
+					thumbColor: NonNullable<SwitchProps["thumbColor"]>,
 				}>(() => {
 					const
 						trackColor_ =
@@ -138,8 +138,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 
 					return {
 						trackColor: trackColorProp ?? {
-							false: trackColor_.false?.[themeContext.colorScheme] ?? 'transparent',
-							true: trackColor_.true?.[themeContext.colorScheme] ?? 'transparent',
+							false: trackColor_.false?.[themeContext.colorScheme] ?? "transparent",
+							true: trackColor_.true?.[themeContext.colorScheme] ?? "transparent",
 						},
 						thumbColor: thumbColorProp ?? {
 							false: thumbColor_[themeContext.colorScheme],
@@ -153,7 +153,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					themeContext.colorScheme,
 				]),
 
-			blurHandler: NonNullable<PressableProps['onBlur']> =
+			blurHandler: NonNullable<PressableProps["onBlur"]> =
 				useCallback(event => {
 					onBlur?.(event)
 					setIsFocused(false)
@@ -161,7 +161,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					onBlur,
 				]),
 
-			focusHandler: NonNullable<PressableProps['onFocus']> =
+			focusHandler: NonNullable<PressableProps["onFocus"]> =
 				useCallback(event => {
 					onFocus?.(event)
 					setIsFocused(true)
@@ -169,7 +169,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					onFocus,
 				]),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
@@ -255,7 +255,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					setValue(valueParam) {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
-							if(typeof valueParam === 'boolean') {
+							if(typeof valueParam === "boolean") {
 								setValueSelf(valueParam)
 							} else {
 								setValueSelf(valueParam(ref.current.value))
@@ -284,7 +284,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 							outputRange: [trackColor.false, trackColor.true],
 						}),
 					},
-					state === 'read_only' ? baseStyleCarbon.containerReadonly : null,
+					state === "read_only" ? baseStyleCarbon.containerReadonly : null,
 					style,
 				] }
 				onBlur={ blurHandler }
@@ -313,7 +313,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 						},
 					] }
 				>
-					{ size === 'small' && (
+					{ size === "small" && (
 						<IconCheckmarkAnimated
 							fill={ mapIconAnimatedFillColor[themeContext.colorScheme] }
 							style={{
@@ -369,7 +369,7 @@ const
 		}),
 
 	sizeStyle =
-		StyleSheet.create<Record<SwitchSize, Record<'width' | 'height', number>>>({
+		StyleSheet.create<Record<SwitchSize, Record<"width" | "height", number>>>({
 			default: {
 				width: 48,
 				height: 24,
@@ -404,7 +404,7 @@ const
 			},
 		}),
 
-	mapSwitchTrackColorToken: Record<SwitchState | 'focused', Partial<Record<'false' | 'true', Record<ThemeContext['colorScheme'], string>>>> =
+	mapSwitchTrackColorToken: Record<SwitchState | "focused", Partial<Record<"false" | "true", Record<ThemeContext["colorScheme"], string>>>> =
 		{
 			normal: {
 				false: {
@@ -440,7 +440,7 @@ const
 			},
 		},
 
-	mapSwitchThumbColorToken: Record<SwitchState | 'focused', Record<ThemeContext['colorScheme'], string>> =
+	mapSwitchThumbColorToken: Record<SwitchState | "focused", Record<ThemeContext["colorScheme"], string>> =
 		{
 			normal: {
 				gray_10: Color.Token.gray_10.icon_on_color,
@@ -472,7 +472,7 @@ const
 				Motion.Easing.exit.productive.x2,
 				Motion.Easing.exit.productive.y2,
 			),
-		} as const satisfies NonNullable<SwitchProps['motion']>['false'],
+		} as const satisfies NonNullable<SwitchProps["motion"]>["false"],
 
 	PressableAnimated =
 		Animated.createAnimatedComponent(Pressable),
@@ -480,7 +480,7 @@ const
 	IconCheckmarkAnimated =
 		Animated.createAnimatedComponent(IconCheckmark),
 
-	mapIconAnimatedFillColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconAnimatedFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_success,
 			gray_100: Color.Token.gray_100.support_success,

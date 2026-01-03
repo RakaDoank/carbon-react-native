@@ -1,54 +1,54 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconClose from '@carbon/icons/svg/32/close.svg'
+import IconClose from "@carbon/icons/svg/32/close.svg"
 
 import {
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../../_internal/style-sheets'
+} from "../../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	BaseColor as ButtonBaseColor,
 	type BaseColorProps,
-} from '../../button/base-color'
+} from "../../button/base-color"
 
 import {
 	Text,
-} from '../../text'
+} from "../../text"
 
 import type {
 	BaseProps,
-} from './BaseProps'
+} from "./BaseProps"
 
 import type {
 	BaseRef,
-} from './BaseRef'
+} from "./BaseRef"
 
 
 export const Base = forwardRef<BaseRef, BaseProps>(
@@ -91,7 +91,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		return (
 			<View
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
@@ -161,10 +161,10 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 								>
 									{ !globalConfigContext.rtl
 										? (
-											<>{ title }{ title && body ? ' ' : '' }{ body }</>
+											<>{ title }{ title && body ? " " : "" }{ body }</>
 										)
 										: (
-											<>{ body }{ title && body ? ' ' : '' }{ title }</>
+											<>{ body }{ title && body ? " " : "" }{ title }</>
 										) }
 								</Text>
 
@@ -207,11 +207,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							 * Means nothing since we used `iconNode` prop
 							 */
 							icon: {
-								default: 'transparent',
-								focused: 'transparent',
-								hovered: 'transparent',
-								pressed: 'transparent',
-								disabled: 'transparent',
+								default: "transparent",
+								focused: "transparent",
+								hovered: "transparent",
+								pressed: "transparent",
+								disabled: "transparent",
 							},
 						}}
 						style={ [
@@ -231,7 +231,7 @@ const
 	baseStyle =
 		StyleSheet.create({
 			leftBar: {
-				position: 'absolute',
+				position: "absolute",
 				top: -1,
 				bottom: -1,
 				width: 3,
@@ -259,16 +259,16 @@ const
 				paddingLeft: 0,
 			},
 			text: {
-				color: 'transparent',
+				color: "transparent",
 			},
 		}),
 
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 			focused: {
 				borderWidth: 1,
@@ -281,11 +281,11 @@ const
 				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
 			disabled: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 		}),
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.background_active,
 			gray_100: Color.Token.gray_100.background_active,

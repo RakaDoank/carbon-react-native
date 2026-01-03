@@ -1,60 +1,60 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconCheckmarkFilled from '@carbon/icons/svg/32/checkmark--filled.svg'
-import IconErrorFilled from '@carbon/icons/svg/32/error--filled.svg'
+import IconCheckmarkFilled from "@carbon/icons/svg/32/checkmark--filled.svg"
+import IconErrorFilled from "@carbon/icons/svg/32/error--filled.svg"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	Loading,
-} from '../loading'
+} from "../loading"
 
 import {
 	Text,
-} from '../text'
+} from "../text"
 
 import type {
 	InlineLoadingProps,
-} from './InlineLoadingProps'
+} from "./InlineLoadingProps"
 
 import type {
 	InlineLoadingRef,
-} from './InlineLoadingRef'
+} from "./InlineLoadingRef"
 
 export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 	function InlineLoading(
 		{
-			state = 'active',
+			state = "active",
 			text,
 			style,
-			'aria-label': ariaLabel,
+			"aria-label": ariaLabel,
 			textProps,
 			dir,
 			...props
@@ -74,7 +74,7 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 				ref={ ref }
 				{ ...props }
 				aria-label={ ariaLabel ?? text }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.items_center,
@@ -83,17 +83,17 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 					style,
 				] }
 			>
-				{ state == 'active' ? (
+				{ state == "active" ? (
 					<Loading
 						type="small"
 					/>
-				) : state == 'error' ? (
+				) : state == "error" ? (
 					<IconErrorFilled
 						width={ 16 }
 						height={ 16 }
 						fill={ mapIconErrorColor[themeContext.colorScheme] }
 					/>
-				) : state == 'finished' ? (
+				) : state == "finished" ? (
 					<IconCheckmarkFilled
 						width={ 16 }
 						height={ 16 }
@@ -131,13 +131,13 @@ const
 			},
 		}),
 
-	mapIconErrorColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconErrorColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_error,
 			gray_100: Color.Token.gray_100.support_error,
 		},
 
-	mapIconCheckmarkColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconCheckmarkColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_success,
 			gray_100: Color.Token.gray_100.support_success,

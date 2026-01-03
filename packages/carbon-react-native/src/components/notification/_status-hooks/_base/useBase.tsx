@@ -1,26 +1,26 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	GlobalConfigContext,
-} from '../../../../_internal/contexts'
+} from "../../../../_internal/contexts"
 
 import {
 	ThemeContext,
-} from '../../../../contexts'
+} from "../../../../contexts"
 
 import type {
 	UseBaseData,
-} from './UseBaseData'
+} from "./UseBaseData"
 
 import type {
 	UseBaseProps,
-} from './UseBaseProps'
+} from "./UseBaseProps"
 
 export function useBase({
 	color: colorProp,
@@ -70,8 +70,8 @@ const
 				borderBottomWidth: 1,
 			},
 			baseTransparentBorder: {
-				borderTopColor: 'transparent',
-				borderRightColor: 'transparent',
-				borderBottomColor: 'transparent',
+				borderTopColor: "transparent",
+				borderRightColor: "transparent",
+				borderBottomColor: "transparent",
 			},
 		})

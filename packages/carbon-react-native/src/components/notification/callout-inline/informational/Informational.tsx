@@ -1,22 +1,22 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	useInformational,
-} from '../../_status-hooks'
+} from "../../_status-hooks"
 
 import {
 	CalloutInlineVariant,
-} from '../../_variants'
+} from "../../_variants"
 
 import type {
 	InformationalProps,
-} from './InformationalProps'
+} from "./InformationalProps"
 
 import type {
 	InformationalRef,
-} from './InformationalRef'
+} from "./InformationalRef"
 
 export const Informational = forwardRef<InformationalRef, InformationalProps>(
 	function Informational(

@@ -5,42 +5,42 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	DialogAnimationConfigs,
-} from '../../../const'
+} from "../../../const"
 
 import type {
 	DialogData,
-} from '../../../contexts/dialog/DialogData'
+} from "../../../contexts/dialog/DialogData"
 
 import type {
 	DialogProviderAnimationConfig,
-} from '../DialogProviderAnimationConfig'
+} from "../DialogProviderAnimationConfig"
 
 import type {
 	ControllerProps,
-} from './ControllerProps'
+} from "./ControllerProps"
 
 import type {
 	ControllerRef,
-} from './ControllerRef'
+} from "./ControllerRef"
 
 import {
 	Modal,
 	type ModalRef,
-} from './_modal'
+} from "./_modal"
 
 import {
 	Overlay,
 	type OverlayRef,
-} from './_overlay'
+} from "./_overlay"
 
 export const Controller = forwardRef<ControllerRef, ControllerProps>(
 	function Controller(
@@ -77,7 +77,7 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 					}
 				}, []),
 
-			dismissAllHandler: ControllerRef['dismissAll'] =
+			dismissAllHandler: ControllerRef["dismissAll"] =
 				useCallback(() => {
 					if(modalRefs.current.length) {
 						return new Promise(resolve => {
@@ -96,7 +96,7 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 					return Promise.resolve()
 				}, []),
 
-			dismissHandler: ControllerRef['dismiss'] =
+			dismissHandler: ControllerRef["dismiss"] =
 				useCallback(() => {
 					if(modalRefs.current.length) {
 						return new Promise(resolve => {
@@ -207,11 +207,11 @@ type DialogDataState =
 	Omit<
 		DialogData,
 		// | 'type'
-		| 'stack'
+		| "stack"
 	>
 
-function getSingleAnimationConfigDuration(duration: DialogProviderAnimationConfig['duration']) {
-	if(typeof duration === 'number') {
+function getSingleAnimationConfigDuration(duration: DialogProviderAnimationConfig["duration"]) {
+	if(typeof duration === "number") {
 		return duration
 	}
 

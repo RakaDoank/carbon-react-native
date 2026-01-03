@@ -1,22 +1,22 @@
 import {
 	useColorScheme,
-} from 'react-native'
+} from "react-native"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	ColorHelper,
-} from '../../../helpers'
+} from "../../../helpers"
 
 import {
 	ColorSchemeGlobal,
-} from '../../globals'
+} from "../../globals"
 
 import type {
 	ThemeProviderProps,
-} from './ThemeProviderProps'
+} from "./ThemeProviderProps"
 
 export function ThemeProvider({
 	colorScheme: colorSchemeProp,

@@ -1,38 +1,38 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import type {
 	TextStyle,
 	ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	BaseColor,
 	type BaseColorProps,
 	type BaseColorState,
-} from '../base-color'
+} from "../base-color"
 
 import type {
 	PrimaryDangerProps,
-} from './PrimaryDangerProps'
+} from "./PrimaryDangerProps"
 
 import type {
 	PrimaryDangerRef,
-} from './PrimaryDangerRef'
+} from "./PrimaryDangerRef"
 
 export const PrimaryDanger = forwardRef<PrimaryDangerRef, PrimaryDangerProps>(
 	function PrimaryDanger(
@@ -75,7 +75,7 @@ export const PrimaryDanger = forwardRef<PrimaryDangerRef, PrimaryDangerProps>(
 const
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
 				backgroundColor: CarbonStyleSheet.color.button_danger_primary,
@@ -96,7 +96,7 @@ const
 
 	textStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["text"], TextStyle>
 		>({
 			default: {
 				color: CarbonStyleSheet.color.text_on_color,
@@ -115,7 +115,7 @@ const
 			},
 		}),
 
-	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+	mapIconColor: Record<ThemeContext["colorScheme"], Record<BaseColorState, string>> =
 		{
 			gray_10: {
 				default: Color.Token.gray_10.icon_on_color,
@@ -133,7 +133,7 @@ const
 			},
 		},
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.button_danger_active,
 			gray_100: Color.Token.gray_100.button_danger_active,

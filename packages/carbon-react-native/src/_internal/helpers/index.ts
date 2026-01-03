@@ -1,4 +1,4 @@
-import * as MathHelper from './math'
+import * as MathHelper from "./math"
 
 export {
 	MathHelper,

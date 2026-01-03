@@ -1,30 +1,30 @@
 import type {
 	NotificationColor,
-} from '../../NotificationColor'
+} from "../../NotificationColor"
 import type {
 	BaseProps,
-} from '../../base/BaseProps'
+} from "../../base/BaseProps"
 
 
 import type {
 	SubtitleProps,
-} from '../../subtitle/SubtitleProps'
+} from "../../subtitle/SubtitleProps"
 
 import type {
 	ButtonGhostProps,
-} from '../_ButtonGhost'
+} from "../_ButtonGhost"
 
 export interface ActionableInlineVariantProps extends Omit<
 	BaseProps,
-	| 'inline'
-	| 'body'
-	| 'icon'
-	| 'iconClose'
-	| 'nodes'
-	| 'leftContainerStyle'
+	| "inline"
+	| "body"
+	| "icon"
+	| "iconClose"
+	| "nodes"
+	| "leftContainerStyle"
 > {
 	color?: NotificationColor,
-	Icon: NonNullable<BaseProps['Icon']>,
+	Icon: NonNullable<BaseProps["Icon"]>,
 	/**
 	 * Fill the button prop to render an button action in the notification component  
 	 * Props are similar like you're calling an button component `<Button.Ghost text="button"/>`, just without the JSX
@@ -40,7 +40,7 @@ export interface ActionableInlineVariantProps extends Omit<
 	 * 	}}
 	 * />
 	 */
-	buttonProps?: Omit<ButtonGhostProps, 'color'>,
+	buttonProps?: Omit<ButtonGhostProps, "color">,
 	subtitle: React.ReactNode,
-	subtitleStyle?: SubtitleProps['style'],
+	subtitleStyle?: SubtitleProps["style"],
 }

@@ -1,7 +1,7 @@
 import {
 	Color,
 	type ColorToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 export const color =
 	Object

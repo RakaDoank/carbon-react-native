@@ -5,56 +5,56 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	Collapsible,
-} from '../collapsible'
+} from "../collapsible"
 
 import type {
 	AccordionHeaderProps,
-} from './AccordionHeaderProps'
+} from "./AccordionHeaderProps"
 
 import type {
 	AccordionItemProps,
-} from './AccordionItemProps'
+} from "./AccordionItemProps"
 
 import type {
 	AccordionItemRef,
-} from './AccordionItemRef'
+} from "./AccordionItemRef"
 
 import {
 	Header,
-} from './_Header'
+} from "./_Header"
 
 import type {
 	ItemRefBase,
-} from './_ItemRefBase'
+} from "./_ItemRefBase"
 
 import {
 	Context,
-} from './_context'
+} from "./_context"
 
 import {
 	Motion,
-} from './_motion'
+} from "./_motion"
 
 export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 	function Item(
@@ -91,12 +91,12 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				useState(ref.current.open),
 
 			controlled =
-				typeof openProp !== 'undefined',
+				typeof openProp !== "undefined",
 
 			open =
 				controlled ? !!openProp : openSelf,
 
-			pressHandler: NonNullable<AccordionHeaderProps['onPress']> =
+			pressHandler: NonNullable<AccordionHeaderProps["onPress"]> =
 				useCallback(event => {
 					onPressHeader?.(event)
 					if(!controlled) {
@@ -118,7 +118,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					},
 					setOpen(value) {
 						if(!controlled) {
-							if(typeof value === 'boolean') {
+							if(typeof value === "boolean") {
 								ref.current.open = value
 							} else {
 								ref.current.open = value(ref.current.open)
@@ -149,7 +149,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				<Collapsible
 					motion={ Motion }
 					open={ open }
-					dir={ globalConfigContext.rtl ? 'rtl' : undefined }
+					dir={ globalConfigContext.rtl ? "rtl" : undefined }
 					contentContainerStyle={ [
 						globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 						accordionContext.collapsibleContentContainerStyle,

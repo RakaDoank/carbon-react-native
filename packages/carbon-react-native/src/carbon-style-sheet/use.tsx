@@ -1,11 +1,11 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	BreakpointContext,
 	ThemeContext,
-} from '../contexts'
+} from "../contexts"
 
 /**
  * To keep your React Component style prop reactive on color scheme and breakpoint change

@@ -1,17 +1,17 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import type {
 	RadioButtonGroupProps,
-} from './RadioButtonGroupProps'
+} from "./RadioButtonGroupProps"
 
 export interface ItemContext {
 	controlled?: boolean,
-	value?: RadioButtonGroupProps['selectedValue'],
-	setValue?: (value: RadioButtonGroupProps['selectedValue']) => void,
+	value?: RadioButtonGroupProps["selectedValue"],
+	setValue?: (value: RadioButtonGroupProps["selectedValue"]) => void,
 	setOnChangeGroupEffect?: (value: boolean) => void,
-	onChangeGroup?: RadioButtonGroupProps['onChange'],
+	onChangeGroup?: RadioButtonGroupProps["onChange"],
 }
 
 export const ItemContext = createContext<ItemContext>({

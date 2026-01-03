@@ -1,5 +1,5 @@
 import {
 	Levels,
-} from './levels'
+} from "./levels"
 
 export const MaxLevel = Levels[Levels.length - 1]!

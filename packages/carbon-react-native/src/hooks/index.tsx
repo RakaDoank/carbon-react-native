@@ -1,4 +1,4 @@
-import * as BreakpointHook from './breakpoint'
+import * as BreakpointHook from "./breakpoint"
 
 export {
 	BreakpointHook,
@@ -6,4 +6,4 @@ export {
 
 export {
 	use as useBreakpoint,
-} from './breakpoint/use'
+} from "./breakpoint/use"

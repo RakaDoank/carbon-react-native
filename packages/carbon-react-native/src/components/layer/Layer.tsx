@@ -1,37 +1,37 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	type ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	MathHelper,
-} from '../../_internal/helpers'
+} from "../../_internal/helpers"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	LayerContext,
-} from './LayerContext'
+} from "./LayerContext"
 
 import type {
 	LayerProps,
-} from './LayerProps'
+} from "./LayerProps"
 
 import type {
 	LayerRef,
-} from './LayerRef'
+} from "./LayerRef"
 
 export const Layer = forwardRef<LayerRef, LayerProps>(
 	function Layer(

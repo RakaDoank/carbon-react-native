@@ -1,4 +1,4 @@
-import * as TypeSets from './type-sets'
+import * as TypeSets from "./type-sets"
 
 export {
 	TypeSets,

@@ -1,4 +1,4 @@
 export type SwitchState =
-	| 'normal'
-	| 'disabled'
-	| 'read_only'
+	| "normal"
+	| "disabled"
+	| "read_only"

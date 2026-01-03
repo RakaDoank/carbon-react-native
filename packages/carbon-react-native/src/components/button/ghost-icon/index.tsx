@@ -1,3 +1,3 @@
-export * from './GhostIcon'
-export * from './GhostIconProps'
-export * from './GhostIconRef'
+export * from "./GhostIcon"
+export * from "./GhostIconProps"
+export * from "./GhostIconRef"

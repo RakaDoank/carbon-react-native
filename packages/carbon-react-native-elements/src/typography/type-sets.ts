@@ -1,6 +1,6 @@
 import type {
 	TypeSets,
-} from '../types'
+} from "../types"
 
 export const code_01: TypeSets = {
 	fontSize: 12,

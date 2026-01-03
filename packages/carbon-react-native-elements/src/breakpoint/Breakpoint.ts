@@ -1,7 +1,7 @@
 import type {
 	BreakpointData,
 	BreakpointToken,
-} from '../types'
+} from "../types"
 
 export const Breakpoint: Record<BreakpointToken, BreakpointData> = {
 	small: {

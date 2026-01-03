@@ -1,3 +1,3 @@
-export * from './TextAreaFluid'
-export type * from './TextAreaFluidProps'
-export type * from './TextAreaFluidRef'
+export * from "./TextAreaFluid"
+export type * from "./TextAreaFluidProps"
+export type * from "./TextAreaFluidRef"

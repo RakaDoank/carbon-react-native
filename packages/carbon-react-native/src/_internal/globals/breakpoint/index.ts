@@ -1,6 +1,6 @@
 import type {
 	BreakpointToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 let breakpoint: BreakpointToken
 

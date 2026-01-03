@@ -1,13 +1,13 @@
 import type {
 	Svg,
 	SvgProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	LoadingType,
-} from '../LoadingType'
+} from "../LoadingType"
 
-export interface CircularProgressProps extends Omit<SvgProps, 'width' | 'height'> {
+export interface CircularProgressProps extends Omit<SvgProps, "width" | "height"> {
 	/**
 	 * @default 'large'
 	 */

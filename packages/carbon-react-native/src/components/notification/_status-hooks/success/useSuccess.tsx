@@ -1,37 +1,37 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import Icon from '@carbon/icons/svg/32/checkmark--filled.svg'
+import Icon from "@carbon/icons/svg/32/checkmark--filled.svg"
 
 import {
 	CarbonStyleSheet,
-} from '../../../../carbon-style-sheet'
+} from "../../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../../contexts'
+} from "../../../../contexts"
 
 import type {
 	NotificationColor,
-} from '../../NotificationColor'
+} from "../../NotificationColor"
 
 import {
 	useBase,
 	type UseBaseProps,
-} from '../_base'
+} from "../_base"
 
 import type {
 	UseSuccessData,
-} from './UseSuccessData'
+} from "./UseSuccessData"
 
 import type {
 	UseSuccessProps,
-} from './UseSuccessProps'
+} from "./UseSuccessProps"
 
 export function useSuccess({
 	color,
@@ -62,7 +62,7 @@ export function useSuccess({
 
 const
 	statusStyle =
-		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['style'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps["style"][NotificationColor]>>({
 			low_contrast: {
 				backgroundColor: CarbonStyleSheet.color.notification_success_background,
 				borderTopColor: CarbonStyleSheet.color.notification_success_border,
@@ -78,7 +78,7 @@ const
 		}),
 
 	titleStyle =
-		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['titleStyle'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps["titleStyle"][NotificationColor]>>({
 			low_contrast: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
@@ -88,7 +88,7 @@ const
 		}),
 
 	leftBarStyle =
-		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps['leftBarStyle'][NotificationColor]>>({
+		CarbonStyleSheet.create<Record<NotificationColor, UseBaseProps["leftBarStyle"][NotificationColor]>>({
 			low_contrast: {
 				backgroundColor: CarbonStyleSheet.color.support_success,
 			},
@@ -97,7 +97,7 @@ const
 			},
 		}),
 
-	mapIconColor: Record<ThemeContext['colorScheme'], UseBaseProps['iconCloseColor']> =
+	mapIconColor: Record<ThemeContext["colorScheme"], UseBaseProps["iconCloseColor"]> =
 		{
 			gray_10: {
 				low_contrast: Color.Token.gray_10.support_success,
@@ -109,7 +109,7 @@ const
 			},
 		},
 
-	mapIconCloseColor: Record<ThemeContext['colorScheme'], UseBaseProps['iconCloseColor']> =
+	mapIconCloseColor: Record<ThemeContext["colorScheme"], UseBaseProps["iconCloseColor"]> =
 		{
 			gray_10: {
 				low_contrast: Color.Token.gray_10.icon_primary,

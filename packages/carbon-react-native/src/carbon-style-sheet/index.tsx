@@ -1,22 +1,22 @@
 import {
 	StyleSheet as RNStyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	breakpoint as _breakpoint,
-} from './breakpoint'
+} from "./breakpoint"
 
 import {
 	color as _color,
-} from './color'
+} from "./color"
 
 import {
 	create as _create,
-} from './create'
+} from "./create"
 
 import {
 	use as _use,
-} from './use'
+} from "./use"
 
 export namespace CarbonStyleSheet {
 

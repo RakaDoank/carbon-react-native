@@ -1,3 +1,3 @@
-export * from './SubtitleLink'
-export * from './SubtitleLinkProps'
-export * from './SubtitleLinkRef'
+export * from "./SubtitleLink"
+export * from "./SubtitleLinkProps"
+export * from "./SubtitleLinkRef"

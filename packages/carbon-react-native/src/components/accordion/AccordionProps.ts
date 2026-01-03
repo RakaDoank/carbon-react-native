@@ -1,12 +1,12 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	AccordionSize,
-} from './AccordionSize'
+} from "./AccordionSize"
 
-export interface AccordionProps extends Omit<ViewProps, 'children'> {
+export interface AccordionProps extends Omit<ViewProps, "children"> {
 	/**
 	 * @default 'medium'
 	 */

@@ -1,10 +1,10 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import type {
 	ToastContextShowConfig,
-} from './ToastContextShowConfig'
+} from "./ToastContextShowConfig"
 
 export interface ToastContext {
 	show: (
@@ -16,9 +16,9 @@ export interface ToastContext {
 
 export const ToastContext = createContext<ToastContext>({
 	show() {
-		throw new Error('Uninitialized ToastProvider')
+		throw new Error("Uninitialized ToastProvider")
 	},
 	dismiss() {
-		throw new Error('Uninitialized ToastProvider')
+		throw new Error("Uninitialized ToastProvider")
 	},
 })

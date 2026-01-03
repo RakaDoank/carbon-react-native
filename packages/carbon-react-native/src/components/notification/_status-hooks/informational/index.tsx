@@ -1,3 +1,3 @@
-export * from './useInformational'
-export * from './UseInformationalData'
-export * from './UseInformationalProps'
+export * from "./useInformational"
+export * from "./UseInformationalData"
+export * from "./UseInformationalProps"

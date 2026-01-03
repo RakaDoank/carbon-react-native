@@ -1,39 +1,39 @@
 import type {
 	PressableProps,
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	CheckboxInputProps,
-} from '../checkbox-input'
+} from "../checkbox-input"
 
 import type {
 	FormLabelProps,
-} from '../form-label'
+} from "../form-label"
 
-export interface CheckboxProps extends Omit<ViewProps, 'children'> {
-	defaultValue?: CheckboxInputProps['defaultValue'],
-	value?: CheckboxInputProps['value'],
-	interactiveState?: CheckboxInputProps['interactiveState'],
+export interface CheckboxProps extends Omit<ViewProps, "children"> {
+	defaultValue?: CheckboxInputProps["defaultValue"],
+	value?: CheckboxInputProps["value"],
+	interactiveState?: CheckboxInputProps["interactiveState"],
 	label: string,
-	onChange?: CheckboxInputProps['onChange'],
-	onPress?: CheckboxInputProps['onPress'],
+	onChange?: CheckboxInputProps["onChange"],
+	onPress?: CheckboxInputProps["onPress"],
 	checkboxInputProps?: Omit<
 		CheckboxInputProps,
-		| 'defaultValue'
-		| 'value'
-		| 'indeterminate'
-		| 'interactiveState'
-		| 'role'
-		| 'onChange'
+		| "defaultValue"
+		| "value"
+		| "indeterminate"
+		| "interactiveState"
+		| "role"
+		| "onChange"
 	>,
-	formLabelProps?: Omit<FormLabelProps, 'label'>,
+	formLabelProps?: Omit<FormLabelProps, "label">,
 	pressableProps?: Omit<
 		PressableProps,
-		| 'role'
-		| 'style'
-		| 'onPress'
+		| "role"
+		| "style"
+		| "onPress"
 	> & {
-		style?: ViewProps['style'],
+		style?: ViewProps["style"],
 	},
 }

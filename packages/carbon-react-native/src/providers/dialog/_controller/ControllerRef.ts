@@ -1,6 +1,6 @@
 import type {
 	DialogProviderRef,
-} from '../DialogProviderRef'
+} from "../DialogProviderRef"
 
 export interface ControllerRef extends DialogProviderRef {
 }

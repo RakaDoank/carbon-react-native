@@ -1,57 +1,57 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	View,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	Size as ButtonSize,
-} from '../button/Size'
+} from "../button/Size"
 
 import {
 	BaseColor as ButtonColor,
 	type BaseColorProps as ButtonColorProps,
 	type BaseColorState as ButtonColorState,
-} from '../button/base-color'
+} from "../button/base-color"
 
 import type {
 	AccordionHeaderProps,
-} from './AccordionHeaderProps'
+} from "./AccordionHeaderProps"
 
 import type {
 	AccordionSize,
-} from './AccordionSize'
+} from "./AccordionSize"
 
 import {
 	HeaderBorder,
-} from './_HeaderBorder'
+} from "./_HeaderBorder"
 
 import {
 	Chevron,
-} from './_chevron'
+} from "./_chevron"
 
 export function Header({
-	size = 'medium',
+	size = "medium",
 	open,
 	flushAlignment = false,
 	text,
@@ -108,13 +108,13 @@ export function Header({
 const
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof ButtonColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof ButtonColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 			focused: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 				borderWidth: 1,
 				borderColor: CarbonStyleSheet.color.focus,
 			},
@@ -125,13 +125,13 @@ const
 				backgroundColor: CarbonStyleSheet.color.layer_hover_01,
 			},
 			disabled: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 		}),
 
 	textStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof ButtonColorProps['colorStateStyle']['text'], TextStyle>
+			Record<keyof ButtonColorProps["colorStateStyle"]["text"], TextStyle>
 		>({
 			default: {
 				color: CarbonStyleSheet.color.text_primary,
@@ -150,7 +150,7 @@ const
 			},
 		}),
 
-	mapIconColor: Record<ThemeContext['colorScheme'], Record<ButtonColorState, string>> =
+	mapIconColor: Record<ThemeContext["colorScheme"], Record<ButtonColorState, string>> =
 		{
 			gray_10: {
 				default: Color.Token.gray_10.icon_primary,
@@ -168,7 +168,7 @@ const
 			},
 		},
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.layer_hover_01,
 			gray_100: Color.Token.gray_100.layer_hover_01,
@@ -180,14 +180,14 @@ const
 	 */
 	mapSizeToButtonSize: Record<AccordionSize, ButtonSize> =
 		{
-			small: 'small',
-			medium: 'medium',
-			large: 'large_productive',
+			small: "small",
+			medium: "medium",
+			large: "large_productive",
 		},
 
 	iconNodeRenderer: (
 		open: boolean,
-		...params: Parameters<NonNullable<ButtonColorProps['iconNode']>>
+		...params: Parameters<NonNullable<ButtonColorProps["iconNode"]>>
 	) => React.ReactNode =
 		(open, iconColorState, iconSize, iconStyle) => {
 			return (

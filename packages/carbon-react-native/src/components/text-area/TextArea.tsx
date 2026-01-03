@@ -2,41 +2,41 @@ import {
 	forwardRef,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	FormHelperText,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import {
 	TextAreaField,
 	type TextAreaFieldRef,
-} from '../text-area-field'
+} from "../text-area-field"
 
 import type {
 	TextAreaProps,
-} from './TextAreaProps'
+} from "./TextAreaProps"
 
 import type {
 	TextAreaRef,
-} from './TextAreaRef'
+} from "./TextAreaRef"
 
 import type {
 	TextAreaRefBase,
-} from './_TextAreaRefBase'
+} from "./_TextAreaRefBase"
 
 export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 	function TextArea(
@@ -45,7 +45,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 			helperText,
 
 			// hoist the `TextAreaFieldProps`
-			interactiveState = 'normal',
+			interactiveState = "normal",
 			textInputStyle,
 			// -----
 
@@ -244,7 +244,7 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 				{ !!helperText?.length && (
 					<FormHelperText
 						text={ helperText }
-						error={ interactiveState === 'invalid' }
+						error={ interactiveState === "invalid" }
 						style={ styleSheet.helperText }
 					/>
 				) }

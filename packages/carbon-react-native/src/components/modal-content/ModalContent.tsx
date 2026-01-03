@@ -1,39 +1,39 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
 	type BreakpointToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
 	ModalContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	BreakpointContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	ModalContentProps,
-} from './ModalContentProps'
+} from "./ModalContentProps"
 
 import type {
 	ModalContentRef,
-} from './ModalContentRef'
+} from "./ModalContentRef"
 
 export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 	function ModalContent(
@@ -60,7 +60,7 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 			<View
 				ref={ ref }
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					styleSheet.modalContent,
 					mapStyleSheetBySizeAndBreakpoint[modalContext.size][breakpoint],
@@ -86,7 +86,7 @@ const
 		}),
 
 	mapStyleSheetBySizeAndBreakpoint: {
-		[Size in ModalContext['size']]: {
+		[Size in ModalContext["size"]]: {
 			[Breakpoint in BreakpointToken]: ViewStyle
 		}
 	} =
@@ -128,11 +128,11 @@ const
 				},
 				x_large: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				max: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 			},
 			medium: {
@@ -142,19 +142,19 @@ const
 				},
 				medium: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				large: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				x_large: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				max: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 			},
 			large: {
@@ -164,19 +164,19 @@ const
 				},
 				medium: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				large: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				x_large: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 				max: {
 					paddingStart: Spacing.spacing_05,
-					paddingEnd: '20%',
+					paddingEnd: "20%",
 				},
 			},
 		}

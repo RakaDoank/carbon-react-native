@@ -1,22 +1,22 @@
 import {
 	useWindowDimensions,
-} from 'react-native'
+} from "react-native"
 
 import {
 	BreakpointContext,
-} from '../../../contexts/breakpoint'
+} from "../../../contexts/breakpoint"
 
 import {
 	BreakpointHelper,
-} from '../../../helpers'
+} from "../../../helpers"
 
 import {
 	BreakpointGlobal,
-} from '../../globals'
+} from "../../globals"
 
 import type {
 	BreakpointProviderProps,
-} from './BreakpointProviderProps'
+} from "./BreakpointProviderProps"
 
 export function BreakpointProvider({
 	children,

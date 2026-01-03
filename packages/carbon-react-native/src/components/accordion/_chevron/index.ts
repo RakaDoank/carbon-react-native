@@ -1,2 +1,2 @@
-export * from './Chevron'
-export type * from './ChevronProps'
+export * from "./Chevron"
+export type * from "./ChevronProps"

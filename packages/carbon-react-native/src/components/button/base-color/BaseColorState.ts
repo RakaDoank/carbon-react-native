@@ -1,6 +1,6 @@
 export type BaseColorState =
-	| 'default'
-	| 'focused'
-	| 'hovered'
-	| 'pressed'
-	| 'disabled'
+	| "default"
+	| "focused"
+	| "hovered"
+	| "pressed"
+	| "disabled"

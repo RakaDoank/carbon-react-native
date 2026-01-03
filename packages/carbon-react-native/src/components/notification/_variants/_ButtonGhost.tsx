@@ -1,38 +1,38 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	ThemeProvider,
 	type ThemeProviderProps,
-} from '../../../_internal/providers/theme'
+} from "../../../_internal/providers/theme"
 
 import {
 	Ghost,
 	type GhostProps,
-} from '../../button/ghost'
+} from "../../button/ghost"
 
 import type {
 	NotificationColor,
-} from '../NotificationColor'
+} from "../NotificationColor"
 
 import {
 	VariantContext,
-} from '../_variant-context'
+} from "../_variant-context"
 
 export interface ButtonGhostProps extends GhostProps {
 }
 
 export function ButtonGhost({
-	size = 'small',
+	size = "small",
 	style,
 	...props
 }: ButtonGhostProps) {
@@ -66,8 +66,8 @@ const
 			},
 		}),
 
-	mapColorScheme: Record<NotificationColor, ThemeProviderProps['colorScheme']> =
+	mapColorScheme: Record<NotificationColor, ThemeProviderProps["colorScheme"]> =
 		{
-			low_contrast: 'gray_10',
-			high_contrast: 'gray_100',
+			low_contrast: "gray_10",
+			high_contrast: "gray_100",
 		}

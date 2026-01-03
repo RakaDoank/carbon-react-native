@@ -1,44 +1,44 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
 	StyleSheet,
 	View,
 	type ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	ButtonGroupContext,
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import {
 	FlexStyleSheet,
-} from '../../../_internal/style-sheets'
+} from "../../../_internal/style-sheets"
 
 import {
 	Text,
 	type TextProps,
-} from '../../text'
+} from "../../text"
 
 import type {
 	Size,
-} from '../Size'
+} from "../Size"
 
 import type {
 	BaseProps,
-} from './BaseProps'
+} from "./BaseProps"
 
 import type {
 	BaseRef,
-} from './BaseRef'
+} from "./BaseRef"
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
@@ -53,8 +53,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			InlineLoading,
 			inlineLoadingProps,
 			style,
-			role = 'button',
-			'aria-label': ariaLabel,
+			role = "button",
+			"aria-label": ariaLabel,
 			dir,
 			...props
 		},
@@ -69,7 +69,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				useContext(ButtonGroupContext),
 
 			size =
-				sizeProp ?? buttonGroupContext.size ?? 'large_productive',
+				sizeProp ?? buttonGroupContext.size ?? "large_productive",
 
 			iconSize =
 				getIconSize(size),
@@ -82,7 +82,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				{ ...props }
 				role={ role }
 				aria-label={ ariaLabel ?? text }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.justify_between,
@@ -97,7 +97,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			>
 				{ backgroundNode }{/* only for base-color button, and this is not valid HTML per se (?) */}
 
-				{ !InlineLoading || inlineLoadingProps?.state === 'inactive' ? (<>
+				{ !InlineLoading || inlineLoadingProps?.state === "inactive" ? (<>
 					{ !!text && (
 						<View
 							style={ baseStyle.textContainer }
@@ -116,7 +116,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							{ ...iconProps }
 							width={ iconProps?.width ?? iconSize }
 							height={ iconProps?.height ?? iconSize }
-							dir={ globalConfigContext.rtl ? 'rtl' : undefined }
+							dir={ globalConfigContext.rtl ? "rtl" : undefined }
 							style={ [
 								getIconMarginTopStyle(size),
 								iconMarginStyle,
@@ -133,7 +133,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				</>) : (
 					<InlineLoading
 						{ ...inlineLoadingProps }
-						text={ inlineLoadingProps?.text || text || '' }
+						text={ inlineLoadingProps?.text || text || "" }
 						style={ [
 							baseStyle.inlineLoading,
 							inlineLoadingProps?.style,
@@ -150,10 +150,10 @@ const
 	baseStyle =
 		StyleSheet.create({
 			container: {
-				overflow: 'hidden',
+				overflow: "hidden",
 			},
 			containerRtl: {
-				direction: 'rtl',
+				direction: "rtl",
 			},
 
 			/**
@@ -176,8 +176,8 @@ const
 			},
 
 			textContainer: {
-				justifyContent: 'center',
-				height: '100%',
+				justifyContent: "center",
+				height: "100%",
 				maxHeight: 48,
 			},
 
@@ -189,7 +189,7 @@ const
 			},
 
 			inlineLoading: {
-				height: '100%',
+				height: "100%",
 				maxHeight: 48,
 			},
 		}),
@@ -213,14 +213,14 @@ const
 			extra_large: {
 				height: 64,
 			},
-			'2xl': {
+			"2xl": {
 				height: 80,
 			},
 		}),
 
 	mapContainerStyle: {
 		[HasText in `${boolean}`]: {
-			[HasIcon in `${boolean}`]: BaseProps['style']
+			[HasIcon in `${boolean}`]: BaseProps["style"]
 		}
 	} =
 		{
@@ -237,13 +237,13 @@ const
 	/**
 	 * https://carbondesignsystem.com/components/button/style/#typography
 	 */
-	mapTextTypeByExpressive: Record<'true' | 'false', NonNullable<TextProps['type']>> =
+	mapTextTypeByExpressive: Record<"true" | "false", NonNullable<TextProps["type"]>> =
 		{
-			false: 'body_compact_01',
-			true: 'body_compact_02',
+			false: "body_compact_01",
+			true: "body_compact_02",
 		},
 
-	mapIconSizeByExpressive: Record<'true' | 'false', number> =
+	mapIconSizeByExpressive: Record<"true" | "false", number> =
 		{
 			false: 16,
 			true: 20,
@@ -251,7 +251,7 @@ const
 
 	mapIconMarginStyle: {
 		[RTL in `${boolean}`]: {
-			[HasText in `${boolean}`]: ViewProps['style']
+			[HasText in `${boolean}`]: ViewProps["style"]
 		}
 	} =
 		{
@@ -267,7 +267,7 @@ const
 
 	mapStyleInButtonGroup: {
 		[IsVertical in `${boolean}`]: {
-			[IsFluid in `${boolean}`]: ViewProps['style']
+			[IsFluid in `${boolean}`]: ViewProps["style"]
 		}
 	} =
 		{
@@ -286,9 +286,9 @@ const
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
 function isExpressiveStr(
-	Size: BaseProps['size'],
-): 'true' | 'false' {
-	return `${Size === 'large_expressive'}`
+	Size: BaseProps["size"],
+): "true" | "false" {
+	return `${Size === "large_expressive"}`
 }
 
 // function getContainerPaddingRight(
@@ -302,7 +302,7 @@ function isExpressiveStr(
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
-function getTextType(size: BaseProps['size']) {
+function getTextType(size: BaseProps["size"]) {
 	return mapTextTypeByExpressive[isExpressiveStr(size)]
 }
 
@@ -310,11 +310,11 @@ function getTextType(size: BaseProps['size']) {
  * Expressive only when button size is LARGE_EXPRESSIVE. You can see this link  
  * https://carbondesignsystem.com/components/button/style/#sizes
  */
-function getIconSize(size: BaseProps['size']) {
+function getIconSize(size: BaseProps["size"]) {
 	return mapIconSizeByExpressive[isExpressiveStr(size)]
 }
 
-function getIconMarginTopStyle(size: NonNullable<BaseProps['size']>) {
+function getIconMarginTopStyle(size: NonNullable<BaseProps["size"]>) {
 	const
 		iconSize =
 			mapIconSizeByExpressive[isExpressiveStr(size)],

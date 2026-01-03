@@ -4,25 +4,25 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	DialogContext,
 	type DialogData,
-} from '../../contexts/dialog'
+} from "../../contexts/dialog"
 
 import type {
 	DialogProviderProps,
-} from './DialogProviderProps'
+} from "./DialogProviderProps"
 
 import type {
 	DialogProviderRef,
-} from './DialogProviderRef'
+} from "./DialogProviderRef"
 
 import {
 	Controller,
 	type ControllerRef,
-} from './_controller'
+} from "./_controller"
 
 export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>(
 	function DialogProvider(
@@ -56,7 +56,7 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 					}
 				}, []),
 
-			show: DialogContext['show'] =
+			show: DialogContext["show"] =
 				useCallback(data => {
 					if(!controllerRef.current) {
 						dialogDataQueue.current = { ...data }
@@ -66,12 +66,12 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 					}
 				}, []),
 
-			dismiss: DialogContext['dismiss'] =
+			dismiss: DialogContext["dismiss"] =
 				useCallback(async () => {
 					return controllerRef.current?.dismiss()
 				}, []),
 
-			dismissAll: DialogContext['dismissAll'] =
+			dismissAll: DialogContext["dismissAll"] =
 				useCallback(async () => {
 					return controllerRef.current?.dismissAll()
 				}, []),

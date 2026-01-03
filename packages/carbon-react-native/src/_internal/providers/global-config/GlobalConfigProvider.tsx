@@ -1,10 +1,10 @@
 import {
 	GlobalConfigContext,
-} from '../../contexts/global-config'
+} from "../../contexts/global-config"
 
 import type {
 	GlobalConfigProviderProps,
-} from './GlobalConfigProviderProps'
+} from "./GlobalConfigProviderProps"
 
 export function GlobalConfigProvider({
 	android_buttonRippleEffect,

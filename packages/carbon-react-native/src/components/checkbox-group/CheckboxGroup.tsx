@@ -1,63 +1,63 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
-import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
+import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import type {
 	SvgProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	Checkbox,
-} from '../checkbox'
+} from "../checkbox"
 
 import {
 	FormHelperText,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import type {
 	CheckboxGroupProps,
-} from './CheckboxGroupProps'
+} from "./CheckboxGroupProps"
 
 import type {
 	CheckboxGroupRef,
-} from './CheckboxGroupRef'
+} from "./CheckboxGroupRef"
 
 const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 	function CheckboxGroup(
 		{
-			orientation = 'vertical',
+			orientation = "vertical",
 			legend,
 			helperText,
 			helperTextMode,
@@ -78,7 +78,7 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 		return (
 			<View
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
@@ -102,12 +102,12 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 				{ !!helperText && (
 					<FormHelperText
 						{ ...formHelperTextProps }
-						error={ helperTextMode === 'error' }
+						error={ helperTextMode === "error" }
 						text={ helperText }
 						textLeading={
-							helperTextModeIcon && helperTextMode === 'error' ? (
+							helperTextModeIcon && helperTextMode === "error" ? (
 								<IconErrorRenderer/>
-							) : helperTextModeIcon && helperTextMode === 'warning' ? (
+							) : helperTextModeIcon && helperTextMode === "warning" ? (
 								<IconWarningRenderer/>
 							) : formHelperTextProps?.textLeading
 						}
@@ -143,35 +143,35 @@ const
 		}),
 
 	wrapperOrientationStyle =
-		StyleSheet.create<Record<NonNullable<CheckboxGroupProps['orientation']>, ViewStyle>>({
+		StyleSheet.create<Record<NonNullable<CheckboxGroupProps["orientation"]>, ViewStyle>>({
 			vertical: {
-				flexDirection: 'column',
+				flexDirection: "column",
 			},
 			horizontal: {
 				...FlexStyleSheet.flex_wrap,
-				flexDirection: 'row',
+				flexDirection: "row",
 			},
 		}),
 
-	mapIconErrorFillColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconErrorFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_error,
 			gray_100: Color.Token.gray_10.support_error,
 		},
 
-	mapIconErrorStrokeColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconErrorStrokeColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.background,
 			gray_100: Color.Token.gray_100.background,
 		},
 
-	mapIconWarningFillColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconWarningFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_warning,
 			gray_100: Color.Token.gray_100.support_warning,
 		}
 
-interface IconRendererProps extends Omit<SvgProps, 'src' | 'fill' | 'width' | 'height'> {
+interface IconRendererProps extends Omit<SvgProps, "src" | "fill" | "width" | "height"> {
 }
 
 function IconErrorRenderer(props: IconRendererProps) {

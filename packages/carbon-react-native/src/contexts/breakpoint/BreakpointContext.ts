@@ -1,19 +1,19 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import {
 	Dimensions,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	BreakpointToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	BreakpointHelper,
-} from '../../helpers'
+} from "../../helpers"
 
 export const BreakpointContext = createContext<BreakpointToken>(
-	BreakpointHelper.getToken(Dimensions.get('window').width),
+	BreakpointHelper.getToken(Dimensions.get("window").width),
 )

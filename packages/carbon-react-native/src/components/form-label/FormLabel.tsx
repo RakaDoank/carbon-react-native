@@ -1,33 +1,33 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	Text,
-} from '../text'
+} from "../text"
 
 import type {
 	FormLabelProps,
-} from './FormLabelProps'
+} from "./FormLabelProps"
 
 import type {
 	FormLabelRef,
-} from './FormLabelRef'
+} from "./FormLabelRef"
 
 export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 	function FormLabel(
@@ -51,7 +51,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 			<View
 				{ ...props }
 				ref={ ref }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					baseStyle.gap,
@@ -63,7 +63,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 
 				<Text
 					{ ...textProps }
-					type={ textProps?.type || 'label_01' }
+					type={ textProps?.type || "label_01" }
 					aria-label={ label }
 				>
 					{ label }

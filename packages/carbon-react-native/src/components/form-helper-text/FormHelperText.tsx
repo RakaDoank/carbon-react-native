@@ -1,41 +1,41 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	Text,
-} from '../text'
+} from "../text"
 
 import type {
 	FormHelperTextProps,
-} from './FormHelperTextProps'
+} from "./FormHelperTextProps"
 
 import type {
 	FormHelperTextRef,
-} from './FormHelperTextRef'
+} from "./FormHelperTextRef"
 
 export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>(
 	function FormHelperText(
@@ -62,7 +62,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 			<View
 				{ ...props }
 				ref={ ref }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					baseStyle.container,
@@ -74,7 +74,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 
 				<Text
 					{ ...textProps }
-					type={ textProps?.type || 'helper_text_01' }
+					type={ textProps?.type || "helper_text_01" }
 					style={ [
 						error ? carbonStyle.textError : carbonStyle.text,
 						textProps?.style,

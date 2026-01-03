@@ -6,7 +6,7 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
@@ -14,36 +14,36 @@ import {
 	View,
 	type PressableProps,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	RadioButtonInputInteractiveState,
-} from './RadioButtonInputInteractiveState'
+} from "./RadioButtonInputInteractiveState"
 
 import type {
 	RadioButtonInputProps,
-} from './RadioButtonInputProps'
+} from "./RadioButtonInputProps"
 
 import type {
 	RadioButtonInputRef,
-} from './RadioButtonInputRef'
+} from "./RadioButtonInputRef"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInputProps>(
 	function RadioButtonInput(
@@ -51,8 +51,8 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			defaultChecked,
 			checked: checkedProp,
 			value,
-			interactiveState = 'normal',
-			role = 'radio',
+			interactiveState = "normal",
+			role = "radio",
 			onChange,
 			onBlur,
 			onFocus,
@@ -82,12 +82,12 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				useState(ref.current.checked),
 
 			controlled =
-				typeof checkedProp === 'boolean',
+				typeof checkedProp === "boolean",
 
 			checked =
 				controlled ? !!checkedProp : checkedSelf,
 
-			blurHandler: NonNullable<PressableProps['onBlur']> =
+			blurHandler: NonNullable<PressableProps["onBlur"]> =
 				useCallback(event => {
 					onBlur?.(event)
 					setIsFocused(false)
@@ -95,7 +95,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					onBlur,
 				]),
 
-			focusHandler: NonNullable<PressableProps['onFocus']> =
+			focusHandler: NonNullable<PressableProps["onFocus"]> =
 				useCallback(event => {
 					onFocus?.(event)
 					setIsFocused(true)
@@ -103,7 +103,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					onFocus,
 				]),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
 					if(!controlled) {
@@ -142,7 +142,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					setChecked(checked_) {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
-							if(typeof checked_ === 'boolean') {
+							if(typeof checked_ === "boolean") {
 								ref.current.checked = checked_
 							} else {
 								ref.current.checked = checked_(ref.current.checked)
@@ -161,7 +161,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			<Pressable
 				{ ...props }
 				role={ role }
-				disabled={ interactiveState === 'disabled' }
+				disabled={ interactiveState === "disabled" }
 				onBlur={ blurHandler }
 				onFocus={ focusHandler }
 				onPress={ pressHandler }
@@ -218,13 +218,13 @@ const
 				height: size + 6,
 				borderRadius: size + 3,
 				borderWidth: 2,
-				borderColor: 'transparent',
+				borderColor: "transparent",
 			},
 			marker: {
 				width: size / 2,
 				height: size / 2,
 				borderRadius: size,
-				overflow: 'hidden',
+				overflow: "hidden",
 			},
 		}),
 
@@ -238,7 +238,7 @@ const
 	mapInteractiveStateStyle_ =
 		CarbonStyleSheet.create<
 			Record<
-				| `${RadioButtonInputInteractiveState}_true_${'container' | 'marker'}`
+				| `${RadioButtonInputInteractiveState}_true_${"container" | "marker"}`
 				| `${RadioButtonInputInteractiveState}_false_container`,
 				ViewStyle
 			>

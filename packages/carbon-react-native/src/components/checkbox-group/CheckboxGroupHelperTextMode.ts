@@ -1,4 +1,4 @@
 export type CheckboxGroupHelperTextMode =
-	| 'normal'
-	| 'error'
-	| 'warning'
+	| "normal"
+	| "error"
+	| "warning"

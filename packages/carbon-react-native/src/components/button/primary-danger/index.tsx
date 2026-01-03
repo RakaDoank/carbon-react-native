@@ -1,3 +1,3 @@
-export * from './PrimaryDanger'
-export * from './PrimaryDangerProps'
-export * from './PrimaryDangerRef'
+export * from "./PrimaryDanger"
+export * from "./PrimaryDangerProps"
+export * from "./PrimaryDangerRef"

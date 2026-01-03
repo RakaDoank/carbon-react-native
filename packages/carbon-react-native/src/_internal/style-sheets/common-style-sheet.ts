@@ -1,24 +1,24 @@
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 export const CommonStyleSheet = StyleSheet.create({
 	w_full: {
-		width: '100%',
+		width: "100%",
 	},
 	h_full: {
-		height: '100%',
+		height: "100%",
 	},
 	overflow_hidden: {
-		overflow: 'hidden',
+		overflow: "hidden",
 	},
 	absolute: {
-		position: 'absolute',
+		position: "absolute",
 	},
 	relative: {
-		position: 'relative',
+		position: "relative",
 	},
 	rtl: {
-		direction: 'rtl',
+		direction: "rtl",
 	},
 })

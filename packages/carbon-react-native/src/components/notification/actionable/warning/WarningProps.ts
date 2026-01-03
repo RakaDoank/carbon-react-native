@@ -1,14 +1,14 @@
 import type {
 	ActionableVariantProps,
-} from '../../_variants/actionable'
+} from "../../_variants/actionable"
 
-export interface WarningProps extends Omit<ActionableVariantProps, 'Icon'> {
+export interface WarningProps extends Omit<ActionableVariantProps, "Icon"> {
 	iconProps?: Omit<
-		NonNullable<ActionableVariantProps['iconProps']>,
-		| 'color'
+		NonNullable<ActionableVariantProps["iconProps"]>,
+		| "color"
 	>,
 	iconCloseProps?: Omit<
-		NonNullable<ActionableVariantProps['iconCloseProps']>,
-		| 'color'
+		NonNullable<ActionableVariantProps["iconCloseProps"]>,
+		| "color"
 	>,
 }

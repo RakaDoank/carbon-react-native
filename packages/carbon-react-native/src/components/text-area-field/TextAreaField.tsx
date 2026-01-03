@@ -1,34 +1,34 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	Platform,
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
 	Typography,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	TextInputField,
-} from '../text-input-field'
+} from "../text-input-field"
 
 import type {
 	TextAreaFieldProps,
-} from './TextAreaFieldProps'
+} from "./TextAreaFieldProps"
 
 import type {
 	TextAreaFieldRef,
-} from './TextAreaFieldRef'
+} from "./TextAreaFieldRef"
 
 export const TextAreaField = forwardRef<TextAreaFieldRef, TextAreaFieldProps>(
 	function(
 		{
 			style,
-			textAlignVertical = 'top',
+			textAlignVertical = "top",
 			textInputStyle,
 			...props
 		},
@@ -59,7 +59,7 @@ const
 	styleSheet =
 		StyleSheet.create({
 			textAreaField: {
-				height: 'auto',
+				height: "auto",
 				minHeight: Spacing.spacing_08,
 			},
 			rnTextInput: {
@@ -68,7 +68,7 @@ const
 				height: Typography.TypeSets.body_compact_01.lineHeight * 4 + 22,
 				...Platform.select({
 					web: {
-						resize: 'vertical',
+						resize: "vertical",
 					},
 				}),
 			},

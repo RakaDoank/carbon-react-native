@@ -1,3 +1,3 @@
-export * from './Secondary'
-export * from './SecondaryProps'
-export * from './SecondaryRef'
+export * from "./Secondary"
+export * from "./SecondaryProps"
+export * from "./SecondaryRef"

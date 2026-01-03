@@ -1,6 +1,6 @@
 import type {
 	Text,
-} from 'react-native'
+} from "react-native"
 
 export interface TextRef extends Text {
 }

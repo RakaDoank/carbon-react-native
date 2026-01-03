@@ -1,2 +1,2 @@
-export * from './DialogContext'
-export type * from './DialogData'
+export * from "./DialogContext"
+export type * from "./DialogData"

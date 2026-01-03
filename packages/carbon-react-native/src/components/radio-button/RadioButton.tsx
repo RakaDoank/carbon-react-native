@@ -4,7 +4,7 @@ import {
 	useContext,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
@@ -12,50 +12,50 @@ import {
 	View,
 	type PressableProps,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import {
 	RadioButtonInput,
 	type RadioButtonInputInteractiveState,
 	type RadioButtonInputRef,
-} from '../radio-button-input'
+} from "../radio-button-input"
 
 import type {
 	RadioButtonProps,
-} from './RadioButtonProps'
+} from "./RadioButtonProps"
 
 import type {
 	RadioButtonRef,
-} from './RadioButtonRef'
+} from "./RadioButtonRef"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 	function RadioButton(
@@ -63,10 +63,10 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			defaultChecked,
 			checked,
 			value,
-			interactiveState = 'normal',
+			interactiveState = "normal",
 			label,
-			role = 'radio',
-			'aria-label': ariaLabel,
+			role = "radio",
+			"aria-label": ariaLabel,
 			onChange,
 			onPress,
 			radioButtonInputProps,
@@ -91,7 +91,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			viewRef =
 				useRef<View>(null),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
 					radioButtonInputRef.current?.setChecked(true)
@@ -118,7 +118,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 			<View
 				{ ...props }
 				aria-label={ ariaLabel || label }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
@@ -129,8 +129,8 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 				<Pressable
 					{ ...pressableProps }
 					role={ role }
-					disabled={ interactiveState === 'disabled' }
-					aria-label={ pressableProps?.['aria-label'] ?? label }
+					disabled={ interactiveState === "disabled" }
+					aria-label={ pressableProps?.["aria-label"] ?? label }
 					onPress={ pressHandler }
 					style={ [
 						CommonStyleSheet.absolute,
@@ -162,7 +162,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 					label={ label }
 					textProps={{
 						...formLabelProps?.textProps,
-						type: formLabelProps?.textProps?.type || 'body_compact_01',
+						type: formLabelProps?.textProps?.type || "body_compact_01",
 						style: [
 							textColorStyle[interactiveState],
 							formLabelProps?.textProps?.style,

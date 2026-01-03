@@ -1,48 +1,48 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	Platform,
 	StyleSheet,
 	TextInput,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
 	Typography,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
-} from '../../../_internal/style-sheets'
+} from "../../../_internal/style-sheets"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import type {
 	ThemeType,
-} from '../../../types'
+} from "../../../types"
 
 import type {
 	TextInputFieldInteractiveState,
-} from '../TextInputFieldInteractiveState'
+} from "../TextInputFieldInteractiveState"
 
 import type {
 	RNTextInputProps,
-} from './RNTextInputProps'
+} from "./RNTextInputProps"
 
 import type {
 	RNTextInputRef,
-} from './RNTextInputRef'
+} from "./RNTextInputRef"
 
 export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 	function RNTextInput(
@@ -68,9 +68,9 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 			<TextInput
 				ref={ ref }
 				{ ...props }
-				editable={ interactiveState === 'disabled' || interactiveState === 'read_only' ? false : editable }
+				editable={ interactiveState === "disabled" || interactiveState === "read_only" ? false : editable }
 				placeholderTextColor={ placeholderTextColor ?? mapPlaceholderTextColor[themeContext.colorScheme] }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					styleSheet.rnTextInput as unknown as never, // FIXME: i don't know the correct type
 					mapStateStyleSheet[themeContext.colorScheme][interactiveState],
@@ -90,15 +90,15 @@ const
 				flexGrow: 1,
 				paddingLeft: Spacing.spacing_05,
 				paddingRight: Spacing.spacing_05,
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 				borderBottomWidth: StyleSheet.hairlineWidth,
-				borderStyle: 'solid',
-				fontFamily: 'IBMPlexSans-Regular',
+				borderStyle: "solid",
+				fontFamily: "IBMPlexSans-Regular",
 				fontSize: Typography.TypeSets.body_compact_01.fontSize,
 				lineHeight: Typography.TypeSets.body_compact_01.lineHeight,
 				...Platform.select({
 					web: {
-						outlineStyle: 'none',
+						outlineStyle: "none",
 					},
 				}),
 			},
@@ -108,14 +108,14 @@ const
 	 * The text color in the TextInput is not reactive with the `CarbonStyleSheet.create()`. So i have to map it manually.
 	 */
 	stateStyleSheet =
-		StyleSheet.create<Record<`${ThemeType.ColorScheme}__${Exclude<TextInputFieldInteractiveState, 'invalid' | 'warning'>}`, TextStyle>>({
+		StyleSheet.create<Record<`${ThemeType.ColorScheme}__${Exclude<TextInputFieldInteractiveState, "invalid" | "warning">}`, TextStyle>>({
 			gray_10__normal: {
 				color: Color.Token.gray_10.text_primary,
 				borderBlockEndColor: Color.Token.gray_10.border_strong_01,
 			},
 			gray_10__disabled: {
 				color: Color.Token.gray_10.text_disabled,
-				borderBlockEndColor: 'transparent',
+				borderBlockEndColor: "transparent",
 			},
 			gray_10__read_only: {
 				color: Color.Token.gray_10.text_primary,
@@ -128,7 +128,7 @@ const
 			},
 			gray_100__disabled: {
 				color: Color.Token.gray_100.text_disabled,
-				borderBlockEndColor: 'transparent',
+				borderBlockEndColor: "transparent",
 			},
 			gray_100__read_only: {
 				color: Color.Token.gray_100.text_primary,

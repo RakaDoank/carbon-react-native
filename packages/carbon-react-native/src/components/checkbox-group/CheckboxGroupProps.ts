@@ -1,17 +1,17 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	FormHelperTextProps,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import type {
 	CheckboxGroupHelperTextMode,
-} from './CheckboxGroupHelperTextMode'
+} from "./CheckboxGroupHelperTextMode"
 
 export interface CheckboxGroupProps extends ViewProps {
-	orientation?: 'vertical' | 'horizontal',
+	orientation?: "vertical" | "horizontal",
 	legend: string,
 	helperText?: string,
 	helperTextMode?: CheckboxGroupHelperTextMode,
@@ -22,7 +22,7 @@ export interface CheckboxGroupProps extends ViewProps {
 	helperTextModeIcon?: boolean,
 	formHelperTextProps?: Omit<
 		FormHelperTextProps,
-		| 'text'
-		| 'error'
+		| "text"
+		| "error"
 	>,
 }

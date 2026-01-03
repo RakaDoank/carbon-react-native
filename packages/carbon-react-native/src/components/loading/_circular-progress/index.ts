@@ -1,2 +1,2 @@
-export * from './CircularProgress'
-export type * from './CircularProgressProps'
+export * from "./CircularProgress"
+export type * from "./CircularProgressProps"

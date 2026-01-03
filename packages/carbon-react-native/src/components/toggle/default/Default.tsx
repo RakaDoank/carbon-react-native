@@ -1,18 +1,18 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	Base,
-} from '../base'
+} from "../base"
 
 import type {
 	DefaultProps,
-} from './DefaultProps'
+} from "./DefaultProps"
 
 import type {
 	DefaultRef,
-} from './DefaultRef'
+} from "./DefaultRef"
 
 export const Default = forwardRef<DefaultRef, DefaultProps>(
 	function Default(
@@ -28,7 +28,7 @@ export const Default = forwardRef<DefaultRef, DefaultProps>(
 				{ ...props }
 				switchProps={{
 					...switchProps,
-					size: 'default',
+					size: "default",
 				}}
 				ref={ ref }
 			/>

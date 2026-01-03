@@ -3,49 +3,49 @@ import {
 	useContext,
 	useEffect,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
 	Easing,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Motion,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	LayerContext,
-} from '../layer'
+} from "../layer"
 
 import type {
 	LoadingProps,
-} from './LoadingProps'
+} from "./LoadingProps"
 
 import type {
 	LoadingRef,
-} from './LoadingRef'
+} from "./LoadingRef"
 
 import {
 	CircularProgress,
-} from './_circular-progress'
+} from "./_circular-progress"
 
 import {
 	MapCircleBackgroundColor,
-} from './_map-circle-background-color'
+} from "./_map-circle-background-color"
 
 import {
 	MapCircleStrokeColor,
-} from './_map-circle-stroke-color'
+} from "./_map-circle-stroke-color"
 
 export const Loading = forwardRef<LoadingRef, LoadingProps>(
 	function(
 		{
-			type = 'large',
+			type = "large",
 			style,
 			...props
 		},
@@ -99,7 +99,7 @@ export const Loading = forwardRef<LoadingRef, LoadingProps>(
 						transform: [{
 							rotateZ: rotationValue.current.interpolate({
 								inputRange: [0, 1],
-								outputRange: ['0deg', '360deg'],
+								outputRange: ["0deg", "360deg"],
 							}),
 						}],
 					},

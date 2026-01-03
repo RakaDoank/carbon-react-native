@@ -1,51 +1,51 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
-import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
+import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	ThemeType,
-} from '../../types'
+} from "../../types"
 
 import {
 	FormHelperText,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import {
 	TextInputField,
-} from '../text-input-field'
+} from "../text-input-field"
 
 import type {
 	TextInputFluidProps,
-} from './TextInputFluidProps'
+} from "./TextInputFluidProps"
 
 import type {
 	TextInputFluidRef,
-} from './TextInputFluidRef'
+} from "./TextInputFluidRef"
 
 export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>(
 	function TextInputFluid(
@@ -86,13 +86,13 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 								styleSheet.helperText,
 							] }
 							textTrailing={
-								interactiveState === 'invalid' ? (
+								interactiveState === "invalid" ? (
 									<IconWarningFilled
 										width={ 16 }
 										height={ 16 }
 										fill={ mapIconInvalidColor[themeContext.colorScheme] }
 									/>
-								) : interactiveState === 'warning' ? (
+								) : interactiveState === "warning" ? (
 									<IconWarningAltFilled
 										width={ 16 }
 										height={ 16 }
@@ -145,7 +145,7 @@ const
 				paddingRight: 0,
 			},
 			helperText: {
-				justifyContent: 'space-between',
+				justifyContent: "space-between",
 				paddingTop: Spacing.spacing_03,
 				paddingBottom: Spacing.spacing_03,
 				paddingLeft: Spacing.spacing_05,

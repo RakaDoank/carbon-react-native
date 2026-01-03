@@ -1,16 +1,16 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	Breakpoint,
 	type BreakpointData,
 	type BreakpointToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	BreakpointContext,
-} from '../../contexts'
+} from "../../contexts"
 
 export interface Use extends BreakpointData {
 	breakpoint: BreakpointToken,

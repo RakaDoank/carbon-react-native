@@ -1,34 +1,34 @@
 import type {
 	PressableProps,
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	SvgProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	InlineLoadingProps,
-} from '../../inline-loading/InlineLoadingProps'
+} from "../../inline-loading/InlineLoadingProps"
 
 import type {
 	TextProps,
-} from '../../text/TextProps'
+} from "../../text/TextProps"
 
 import type {
 	Size,
-} from '../Size'
+} from "../Size"
 
-export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
+export interface BaseProps extends Omit<PressableProps, "children" | "style"> {
 	/**
 	 * Refer to https://carbondesignsystem.com/components/button/style/#sizes  
 	 * Default is `large_productive`
 	 */
 	size?: Size,
 	text?: string,
-	textProps?: Omit<TextProps, 'type' | 'children'>,
+	textProps?: Omit<TextProps, "type" | "children">,
 	Icon?: React.FunctionComponent<SvgProps>,
-	iconProps?: Omit<SvgProps, 'children'>,
+	iconProps?: Omit<SvgProps, "children">,
 	/**
 	 * This prop is useful to custom render at the icon position.  
 	 * `iconNode` takes precedence even if {@linkcode icon} prop is present.
@@ -41,7 +41,7 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 		/**
 		 * Use this style to keep icon style nicely center aligned vertically with text
 		 */
-		iconStyle: SvgProps['style'],
+		iconStyle: SvgProps["style"],
 	) => React.ReactNode,
 	/**
 	 * Only for base-color button for Focus state UI purposes
@@ -53,8 +53,8 @@ export interface BaseProps extends Omit<PressableProps, 'children' | 'style'> {
 	 * If you pass `inlineLoadingProps.state` with `inactive` value, the `InlineLoading` component will not be rendered.
 	 */
 	InlineLoading?: React.FunctionComponent<InlineLoadingProps>,
-	inlineLoadingProps?: Omit<InlineLoadingProps, 'text'> & {
+	inlineLoadingProps?: Omit<InlineLoadingProps, "text"> & {
 		text?: string,
 	},
-	style?: ViewProps['style'],
+	style?: ViewProps["style"],
 }

@@ -1,6 +1,6 @@
 import type {
 	DialogContext,
-} from '../../contexts/dialog'
+} from "../../contexts/dialog"
 
 export interface DialogProviderRef extends DialogContext {
 }

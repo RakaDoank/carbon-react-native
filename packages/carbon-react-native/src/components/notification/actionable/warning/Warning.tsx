@@ -1,22 +1,22 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	useWarning,
-} from '../../_status-hooks'
+} from "../../_status-hooks"
 
 import {
 	ActionableVariant,
-} from '../../_variants'
+} from "../../_variants"
 
 import type {
 	WarningProps,
-} from './WarningProps'
+} from "./WarningProps"
 
 import type {
 	WarningRef,
-} from './WarningRef'
+} from "./WarningRef"
 
 export const Warning = forwardRef<WarningRef, WarningProps>(
 	function Warning(

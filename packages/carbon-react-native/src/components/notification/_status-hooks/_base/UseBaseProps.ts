@@ -1,10 +1,10 @@
 import type {
 	NotificationColor,
-} from '../../NotificationColor'
+} from "../../NotificationColor"
 
 export interface UseBaseProps {
 	color?: NotificationColor,
-	style: Record<NotificationColor, Record<'backgroundColor' | 'borderTopColor' | 'borderRightColor' | 'borderBottomColor', string>>,
+	style: Record<NotificationColor, Record<"backgroundColor" | "borderTopColor" | "borderRightColor" | "borderBottomColor", string>>,
 	leftBarStyle: Record<NotificationColor, {
 		backgroundColor: string
 	}>,

@@ -1,16 +1,16 @@
 import {
 	Easing,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Motion as Motion_,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import type {
 	CollapsibleProps,
-} from '../collapsible/CollapsibleProps'
+} from "../collapsible/CollapsibleProps"
 
-export const Motion: NonNullable<CollapsibleProps['motion']> =
+export const Motion: NonNullable<CollapsibleProps["motion"]> =
 	{
 		toOpen: {
 			duration: Motion_.Duration.fast_02,

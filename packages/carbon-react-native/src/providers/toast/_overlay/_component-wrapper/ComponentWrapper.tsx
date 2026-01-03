@@ -3,27 +3,27 @@ import {
 	useEffect,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
 	Easing,
 	Platform,
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Motion,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import type {
 	ComponentWrapperProps,
-} from './ComponentWrapperProps'
+} from "./ComponentWrapperProps"
 
 import type {
 	ComponentWrapperRef,
-} from './ComponentWrapperRef'
+} from "./ComponentWrapperRef"
 
 export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapperProps>(
 	function(
@@ -147,13 +147,13 @@ const
 	styleSheet =
 		StyleSheet.create({
 			componentWrapper: {
-				position: 'absolute',
+				position: "absolute",
 				top: Spacing.spacing_03,
-				left: '100%',
-				width: 'auto',
+				left: "100%",
+				width: "auto",
 				...Platform.select({
 					web: {
-						flexDirection: 'row',
+						flexDirection: "row",
 					},
 				}),
 			},

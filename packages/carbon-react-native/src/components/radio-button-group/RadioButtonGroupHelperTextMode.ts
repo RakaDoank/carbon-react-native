@@ -1,4 +1,4 @@
 export type RadioButtonGroupHelperTextMode =
-	| 'normal'
-	| 'error'
-	| 'warning'
+	| "normal"
+	| "error"
+	| "warning"

@@ -4,7 +4,7 @@ import {
 	useContext,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
@@ -12,50 +12,50 @@ import {
 	View,
 	type PressableProps,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	CheckboxInput,
 	type CheckboxInputInteractiveState,
 	type CheckboxInputRef,
-} from '../checkbox-input'
+} from "../checkbox-input"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import type {
 	CheckboxProps,
-} from './CheckboxProps'
+} from "./CheckboxProps"
 
 import type {
 	CheckboxRef,
-} from './CheckboxRef'
+} from "./CheckboxRef"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 
 export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
@@ -63,10 +63,10 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 		{
 			defaultValue,
 			value,
-			interactiveState = 'normal',
+			interactiveState = "normal",
 			label,
-			role = 'checkbox',
-			'aria-label': ariaLabel,
+			role = "checkbox",
+			"aria-label": ariaLabel,
 			onChange,
 			onPress,
 			checkboxInputProps,
@@ -91,7 +91,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			viewRef =
 				useRef<View>(null),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
 					if(checkboxInputRef.current) {
@@ -124,7 +124,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			<View
 				{ ...props }
 				aria-label={ ariaLabel || label }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
@@ -135,8 +135,8 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				<Pressable
 					{ ...pressableProps }
 					role={ role }
-					disabled={ interactiveState === 'disabled' }
-					aria-label={ pressableProps?.['aria-label'] ?? label }
+					disabled={ interactiveState === "disabled" }
+					aria-label={ pressableProps?.["aria-label"] ?? label }
 					onPress={ pressHandler }
 					style={ [
 						CommonStyleSheet.absolute,
@@ -167,7 +167,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					label={ label }
 					textProps={{
 						...formLabelProps?.textProps,
-						type: formLabelProps?.textProps?.type || 'body_compact_01',
+						type: formLabelProps?.textProps?.type || "body_compact_01",
 						style: [
 							textColorStyle[interactiveState],
 							formLabelProps?.textProps?.style,

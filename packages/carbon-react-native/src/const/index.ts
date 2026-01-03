@@ -1,4 +1,4 @@
-import * as DialogAnimationConfigs from './dialog-animation-configs'
+import * as DialogAnimationConfigs from "./dialog-animation-configs"
 
 export {
 	DialogAnimationConfigs,

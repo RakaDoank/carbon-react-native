@@ -1,16 +1,16 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	TextProps,
-} from '../text/TextProps'
+} from "../text/TextProps"
 
 import type {
 	InlineLoadingState,
-} from './InlineLoadingState'
+} from "./InlineLoadingState"
 
-export interface InlineLoadingProps extends Omit<ViewProps, 'children'> {
+export interface InlineLoadingProps extends Omit<ViewProps, "children"> {
 	/**
 	 * @default 'active'
 	 */
@@ -18,7 +18,7 @@ export interface InlineLoadingProps extends Omit<ViewProps, 'children'> {
 	text: string,
 	textProps?: Omit<
 		TextProps,
-		| 'children'
-		| 'type'
+		| "children"
+		| "type"
 	>
 }

@@ -2,16 +2,16 @@ import {
 	BreakpointProvider,
 	GlobalConfigProvider,
 	ThemeProvider,
-} from '../_internal/providers'
+} from "../_internal/providers"
 
 import type {
 	CarbonReactNativeProps,
-} from './CarbonReactNativeProps'
+} from "./CarbonReactNativeProps"
 
 export function CarbonReactNative({
 	// GlobalConfigProviderProps
 	android_buttonRippleEffect = true,
-	notificationColor = 'high_contrast',
+	notificationColor = "high_contrast",
 	toastDuration = 5000,
 	rtl = false,
 

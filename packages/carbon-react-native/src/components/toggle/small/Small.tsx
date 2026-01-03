@@ -1,18 +1,18 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	Base,
-} from '../base'
+} from "../base"
 
 import type {
 	SmallProps,
-} from './SmallProps'
+} from "./SmallProps"
 
 import type {
 	SmallRef,
-} from './SmallRef'
+} from "./SmallRef"
 
 export const Small = forwardRef<SmallRef, SmallProps>(
 	function Small(
@@ -28,7 +28,7 @@ export const Small = forwardRef<SmallRef, SmallProps>(
 				{ ...props }
 				switchProps={{
 					...switchProps,
-					size: 'small',
+					size: "small",
 				}}
 				ref={ ref }
 			/>

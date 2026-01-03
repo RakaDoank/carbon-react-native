@@ -1,35 +1,35 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	Text,
-} from '../../text'
+} from "../../text"
 
 import type {
 	NotificationColor,
-} from '../NotificationColor'
+} from "../NotificationColor"
 
 import {
 	VariantContext,
-} from '../_variant-context'
+} from "../_variant-context"
 
 import type {
 	SubtitleProps,
-} from './SubtitleProps'
+} from "./SubtitleProps"
 
 import type {
 	SubtitleRef,
-} from './SubtitleRef'
+} from "./SubtitleRef"
 
 export const Subtitle = forwardRef<SubtitleRef, SubtitleProps>(
 	function Subtitle(

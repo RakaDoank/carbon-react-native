@@ -6,57 +6,57 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
-import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
+import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	FormHelperText,
-} from '../form-helper-text'
+} from "../form-helper-text"
 
 import {
 	FormLabel,
-} from '../form-label'
+} from "../form-label"
 
 import type {
 	RadioButtonGroupProps,
-} from './RadioButtonGroupProps'
+} from "./RadioButtonGroupProps"
 
 import type {
 	RadioButtonGroupRef,
-} from './RadioButtonGroupRef'
+} from "./RadioButtonGroupRef"
 
 import {
 	Item,
-} from './_Item'
+} from "./_Item"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 import {
 	ItemContext,
-} from './_item-context'
+} from "./_item-context"
 
 
 const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
@@ -64,15 +64,15 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 		{
 			defaultSelectedValue,
 			selectedValue: selectedValueProp,
-			orientation = 'vertical',
+			orientation = "vertical",
 			legend,
 			helperText,
-			helperTextMode = 'normal',
+			helperTextMode = "normal",
 			helperTextModeIcon = true,
 			onChange,
 			formHelperTextProps,
 			children,
-			role = 'radiogroup',
+			role = "radiogroup",
 			style,
 			...props
 		},
@@ -96,12 +96,12 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 				useState(ref.current.selectedValue),
 
 			controlled =
-				typeof selectedValueProp !== 'undefined',
+				typeof selectedValueProp !== "undefined",
 
 			selectedValue =
 				controlled ? selectedValueProp : selectedValueSelf,
 
-			setOnChangeGroupEffect: NonNullable<ItemContext['setOnChangeGroupEffect']> =
+			setOnChangeGroupEffect: NonNullable<ItemContext["setOnChangeGroupEffect"]> =
 				useCallback(value => {
 					ref.current.onChangeEffect = value
 				}, [])
@@ -127,7 +127,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 					setSelectedValue(valueParam) {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
-							if(typeof valueParam !== 'function') {
+							if(typeof valueParam !== "function") {
 								setSelectedValueSelf(valueParam)
 							} else {
 								setSelectedValueSelf(valueParam(ref.current.selectedValue))
@@ -174,16 +174,16 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 				{ !!helperText && (
 					<FormHelperText
 						{ ...formHelperTextProps }
-						error={ helperTextMode === 'error' }
+						error={ helperTextMode === "error" }
 						text={ helperText }
 						textLeading={
-							helperTextModeIcon && helperTextMode === 'error' ? (
+							helperTextModeIcon && helperTextMode === "error" ? (
 								<IconWarningFilled
 									fill={ mapIconErrorFillColor[themeContext.colorScheme] }
 									width={ 18 }
 									height={ 18 }
 								/>
-							) : helperTextModeIcon && helperTextMode === 'warning' ? (
+							) : helperTextModeIcon && helperTextMode === "warning" ? (
 								<IconWarningAltFilled
 									fill={ mapIconWarningFillColor[themeContext.colorScheme] }
 									width={ 18 }
@@ -223,23 +223,23 @@ const
 		}),
 
 	wrapperOrientationStyle =
-		StyleSheet.create<Record<NonNullable<RadioButtonGroupProps['orientation']>, ViewStyle>>({
+		StyleSheet.create<Record<NonNullable<RadioButtonGroupProps["orientation"]>, ViewStyle>>({
 			vertical: {
-				flexDirection: 'column',
+				flexDirection: "column",
 			},
 			horizontal: {
 				...FlexStyleSheet.flex_wrap,
-				flexDirection: 'row',
+				flexDirection: "row",
 			},
 		}),
 
-	mapIconErrorFillColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconErrorFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_error,
 			gray_100: Color.Token.gray_10.support_error,
 		},
 
-	mapIconWarningFillColor: Record<ThemeContext['colorScheme'], string> =
+	mapIconWarningFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.support_warning,
 			gray_100: Color.Token.gray_100.support_warning,

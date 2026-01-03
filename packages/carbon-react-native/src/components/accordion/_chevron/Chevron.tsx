@@ -1,22 +1,22 @@
 import {
 	useEffect,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated as RNAnimated,
 	type EasingFunction,
-} from 'react-native'
+} from "react-native"
 
-import ChevronDown from '@carbon/icons/svg/32/chevron--down.svg'
+import ChevronDown from "@carbon/icons/svg/32/chevron--down.svg"
 
 import {
 	Motion,
-} from '../_motion'
+} from "../_motion"
 
 import type {
 	ChevronProps,
-} from './ChevronProps'
+} from "./ChevronProps"
 
 const
 	AnimatedSvgChevronDown =
@@ -85,7 +85,7 @@ export function Chevron({
 					transform: [{
 						rotateZ: rotateZ.current.interpolate({
 							inputRange: [0, 1],
-							outputRange: ['0deg', '180deg'],
+							outputRange: ["0deg", "180deg"],
 						}),
 					}],
 				},

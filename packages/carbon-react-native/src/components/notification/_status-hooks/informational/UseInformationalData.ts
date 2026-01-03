@@ -1,11 +1,11 @@
 import type {
 	BaseProps,
-} from '../../base/BaseProps'
+} from "../../base/BaseProps"
 
 import type {
 	UseBaseData,
-} from '../_base/UseBaseData'
+} from "../_base/UseBaseData"
 
 export interface UseInformationalData extends UseBaseData {
-	Icon: NonNullable<BaseProps['Icon']>,
+	Icon: NonNullable<BaseProps["Icon"]>,
 }

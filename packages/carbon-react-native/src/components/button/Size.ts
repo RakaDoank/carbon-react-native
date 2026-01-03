@@ -1,7 +1,7 @@
 export type Size =
-	| 'small'
-	| 'medium'
-	| 'large_productive'
-	| 'large_expressive'
-	| 'extra_large'
-	| '2xl'
+	| "small"
+	| "medium"
+	| "large_productive"
+	| "large_expressive"
+	| "extra_large"
+	| "2xl"

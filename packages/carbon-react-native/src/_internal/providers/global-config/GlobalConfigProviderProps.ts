@@ -1,6 +1,6 @@
 import type {
 	GlobalConfigContext,
-} from '../../contexts'
+} from "../../contexts"
 
 export interface GlobalConfigProviderProps extends GlobalConfigContext {
 	children?: React.ReactNode,

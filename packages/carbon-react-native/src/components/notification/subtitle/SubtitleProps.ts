@@ -1,6 +1,6 @@
 import type {
 	TextProps,
-} from '../../text/TextProps'
+} from "../../text/TextProps"
 
-export interface SubtitleProps extends Omit<TextProps, 'type'> {
+export interface SubtitleProps extends Omit<TextProps, "type"> {
 }

@@ -1,40 +1,40 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	BaseColor,
 	type BaseColorProps,
 	type BaseColorState,
-} from '../base-color'
+} from "../base-color"
 
 import type {
 	GhostProps,
-} from './GhostProps'
+} from "./GhostProps"
 
 import type {
 	GhostRef,
-} from './GhostRef'
+} from "./GhostRef"
 
 export const Ghost = forwardRef<GhostRef, GhostProps>(
 	function Ghost(
@@ -86,10 +86,10 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 const
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 			focused: {
 				borderWidth: 1,
@@ -102,13 +102,13 @@ const
 				backgroundColor: CarbonStyleSheet.color.background_active,
 			},
 			disabled: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 		}),
 
 	textStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["text"], TextStyle>
 		>({
 			default: {
 				color: CarbonStyleSheet.color.link_primary,
@@ -134,13 +134,13 @@ const
 			},
 		}),
 
-	mapIconPLByText: Record<string, typeof style['iconPL8'] | null> =
+	mapIconPLByText: Record<string, typeof style["iconPL8"] | null> =
 		{
 			false: null,
 			true: style.iconPL8,
 		},
 
-	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+	mapIconColor: Record<ThemeContext["colorScheme"], Record<BaseColorState, string>> =
 		{
 			gray_10: {
 				default: Color.Token.gray_10.link_primary,
@@ -158,7 +158,7 @@ const
 			},
 		},
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.background_active,
 			gray_100: Color.Token.gray_100.background_active,

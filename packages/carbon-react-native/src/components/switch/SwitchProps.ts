@@ -3,17 +3,17 @@ import type {
 	PressableProps,
 	StyleProp,
 	ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	SwitchSize,
-} from './SwitchSize'
+} from "./SwitchSize"
 
 import type {
 	SwitchState,
-} from './SwitchState'
+} from "./SwitchState"
 
-export interface SwitchProps extends Omit<PressableProps, 'children'> {
+export interface SwitchProps extends Omit<PressableProps, "children"> {
 	/**
 	 * @default 'default'
 	 */
@@ -27,9 +27,9 @@ export interface SwitchProps extends Omit<PressableProps, 'children'> {
 	 */
 	defaultValue?: boolean,
 	value?: boolean,
-	trackColor?: Record<'false' | 'true', string>,
-	thumbColor?: Record<'false' | 'true', string>,
-	motion?: Record<'false' | 'true', {
+	trackColor?: Record<"false" | "true", string>,
+	thumbColor?: Record<"false" | "true", string>,
+	motion?: Record<"false" | "true", {
 		duration: number,
 		easing?: EasingFunction,
 	}>,

@@ -1,35 +1,35 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	ButtonGroupContext,
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import type {
 	ButtonGroupProps,
-} from './ButtonGroupProps'
+} from "./ButtonGroupProps"
 
 import type {
 	ButtonGroupRef,
-} from './ButtonGroupRef'
+} from "./ButtonGroupRef"
 
 export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 	function ButtonGroup(
@@ -38,7 +38,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 			button2,
 			button3,
 			oneAlone,
-			size = 'large_productive',
+			size = "large_productive",
 			fluid,
 			vertical,
 			style,
@@ -72,7 +72,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				<View
 					ref={ ref }
 					{ ...props }
-					dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+					dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 					style={ [
 						styleFlexDir,
 						styleFluid,
@@ -123,10 +123,10 @@ const
 				gap: 1,
 			},
 			firstButtonContainer: {
-				width: '25%',
+				width: "25%",
 			},
 			lastTwoButttonContainer: {
-				width: '50%',
+				width: "50%",
 			},
 		}),
 

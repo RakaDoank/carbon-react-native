@@ -1,25 +1,25 @@
 import type {
 	PressableProps,
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	CheckboxInputInteractiveState,
-} from './CheckboxInputInteractiveState'
+} from "./CheckboxInputInteractiveState"
 
 import type {
 	CheckboxInputValue,
-} from './CheckboxInputValue'
+} from "./CheckboxInputValue"
 
 export interface CheckboxInputProps extends Omit<
 	PressableProps,
-	| 'children'
-	| 'disabled'
-	| 'style'
+	| "children"
+	| "disabled"
+	| "style"
 > {
 	defaultValue?: CheckboxInputValue,
 	value?: CheckboxInputValue,
 	interactiveState?: CheckboxInputInteractiveState,
 	onChange?: (value: CheckboxInputValue) => void,
-	style?: ViewProps['style'],
+	style?: ViewProps["style"],
 }

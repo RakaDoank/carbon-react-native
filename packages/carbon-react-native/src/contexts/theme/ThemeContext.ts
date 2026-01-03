@@ -4,15 +4,15 @@
 
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import {
 	ColorSchemeGlobal,
-} from '../../_internal/globals'
+} from "../../_internal/globals"
 
 import type {
 	ThemeType,
-} from '../../types'
+} from "../../types"
 
 export interface ThemeContext {
 	colorScheme: ThemeType.ColorScheme,

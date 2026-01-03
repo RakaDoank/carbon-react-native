@@ -1,4 +1,4 @@
 export type TextInputFieldSize =
-	| 'small'
-	| 'medium'
-	| 'large'
+	| "small"
+	| "medium"
+	| "large"

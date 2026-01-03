@@ -3,28 +3,28 @@ import {
 	useEffect,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	FlexStyleSheet,
-} from '../../../../_internal/style-sheets'
+} from "../../../../_internal/style-sheets"
 
 import {
 	DialogAnimationConfigs,
-} from '../../../../const'
+} from "../../../../const"
 
 import type {
 	ModalProps,
-} from './ModalProps'
+} from "./ModalProps"
 
 import type {
 	ModalRef,
-} from './ModalRef'
+} from "./ModalRef"
 
 export const Modal = forwardRef<ModalRef, ModalProps>(
 	function(

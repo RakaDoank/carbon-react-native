@@ -1,35 +1,35 @@
 import {
 	forwardRef,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	VariantContextProvider,
-} from '../../_VariantContextProvider'
+} from "../../_VariantContextProvider"
 
 import {
 	Base,
-} from '../../base'
+} from "../../base"
 
 import {
 	Subtitle,
 	type SubtitleProps,
-} from '../../subtitle'
+} from "../../subtitle"
 
 import type {
 	ToastVariantProps,
-} from './ToastVariantProps'
+} from "./ToastVariantProps"
 
 import type {
 	ToastVariantRef,
-} from './ToastVariantRef'
+} from "./ToastVariantRef"
 
 export const ToastVariant = forwardRef<ToastVariantRef, ToastVariantProps>(
 	function ToastVariant(
@@ -52,7 +52,7 @@ export const ToastVariant = forwardRef<ToastVariantRef, ToastVariantProps>(
 					Icon={ Icon }
 					iconClose
 					body={
-						subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number') ? (
+						subtitle && (typeof subtitle === "string" || typeof subtitle === "number") ? (
 							<Subtitle style={ subtitleStyle }>
 								{ subtitle }
 							</Subtitle>
@@ -84,7 +84,7 @@ const
 			},
 		})
 
-interface TimestampProps extends Omit<SubtitleProps, 'children'> {
+interface TimestampProps extends Omit<SubtitleProps, "children"> {
 }
 
 function Timestamp({
@@ -101,11 +101,11 @@ function Timestamp({
 			] }
 		>
 			{ new Date().toLocaleString(
-				'en-US',
+				"en-US",
 				{
-					hour: '2-digit',
-					minute: '2-digit',
-					second: '2-digit',
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
 					hour12: true,
 				},
 			) }

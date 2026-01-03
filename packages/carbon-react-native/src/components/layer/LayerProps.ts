@@ -1,10 +1,10 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 export interface LayerProps extends ViewProps {
 	/**

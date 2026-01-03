@@ -5,7 +5,7 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
@@ -13,28 +13,28 @@ import {
 	View,
 	type EasingFunction,
 	type ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Motion,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import type {
 	CollapsibleProps,
-} from './CollapsibleProps'
+} from "./CollapsibleProps"
 
 import type {
 	CollapsibleRef,
-} from './CollapsibleRef'
+} from "./CollapsibleRef"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 	function(
@@ -81,11 +81,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					/**
 					 * To compare `positionView` value to avoid unnecessary set state with the same value
 					 */
-					positionView: 'absolute' | 'relative',
+					positionView: "absolute" | "relative",
 					contentHeight: number,
 					openSelf: boolean,
 				}>({
-					positionView: defaultOpen ?? openProp ? 'relative' : 'absolute',
+					positionView: defaultOpen ?? openProp ? "relative" : "absolute",
 					contentHeight: 0,
 					openSelf: !!defaultOpen,
 				}),
@@ -101,7 +101,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			 * This state will be changed once only from 'relative' to 'absolute'  
 			 */
 			[positionView, setPositionView] =
-				useState<'absolute' | 'relative'>(ref.current.positionView),
+				useState<"absolute" | "relative">(ref.current.positionView),
 
 			heightAnimated =
 				useRef(new Animated.Value(0)),
@@ -114,20 +114,20 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				useRef(new Animated.Value(0)),
 
 			controlled =
-				typeof openProp === 'boolean',
+				typeof openProp === "boolean",
 
 			open =
 				controlled ? !!openProp : openSelf,
 
 			setPositionViewToAbsolute =
 				useCallback(() => {
-					if(ref.current.positionView === 'relative') {
-						ref.current.positionView = 'absolute'
-						setPositionView('absolute')
+					if(ref.current.positionView === "relative") {
+						ref.current.positionView = "absolute"
+						setPositionView("absolute")
 					}
 				}, []),
 
-			onLayoutContent: NonNullable<ViewProps['onLayout']> =
+			onLayoutContent: NonNullable<ViewProps["onLayout"]> =
 				useCallback(({ nativeEvent }) => {
 					if(ref.current.contentHeight !== nativeEvent.layout.height) {
 						ref.current.contentHeight = nativeEvent.layout.height
@@ -207,7 +207,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				{
 					setOpen(value) {
 						if(!controlled) {
-							if(typeof value === 'boolean') {
+							if(typeof value === "boolean") {
 								ref.current.openSelf = value
 							} else {
 								ref.current.openSelf = value(ref.current.openSelf)
@@ -226,7 +226,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				{ ...props }
 				style={ [
 					CommonStyleSheet.overflow_hidden,
-					positionView === 'absolute'
+					positionView === "absolute"
 						? {
 							height: heightAnimated.current,
 						}

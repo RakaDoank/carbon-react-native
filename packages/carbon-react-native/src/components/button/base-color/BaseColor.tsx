@@ -3,7 +3,7 @@ import {
 	useCallback,
 	useContext,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Platform,
@@ -12,40 +12,40 @@ import {
 	type StyleProp,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	type ThemeType,
-} from '../../../types'
+} from "../../../types"
 
 import {
 	Base,
 	type BaseProps,
-} from '../base'
+} from "../base"
 
 import type {
 	BaseColorProps,
-} from './BaseColorProps'
+} from "./BaseColorProps"
 
 import type {
 	BaseColorRef,
-} from './BaseColorRef'
+} from "./BaseColorRef"
 
 import type {
 	BaseColorState,
-} from './BaseColorState'
+} from "./BaseColorState"
 
 export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 	function BaseColor(
@@ -86,7 +86,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					pressed: false,
 				}),
 
-			blurHandler: NonNullable<BaseProps['onBlur']> =
+			blurHandler: NonNullable<BaseProps["onBlur"]> =
 				useCallback(event => {
 					onBlur?.(event)
 					setState(state_ => ({
@@ -97,7 +97,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					onBlur,
 				]),
 
-			focusHandler: NonNullable<BaseProps['onFocus']> =
+			focusHandler: NonNullable<BaseProps["onFocus"]> =
 				useCallback(event => {
 					onFocus?.(event)
 					setState(state_ => ({
@@ -108,7 +108,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					onFocus,
 				]),
 
-			hoverInHandler: NonNullable<BaseProps['onHoverIn']> =
+			hoverInHandler: NonNullable<BaseProps["onHoverIn"]> =
 				useCallback(event => {
 					onHoverIn?.(event)
 					setState(state_ => ({
@@ -119,7 +119,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					onHoverIn,
 				]),
 
-			hoverOutHandler: NonNullable<BaseProps['onHoverIn']> =
+			hoverOutHandler: NonNullable<BaseProps["onHoverIn"]> =
 				useCallback(event => {
 					onHoverOut?.(event)
 					setState(state_ => ({
@@ -130,7 +130,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					onHoverOut,
 				]),
 
-			pressInHandler: NonNullable<BaseProps['onPressIn']> =
+			pressInHandler: NonNullable<BaseProps["onPressIn"]> =
 				useCallback(event => {
 					onPressIn?.(event)
 					setState(state_ => ({
@@ -141,7 +141,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 					onPressIn,
 				]),
 
-			pressOutHandler: NonNullable<BaseProps['onPressOut']> =
+			pressOutHandler: NonNullable<BaseProps["onPressOut"]> =
 				useCallback(event => {
 					onPressOut?.(event)
 					setState(state_ => ({
@@ -206,7 +206,7 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				InlineLoading={ InlineLoading }
 				inlineLoadingProps={ inlineLoadingProps }
 				style={ [
-					!InlineLoading || inlineLoadingProps?.state === 'inactive'
+					!InlineLoading || inlineLoadingProps?.state === "inactive"
 						? stateStyle.background
 						: styleSheet.withInlineLoading,
 					style,
@@ -221,16 +221,16 @@ const
 	styleSheet =
 		StyleSheet.create({
 			withInlineLoading: {
-				borderColor: 'transparent',
+				borderColor: "transparent",
 			},
 			innerFocusBox: {
-				position: 'absolute',
+				position: "absolute",
 				top: 2,
 				right: 2,
 				bottom: 2,
 				left: 2,
 				borderWidth: 1,
-				borderColor: 'transparent',
+				borderColor: "transparent",
 			},
 			innerFocusBoxActive_GRAY_10: {
 				borderColor: Color.Token.gray_10.focus_inset,
@@ -240,15 +240,15 @@ const
 			},
 		}),
 
-	mapInnerFocusBoxActiveStyle: Record<ThemeType.ColorScheme, typeof styleSheet['innerFocusBoxActive_GRAY_10']> =
+	mapInnerFocusBoxActiveStyle: Record<ThemeType.ColorScheme, typeof styleSheet["innerFocusBoxActive_GRAY_10"]> =
 		{
 			gray_10: styleSheet.innerFocusBoxActive_GRAY_10,
 			gray_100: styleSheet.innerFocusBoxActive_GRAY_100,
 		}
 
 function getStateStyle(
-	colorStateStyle: BaseColorProps['colorStateStyle'],
-	states: Record<Exclude<BaseColorState, 'default'>, boolean>,
+	colorStateStyle: BaseColorProps["colorStateStyle"],
+	states: Record<Exclude<BaseColorState, "default">, boolean>,
 	androidRipple?: boolean,
 ): {
 	background: StyleProp<ViewStyle>, text: StyleProp<TextStyle>, icon: string
@@ -272,7 +272,7 @@ function getStateStyle(
 
 	if(states.pressed) {
 		return {
-			background: androidRipple && Platform.OS == 'android'
+			background: androidRipple && Platform.OS == "android"
 				? colorStateStyle.background.default
 				: colorStateStyle.background.pressed,
 			text: colorStateStyle.text.pressed,

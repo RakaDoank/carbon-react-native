@@ -1,10 +1,10 @@
 import type {
 	SvgProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	LoadingType,
-} from './LoadingType'
+} from "./LoadingType"
 
 export interface LoadingProps extends SvgProps {
 	/**

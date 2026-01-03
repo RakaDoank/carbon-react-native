@@ -1,40 +1,40 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 
 import {
 	BaseColor,
 	type BaseColorProps,
 	type BaseColorState,
-} from '../base-color'
+} from "../base-color"
 
 import type {
 	GhostDangerProps,
-} from './GhostDangerProps'
+} from "./GhostDangerProps"
 
 import type {
 	GhostDangerRef,
-} from './GhostDangerRef'
+} from "./GhostDangerRef"
 
 export const GhostDanger = forwardRef<GhostDangerRef, GhostDangerProps>(
 	function GhostDanger(
@@ -86,10 +86,10 @@ export const GhostDanger = forwardRef<GhostDangerRef, GhostDangerProps>(
 const
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 			focused: {
 				borderWidth: 1,
@@ -108,7 +108,7 @@ const
 
 	textStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["text"], TextStyle>
 		>({
 			default: {
 				color: CarbonStyleSheet.color.button_danger_secondary,
@@ -134,13 +134,13 @@ const
 			},
 		}),
 
-	mapIconPLByText: Record<string, typeof style['iconPL8'] | null> =
+	mapIconPLByText: Record<string, typeof style["iconPL8"] | null> =
 		{
 			false: null,
 			true: style.iconPL8,
 		},
 
-	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+	mapIconColor: Record<ThemeContext["colorScheme"], Record<BaseColorState, string>> =
 		{
 			gray_10: {
 				default: Color.Token.gray_10.button_danger_secondary,
@@ -158,7 +158,7 @@ const
 			},
 		},
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.button_danger_active,
 			gray_100: Color.Token.gray_100.button_danger_active,

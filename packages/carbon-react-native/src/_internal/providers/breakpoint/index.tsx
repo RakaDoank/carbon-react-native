@@ -1,2 +1,2 @@
-export * from './BreakpointProvider'
-export * from './BreakpointProviderProps'
+export * from "./BreakpointProvider"
+export * from "./BreakpointProviderProps"

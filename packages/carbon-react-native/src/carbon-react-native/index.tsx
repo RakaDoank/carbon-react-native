@@ -1,2 +1,2 @@
-export * from './CarbonReactNative'
-export type * from './CarbonReactNativeProps'
+export * from "./CarbonReactNative"
+export type * from "./CarbonReactNativeProps"

@@ -1,35 +1,35 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CommonStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 export interface HeaderBorderProps {
 	/**
 	 * https://carbondesignsystem.com/components/accordion/style/#flush-alignment
 	 */
 	flushAlignment?: boolean,
-	style?: ViewProps['style'],
+	style?: ViewProps["style"],
 }
 
 export function HeaderBorder({

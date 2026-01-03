@@ -2,62 +2,62 @@ import {
 	forwardRef,
 	useContext,
 	useMemo,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
 	type BreakpointToken,
 	type ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconClose from '@carbon/icons/svg/32/close.svg'
+import IconClose from "@carbon/icons/svg/32/close.svg"
 
 import {
 	GlobalConfigContext,
 	ModalContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	BreakpointContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import {
 	GhostIcon as ButtonGhostIcon,
-} from '../button/ghost-icon'
+} from "../button/ghost-icon"
 
 import {
 	LayerContext,
-} from '../layer/LayerContext'
+} from "../layer/LayerContext"
 
 import {
 	Text,
-} from '../text'
+} from "../text"
 
 import type {
 	ModalProps,
-} from './ModalProps'
+} from "./ModalProps"
 
 import type {
 	ModalRef,
-} from './ModalRef'
+} from "./ModalRef"
 
 import type {
 	ModalSize,
-} from './ModalSize'
+} from "./ModalSize"
 
 /**
  * This is a pure component of Carbon Modal. It's not including with the dialog or any alert utility.
@@ -68,13 +68,13 @@ import type {
 export const Modal = forwardRef<ModalRef, ModalProps>(
 	function Modal(
 		{
-			size = 'medium',
+			size = "medium",
 			label: labelProp,
 			title,
 			children,
 			buttonCloseProps,
-			'aria-label': ariaLabel,
-			'aria-labelledby': ariaLabelledBy,
+			"aria-label": ariaLabel,
+			"aria-labelledby": ariaLabelledBy,
 			style,
 			dir,
 			...props
@@ -118,7 +118,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					{ ...props }
 					aria-label={ ariaLabel ?? label }
 					aria-labelledBy={ ariaLabelledBy ?? label }
-					dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+					dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 					style={ [
 						bgLayerStyleSheet[`bg_${layerContextLevel}`],
 						styleSheetBySizeAndBreakpoint.modal,
@@ -175,7 +175,7 @@ const
 			},
 			iconClose: {
 				top: 0,
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 			},
 			iconCloseLtr: {
 				right: 0,
@@ -197,8 +197,8 @@ const
 			extra_small: {
 				small: StyleSheet.create({
 					modal: {
-						width: '100%',
-						height: '100%',
+						width: "100%",
+						height: "100%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -206,7 +206,7 @@ const
 				}),
 				medium: StyleSheet.create({
 					modal: {
-						width: '48%',
+						width: "48%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -214,7 +214,7 @@ const
 				}),
 				large: StyleSheet.create({
 					modal: {
-						width: '32%',
+						width: "32%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -222,7 +222,7 @@ const
 				}),
 				x_large: StyleSheet.create({
 					modal: {
-						width: '24%',
+						width: "24%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -230,7 +230,7 @@ const
 				}),
 				max: StyleSheet.create({
 					modal: {
-						width: '24%',
+						width: "24%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -240,8 +240,8 @@ const
 			small: {
 				small: StyleSheet.create({
 					modal: {
-						width: '100%',
-						height: '100%',
+						width: "100%",
+						height: "100%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -249,7 +249,7 @@ const
 				}),
 				medium: StyleSheet.create({
 					modal: {
-						width: '60%',
+						width: "60%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -257,7 +257,7 @@ const
 				}),
 				large: StyleSheet.create({
 					modal: {
-						width: '42%',
+						width: "42%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -265,28 +265,28 @@ const
 				}),
 				x_large: StyleSheet.create({
 					modal: {
-						width: '36%',
+						width: "36%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				max: StyleSheet.create({
 					modal: {
-						width: '36%',
+						width: "36%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 			},
 			medium: {
 				small: StyleSheet.create({
 					modal: {
-						width: '100%',
-						height: '100%',
+						width: "100%",
+						height: "100%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -294,46 +294,46 @@ const
 				}),
 				medium: StyleSheet.create({
 					modal: {
-						width: '84%',
+						width: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				large: StyleSheet.create({
 					modal: {
-						width: '60%',
+						width: "60%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				x_large: StyleSheet.create({
 					modal: {
-						width: '48%',
+						width: "48%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				max: StyleSheet.create({
 					modal: {
-						width: '48%',
+						width: "48%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 			},
 			large: {
 				small: StyleSheet.create({
 					modal: {
-						width: '100%',
-						height: '100%',
+						width: "100%",
+						height: "100%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -341,38 +341,38 @@ const
 				}),
 				medium: StyleSheet.create({
 					modal: {
-						width: '96%',
+						width: "96%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				large: StyleSheet.create({
 					modal: {
-						width: '84%',
+						width: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				x_large: StyleSheet.create({
 					modal: {
-						width: '72%',
+						width: "72%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 				max: StyleSheet.create({
 					modal: {
-						width: '72%',
+						width: "72%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
-						paddingEnd: '20%',
+						paddingEnd: "20%",
 					},
 				}),
 			},

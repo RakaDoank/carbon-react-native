@@ -1,10 +1,10 @@
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 /**
  * Sorry for named it %margin% but it is actually using padding  
@@ -13,7 +13,7 @@ import {
 export const MarginRightStyle =
 	StyleSheet.create({
 		large: {
-			paddingEnd: '25%',
+			paddingEnd: "25%",
 		},
 		range_420_640: {
 			paddingEnd: Spacing.spacing_10,

@@ -1,3 +1,3 @@
-export * from './Text'
-export * from './TextProps'
-export * from './TextRef'
+export * from "./Text"
+export * from "./TextProps"
+export * from "./TextRef"

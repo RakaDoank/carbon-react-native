@@ -1,11 +1,11 @@
 import type {
 	DialogProviderProps,
-} from '../DialogProviderProps'
+} from "../DialogProviderProps"
 
 export interface ControllerProps extends Omit<
 	DialogProviderProps,
-	| 'children'
-	| 'defaultLazy'
+	| "children"
+	| "defaultLazy"
 > {
 	onEmpty: () => void,
 }

@@ -1,10 +1,10 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import type {
 	DialogData,
-} from './DialogData'
+} from "./DialogData"
 
 export interface DialogContext {
 	show: (data: DialogData) => void,
@@ -12,7 +12,7 @@ export interface DialogContext {
 	dismissAll: () => Promise<void>,
 }
 
-const error = new Error('Unitialized `<DialogProvider>`. Make sure you wrap your React app with `<DialogProvider>`')
+const error = new Error("Unitialized `<DialogProvider>`. Make sure you wrap your React app with `<DialogProvider>`")
 
 export const DialogContext = createContext<DialogContext>({
 	show() {

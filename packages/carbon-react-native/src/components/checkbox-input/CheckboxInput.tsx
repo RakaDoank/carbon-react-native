@@ -6,7 +6,7 @@ import {
 	useImperativeHandle,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
@@ -14,56 +14,56 @@ import {
 	View,
 	type PressableProps,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconCheckmark from '@carbon/icons/svg/32/checkmark.svg'
-import IconSubtract from '@carbon/icons/svg/32/subtract.svg'
+import IconCheckmark from "@carbon/icons/svg/32/checkmark.svg"
+import IconSubtract from "@carbon/icons/svg/32/subtract.svg"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	CheckboxInputInteractiveState,
-} from './CheckboxInputInteractiveState'
+} from "./CheckboxInputInteractiveState"
 
 import type {
 	CheckboxInputProps,
-} from './CheckboxInputProps'
+} from "./CheckboxInputProps"
 
 import type {
 	CheckboxInputRef,
-} from './CheckboxInputRef'
+} from "./CheckboxInputRef"
 
 import type {
 	CheckboxInputValue,
-} from './CheckboxInputValue'
+} from "./CheckboxInputValue"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	function CheckboxInput(
 		{
 			defaultValue,
 			value: valueProp,
-			interactiveState = 'normal',
+			interactiveState = "normal",
 			style,
-			role = 'checkbox',
+			role = "checkbox",
 			onBlur,
 			onChange,
 			onFocus,
@@ -83,9 +83,9 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			ref =
 				useRef({
 					onChangeEffect: false,
-					value: typeof valueProp == 'boolean' || typeof valueProp == 'object'
+					value: typeof valueProp == "boolean" || typeof valueProp == "object"
 						? valueProp
-						: typeof defaultValue == 'boolean' || typeof defaultValue == 'object'
+						: typeof defaultValue == "boolean" || typeof defaultValue == "object"
 							? defaultValue
 							: false,
 				}),
@@ -95,14 +95,14 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 
 			[valueSelf, setValueSelf] =
 				useState(() => {
-					if(typeof defaultValue == 'boolean' || typeof defaultValue == 'object') {
+					if(typeof defaultValue == "boolean" || typeof defaultValue == "object") {
 						return defaultValue
 					}
 					return false
 				}),
 
 			controlled =
-				typeof valueProp !== 'undefined',
+				typeof valueProp !== "undefined",
 
 			value =
 				controlled ? valueProp : valueSelf,
@@ -110,7 +110,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			indeterminate =
 				value === null,
 
-			blurHandler: NonNullable<PressableProps['onBlur']> =
+			blurHandler: NonNullable<PressableProps["onBlur"]> =
 				useCallback(event => {
 					onBlur?.(event)
 					setIsFocused(false)
@@ -118,7 +118,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					onBlur,
 				]),
 
-			focusHandler: NonNullable<PressableProps['onFocus']> =
+			focusHandler: NonNullable<PressableProps["onFocus"]> =
 				useCallback(event => {
 					onFocus?.(event)
 					setIsFocused(true)
@@ -126,10 +126,10 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					onFocus,
 				]),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					onPress?.(event)
-					if(interactiveState !== 'read_only') {
+					if(interactiveState !== "read_only") {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
 							setValueSelf(self => self === null ? true : !self)
@@ -166,10 +166,10 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 						return value
 					},
 					setValue(value_) {
-						if(!controlled && interactiveState !== 'read_only') {
+						if(!controlled && interactiveState !== "read_only") {
 							ref.current.onChangeEffect = true
 							setValueSelf(self => {
-								if(typeof value_ === 'function') {
+								if(typeof value_ === "function") {
 									ref.current.value = value_(self)
 								} else {
 									ref.current.value = value_
@@ -189,7 +189,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 		return (
 			<Pressable
 				{ ...props }
-				disabled={ interactiveState === 'disabled' }
+				disabled={ interactiveState === "disabled" }
 				role={ role }
 				onBlur={ blurHandler }
 				onFocus={ focusHandler }
@@ -254,7 +254,7 @@ const
 				height: size + 6,
 				borderRadius: 4,
 				borderWidth: 2,
-				borderColor: 'transparent',
+				borderColor: "transparent",
 			},
 			checkmarkHidden: {
 				opacity: 0,
@@ -263,7 +263,7 @@ const
 
 	interactiveStyle =
 		CarbonStyleSheet.create<
-			Record<`${CheckboxInputInteractiveState}_${'true' | 'false'}`, ViewStyle>
+			Record<`${CheckboxInputInteractiveState}_${"true" | "false"}`, ViewStyle>
 		>({
 			normal_false: {
 				borderColor: CarbonStyleSheet.color.icon_primary,
@@ -308,7 +308,7 @@ const
 			},
 		}),
 
-	mapIconColor: Record<CheckboxInputInteractiveState, Record<ThemeContext['colorScheme'], string>> =
+	mapIconColor: Record<CheckboxInputInteractiveState, Record<ThemeContext["colorScheme"], string>> =
 		{
 			normal: {
 				gray_10: Color.Token.gray_10.icon_inverse,

@@ -1,20 +1,20 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	SvgProps,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	BaseColorProps,
-} from '../../button/base-color'
+} from "../../button/base-color"
 
 import type {
 	TextProps,
-} from '../../text/TextProps'
+} from "../../text/TextProps"
 
-export interface BaseProps extends Omit<ViewProps, 'children'> {
+export interface BaseProps extends Omit<ViewProps, "children"> {
 	title?: string,
 	/**
 	 * You can fill it with string or number to render quickly useful message.  
@@ -23,37 +23,37 @@ export interface BaseProps extends Omit<ViewProps, 'children'> {
 	body?: React.ReactNode,
 	inline?: boolean,
 
-	Icon?: BaseColorProps['Icon'],
-	iconProps?: Omit<SvgProps, 'width' | 'height'>,
-	iconContainerStyle?: ViewProps['style'],
+	Icon?: BaseColorProps["Icon"],
+	iconProps?: Omit<SvgProps, "width" | "height">,
+	iconContainerStyle?: ViewProps["style"],
 
 	iconClose?: boolean,
-	onPressIconClose?: BaseColorProps['onPress'],
+	onPressIconClose?: BaseColorProps["onPress"],
 	iconCloseProps?: Omit<
 		SvgProps,
-		| 'width'
-		| 'height'
+		| "width"
+		| "height"
 	>,
 	iconCloseButtonProps?: Omit<
 		BaseColorProps,
-		| 'text'
-		| 'size'
-		| 'icon'
-		| 'iconNode'
-		| 'colorStateStyle'
-		| 'onPress'
+		| "text"
+		| "size"
+		| "icon"
+		| "iconNode"
+		| "colorStateStyle"
+		| "onPress"
 	>,
 
 	nodes?: Partial<Record<
-		| 'beforeContentContainer'
-		| 'beforeButtonClose'
-		| 'afterContentContainer'
-		| 'beforeContentContainerEnd',
+		| "beforeContentContainer"
+		| "beforeButtonClose"
+		| "afterContentContainer"
+		| "beforeContentContainerEnd",
 		React.ReactNode
 	>>,
 
-	titleStyle?: TextProps['style'],
-	leftBarStyle?: ViewProps['style'],
-	leftContainerStyle?: ViewProps['style'],
-	contentContainerStyle?: ViewProps['style'],
+	titleStyle?: TextProps["style"],
+	leftBarStyle?: ViewProps["style"],
+	leftContainerStyle?: ViewProps["style"],
+	contentContainerStyle?: ViewProps["style"],
 }

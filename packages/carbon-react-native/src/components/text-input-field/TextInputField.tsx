@@ -3,7 +3,7 @@ import {
 	useContext,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
@@ -12,55 +12,55 @@ import {
 	TextInput,
 	type View,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Motion,
 	Spacing,
 	type ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import IconWarningAltFilled from '@carbon/icons/svg/32/warning--alt--filled.svg'
-import IconWarningFilled from '@carbon/icons/svg/32/warning--filled.svg'
+import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
+import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	ThemeType,
-} from '../../types'
+} from "../../types"
 
 import {
 	LayerContext,
-} from '../layer'
+} from "../layer"
 
 import type {
 	TextInputFieldProps,
-} from './TextInputFieldProps'
+} from "./TextInputFieldProps"
 
 import type {
 	TextInputFieldRef,
-} from './TextInputFieldRef'
+} from "./TextInputFieldRef"
 
 import type {
 	TextInputFieldSize,
-} from './TextInputFieldSize'
+} from "./TextInputFieldSize"
 
 import {
 	RNTextInput,
-} from './_rn-text-input'
+} from "./_rn-text-input"
 
 export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>(
 	function TextInputField(
 		{
-			size = 'medium',
-			interactiveState = 'normal',
+			size = "medium",
+			interactiveState = "normal",
 			hideInteractiveStateIcon,
 			blockStartNode,
 			blockEndNode,
@@ -170,7 +170,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 			focusAnimatedValue =
 				useRef(new Animated.Value(0)),
 
-			focusHandler: TextInputFieldProps['onFocus'] =
+			focusHandler: TextInputFieldProps["onFocus"] =
 				event => {
 					Animated
 						.timing(
@@ -184,7 +184,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					onFocusProp?.(event)
 				},
 
-			blurHandler: TextInputFieldProps['onBlur'] =
+			blurHandler: TextInputFieldProps["onBlur"] =
 				event => {
 					Animated
 						.timing(
@@ -219,12 +219,12 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					carbonStyleSheet.textInputField,
 					textInputFieldSizeStyleSheet[size],
 					textInputFieldByLayerStyleSheet[layerContextLevel],
-					interactiveState === 'invalid'
+					interactiveState === "invalid"
 						? carbonStyleSheet.invalidOutlineColor
 						: {
 							outlineColor: focusAnimatedValue.current.interpolate({
 								inputRange: [0, 1],
-								outputRange: ['transparent', mapOutlineColorFocus[themeContext.colorScheme]],
+								outputRange: ["transparent", mapOutlineColorFocus[themeContext.colorScheme]],
 							}),
 						},
 					style,
@@ -248,7 +248,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					contextMenuHidden={ contextMenuHidden }
 					defaultValue={ defaultValue }
 					value={ value }
-					editable={ interactiveState === 'disabled' || interactiveState === 'read_only' ? false : editable }
+					editable={ interactiveState === "disabled" || interactiveState === "read_only" ? false : editable }
 					keyboardType={ keyboardType }
 					inputMode={ inputMode }
 					maxLength={ maxLength }
@@ -311,7 +311,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 					smartInsertDelete={ smartInsertDelete }
 				/>
 
-				{ !hideInteractiveStateIcon && interactiveState === 'invalid' ? (
+				{ !hideInteractiveStateIcon && interactiveState === "invalid" ? (
 					<IconWarningFilled
 						width={ 16 }
 						height={ 16 }
@@ -321,7 +321,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 							iconBySizeStyleSheet[size],
 						] }
 					/>
-				) : !hideInteractiveStateIcon && interactiveState === 'warning' ? (
+				) : !hideInteractiveStateIcon && interactiveState === "warning" ? (
 					<IconWarningAltFilled
 						width={ 16 }
 						height={ 16 }
@@ -346,11 +346,11 @@ const
 			textInputField: {
 				outlineWidth: 2,
 				outlineOffset: -2,
-				outlineStyle: 'solid',
+				outlineStyle: "solid",
 			},
 			icon: {
-				pointerEvents: 'none',
-				position: 'absolute',
+				pointerEvents: "none",
+				position: "absolute",
 				right: Spacing.spacing_05,
 			},
 		}),
@@ -432,4 +432,4 @@ const
 				Motion.Easing.standard.productive.y2,
 			),
 			useNativeDriver: false, // outlineColor doesn't support native driver
-		} as const satisfies Omit<Animated.TimingAnimationConfig, 'toValue'>
+		} as const satisfies Omit<Animated.TimingAnimationConfig, "toValue">

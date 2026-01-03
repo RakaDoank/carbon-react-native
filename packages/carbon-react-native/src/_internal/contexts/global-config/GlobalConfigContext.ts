@@ -1,10 +1,10 @@
 import {
 	createContext,
-} from 'react'
+} from "react"
 
 import type {
 	NotificationColor,
-} from '../../../components/notification/NotificationColor'
+} from "../../../components/notification/NotificationColor"
 
 export interface GlobalConfigContext {
 	android_buttonRippleEffect: boolean,
@@ -24,7 +24,7 @@ export interface GlobalConfigContext {
 
 export const GlobalConfigContext = createContext<GlobalConfigContext>({
 	android_buttonRippleEffect: true,
-	notificationColor: 'high_contrast',
+	notificationColor: "high_contrast",
 	toastDuration: 5000,
 	rtl: false,
 })

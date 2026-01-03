@@ -4,7 +4,7 @@ import {
 	useContext,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Pressable,
@@ -12,56 +12,56 @@ import {
 	View,
 	type PressableProps,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	Spacing,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../../_internal/contexts'
+} from "../../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	FlexStyleSheet,
-} from '../../../_internal/style-sheets'
+} from "../../../_internal/style-sheets"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	FormLabel,
-} from '../../form-label'
+} from "../../form-label"
 
 import {
 	Switch,
 	type SwitchRef,
 	type SwitchState,
-} from '../../switch'
+} from "../../switch"
 
 import {
 	Text,
-} from '../../text'
+} from "../../text"
 
 import type {
 	BaseProps,
-} from './BaseProps'
+} from "./BaseProps"
 
 import type {
 	BaseRef,
-} from './BaseRef'
+} from "./BaseRef"
 
 import type {
 	RefBase,
-} from './_RefBase'
+} from "./_RefBase"
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
 		{
-			state = 'normal',
+			state = "normal",
 			defaultValue,
 			value,
 			label,
@@ -91,7 +91,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			globalConfigContext =
 				useContext(GlobalConfigContext),
 
-			pressHandler: NonNullable<PressableProps['onPress']> =
+			pressHandler: NonNullable<PressableProps["onPress"]> =
 				useCallback(event => {
 					pressableProps?.onPress?.(event)
 					switchRef.current?.setValue(currentValue => !currentValue)
@@ -117,7 +117,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		return (
 			<View
 				{ ...viewProps }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.flex_wrap,
@@ -130,9 +130,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				<Pressable
 					{ ...pressableProps }
 					role="switch"
-					disabled={ state !== 'normal' }
+					disabled={ state !== "normal" }
 					aria-checked={ value }
-					aria-label={ pressableProps?.['aria-label'] || label }
+					aria-label={ pressableProps?.["aria-label"] || label }
 					onPress={ pressHandler }
 					style={ [
 						CommonStyleSheet.absolute,
@@ -164,15 +164,15 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 				<Switch
 					{ ...switchProps }
-					aria-label={ switchProps?.['aria-label'] || label }
+					aria-label={ switchProps?.["aria-label"] || label }
 					state={ state }
-					disabled={ state !== 'normal' }
+					disabled={ state !== "normal" }
 					role="none"
 					defaultValue={ defaultValue }
 					value={ value }
 					onChange={ onChange }
 					onPress={ switchProps?.onPress ?? pressableProps?.onPress }
-					dir={ switchProps?.dir ?? globalConfigContext.rtl ? 'ltr' : undefined } // Fix
+					dir={ switchProps?.dir ?? globalConfigContext.rtl ? "ltr" : undefined } // Fix
 					style={ [
 						baseStyle.switch,
 						globalConfigContext.rtl ? baseStyle.ltr : undefined, // Fix
@@ -184,7 +184,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				{ !!actionText && (
 					<Text
 						{ ...actionTextProps }
-						type={ actionTextProps?.type || 'body_compact_01' }
+						type={ actionTextProps?.type || "body_compact_01" }
 						style={ [
 							baseStyle.actionText,
 							mapActionTextStyle[themeContext.colorScheme][state],
@@ -219,12 +219,12 @@ const
 			 * Fix
 			 */
 			ltr: {
-				direction: 'ltr',
+				direction: "ltr",
 			},
 		}),
 
 	coloringStyle: {
-		[ColorScheme in ThemeContext['colorScheme']]: Record<`${'formLabel' | 'actionText'}_${SwitchState}`, TextStyle>
+		[ColorScheme in ThemeContext["colorScheme"]]: Record<`${"formLabel" | "actionText"}_${SwitchState}`, TextStyle>
 	} =
 		{
 			gray_10: {
@@ -270,7 +270,7 @@ const
 		},
 
 	mapFormLabelTextStyle: {
-		[ColorScheme in ThemeContext['colorScheme']]: Record<SwitchState, TextStyle>
+		[ColorScheme in ThemeContext["colorScheme"]]: Record<SwitchState, TextStyle>
 	} =
 		{
 			gray_10: {
@@ -286,7 +286,7 @@ const
 		},
 
 	mapActionTextStyle: {
-		[ColorScheme in ThemeContext['colorScheme']]: Record<SwitchState, TextStyle>
+		[ColorScheme in ThemeContext["colorScheme"]]: Record<SwitchState, TextStyle>
 	} =
 		{
 			gray_10: {

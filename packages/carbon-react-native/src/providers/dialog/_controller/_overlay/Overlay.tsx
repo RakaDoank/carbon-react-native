@@ -3,28 +3,28 @@ import {
 	useEffect,
 	useImperativeHandle,
 	useRef,
-} from 'react'
+} from "react"
 
 import {
 	Animated,
 	type View,
-} from 'react-native'
+} from "react-native"
 
 import {
 	CarbonStyleSheet,
-} from '../../../../carbon-style-sheet'
+} from "../../../../carbon-style-sheet"
 
 import type {
 	OverlayProps,
-} from './OverlayProps'
+} from "./OverlayProps"
 
 import type {
 	OverlayRef,
-} from './OverlayRef'
+} from "./OverlayRef"
 
 import type {
 	OverlayRefBase,
-} from './_OverlayRefBase'
+} from "./_OverlayRefBase"
 
 export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 	function(
@@ -122,11 +122,11 @@ const
 		CarbonStyleSheet.create({
 			overlay: {
 				backgroundColor: CarbonStyleSheet.color.overlay,
-				position: 'absolute',
+				position: "absolute",
 				top: 0,
 				right: 0,
 				bottom: 0,
 				left: 0,
-				overflow: 'hidden',
+				overflow: "hidden",
 			},
 		})

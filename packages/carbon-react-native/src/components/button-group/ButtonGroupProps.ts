@@ -1,12 +1,12 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	Size as ButtonSize,
-} from '../button/Size'
+} from "../button/Size"
 
-export interface ButtonGroupProps extends Omit<ViewProps, 'children'> {
+export interface ButtonGroupProps extends Omit<ViewProps, "children"> {
 	button1: React.ReactElement,
 	button2: React.ReactElement,
 	button3?: React.ReactElement,

@@ -1,44 +1,44 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	Text as Core,
 	type StyleProp,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Typography,
 	type TypeSetsToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	GlobalConfigContext,
-} from '../../_internal/contexts'
+} from "../../_internal/contexts"
 
 import {
 	CommonStyleSheet,
 	TextStyleSheet,
-} from '../../_internal/style-sheets'
+} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
-} from '../../carbon-style-sheet'
+} from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../contexts'
+} from "../../contexts"
 
 import type {
 	TextProps,
-} from './TextProps'
+} from "./TextProps"
 
 import type {
 	TextRef,
-} from './TextRef'
+} from "./TextRef"
 
 export const Text = forwardRef<TextRef, TextProps>(
 	function Text_(
@@ -62,7 +62,7 @@ export const Text = forwardRef<TextRef, TextProps>(
 		return (
 			<Core
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? 'rtl' : undefined }
+				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					carbonStyle.text,
 					getFontStyle(type, italic, weight),
@@ -77,7 +77,7 @@ export const Text = forwardRef<TextRef, TextProps>(
 )
 
 type TypeSetsStyle = Record<TypeSetsToken, TextStyle>
-type WeightType = NonNullable<TextProps['weight']>
+type WeightType = NonNullable<TextProps["weight"]>
 
 const
 	mapFamilyStyle: {
@@ -147,9 +147,9 @@ const
 		createTypeSetsStyle(true)
 
 function getFontStyle(
-	type?: TextProps['type'],
+	type?: TextProps["type"],
 	italic?: boolean,
-	overrideWeight?: TextProps['weight'],
+	overrideWeight?: TextProps["weight"],
 ): StyleProp<TextStyle> {
 	if(!type) {
 		return null

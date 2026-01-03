@@ -1,8 +1,8 @@
 import type {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 export interface ThemeProviderProps {
-	colorScheme?: ThemeContext['colorScheme'],
+	colorScheme?: ThemeContext["colorScheme"],
 	children?: React.ReactNode,
 }

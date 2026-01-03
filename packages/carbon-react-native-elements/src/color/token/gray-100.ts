@@ -1,18 +1,18 @@
 import type {
 	ColorToken,
-} from '../../types'
+} from "../../types"
 
-import * as code from '../code'
+import * as code from "../code"
 
 import {
 	hexToRgba,
-} from './_hex-to-rgba'
+} from "./_hex-to-rgba"
 
 export const background = code.black
-export const background_hover = hexToRgba(code.gray_50, '0.16')
-export const background_active = hexToRgba(code.gray_50, '0.4')
-export const background_selected = hexToRgba(code.gray_50, '0.24')
-export const background_selected_hover = hexToRgba(code.gray_50, '0.32')
+export const background_hover = hexToRgba(code.gray_50, "0.16")
+export const background_active = hexToRgba(code.gray_50, "0.4")
+export const background_selected = hexToRgba(code.gray_50, "0.24")
+export const background_selected_hover = hexToRgba(code.gray_50, "0.32")
 export const background_inverse = code.gray_10
 export const background_inverse_hover = code.gray_10_hover
 export const background_brand = code.blue_60
@@ -67,17 +67,17 @@ export const border_tile_01 = code.gray_70
 export const border_tile_02 = code.gray_60
 export const border_tile_03 = code.gray_50
 export const border_inverse = code.gray_10
-export const border_disabled = hexToRgba(code.gray_50, '0.5')
+export const border_disabled = hexToRgba(code.gray_50, "0.5")
 
 export const text_primary = code.gray_10
 export const text_secondary = code.gray_30
 export const text_placeholder = code.gray_60
 export const text_on_color = code.white
-export const text_on_color_disabled = hexToRgba(code.white, '0.25')
+export const text_on_color_disabled = hexToRgba(code.white, "0.25")
 export const text_helper = code.gray_50
 export const text_error = code.red_40
 export const text_inverse = code.gray_100
-export const text_disabled = hexToRgba(code.gray_10, '0.25')
+export const text_disabled = hexToRgba(code.gray_10, "0.25")
 
 export const link_primary = code.blue_40
 export const link_primary_hover = code.blue_30
@@ -91,10 +91,10 @@ export const link_visited = code.purple_40
 export const icon_primary = code.gray_10
 export const icon_secondary = code.gray_30
 export const icon_on_color = code.white
-export const icon_on_color_disabled = hexToRgba(code.white, '0.25')
+export const icon_on_color_disabled = hexToRgba(code.white, "0.25")
 export const icon_interactive = code.white
 export const icon_inverse = code.gray_100
-export const icon_disabled = hexToRgba(code.gray_10, '0.25')
+export const icon_disabled = hexToRgba(code.gray_10, "0.25")
 
 export const support_error = code.red_50
 export const support_success = code.green_40
@@ -115,7 +115,7 @@ export const focus_inverse = code.blue_60
 export const interactive = code.blue_50
 export const highlight = code.blue_90
 export const toggle_off = code.gray_60
-export const overlay = hexToRgba(code.gray_100, '0.7')
+export const overlay = hexToRgba(code.gray_100, "0.7")
 export const skeleton_element = code.gray_70
 export const skeleton_background = code.gray_80_hover
 
@@ -177,13 +177,13 @@ export const tag_hover_green = code.green_70_hover
 export const tag_border_green = code.green_50
 
 export const notification_info_background = code.gray_90
-export const notification_info_border = hexToRgba(code.blue_50, '0.5')
+export const notification_info_border = hexToRgba(code.blue_50, "0.5")
 export const notification_error_background = code.gray_90
-export const notification_error_border = hexToRgba(code.red_40, '0.5')
+export const notification_error_border = hexToRgba(code.red_40, "0.5")
 export const notification_success_background = code.gray_90
-export const notification_success_border = hexToRgba(code.green_40, '0.5')
+export const notification_success_border = hexToRgba(code.green_40, "0.5")
 export const notification_warning_background = code.gray_90
-export const notification_warning_border = hexToRgba(code.yellow_50, '0.5')
+export const notification_warning_border = hexToRgba(code.yellow_50, "0.5")
 
 export const notification_action_hover = code.gray_90_hover
 export const notification_action_tertiary_inverse = code.blue_60

@@ -1,39 +1,39 @@
 import {
 	forwardRef,
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	CarbonStyleSheet,
-} from '../../../carbon-style-sheet'
+} from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
-} from '../../../contexts'
+} from "../../../contexts"
 
 import {
 	BaseColor,
 	type BaseColorProps,
 	type BaseColorState,
-} from '../base-color'
+} from "../base-color"
 
 import type {
 	TertiaryProps,
-} from './TertiaryProps'
+} from "./TertiaryProps"
 
 import type {
 	TertiaryRef,
-} from './TertiaryRef'
+} from "./TertiaryRef"
 
 export const Tertiary = forwardRef<TertiaryRef, TertiaryProps>(
 	function Tertiary(
@@ -87,10 +87,10 @@ const
 
 	backgroundStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['background'], ViewStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["background"], ViewStyle>
 		>({
 			default: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 				borderColor: CarbonStyleSheet.color.button_tertiary,
 			},
 			focused: {
@@ -106,14 +106,14 @@ const
 				borderColor: CarbonStyleSheet.color.button_tertiary_active,
 			},
 			disabled: {
-				backgroundColor: 'transparent',
+				backgroundColor: "transparent",
 				borderColor: CarbonStyleSheet.color.button_disabled,
 			},
 		}),
 
 	textStyleSheet =
 		CarbonStyleSheet.create<
-			Record<keyof BaseColorProps['colorStateStyle']['text'], TextStyle>
+			Record<keyof BaseColorProps["colorStateStyle"]["text"], TextStyle>
 		>({
 			default: {
 				color: CarbonStyleSheet.color.button_tertiary,
@@ -132,7 +132,7 @@ const
 			},
 		}),
 
-	mapIconColor: Record<ThemeContext['colorScheme'], Record<BaseColorState, string>> =
+	mapIconColor: Record<ThemeContext["colorScheme"], Record<BaseColorState, string>> =
 		{
 			gray_10: {
 				default: Color.Token.gray_10.button_tertiary,
@@ -150,7 +150,7 @@ const
 			},
 		},
 
-	mapAndroidRippleEffectColor: Record<ThemeContext['colorScheme'], string> =
+	mapAndroidRippleEffectColor: Record<ThemeContext["colorScheme"], string> =
 		{
 			gray_10: Color.Token.gray_10.button_tertiary_active,
 			gray_100: Color.Token.gray_100.button_tertiary_active,

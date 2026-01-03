@@ -1,18 +1,18 @@
 import {
 	Component,
-} from 'react'
+} from "react"
 
 import Svg, {
 	Circle,
-} from 'react-native-svg'
+} from "react-native-svg"
 
 import type {
 	LoadingType,
-} from '../LoadingType'
+} from "../LoadingType"
 
 import type {
 	CircularProgressProps,
-} from './CircularProgressProps'
+} from "./CircularProgressProps"
 
 export class CircularProgress extends Component<CircularProgressProps> {
 
@@ -24,8 +24,8 @@ export class CircularProgress extends Component<CircularProgressProps> {
 				type,
 				forwardedRef,
 
-				fill = 'transparent',
-				viewBox = '0 0 100 100',
+				fill = "transparent",
+				viewBox = "0 0 100 100",
 
 				...props
 			} =
@@ -43,7 +43,7 @@ export class CircularProgress extends Component<CircularProgressProps> {
 				viewBox={ viewBox }
 				fill={ fill }
 			>
-				{ type == 'small' && (
+				{ type == "small" && (
 					// Background
 					<Circle
 						cx="50%"

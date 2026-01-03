@@ -3,43 +3,43 @@ import {
 	useCallback,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	Dimensions,
 	StyleSheet,
 	View,
 	type ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	AccordionProps,
-} from './AccordionProps'
+} from "./AccordionProps"
 
 import type {
 	AccordionRef,
-} from './AccordionRef'
+} from "./AccordionRef"
 
 import {
 	HeaderBorder,
-} from './_HeaderBorder'
+} from "./_HeaderBorder"
 
 import {
 	Item,
-} from './_Item'
+} from "./_Item"
 
 import {
 	Context,
-} from './_context'
+} from "./_context"
 
 import {
 	MarginRightStyle,
-} from './_styles'
+} from "./_styles"
 
 const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 	function Accordion(
 		{
-			size = 'medium',
+			size = "medium",
 			flushAlignment,
 			children,
 			style,
@@ -60,7 +60,7 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 			[marginRightStyleKey, setMarginRightStyleKey] =
 				useState(ref.current.marginRightStyleKey),
 
-			handlerLayout: NonNullable<ViewProps['onLayout']> =
+			handlerLayout: NonNullable<ViewProps["onLayout"]> =
 				useCallback(event => {
 					onLayout?.(event)
 					/**
@@ -112,21 +112,21 @@ const
 	baseStyle =
 		StyleSheet.create({
 			lastAccordionHeaderBorder: {
-				top: '100%',
+				top: "100%",
 			},
 		}),
 
 	windowWidth =
-		Dimensions.get('window').width
+		Dimensions.get("window").width
 
 function getMarginRightStyleKey(width: number): keyof typeof MarginRightStyle {
 	if(width < 420) {
-		return 'small'
+		return "small"
 	}
 
 	if(width <= 640) {
-		return 'range_420_640'
+		return "range_420_640"
 	}
 
-	return 'large'
+	return "large"
 }

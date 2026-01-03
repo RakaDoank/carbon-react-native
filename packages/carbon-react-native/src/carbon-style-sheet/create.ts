@@ -3,26 +3,26 @@ import {
 	type ImageStyle,
 	type TextStyle,
 	type ViewStyle,
-} from 'react-native'
+} from "react-native"
 
 import {
 	Color,
 	type BreakpointToken,
 	type ColorToken,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 import {
 	BreakpointGlobal,
 	ColorSchemeGlobal,
-} from '../_internal/globals'
+} from "../_internal/globals"
 
 import type {
 	ThemeType,
-} from '../types'
+} from "../types"
 
 import {
 	breakpoint as breakpointStyleProps,
-} from './breakpoint'
+} from "./breakpoint"
 
 type Style = ViewStyle | TextStyle | ImageStyle
 type StyleBreakpoint =
@@ -164,7 +164,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 					return [
 						normalStyleSheet[styleName],
 
-						colorScheme == 'gray_10'
+						colorScheme == "gray_10"
 							? coloredStyleSheet[`${prefixColorStyleName.gray_10}${styleName}`]
 							: coloredStyleSheet[`${prefixColorStyleName.gray_100}${styleName}`],
 
@@ -183,34 +183,34 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 const
 	colorStyleProps: ((keyof ViewStyle) | (keyof TextStyle) | (keyof ImageStyle))[] =
 		[
-			'backgroundColor',
-			'borderColor',
-			'borderEndColor',
-			'borderStartColor',
-			'borderTopColor',
-			'borderBottomColor',
-			'borderLeftColor',
-			'borderRightColor',
-			'borderBlockColor',
-			'borderBlockEndColor',
-			'borderBlockStartColor',
-			'color',
-			'outlineColor',
-			'overlayColor',
-			'textDecorationColor',
-			'textShadowColor',
-			'tintColor',
-			'shadowColor',
+			"backgroundColor",
+			"borderColor",
+			"borderEndColor",
+			"borderStartColor",
+			"borderTopColor",
+			"borderBottomColor",
+			"borderLeftColor",
+			"borderRightColor",
+			"borderBlockColor",
+			"borderBlockEndColor",
+			"borderBlockStartColor",
+			"color",
+			"outlineColor",
+			"overlayColor",
+			"textDecorationColor",
+			"textShadowColor",
+			"tintColor",
+			"shadowColor",
 		] as const,
 
 	prefixColorStyleName: Record<ThemeType.ColorScheme, string> =
 		{
-			gray_10: 'gray_10__',
-			gray_100: 'gray_100__',
+			gray_10: "gray_10__",
+			gray_100: "gray_100__",
 		},
 
 	breakpointDown: BreakpointToken[] =
-		['max', 'x_large', 'large', 'medium', 'small']
+		["max", "x_large", "large", "medium", "small"]
 
 function getBreakpointUpStyle(
 	breakpoint: BreakpointToken,

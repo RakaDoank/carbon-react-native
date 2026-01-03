@@ -1,10 +1,10 @@
 import type {
 	ViewProps,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	DialogProviderAnimationConfig,
-} from '../../DialogProviderAnimationConfig'
+} from "../../DialogProviderAnimationConfig"
 
 export interface ModalProps extends ViewProps {
 	animationConfig?: DialogProviderAnimationConfig,
