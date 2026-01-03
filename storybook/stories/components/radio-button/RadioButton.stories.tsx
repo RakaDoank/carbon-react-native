@@ -1,33 +1,33 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	RadioButton as CarbonRadioButton,
 	type RadioButtonInputInteractiveState,
 	type RadioButtonProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Radio Button',
+	title: "Components/Radio Button",
 	component: CarbonRadioButton,
 	args: {
-		label: 'Label',
-		interactiveState: 'normal',
+		label: "Label",
+		interactiveState: "normal",
 	},
 	argTypes: {
 		label: {
-			control: 'text',
+			control: "text",
 		},
 		interactiveState: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'error',
-				'read_only',
-				'warning',
+				"normal",
+				"disabled",
+				"error",
+				"read_only",
+				"warning",
 			] satisfies RadioButtonInputInteractiveState[],
 		},
 	},

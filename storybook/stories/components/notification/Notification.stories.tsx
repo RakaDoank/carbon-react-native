@@ -1,38 +1,38 @@
 import type {
 	Meta,
 	StoryObj,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Notification,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Notification',
+	title: "Components/Notification",
 } satisfies Meta<Notification.BaseProps>
 
 const
-	commonArgs: StoryObj<Notification.Actionable.ErrorProps>['args'] =
+	commonArgs: StoryObj<Notification.Actionable.ErrorProps>["args"] =
 		{
-			color: 'high_contrast',
-			title: 'Title',
-			subtitle: 'Lorem ipsum dolor sit amet',
+			color: "high_contrast",
+			title: "Title",
+			subtitle: "Lorem ipsum dolor sit amet",
 		},
 
-	commonArgTypes: StoryObj<Notification.Actionable.ErrorProps>['argTypes'] =
+	commonArgTypes: StoryObj<Notification.Actionable.ErrorProps>["argTypes"] =
 		{
 			color: {
-				control: 'select',
+				control: "select",
 				options: [
-					'high_contrast',
-					'low_contrast',
+					"high_contrast",
+					"low_contrast",
 				] satisfies Notification.NotificationColor[],
 			},
 			title: {
-				control: 'text',
+				control: "text",
 			},
 			subtitle: {
-				control: 'text',
+				control: "text",
 			},
 		}
 

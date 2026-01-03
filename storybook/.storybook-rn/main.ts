@@ -1,15 +1,17 @@
 import type {
 	StorybookConfig,
-} from '@storybook/react-native';
+} from "@storybook/react-native";
 
-export default {
+const main: StorybookConfig = {
 	stories: [
-		'../stories/**/*.stories.?(ts|tsx)',
+		"../stories/**/*.stories.?(ts|tsx)",
 	],
 	addons: [
-		'@storybook/addon-ondevice-notes',
-		'@storybook/addon-ondevice-controls',
-		'@storybook/addon-ondevice-backgrounds',
-		'@storybook/addon-ondevice-actions',
+		"@storybook/addon-ondevice-notes",
+		"@storybook/addon-ondevice-controls",
+		"@storybook/addon-ondevice-backgrounds",
+		"@storybook/addon-ondevice-actions",
 	],
-} satisfies StorybookConfig
+}
+
+export default main

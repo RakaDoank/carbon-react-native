@@ -1,16 +1,16 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
 	type TextStyle,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from "@storybook/react-native-web-vite"
 
 import {
 	CarbonStyleSheet,
@@ -18,20 +18,20 @@ import {
 	LayerContext,
 	Text,
 	type LayerProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 import type {
 	ColorLayerLevel,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
 export default {
-	title: 'Components/Layer',
+	title: "Components/Layer",
 	args: {
 		withBackground: false,
 	},
 	argTypes: {
 		withBackground: {
-			control: 'boolean',
+			control: "boolean",
 		},
 	},
 } satisfies Meta<LayerProps>

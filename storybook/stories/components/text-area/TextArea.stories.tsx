@@ -1,42 +1,42 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	TextArea as CarbonTextArea,
 	type TextAreaFieldInteractiveState,
 	type TextAreaProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Text Area',
+	title: "Components/Text Area",
 	component: CarbonTextArea,
 	args: {
-		label: 'Label',
-		interactiveState: 'normal',
-		placeholder: 'Placeholder text',
-		helperText: '',
+		label: "Label",
+		interactiveState: "normal",
+		placeholder: "Placeholder text",
+		helperText: "",
 	},
 	argTypes: {
 		label: {
-			control: 'text',
+			control: "text",
 		},
 		interactiveState: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'invalid',
-				'read_only',
-				'warning',
+				"normal",
+				"disabled",
+				"invalid",
+				"read_only",
+				"warning",
 			] satisfies TextAreaFieldInteractiveState[],
 		},
 		placeholder: {
-			control: 'text',
+			control: "text",
 		},
 		helperText: {
-			control: 'text',
+			control: "text",
 		},
 	},
 } satisfies Meta<TextAreaProps>

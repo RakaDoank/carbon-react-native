@@ -1,36 +1,36 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Switch as _Switch,
 	type SwitchProps,
 	type SwitchSize,
 	type SwitchState,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Switch',
+	title: "Components/Switch",
 	component: _Switch,
 	args: {
-		size: 'default',
-		state: 'normal',
+		size: "default",
+		state: "normal",
 	},
 	argTypes: {
 		size: {
-			control: 'select',
+			control: "select",
 			options: [
-				'default',
-				'small',
+				"default",
+				"small",
 			] satisfies SwitchSize[],
 		},
 		state: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'read_only',
+				"normal",
+				"disabled",
+				"read_only",
 			] satisfies SwitchState[],
 		},
 	},

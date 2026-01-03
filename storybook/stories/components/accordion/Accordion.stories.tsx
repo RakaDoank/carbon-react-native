@@ -2,53 +2,53 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Accordion as CarbonAccordion,
 	Text,
 	type AccordionProps,
 	type AccordionSize,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 const AccordionItem = CarbonAccordion.Item
 
 export default {
-	title: 'Components/Accordion',
+	title: "Components/Accordion",
 	component: CarbonAccordion,
 	subcomponents: {
 		AccordionItem,
 	},
 	args: {
-		size: 'medium',
+		size: "medium",
 		flushAlignment: false,
-		_title_1: 'Accordion 1',
-		_title_2: 'Accordion 2',
-		_title_3: 'Accordion 3',
+		_title_1: "Accordion 1",
+		_title_2: "Accordion 2",
+		_title_3: "Accordion 3",
 	},
 	argTypes: {
 		size: {
-			control: 'select',
+			control: "select",
 			options: [
-				'small',
-				'medium',
-				'large',
+				"small",
+				"medium",
+				"large",
 			] satisfies AccordionSize[],
 		},
 		flushAlignment: {
-			control: 'boolean',
+			control: "boolean",
 		},
 		_title_1: {
-			control: 'text',
-			description: 'This is not an actual prop',
+			control: "text",
+			description: "This is not an actual prop",
 		},
 		_title_2: {
-			control: 'text',
-			description: 'This is not an actual prop',
+			control: "text",
+			description: "This is not an actual prop",
 		},
 		_title_3: {
-			control: 'text',
-			description: 'This is not an actual prop',
+			control: "text",
+			description: "This is not an actual prop",
 		},
 	},
 } satisfies Meta<AccordionModifiedProps>

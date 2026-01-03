@@ -1,43 +1,43 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Button,
 	ButtonGroup as CarbonButtonGroup,
 	type ButtonGroupProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Button Group',
+	title: "Components/Button Group",
 	component: CarbonButtonGroup,
 	args: {
-		size: 'large_productive',
+		size: "large_productive",
 		fluid: false,
 		vertical: false,
 		oneAlone: false,
 	},
 	argTypes: {
 		size: {
-			control: 'select',
+			control: "select",
 			options: [
-				'small',
-				'medium',
-				'large_productive',
-				'large_expressive',
-				'extra_large',
-				'2xl',
+				"small",
+				"medium",
+				"large_productive",
+				"large_expressive",
+				"extra_large",
+				"2xl",
 			] satisfies Button.Size[],
 		},
 		fluid: {
-			control: 'boolean',
+			control: "boolean",
 		},
 		vertical: {
-			control: 'boolean',
+			control: "boolean",
 		},
 		oneAlone: {
-			control: 'boolean',
+			control: "boolean",
 		},
 	},
 } satisfies Meta<ButtonGroupProps>

@@ -1,49 +1,49 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	CheckboxGroup as CarbonCheckboxGroup,
 	type CheckboxGroupHelperTextMode,
 	type CheckboxGroupProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Checkbox/Checkbox Group',
+	title: "Components/Checkbox/Checkbox Group",
 	component: CarbonCheckboxGroup,
 	args: {
-		orientation: 'vertical',
-		legend: 'Legend Text',
-		helperText: 'Helper text here',
-		helperTextMode: 'normal',
+		orientation: "vertical",
+		legend: "Legend Text",
+		helperText: "Helper text here",
+		helperTextMode: "normal",
 		helperTextModeIcon: true,
 	},
 	argTypes: {
 		legend: {
-			control: 'text',
+			control: "text",
 		},
 		orientation: {
-			control: 'select',
+			control: "select",
 			options: [
-				'vertical',
-				'horizontal',
-			] satisfies CheckboxGroupProps['orientation'][],
+				"vertical",
+				"horizontal",
+			] satisfies CheckboxGroupProps["orientation"][],
 		},
 		helperText: {
-			control: 'text',
+			control: "text",
 		},
 		helperTextMode: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'error',
-				'warning',
+				"normal",
+				"error",
+				"warning",
 			] satisfies CheckboxGroupHelperTextMode[],
 		},
 		helperTextModeIcon: {
-			control: 'boolean',
-			description: 'Set to false if you only want to show your `formHelperTextProps.textLeading` prop custom node. Default value is true',
+			control: "boolean",
+			description: "Set to false if you only want to show your `formHelperTextProps.textLeading` prop custom node. Default value is true",
 		},
 	},
 } satisfies Meta<CheckboxGroupProps>

@@ -1,26 +1,26 @@
 import {
 	useContext,
 	useEffect,
-} from 'react'
+} from "react"
 
 import {
 	ScrollView,
 	StatusBar,
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	Decorator,
 	Preview,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	CarbonReactNative,
 	CarbonStyleSheet,
 	ThemeContext,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
-export default {
+const preview: Preview = {
 	decorators: [
 		Story => (
 			<CarbonReactNative>
@@ -36,8 +36,9 @@ export default {
 			codePanel: true,
 		},
 	},
-} satisfies Preview
+}
 
+export default preview
 interface BodyProps {
 	Story: Parameters<Decorator>[0],
 }
@@ -51,9 +52,9 @@ function Body({
 
 	useEffect(() => {
 		StatusBar.setBarStyle(
-			themeContext.colorScheme == 'gray_10'
-				? 'dark-content'
-				: 'light-content',
+			themeContext.colorScheme == "gray_10"
+				? "dark-content"
+				: "light-content",
 		)
 	}, [
 		themeContext.colorScheme,
@@ -80,7 +81,7 @@ const
 				padding: 16,
 				flexGrow: 1,
 				flexShrink: 1,
-				flexBasis: 'auto',
+				flexBasis: "auto",
 			},
 		}),
 

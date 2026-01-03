@@ -1,34 +1,33 @@
-import node_path from 'node:path'
+import node_path from "node:path"
 
 import type {
 	StorybookConfig,
-} from '@storybook/react-native-web-vite'
+} from "@storybook/react-native-web-vite"
 
-import VitePluginSVGR from 'vite-plugin-svgr'
+import VitePluginSVGR from "vite-plugin-svgr"
 
-const workspaceRoot = node_path.join(__dirname, '..', '..')
+const workspaceRoot = node_path.join(import.meta.dirname, "..", "..")
 
-export default {
+const main: StorybookConfig = {
 
-	staticDirs: ['../public'],
+	staticDirs: ["../public"],
 
 	stories: [
-		'../stories/**/*.mdx',
-		'../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+		"../stories/**/*.mdx",
+		"../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
 	],
 
 	addons: [
-		'@storybook/addon-docs',
+		"@storybook/addon-docs",
 	],
 
 	framework: {
-		name: '@storybook/react-native-web-vite',
+		name: "@storybook/react-native-web-vite",
 		options: {
 			pluginReactOptions: {
 				babel: {
 					plugins: [
-						'@babel/plugin-transform-export-namespace-from',
-						'react-native-reanimated/plugin',
+						"@babel/plugin-transform-export-namespace-from",
 					],
 				},
 			},
@@ -42,8 +41,8 @@ export default {
 			alias: {
 				...config.resolve?.alias ?? {
 				},
-				'@audira/carbon-react-native': node_path.join(workspaceRoot, 'packages', 'carbon-react-native', 'src'),
-				'@audira/carbon-react-native-elements': node_path.join(workspaceRoot, 'packages', 'carbon-react-native-elements', 'src'),
+				"@audira/carbon-react-native": node_path.join(workspaceRoot, "packages", "carbon-react-native", "src"),
+				"@audira/carbon-react-native-elements": node_path.join(workspaceRoot, "packages", "carbon-react-native-elements", "src"),
 			},
 		}
 
@@ -55,10 +54,10 @@ export default {
 				],
 				svgrOptions: {
 					native: true,
-					exportType: 'default',
+					exportType: "default",
 					svgoConfig: {
 						plugins: [{
-							name: 'preset-default',
+							name: "preset-default",
 							params: {
 								overrides: {
 									convertColors: false,
@@ -78,4 +77,6 @@ export default {
 		return config
 	},
 
-} satisfies StorybookConfig
+}
+
+export default main

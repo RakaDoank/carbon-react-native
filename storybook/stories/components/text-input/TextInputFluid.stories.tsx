@@ -1,38 +1,38 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	TextInputFluid as CarbonTextInputFluid,
 	type TextInputFieldInteractiveState,
 	type TextInputFluidProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Text Input/Text Input Fluid',
+	title: "Components/Text Input/Text Input Fluid",
 	component: CarbonTextInputFluid,
 	args: {
-		label: 'Label',
-		interactiveState: 'normal',
-		placeholder: 'Placeholder text',
+		label: "Label",
+		interactiveState: "normal",
+		placeholder: "Placeholder text",
 	},
 	argTypes: {
 		label: {
-			control: 'text',
+			control: "text",
 		},
 		interactiveState: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'invalid',
-				'read_only',
-				'warning',
+				"normal",
+				"disabled",
+				"invalid",
+				"read_only",
+				"warning",
 			] satisfies TextInputFieldInteractiveState[],
 		},
 		placeholder: {
-			control: 'text',
+			control: "text",
 		},
 	},
 } satisfies Meta<TextInputFluidProps>

@@ -1,33 +1,33 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from "@storybook/react-native-web-vite"
 
 import {
 	Toggle,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Toggle',
+	title: "Components/Toggle",
 	component: Toggle.Base,
 	args: {
-		label: 'Label',
-		actionText: '',
-		state: 'normal',
+		label: "Label",
+		actionText: "",
+		state: "normal",
 	},
 	argTypes: {
 		label: {
-			control: 'text',
+			control: "text",
 		},
 		actionText: {
-			control: 'text',
+			control: "text",
 		},
 		state: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'read_only',
+				"normal",
+				"disabled",
+				"read_only",
 			] satisfies Toggle.State[],
 		},
 	},

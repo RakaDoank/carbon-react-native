@@ -1,11 +1,11 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	BreakpointContext,
@@ -14,10 +14,10 @@ import {
 	DialogContext,
 	DialogProvider,
 	Modal as CarbonModal,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Utilities/Dialog',
+	title: "Utilities/Dialog",
 	decorators: Story => {
 		return (
 			<DialogProvider>
@@ -48,7 +48,7 @@ export const Dialog: StoryFn = () => {
 								},
 							}}
 						>
-							{ breakpoint == 'small' ? (
+							{ breakpoint == "small" ? (
 								// This is just an example
 								// Smaller window (phone) is too narrow to fit three buttons
 								<ButtonGroup

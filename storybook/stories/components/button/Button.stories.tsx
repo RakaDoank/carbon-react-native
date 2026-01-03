@@ -1,54 +1,54 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Button,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
-import Add from '@carbon/icons/svg/32/add.svg'
-import AiGenerate from '@carbon/icons/svg/32/ai-generate.svg'
-import CarbonForIbmProduct from '@carbon/icons/svg/32/carbon-for-ibm-product.svg'
+import Add from "@carbon/icons/svg/32/add.svg"
+import AiGenerate from "@carbon/icons/svg/32/ai-generate.svg"
+import CarbonForIbmProduct from "@carbon/icons/svg/32/carbon-for-ibm-product.svg"
 
 export default {
-	title: 'Components/Button',
+	title: "Components/Button",
 	component: Button.Base,
 	args: {
-		text: 'Lorem Ipsum',
-		size: 'large_productive',
+		text: "Lorem Ipsum",
+		size: "large_productive",
 		// @ts-expect-error Re mapping
-		Icon: 'none',
+		Icon: "none",
 	},
 	argTypes: {
 		text: {
-			type: 'string',
-			control: 'text',
+			type: "string",
+			control: "text",
 		},
 		Icon: {
-			control: 'select',
+			control: "select",
 			options: [
-				'none',
-				'add.svg',
-				'ai-generate.svg',
-				'carbon-for-ibm-product.svg',
+				"none",
+				"add.svg",
+				"ai-generate.svg",
+				"carbon-for-ibm-product.svg",
 			],
 			mapping: {
-				'none': undefined,
-				'add.svg': Add,
-				'ai-generate.svg': AiGenerate,
-				'carbon-for-ibm-product.svg': CarbonForIbmProduct,
+				"none": undefined,
+				"add.svg": Add,
+				"ai-generate.svg": AiGenerate,
+				"carbon-for-ibm-product.svg": CarbonForIbmProduct,
 			},
 		},
 		size: {
-			control: 'select',
+			control: "select",
 			options: [
-				'small',
-				'medium',
-				'large_productive',
-				'large_expressive',
-				'extra_large',
-				'2xl',
+				"small",
+				"medium",
+				"large_productive",
+				"large_expressive",
+				"extra_large",
+				"2xl",
 			] satisfies Button.Size[],
 		},
 	},

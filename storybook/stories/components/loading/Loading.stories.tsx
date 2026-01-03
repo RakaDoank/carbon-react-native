@@ -1,26 +1,26 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Loading as CarbonLoading,
 	type LoadingProps,
 	type LoadingType,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Loading',
+	title: "Components/Loading",
 	component: CarbonLoading,
 	args: {
-		type: 'large',
+		type: "large",
 	},
 	argTypes: {
 		type: {
-			control: 'select',
+			control: "select",
 			options: [
-				'small',
-				'large',
+				"small",
+				"large",
 			] satisfies LoadingType[],
 		},
 	},

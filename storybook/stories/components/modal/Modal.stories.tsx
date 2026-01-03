@@ -1,11 +1,11 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native-web-vite'
+} from "@storybook/react-native-web-vite"
 
 import {
 	BreakpointContext,
@@ -15,22 +15,22 @@ import {
 	ModalContent,
 	Text,
 	type ModalProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Modal',
+	title: "Components/Modal",
 	component: CarbonModal,
 	args: {
-		title: 'Lorem ipsum dolor sit amet',
-		label: '',
-		size: 'medium',
+		title: "Lorem ipsum dolor sit amet",
+		label: "",
+		size: "medium",
 	},
 	argTypes: {
 		title: {
-			control: 'text',
+			control: "text",
 		},
 		label: {
-			control: 'text',
+			control: "text",
 		},
 	},
 } satisfies Meta<ModalProps>
@@ -47,13 +47,13 @@ export const Modal: StoryFn<ModalProps> = args => {
 		>
 			<ModalContent>
 				<Text type="body_01">
-					These texts here (with the &lt;Text&gt; component) are wrapped by &lt;ModalContent&gt; component.{'\n\n'}
+					These texts here (with the &lt;Text&gt; component) are wrapped by &lt;ModalContent&gt; component.{"\n\n"}
 
 					These buttons below are actually a &lt;ButtonGroup&gt; component. You can manually provide the &lt;ButtonGroup&gt; by yourself in the &lt;Modal&gt; as the last element.
 				</Text>
 			</ModalContent>
 
-			{ breakpoint == 'small' ? (
+			{ breakpoint == "small" ? (
 				// This is just an example
 				// Smaller window (phone) is too narrow to fit three buttons
 				<ButtonGroup

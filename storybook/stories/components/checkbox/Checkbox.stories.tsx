@@ -1,33 +1,33 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Checkbox as CarbonCheckbox,
 	type CheckboxInputInteractiveState,
 	type CheckboxProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Checkbox',
+	title: "Components/Checkbox",
 	component: CarbonCheckbox,
 	args: {
-		label: 'Lorem ipsum',
-		interactiveState: 'normal',
+		label: "Lorem ipsum",
+		interactiveState: "normal",
 	},
 	argTypes: {
 		label: {
-			control: 'text',
+			control: "text",
 		},
 		interactiveState: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'disabled',
-				'error',
-				'read_only',
-				'warning',
+				"normal",
+				"disabled",
+				"error",
+				"read_only",
+				"warning",
 			] satisfies CheckboxInputInteractiveState[],
 		},
 	},

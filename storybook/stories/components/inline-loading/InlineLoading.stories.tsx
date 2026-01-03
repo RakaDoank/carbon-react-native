@@ -3,41 +3,41 @@ import {
 	useEffect,
 	useRef,
 	useState,
-} from 'react'
+} from "react"
 
 import {
 	StyleSheet,
-} from 'react-native'
+} from "react-native"
 
 import type {
 	Meta,
 	StoryObj,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Button,
 	InlineLoading as CarbonInlineLoading,
 	type InlineLoadingProps,
 	type InlineLoadingState,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Inline Loading',
+	title: "Components/Inline Loading",
 } satisfies Meta<InlineLoadingProps>
 
 export const InlineLoading: StoryObj<InlineLoadingProps> = {
 	args: {
-		state: 'active',
-		text: 'Text',
+		state: "active",
+		text: "Text",
 	},
 	argTypes: {
 		state: {
-			control: 'select',
+			control: "select",
 			options: [
-				'active',
-				'error',
-				'finished',
-				'inactive',
+				"active",
+				"error",
+				"finished",
+				"inactive",
 			] satisfies InlineLoadingState[],
 		},
 	},
@@ -69,21 +69,21 @@ export const UXExample: StoryObj<InlineLoadingProps> = {
 function useMockState() {
 	const
 		[state, setState] =
-			useState<InlineLoadingState>('inactive'),
+			useState<InlineLoadingState>("inactive"),
 
 		targetState =
-			useRef<Extract<InlineLoadingState, 'finished' | 'error'>>('finished'),
+			useRef<Extract<InlineLoadingState, "finished" | "error">>("finished"),
 
 		setTargetState =
 			useCallback((target: typeof targetState.current) => {
 				targetState.current = target
-				setState('active')
+				setState("active")
 			}, [])
 
 	useEffect(() => {
-		let timeout: number | null = null
+		let timeout: ReturnType<typeof setTimeout> | null = null
 
-		if(state == 'active') {
+		if(state == "active") {
 			if(timeout) {
 				clearTimeout(timeout)
 			}
@@ -95,7 +95,7 @@ function useMockState() {
 
 		if(state == targetState.current && !timeout) {
 			timeout = setTimeout(() => {
-				setState('inactive')
+				setState("inactive")
 				timeout = null
 			}, 2000)
 		}
@@ -121,16 +121,16 @@ function UXExample_() {
 		{ state, setTargetState } =
 			useMockState()
 
-	if(state == 'inactive') {
+	if(state == "inactive") {
 		return (
 			<>
 				<Button.Secondary
 					text="Show Loading & Finished"
-					onPress={ () => setTargetState('finished') }
+					onPress={ () => setTargetState("finished") }
 				/>
 				<Button.Secondary
 					text="Show Loading & Error"
-					onPress={ () => setTargetState('error') }
+					onPress={ () => setTargetState("error") }
 					style={ styleSheet.mt2 }
 				/>
 			</>
@@ -153,12 +153,12 @@ function InButton_() {
 
 	return (
 		<Button.Primary
-			text={ state == 'inactive' ? 'Press me' : mapTextState[state] }
+			text={ state == "inactive" ? "Press me" : mapTextState[state] }
 			InlineLoading={ CarbonInlineLoading }
 			inlineLoadingProps={{
 				state,
 			}}
-			onPress={ () => setTargetState('finished') }
+			onPress={ () => setTargetState("finished") }
 		/>
 	)
 }
@@ -166,10 +166,10 @@ function InButton_() {
 const
 	mapTextState: Record<InlineLoadingState, string> =
 		{
-			active: 'Loading…',
-			error: 'An error occured',
-			finished: 'Submitted',
-			inactive: 'never',
+			active: "Loading…",
+			error: "An error occured",
+			finished: "Submitted",
+			inactive: "never",
 		},
 
 	styleSheet =

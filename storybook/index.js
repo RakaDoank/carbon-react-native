@@ -1,15 +1,7 @@
-/**
- * @format
- */
-
 import {
-	AppRegistry,
-} from 'react-native'
+	registerRootComponent,
+} from "expo"
 
-import {
-	name as appName,
-} from './app.json'
+import App from "./App";
 
-import CarbonReactNative from './stories/CarbonReactNative'
-
-AppRegistry.registerComponent(appName, () => CarbonReactNative)
+registerRootComponent(App);

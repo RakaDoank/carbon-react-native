@@ -1,21 +1,21 @@
 import {
 	useContext,
-} from 'react'
+} from "react"
 
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	Button,
 	Notification,
 	ToastContext,
 	ToastProvider,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Utilities/Toast',
+	title: "Utilities/Toast",
 	decorators: Story => {
 		return (
 			<ToastProvider>

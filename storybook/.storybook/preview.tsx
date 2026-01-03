@@ -1,26 +1,26 @@
 import type {
 	Preview,
-} from '@storybook/react-native-web-vite'
+} from "@storybook/react-native-web-vite"
 
 import {
 	CarbonReactNative,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 import {
 	Color,
-} from '@audira/carbon-react-native-elements'
+} from "@audira/carbon-react-native-elements"
 
-import './body.css'
-import './font.css'
+import "./body.css"
+import "./font.css"
 
-export default {
+const preview: Preview = {
 
 	decorators: [
 		(Story, context) => {
 			return (
 				<CarbonReactNative
 					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-					colorScheme={ context.globals.backgrounds.value === 'dark' ? 'gray_100' : 'gray_10' }
+					colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
 				>
 					<Story/>
 				</CarbonReactNative>
@@ -32,11 +32,11 @@ export default {
 		backgrounds: {
 			options: {
 				dark: {
-					name: 'gray-100',
+					name: "gray-100",
 					value: Color.Token.gray_100.background,
 				},
 				light: {
-					name: 'gray-10',
+					name: "gray-10",
 					value: Color.Token.gray_10.background,
 				},
 			},
@@ -51,15 +51,17 @@ export default {
 		docs: {
 			codePanel: true,
 			toc: {
-				headingSelector: 'h1, h2, h3',
+				headingSelector: "h1, h2, h3",
 			},
 		},
 	},
 
 	initialGlobals: {
 		backgrounds: {
-			value: 'light',
+			value: "light",
 		},
 	},
 
-} satisfies Preview
+}
+
+export default preview

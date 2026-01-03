@@ -1,49 +1,49 @@
 import type {
 	Meta,
 	StoryFn,
-} from '@storybook/react-native'
+} from "@storybook/react-native"
 
 import {
 	RadioButtonGroup as CarbonRadioButtonGroup,
 	type RadioButtonGroupHelperTextMode,
 	type RadioButtonGroupProps,
-} from '@audira/carbon-react-native'
+} from "@audira/carbon-react-native"
 
 export default {
-	title: 'Components/Radio Button/Radio Button Group',
+	title: "Components/Radio Button/Radio Button Group",
 	component: CarbonRadioButtonGroup,
 	args: {
-		orientation: 'vertical',
-		legend: 'Legend Text',
-		helperText: 'Helper text here',
-		helperTextMode: 'normal',
+		orientation: "vertical",
+		legend: "Legend Text",
+		helperText: "Helper text here",
+		helperTextMode: "normal",
 		helperTextModeIcon: true,
 	},
 	argTypes: {
 		legend: {
-			control: 'text',
+			control: "text",
 		},
 		orientation: {
-			control: 'select',
+			control: "select",
 			options: [
-				'vertical',
-				'horizontal',
-			] satisfies RadioButtonGroupProps['orientation'][],
+				"vertical",
+				"horizontal",
+			] satisfies RadioButtonGroupProps["orientation"][],
 		},
 		helperText: {
-			control: 'text',
+			control: "text",
 		},
 		helperTextMode: {
-			control: 'select',
+			control: "select",
 			options: [
-				'normal',
-				'error',
-				'warning',
+				"normal",
+				"error",
+				"warning",
 			] satisfies RadioButtonGroupHelperTextMode[],
 		},
 		helperTextModeIcon: {
-			control: 'boolean',
-			description: 'Set to false if you only want to show your `formHelperTextProps.textLeading` prop custom node. Default value is true',
+			control: "boolean",
+			description: "Set to false if you only want to show your `formHelperTextProps.textLeading` prop custom node. Default value is true",
 		},
 	},
 } satisfies Meta<RadioButtonGroupProps>
