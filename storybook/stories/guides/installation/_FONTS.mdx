@@ -153,9 +153,9 @@ Create new CSS file (e.g fonts.css), place it to your static or public directory
 }
 ```
 
-> ⚠️ Please, do not modify the font-family value because the `<Text>` component is using the different `fontFamily` name for different weight variant
+> ⚠️ Please, do not modify the `font-family` value because the `<Text>` component is using the different `fontFamily` name for different weight variant
 
-Then, we have to include the CSS in your project with two ways. Choose one of following way
+Then, we have to include the CSS in your project with two ways. Choose one of following ways
 
 ### External Resource Link Element
 Traditionally, you can include it to your web with the [External Resource Link Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) or you may know it as `<link>` element in HTML
@@ -168,7 +168,7 @@ Traditionally, you can include it to your web with the [External Resource Link E
   </head>
 </html>
 ```
-> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can include the &lt;link&gt; element in your [Root HTML](https://docs.expo.dev/workflow/web/#root-html) file
+> In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can include the &lt;link&gt; element in your [Root HTML](https://docs.expo.dev/router/web/static-rendering/#root-html) file
 
 ### Import the CSS from JavaScript Entry
 If your project can support importing CSS. Import the CSS globally. Likely, it's in the root layout of your React app. It should've been applied to the entire page.
