@@ -43,7 +43,7 @@ import type {
 export const Text = forwardRef<TextRef, TextProps>(
 	function Text_(
 		{
-			type,
+			type = "body_compact_02",
 			italic = false,
 			weight,
 			style,

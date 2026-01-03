@@ -8,6 +8,9 @@ import type {
 } from "@audira/carbon-react-native-elements"
 
 export interface TextProps extends CoreProps {
+	/**
+	 * @default "body_compact_02"
+	 */
 	type?: TypeSetsToken,
 	italic?: boolean,
 	/**
