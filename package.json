@@ -9,6 +9,7 @@
 		"lint": "eslint .",
 		"prepack-carbon-react-native": "node ./scripts/prepack-carbon-react-native.mjs",
 		"prepack-carbon-react-native-elements": "node ./scripts/prepack-carbon-react-native-elements.mjs",
+		"storybook-build": "node ./scripts/storybook-build.mjs",
 		"type-check": "tsc --build --emitDeclarationOnly",
 		"validate-color-token": "node ./scripts/validate-color-token.mjs"
 	},
