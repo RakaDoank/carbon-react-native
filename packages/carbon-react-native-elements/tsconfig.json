@@ -4,7 +4,8 @@
 		"../../tsconfig.base.json"
 	],
 	"compilerOptions": {
-		"baseUrl": "."
+		"rootDir": "./src",
+		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"]
 	},
 	"include": [
 		"./src/**/*"
