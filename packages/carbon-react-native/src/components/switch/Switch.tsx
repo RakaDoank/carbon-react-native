@@ -234,9 +234,9 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 		])
 
 		useEffect(() => {
+			ref.current.value = value
 			if(ref.current.onChangeEffect) {
 				ref.current.onChangeEffect = false
-				ref.current.value = value
 				onChange?.(value)
 			}
 		}, [

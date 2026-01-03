@@ -148,9 +148,9 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				mapIconColor[interactiveState][themeContext.colorScheme]
 
 		useEffect(() => {
+			ref.current.value = value
 			if(ref.current.onChangeEffect) {
 				ref.current.onChangeEffect = false
-				ref.current.value = value
 				onChange?.(value)
 			}
 		}, [

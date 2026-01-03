@@ -120,9 +120,9 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				])
 
 		useEffect(() => {
+			ref.current.checked = checked
 			if(ref.current.onChangeEffect) {
 				ref.current.onChangeEffect = false
-				ref.current.checked = checked
 				onChange?.(ref.current.checked, value)
 			}
 		}, [
