@@ -9,7 +9,7 @@
 		"lint": "eslint .",
 		"prepack-carbon-react-native": "node ./scripts/prepack-carbon-react-native.mjs",
 		"prepack-carbon-react-native-elements": "node ./scripts/prepack-carbon-react-native-elements.mjs",
-		"type-check": "tsc --project ./packages/carbon-react-native/tsconfig.json && tsc --project ./packages/carbon-react-native-elements/tsconfig.json && tsc --project ./storybook/tsconfig.json",
+		"type-check": "tsc --build --emitDeclarationOnly",
 		"validate-color-token": "node ./scripts/validate-color-token.mjs"
 	},
 	"devDependencies": {

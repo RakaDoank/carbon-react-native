@@ -273,80 +273,14 @@ export default [
 		},
 		languageOptions: {
 			parserOptions: {
-				project: [
-					'./packages/carbon-react-native/tsconfig.json',
-					'./packages/carbon-react-native-elements/tsconfig.json',
-					'./storybook/tsconfig.json',
-				],
+				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
-	},
-
-	{
-		// React Native files
-
-		files: [
-			'packages/carbon-react-native/**/*.{js,jsx,ts,tsx}',
-			'storybook/**/*.{js,jsx,ts,tsx}',
-		],
 		settings: {
-			react: {
-				version: 'detect',
-			},
-		},
-		plugins: {
-			...ReactEslintPlugin.configs.flat['jsx-runtime'].plugins,
-			'react-hooks': EslintCompat.fixupPluginRules(ReactHooksEslintPlugin),
-			'react-native': EslintCompat.fixupPluginRules(ReactNativeEslintPlugin),
-		},
-		languageOptions: {
-			...ReactEslintPlugin.configs.flat['jsx-runtime'].languageOptions,
-			globals: {
-				...ReactNativeEslintConfig.globals,
-			},
-		},
-		rules: {
-			...ReactEslintPlugin.configs.flat.recommended.rules,
-			...ReactEslintPlugin.configs.flat['jsx-runtime'].rules,
-			...ReactHooksEslintPlugin.configs.recommended.rules,
-
-			/**
-			 * Take rules from @react-native/eslint-config (not all of it) that doesn't included in eslint-plugin-react & eslint-plugin-react-hooks recommended rules
-			 * https://github.com/facebook/react-native/blob/22e7691473a0e895385e03743186aaa32add6731/packages/eslint-config-react-native/index.js#L301
-			 */
-			'react/display-name': 'off',
-			'react/jsx-boolean-value': 'off',
-			'react/no-did-mount-set-state': 'warn',
-			'react/no-did-update-set-state': 'warn',
-			'react/no-unstable-nested-components': 'warn',
-			'react-native/no-inline-styles': 'warn',
-		},
-	},
-
-	{
-		files: [
-			'scripts/**/*.{js,mjs}',
-			'builder-bob/**/*.{js,mjs}',
-			'storybook/**/*.{js,mjs}',
-		],
-		ignores: [
-			'storybook/src/',
-			'storybook/index.js',
-		],
-		languageOptions: {
-			globals: Globals.node,
-		},
-	},
-
-	{
-		files: [
-			'./packages/carbon-react-native/src/**/*.{ts,tsx}',
-		],
-		settings: {
-			'import-x/resolver-next': [
+			"import-x/resolver-next": [
 				EslintImportResolverTypeScript.createTypeScriptImportResolver({
-					project: './packages/carbon-react-native/tsconfig.json',
+					project: "./tsconfig.json",
 					// override default https://github.com/import-js/eslint-import-resolver-typescript?tab=readme-ov-file#extensions
 					extensions: [
 						".ts",

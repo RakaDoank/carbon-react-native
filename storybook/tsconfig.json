@@ -1,27 +1,43 @@
 {
 	"extends": [
-		"@react-native/typescript-config",
-		"../tsconfig.json"
+		"expo/tsconfig.base",
+		"../tsconfig.base.json"
 	],
 	"compilerOptions": {
 		"allowJs": true,
 		"allowUnreachableCode": false,
-		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"],
+		"moduleSuffixes": [
+			"",
+			".ios",
+			".android",
+			".windows",
+			".macos",
+			".web",
+			".native"
+		],
 		"noEmit": true,
-		"noImplicitAny": true,
 		"paths": {
-			"@audira/carbon-react-native": ["../packages/carbon-react-native/src/index"],
-			"@audira/carbon-react-native-elements": ["../packages/carbon-react-native-elements/src/index"],
+			"@audira/carbon-react-native": [
+				"../packages/carbon-react-native/src/index"
+			],
+			"@audira/carbon-react-native-elements": [
+				"../packages/carbon-react-native-elements/src/index"
+			]
 		},
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"verbatimModuleSyntax": true
+		"types": [
+			"react-native-web"
+		]
 	},
 	"include": [
-		".storybook/**/*",
-		".storybook-rn/**/*",
+		"../packages/carbon-react-native/src/**/*",
+		"../packages/carbon-react-native-elements/src/**/*",
+		"./.storybook/**/*",
+		"./.storybook-rn/**/*",
+		"./App.tsx",
+		"./index.js",
 		"./stories/**/*",
-		"./types/**/*"
+		"./types/**/*",
+		".expo/types/**/*.ts",
+		"expo-env.d.ts",
 	]
 }
