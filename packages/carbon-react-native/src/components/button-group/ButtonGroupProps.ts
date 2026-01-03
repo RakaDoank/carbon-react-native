@@ -11,7 +11,7 @@ export interface ButtonGroupProps extends Omit<ViewProps, "children"> {
 	button2: React.ReactElement,
 	button3?: React.ReactElement,
 	/**
-	 * Make the `button1` "alone" at container's start alone and the last two is placed closely at container's end
+	 * Make the `button1` "alone" at container's start and the last two is placed closely at container's end
 	 * 
 	 * Based on IBM, this is intended for the Ghost button (in `button1`) that should be placed alone at container's start
 	 * 
