@@ -23,6 +23,7 @@ module.exports = {
 			"typescript",
 			{
 				project: `${targetPath}/tsconfig.json`,
+				tsc: "../node_modules/typescript/bin/tsc", // relative from /builder-bob/bob.config.js
 			},
 		],
 	],
