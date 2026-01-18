@@ -126,38 +126,43 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 						style,
 					] }
 				>
-					<View
-						style={ [
-							styleSheet.headerText,
-							styleSheetBySizeAndBreakpoint.headerTextContainer,
-						] }
+					<LayerContext.Provider
+						// children of modal are in layer 2
+						value={ 2 }
 					>
-						{ !!label && (
-							<Text
-								type="label_01"
-							>
-								{ label }
-							</Text>
-						) }
-						<Text
-							type="heading_03"
+						<View
+							style={ [
+								styleSheet.headerText,
+								styleSheetBySizeAndBreakpoint.headerTextContainer,
+							] }
 						>
-							{ title }
-						</Text>
-					</View>
+							{ !!label && (
+								<Text
+									type="label_01"
+								>
+									{ label }
+								</Text>
+							) }
+							<Text
+								type="heading_03"
+							>
+								{ title }
+							</Text>
+						</View>
 
-					<ButtonGhostIcon
-						{ ...buttonCloseProps }
-						Icon={ IconClose }
-						style={ [
-							CommonStyleSheet.absolute,
-							styleSheet.iconClose,
-							globalConfigContext.rtl ? styleSheet.iconCloseRtl : styleSheet.iconCloseLtr,
-							buttonCloseProps?.style,
-						] }
-					/>
+						<ButtonGhostIcon
+							{ ...buttonCloseProps }
+							Icon={ IconClose }
+							style={ [
+								CommonStyleSheet.absolute,
+								styleSheet.iconClose,
+								globalConfigContext.rtl ? styleSheet.iconCloseRtl : styleSheet.iconCloseLtr,
+								buttonCloseProps?.style,
+							] }
+						/>
 
-					{ children }
+						{ children }
+					</LayerContext.Provider>
 				</View>
 			</ModalContext.Provider>
 		)
