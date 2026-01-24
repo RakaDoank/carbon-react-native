@@ -24,7 +24,7 @@
 			"package": "com.audira.carbonreactnative.storybook"
 		},
 		"web": {
-			"output": "static",
+			"output": "single",
 			"favicon": "./assets/images/favicon.png"
 		},
 		"platforms": [
