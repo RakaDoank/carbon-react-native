@@ -15,9 +15,18 @@ import {
 } from "@audira/carbon-react-native-elements"
 
 import {
+	useSafeAreaInsets,
+} from "react-native-safe-area-context"
+
+import {
 	GlobalConfigContext,
+	InDialogContext,
 	ModalContext,
 } from "../../_internal/contexts"
+
+import {
+	ModalHelper,
+} from "../../_internal/helpers"
 
 import {
 	CommonStyleSheet,
@@ -53,8 +62,21 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 			modalContext =
 				useContext(ModalContext),
 
+			inDialogContext =
+				useContext(InDialogContext),
+
 			globalConfigContext =
-				useContext(GlobalConfigContext)
+				useContext(GlobalConfigContext),
+
+			safeAreaInsets =
+				useSafeAreaInsets(),
+
+			isApplyInsets =
+				ModalHelper.isApplyInsets({
+					applyInsets: modalContext.applyInsets,
+					breakpoint,
+					inDialog: inDialogContext,
+				})
 
 		return (
 			<View
@@ -64,8 +86,18 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 				style={ [
 					styleSheet.modalContent,
 					mapStyleSheetBySizeAndBreakpoint[modalContext.size][breakpoint],
-					fullWidth ? styleSheet.fullWidth : undefined,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
+					fullWidth
+						? styleSheet.fullWidth
+						: undefined,
+					globalConfigContext.rtl
+						? CommonStyleSheet.rtl
+						: undefined,
+					isApplyInsets
+						? {
+							marginLeft: safeAreaInsets.left,
+							marginRight: safeAreaInsets.right,
+						}
+						: undefined,
 					style,
 				] }
 			/>

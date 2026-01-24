@@ -19,9 +19,18 @@ import {
 import IconClose from "@carbon/icons/svg/32/close.svg"
 
 import {
+	useSafeAreaInsets,
+} from "react-native-safe-area-context"
+
+import {
 	GlobalConfigContext,
+	InDialogContext,
 	ModalContext,
 } from "../../_internal/contexts"
+
+import {
+	ModalHelper,
+} from "../../_internal/helpers"
 
 import {
 	CommonStyleSheet,
@@ -73,6 +82,8 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 			title,
 			children,
 			buttonCloseProps,
+			applyInsets = "in_dialog_and_small_bp",
+			applyInsetsEdges: applyInsetsEdgesProp,
 			"aria-label": ariaLabel,
 			"aria-labelledby": ariaLabelledBy,
 			style,
@@ -88,6 +99,9 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 
 			globalConfigContext =
 				useContext(GlobalConfigContext),
+
+			inDialogContext =
+				useContext(InDialogContext),
 
 			/**
 			 * Based on carbon modal spec, the background color is based on the current layer level.  
@@ -105,12 +119,32 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 				}, [
 					size,
 					breakpoint,
-				])
+				]),
+
+			safeAreaInsets =
+				useSafeAreaInsets(),
+
+			applyInsetsEdges =
+				{
+					top: applyInsetsEdgesProp?.top ?? true,
+					bottom: applyInsetsEdgesProp?.bottom ?? true,
+					left: applyInsetsEdgesProp?.left ?? true,
+					right: applyInsetsEdgesProp?.right ?? true,
+				},
+
+			isApplyInsets =
+				ModalHelper.isApplyInsets({
+					applyInsets,
+					breakpoint,
+					inDialog: inDialogContext,
+				})
 
 		return (
 			<ModalContext.Provider
 				value={{
 					size,
+					applyInsets,
+					applyInsetsEdges,
 				}}
 			>
 				<View
@@ -121,8 +155,11 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 					style={ [
 						bgLayerStyleSheet[`bg_${layerContextLevel}`],
-						styleSheetBySizeAndBreakpoint.modal,
+						inDialogContext ? styleSheetBySizeAndBreakpoint.modalInDialog : undefined,
 						globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
+						isApplyInsets && applyInsetsEdges.bottom
+							? { paddingBottom: safeAreaInsets.bottom }
+							: undefined,
 						style,
 					] }
 				>
@@ -132,8 +169,11 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					>
 						<View
 							style={ [
-								styleSheet.headerText,
+								styleSheet.headerTextContainer,
 								styleSheetBySizeAndBreakpoint.headerTextContainer,
+								isApplyInsets && applyInsetsEdges.top
+									? { paddingTop: safeAreaInsets.top }
+									: undefined,
 							] }
 						>
 							{ !!label && (
@@ -156,7 +196,12 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 							style={ [
 								CommonStyleSheet.absolute,
 								styleSheet.iconClose,
-								globalConfigContext.rtl ? styleSheet.iconCloseRtl : styleSheet.iconCloseLtr,
+								globalConfigContext.rtl
+									? styleSheet.iconCloseRtl
+									: styleSheet.iconCloseLtr,
+								isApplyInsets && applyInsetsEdges.top
+									? { top: safeAreaInsets.top / 2 }
+									: undefined,
 								buttonCloseProps?.style,
 							] }
 						/>
@@ -173,7 +218,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 const
 	styleSheet =
 		StyleSheet.create({
-			headerText: {
+			headerTextContainer: {
 				paddingTop: Spacing.spacing_05,
 				marginBottom: Spacing.spacing_05,
 				rowGap: Spacing.spacing_02,
@@ -193,7 +238,10 @@ const
 	mapStyleSheetBySizeAndBreakpoint: {
 		[Size in ModalSize]: {
 			[Token in BreakpointToken]: {
-				modal: ViewStyle,
+				/**
+				 * Only apply if the modal is inside of dialog context controller
+				 */
+				modalInDialog: ViewStyle,
 				headerTextContainer: ViewStyle,
 			}
 		}
@@ -201,7 +249,7 @@ const
 		{
 			extra_small: {
 				small: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "100%",
 						height: "100%",
 					},
@@ -210,32 +258,36 @@ const
 					},
 				}),
 				medium: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "48%",
+						maxHeight: "48%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
 					},
 				}),
 				large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "32%",
+						maxHeight: "48%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
 					},
 				}),
 				x_large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "24%",
+						maxHeight: "48%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
 					},
 				}),
 				max: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "24%",
+						maxHeight: "48%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
@@ -244,7 +296,7 @@ const
 			},
 			small: {
 				small: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "100%",
 						height: "100%",
 					},
@@ -253,24 +305,27 @@ const
 					},
 				}),
 				medium: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "60%",
+						maxHeight: "72%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
 					},
 				}),
 				large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "42%",
+						maxHeight: "72%",
 					},
 					headerTextContainer: {
 						paddingHorizontal: Spacing.spacing_05,
 					},
 				}),
 				x_large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "36%",
+						maxHeight: "72%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -278,8 +333,9 @@ const
 					},
 				}),
 				max: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "36%",
+						maxHeight: "72%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -289,7 +345,7 @@ const
 			},
 			medium: {
 				small: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "100%",
 						height: "100%",
 					},
@@ -298,8 +354,9 @@ const
 					},
 				}),
 				medium: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "84%",
+						maxHeight: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -307,8 +364,9 @@ const
 					},
 				}),
 				large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "60%",
+						maxHeight: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -316,8 +374,9 @@ const
 					},
 				}),
 				x_large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "48%",
+						maxHeight: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -325,8 +384,9 @@ const
 					},
 				}),
 				max: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "48%",
+						maxHeight: "84%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -336,7 +396,7 @@ const
 			},
 			large: {
 				small: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "100%",
 						height: "100%",
 					},
@@ -345,8 +405,9 @@ const
 					},
 				}),
 				medium: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "96%",
+						maxHeight: "96%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -354,8 +415,9 @@ const
 					},
 				}),
 				large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "84%",
+						maxHeight: "96%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -363,8 +425,9 @@ const
 					},
 				}),
 				x_large: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "72%",
+						maxHeight: "96%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
@@ -372,8 +435,9 @@ const
 					},
 				}),
 				max: StyleSheet.create({
-					modal: {
+					modalInDialog: {
 						width: "72%",
+						maxHeight: "96%",
 					},
 					headerTextContainer: {
 						paddingStart: Spacing.spacing_05,
