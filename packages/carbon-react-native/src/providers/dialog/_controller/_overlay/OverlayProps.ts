@@ -4,6 +4,7 @@ import type {
 
 export interface OverlayProps extends ViewProps {
 	animationConfig: {
-		duration?: number,
+		duration: number,
+		useNativeDriver: boolean,
 	},
 }

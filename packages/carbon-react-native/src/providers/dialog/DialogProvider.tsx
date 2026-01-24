@@ -7,6 +7,14 @@ import {
 } from "react"
 
 import {
+	InDialogContext,
+} from "../../_internal/contexts"
+
+import {
+	DialogAnimationConfigs,
+} from "../../const"
+
+import {
 	DialogContext,
 	type DialogData,
 } from "../../contexts/dialog"
@@ -28,7 +36,7 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 	function DialogProvider(
 		{
 			children,
-			animationConfig,
+			animationConfig = DialogAnimationConfigs.CarbonReact,
 			modalProps,
 			overlayProps,
 			overlayTouchDismiss,
@@ -106,14 +114,16 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 				{ children }
 
 				{ mountController && (
-					<Controller
-						ref={ setControllerRef }
-						animationConfig={ animationConfig }
-						modalProps={ modalProps }
-						overlayProps={ overlayProps }
-						overlayTouchDismiss={ overlayTouchDismiss }
-						onEmpty={ onEmpty }
-					/>
+					<InDialogContext.Provider value={ true }>
+						<Controller
+							ref={ setControllerRef }
+							animationConfig={ animationConfig as typeof DialogAnimationConfigs.CarbonReact }
+							modalProps={ modalProps }
+							overlayProps={ overlayProps }
+							overlayTouchDismiss={ overlayTouchDismiss }
+							onEmpty={ onEmpty }
+						/>
+					</InDialogContext.Provider>
 				) }
 			</DialogContext.Provider>
 		)

@@ -12,10 +12,6 @@ import {
 	StyleSheet,
 } from "react-native"
 
-import {
-	DialogAnimationConfigs,
-} from "../../../const"
-
 import type {
 	DialogData,
 } from "../../../contexts/dialog/DialogData"
@@ -173,9 +169,8 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 				ref={ overlayRef }
 				{ ...overlayProps }
 				animationConfig={{
-					duration:
-						getSingleAnimationConfigDuration(animationConfig?.duration) ??
-						DialogAnimationConfigs.CarbonReact.duration,
+					duration: getSingleAnimationConfigDuration(animationConfig.duration),
+					useNativeDriver: animationConfig.useNativeDriver,
 				}}
 			>
 				{ data.map((item, index) => {
@@ -210,14 +205,10 @@ type DialogDataState =
 		| "stack"
 	>
 
-function getSingleAnimationConfigDuration(duration: DialogProviderAnimationConfig["duration"]) {
+function getSingleAnimationConfigDuration(duration: NonNullable<DialogProviderAnimationConfig["duration"]>) {
 	if(typeof duration === "number") {
 		return duration
 	}
 
-	if(duration) {
-		return duration[0]
-	}
-
-	return undefined
+	return duration[0]
 }

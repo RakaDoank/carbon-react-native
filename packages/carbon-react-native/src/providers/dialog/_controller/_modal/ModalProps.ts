@@ -7,5 +7,5 @@ import type {
 } from "../../DialogProviderAnimationConfig"
 
 export interface ModalProps extends ViewProps {
-	animationConfig?: DialogProviderAnimationConfig,
+	animationConfig: Required<DialogProviderAnimationConfig>,
 }

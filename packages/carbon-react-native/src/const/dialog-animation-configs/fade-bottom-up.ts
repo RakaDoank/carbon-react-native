@@ -1,5 +1,6 @@
 import {
 	Easing,
+	Platform,
 } from "react-native"
 
 import {
@@ -33,4 +34,8 @@ export const FadeBottomUp = {
 		Motion.Easing.entrance.expressive.x2,
 		Motion.Easing.entrance.expressive.y2,
 	),
+	useNativeDriver:
+		Platform.OS === "android" ||
+		Platform.OS === "ios" ||
+		Platform.OS === "web",
 } as const satisfies Required<DialogProviderAnimationConfig>

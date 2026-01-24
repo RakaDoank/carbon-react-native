@@ -17,6 +17,7 @@ export interface DialogProviderAnimationConfig {
 	 * @default DialogAnimationConfigs.CarbonReact.duration
 	 */
 	readonly duration?: number | [number, number, number],
+
 	/**
 	 * Input range interpolation:
 	 * - `0` -> Unmounted style
@@ -46,4 +47,14 @@ export interface DialogProviderAnimationConfig {
 	readonly modalEasing?:
 		| EasingFunction
 		| [EasingFunction, EasingFunction, EasingFunction],
+
+	/**
+	 * Somehow, the `useNativeDriver` doesn't work on `react-native-macos` and `react-native-windows`
+	 * @default true - Android
+	 * @default true - iOS
+	 * @default true - Web
+	 * @default false - macOS
+	 * @default false - Windows
+	 */
+	useNativeDriver?: boolean,
 }

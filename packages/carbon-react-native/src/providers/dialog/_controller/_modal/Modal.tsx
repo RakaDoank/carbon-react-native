@@ -14,10 +14,6 @@ import {
 	FlexStyleSheet,
 } from "../../../../_internal/style-sheets"
 
-import {
-	DialogAnimationConfigs,
-} from "../../../../const"
-
 import type {
 	ModalProps,
 } from "./ModalProps"
@@ -29,7 +25,7 @@ import type {
 export const Modal = forwardRef<ModalRef, ModalProps>(
 	function(
 		{
-			animationConfig = DialogAnimationConfigs.CarbonReact,
+			animationConfig,
 			style,
 			...props
 		},
@@ -61,7 +57,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 						easing: Array.isArray(animationConfig.modalEasing)
 							? animationConfig.modalEasing[1]
 							: animationConfig.modalEasing,
-						useNativeDriver: true,
+						useNativeDriver: animationConfig.useNativeDriver,
 					},
 				).start()
 			}
@@ -85,7 +81,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 									easing: Array.isArray(animationConfig.modalEasing)
 										? animationConfig.modalEasing[value]
 										: animationConfig.modalEasing,
-									useNativeDriver: true,
+									useNativeDriver: animationConfig.useNativeDriver,
 								},
 							)
 							.start(({ finished }) => {
@@ -110,7 +106,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 										easing: Array.isArray(animationConfig.modalEasing)
 											? animationConfig.modalEasing[to]
 											: animationConfig.modalEasing,
-										useNativeDriver: true,
+										useNativeDriver: animationConfig.useNativeDriver,
 									},
 								),
 							])

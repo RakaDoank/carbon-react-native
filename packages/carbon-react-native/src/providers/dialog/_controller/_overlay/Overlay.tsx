@@ -60,7 +60,7 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 						{
 							toValue: 1,
 							duration: animationConfig.duration,
-							useNativeDriver: true,
+							useNativeDriver: animationConfig.useNativeDriver,
 						},
 					)
 					.start()
@@ -83,7 +83,7 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 									{
 										toValue: 0,
 										duration: animationConfig.duration,
-										useNativeDriver: true,
+										useNativeDriver: animationConfig.useNativeDriver,
 									},
 								)
 								.start(({ finished }) => {

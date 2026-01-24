@@ -1,5 +1,6 @@
 import {
 	Easing,
+	Platform,
 } from "react-native"
 
 import {
@@ -50,4 +51,8 @@ export const CarbonReact = {
 			Motion.Easing.exit.expressive.y2,
 		),
 	],
+	useNativeDriver:
+		Platform.OS === "android" ||
+		Platform.OS === "ios" ||
+		Platform.OS === "web",
 } as const satisfies Required<DialogProviderAnimationConfig>
