@@ -10,6 +10,10 @@ import {
 	Color,
 } from "@audira/carbon-react-native-elements"
 
+import {
+	SafeAreaProvider,
+} from "react-native-safe-area-context"
+
 import "./body.css"
 import "./font.css"
 
@@ -18,12 +22,14 @@ const preview: Preview = {
 	decorators: [
 		(Story, context) => {
 			return (
-				<CarbonReactNative
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-					colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
-				>
-					<Story/>
-				</CarbonReactNative>
+				<SafeAreaProvider>
+					<CarbonReactNative
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+						colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
+					>
+						<Story/>
+					</CarbonReactNative>
+				</SafeAreaProvider>
 			)
 		},
 	],

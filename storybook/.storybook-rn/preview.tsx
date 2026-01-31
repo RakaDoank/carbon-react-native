@@ -20,14 +20,20 @@ import {
 	ThemeContext,
 } from "@audira/carbon-react-native"
 
+import {
+	SafeAreaProvider,
+} from "react-native-safe-area-context"
+
 const preview: Preview = {
 	decorators: [
 		Story => (
-			<CarbonReactNative>
-				<Body
-					Story={ Story }
-				/>
-			</CarbonReactNative>
+			<SafeAreaProvider>
+				<CarbonReactNative>
+					<Body
+						Story={ Story }
+					/>
+				</CarbonReactNative>
+			</SafeAreaProvider>
 		),
 	],
 
