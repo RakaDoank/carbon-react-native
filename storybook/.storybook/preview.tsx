@@ -1,3 +1,7 @@
+import {
+	StyleSheet,
+} from "react-native"
+
 import type {
 	Preview,
 } from "@storybook/react-native-web-vite"
@@ -22,7 +26,9 @@ const preview: Preview = {
 	decorators: [
 		(Story, context) => {
 			return (
-				<SafeAreaProvider>
+				<SafeAreaProvider
+					style={ styleSheet.safeAreaProvider }
+				>
 					<CarbonReactNative
 						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 						colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
@@ -71,3 +77,11 @@ const preview: Preview = {
 }
 
 export default preview
+
+const
+	styleSheet =
+		StyleSheet.create({
+			safeAreaProvider: {
+				padding: "1rem",
+			},
+		})
