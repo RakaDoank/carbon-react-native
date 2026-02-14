@@ -1,6 +1,7 @@
 import {
 	forwardRef,
 	useCallback,
+	useEffect,
 	useImperativeHandle,
 	useRef,
 	useState,
@@ -29,6 +30,7 @@ import type {
 
 import {
 	Controller,
+	type ControllerProps,
 	type ControllerRef,
 } from "./_controller"
 
@@ -45,50 +47,22 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 	) {
 
 		const
-			controllerRef =
-				useRef<ControllerRef>(null),
-
-			dialogDataQueue =
-				useRef<DialogData>(null),
-
-			[mountController, setMountController] =
-				useState(false),
-
-			setControllerRef: React.RefCallback<ControllerRef> =
-				useCallback(ref => {
-					controllerRef.current = ref
-
-					if(controllerRef.current && dialogDataQueue.current) {
-						controllerRef.current.show({ ...dialogDataQueue.current })
-						dialogDataQueue.current = null
-					}
-				}, []),
+			controllerWrapperRef =
+				useRef<ControllerWrapperRef>(null),
 
 			show: DialogContext["show"] =
 				useCallback(data => {
-					if(!controllerRef.current) {
-						dialogDataQueue.current = { ...data }
-						setMountController(true)
-					} else {
-						controllerRef.current?.show(data)
-					}
+					controllerWrapperRef.current?.show(data)
 				}, []),
 
 			dismiss: DialogContext["dismiss"] =
 				useCallback(async () => {
-					return controllerRef.current?.dismiss()
+					return controllerWrapperRef.current?.dismiss()
 				}, []),
 
 			dismissAll: DialogContext["dismissAll"] =
 				useCallback(async () => {
-					return controllerRef.current?.dismissAll()
-				}, []),
-
-			onEmpty =
-				useCallback(() => {
-					if(!dialogDataQueue.current) {
-						setMountController(false)
-					}
+					return controllerWrapperRef.current?.dismissAll()
 				}, [])
 
 		useImperativeHandle(ref, () => {
@@ -113,20 +87,101 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 			>
 				{ children }
 
-				{ mountController && (
-					<InDialogContext.Provider value={ true }>
-						<Controller
-							ref={ setControllerRef }
-							animationConfig={ animationConfig as typeof DialogAnimationConfigs.CarbonReact }
-							modalProps={ modalProps }
-							overlayProps={ overlayProps }
-							overlayTouchDismiss={ overlayTouchDismiss }
-							onEmpty={ onEmpty }
-						/>
-					</InDialogContext.Provider>
-				) }
+				<ControllerWrapper
+					ref={ controllerWrapperRef }
+					animationConfig={ animationConfig as typeof DialogAnimationConfigs.CarbonReact }
+					modalProps={ modalProps }
+					overlayProps={ overlayProps }
+					overlayTouchDismiss={ overlayTouchDismiss }
+				/>
 			</DialogContext.Provider>
 		)
 
 	},
 )
+
+interface ControllerWrapperProps extends Omit<ControllerProps, "onEmpty"> {
+	ref?: React.Ref<ControllerWrapperRef>,
+}
+
+interface ControllerWrapperRef extends ControllerRef {
+}
+
+/**
+ * This is a simple component to save a bit of memory by not mounting the actual `Controller` when it's not needed
+ */
+function ControllerWrapper({
+	ref,
+	...props
+}: ControllerWrapperProps) {
+
+	const
+		[mount, setMount] =
+			useState(false),
+
+		controllerRef =
+			useRef<ControllerRef>(null),
+
+		dialogDataQueue =
+			useRef<DialogData>(null),
+
+		onEmpty =
+			useCallback(() => {
+				if(!dialogDataQueue.current && controllerRef.current) {
+					setMount(false)
+				}
+			}, [])
+
+	useImperativeHandle(ref, () => {
+		const errMsg = "Error to get the Controller's ref"
+
+		return {
+			show(data) {
+				if(controllerRef.current) {
+					controllerRef.current.show(data)
+				} else {
+					dialogDataQueue.current = data
+					setMount(true)
+				}
+			},
+			dismiss() {
+				if(controllerRef.current) {
+					return controllerRef.current.dismiss()
+				}
+				console.error(errMsg)
+				return Promise.resolve()
+			},
+			dismissAll() {
+				if(controllerRef.current) {
+					return controllerRef.current.dismissAll()
+				}
+				console.error(errMsg)
+				return Promise.resolve()
+			},
+		}
+	}, [])
+
+	useEffect(() => {
+		if(mount && dialogDataQueue.current && controllerRef.current) {
+			controllerRef.current.show({ ...dialogDataQueue.current })
+			dialogDataQueue.current = null
+		}
+	}, [
+		mount,
+	])
+
+	if(!mount) {
+		return null
+	}
+
+	return (
+		<InDialogContext.Provider value>
+			<Controller
+				ref={ controllerRef }
+				{ ...props }
+				onEmpty={ onEmpty }
+			/>
+		</InDialogContext.Provider>
+	)
+
+}
