@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"builder-bob": "node builder-bob/scripts/build.js",
+		"clean-pnpm-install": "node ./scripts/clean-pnpm-install.mjs",
 		"code-check": "npm run type-check && npm run lint",
 		"init-ibm-fonts-storybook-web": "node ./scripts/init-ibm-fonts-storybook-web.mjs",
 		"lint": "eslint .",
@@ -15,9 +16,9 @@
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
-		"@react-native/eslint-config": "0.81.4",
+		"@react-native/eslint-config": "0.81.5",
 		"@stylistic/eslint-plugin": "^5.7.1",
-		"@types/node": "^22",
+		"@types/node": "^24",
 		"@types/react": "19.2.2",
 		"@types/react-native-web": "0.19.2",
 		"eslint": "9.39.2",
@@ -25,13 +26,13 @@
 		"eslint-plugin-import-x": "4.16.1",
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-native": "^5.0.0",
-		"globals": "^17.2.0",
+		"globals": "^17.3.0",
 		"ttf2woff": "3.0.0",
 		"typescript": "5.9.3",
-		"typescript-eslint": "^8.54.0"
+		"typescript-eslint": "^8.55.0"
 	},
 	"engines": {
-		"node": ">=22",
+		"node": ">=24",
 		"pnpm": ">=10.17"
 	}
 }
