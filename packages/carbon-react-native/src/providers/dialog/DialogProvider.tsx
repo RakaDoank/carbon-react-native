@@ -101,7 +101,6 @@ export const DialogProvider = forwardRef<DialogProviderRef, DialogProviderProps>
 )
 
 interface ControllerWrapperProps extends Omit<ControllerProps, "onEmpty"> {
-	ref?: React.Ref<ControllerWrapperRef>,
 }
 
 interface ControllerWrapperRef extends ControllerRef {
@@ -110,78 +109,80 @@ interface ControllerWrapperRef extends ControllerRef {
 /**
  * This is a simple component to save a bit of memory by not mounting the actual `Controller` when it's not needed
  */
-function ControllerWrapper({
-	ref,
-	...props
-}: ControllerWrapperProps) {
+const ControllerWrapper = forwardRef<ControllerWrapperRef, ControllerWrapperProps>(
+	function ControllerWrapper(
+		props,
+		ref,
+	) {
 
-	const
-		[mount, setMount] =
-			useState(false),
+		const
+			[mount, setMount] =
+				useState(false),
 
-		controllerRef =
-			useRef<ControllerRef>(null),
+			controllerRef =
+				useRef<ControllerRef>(null),
 
-		dialogDataQueue =
-			useRef<DialogData>(null),
+			dialogDataQueue =
+				useRef<DialogData>(null),
 
-		onEmpty =
-			useCallback(() => {
-				if(!dialogDataQueue.current && controllerRef.current) {
-					setMount(false)
-				}
-			}, [])
+			onEmpty =
+				useCallback(() => {
+					if(!dialogDataQueue.current && controllerRef.current) {
+						setMount(false)
+					}
+				}, [])
 
-	useImperativeHandle(ref, () => {
-		const errMsg = "Error to get the Controller's ref"
+		useImperativeHandle(ref, () => {
+			const errMsg = "Error to get the Controller's ref"
 
-		return {
-			show(data) {
-				if(controllerRef.current) {
-					controllerRef.current.show(data)
-				} else {
-					dialogDataQueue.current = data
-					setMount(true)
-				}
-			},
-			dismiss() {
-				if(controllerRef.current) {
-					return controllerRef.current.dismiss()
-				}
-				console.error(errMsg)
-				return Promise.resolve()
-			},
-			dismissAll() {
-				if(controllerRef.current) {
-					return controllerRef.current.dismissAll()
-				}
-				console.error(errMsg)
-				return Promise.resolve()
-			},
+			return {
+				show(data) {
+					if(controllerRef.current) {
+						controllerRef.current.show(data)
+					} else {
+						dialogDataQueue.current = data
+						setMount(true)
+					}
+				},
+				dismiss() {
+					if(controllerRef.current) {
+						return controllerRef.current.dismiss()
+					}
+					console.error(errMsg)
+					return Promise.resolve()
+				},
+				dismissAll() {
+					if(controllerRef.current) {
+						return controllerRef.current.dismissAll()
+					}
+					console.error(errMsg)
+					return Promise.resolve()
+				},
+			}
+		}, [])
+
+		useEffect(() => {
+			if(mount && dialogDataQueue.current && controllerRef.current) {
+				controllerRef.current.show({ ...dialogDataQueue.current })
+				dialogDataQueue.current = null
+			}
+		}, [
+			mount,
+		])
+
+		if(!mount) {
+			return null
 		}
-	}, [])
 
-	useEffect(() => {
-		if(mount && dialogDataQueue.current && controllerRef.current) {
-			controllerRef.current.show({ ...dialogDataQueue.current })
-			dialogDataQueue.current = null
-		}
-	}, [
-		mount,
-	])
+		return (
+			<InDialogContext.Provider value>
+				<Controller
+					ref={ controllerRef }
+					{ ...props }
+					onEmpty={ onEmpty }
+				/>
+			</InDialogContext.Provider>
+		)
 
-	if(!mount) {
-		return null
-	}
-
-	return (
-		<InDialogContext.Provider value>
-			<Controller
-				ref={ controllerRef }
-				{ ...props }
-				onEmpty={ onEmpty }
-			/>
-		</InDialogContext.Provider>
-	)
-
-}
+	},
+)
