@@ -10,7 +10,7 @@ import {
 } from "react-native"
 
 import type {
-	Decorator,
+	// Decorator,
 	Preview,
 } from "@storybook/react-native"
 
@@ -29,9 +29,9 @@ const preview: Preview = {
 		Story => (
 			<SafeAreaProvider>
 				<CarbonReactNative>
-					<Body
-						Story={ Story }
-					/>
+					<Body>
+						<Story/>
+					</Body>
 				</CarbonReactNative>
 			</SafeAreaProvider>
 		),
@@ -46,10 +46,11 @@ const preview: Preview = {
 
 export default preview
 interface BodyProps {
-	Story: Parameters<Decorator>[0],
+	// Story: Parameters<Decorator>[0],
+	children?: React.ReactNode,
 }
 function Body({
-	Story,
+	children,
 }: BodyProps) {
 
 	const
@@ -71,7 +72,7 @@ function Body({
 			style={ [styleSheet.root, carbonStyleSheet.root] }
 			contentContainerStyle={ styleSheet.scrollContentContainer }
 		>
-			<Story/>
+			{ children }
 		</ScrollView>
 	)
 
@@ -84,7 +85,6 @@ const
 				flex: 1,
 			},
 			scrollContentContainer: {
-				padding: 16,
 				flexGrow: 1,
 				flexShrink: 1,
 				flexBasis: "auto",

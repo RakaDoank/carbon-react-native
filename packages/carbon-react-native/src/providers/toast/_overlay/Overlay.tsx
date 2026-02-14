@@ -14,10 +14,6 @@ import {
 } from "react-native"
 
 import {
-	Spacing,
-} from "@audira/carbon-react-native-elements"
-
-import {
 	GlobalConfigContext,
 } from "../../../_internal/contexts"
 
@@ -33,6 +29,10 @@ import {
 	ComponentWrapper,
 	type ComponentWrapperRef,
 } from "./_component-wrapper"
+
+import {
+	Gap,
+} from "./_gap"
 
 export const Overlay = forwardRef<OverlayRef>(
 	function(
@@ -91,12 +91,12 @@ export const Overlay = forwardRef<OverlayRef>(
 					) {
 						componentWrappersRef.current[index].cancelX() // cancel the current delay first
 						componentWrappersRef.current[index].shiftX(
-							componentsConfig.current[index].width + Spacing.spacing_03,
+							componentsConfig.current[index].width + Gap,
 						)
 						if(index > 0) {
 							for(let i = 0; i < index; i++) {
 								componentWrappersRef.current[i]?.shiftY(
-									-componentsConfig.current[index].height - Spacing.spacing_03,
+									-componentsConfig.current[index].height - Gap,
 								)
 							}
 						}
@@ -127,14 +127,14 @@ export const Overlay = forwardRef<OverlayRef>(
 						}
 
 						componentWrappersRef.current[index].shiftX(
-							-componentsConfig.current[index].width - Spacing.spacing_03,
+							-componentsConfig.current[index].width - Gap,
 						)
 
 						if(componentWrappersRef.current.length > 1) {
 							for(let i = 0; i < componentWrappersRef.current.length - 1; i++) {
 								componentWrappersRef.current[i]?.shiftY(
 									// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-extra-non-null-assertion
-									componentsConfig.current[0]!!.height + Spacing.spacing_03,
+									componentsConfig.current[0]!!.height + Gap,
 								)
 							}
 						}
@@ -151,12 +151,12 @@ export const Overlay = forwardRef<OverlayRef>(
 
 					if(componentsConfig.current[index]?.state === 1) {
 						componentWrappersRef.current[index]?.shiftX(
-							componentsConfig.current[index].width + Spacing.spacing_03,
+							componentsConfig.current[index].width + Gap,
 							componentsConfig.current[index].duration ?? globalConfigContext.toastDuration,
 						)
 					} else if(
 						componentsConfig.current[index]?.state === 2 &&
-						!componentsConfig.current.some(config => config.state < 2) // somehow, the state may increase to "3" when it's dismissed by click/press. only god knows it.
+						!componentsConfig.current.some(config => config.state < 2)
 					) {
 						// Delete all componentsConfig, componentWrappersRef, and components (react state) when it's all done
 						componentsConfig.current.splice(0, componentsConfig.current.length)

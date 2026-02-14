@@ -14,8 +14,15 @@ import {
 
 import {
 	Motion,
-	Spacing,
 } from "@audira/carbon-react-native-elements"
+
+import {
+	useSafeAreaInsets,
+} from "react-native-safe-area-context"
+
+import {
+	Gap,
+} from "../_gap"
 
 import type {
 	ComponentWrapperProps,
@@ -37,6 +44,9 @@ export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapper
 	) {
 
 		const
+			safeAreaInsets =
+				useSafeAreaInsets(),
+
 			translateX =
 				useRef(new Animated.Value(0)),
 
@@ -44,7 +54,7 @@ export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapper
 				useRef(0),
 
 			translateY =
-				useRef(new Animated.Value(0)),
+				useRef(new Animated.Value(safeAreaInsets.top + Gap)),
 
 			translateYValueJS =
 				useRef(0)
@@ -148,12 +158,14 @@ const
 		StyleSheet.create({
 			componentWrapper: {
 				position: "absolute",
-				top: Spacing.spacing_03,
 				left: "100%",
 				width: "auto",
 				...Platform.select({
 					web: {
 						flexDirection: "row",
+					},
+					android: {
+						top: Gap, // iOS doesn't need this, Apple handles it internally
 					},
 				}),
 			},
