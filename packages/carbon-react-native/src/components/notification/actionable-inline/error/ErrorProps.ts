@@ -2,7 +2,7 @@ import type {
 	ActionableInlineVariantProps,
 } from "../../_variants/actionable-inline"
 
-export interface ErrorProps extends Omit<ActionableInlineVariantProps, "icon"> {
+export interface ErrorProps extends Omit<ActionableInlineVariantProps, "Icon"> {
 	iconProps?: Omit<
 		NonNullable<ActionableInlineVariantProps["iconProps"]>,
 		| "color"

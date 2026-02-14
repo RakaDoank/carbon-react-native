@@ -2,7 +2,7 @@ import type {
 	CalloutVariantProps,
 } from "../../_variants/callout"
 
-export interface InformationalProps extends Omit<CalloutVariantProps, "icon"> {
+export interface InformationalProps extends Omit<CalloutVariantProps, "Icon"> {
 	iconProps?: Omit<
 		NonNullable<CalloutVariantProps["iconProps"]>,
 		| "color"

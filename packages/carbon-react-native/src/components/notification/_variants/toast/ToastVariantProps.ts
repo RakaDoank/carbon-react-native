@@ -14,7 +14,6 @@ export interface ToastVariantProps extends Omit<
 	BaseProps,
 	| "inline"
 	| "body"
-	| "icon"
 	| "iconClose"
 	| "nodes"
 	| "leftContainerStyle"

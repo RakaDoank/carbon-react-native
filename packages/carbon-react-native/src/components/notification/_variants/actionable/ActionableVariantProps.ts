@@ -18,7 +18,6 @@ export interface ActionableVariantProps extends Omit<
 	BaseProps,
 	| "inline"
 	| "body"
-	| "icon"
 	| "iconClose"
 	| "nodes"
 	| "leftContainerStyle"
