@@ -16,9 +16,6 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    strategy:
-      matrix:
-        node-version: [22]
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
@@ -28,7 +25,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '24'
           registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
       - name: Init IBM Fonts to Storybook Web
