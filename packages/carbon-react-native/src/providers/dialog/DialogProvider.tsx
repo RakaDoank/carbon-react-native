@@ -107,7 +107,8 @@ interface ControllerWrapperRef extends ControllerRef {
 }
 
 /**
- * This is a simple component to save a bit of memory by not mounting the actual `Controller` when it's not needed
+ * Generally speaking, I created this component just to save a bit of memory by not mounting the actual `Controller` when it's not needed,
+ * but, I don't know this component is actually a optimization or even worse
  */
 const ControllerWrapper = forwardRef<ControllerWrapperRef, ControllerWrapperProps>(
 	function ControllerWrapper(
