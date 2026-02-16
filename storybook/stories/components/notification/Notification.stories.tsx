@@ -17,6 +17,7 @@ const
 			color: "high_contrast",
 			title: "Title",
 			subtitle: "Lorem ipsum dolor sit amet",
+			inline: false,
 		},
 
 	commonArgTypes: StoryObj<Notification.Actionable.ErrorProps>["argTypes"] =
@@ -33,6 +34,9 @@ const
 			},
 			subtitle: {
 				control: "text",
+			},
+			inline: {
+				control: "boolean",
 			},
 		}
 
