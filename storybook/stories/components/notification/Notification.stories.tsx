@@ -109,7 +109,7 @@ export const CalloutInformational: StoryObj<Notification.Callout.InformationalPr
 	argTypes: commonArgTypes,
 	render(args) {
 		return (
-			<Notification.Callout.Error
+			<Notification.Callout.Informational
 				{ ...args }
 			/>
 		)
