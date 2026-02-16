@@ -161,7 +161,7 @@ export const ToastInformational: StoryObj<Notification.Toast.InformationalProps>
 	argTypes: commonArgTypes,
 	render(args) {
 		return (
-			<Notification.Toast.Error
+			<Notification.Toast.Informational
 				{ ...args }
 			/>
 		)
