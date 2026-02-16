@@ -38,7 +38,6 @@ export const CalloutVariant = forwardRef<CalloutVariantRef, CalloutVariantProps>
 			<VariantContextProvider color={ color }>
 				<Base
 					{ ...props }
-					inline={ false }
 					Icon={ Icon }
 					iconClose={ false }
 					body={

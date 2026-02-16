@@ -43,7 +43,6 @@ export const ActionableVariant = forwardRef<ActionableVariantRef, ActionableVari
 			<VariantContextProvider color={ color }>
 				<Base
 					{ ...props }
-					inline={ false }
 					Icon={ Icon }
 					iconClose
 					body={
