@@ -1,6 +1,6 @@
 import type {
-	CalloutInlineVariantRef,
-} from "../../_variants/callout-inline"
+	ToastVariantRef,
+} from "../../_variants/toast/ToastVariantRef"
 
-export interface SuccessRef extends CalloutInlineVariantRef {
+export interface SuccessRef extends ToastVariantRef {
 }

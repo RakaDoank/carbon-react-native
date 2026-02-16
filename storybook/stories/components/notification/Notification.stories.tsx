@@ -86,58 +86,6 @@ export const ActionableWarning: StoryObj<Notification.Actionable.WarningProps> =
 
 // ####################
 
-// ## Actionable Inline
-
-export const ActionableInlineError: StoryObj<Notification.ActionableInline.ErrorProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.ActionableInline.Error
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const ActionableInlineInformational: StoryObj<Notification.ActionableInline.InformationalProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.ActionableInline.Informational
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const ActionableInlineSuccess: StoryObj<Notification.ActionableInline.SuccessProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.ActionableInline.Success
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const ActionableInlineWarning: StoryObj<Notification.ActionableInline.WarningProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.ActionableInline.Warning
-				{ ...args }
-			/>
-		)
-	},
-}
-
-// ##########
-
 // ## Callout
 
 export const CalloutError: StoryObj<Notification.Callout.ErrorProps> = {
@@ -189,58 +137,6 @@ export const CalloutWarning: StoryObj<Notification.Callout.WarningProps> = {
 }
 
 // ####################
-
-// ## Callout Inline
-
-export const CalloutInlineError: StoryObj<Notification.CalloutInline.ErrorProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.CalloutInline.Error
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const CalloutInlineInformational: StoryObj<Notification.CalloutInline.InformationalProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.CalloutInline.Informational
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const CalloutInlineSuccess: StoryObj<Notification.CalloutInline.SuccessProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.CalloutInline.Success
-				{ ...args }
-			/>
-		)
-	},
-}
-
-export const CalloutInlineWarning: StoryObj<Notification.CalloutInline.WarningProps> = {
-	args: commonArgs,
-	argTypes: commonArgTypes,
-	render(args) {
-		return (
-			<Notification.CalloutInline.Warning
-				{ ...args }
-			/>
-		)
-	},
-}
-
-// ########
 
 // ## Toast
 

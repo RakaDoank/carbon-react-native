@@ -12,7 +12,6 @@ import type {
 
 export interface CalloutVariantProps extends Omit<
 	BaseProps,
-	| "inline"
 	| "body"
 	| "iconClose"
 	| "nodes"

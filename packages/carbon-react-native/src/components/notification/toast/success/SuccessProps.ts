@@ -1,14 +1,14 @@
 import type {
-	CalloutInlineVariantProps,
-} from "../../_variants/callout-inline"
+	ToastVariantProps,
+} from "../../_variants/toast"
 
-export interface SuccessProps extends Omit<CalloutInlineVariantProps, "Icon"> {
+export interface SuccessProps extends Omit<ToastVariantProps, "Icon"> {
 	iconProps?: Omit<
-		NonNullable<CalloutInlineVariantProps["iconProps"]>,
+		NonNullable<ToastVariantProps["iconProps"]>,
 		| "color"
 	>,
 	iconCloseProps?: Omit<
-		NonNullable<CalloutInlineVariantProps["iconCloseProps"]>,
+		NonNullable<ToastVariantProps["iconCloseProps"]>,
 		| "color"
 	>,
 }

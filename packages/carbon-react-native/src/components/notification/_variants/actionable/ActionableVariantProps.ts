@@ -16,7 +16,6 @@ import type {
 
 export interface ActionableVariantProps extends Omit<
 	BaseProps,
-	| "inline"
 	| "body"
 	| "iconClose"
 	| "nodes"
