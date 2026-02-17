@@ -26,16 +26,21 @@ const preview: Preview = {
 	decorators: [
 		(Story, context) => {
 			return (
-				<SafeAreaProvider
-					style={ styleSheet.safeAreaProvider }
-				>
-					<CarbonReactNative
-						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-						colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
+				<>
+					<style>{ /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */ }
+						{ `.docs-story { background-color: ${context.globals.backgrounds.value === "dark" ? Color.Token.gray_100.background : Color.Token.gray_10.background} }` }
+					</style>
+					<SafeAreaProvider
+						style={ styleSheet.safeAreaProvider }
 					>
-						<Story/>
-					</CarbonReactNative>
-				</SafeAreaProvider>
+						<CarbonReactNative
+							// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+							colorScheme={ context.globals.backgrounds.value === "dark" ? "gray_100" : "gray_10" }
+						>
+							<Story/>
+						</CarbonReactNative>
+					</SafeAreaProvider>
+				</>
 			)
 		},
 	],
