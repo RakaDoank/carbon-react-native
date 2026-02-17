@@ -10,7 +10,7 @@ import {
 } from "@audira/carbon-react-native"
 
 export default {
-	title: "Components/Radio Button/Radio Button Group",
+	title: "Components/Radio Button Group",
 	component: CarbonRadioButtonGroup,
 	args: {
 		orientation: "vertical",

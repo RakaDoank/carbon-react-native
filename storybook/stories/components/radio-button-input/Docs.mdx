@@ -1,0 +1,45 @@
+import {
+  Canvas,
+  Controls,
+	Meta,
+} from "@storybook/addon-docs/blocks"
+
+import * as RadioButtonInput from "./RadioButtonInput.stories"
+
+<Meta
+  of={ RadioButtonInput }
+/>
+
+# Radio Button Input
+
+This component provides only the circle input. Mostly, you only need [RadioButtonGroup](?path=/docs/components-radio-button-group--docs). This component might suit your needs if you only want to render the circle.
+
+```tsx
+import {
+  RadioButtonInput,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+  return (
+    <RadioButtonInput value="bbc"/>
+  )
+}
+```
+
+<Canvas
+  of={ RadioButtonInput.RadioButtonInput }
+/>
+
+<Controls
+  of={ RadioButtonInput.RadioButtonInput }
+/>
+
+## Caveat
+
+In common usage, radio button usually represent a group of mutually exclusive choices, compared to checkboxes that user is able to select one or more.
+
+Probably you only need [RadioButtonGroup](?path=/docs/components-radio-button-group--docs) instead of manually building group of radio buttons.
+
+## Props
+
+See [RadioButtonInputProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/radio-button-input/RadioButtonInputProps.ts) for further information

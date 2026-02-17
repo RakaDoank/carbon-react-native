@@ -10,7 +10,7 @@ import {
 } from "@audira/carbon-react-native"
 
 export default {
-	title: "Components/Checkbox/Checkbox Group",
+	title: "Components/Checkbox Group",
 	component: CarbonCheckboxGroup,
 	args: {
 		orientation: "vertical",

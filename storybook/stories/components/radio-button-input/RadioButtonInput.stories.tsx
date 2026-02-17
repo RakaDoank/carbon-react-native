@@ -10,7 +10,7 @@ import {
 } from "@audira/carbon-react-native"
 
 export default {
-	title: "Components/Radio Button/Radio Button Input",
+	title: "Components/Radio Button Input",
 	component: CarbonRadioButtonInput,
 	args: {
 		interactiveState: "normal",

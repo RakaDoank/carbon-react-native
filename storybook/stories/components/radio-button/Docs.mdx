@@ -1,0 +1,47 @@
+import {
+  Canvas,
+  Controls,
+	Meta,
+} from "@storybook/addon-docs/blocks"
+
+import * as RadioButton from "./RadioButton.stories"
+
+<Meta
+  of={ RadioButton }
+/>
+
+# Radio Button
+
+Radiobutton component is a composed component of [RadioButtonInput](?path=/docs/radio-button-input--docs) and FormLabel
+
+```tsx
+import {
+  RadioButton,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+  return (
+    <RadioButton
+      value="bbc"
+      label="Radio Label"
+    />
+  )
+}
+```
+
+<Canvas
+  of={ RadioButton.RadioButton }
+/>
+
+<Controls
+  of={ RadioButton.RadioButton }
+/>
+
+## Caveat
+In common usage, radio button usually represent a group of mutually exclusive choices, compared to checkboxes that user is able to select one or more.
+
+Probably you only need [`RadioButtonGroup`](./index.md) instead of manually building group of radio buttons.
+
+## Props
+
+See [RadioButtonProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/radio-button/RadioButtonProps.ts) for further information

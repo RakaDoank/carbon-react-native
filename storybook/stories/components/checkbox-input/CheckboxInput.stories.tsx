@@ -7,15 +7,36 @@ import {
 	CheckboxInput as CarbonCheckboxInput,
 	type CheckboxInputInteractiveState,
 	type CheckboxInputProps,
+	type CheckboxInputState,
 } from "@audira/carbon-react-native"
 
 export default {
-	title: "Components/Checkbox/Checkbox Input",
+	title: "Components/Checkbox Input",
 	component: CarbonCheckboxInput,
 	args: {
 		interactiveState: "normal",
+		defaultChecked: undefined,
+		checked: undefined,
 	},
 	argTypes: {
+		defaultChecked: {
+			control: "select",
+			options: [
+				undefined,
+				null,
+				true,
+				false,
+			] satisfies (CheckboxInputState | undefined)[],
+		},
+		checked: {
+			control: "select",
+			options: [
+				undefined,
+				null,
+				true,
+				false,
+			] satisfies (CheckboxInputState | undefined)[],
+		},
 		interactiveState: {
 			control: "select",
 			options: [

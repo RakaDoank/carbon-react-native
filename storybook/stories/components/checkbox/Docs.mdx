@@ -1,0 +1,233 @@
+import {
+  ArgTypes,
+  Canvas,
+  Controls,
+	Meta,
+} from "@storybook/addon-docs/blocks"
+
+import * as CheckboxStories from "./Checkbox.stories"
+
+<Meta
+  of={ CheckboxStories }
+/>
+
+# Checkbox
+
+Checkbox component is a composed component of [CheckboxInput](?path=/docs/components-checkbox-input--docs) and FormLabel. You can compose a checkbox quickly with this component
+
+```tsx
+import {
+  Checkbox,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  return (
+    <Checkbox
+      label="Lorem Ipsum"
+    />
+  )
+
+}
+```
+
+<Canvas
+  of={ CheckboxStories.Checkbox }
+/>
+
+<Controls
+  of={ CheckboxStories.Checkbox }
+  exclude={ [
+    "onChange",
+    "onPress",
+  ] }
+/>
+
+## Getting Value
+
+Checkbox has simple true-false value which the input will be ticked / checked when the value is true. To get the value, just use the `onChange` prop of the checkbox
+
+```tsx
+import {
+  useRef,
+} from 'react'
+
+import {
+  Checkbox,
+  type CheckboxProps,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+    const
+      ref =
+        useRef({
+          checked: false,
+        }),
+
+      checkboxOnChange: CheckboxProps['onChange'] =
+        value => {
+          ref.current.checked = value
+        }
+
+  return (
+    <Checkbox
+      label="Tick me"
+      onChange={ checkboxOnChange }
+    />
+  )
+    
+}
+```
+
+Alternatively, you can get the current checked value by just taking it directly from the component's ref
+
+```tsx
+import {
+  useRef,
+} from "react"
+
+import {
+  Checkbox,
+  type CheckboxRef,
+} from "@rakadoank/carbon-react-native"
+
+export default function Component() {
+
+  const
+    checkboxRef =
+      useRef<CheckboxRef>(null),
+
+    someMethod =
+      () => {
+        // Assumes you invoked this function later
+
+        const value = checkboxRef.current?.value // true | false | null | undefined
+      }
+
+  return (
+    <Checkbox
+      label="Tick me"
+      ref={ checkboxRef }
+    />
+  )
+}
+```
+
+## Indeterminate State
+
+While checkbox is showing two states in the box input which are ticked and unticked, another state which is **indeterminate** is showing a state in the box for some reasons in the between of ticked and unticked. Pass a `null` value to the `defaultChecked` or `checked` prop
+
+```tsx
+import {
+  Checkbox,
+} from '@rakadoank/carbon-react-native'
+
+export default function Checkbox() {
+  return (
+    <Checkbox
+      defaultChecked={ null } // here is indeterminate state
+      label="Tick me"
+    />
+  )
+}
+```
+
+### Indeterminate Behaviour
+
+Checkbox is uncontrolled by default (see [Tick / Check Control](#tick--check-control)). It makes indeterminate state will be only showed once. If a checkbox was pressed by user from indeterminate state, the checkbox will be ticked / checked. If user pressed the checkbox again, it will be unticked / unchecked, instead of back to the indeterminate state
+
+## Tick / Check Control
+
+Checkbox is uncontrolled by default. Users should be able to interact to the checkbox by clicking the checkbox input area or its label to tick or untick the box input. If you want to control this behaviour, you can pass the `value` prop with your boolean state value, or pass `null` to make it indeterminate
+
+```tsx
+import {
+  useState,
+} from 'react'
+
+import {
+  Button,
+  Checkbox,
+  type CheckboxProps,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  const [value, setValue] = useState<boolean | null>(false)
+
+  return (<>
+    <Button.Primary
+      text="Unchecked"
+      onPress={ () => setValue(false) }
+    />
+
+    <Checkbox
+      text="Tick me"
+      value={ value }
+      onPress={ () => setValue(state => !state) }
+    />
+  </>)
+  
+}
+```
+
+### Imperative Handle
+
+Somehow you don't want to use React state, you still want to control the checkbox to be ticked or unticked in the box input, but imperatively. The checkbox components holds `View` ref and extends the ref to provide a method to tick or untick the box
+
+
+```tsx
+import {
+  useRef,
+} from 'react'
+
+import {
+  Button,
+  Checkbox,
+  type CheckboxRef,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  const
+    checkboxRef =
+      useRef<CheckboxRef>(null),
+
+    onPress: Button.PrimaryProps['onPress'] =
+      event => {
+        if(checkboxRef.current?.value) {
+          // Get current value
+          console.log('I already agree')
+        } else {
+          checkboxRef.current?.setValue(true) // it also accepts callback with boolean returned
+        }
+      }
+
+  return (<>
+    <Button.Primary
+      text="I agree"
+      onPress={ onPress }
+    />
+
+    <Checkbox
+      label="I understand"
+      ref={ checkboxRef }
+    />
+  </>)
+}
+```
+
+See [`CheckboxRef`](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/checkbox/CheckboxRef.ts)
+
+## Props
+
+See [CheckboxProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/checkbox/CheckboxProps.ts) for further information
+
+<ArgTypes
+  of={ CheckboxStories.Checkbox }
+  exclude={ [
+    "onChange",
+    "onPress",
+  ] }
+/>

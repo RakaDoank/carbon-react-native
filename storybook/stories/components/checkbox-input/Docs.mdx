@@ -1,0 +1,42 @@
+import {
+  ArgTypes,
+  Canvas,
+  Controls,
+	Meta,
+} from "@storybook/addon-docs/blocks"
+
+import * as CheckboxInputStories from "./CheckboxInput.stories"
+
+<Meta
+  of={ CheckboxInputStories }
+/>
+
+# Checkbox Input
+
+This component provides only the box input. Mostly, you only need [Checkbox](?path=/docs/components-checkbox--docs) or [CheckboxGroup](?path=/docs/components-checkbox-group--docs). This component might suit your needs if you only want to render the box
+
+```tsx
+import {
+  CheckboxInput,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+  return (
+    <CheckboxInput
+      defaultChecked // make it ticked initially
+    />
+  )
+}
+```
+
+<Canvas
+  of={ CheckboxInputStories.CheckboxInput }
+/>
+
+<Controls
+  of={ CheckboxInputStories.CheckboxInput }
+/>
+
+## Props
+
+See [CheckboxInputProps.ts](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/checkbox-input/CheckboxInputProps.ts) for further information

@@ -1,0 +1,86 @@
+import {
+  ArgTypes,
+	Canvas,
+	Controls,
+	Meta,
+} from "@storybook/addon-docs/blocks"
+
+import * as CheckboxGroupStories from "./CheckboxGroup.stories"
+
+<Meta
+  of={ CheckboxGroupStories }
+/>
+
+# Checkbox Group
+
+Checkbox group component is a view container of multiple checkboxes with group label and optionally with helper text. You can see the [anatomy](https://carbondesignsystem.com/components/checkbox/usage/#anatomy)
+
+```tsx
+import {
+  CheckboxGroup,
+} from '@rakadoank/carbon-react-native'
+
+export default function Component() {
+
+  return (
+    <CheckboxGroup legend="Legend Text">
+      <CheckboxGroup.Item
+        label="Item 1"
+      />
+      <CheckboxGroup.Item
+        label="Item 2"
+      />
+      <CheckboxGroup.Item
+        label="Item 3"
+      />
+    </CheckboxGroup>
+  )
+
+}
+```
+
+<Canvas
+  of={ CheckboxGroupStories.CheckboxGroup }
+/>
+
+<Controls
+  of={ CheckboxGroupStories.CheckboxGroup }
+/>
+
+Do not be confused of that `<CheckboxGroup.Item>`. It is same as the [`<Checkbox>`](?path=/story/components-checkbox--checkbox)
+
+> Currently, it doesn't support of [nesting](https://carbondesignsystem.com/components/checkbox/usage/#nesting) the checkbox item
+
+## Stack Orientation
+
+Checkboxes in a group will be stacked vertically by default, but you can make it stacked horizontally. Pass `horizontal` to the `orientation` prop
+
+<Canvas
+  of={ CheckboxGroupStories.CheckboxGroup }
+/>
+
+<Controls
+  of={ CheckboxGroupStories.CheckboxGroup }
+	include={ ["orientation"] }
+/>
+
+## Helper Text
+
+You can show user a information about the group, like static description, or error and warning description. See the group state on the [checkbox behaviours](https://carbondesignsystem.com/components/checkbox/usage/#behaviors)
+
+<Canvas
+  of={ CheckboxGroupStories.CheckboxGroup }
+/>
+
+<Controls
+  of={ CheckboxGroupStories.CheckboxGroup }
+	include={ ["helperText", "helperTextMode"] }
+/>
+
+## Props
+
+See [CheckboxGroupProps](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/checkbox-group/CheckboxGroupProps.ts) for further information
+
+<ArgTypes
+  of={ CheckboxGroupStories.CheckboxGroup }
+/>
