@@ -49,8 +49,8 @@ import type {
 } from "./CheckboxInputRef"
 
 import type {
-	CheckboxInputValue,
-} from "./CheckboxInputValue"
+	CheckboxInputState,
+} from "./CheckboxInputState"
 
 import type {
 	RefBase,
@@ -59,8 +59,8 @@ import type {
 export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 	function CheckboxInput(
 		{
-			defaultValue,
-			value: valueProp,
+			defaultChecked,
+			checked: checkedProp,
 			interactiveState = "normal",
 			style,
 			role = "checkbox",
@@ -83,32 +83,32 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			ref =
 				useRef({
 					onChangeEffect: false,
-					value: typeof valueProp == "boolean" || typeof valueProp == "object"
-						? valueProp
-						: typeof defaultValue == "boolean" || typeof defaultValue == "object"
-							? defaultValue
+					value: typeof checkedProp == "boolean" || typeof checkedProp == "object"
+						? checkedProp
+						: typeof defaultChecked == "boolean" || typeof defaultChecked == "object"
+							? defaultChecked
 							: false,
 				}),
 
 			[isFocused, setIsFocused] =
 				useState(false),
 
-			[valueSelf, setValueSelf] =
+			[checkedSelf, setCheckedSelf] =
 				useState(() => {
-					if(typeof defaultValue == "boolean" || typeof defaultValue == "object") {
-						return defaultValue
+					if(typeof defaultChecked == "boolean" || typeof defaultChecked == "object") {
+						return defaultChecked
 					}
 					return false
 				}),
 
 			controlled =
-				typeof valueProp !== "undefined",
+				typeof checkedProp !== "undefined",
 
-			value =
-				controlled ? valueProp : valueSelf,
+			checked =
+				controlled ? checkedProp : checkedSelf,
 
 			indeterminate =
-				value === null,
+				checked === null,
 
 			blurHandler: NonNullable<PressableProps["onBlur"]> =
 				useCallback(event => {
@@ -132,7 +132,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					if(interactiveState !== "read_only") {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
-							setValueSelf(self => self === null ? true : !self)
+							setCheckedSelf(self => self === null ? true : !self)
 						} else {
 							onChange?.(ref.current.value === null ? true : !ref.current.value)
 						}
@@ -148,13 +148,13 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				mapIconColor[interactiveState][themeContext.colorScheme]
 
 		useEffect(() => {
-			ref.current.value = value
+			ref.current.value = checked
 			if(ref.current.onChangeEffect) {
 				ref.current.onChangeEffect = false
-				onChange?.(value)
+				onChange?.(checked)
 			}
 		}, [
-			value,
+			checked,
 			onChange,
 		])
 
@@ -163,12 +163,12 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				viewRef.current as View,
 				{
 					get value() {
-						return value
+						return checked
 					},
 					setValue(value_) {
 						if(!controlled && interactiveState !== "read_only") {
 							ref.current.onChangeEffect = true
-							setValueSelf(self => {
+							setCheckedSelf(self => {
 								if(typeof value_ === "function") {
 									ref.current.value = value_(self)
 								} else {
@@ -181,7 +181,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				},
 			)
 		}, [
-			value,
+			checked,
 			controlled,
 			interactiveState,
 		])
@@ -199,7 +199,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					FlexStyleSheet.justify_center,
 					CommonStyleSheet.relative,
 					baseStyle.checkbox,
-					getInteractiveStateStyle(interactiveState, value),
+					getInteractiveStateStyle(interactiveState, checked),
 					style,
 				] }
 				ref={ viewRef }
@@ -215,7 +215,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					] }
 				/>
 
-				{ value && indeterminate ? (
+				{ indeterminate ? (
 					<IconSubtract
 						width={ iconSize }
 						height={ iconSize }
@@ -226,7 +226,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 						width={ iconSize }
 						height={ iconSize }
 						fill={ iconColor }
-						style={ !value ? baseStyle.checkmarkHidden : null }
+						style={ !checked ? baseStyle.checkmarkHidden : null }
 					/>
 				) }
 			</Pressable>
@@ -334,7 +334,7 @@ const
 
 function getInteractiveStateStyle(
 	interactiveState: CheckboxInputInteractiveState,
-	value: CheckboxInputValue,
+	value: CheckboxInputState,
 ) {
-	return interactiveStyle[`${interactiveState}_${!!value}`]
+	return interactiveStyle[`${interactiveState}_${typeof value == "object" ? true : value}`]
 }

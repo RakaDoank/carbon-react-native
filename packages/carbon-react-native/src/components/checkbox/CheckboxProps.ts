@@ -12,17 +12,16 @@ import type {
 } from "../form-label"
 
 export interface CheckboxProps extends Omit<ViewProps, "children"> {
-	defaultValue?: CheckboxInputProps["defaultValue"],
-	value?: CheckboxInputProps["value"],
+	defaultChecked?: CheckboxInputProps["defaultChecked"],
+	checked?: CheckboxInputProps["checked"],
 	interactiveState?: CheckboxInputProps["interactiveState"],
 	label: string,
 	onChange?: CheckboxInputProps["onChange"],
 	onPress?: CheckboxInputProps["onPress"],
 	checkboxInputProps?: Omit<
 		CheckboxInputProps,
-		| "defaultValue"
-		| "value"
-		| "indeterminate"
+		| "defaultChecked"
+		| "checked"
 		| "interactiveState"
 		| "role"
 		| "onChange"

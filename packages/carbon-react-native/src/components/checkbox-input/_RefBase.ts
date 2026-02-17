@@ -1,11 +1,11 @@
 import type {
-	CheckboxInputValue,
-} from "./CheckboxInputValue"
+	CheckboxInputState,
+} from "./CheckboxInputState"
 
 export interface RefBase {
-	readonly value: CheckboxInputValue,
+	readonly value: CheckboxInputState,
 	/**
 	 * This method does nothing when `controlled` prop is true
 	 */
-	setValue: (value: CheckboxInputValue | ((value: CheckboxInputValue) => CheckboxInputValue)) => void,
+	setValue: (value: CheckboxInputState | ((value: CheckboxInputState) => CheckboxInputState)) => void,
 }

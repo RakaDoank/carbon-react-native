@@ -8,18 +8,20 @@ import type {
 } from "./CheckboxInputInteractiveState"
 
 import type {
-	CheckboxInputValue,
-} from "./CheckboxInputValue"
+	CheckboxInputState,
+} from "./CheckboxInputState"
 
 export interface CheckboxInputProps extends Omit<
 	PressableProps,
+	| "defaultValue"
+	| "value"
 	| "children"
 	| "disabled"
 	| "style"
 > {
-	defaultValue?: CheckboxInputValue,
-	value?: CheckboxInputValue,
+	defaultChecked?: CheckboxInputState,
+	checked?: CheckboxInputState,
 	interactiveState?: CheckboxInputInteractiveState,
-	onChange?: (value: CheckboxInputValue) => void,
+	onChange?: (value: CheckboxInputState) => void,
 	style?: ViewProps["style"],
 }

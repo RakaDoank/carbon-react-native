@@ -61,8 +61,8 @@ import type {
 export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 	function Checkbox(
 		{
-			defaultValue,
-			value,
+			defaultChecked,
+			checked,
 			interactiveState = "normal",
 			label,
 			role = "checkbox",
@@ -150,8 +150,8 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				<CheckboxInput
 					{ ...checkboxInputProps }
 					role="none"
-					defaultValue={ defaultValue }
-					value={ value }
+					defaultChecked={ defaultChecked }
+					checked={ checked }
 					interactiveState={ interactiveState }
 					onChange={ onChange }
 					onPress={ onPress }

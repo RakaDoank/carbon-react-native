@@ -1,6 +1,6 @@
 /**
  * null = indeterminate
  */
-export type CheckboxInputValue =
+export type CheckboxInputState =
 	| boolean
 	| null
