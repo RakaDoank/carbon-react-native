@@ -83,7 +83,6 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 			readOnly,
 			returnKeyType,
 			enterKeyHint,
-			secureTextEntry,
 			selectTextOnFocus,
 			selection,
 			selectionColor,
@@ -201,7 +200,6 @@ export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
 					readOnly={ readOnly }
 					returnKeyType={ returnKeyType }
 					enterKeyHint={ enterKeyHint }
-					secureTextEntry={ secureTextEntry }
 					selectTextOnFocus={ selectTextOnFocus }
 					selection={ selection }
 					selectionColor={ selectionColor }
