@@ -5,8 +5,6 @@ import type {
 export interface TextInputProps extends Omit<
 	TextInputFieldProps,
 	| "hideInteractiveStateIcon"
-	| "blockStartNodes"
-	| "blockEndNodes"
 > {
 	label: string,
 	helperText?: string,

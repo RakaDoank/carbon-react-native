@@ -35,7 +35,7 @@
 		"experiments": {
 			"autolinkingModuleResolution": true,
 			"typedRoutes": true,
-			"reactCompiler": true
+			"reactCompiler": false
 		},
 		"plugins": [
 			[

@@ -55,6 +55,8 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 			interactiveState,
 			style,
 			textInputStyle,
+			blockStartNode,
+			blockEndNode,
 			...textInputFieldProps
 		},
 		ref,
@@ -71,14 +73,15 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 				size="medium"
 				interactiveState={ interactiveState }
 				hideInteractiveStateIcon
-				blockStartNode={
+				blockStartNode={ (<>
 					<FormLabel
 						label={ label }
 						style={ styleSheet.label }
 					/>
-				}
-				blockEndNode={
-					!!helperText?.length && (
+					{ blockStartNode }
+				</>) }
+				blockEndNode={ (<>
+					{ !!helperText && (
 						<FormHelperText
 							text={ helperText }
 							style={ [
@@ -101,8 +104,9 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 								) : undefined
 							}
 						/>
-					)
-				}
+					) }
+					{ blockEndNode }
+				</>) }
 				style={ [
 					styleSheet.textInputFluid,
 					helperText?.length

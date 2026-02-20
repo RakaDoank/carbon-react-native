@@ -45,6 +45,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 			helperText,
 
 			// hoist the `TextInputFieldProps`
+			blockStartNode,
+			blockEndNode,
 			size = "medium",
 			interactiveState = "normal",
 			textInputStyle,
@@ -167,6 +169,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 
 				<TextInputField
 					ref={ textInputFieldRef }
+					blockStartNode={ blockStartNode }
+					blockEndNode={ blockEndNode }
 					size={ size }
 					interactiveState={ interactiveState }
 					textInputStyle={ textInputStyle }
