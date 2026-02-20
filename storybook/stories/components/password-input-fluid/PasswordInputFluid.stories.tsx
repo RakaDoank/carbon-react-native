@@ -13,14 +13,10 @@ export default {
 	component: Fluid,
 	args: {
 		label: "Type Password",
-		secureTextEntry: true,
 	},
 	argTypes: {
 		label: {
 			control: "text",
-		},
-		secureTextEntry: {
-			control: "boolean",
 		},
 	},
 } satisfies Meta<PasswordInputFluidProps>

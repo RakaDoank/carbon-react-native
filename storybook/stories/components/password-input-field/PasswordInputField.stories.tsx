@@ -14,12 +14,8 @@ export default {
 	component: Field,
 	args: {
 		size: "medium",
-		secureTextEntry: true,
 	},
 	argTypes: {
-		secureTextEntry: {
-			control: "boolean",
-		},
 		size: {
 			control: "select",
 			options: [

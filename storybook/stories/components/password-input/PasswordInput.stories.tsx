@@ -15,14 +15,10 @@ export default {
 	args: {
 		label: "Type Password",
 		size: "medium",
-		secureTextEntry: true,
 	},
 	argTypes: {
 		label: {
 			control: "text",
-		},
-		secureTextEntry: {
-			control: "boolean",
 		},
 		size: {
 			control: "select",
