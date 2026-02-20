@@ -95,10 +95,10 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				useCallback(event => {
 					onPress?.(event)
 					if(checkboxInputRef.current) {
-						checkboxInputRef.current.setValue(
-							checkboxInputRef.current.value === null
+						checkboxInputRef.current.setChecked(
+							checkboxInputRef.current.checked === null
 								? true
-								: !checkboxInputRef.current.value,
+								: !checkboxInputRef.current.checked,
 						)
 					}
 				}, [
@@ -110,11 +110,11 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				(viewRef.current ?? {
 				}) as View,
 				{
-					get value() {
-						return checkboxInputRef.current!.value
+					get checked() {
+						return checkboxInputRef.current!.checked
 					},
-					setValue(value_) {
-						checkboxInputRef.current?.setValue(value_)
+					setChecked(value_) {
+						checkboxInputRef.current?.setChecked(value_)
 					},
 				},
 			)

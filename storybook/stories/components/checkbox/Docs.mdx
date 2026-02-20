@@ -196,11 +196,11 @@ export default function Component() {
 
     onPress: Button.PrimaryProps['onPress'] =
       event => {
-        if(checkboxRef.current?.value) {
+        if(checkboxRef.current?.checked) {
           // Get current value
           console.log('I already agree')
         } else {
-          checkboxRef.current?.setValue(true) // it also accepts callback with boolean returned
+          checkboxRef.current?.setChecked(true) // it also accepts callback with boolean returned
         }
       }
 
