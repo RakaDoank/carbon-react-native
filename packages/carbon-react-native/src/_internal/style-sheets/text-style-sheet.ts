@@ -33,7 +33,7 @@ export const TextStyleSheet = StyleSheet.create({
 	},
 	normal_italic: {
 		fontWeight: 400,
-		fontFamily: "IBMPlexSans-Regular-Italic",
+		fontFamily: "IBMPlexSans-Italic",
 	},
 	medium: {
 		fontWeight: 500,
