@@ -121,17 +121,24 @@ function getTextStyle(
 		return null
 	}
 
+	const
+		typographyStyle =
+			TypographyStyleSheet[type],
+
+		weight =
+			StyleSheetObj.Typography[type].fontWeight
+
 	if(italic && overrideWeight) {
-		return [TypographyStyleSheet[type], mapFamilyItalicStyle[overrideWeight]]
+		return [typographyStyle, mapFamilyItalicStyle[overrideWeight]]
 	}
 
 	if(italic) {
-		return [TypographyStyleSheet[type], mapFamilyItalicStyle[StyleSheetObj.Typography[type].fontWeight]]
+		return [typographyStyle, mapFamilyItalicStyle[weight]]
 	}
 
 	if(overrideWeight) {
-		return [TypographyStyleSheet[type], mapFamilyStyle[overrideWeight]]
+		return [typographyStyle, mapFamilyStyle[overrideWeight]]
 	}
 
-	return TypographyStyleSheet[type]
+	return [typographyStyle, mapFamilyStyle[weight]]
 }
