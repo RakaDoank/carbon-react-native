@@ -54,10 +54,10 @@ export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapper
 				useRef(0),
 
 			translateY =
-				useRef(new Animated.Value(safeAreaInsets.top + Gap)),
+				useRef(new Animated.Value(safeAreaInsets.top)),
 
 			translateYValueJS =
-				useRef(0)
+				useRef(safeAreaInsets.top)
 
 		useEffect(() => {
 			const
@@ -159,13 +159,13 @@ const
 			componentWrapper: {
 				position: "absolute",
 				left: "100%",
-				width: "auto",
+				top: Gap,
 				...Platform.select({
 					web: {
 						flexDirection: "row",
 					},
-					android: {
-						top: Gap, // iOS doesn't need this, Apple handles it internally
+					ios: {
+						top: 0,
 					},
 				}),
 			},

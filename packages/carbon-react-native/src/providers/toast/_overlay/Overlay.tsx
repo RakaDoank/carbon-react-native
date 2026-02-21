@@ -120,7 +120,6 @@ export const Overlay = forwardRef<OverlayRef>(
 							componentsConfig.current[index].width = target.children?.[0]?.clientWidth
 							// @ts-expect-error Web DOM
 							componentsConfig.current[index].height = target.children?.[0]?.clientHeight
-
 						} else {
 							componentsConfig.current[index].width = event.nativeEvent.layout.width
 							componentsConfig.current[index].height = event.nativeEvent.layout.height
