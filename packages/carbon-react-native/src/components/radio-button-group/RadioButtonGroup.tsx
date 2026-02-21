@@ -23,12 +23,16 @@ import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
 import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	FormHelperText,
@@ -141,7 +145,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 		])
 
 		return (
-			<View
+			<Box
 				{ ...props }
 				role={ role }
 				style={ style }
@@ -197,7 +201,7 @@ const Component = forwardRef<RadioButtonGroupRef, RadioButtonGroupProps>(
 						] }
 					/>
 				) }
-			</View>
+			</Box>
 		)
 
 	},

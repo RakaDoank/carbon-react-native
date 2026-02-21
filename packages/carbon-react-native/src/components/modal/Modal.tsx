@@ -33,16 +33,20 @@ import {
 } from "../../_internal/helpers"
 
 import {
-	CommonStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	BreakpointContext,
 } from "../../contexts"
+
+import {
+	PositionStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	GhostIcon as ButtonGhostIcon,
@@ -87,7 +91,6 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 			"aria-label": ariaLabel,
 			"aria-labelledby": ariaLabelledBy,
 			style,
-			dir,
 			...props
 		},
 		ref,
@@ -147,16 +150,14 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					applyInsetsEdges,
 				}}
 			>
-				<View
+				<Box
 					ref={ ref }
 					{ ...props }
 					aria-label={ ariaLabel ?? label }
 					aria-labelledBy={ ariaLabelledBy ?? label }
-					dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 					style={ [
 						bgLayerStyleSheet[`bg_${layerContextLevel}`],
 						inDialogContext ? styleSheetBySizeAndBreakpoint.modalInDialog : undefined,
-						globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 						isApplyInsets && applyInsetsEdges.bottom
 							? { paddingBottom: safeAreaInsets.bottom }
 							: undefined,
@@ -194,7 +195,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 							{ ...buttonCloseProps }
 							Icon={ IconClose }
 							style={ [
-								CommonStyleSheet.absolute,
+								PositionStyleSheet.absolute,
 								styleSheet.iconClose,
 								globalConfigContext.rtl
 									? styleSheet.iconCloseRtl
@@ -208,7 +209,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 
 						{ children }
 					</LayerContext.Provider>
-				</View>
+				</Box>
 			</ModalContext.Provider>
 		)
 

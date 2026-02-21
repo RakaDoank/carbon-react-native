@@ -31,17 +31,17 @@ import {
 } from "../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+	PositionStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	SwitchProps,
@@ -326,7 +326,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				{ isFocused && (
 					<View
 						style={ [
-							CommonStyleSheet.absolute,
+							PositionStyleSheet.absolute,
 							focusBoxSizeStyle[size],
 							baseStyle.focusBox,
 							baseStyleCarbon.focusBoxBorderColor,

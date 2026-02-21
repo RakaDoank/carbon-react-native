@@ -24,17 +24,18 @@ import IconCheckmark from "@carbon/icons/svg/32/checkmark.svg"
 import IconSubtract from "@carbon/icons/svg/32/subtract.svg"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+	OverflowStyleSheet,
+	PositionStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	CheckboxInputInteractiveState,
@@ -197,7 +198,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 				style={ [
 					FlexStyleSheet.items_center,
 					FlexStyleSheet.justify_center,
-					CommonStyleSheet.relative,
+					PositionStyleSheet.relative,
 					baseStyle.checkbox,
 					getInteractiveStateStyle(interactiveState, checked),
 					style,
@@ -206,8 +207,8 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 			>
 				<View
 					style={ [
-						CommonStyleSheet.absolute,
-						CommonStyleSheet.overflow_hidden,
+						PositionStyleSheet.absolute,
+						OverflowStyleSheet.overflow_hidden,
 						baseStyle.focusBox,
 						isFocused
 							? carbonStyle.focusBox

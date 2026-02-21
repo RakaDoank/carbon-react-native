@@ -12,7 +12,7 @@ import {
 
 import {
 	FlexStyleSheet,
-} from "../../../../_internal/style-sheets"
+} from "../../../../style-sheets"
 
 import type {
 	ModalProps,

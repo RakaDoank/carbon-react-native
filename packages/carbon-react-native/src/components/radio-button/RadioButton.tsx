@@ -23,17 +23,23 @@ import {
 } from "../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+	HeightStyleSheet,
+	PositionStyleSheet,
+	WidthStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	FormLabel,
@@ -115,13 +121,12 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 		}, [])
 
 		return (
-			<View
+			<Box
 				{ ...props }
 				aria-label={ ariaLabel || label }
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -133,9 +138,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 					aria-label={ pressableProps?.["aria-label"] ?? label }
 					onPress={ pressHandler }
 					style={ [
-						CommonStyleSheet.absolute,
-						CommonStyleSheet.w_full,
-						CommonStyleSheet.h_full,
+						PositionStyleSheet.absolute,
+						WidthStyleSheet.w_full,
+						HeightStyleSheet.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -174,7 +179,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 						formLabelProps?.style,
 					] }
 				/>
-			</View>
+			</Box>
 		)
 
 	},

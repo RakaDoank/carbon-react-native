@@ -41,3 +41,60 @@ export default function App() {
 ```
 
 > Be aware of updating a React state in the root tree. It may causes unresponsive JavaScript thread. Refer to the React Native performance docs at [https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread](https://reactnative.dev/docs/performance#js-frame-rate-javascript-thread)
+
+### Replace `View` with `Box`
+
+The global `rtl` prop in the `CarbonReactNative` only works for the carbon components, not your views. To match your views direction with carbon components, replace your `View` with `Box`
+
+```tsx
+import {
+  Box,
+  Button,
+  type BoxProps, // same as `ViewProps` from RN
+  type BoxRef, // same as `View` from RN
+} from "@audira/carbon-react-native"
+
+export default function Component() {
+  return (
+    // <View>
+    <Box>
+      <Button.Primary text="foo"/>
+      <Box>
+        { /* other nested elements */}
+      </Box>
+    </Box>
+    // </View>
+  )
+}
+```
+
+This component is just a basic View to help you set [the `dir` prop for Web](https://necolas.github.io/react-native-web/docs/localization/#localization-props), and direction style for Android, iOS, macOS, and Windows automatically. This is a good case if your app has multiple localizations. On the other hand, the props and ref are exactly same as the `View` from React Native. You can see the [Box.tsx](https://github.com/RakaDoank/carbon-react-native/blob/main/packages/carbon-react-native/src/components/box/Box.tsx) source code.
+
+### Caveat
+If you really don't want to use the `Box`, you have to set your own View with correct `dir` prop value
+
+```tsx
+import {
+  StyleSheet,
+  View,
+} from "react-native"
+
+export default function Component() {
+
+  return (
+    <View
+      dir="rtl" // here, you have to set manually for Web
+      style={ styleSheet.view }
+    >
+      { /* other elements */ }
+    </View>
+  )
+
+}
+
+const styleSheet = StyleSheet.create({
+  view: {
+    direction: "rtl",
+  },
+})
+```

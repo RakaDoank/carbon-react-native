@@ -1,12 +1,12 @@
 import type {
-	ViewProps,
-} from "react-native"
+	BoxProps,
+} from "../box"
 
 import type {
 	TextProps,
 } from "../text"
 
-export interface FormLabelProps extends Omit<ViewProps, "children"> {
+export interface FormLabelProps extends Omit<BoxProps, "children"> {
 	label: string,
 	labelLeading?: React.ReactNode,
 	labelTrailing?: React.ReactNode,

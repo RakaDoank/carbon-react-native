@@ -5,7 +5,6 @@ import {
 
 import {
 	StyleSheet,
-	View,
 } from "react-native"
 
 import {
@@ -16,21 +15,20 @@ import IconCheckmarkFilled from "@carbon/icons/svg/32/checkmark--filled.svg"
 import IconErrorFilled from "@carbon/icons/svg/32/error--filled.svg"
 
 import {
-	GlobalConfigContext,
-} from "../../_internal/contexts"
-
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	Loading,
@@ -56,7 +54,6 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 			style,
 			"aria-label": ariaLabel,
 			textProps,
-			dir,
 			...props
 		},
 		ref,
@@ -64,22 +61,17 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 
 		const
 			themeContext =
-				useContext(ThemeContext),
-
-			globalConfigContext =
-				useContext(GlobalConfigContext)
+				useContext(ThemeContext)
 
 		return (
-			<View
+			<Box
 				ref={ ref }
 				{ ...props }
 				aria-label={ ariaLabel ?? text }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.items_center,
 					styleSheet.inlineLoading,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			>
@@ -110,7 +102,7 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 						{ text }
 					</Text>
 				) }
-			</View>
+			</Box>
 		)
 
 	},

@@ -13,16 +13,16 @@ import {
 } from "@audira/carbon-react-native-elements"
 
 import {
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	Size as ButtonSize,

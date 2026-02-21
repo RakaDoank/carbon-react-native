@@ -5,7 +5,6 @@ import {
 
 import {
 	StyleSheet,
-	View,
 	type ViewStyle,
 } from "react-native"
 
@@ -19,7 +18,6 @@ import {
 } from "react-native-safe-area-context"
 
 import {
-	GlobalConfigContext,
 	InDialogContext,
 	ModalContext,
 } from "../../_internal/contexts"
@@ -29,12 +27,12 @@ import {
 } from "../../_internal/helpers"
 
 import {
-	CommonStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	BreakpointContext,
 } from "../../contexts"
+
+import {
+	Box,
+} from "../box"
 
 import type {
 	ModalContentProps,
@@ -49,7 +47,6 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 		{
 			fullWidth,
 			style,
-			dir,
 			...props
 		},
 		ref,
@@ -65,9 +62,6 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 			inDialogContext =
 				useContext(InDialogContext),
 
-			globalConfigContext =
-				useContext(GlobalConfigContext),
-
 			safeAreaInsets =
 				useSafeAreaInsets(),
 
@@ -79,18 +73,14 @@ export const ModalContent = forwardRef<ModalContentRef, ModalContentProps>(
 				})
 
 		return (
-			<View
+			<Box
 				ref={ ref }
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					styleSheet.modalContent,
 					mapStyleSheetBySizeAndBreakpoint[modalContext.size][breakpoint],
 					fullWidth
 						? styleSheet.fullWidth
-						: undefined,
-					globalConfigContext.rtl
-						? CommonStyleSheet.rtl
 						: undefined,
 					isApplyInsets
 						? {

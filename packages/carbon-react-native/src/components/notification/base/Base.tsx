@@ -21,17 +21,20 @@ import {
 } from "../../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../../style-sheets"
+
+import {
+	Box,
+} from "../../box"
 
 import {
 	BaseColor as ButtonBaseColor,
@@ -75,7 +78,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			contentContainerStyle,
 
 			style,
-			dir,
 			...props
 		},
 		ref,
@@ -89,12 +91,10 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				useContext(ThemeContext)
 
 		return (
-			<View
+			<Box
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ ref }
@@ -221,7 +221,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						] }
 					/>
 				) }
-			</View>
+			</Box>
 		)
 
 	},

@@ -21,12 +21,12 @@ import {
 } from "../../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
-} from "../../../_internal/style-sheets"
-
-import {
 	ThemeContext,
 } from "../../../contexts"
+
+import {
+	DirectionStyleSheet,
+} from "../../../style-sheets"
 
 import type {
 	ThemeType,
@@ -74,7 +74,7 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 				style={ [
 					styleSheet.rnTextInput as unknown as never, // FIXME: i don't know the correct type
 					mapStateStyleSheet[themeContext.colorScheme][interactiveState],
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
+					globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
 					style,
 				] }
 			/>

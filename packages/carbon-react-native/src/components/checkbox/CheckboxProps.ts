@@ -1,7 +1,10 @@
 import type {
 	PressableProps,
-	ViewProps,
 } from "react-native"
+
+import type {
+	BoxProps,
+} from "../box"
 
 import type {
 	CheckboxInputProps,
@@ -11,7 +14,7 @@ import type {
 	FormLabelProps,
 } from "../form-label"
 
-export interface CheckboxProps extends Omit<ViewProps, "children"> {
+export interface CheckboxProps extends Omit<BoxProps, "children"> {
 	defaultChecked?: CheckboxInputProps["defaultChecked"],
 	checked?: CheckboxInputProps["checked"],
 	interactiveState?: CheckboxInputProps["interactiveState"],
@@ -33,6 +36,6 @@ export interface CheckboxProps extends Omit<ViewProps, "children"> {
 		| "style"
 		| "onPress"
 	> & {
-		style?: ViewProps["style"],
+		style?: BoxProps["style"],
 	},
 }

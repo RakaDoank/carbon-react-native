@@ -20,8 +20,10 @@ import {
 } from "../../../_internal/contexts"
 
 import {
+	DirectionStyleSheet,
 	FlexStyleSheet,
-} from "../../../_internal/style-sheets"
+	OverflowStyleSheet,
+} from "../../../style-sheets"
 
 import {
 	Text,
@@ -86,8 +88,8 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.justify_between,
-					baseStyle.container,
-					globalConfigContext.rtl ? baseStyle.containerRtl : undefined,
+					OverflowStyleSheet.overflow_hidden,
+					globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
 					mapContainerStyle[`${!!text}`][`${!!Icon || !!iconNode}`],
 					sizeStyle[size],
 					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
@@ -149,13 +151,6 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 const
 	baseStyle =
 		StyleSheet.create({
-			container: {
-				overflow: "hidden",
-			},
-			containerRtl: {
-				direction: "rtl",
-			},
-
 			/**
 			 * Start Padding
 			 */

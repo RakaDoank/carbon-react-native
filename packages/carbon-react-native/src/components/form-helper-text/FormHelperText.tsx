@@ -5,17 +5,7 @@ import {
 
 import {
 	StyleSheet,
-	View,
 } from "react-native"
-
-import {
-	GlobalConfigContext,
-} from "../../_internal/contexts"
-
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
 
 import {
 	CarbonStyleSheet,
@@ -24,6 +14,14 @@ import {
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	Text,
@@ -46,7 +44,6 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 			textTrailing,
 			textProps,
 			style,
-			dir,
 			...props
 		},
 		ref,
@@ -54,19 +51,13 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 
 		useContext(ThemeContext)
 
-		const
-			globalConfigContext =
-				useContext(GlobalConfigContext)
-
 		return (
-			<View
+			<Box
 				{ ...props }
 				ref={ ref }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					baseStyle.container,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			>
@@ -84,7 +75,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 				</Text>
 
 				{ textTrailing }
-			</View>
+			</Box>
 		)
 
 	},

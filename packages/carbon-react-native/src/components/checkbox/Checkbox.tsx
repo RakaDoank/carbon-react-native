@@ -19,21 +19,23 @@ import {
 } from "@audira/carbon-react-native-elements"
 
 import {
-	GlobalConfigContext,
-} from "../../_internal/contexts"
-
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+	HeightStyleSheet,
+	PositionStyleSheet,
+	WidthStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	CheckboxInput,
@@ -73,7 +75,6 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 			formLabelProps,
 			pressableProps,
 			style,
-			dir,
 			...props
 		},
 		forwardedRef,
@@ -82,9 +83,6 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 		useContext(ThemeContext)
 
 		const
-			globalConfigContext =
-				useContext(GlobalConfigContext),
-
 			checkboxInputRef =
 				useRef<CheckboxInputRef>(null),
 
@@ -121,13 +119,11 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 		}, [])
 
 		return (
-			<View
+			<Box
 				{ ...props }
 				aria-label={ ariaLabel || label }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -139,9 +135,9 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					aria-label={ pressableProps?.["aria-label"] ?? label }
 					onPress={ pressHandler }
 					style={ [
-						CommonStyleSheet.absolute,
-						CommonStyleSheet.w_full,
-						CommonStyleSheet.h_full,
+						PositionStyleSheet.absolute,
+						WidthStyleSheet.w_full,
+						HeightStyleSheet.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -179,7 +175,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 						formLabelProps?.style,
 					] }
 				/>
-			</View>
+			</Box>
 		)
 
 	},

@@ -25,6 +25,10 @@ import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
 import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
+	GlobalConfigContext,
+} from "../../_internal/contexts"
+
+import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
@@ -32,9 +36,17 @@ import {
 	ThemeContext,
 } from "../../contexts"
 
+import {
+	PositionStyleSheet,
+} from "../../style-sheets"
+
 import type {
 	ThemeType,
 } from "../../types"
+
+import {
+	Box,
+} from "../box"
 
 import {
 	LayerContext,
@@ -152,6 +164,9 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 	) {
 
 		const
+			globalConfigContext =
+				useContext(GlobalConfigContext),
+
 			themeContext =
 				useContext(ThemeContext),
 
@@ -211,7 +226,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 		}, [])
 
 		return (
-			<Animated.View
+			<AnimatedBox
 				ref={ ref }
 				{ ...viewProps }
 				style={ [
@@ -317,7 +332,9 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 						height={ 16 }
 						fill={ mapIconInvalidColor[themeContext.colorScheme] }
 						style={ [
+							PositionStyleSheet.absolute,
 							styleSheet.icon,
+							mapStyleSheetIconInteractiveStatePosition[`${globalConfigContext.rtl}`],
 							iconBySizeStyleSheet[size],
 						] }
 					/>
@@ -327,20 +344,25 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 						height={ 16 }
 						fill={ mapIconWarningColor[themeContext.colorScheme] }
 						style={ [
+							PositionStyleSheet.absolute,
 							styleSheet.icon,
+							mapStyleSheetIconInteractiveStatePosition[`${globalConfigContext.rtl}`],
 							iconBySizeStyleSheet[size],
 						] }
 					/>
 				) : undefined }
 
 				{ blockEndNode }
-			</Animated.View>
+			</AnimatedBox>
 		)
 
 	},
 )
 
 const
+	AnimatedBox =
+		Animated.createAnimatedComponent(Box),
+
 	styleSheet =
 		StyleSheet.create({
 			textInputField: {
@@ -350,10 +372,22 @@ const
 			},
 			icon: {
 				pointerEvents: "none",
-				position: "absolute",
+			},
+			iconLtr: {
 				right: Spacing.spacing_05,
 			},
+			iconRtl: {
+				left: Spacing.spacing_05,
+			},
 		}),
+
+	mapStyleSheetIconInteractiveStatePosition: {
+		[RTL in `${boolean}`]: ViewStyle
+	} =
+		{
+			false: styleSheet.iconLtr,
+			true: styleSheet.iconRtl,
+		},
 
 	textInputFieldSizeStyleSheet =
 		StyleSheet.create<Record<TextInputFieldSize, ViewStyle>>({

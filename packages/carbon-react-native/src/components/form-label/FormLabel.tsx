@@ -1,21 +1,18 @@
 import {
 	forwardRef,
-	useContext,
 } from "react"
 
 import {
 	StyleSheet,
-	View,
 } from "react-native"
 
 import {
-	GlobalConfigContext,
-} from "../../_internal/contexts"
+	FlexStyleSheet,
+} from "../../style-sheets"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
+	Box,
+} from "../box"
 
 import {
 	Text,
@@ -37,25 +34,18 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 			labelTrailing,
 			textProps,
 			style,
-			dir,
 			...props
 		},
 		ref,
 	) {
 
-		const
-			globalConfigContext =
-				useContext(GlobalConfigContext)
-
 		return (
-			<View
+			<Box
 				{ ...props }
 				ref={ ref }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					baseStyle.gap,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 			>
@@ -70,7 +60,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 				</Text>
 
 				{ labelTrailing }
-			</View>
+			</Box>
 		)
 
 	},

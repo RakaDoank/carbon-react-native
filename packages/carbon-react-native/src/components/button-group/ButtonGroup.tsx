@@ -19,9 +19,9 @@ import {
 } from "../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
+	DirectionStyleSheet,
 	FlexStyleSheet,
-} from "../../_internal/style-sheets"
+} from "../../style-sheets"
 
 import type {
 	ButtonGroupProps,
@@ -59,7 +59,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				mapStyleFluid[`${!!fluid}`],
 
 			rtlStyle =
-				globalConfigContext.rtl && !vertical ? CommonStyleSheet.rtl : undefined
+				globalConfigContext.rtl && !vertical ? DirectionStyleSheet.rtl : undefined
 
 		return (
 			<ButtonGroupContext.Provider

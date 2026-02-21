@@ -17,17 +17,18 @@ import {
 } from "react-native"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	CarbonStyleSheet,
 } from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+	OverflowStyleSheet,
+	PositionStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	RadioButtonInputInteractiveState,
@@ -168,7 +169,7 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 				style={ [
 					FlexStyleSheet.items_center,
 					FlexStyleSheet.justify_center,
-					CommonStyleSheet.relative,
+					PositionStyleSheet.relative,
 					baseStyle.radioButton,
 					mapInteractiveStateStyle_[`${interactiveState}_${checked}_container`],
 					style,
@@ -177,8 +178,8 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 			>
 				<View
 					style={ [
-						CommonStyleSheet.absolute,
-						CommonStyleSheet.overflow_hidden,
+						PositionStyleSheet.absolute,
+						OverflowStyleSheet.overflow_hidden,
 						baseStyle.focusBox,
 						isFocused
 							? carbonStyle.focusBox

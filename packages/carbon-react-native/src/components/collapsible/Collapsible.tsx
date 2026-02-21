@@ -20,9 +20,10 @@ import {
 } from "@audira/carbon-react-native-elements"
 
 import {
-	CommonStyleSheet,
 	FlexStyleSheet,
-} from "../../_internal/style-sheets"
+	OverflowStyleSheet,
+	WidthStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	CollapsibleProps,
@@ -225,7 +226,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			<Animated.View
 				{ ...props }
 				style={ [
-					CommonStyleSheet.overflow_hidden,
+					OverflowStyleSheet.overflow_hidden,
 					positionView === "absolute"
 						? {
 							height: heightAnimated.current,
@@ -237,7 +238,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			>
 				<View
 					style={ [
-						CommonStyleSheet.w_full,
+						WidthStyleSheet.w_full,
 						{
 							position: positionView,
 						},

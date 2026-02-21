@@ -1,8 +1,8 @@
-import {
-	StyleSheet,
+import type {
+	ViewStyle,
 } from "react-native"
 
-export const FlexStyleSheet = StyleSheet.create({
+export const Flex = {
 	flex_1: {
 		flexGrow: 1,
 		flexShrink: 1,
@@ -81,4 +81,22 @@ export const FlexStyleSheet = StyleSheet.create({
 	self_stretch: {
 		alignSelf: "stretch",
 	},
-})
+	grow: {
+		flexGrow: 1,
+	},
+	grow_0: {
+		flexGrow: 0,
+	},
+	shrink: {
+		flexShrink: 1,
+	},
+	shrink_0: {
+		flexShrink: 0,
+	},
+	basis_auto: {
+		flexBasis: "auto",
+	},
+	basis_full: {
+		flexBasis: "100%",
+	},
+} as const satisfies Record<string, ViewStyle>

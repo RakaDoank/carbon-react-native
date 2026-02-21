@@ -24,13 +24,19 @@ import {
 } from "../../../_internal/contexts"
 
 import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../../_internal/style-sheets"
-
-import {
 	ThemeContext,
 } from "../../../contexts"
+
+import {
+	FlexStyleSheet,
+	HeightStyleSheet,
+	PositionStyleSheet,
+	WidthStyleSheet,
+} from "../../../style-sheets"
+
+import {
+	Box,
+} from "../../box"
 
 import {
 	FormLabel,
@@ -115,14 +121,13 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 		}, [])
 
 		return (
-			<View
+			<Box
 				{ ...viewProps }
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					FlexStyleSheet.flex_row,
 					FlexStyleSheet.flex_wrap,
 					FlexStyleSheet.items_center,
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
 					style,
 				] }
 				ref={ viewRef }
@@ -135,9 +140,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					aria-label={ pressableProps?.["aria-label"] || label }
 					onPress={ pressHandler }
 					style={ [
-						CommonStyleSheet.absolute,
-						CommonStyleSheet.w_full,
-						CommonStyleSheet.h_full,
+						PositionStyleSheet.absolute,
+						WidthStyleSheet.w_full,
+						HeightStyleSheet.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -155,7 +160,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							],
 						}}
 						style={ [
-							CommonStyleSheet.w_full,
+							WidthStyleSheet.w_full,
 							baseStyle.label,
 							formLabelProps?.style,
 						] }
@@ -194,7 +199,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 						{ actionText }
 					</Text>
 				) }
-			</View>
+			</Box>
 		)
 
 	},

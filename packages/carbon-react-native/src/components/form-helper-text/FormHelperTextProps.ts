@@ -1,12 +1,12 @@
 import type {
-	ViewProps,
-} from "react-native"
+	BoxProps,
+} from "../box"
 
 import type {
 	TextProps,
 } from "../text"
 
-export interface FormHelperTextProps extends Omit<ViewProps, "children"> {
+export interface FormHelperTextProps extends Omit<BoxProps, "children"> {
 	error?: boolean,
 	text: string,
 	textLeading?: React.ReactNode,

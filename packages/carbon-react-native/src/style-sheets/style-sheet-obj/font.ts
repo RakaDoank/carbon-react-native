@@ -1,8 +1,8 @@
-import {
-	StyleSheet,
+import type {
+	TextStyle,
 } from "react-native"
 
-export const TextStyleSheet = StyleSheet.create({
+export const Font = {
 	thin: {
 		fontWeight: 100,
 		fontFamily: "IBMPlexSans-Thin",
@@ -59,4 +59,4 @@ export const TextStyleSheet = StyleSheet.create({
 		fontWeight: 700,
 		fontFamily: "IBMPlexSans-Bold-Italic",
 	},
-})
+} as const satisfies Record<string, TextStyle>

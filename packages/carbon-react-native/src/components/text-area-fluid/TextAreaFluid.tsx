@@ -17,7 +17,7 @@ import IconWarningFilled16 from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
 	FlexStyleSheet,
-} from "../../_internal/style-sheets"
+} from "../../style-sheets"
 
 import {
 	ThemeContext,

@@ -1,6 +1,6 @@
 import type {
-	ViewProps,
-} from "react-native"
+	BoxProps,
+} from "../box/BoxProps"
 
 import type {
 	GhostIconProps,
@@ -10,7 +10,7 @@ import type {
 	ModalSize,
 } from "./ModalSize"
 
-export interface ModalProps extends ViewProps {
+export interface ModalProps extends BoxProps {
 	label?: string,
 	title: string,
 	/**

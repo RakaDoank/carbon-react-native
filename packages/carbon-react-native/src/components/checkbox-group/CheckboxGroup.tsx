@@ -5,8 +5,6 @@ import {
 
 import {
 	StyleSheet,
-	View,
-	type ViewStyle,
 } from "react-native"
 
 import {
@@ -22,17 +20,17 @@ import type {
 } from "react-native-svg"
 
 import {
-	GlobalConfigContext,
-} from "../../_internal/contexts"
-
-import {
-	CommonStyleSheet,
-	FlexStyleSheet,
-} from "../../_internal/style-sheets"
-
-import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
+
+import {
+	Box,
+	type BoxProps,
+} from "../box"
 
 import {
 	Checkbox,
@@ -64,25 +62,14 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 			helperTextModeIcon = true,
 			formHelperTextProps,
 			children,
-			style,
-			dir,
 			...props
 		},
 		ref,
 	) {
 
-		const
-			globalConfigContext =
-				useContext(GlobalConfigContext)
-
 		return (
-			<View
+			<Box
 				{ ...props }
-				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
-				style={ [
-					globalConfigContext.rtl ? CommonStyleSheet.rtl : undefined,
-					style,
-				] }
 				ref={ ref }
 			>
 				<FormLabel
@@ -90,14 +77,14 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 					style={ baseStyle.legend }
 				/>
 
-				<View
+				<Box
 					style={ [
 						baseStyle.wrapper,
 						wrapperOrientationStyle[orientation],
 					] }
 				>
 					{ children }
-				</View>
+				</Box>
 
 				{ !!helperText && (
 					<FormHelperText
@@ -117,7 +104,7 @@ const Component = forwardRef<CheckboxGroupRef, CheckboxGroupProps>(
 						] }
 					/>
 				) }
-			</View>
+			</Box>
 		)
 
 	},
@@ -142,16 +129,11 @@ const
 			},
 		}),
 
-	wrapperOrientationStyle =
-		StyleSheet.create<Record<NonNullable<CheckboxGroupProps["orientation"]>, ViewStyle>>({
-			vertical: {
-				flexDirection: "column",
-			},
-			horizontal: {
-				...FlexStyleSheet.flex_wrap,
-				flexDirection: "row",
-			},
-		}),
+	wrapperOrientationStyle: Record<NonNullable<CheckboxGroupProps["orientation"]>, BoxProps["style"]> =
+		{
+			vertical: FlexStyleSheet.flex_col,
+			horizontal: [FlexStyleSheet.flex_row, FlexStyleSheet.flex_wrap],
+		},
 
 	mapIconErrorFillColor: Record<ThemeContext["colorScheme"], string> =
 		{
