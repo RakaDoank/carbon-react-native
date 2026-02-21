@@ -16,12 +16,12 @@ import IconWarningAltFilled16 from "@carbon/icons/svg/32/warning--alt--filled.sv
 import IconWarningFilled16 from "@carbon/icons/svg/32/warning--filled.svg"
 
 import {
-	FlexStyleSheet,
-} from "../../style-sheets"
-
-import {
 	ThemeContext,
 } from "../../contexts"
+
+import {
+	FlexStyleSheet,
+} from "../../style-sheets"
 
 import type {
 	ThemeType,
