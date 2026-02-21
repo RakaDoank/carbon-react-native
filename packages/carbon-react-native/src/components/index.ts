@@ -9,6 +9,7 @@ export {
 }
 
 export * from "./accordion"
+export * from "./box"
 export * from "./button-group"
 export * from "./checkbox"
 export * from "./checkbox-group"
