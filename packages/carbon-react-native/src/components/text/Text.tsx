@@ -92,7 +92,7 @@ const
 			100: CarbonStyleSheet.g.font_thin_italic,
 			200: CarbonStyleSheet.g.font_extralight_italic,
 			300: CarbonStyleSheet.g.font_light_italic,
-			400: CarbonStyleSheet.g.font_regular_italic,
+			400: CarbonStyleSheet.g.font_italic,
 			500: CarbonStyleSheet.g.font_medium_italic,
 			600: CarbonStyleSheet.g.font_semibold_italic,
 			700: CarbonStyleSheet.g.font_bold_italic,

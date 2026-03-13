@@ -53,7 +53,7 @@ export function initFont() {
 
 		Object.values(MapFontWeightToFamily).forEach(val => {
 			const name = `font_${val.replace("IBMPlexSans-", "").toLowerCase()}`
-			const nameItalic = `${name}_italic`
+			const nameItalic = `${name.replace("_regular", "")}_italic`
 
 			str.g += getString({
 				name,
@@ -66,7 +66,7 @@ export function initFont() {
 				name: nameItalic,
 				attrs: [{
 					name: "fontFamily",
-					value: `${val}-Italic`,
+					value: `${val.replace("-Regular", "")}-Italic`,
 				}],
 			})
 
@@ -85,7 +85,7 @@ export function initFont() {
 					name: nameItalic,
 					attrs: [{
 						name: "fontFamily",
-						value: `${val}-Italic`,
+						value: `${val.replace("-Regular", "")}-Italic`,
 					}],
 				},
 				"TextStyle",
