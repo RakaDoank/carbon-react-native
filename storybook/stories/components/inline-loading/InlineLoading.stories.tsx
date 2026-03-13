@@ -78,7 +78,9 @@ function useMockState() {
 			useCallback((target: typeof targetState.current) => {
 				targetState.current = target
 				setState("active")
-			}, [])
+			}, [
+				setState,
+			])
 
 	useEffect(() => {
 		let timeout: ReturnType<typeof setTimeout> | null = null
