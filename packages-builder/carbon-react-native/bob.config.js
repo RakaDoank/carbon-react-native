@@ -1,7 +1,4 @@
-/**
- * Relative from builder-bob/bob.config.js
- */
-const targetPath = "../packages/carbon-react-native"
+const targetPath = "../../packages/carbon-react-native"
 
 module.exports = {
 	source: `${targetPath}/src`,
@@ -23,7 +20,7 @@ module.exports = {
 			"typescript",
 			{
 				project: `${targetPath}/tsconfig.json`,
-				tsc: "../node_modules/typescript/bin/tsc", // relative from /builder-bob/bob.config.js
+				tsc: "../../node_modules/typescript/bin/tsc",
 			},
 		],
 	],

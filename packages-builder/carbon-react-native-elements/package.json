@@ -1,0 +1,9 @@
+{
+	"name": "@packages-builder/carbon-react-native-elements",
+	"version": "0.0.1",
+	"private": true,
+	"bin": "./scripts/bin.mjs",
+	"devDependencies": {
+		"react-native-builder-bob": "catalog:"
+	}
+}

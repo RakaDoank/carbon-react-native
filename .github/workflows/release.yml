@@ -34,12 +34,10 @@ jobs:
         run: npm run validate-color-token
       - name: Build carbon-react-native-elements
         run: |
-          npm run prepack-carbon-react-native-elements
-          npm run builder-bob carbon-react-native-elements
+          npm run packages-builder:carbon-react-native-elements
       - name: Build carbon-react-native
         run: |
-          npm run prepack-carbon-react-native
-          npm run builder-bob carbon-react-native
+          npm run packages-builder:carbon-react-native
       - name: Code check
         run: npm run code-check
       - name: Release to npm registry

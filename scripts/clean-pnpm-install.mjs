@@ -20,7 +20,7 @@ const
 	/**
 	 * Additional files or dirs to remove
 	 */
-	rmPaths =
+	additionalPaths =
 		[
 			node_path.join(workspacePath, "node_modules"),
 			node_path.join(workspacePath, "pnpm-lock.yaml"),
@@ -38,7 +38,7 @@ Promise
 			return promises
 		}, []),
 
-		...rmPaths.reduce((promises, rmPath) => {
+		...additionalPaths.reduce((promises, rmPath) => {
 			if(node_fs.existsSync(rmPath)) {
 				promises.push(
 					node_fs.promises.rm(rmPath, { recursive: true, force: true }),
