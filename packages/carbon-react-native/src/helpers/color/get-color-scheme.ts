@@ -16,4 +16,5 @@ const
 		{
 			light: "gray_10",
 			dark: "gray_100",
+			unspecified: "gray_10",
 		}
