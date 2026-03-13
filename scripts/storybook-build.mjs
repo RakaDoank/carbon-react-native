@@ -7,6 +7,14 @@ const
 		node_path.join(import.meta.dirname, "..")
 
 node_childProcess.execSync(
+	"npm run packages-builder:carbon-react-native-elements",
+	{
+		cwd: root,
+		stdio: "inherit",
+	},
+)
+
+node_childProcess.execSync(
 	"npm run packages-builder:carbon-react-native",
 	{
 		cwd: root,
