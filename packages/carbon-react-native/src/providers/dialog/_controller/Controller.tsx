@@ -52,8 +52,11 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 
 		const
 			[data, setData] =
-				useState<DialogDataState[]>([]),
+				useState<DialogDataState[]>([])
+		// Can't continue from this var
+		// eslint-plugin-react-hooks will complains
 
+		const
 			modalRefs =
 				useRef<ModalRef[]>([]),
 

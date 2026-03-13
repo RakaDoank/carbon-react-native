@@ -20,13 +20,11 @@ import {
 	GlobalConfigContext,
 } from "../../../_internal/contexts"
 
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
+
 import {
 	ThemeContext,
 } from "../../../contexts"
-
-import {
-	DirectionStyleSheet,
-} from "../../../style-sheets"
 
 import type {
 	ThemeType,
@@ -74,7 +72,7 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 				style={ [
 					styleSheet.rnTextInput as unknown as never, // FIXME: i don't know the correct type
 					mapStateStyleSheet[themeContext.colorScheme][interactiveState],
-					globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
+					globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
 					style,
 				] }
 			/>

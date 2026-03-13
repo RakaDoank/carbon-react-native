@@ -77,15 +77,19 @@ export const BaseColor = forwardRef<BaseColorRef, BaseColorProps>(
 				useContext(GlobalConfigContext),
 
 			themeContext =
-				useContext(ThemeContext),
+				useContext(ThemeContext)
 
+		const
 			[state, setState] =
 				useState({
 					focused: false,
 					hovered: false,
 					pressed: false,
-				}),
+				})
+		// Can't continue from this var.
+		// eslint-plugin-react-hooks will complains
 
+		const
 			blurHandler: NonNullable<BaseProps["onBlur"]> =
 				useCallback(event => {
 					onBlur?.(event)

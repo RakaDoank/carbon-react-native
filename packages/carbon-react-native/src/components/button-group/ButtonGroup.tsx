@@ -18,10 +18,7 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	DirectionStyleSheet,
-	FlexStyleSheet,
-} from "../../style-sheets"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import type {
 	ButtonGroupProps,
@@ -59,7 +56,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				mapStyleFluid[`${!!fluid}`],
 
 			rtlStyle =
-				globalConfigContext.rtl && !vertical ? DirectionStyleSheet.rtl : undefined
+				globalConfigContext.rtl && !vertical ? CarbonStyleSheet.g.rtl : undefined
 
 		return (
 			<ButtonGroupContext.Provider
@@ -76,7 +73,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 					style={ [
 						styleFlexDir,
 						styleFluid,
-						oneAlone ? FlexStyleSheet.justify_between : undefined,
+						oneAlone ? CarbonStyleSheet.g.justify_between : undefined,
 						rtlStyle,
 						style,
 					] }
@@ -98,7 +95,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 								styleFlexDir,
 								styleFluid,
 								styleSheet.lastTwoButttonContainer,
-								FlexStyleSheet.justify_end,
+								CarbonStyleSheet.g.justify_end,
 								rtlStyle,
 							] }
 						>
@@ -134,8 +131,8 @@ const
 		[IsVertical in `${boolean}`]: ViewStyle
 	} =
 		{
-			false: FlexStyleSheet.flex_row,
-			true: FlexStyleSheet.flex_col_reverse,
+			false: CarbonStyleSheet.g.flex_row,
+			true: CarbonStyleSheet.g.flex_col_reverse,
 		},
 
 	mapStyleFluid: { [IsFluid in `${boolean}`]: ViewStyle } =

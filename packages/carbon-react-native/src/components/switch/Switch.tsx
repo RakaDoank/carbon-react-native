@@ -30,18 +30,11 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-	PositionStyleSheet,
-} from "../../style-sheets"
 
 import type {
 	SwitchProps,
@@ -275,7 +268,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				role={ role }
 				aria-checked={ ariaChecked ?? value }
 				style={ [
-					FlexStyleSheet.justify_center,
+					CarbonStyleSheet.g.justify_center,
 					baseStyle.container,
 					sizeStyle[size],
 					{
@@ -294,8 +287,8 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 			>
 				<Animated.View
 					style={ [
-						FlexStyleSheet.items_center,
-						FlexStyleSheet.justify_center,
+						CarbonStyleSheet.g.items_center,
+						CarbonStyleSheet.g.justify_center,
 						baseStyle.thumb,
 						thumbSizeStyle[size],
 						// thumbAnimatedStyle,
@@ -326,7 +319,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 				{ isFocused && (
 					<View
 						style={ [
-							PositionStyleSheet.absolute,
+							CarbonStyleSheet.g.absolute,
 							focusBoxSizeStyle[size],
 							baseStyle.focusBox,
 							baseStyleCarbon.focusBoxBorderColor,

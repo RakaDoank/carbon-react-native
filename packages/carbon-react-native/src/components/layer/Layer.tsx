@@ -17,9 +17,7 @@ import {
 	MathHelper,
 } from "../../_internal/helpers"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	LayerContext,

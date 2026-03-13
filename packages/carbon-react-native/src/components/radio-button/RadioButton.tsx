@@ -22,20 +22,11 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-	HeightStyleSheet,
-	PositionStyleSheet,
-	WidthStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -126,7 +117,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 				aria-label={ ariaLabel || label }
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
-					FlexStyleSheet.flex_row,
+					CarbonStyleSheet.g.flex_row,
 					style,
 				] }
 				ref={ viewRef }
@@ -138,9 +129,9 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 					aria-label={ pressableProps?.["aria-label"] ?? label }
 					onPress={ pressHandler }
 					style={ [
-						PositionStyleSheet.absolute,
-						WidthStyleSheet.w_full,
-						HeightStyleSheet.h_full,
+						CarbonStyleSheet.g.absolute,
+						CarbonStyleSheet.g.w_full,
+						CarbonStyleSheet.g.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -174,7 +165,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 						],
 					}}
 					style={ [
-						FlexStyleSheet.flex_1,
+						CarbonStyleSheet.g.flex_1,
 						baseStyle.label,
 						formLabelProps?.style,
 					] }

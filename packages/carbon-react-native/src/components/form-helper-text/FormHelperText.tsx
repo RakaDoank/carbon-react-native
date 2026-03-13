@@ -7,17 +7,11 @@ import {
 	StyleSheet,
 } from "react-native"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -56,7 +50,7 @@ export const FormHelperText = forwardRef<FormHelperTextRef, FormHelperTextProps>
 				{ ...props }
 				ref={ ref }
 				style={ [
-					FlexStyleSheet.flex_row,
+					CarbonStyleSheet.g.flex_row,
 					baseStyle.container,
 					style,
 				] }

@@ -121,11 +121,15 @@ const ControllerWrapper = forwardRef<ControllerWrapperRef, ControllerWrapperProp
 				useState(false),
 
 			controllerRef =
-				useRef<ControllerRef>(null),
+				useRef<ControllerRef>(null)
 
+		const
 			dialogDataQueue =
-				useRef<DialogData>(null),
+				useRef<DialogData>(null)
+		// Can't continue from this var
+		// eslint-plugin-react-hooks will complains
 
+		const
 			onEmpty =
 				useCallback(() => {
 					if(!dialogDataQueue.current && controllerRef.current) {

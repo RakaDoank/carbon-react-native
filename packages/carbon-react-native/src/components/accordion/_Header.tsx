@@ -12,17 +12,11 @@ import {
 	Color,
 } from "@audira/carbon-react-native-elements"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import type {
 	Size as ButtonSize,
@@ -98,7 +92,7 @@ export function Header({
 					(...params) =>
 						iconNodeRenderer(!!open, ...params)
 				}
-				style={ FlexStyleSheet.self_stretch }
+				style={ CarbonStyleSheet.g.self_stretch }
 			/>
 		</View>
 	)

@@ -19,11 +19,7 @@ import {
 	GlobalConfigContext,
 } from "../../../_internal/contexts"
 
-import {
-	DirectionStyleSheet,
-	FlexStyleSheet,
-	OverflowStyleSheet,
-} from "../../../style-sheets"
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
 
 import {
 	Text,
@@ -86,10 +82,10 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				aria-label={ ariaLabel ?? text }
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
-					FlexStyleSheet.flex_row,
-					FlexStyleSheet.justify_between,
-					OverflowStyleSheet.overflow_hidden,
-					globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
+					CarbonStyleSheet.g.flex_row,
+					CarbonStyleSheet.g.justify_between,
+					CarbonStyleSheet.g.overflow_hidden,
+					globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
 					mapContainerStyle[`${!!text}`][`${!!Icon || !!iconNode}`],
 					sizeStyle[size],
 					mapStyleInButtonGroup[`${!!buttonGroupContext.vertical}`][`${!!buttonGroupContext.fluid}`],
@@ -267,12 +263,12 @@ const
 	} =
 		{
 			false: {
-				false: FlexStyleSheet.self_start,
-				true: FlexStyleSheet.flex_1,
+				false: CarbonStyleSheet.g.self_start,
+				true: CarbonStyleSheet.g.flex_1,
 			},
 			true: {
-				false: FlexStyleSheet.self_stretch,
-				true: FlexStyleSheet.self_stretch,
+				false: CarbonStyleSheet.g.self_stretch,
+				true: CarbonStyleSheet.g.self_stretch,
 			},
 		}
 

@@ -94,6 +94,7 @@ export const Loading = forwardRef<LoadingRef, LoadingProps>(
 				type={ type }
 				circleStrokeColor={ MapCircleStrokeColor[themeContext.colorScheme] }
 				circleBackgroundColor={ MapCircleBackgroundColor[layerContext][themeContext.colorScheme] }
+				/* eslint-disable react-hooks/refs */
 				style={ [
 					{
 						transform: [{
@@ -105,6 +106,7 @@ export const Loading = forwardRef<LoadingRef, LoadingProps>(
 					},
 					style,
 				] }
+				/* eslint-enable react-hooks/refs */
 			/>
 		)
 

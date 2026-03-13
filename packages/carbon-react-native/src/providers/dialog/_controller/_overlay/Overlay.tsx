@@ -10,9 +10,7 @@ import {
 	type View,
 } from "react-native"
 
-import {
-	CarbonStyleSheet,
-} from "../../../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../../../carbon-style-sheet"
 
 import type {
 	OverlayProps,
@@ -104,6 +102,7 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 			<Animated.View
 				ref={ viewRef }
 				{ ...props }
+				/* eslint-disable react-hooks/refs */
 				style={ [
 					styleSheet.overlay,
 					{
@@ -111,6 +110,7 @@ export const Overlay = forwardRef<OverlayRef, OverlayProps>(
 					},
 					style,
 				] }
+				/* eslint-enable react-hooks/refs */
 			/>
 		)
 

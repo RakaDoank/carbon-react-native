@@ -19,13 +19,11 @@ import type {
 	SvgProps,
 } from "react-native-svg"
 
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
+
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -131,8 +129,8 @@ const
 
 	wrapperOrientationStyle: Record<NonNullable<CheckboxGroupProps["orientation"]>, BoxProps["style"]> =
 		{
-			vertical: FlexStyleSheet.flex_col,
-			horizontal: [FlexStyleSheet.flex_row, FlexStyleSheet.flex_wrap],
+			vertical: CarbonStyleSheet.g.flex_col,
+			horizontal: [CarbonStyleSheet.g.flex_row, CarbonStyleSheet.g.flex_wrap],
 		},
 
 	mapIconErrorFillColor: Record<ThemeContext["colorScheme"], string> =

@@ -9,9 +9,7 @@ import {
 import IconViewOff from "@carbon/icons/svg/32/view--off.svg"
 import IconView from "@carbon/icons/svg/32/view.svg"
 
-import {
-	PositionStyleSheet,
-} from "../../../style-sheets"
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
 
 import {
 	GhostIcon as ButtonGhostIcon,
@@ -44,7 +42,7 @@ export const GhostIcon = forwardRef<GhostIconRef, GhostIconProps>(
 				size={ mapInputSizeToButtonSize[inputSize] }
 				Icon={ secureTextEntry ? IconView : IconViewOff }
 				style={ [
-					PositionStyleSheet.absolute,
+					CarbonStyleSheet.g.absolute,
 					styleSheet.ghostIcon,
 					style,
 				] }

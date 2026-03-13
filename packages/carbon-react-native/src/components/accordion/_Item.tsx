@@ -20,9 +20,7 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	DirectionStyleSheet,
-} from "../../style-sheets"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	Collapsible,
@@ -151,7 +149,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					open={ open }
 					dir={ globalConfigContext.rtl ? "rtl" : undefined }
 					contentContainerStyle={ [
-						globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
+						globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
 						accordionContext.collapsibleContentContainerStyle,
 						style.panel,
 					] }

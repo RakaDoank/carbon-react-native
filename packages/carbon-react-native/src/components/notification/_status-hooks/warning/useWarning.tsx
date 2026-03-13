@@ -8,9 +8,7 @@ import {
 
 import Icon from "@carbon/icons/svg/32/warning--filled.svg"
 
-import {
-	CarbonStyleSheet,
-} from "../../../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../../../carbon-style-sheet"
 
 import {
 	ThemeContext,

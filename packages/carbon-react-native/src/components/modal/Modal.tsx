@@ -32,17 +32,11 @@ import {
 	ModalHelper,
 } from "../../_internal/helpers"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	BreakpointContext,
 } from "../../contexts"
-
-import {
-	PositionStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -195,7 +189,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 							{ ...buttonCloseProps }
 							Icon={ IconClose }
 							style={ [
-								PositionStyleSheet.absolute,
+								CarbonStyleSheet.g.absolute,
 								styleSheet.iconClose,
 								globalConfigContext.rtl
 									? styleSheet.iconCloseRtl

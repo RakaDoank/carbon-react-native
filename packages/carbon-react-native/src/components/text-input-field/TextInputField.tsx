@@ -28,17 +28,11 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	PositionStyleSheet,
-} from "../../style-sheets"
 
 import type {
 	ThemeType,
@@ -332,7 +326,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 						height={ 16 }
 						fill={ mapIconInvalidColor[themeContext.colorScheme] }
 						style={ [
-							PositionStyleSheet.absolute,
+							CarbonStyleSheet.g.absolute,
 							styleSheet.icon,
 							mapStyleSheetIconInteractiveStatePosition[`${globalConfigContext.rtl}`],
 							iconBySizeStyleSheet[size],
@@ -344,7 +338,7 @@ export const TextInputField = forwardRef<TextInputFieldRef, TextInputFieldProps>
 						height={ 16 }
 						fill={ mapIconWarningColor[themeContext.colorScheme] }
 						style={ [
-							PositionStyleSheet.absolute,
+							CarbonStyleSheet.g.absolute,
 							styleSheet.icon,
 							mapStyleSheetIconInteractiveStatePosition[`${globalConfigContext.rtl}`],
 							iconBySizeStyleSheet[size],

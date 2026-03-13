@@ -11,9 +11,7 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	DirectionStyleSheet,
-} from "../../style-sheets"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import type {
 	BoxProps,
@@ -47,7 +45,7 @@ export const Box = forwardRef<BoxRef, BoxProps>(
 				{ ...props }
 				dir={ dir }
 				style={ [
-					dir == "rtl" ? DirectionStyleSheet.rtl : undefined,
+					dir == "rtl" ? CarbonStyleSheet.g.rtl : undefined,
 					style,
 				] }
 			/>

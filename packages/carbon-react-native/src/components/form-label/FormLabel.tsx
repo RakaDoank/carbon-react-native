@@ -6,9 +6,7 @@ import {
 	StyleSheet,
 } from "react-native"
 
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	Box,
@@ -44,7 +42,7 @@ export const FormLabel = forwardRef<FormLabelRef, FormLabelProps>(
 				{ ...props }
 				ref={ ref }
 				style={ [
-					FlexStyleSheet.flex_row,
+					CarbonStyleSheet.g.flex_row,
 					baseStyle.gap,
 					style,
 				] }

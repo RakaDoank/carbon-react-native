@@ -14,17 +14,11 @@ import {
 import IconCheckmarkFilled from "@carbon/icons/svg/32/checkmark--filled.svg"
 import IconErrorFilled from "@carbon/icons/svg/32/error--filled.svg"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -69,8 +63,8 @@ export const InlineLoading = forwardRef<InlineLoadingRef, InlineLoadingProps>(
 				{ ...props }
 				aria-label={ ariaLabel ?? text }
 				style={ [
-					FlexStyleSheet.flex_row,
-					FlexStyleSheet.items_center,
+					CarbonStyleSheet.g.flex_row,
+					CarbonStyleSheet.g.items_center,
 					styleSheet.inlineLoading,
 					style,
 				] }

@@ -10,9 +10,7 @@ import {
 	StyleSheet,
 } from "react-native"
 
-import {
-	FlexStyleSheet,
-} from "../../../../style-sheets"
+import * as CarbonStyleSheet from "../../../../carbon-style-sheet"
 
 import type {
 	ModalProps,
@@ -126,13 +124,15 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 		return (
 			<Animated.View
 				{ ...props }
+				/* eslint-disable react-hooks/refs */
 				style={ [
 					StyleSheet.absoluteFill,
-					FlexStyleSheet.items_center,
-					FlexStyleSheet.justify_center,
+					CarbonStyleSheet.g.items_center,
+					CarbonStyleSheet.g.justify_center,
 					animationConfig.modalStyleFactory(interpolation.current, interpolationInputRange),
 					style,
 				] }
+				/* eslint-enable react-hooks/refs */
 			/>
 		)
 

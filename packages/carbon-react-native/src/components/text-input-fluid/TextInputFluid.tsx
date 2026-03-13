@@ -15,13 +15,11 @@ import {
 import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
 import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
+
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import type {
 	ThemeType,
@@ -85,7 +83,7 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 						<FormHelperText
 							text={ helperText }
 							style={ [
-								FlexStyleSheet.flex_initial,
+								CarbonStyleSheet.g.flex_initial,
 								styleSheet.helperText,
 							] }
 							textTrailing={

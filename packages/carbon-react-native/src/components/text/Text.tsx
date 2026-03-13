@@ -13,20 +13,11 @@ import {
 	GlobalConfigContext,
 } from "../../_internal/contexts"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	DirectionStyleSheet,
-	FontStyleSheet,
-	StyleSheetObj,
-	TypographyStyleSheet,
-} from "../../style-sheets"
 
 import type {
 	TextProps,
@@ -62,7 +53,7 @@ export const Text = forwardRef<TextRef, TextProps>(
 				style={ [
 					carbonStyle.text,
 					getTextStyle(type, italic, weight),
-					globalConfigContext.rtl ? DirectionStyleSheet.rtl : undefined,
+					globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
 					style,
 				] }
 				ref={ ref }
@@ -75,34 +66,76 @@ export const Text = forwardRef<TextRef, TextProps>(
 type WeightType = NonNullable<TextProps["weight"]>
 
 const
-	mapFamilyStyle: {
-		[Weight in WeightType]: TextStyle
+	mapWeightToFamilyStyle: {
+		[Weight in WeightType]: {
+			fontFamily: string,
+		}
 	} =
 		{
-			100: FontStyleSheet.thin,
-			200: FontStyleSheet.extralight,
-			300: FontStyleSheet.light,
-			400: FontStyleSheet.normal,
-			500: FontStyleSheet.medium,
-			600: FontStyleSheet.semibold,
-			700: FontStyleSheet.bold,
-			800: FontStyleSheet.bold,
-			900: FontStyleSheet.bold,
+			100: CarbonStyleSheet.g.font_thin,
+			200: CarbonStyleSheet.g.font_extralight,
+			300: CarbonStyleSheet.g.font_light,
+			400: CarbonStyleSheet.g.font_regular,
+			500: CarbonStyleSheet.g.font_medium,
+			600: CarbonStyleSheet.g.font_semibold,
+			700: CarbonStyleSheet.g.font_bold,
+			800: CarbonStyleSheet.g.font_bold,
+			900: CarbonStyleSheet.g.font_bold,
 		},
 
-	mapFamilyItalicStyle: {
-		[Weight in WeightType]: TextStyle
+	mapWeightItalicFamilyStyle: {
+		[Weight in WeightType]: {
+			fontFamily: string,
+		}
 	} =
 		{
-			100: FontStyleSheet.thin_italic,
-			200: FontStyleSheet.extralight_italic,
-			300: FontStyleSheet.light_italic,
-			400: FontStyleSheet.normal_italic,
-			500: FontStyleSheet.medium_italic,
-			600: FontStyleSheet.semibold_italic,
-			700: FontStyleSheet.bold_italic,
-			800: FontStyleSheet.bold_italic,
-			900: FontStyleSheet.bold_italic,
+			100: CarbonStyleSheet.g.font_thin_italic,
+			200: CarbonStyleSheet.g.font_extralight_italic,
+			300: CarbonStyleSheet.g.font_light_italic,
+			400: CarbonStyleSheet.g.font_regular_italic,
+			500: CarbonStyleSheet.g.font_medium_italic,
+			600: CarbonStyleSheet.g.font_semibold_italic,
+			700: CarbonStyleSheet.g.font_bold_italic,
+			800: CarbonStyleSheet.g.font_bold_italic,
+			900: CarbonStyleSheet.g.font_bold_italic,
+		},
+
+	mapTypeStyleSheet =
+		{
+			body_01: CarbonStyleSheet.g.text_body_01,
+			body_02: CarbonStyleSheet.g.text_body_02,
+			body_compact_01: CarbonStyleSheet.g.text_body_compact_01,
+			body_compact_02: CarbonStyleSheet.g.text_body_compact_02,
+			code_01: CarbonStyleSheet.g.text_code_01,
+			code_02: CarbonStyleSheet.g.text_code_02,
+			heading_01: CarbonStyleSheet.g.text_heading_01,
+			heading_02: CarbonStyleSheet.g.text_heading_02,
+			heading_03: CarbonStyleSheet.g.text_heading_03,
+			heading_04: CarbonStyleSheet.g.text_heading_04,
+			heading_05: CarbonStyleSheet.g.text_heading_05,
+			heading_06: CarbonStyleSheet.g.text_heading_06,
+			heading_07: CarbonStyleSheet.g.text_heading_07,
+			heading_compact_01: CarbonStyleSheet.g.text_heading_compact_01,
+			heading_compact_02: CarbonStyleSheet.g.text_heading_compact_02,
+			helper_text_01: CarbonStyleSheet.g.text_helper_text_01,
+			helper_text_02: CarbonStyleSheet.g.text_helper_text_02,
+			label_01: CarbonStyleSheet.g.text_label_01,
+			label_02: CarbonStyleSheet.g.text_label_02,
+			legal_01: CarbonStyleSheet.g.text_legal_01,
+			legal_02: CarbonStyleSheet.g.text_legal_02,
+		} as const satisfies {
+			[Type in NonNullable<TextProps["type"]>]: TextStyle
+		},
+
+	mapFontFamilyToWeightNumber: Record<string, NonNullable<TextProps["weight"]>> =
+		{
+			[CarbonStyleSheet.gObject.font_thin.fontFamily]: 100,
+			[CarbonStyleSheet.gObject.font_extralight.fontFamily]: 200,
+			[CarbonStyleSheet.gObject.font_light.fontFamily]: 300,
+			[CarbonStyleSheet.gObject.font_regular.fontFamily]: 400,
+			[CarbonStyleSheet.gObject.font_medium.fontFamily]: 500,
+			[CarbonStyleSheet.gObject.font_semibold.fontFamily]: 600,
+			[CarbonStyleSheet.gObject.font_bold.fontFamily]: 700,
 		},
 
 	carbonStyle =
@@ -122,23 +155,25 @@ function getTextStyle(
 	}
 
 	const
-		typographyStyle =
-			TypographyStyleSheet[type],
-
-		weight =
-			StyleSheetObj.Typography[type].fontWeight
+		typeStyleSheet =
+			mapTypeStyleSheet[type]
 
 	if(italic && overrideWeight) {
-		return [typographyStyle, mapFamilyItalicStyle[overrideWeight]]
+		return [typeStyleSheet, mapWeightItalicFamilyStyle[overrideWeight]]
 	}
 
 	if(italic) {
-		return [typographyStyle, mapFamilyItalicStyle[weight]]
+		return [
+			typeStyleSheet,
+			mapWeightItalicFamilyStyle[
+				mapFontFamilyToWeightNumber[typeStyleSheet.fontFamily]!
+			],
+		]
 	}
 
 	if(overrideWeight) {
-		return [typographyStyle, mapFamilyStyle[overrideWeight]]
+		return [typeStyleSheet, mapWeightToFamilyStyle[overrideWeight]]
 	}
 
-	return [typographyStyle, mapFamilyStyle[weight]]
+	return typeStyleSheet
 }

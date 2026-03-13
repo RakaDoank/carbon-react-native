@@ -13,9 +13,7 @@ import {
 	Color,
 } from "@audira/carbon-react-native-elements"
 
-import {
-	CarbonStyleSheet,
-} from "../../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,

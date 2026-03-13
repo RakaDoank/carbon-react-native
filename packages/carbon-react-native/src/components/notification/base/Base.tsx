@@ -20,17 +20,11 @@ import {
 	GlobalConfigContext,
 } from "../../../_internal/contexts"
 
-import {
-	CarbonStyleSheet,
-} from "../../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../../style-sheets"
 
 import {
 	Box,
@@ -94,7 +88,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 			<Box
 				{ ...props }
 				style={ [
-					FlexStyleSheet.flex_row,
+					CarbonStyleSheet.g.flex_row,
 					style,
 				] }
 				ref={ ref }
@@ -108,11 +102,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 
 				<View
 					style={ [
-						FlexStyleSheet.flex_auto,
-						FlexStyleSheet.flex_row,
+						CarbonStyleSheet.g.flex_auto,
+						CarbonStyleSheet.g.flex_row,
 						!inline
 							? baseStyle.leftContainerNonInline
-							: FlexStyleSheet.items_center,
+							: CarbonStyleSheet.g.items_center,
 						leftContainerStyle,
 					] }
 				>
@@ -136,7 +130,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					{ (!!title || !!body) && (
 						<View
 							style={ [
-								FlexStyleSheet.flex_auto,
+								CarbonStyleSheet.g.flex_auto,
 								contentContainerStyle,
 							] }
 						>
@@ -215,7 +209,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							},
 						}}
 						style={ [
-							FlexStyleSheet.justify_center,
+							CarbonStyleSheet.g.justify_center,
 							baseStyle.buttonIconClose,
 							iconCloseButtonProps?.style,
 						] }

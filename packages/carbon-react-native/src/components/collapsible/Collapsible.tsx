@@ -19,11 +19,7 @@ import {
 	Motion,
 } from "@audira/carbon-react-native-elements"
 
-import {
-	FlexStyleSheet,
-	OverflowStyleSheet,
-	WidthStyleSheet,
-} from "../../style-sheets"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import type {
 	CollapsibleProps,
@@ -92,8 +88,9 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				}),
 
 			[openSelf, setOpenSelf] =
-				useState(ref.current.openSelf),
+				useState(!!defaultOpen)
 
+		const
 			/**
 			 * Absolute position is required to keep content being rendered as it is when the container is not open (zero height)  
 			 *
@@ -102,7 +99,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			 * This state will be changed once only from 'relative' to 'absolute'  
 			 */
 			[positionView, setPositionView] =
-				useState<"absolute" | "relative">(ref.current.positionView),
+				useState<"absolute" | "relative">(
+					defaultOpen ?? openProp ? "relative" : "absolute",
+					// same like ref.current.positionView
+					// can't use it directly because the eslint-plugin-react-hooks
+				),
 
 			heightAnimated =
 				useRef(new Animated.Value(0)),
@@ -225,8 +226,9 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 		return (
 			<Animated.View
 				{ ...props }
+				/* eslint-disable react-hooks/refs */
 				style={ [
-					OverflowStyleSheet.overflow_hidden,
+					CarbonStyleSheet.g.overflow_hidden,
 					positionView === "absolute"
 						? {
 							height: heightAnimated.current,
@@ -234,19 +236,21 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						: null,
 					style,
 				] }
+				/* eslint-enable react-hooks/refs */
 				ref={ viewRef }
 			>
 				<View
 					style={ [
-						WidthStyleSheet.w_full,
+						CarbonStyleSheet.g.w_full,
 						{
 							position: positionView,
 						},
 					] }
 				>
 					<Animated.View
+						/* eslint-disable react-hooks/refs */
 						style={ [
-							FlexStyleSheet.flex_initial,
+							CarbonStyleSheet.g.flex_initial,
 							{
 								opacity: contentContainerAnimated.current.interpolate({
 									inputRange: contentContainerInterpolationRange as unknown as number[],
@@ -261,6 +265,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							},
 							contentContainerStyle,
 						] }
+						/* eslint-enable react-hooks/refs */
 						onLayout={ onLayoutContent }
 					>
 						{ children }

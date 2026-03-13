@@ -12,18 +12,11 @@ import {
 	Spacing,
 } from "@audira/carbon-react-native-elements"
 
-import {
-	CarbonStyleSheet,
-} from "../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	PositionStyleSheet,
-	WidthStyleSheet,
-} from "../../style-sheets"
 
 export interface HeaderBorderProps {
 	/**
@@ -43,7 +36,7 @@ export function HeaderBorder({
 	return (
 		<View
 			style={ [
-				PositionStyleSheet.absolute,
+				CarbonStyleSheet.g.absolute,
 				style.borderBox,
 				carbonStyle.borderBox,
 				flushAlignment
@@ -51,7 +44,7 @@ export function HeaderBorder({
 						left: Spacing.spacing_05,
 						right: Spacing.spacing_05,
 					}
-					: WidthStyleSheet.w_full,
+					: CarbonStyleSheet.g.w_full,
 				styleProp,
 			] }
 		/>

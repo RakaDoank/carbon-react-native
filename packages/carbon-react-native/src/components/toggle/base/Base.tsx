@@ -23,16 +23,11 @@ import {
 	GlobalConfigContext,
 } from "../../../_internal/contexts"
 
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
+
 import {
 	ThemeContext,
 } from "../../../contexts"
-
-import {
-	FlexStyleSheet,
-	HeightStyleSheet,
-	PositionStyleSheet,
-	WidthStyleSheet,
-} from "../../../style-sheets"
 
 import {
 	Box,
@@ -125,9 +120,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				{ ...viewProps }
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
-					FlexStyleSheet.flex_row,
-					FlexStyleSheet.flex_wrap,
-					FlexStyleSheet.items_center,
+					CarbonStyleSheet.g.flex_row,
+					CarbonStyleSheet.g.flex_wrap,
+					CarbonStyleSheet.g.items_center,
 					style,
 				] }
 				ref={ viewRef }
@@ -140,9 +135,9 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					aria-label={ pressableProps?.["aria-label"] || label }
 					onPress={ pressHandler }
 					style={ [
-						PositionStyleSheet.absolute,
-						WidthStyleSheet.w_full,
-						HeightStyleSheet.h_full,
+						CarbonStyleSheet.g.absolute,
+						CarbonStyleSheet.g.w_full,
+						CarbonStyleSheet.g.h_full,
 						baseStyle.pressable,
 						pressableProps?.style,
 					] }
@@ -160,7 +155,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							],
 						}}
 						style={ [
-							WidthStyleSheet.w_full,
+							CarbonStyleSheet.g.w_full,
 							baseStyle.label,
 							formLabelProps?.style,
 						] }

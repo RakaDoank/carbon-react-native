@@ -81,6 +81,7 @@ export function Chevron({
 			width={ size }
 			height={ size }
 			style={ [
+				/* eslint-disable react-hooks/refs */
 				{
 					transform: [{
 						rotateZ: rotateZ.current.interpolate({
@@ -89,6 +90,7 @@ export function Chevron({
 						}),
 					}],
 				},
+				/* eslint-enable react-hooks/refs */
 				style,
 			] }
 		/>

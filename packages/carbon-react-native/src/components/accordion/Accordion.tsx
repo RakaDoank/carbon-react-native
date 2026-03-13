@@ -55,18 +55,20 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 					marginRightStyleKey: keyof typeof MarginRightStyle,
 				}>({
 					marginRightStyleKey: getMarginRightStyleKey(windowWidth),
-				}),
+				})
 
+		const
 			[marginRightStyleKey, setMarginRightStyleKey] =
-				useState(ref.current.marginRightStyleKey),
+				// eslint-disable-next-line react-hooks/refs
+				useState(ref.current.marginRightStyleKey)
 
+		const
 			handlerLayout: NonNullable<ViewProps["onLayout"]> =
 				useCallback(event => {
 					onLayout?.(event)
 					/**
 					 * https://carbondesignsystem.com/components/accordion/style/#margin-right
 					 */
-
 					const key = getMarginRightStyleKey(windowWidth)
 
 					if(ref.current.marginRightStyleKey !== key) {

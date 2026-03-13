@@ -1,3 +1,6 @@
+catalog:
+  react-native-builder-bob: 0.40.18
+
 engineStrict: true
 
 nodeLinker: hoisted
@@ -5,6 +8,7 @@ nodeLinker: hoisted
 packages:
   - 'builder-bob'
   - 'packages/*'
+  - 'packages-builder/*'
   - 'storybook'
 
 strictPeerDependencies: false

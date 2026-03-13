@@ -3,9 +3,7 @@ import {
 	useContext,
 } from "react"
 
-import {
-	CarbonStyleSheet,
-} from "../../../carbon-style-sheet"
+import * as CarbonStyleSheet from "../../../carbon-style-sheet"
 
 import {
 	ThemeContext,

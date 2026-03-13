@@ -22,13 +22,11 @@ import {
 import IconWarningAltFilled from "@carbon/icons/svg/32/warning--alt--filled.svg"
 import IconWarningFilled from "@carbon/icons/svg/32/warning--filled.svg"
 
+import * as CarbonStyleSheet from "../../carbon-style-sheet"
+
 import {
 	ThemeContext,
 } from "../../contexts"
-
-import {
-	FlexStyleSheet,
-} from "../../style-sheets"
 
 import {
 	Box,
@@ -232,7 +230,7 @@ const
 				flexDirection: "column",
 			},
 			horizontal: {
-				...FlexStyleSheet.flex_wrap,
+				...CarbonStyleSheet.gObject.flex_wrap,
 				flexDirection: "row",
 			},
 		}),
