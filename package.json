@@ -9,7 +9,7 @@
 		"lint": "eslint .",
 		"packages-builder:carbon-react-native": "npx @packages-builder/carbon-react-native",
 		"packages-builder:carbon-react-native-elements": "npx @packages-builder/carbon-react-native-elements",
-		"postinstall": "npm run packages-builder:carbon-react-native",
+		"postinstall": "npm run packages-builder:carbon-react-native-elements && npm run packages-builder:carbon-react-native",
 		"storybook-build": "node ./scripts/storybook-build.mjs",
 		"type-check": "tsc --build --emitDeclarationOnly",
 		"validate-color-token": "node ./scripts/validate-color-token.mjs"
