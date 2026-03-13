@@ -76,88 +76,70 @@ Create new CSS file (e.g fonts.css), place it to your static or public directory
 
 @font-face {
   font-family: "IBMPlexSans-ExtraLight";
-  font-weight: 200;
   src: url("/fonts/IBMPlexSans-ExtraLight.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-ExtraLight-Italic";
-  font-weight: 300;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-ExtraLight-Italic.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Light";
-  font-weight: 300;
   src: url("/fonts/IBMPlexSans-Light.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Light-Italic";
-  font-weight: 300;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-Light-Italic.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Regular";
-  font-weight: 400;
   src: url("/fonts/IBMPlexSans-Regular.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Italic";
-  font-weight: 400;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-Italic.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Medium";
-  font-weight: 500;
   src: url("/fonts/IBMPlexSans-Medium.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Medium-Italic";
-  font-weight: 500;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-Medium-Italic.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-SemiBold";
-  font-weight: 600;
   src: url("/fonts/IBMPlexSans-SemiBold.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-SemiBold-Italic";
-  font-weight: 600;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-SemiBold-Italic.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Bold";
-  font-weight: 700;
   src: url("/fonts/IBMPlexSans-Bold.woff");
 }
 
 @font-face {
   font-family: "IBMPlexSans-Bold-Italic";
-  font-weight: 700;
-  font-style: italic;
   src: url("/fonts/IBMPlexSans-Bold-Italic.woff");
 }
 ```
 
-> ⚠️ Please, do not modify the `font-family` value because the `<Text>` component is using the different `fontFamily` name for different weight variant
+> You realized the sample above is not using `font-weight` and `font-style` attribute, because the `Text` component is using the PostScript name to make it consistent on cross platforms. See [recommendation for font file naming](https://docs.expo.dev/develop/user-interface/fonts/#how-to-determine-which-font-family-name-to-use)
 
 Then, we have to include the CSS in your project with two ways. Choose one of following ways
 
-### External Resource Link Element
+### - External Resource Link Element
 Traditionally, you can include it to your web with the [External Resource Link Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) or you may know it as `<link>` element in HTML
 
 ```html
@@ -170,7 +152,7 @@ Traditionally, you can include it to your web with the [External Resource Link E
 ```
 > In [Expo](https://docs.expo.dev/workflow/web) with Expo Router, you can include the &lt;link&gt; element in your [Root HTML](https://docs.expo.dev/router/web/static-rendering/#root-html) file
 
-### Import the CSS from JavaScript Entry
+### - Import the CSS from JavaScript Entry
 If your project can support importing CSS. Import the CSS globally. Likely, it's in the root layout of your React app. It should've been applied to the entire page.
 
 ```tsx
