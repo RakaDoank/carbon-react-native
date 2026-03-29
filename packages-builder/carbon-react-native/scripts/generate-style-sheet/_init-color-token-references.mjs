@@ -18,7 +18,7 @@ import {
  * For instance, `CarbonStyleSheet.color.background` will has
  * `#f4f4f4|#000000`. It's formatted in `gray_10|gray_100` and these colors are evaluated at build time.
  * 
- * The motive is really to optimizely not import all the color tokens in runtime
+ * The motive is really to optimize by not importing all the color tokens in runtime
  */
 export function initColorTokenReferences() {
 	try {
