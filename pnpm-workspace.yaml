@@ -6,9 +6,10 @@ engineStrict: true
 nodeLinker: hoisted
 
 packages:
-  - 'builder-bob'
   - 'packages/*'
   - 'packages-builder/*'
   - 'storybook'
+
+shamefullyHoist: true
 
 strictPeerDependencies: false
