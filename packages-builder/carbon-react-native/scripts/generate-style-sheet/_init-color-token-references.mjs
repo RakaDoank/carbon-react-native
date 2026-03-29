@@ -42,21 +42,6 @@ export function initColorTokenReferences() {
 
 		str += "\n"
 
-		const
-			dirPath =
-				node_path.join(
-					WorkspacePath,
-					"packages",
-					"carbon-react-native",
-					"src",
-					"carbon-style-sheet",
-					"color",
-				)
-
-		if(!node_fs.existsSync(dirPath)) {
-			node_fs.mkdirSync(dirPath, { recursive: true })
-		}
-
 		node_fs.writeFileSync(
 			node_path.join(
 				WorkspacePath,
