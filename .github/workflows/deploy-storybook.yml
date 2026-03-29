@@ -17,13 +17,14 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v6
+      - name: Use PNPM
+        uses: pnpm/action-setup@v5
         with:
           version: 10
+          cache: true
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: https://registry.npmjs.org/
@@ -34,6 +35,6 @@ jobs:
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           install_command: pnpm install --frozen-lockfile
-          build_command: npm run storybook-build
+          build_command: npm run package-builder:carbon-react-native-elements && npm run package-builder:carbon-react-native && npm run storybook-build
           path: ./storybook/.dist
           checkout: false

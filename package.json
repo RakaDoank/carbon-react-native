@@ -7,9 +7,9 @@
 		"init-ibm-fonts-storybook-web": "node ./scripts/init-ibm-fonts-storybook-web.mjs",
 		"lint": "eslint .",
 		"packages-builder:carbon-react-native": "npx @packages-builder/carbon-react-native",
+		"packages-builder:carbon-react-native:generate-style-sheet": "node ./packages-builder/carbon-react-native/scripts/generate-style-sheet.mjs",
 		"packages-builder:carbon-react-native-elements": "npx @packages-builder/carbon-react-native-elements",
 		"pnpm-clean-install": "node ./scripts/pnpm-clean-install.mjs",
-		"postinstall": "npm run packages-builder:carbon-react-native-elements && npm run packages-builder:carbon-react-native",
 		"storybook-build": "node ./scripts/storybook-build.mjs",
 		"type-check": "tsc --build",
 		"validate-color-token": "node ./scripts/validate-color-token.mjs"

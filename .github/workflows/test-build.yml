@@ -1,24 +1,24 @@
-name: Release
+name: Test Build
 
 on:
   push:
     branches:
-      - release
+      - main
   pull_request:
     branches:
-      - release
+      - main
 
 jobs:
-  release:
-    name: Release Package
-    runs-on: ubuntu-22.04
-    environment: release
+  test-build:
+    name: Test Build
+    runs-on: ubuntu-latest
+    environment: test-build
     permissions:
       contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v6
-      - name: Install pnpm
+      - name: Use PNPM
         uses: pnpm/action-setup@v5
         with:
           version: 10
@@ -34,14 +34,10 @@ jobs:
       - name: Validate Color Token
         run: npm run validate-color-token
       - name: Build carbon-react-native-elements
-        run: |
-          npm run packages-builder:carbon-react-native-elements
+        run: npm run package-builder:carbon-react-native-elements
       - name: Build carbon-react-native
-        run: |
-          npm run packages-builder:carbon-react-native
-      - name: Code check
+        run: npm run package-builder:carbon-react-native
+      - name: Build Storybook
+        run: npm run storybook-build
+      - name: Type Check and Lint Check
         run: npm run code-check
-      - name: Release to npm registry
-        run: |
-          pnpm publish --filter @audira/carbon-react-native-elements --access public --no-git-checks
-          pnpm publish --filter @audira/carbon-react-native --access public --no-git-checks
