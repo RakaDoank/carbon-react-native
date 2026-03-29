@@ -38,6 +38,8 @@ jobs:
       - name: Build carbon-react-native
         run: npm run packages-builder:carbon-react-native
       - name: Build Storybook
-        run: npm run storybook-build
+        run: |
+          npm run init-ibm-fonts-storybook-web
+          npm run storybook-build
       - name: Type Check and Lint Check
         run: npm run code-check
