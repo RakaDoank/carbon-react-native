@@ -34,9 +34,9 @@ jobs:
       - name: Validate Color Token
         run: npm run validate-color-token
       - name: Build carbon-react-native-elements
-        run: npm run package-builder:carbon-react-native-elements
+        run: npm run packages-builder:carbon-react-native-elements
       - name: Build carbon-react-native
-        run: npm run package-builder:carbon-react-native
+        run: npm run packages-builder:carbon-react-native
       - name: Build Storybook
         run: npm run storybook-build
       - name: Type Check and Lint Check

@@ -35,6 +35,6 @@ jobs:
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           install_command: pnpm install --frozen-lockfile
-          build_command: npm run package-builder:carbon-react-native-elements && npm run package-builder:carbon-react-native && npm run storybook-build
+          build_command: npm run packages-builder:carbon-react-native-elements && npm run packages-builder:carbon-react-native && npm run storybook-build
           path: ./storybook/.dist
           checkout: false
