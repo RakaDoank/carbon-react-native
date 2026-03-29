@@ -1,4 +1,8 @@
 import {
+	initColorTokenReferences,
+} from "./_init-color-token-references.mjs"
+
+import {
 	initFont,
 } from "./_init-font.mjs"
 
@@ -11,6 +15,7 @@ import {
 } from "./_init-typography.mjs"
 
 export function generateStyleSheet() {
+	initColorTokenReferences()
 	initFont()
 	initSpacing()
 	initTypography()

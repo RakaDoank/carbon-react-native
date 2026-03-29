@@ -2,6 +2,8 @@ import {
 	StyleSheet as RNStyleSheet,
 } from "react-native"
 
+import * as color from "./color"
+
 import * as g from "./g"
 import * as gObject from "./g-object"
 
@@ -12,11 +14,11 @@ export const hairlineWidth = RNStyleSheet.hairlineWidth
 export const setStyleAttributePreprocessor = RNStyleSheet.setStyleAttributePreprocessor
 
 export {
+	color,
 	g,
 	gObject,
 }
 
 export * from "./breakpoint"
-export * from "./color"
 export * from "./create"
 export * from "./use"

@@ -5,10 +5,8 @@ import {
 	type ViewStyle,
 } from "react-native"
 
-import {
-	Color,
-	type BreakpointToken,
-	type ColorToken,
+import type {
+	BreakpointToken,
 } from "@audira/carbon-react-native-elements"
 
 import {
@@ -25,16 +23,39 @@ import {
 } from "./breakpoint"
 
 type Style = ViewStyle | TextStyle | ImageStyle
+
 type StyleBreakpoint =
 	Partial<
 		Record<
 			BreakpointToken,
 			Omit<
 				ViewStyle | TextStyle | ImageStyle,
-				(typeof colorStyleProps)[number]
+				ColorStyleAttr
 			>
 		>
 	>
+
+type ColorStyleAttr = Extract<
+	(keyof ViewStyle) | (keyof TextStyle) | (keyof ImageStyle),
+	| "backgroundColor"
+	| "borderColor"
+	| "borderEndColor"
+	| "borderStartColor"
+	| "borderTopColor"
+	| "borderBottomColor"
+	| "borderLeftColor"
+	| "borderRightColor"
+	| "borderBlockColor"
+	| "borderBlockEndColor"
+	| "borderBlockStartColor"
+	| "color"
+	| "outlineColor"
+	| "overlayColor"
+	| "textDecorationColor"
+	| "textShadowColor"
+	| "tintColor"
+	| "shadowColor"
+>
 
 /**
  * Create style sheet to help using color token of current color scheme and current breakpoint declaratively.  
@@ -79,7 +100,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 		normalStyle: Record<string, Style> =
 			{},
 
-		coloredStyle: Record<string, Style> =
+		carbonColoredStyle: Record<string, Partial<Record<ColorStyleAttr, string>>> =
 			{},
 
 		breakpointStyle: Record<string, Style> =
@@ -90,45 +111,62 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 	for(const name in styles) {
 		const style = styles[name]
 
-		for(const styleProp in style) {
-			if((breakpointStyleProps as Record<string, string>)[styleProp]) {
+		for(const styleAttr in style) {
+			if((breakpointStyleProps as Record<string, string>)[styleAttr]) {
 
 				containBreakpointStyle = true
-				breakpointStyle[`${styleProp}${name}`] = (style as StyleBreakpoint)[styleProp] as Style
+				breakpointStyle[`${styleAttr}${name}`] = (style as StyleBreakpoint)[styleAttr] as Style
 
-			} else if(colorStyleProps.indexOf(styleProp as keyof Style) > -1) {
+			} else if(colorStyleAttrs[styleAttr as ColorStyleAttr]) {
+
+				// Resolve color string to the Carbon color (if any) for style prop or attribute that contain 'color'
+				// in the name like 'color', 'backgroundColor', 'borderColor', etc.,
+				// and the color value contains "|"
+				// If it does, it's a color token references that formatted in `gray_10|gray_100`
+
+				// For instance,
+				// if user want to modify `backgroundColor` with `CarbonStyleSheet.create` and using
+				// `CarbonStyleSheet.color.background`
+				// The `CarbonStyleSheet.color.background` itself is storing two color for gray_10 and gray_100
+				// in single string, which is `#f4f4f4|#000000`
+				// So we need to split them and make correct React Native StyleSheet
+				// with the same style attribute, for gray_10 and gray_100
+
+				const colorStr = (style as Record<ColorStyleAttr, string>)[styleAttr as ColorStyleAttr]
 
 				/**
-				 * Resolve color string to the Carbon color (if any) for style prop or attribute that contain 'color' in the name like 'color', 'backgroundColor', 'borderColor', etc
-				 * @see {@link colorStyleProps}
+				 * It's color token references
+				 * 
+				 * For instance,
+				 * `#f4f4f4|#000000`. It's formatted in `gray_10|gray_100`.
 				 */
+				const carbonColorToken = colorStr.split("|")
 
-				const
-					coloredStyleName_G10 =
-						`${prefixColorStyleName.gray_10}${name}`,
+				if(carbonColorToken.length > 1) {
+					const
+						coloredStyleName_G10 =
+							`${prefixColorStyleName.gray_10}${name}`,
 
-					coloredStyleName_G100 =
-						`${prefixColorStyleName.gray_100}${name}`
+						coloredStyleName_G100 =
+							`${prefixColorStyleName.gray_100}${name}`
 
-				if(!coloredStyle[coloredStyleName_G10]) {
-					coloredStyle[coloredStyleName_G10] = {
+					if(!carbonColoredStyle[coloredStyleName_G10]) {
+						carbonColoredStyle[coloredStyleName_G10] = {
+						}
 					}
-				}
-				if(!coloredStyle[coloredStyleName_G100]) {
-					coloredStyle[coloredStyleName_G100] = {
+					if(!carbonColoredStyle[coloredStyleName_G100]) {
+						carbonColoredStyle[coloredStyleName_G100] = {
+						}
 					}
+
+					const colorStyleAttr = styleAttr as ColorStyleAttr
+
+					carbonColoredStyle[coloredStyleName_G10][colorStyleAttr] =
+						carbonColorToken[0]
+
+					carbonColoredStyle[coloredStyleName_G100][colorStyleAttr] =
+						carbonColorToken[1]
 				}
-
-				const colorStr = (style as Record<(typeof colorStyleProps)[number], string>)[styleProp as (typeof colorStyleProps)[number]]
-
-				coloredStyle[coloredStyleName_G10][styleProp as keyof Style] =
-					Color.Token.gray_10.all[colorStr as ColorToken] as never ||
-					colorStr
-
-				coloredStyle[coloredStyleName_G100][styleProp as keyof Style] =
-					Color.Token.gray_100.all[colorStr as ColorToken] as never ||
-					colorStr
-
 			} else {
 
 				normalStyle[name] = style as Style
@@ -142,7 +180,7 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 			StyleSheet.create<Record<string, Style>>(normalStyle),
 
 		coloredStyleSheet =
-			StyleSheet.create<Record<string, Style>>(coloredStyle),
+			StyleSheet.create<Record<string, Style>>(carbonColoredStyle),
 
 		breakpointStyleSheet =
 			StyleSheet.create<Record<string, Style>>(breakpointStyle)
@@ -181,27 +219,29 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 }
 
 const
-	colorStyleProps: ((keyof ViewStyle) | (keyof TextStyle) | (keyof ImageStyle))[] =
-		[
-			"backgroundColor",
-			"borderColor",
-			"borderEndColor",
-			"borderStartColor",
-			"borderTopColor",
-			"borderBottomColor",
-			"borderLeftColor",
-			"borderRightColor",
-			"borderBlockColor",
-			"borderBlockEndColor",
-			"borderBlockStartColor",
-			"color",
-			"outlineColor",
-			"overlayColor",
-			"textDecorationColor",
-			"textShadowColor",
-			"tintColor",
-			"shadowColor",
-		] as const,
+	colorStyleAttrs =
+		{
+			backgroundColor: "backgroundColor",
+			borderColor: "borderColor",
+			borderEndColor: "borderEndColor",
+			borderStartColor: "borderStartColor",
+			borderTopColor: "borderTopColor",
+			borderBottomColor: "borderBottomColor",
+			borderLeftColor: "borderLeftColor",
+			borderRightColor: "borderRightColor",
+			borderBlockColor: "borderBlockColor",
+			borderBlockEndColor: "borderBlockEndColor",
+			borderBlockStartColor: "borderBlockStartColor",
+			color: "color",
+			outlineColor: "outlineColor",
+			overlayColor: "overlayColor",
+			textDecorationColor: "textDecorationColor",
+			textShadowColor: "textShadowColor",
+			tintColor: "tintColor",
+			shadowColor: "shadowColor",
+		} as const satisfies {
+			[Attr in ColorStyleAttr]: Attr
+		},
 
 	prefixColorStyleName: Record<ThemeType.ColorScheme, string> =
 		{
