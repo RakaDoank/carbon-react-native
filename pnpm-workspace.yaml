@@ -11,5 +11,3 @@ packages:
   - 'storybook'
 
 shamefullyHoist: true
-
-strictPeerDependencies: false
