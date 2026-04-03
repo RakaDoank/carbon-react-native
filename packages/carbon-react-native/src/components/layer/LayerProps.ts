@@ -8,8 +8,11 @@ import type {
 
 export interface LayerProps extends ViewProps {
 	/**
-	 * Specify the layer level and override any existing levels based on hierarchy
-	 * @default 1
+	 * Specify the layer level and override any existing levels based on hierarchy.
+	 * @default
+	 * ```
+	 * level + 1
+	 * ```
 	 */
 	level?: ColorLayerLevel,
 	withBackground?: boolean,

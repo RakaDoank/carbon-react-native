@@ -46,11 +46,10 @@ export const Layer = forwardRef<LayerRef, LayerProps>(
 			layerContextLevel =
 				useContext(LayerContext),
 
-			level =
-				levelProp ?? layerContextLevel,
-
 			value =
-				MathHelper.clamp(level + 1, Color.Layer.MinLevel, Color.Layer.MaxLevel)
+				typeof levelProp != "number"
+					? MathHelper.clamp(layerContextLevel + 1, Color.Layer.MinLevel, Color.Layer.MaxLevel)
+					: levelProp
 
 		return (
 			<LayerContext.Provider value={ value }>
