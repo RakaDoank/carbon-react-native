@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - deploy-storybook
-  pull_request:
+  pull_request_target:
     branches:
       - deploy-storybook
+    types:
+      - closed
 
 jobs:
   deploy-storybook:
