@@ -1,6 +1,6 @@
 import type {
-	View,
-} from "react-native"
+	BoxRef,
+} from "../box";
 
-export interface TableRef extends View {
+export interface TableRef extends BoxRef {
 }

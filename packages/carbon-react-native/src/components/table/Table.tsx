@@ -2,15 +2,15 @@ import {
 	forwardRef,
 } from "react"
 
-import {
-	ScrollView,
-} from "react-native"
-
 import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
 	Box,
 } from "../box/Box"
+
+import {
+	ScrollView,
+} from "../scroll-view/ScrollView"
 
 import type {
 	TableProps,
@@ -28,8 +28,11 @@ export const Table = forwardRef<TableRef, TableProps>(
 	function Table(
 		{
 			rowSize = "large",
+			header,
+			footer,
+			horizontalScrollViewProps,
+			verticalScrollViewProps,
 			children,
-			style,
 			...props
 		},
 		ref,
@@ -44,23 +47,31 @@ export const Table = forwardRef<TableRef, TableProps>(
 				<Box
 					ref={ ref }
 					{ ...props }
-					style={ style }
 				>
+					{ header }
+
 					<ScrollView
-						horizontal
+						{ ...horizontalScrollViewProps }
+						horizontal={ horizontalScrollViewProps?.horizontal ?? true }
+						nestedScrollEnabled={ horizontalScrollViewProps?.nestedScrollEnabled ?? true }
 						contentContainerStyle={ [
 							CarbonStyleSheet.g.grow,
+							horizontalScrollViewProps?.contentContainerStyle,
 						] }
 					>
 						<ScrollView
+							{ ...verticalScrollViewProps }
 							style={ [
 								CarbonStyleSheet.g.flex_auto,
+								verticalScrollViewProps?.style,
 							] }
 							role="table"
 						>
 							{ children }
 						</ScrollView>
 					</ScrollView>
+
+					{ footer }
 				</Box>
 			</TableContext.Provider>
 		)
