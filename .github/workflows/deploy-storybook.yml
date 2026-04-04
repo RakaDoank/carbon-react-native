@@ -1,11 +1,9 @@
 name: Deploy Storybook
 
 on:
-  pull_request_target:
+  push:
     branches:
       - deploy-storybook
-    types:
-      - closed
 
 jobs:
   deploy-storybook:
