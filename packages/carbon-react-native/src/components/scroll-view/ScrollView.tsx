@@ -4,7 +4,7 @@ import {
 } from "react"
 
 import {
-	View,
+	ScrollView as ReactNativeScrollView,
 } from "react-native"
 
 import {
@@ -14,24 +14,21 @@ import {
 import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import type {
-	BoxProps,
-} from "./BoxProps"
-
-import type {
-	BoxRef,
-} from "./BoxRef"
+	ScrollViewProps,
+} from "./ScrollViewProps"
 
 /**
- * This component is a basic React Native `View` to solve
+ * This component is a basic React Native `ScrollView` to solve
  * RTL support for component level.
  * 
  * You may use this if your app provides custom localization options.
  */
-export const Box = forwardRef<BoxRef, BoxProps>(
-	function Box(
+export const ScrollView = forwardRef<ReactNativeScrollView, ScrollViewProps>(
+	function ScrollView(
 		{
 			dir: dirProp,
 			style,
+			contentContainerStyle,
 			...props
 		},
 		ref,
@@ -46,7 +43,7 @@ export const Box = forwardRef<BoxRef, BoxProps>(
 				globalConfigContext.rtl ? "rtl" : "ltr"
 
 		return (
-			<View
+			<ReactNativeScrollView
 				ref={ ref }
 				{ ...props }
 				dir={ dir }
@@ -54,8 +51,12 @@ export const Box = forwardRef<BoxRef, BoxProps>(
 					dir == "rtl" ? CarbonStyleSheet.g.rtl : undefined,
 					style,
 				] }
+				contentContainerStyle={ [
+					dir == "rtl" ? CarbonStyleSheet.g.rtl : undefined,
+					contentContainerStyle,
+				] }
 			/>
 		)
 
 	},
-)
+) as unknown as typeof ReactNativeScrollView & ReactNativeScrollView
