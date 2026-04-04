@@ -3,15 +3,13 @@ import {
 	useContext,
 } from "react"
 
-import {
-	StyleSheet,
-	type TextStyle,
-	type ViewStyle,
+import type {
+	TextStyle,
+	ViewStyle,
 } from "react-native"
 
 import {
 	Color,
-	Spacing,
 } from "@audira/carbon-react-native-elements"
 
 import * as CarbonStyleSheet from "../../../carbon-style-sheet"
@@ -38,7 +36,6 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 	function Ghost(
 		{
 			text,
-			iconProps,
 			...props
 		},
 		ref,
@@ -70,10 +67,6 @@ export const Ghost = forwardRef<GhostRef, GhostProps>(
 						disabled: textStyleSheet.disabled,
 					},
 					icon: mapIconColor[themeContext.colorScheme],
-				}}
-				iconProps={{
-					...iconProps,
-					style: [mapIconPLByText[`${!!text}`], iconProps?.style],
 				}}
 			/>
 		)
@@ -124,19 +117,6 @@ const
 				color: CarbonStyleSheet.color.text_disabled,
 			},
 		}),
-
-	style =
-		StyleSheet.create({
-			iconPL8: {
-				paddingLeft: Spacing.spacing_03,
-			},
-		}),
-
-	mapIconPLByText: Record<string, typeof style["iconPL8"] | null> =
-		{
-			false: null,
-			true: style.iconPL8,
-		},
 
 	mapIconColor: Record<ThemeContext["colorScheme"], Record<BaseColorState, string>> =
 		{

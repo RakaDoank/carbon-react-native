@@ -73,7 +73,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				getIconSize(size),
 
 			iconMarginStyle =
-				mapIconMarginStyle[`${!!globalConfigContext.rtl}`][`${!!text}`]
+				mapIconMarginStyle[`${!!text}`]
 
 		return (
 			<Pressable
@@ -172,11 +172,8 @@ const
 				maxHeight: 48,
 			},
 
-			iconMarginLTR: {
-				marginLeft: Spacing.spacing_07,
-			},
-			iconMarginRTL: {
-				marginRight: Spacing.spacing_07,
+			iconMargin: {
+				marginStart: Spacing.spacing_07,
 			},
 
 			inlineLoading: {
@@ -241,19 +238,11 @@ const
 		},
 
 	mapIconMarginStyle: {
-		[RTL in `${boolean}`]: {
-			[HasText in `${boolean}`]: ViewProps["style"]
-		}
+		[HasText in `${boolean}`]: ViewProps["style"]
 	} =
 		{
-			false: {
-				false: null,
-				true: baseStyle.iconMarginLTR,
-			},
-			true: {
-				false: null,
-				true: baseStyle.iconMarginRTL,
-			},
+			false: null,
+			true: baseStyle.iconMargin,
 		},
 
 	mapStyleInButtonGroup: {

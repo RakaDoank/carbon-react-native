@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - release
-  pull_request:
+  pull_request_target:
     branches:
       - release
+    types:
+      - closed
 
 jobs:
   release:

@@ -9,15 +9,15 @@ import type {
 } from "./CarbonReactNativeProps"
 
 export function CarbonReactNative({
-	// GlobalConfigProviderProps
-	android_buttonRippleEffect = true,
-	notificationColor = "high_contrast",
-	toastDuration = 5000,
-	rtl = false,
-
-	// ThemeProviderProps
+	// +++ GlobalConfigProviderProps +++
+	android_buttonRippleEffect,
+	notificationColor,
+	toastDuration,
+	rtl,
+	// --- GlobalConfigProviderProps ---
+	// +++ ThemeProviderProps +++
 	colorScheme,
-
+	// --- ThemeProviderProps ---
 	children,
 }: CarbonReactNativeProps) {
 

@@ -7,10 +7,15 @@ import {
 	Table as CarbonTable,
 	TableCell,
 	TableCellHeader,
+	TableHeader,
 	TableRow,
 	TableRowHeader,
+	TableToolbar,
+	TableToolbarButton,
 	type TableProps,
 } from "@audira/carbon-react-native"
+
+import IconDownload from "@carbon/icons/svg/32/download.svg"
 
 export default {
 
@@ -36,13 +41,31 @@ export default {
 } satisfies Meta<TableProps>
 
 export const Table: StoryFn<TableProps> = args => {
+
 	return (
 		<CarbonTable
 			{ ...args }
+			header={ <>
+				<TableHeader
+					title="Data Table"
+					description="Add description if needed"
+				/>
+
+				<TableToolbar
+					buttons={ <>
+						<TableToolbarButton.GhostIcon
+							Icon={ IconDownload }
+						/>
+						<TableToolbarButton.Primary
+							text="Hola"
+						/>
+					</> }
+				/>
+			</> }
 		>
 			<TableRowHeader>
 				<TableCellHeader
-					width={ 100 }
+					width={ 140 }
 					defaultSort="none"
 					text="Head 1"
 				/>
@@ -85,7 +108,7 @@ export const Table: StoryFn<TableProps> = args => {
 			</TableRowHeader>
 			<TableRow>
 				<TableCell
-					width={ 100 }
+					width={ 140 }
 					text="Col 1"
 				/>
 				<TableCell
@@ -127,7 +150,7 @@ export const Table: StoryFn<TableProps> = args => {
 			</TableRow>
 			<TableRow>
 				<TableCell
-					width={ 100 }
+					width={ 140 }
 					text="Col 11"
 				/>
 				<TableCell

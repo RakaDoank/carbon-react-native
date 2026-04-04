@@ -21,6 +21,12 @@ import type {
 	BoxRef,
 } from "./BoxRef"
 
+/**
+ * This component is a basic React Native `View` to solve
+ * RTL support for component level.
+ * 
+ * You may use this if your app provides custom localization options.
+ */
 export const Box = forwardRef<BoxRef, BoxProps>(
 	function Box(
 		{

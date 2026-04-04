@@ -13,6 +13,9 @@ import type {
 
 export interface TableRowProps extends Omit<PressableProps, "style"> {
 	/**
+	 * You may don't want to set the row size each row individually.
+	 * Prefer to opt `rowSize` in the `Table` prop instead.
+	 * 
 	 * @default "large"
 	 * @see https://carbondesignsystem.com/components/data-table/style/#rows
 	 */
