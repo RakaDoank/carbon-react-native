@@ -1,9 +1,6 @@
 name: Deploy Storybook
 
 on:
-  push:
-    branches:
-      - deploy-storybook
   pull_request_target:
     branches:
       - deploy-storybook
