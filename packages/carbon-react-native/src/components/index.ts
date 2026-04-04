@@ -1,10 +1,12 @@
 import * as Button from "./button"
 import * as Notification from "./notification"
+import * as TableToolbarButton from "./table-toolbar-button"
 import * as Toggle from "./toggle"
 
 export {
 	Button,
 	Notification,
+	TableToolbarButton,
 	Toggle,
 }
 
@@ -31,10 +33,16 @@ export * from "./radio-button-group"
 export * from "./radio-button-input"
 export * from "./switch"
 export * from "./table"
+export * from "./table-batch-action-bar"
+export * from "./table-batch-action-bar-button"
 export * from "./table-cell"
 export * from "./table-cell-header"
 export * from "./table-cell-icon"
 export * from "./table-cell-text"
+export * from "./table-header"
+export * from "./table-toolbar"
+export * from "./table-toolbar-button"
+export * from "./table-toolbar-switcher"
 export * from "./table-row"
 export * from "./table-row-header"
 export * from "./text"

@@ -8,6 +8,7 @@ import {
 import {
 	Animated,
 	Easing,
+	Platform,
 } from "react-native"
 
 import {
@@ -58,7 +59,7 @@ export const SortIcon = forwardRef<SortIconRef, SortIconProps>(
 						{
 							toValue: 0,
 							duration: 0,
-							useNativeDriver: false,
+							useNativeDriver: Platform.OS != "web",
 						},
 					)
 					.start()
@@ -75,7 +76,7 @@ export const SortIcon = forwardRef<SortIconRef, SortIconProps>(
 								Motion.Easing.standard.productive.x2,
 								Motion.Easing.standard.productive.y2,
 							),
-							useNativeDriver: false,
+							useNativeDriver: Platform.OS != "web",
 						},
 					)
 					.start()
@@ -99,7 +100,7 @@ export const SortIcon = forwardRef<SortIconRef, SortIconProps>(
 									Motion.Easing.entrance.productive.x2,
 									Motion.Easing.entrance.productive.y2,
 								),
-								useNativeDriver: true,
+								useNativeDriver: Platform.OS != "web",
 							},
 						)
 						.start()
