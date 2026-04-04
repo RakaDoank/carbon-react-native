@@ -2,6 +2,10 @@ import {
 	createContext,
 } from "react"
 
+import {
+	I18nManager,
+} from "react-native"
+
 import type {
 	NotificationColor,
 } from "../../../components/notification/NotificationColor"
@@ -26,5 +30,5 @@ export const GlobalConfigContext = createContext<GlobalConfigContext>({
 	android_buttonRippleEffect: true,
 	notificationColor: "high_contrast",
 	toastDuration: 5000,
-	rtl: false,
+	rtl: I18nManager.isRTL,
 })
