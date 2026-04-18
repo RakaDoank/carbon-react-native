@@ -58,6 +58,7 @@ export default EslintConfig.defineConfig([
 				},
 			],
 			"import-x/no-cycle": "error",
+			"import-x/no-empty-named-blocks": "error",
 			"import-x/order": [
 				"error",
 				{
