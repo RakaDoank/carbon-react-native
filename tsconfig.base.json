@@ -19,7 +19,6 @@
 		"resolveJsonModule": true,
 		"resolvePackageJsonImports": false,
 		"strict": true,
-		"types": ["react-native-web"],
 		"verbatimModuleSyntax": true,
 	}
 }

@@ -5,7 +5,10 @@
 	],
 	"compilerOptions": {
 		"rootDir": "./src",
-		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"]
+		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"],
+		"types": [
+			"react-native-web"
+		]
 	},
 	"include": [
 		"./src/**/*",

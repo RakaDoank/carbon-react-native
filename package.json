@@ -32,11 +32,11 @@
 		"eslint-plugin-react-native": "5.0.0",
 		"globals": "^17.4.0",
 		"ttf2woff": "3.0.0",
-		"typescript": "5.9.3",
-		"typescript-eslint": "8.57.2"
+		"typescript": "6.0.3",
+		"typescript-eslint": "8.58.2"
 	},
 	"engines": {
 		"node": ">=24",
-		"pnpm": ">=10.17"
+		"pnpm": ">=10.33"
 	}
 }
