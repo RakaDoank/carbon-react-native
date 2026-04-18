@@ -79,14 +79,13 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 			ref =
 				useRef({
 					allowOnChangeEffect: false,
-					open: !!defaultOpen,
 				}),
 
 			viewRef =
 				useRef<View>(null),
 
 			[openSelf, setOpenSelf] =
-				useState(ref.current.open),
+				useState(!!defaultOpen),
 
 			controlled =
 				typeof openProp !== "undefined",
@@ -116,18 +115,18 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					},
 					set open(val) {
 						if(!controlled) {
-							ref.current.open = val
-							setOpenSelf(ref.current.open)
+							setOpenSelf(val)
 						}
 					},
 					setOpen(value) {
 						if(!controlled) {
+							let openNext: boolean
 							if(typeof value === "boolean") {
-								ref.current.open = value
+								openNext = value
 							} else {
-								ref.current.open = value(ref.current.open)
+								openNext = value(open)
 							}
-							setOpenSelf(ref.current.open)
+							setOpenSelf(openNext)
 						}
 					},
 				},
