@@ -112,7 +112,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				}) as View,
 				{
 					get open() {
-						return ref.current.open
+						return open
 					},
 					set open(val) {
 						if(!controlled) {
@@ -133,6 +133,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				},
 			)
 		}, [
+			open,
 			controlled,
 		])
 
