@@ -113,11 +113,6 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					get open() {
 						return open
 					},
-					set open(val) {
-						if(!controlled) {
-							setOpenSelf(val)
-						}
-					},
 					setOpen(value) {
 						if(!controlled) {
 							let openNext: boolean

@@ -132,13 +132,6 @@ export const RadioButtonInput = forwardRef<RadioButtonInputRef, RadioButtonInput
 					get checked() {
 						return checked
 					},
-					set checked(val) {
-						if(!controlled) {
-							ref.current.onChangeEffect = true
-							ref.current.checked = val
-							setCheckedSelf(ref.current.checked)
-						}
-					},
 					setChecked(checked_) {
 						if(!controlled) {
 							ref.current.onChangeEffect = true
