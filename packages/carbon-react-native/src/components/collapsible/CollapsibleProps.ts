@@ -4,7 +4,6 @@ import type {
 } from "react-native"
 
 export interface CollapsibleProps extends ViewProps {
-	defaultOpen?: boolean,
 	open?: boolean,
 	motion?: Record<"toOpen" | "toClose", {
 		duration: number,

@@ -36,8 +36,7 @@ import type {
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 	function(
 		{
-			defaultOpen,
-			open: openProp,
+			open,
 			motion = {
 				toOpen: {
 					duration: Motion.Duration.fast_02,
@@ -80,17 +79,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					 */
 					positionView: "absolute" | "relative",
 					contentHeight: number,
-					openSelf: boolean,
 				}>({
-					positionView: defaultOpen ?? openProp ? "relative" : "absolute",
+					positionView: open ? "relative" : "absolute",
 					contentHeight: 0,
-					openSelf: !!defaultOpen,
 				}),
 
-			[openSelf, setOpenSelf] =
-				useState(!!defaultOpen)
-
-		const
 			/**
 			 * Absolute position is required to keep content being rendered as it is when the container is not open (zero height)  
 			 *
@@ -100,9 +93,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			 */
 			[positionView, setPositionView] =
 				useState<"absolute" | "relative">(
-					defaultOpen ?? openProp ? "relative" : "absolute",
-					// same like ref.current.positionView
-					// can't use it directly because the eslint-plugin-react-hooks
+					ref.current.positionView,
 				),
 
 			heightAnimated =
@@ -114,12 +105,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			 */
 			contentContainerAnimated =
 				useRef(new Animated.Value(0)),
-
-			controlled =
-				typeof openProp === "boolean",
-
-			open =
-				controlled ? !!openProp : openSelf,
 
 			setPositionViewToAbsolute =
 				useCallback(() => {
@@ -191,7 +176,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						},
 					).start()
 				}
-				onToggle?.(open)
+				onToggle?.(!!open)
 			}
 		}, [
 			open,
@@ -208,35 +193,17 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				viewRef.current as View,
 				{
 					get open() {
-						return open
-					},
-					set open(val) {
-						if(!controlled) {
-							ref.current.openSelf = val
-							setOpenSelf(ref.current.openSelf)
-						}
-					},
-					setOpen(value) {
-						if(!controlled) {
-							if(typeof value === "boolean") {
-								ref.current.openSelf = value
-							} else {
-								ref.current.openSelf = value(ref.current.openSelf)
-							}
-							setOpenSelf(ref.current.openSelf)
-						}
+						return !!open
 					},
 				},
 			)
 		}, [
 			open,
-			controlled,
 		])
 
 		return (
 			<Animated.View
 				{ ...props }
-				/* eslint-disable react-hooks/refs */
 				style={ [
 					CarbonStyleSheet.g.overflow_hidden,
 					positionView === "absolute"
@@ -246,7 +213,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						: null,
 					style,
 				] }
-				/* eslint-enable react-hooks/refs */
 				ref={ viewRef }
 			>
 				<View
@@ -258,7 +224,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					] }
 				>
 					<Animated.View
-						/* eslint-disable react-hooks/refs */
 						style={ [
 							CarbonStyleSheet.g.flex_initial,
 							{
@@ -275,7 +240,6 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							},
 							contentContainerStyle,
 						] }
-						/* eslint-enable react-hooks/refs */
 						onLayout={ onLayoutContent }
 					>
 						{ children }
