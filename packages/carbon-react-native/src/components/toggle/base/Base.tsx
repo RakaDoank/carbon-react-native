@@ -56,8 +56,8 @@ import type {
 } from "./BaseRef"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	BaseRefBase,
+} from "./BaseRefBase"
 
 export const Base = forwardRef<BaseRef, BaseProps>(
 	function Base(
@@ -101,7 +101,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, RefBase>(
+			return Object.assign<View, BaseRefBase>(
 				(viewRef.current ?? {
 				}) as View,
 				{

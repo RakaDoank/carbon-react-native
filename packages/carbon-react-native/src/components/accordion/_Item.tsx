@@ -38,13 +38,13 @@ import type {
 	AccordionItemRef,
 } from "./AccordionItemRef"
 
+import type {
+	AccordionItemRefBase,
+} from "./AccordionItemRefBase"
+
 import {
 	Header,
 } from "./_Header"
-
-import type {
-	ItemRefBase,
-} from "./_ItemRefBase"
 
 import {
 	Context,
@@ -107,7 +107,7 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, ItemRefBase>(
+			return Object.assign<View, AccordionItemRefBase>(
 				(viewRef.current ?? {
 				}) as View,
 				{

@@ -1,4 +1,5 @@
 export * from "./RadioButtonInput"
-export * from "./RadioButtonInputInteractiveState"
-export * from "./RadioButtonInputProps"
-export * from "./RadioButtonInputRef"
+export type * from "./RadioButtonInputInteractiveState"
+export type * from "./RadioButtonInputProps"
+export type * from "./RadioButtonInputRef"
+export type * from "./RadioButtonInputRefBase"

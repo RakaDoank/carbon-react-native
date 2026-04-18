@@ -3,8 +3,8 @@ import type {
 } from "react-native"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	BaseRefBase,
+} from "./BaseRefBase"
 
-export interface BaseRef extends View, RefBase {
+export interface BaseRef extends View, BaseRefBase {
 }

@@ -45,16 +45,16 @@ import type {
 } from "./SwitchRef"
 
 import type {
+	SwitchRefBase,
+} from "./SwitchRefBase"
+
+import type {
 	SwitchSize,
 } from "./SwitchSize"
 
 import type {
 	SwitchState,
 } from "./SwitchState"
-
-import type {
-	RefBase,
-} from "./_RefBase"
 
 export const Switch = forwardRef<SwitchRef, SwitchProps>(
 	function(
@@ -238,7 +238,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 		])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, RefBase>(
+			return Object.assign<View, SwitchRefBase>(
 				(viewRef.current ?? {
 				}) as View,
 				{

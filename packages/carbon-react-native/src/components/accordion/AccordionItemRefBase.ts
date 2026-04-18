@@ -1,4 +1,4 @@
-export interface ItemRefBase {
+export interface AccordionItemRefBase {
 	/**
 	 * The current open value.
 	 * 

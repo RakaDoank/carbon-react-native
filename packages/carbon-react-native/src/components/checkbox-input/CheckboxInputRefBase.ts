@@ -2,7 +2,7 @@ import type {
 	CheckboxInputState,
 } from "./CheckboxInputState"
 
-export interface RefBase {
+export interface CheckboxInputRefBase {
 	/**
 	 * The current checked value.
 	 * 

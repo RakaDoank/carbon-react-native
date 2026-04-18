@@ -1,3 +1,4 @@
 export * from "./RadioButton"
-export * from "./RadioButtonProps"
-export * from "./RadioButtonRef"
+export type * from "./RadioButtonProps"
+export type * from "./RadioButtonRef"
+export type * from "./RadioButtonRefBase"

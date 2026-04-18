@@ -1,4 +1,4 @@
-export interface RefBase {
+export interface CollapsibleRefBase {
 	/**
 	 * The current open value.
 	 * 

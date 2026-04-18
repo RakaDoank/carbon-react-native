@@ -3,8 +3,8 @@ import type {
 } from "react-native"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	SwitchRefBase,
+} from "./SwitchRefBase"
 
-export interface SwitchRef extends View, RefBase {
+export interface SwitchRef extends View, SwitchRefBase {
 }

@@ -1,4 +1,4 @@
-export  interface RefBase {
+export  interface RadioButtonInputRefBase {
 	/**
 	 * The current checked value.
 	 * 

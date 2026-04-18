@@ -2,7 +2,7 @@ import type {
 	SwitchRef,
 } from "../../switch/SwitchRef"
 
-export interface RefBase {
+export interface BaseRefBase { // weird name
 	/**
 	 * The current value.
 	 * 

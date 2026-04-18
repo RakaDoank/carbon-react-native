@@ -1,3 +1,4 @@
 export * from "./Base"
-export * from "./BaseProps"
-export * from "./BaseRef"
+export type * from "./BaseProps"
+export type * from "./BaseRef"
+export type * from "./BaseRefBase"

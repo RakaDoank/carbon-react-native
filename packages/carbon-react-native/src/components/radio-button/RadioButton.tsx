@@ -51,8 +51,8 @@ import type {
 } from "./RadioButtonRef"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	RadioButtonRefBase,
+} from "./RadioButtonRefBase"
 
 export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 	function RadioButton(
@@ -97,7 +97,7 @@ export const RadioButton = forwardRef<RadioButtonRef, RadioButtonProps>(
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, RefBase>(
+			return Object.assign<View, RadioButtonRefBase>(
 				(viewRef.current ?? {
 				}) as View,
 				{

@@ -3,8 +3,8 @@ import type {
 } from "react-native"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	CheckboxInputRefBase,
+} from "./CheckboxInputRefBase"
 
-export interface CheckboxInputRef extends View, RefBase {
+export interface CheckboxInputRef extends View, CheckboxInputRefBase {
 }

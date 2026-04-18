@@ -47,9 +47,8 @@ import type {
 } from "./CheckboxRef"
 
 import type {
-	RefBase,
-} from "./_RefBase"
-
+	CheckboxRefBase,
+} from "./CheckboxRefBase"
 
 export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 	function Checkbox(
@@ -95,7 +94,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, RefBase>(
+			return Object.assign<View, CheckboxRefBase>(
 				(viewRef.current ?? {
 				}) as View,
 				{

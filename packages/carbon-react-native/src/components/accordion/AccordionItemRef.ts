@@ -3,8 +3,8 @@ import type {
 } from "react-native"
 
 import type {
-	ItemRefBase,
-} from "./_ItemRefBase"
+	AccordionItemRefBase,
+} from "./AccordionItemRefBase"
 
-export interface AccordionItemRef extends View, ItemRefBase {
+export interface AccordionItemRef extends View, AccordionItemRefBase {
 }

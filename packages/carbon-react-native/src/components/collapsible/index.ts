@@ -1,3 +1,4 @@
 export * from "./Collapsible"
-export * from "./CollapsibleProps"
-export * from "./CollapsibleRef"
+export type * from "./CollapsibleProps"
+export type * from "./CollapsibleRef"
+export type * from "./CollapsibleRefBase"

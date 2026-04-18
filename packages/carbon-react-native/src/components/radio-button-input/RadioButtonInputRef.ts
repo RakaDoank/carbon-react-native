@@ -3,8 +3,8 @@ import type {
 } from "react-native"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	RadioButtonInputRefBase,
+} from "./RadioButtonInputRefBase"
 
-export interface RadioButtonInputRef extends View, RefBase {
+export interface RadioButtonInputRef extends View, RadioButtonInputRefBase {
 }

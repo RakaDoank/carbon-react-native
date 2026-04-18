@@ -3,9 +3,9 @@ import type {
 } from "react-native"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	CollapsibleRefBase,
+} from "./CollapsibleRefBase"
 
-export interface CollapsibleRef extends View, RefBase {
+export interface CollapsibleRef extends View, CollapsibleRefBase {
 }
 

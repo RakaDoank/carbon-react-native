@@ -30,8 +30,8 @@ import type {
 } from "./CollapsibleRef"
 
 import type {
-	RefBase,
-} from "./_RefBase"
+	CollapsibleRefBase,
+} from "./CollapsibleRefBase"
 
 export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 	function(
@@ -204,7 +204,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 		])
 
 		useImperativeHandle(forwardedRef, () => {
-			return Object.assign<View, RefBase>(
+			return Object.assign<View, CollapsibleRefBase>(
 				viewRef.current as View,
 				{
 					get open() {

@@ -1,4 +1,4 @@
-export interface RefBase {
+export interface SwitchRefBase {
 	/**
 	 * The current value.
 	 * 
