@@ -99,7 +99,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 				}) as View,
 				{
 					get checked() {
-						return checkboxInputRef.current!.checked
+						return checkboxInputRef.current?.checked ?? false
 					},
 					set checked(val) {
 						if(checkboxInputRef.current) {
