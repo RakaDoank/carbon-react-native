@@ -108,6 +108,11 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 					get value() {
 						return !!switchRef.current?.value
 					},
+					set value(val) {
+						if(switchRef.current) {
+							switchRef.current.value = val
+						}
+					},
 					setValue(val) {
 						switchRef.current?.setValue(val)
 					},

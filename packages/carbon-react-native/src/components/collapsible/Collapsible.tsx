@@ -207,6 +207,15 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			return Object.assign<View, RefBase>(
 				viewRef.current as View,
 				{
+					get open() {
+						return open
+					},
+					set open(val) {
+						if(!controlled) {
+							ref.current.openSelf = val
+							setOpenSelf(ref.current.openSelf)
+						}
+					},
 					setOpen(value) {
 						if(!controlled) {
 							if(typeof value === "boolean") {
@@ -220,6 +229,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 				},
 			)
 		}, [
+			open,
 			controlled,
 		])
 

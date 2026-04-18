@@ -8,4 +8,3 @@ import type {
 
 export interface CheckboxInputRef extends View, RefBase {
 }
-

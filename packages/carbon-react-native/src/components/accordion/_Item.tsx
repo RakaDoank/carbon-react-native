@@ -114,6 +114,12 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					get open() {
 						return ref.current.open
 					},
+					set open(val) {
+						if(!controlled) {
+							ref.current.open = val
+							setOpenSelf(ref.current.open)
+						}
+					},
 					setOpen(value) {
 						if(!controlled) {
 							if(typeof value === "boolean") {

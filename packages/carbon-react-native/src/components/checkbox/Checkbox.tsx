@@ -102,6 +102,11 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
 					get checked() {
 						return checkboxInputRef.current!.checked
 					},
+					set checked(val) {
+						if(checkboxInputRef.current) {
+							checkboxInputRef.current.checked = val
+						}
+					},
 					setChecked(value_) {
 						checkboxInputRef.current?.setChecked(value_)
 					},

@@ -158,6 +158,13 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 					get checked() {
 						return checked
 					},
+					set checked(val) {
+						if(!controlled && interactiveState !== "read_only") {
+							ref.current.onChangeEffect = true
+							ref.current.value = val
+							setCheckedSelf(ref.current.value)
+						}
+					},
 					setChecked(value_) {
 						if(!controlled && interactiveState !== "read_only") {
 							ref.current.onChangeEffect = true
