@@ -146,7 +146,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							duration: motion.toOpen.duration,
 							easing: motion.toOpen.easing as EasingFunction,
 						},
-					).start(onOpened)
+					).start(({ finished }) => {
+						if(finished && onOpened) {
+							onOpened()
+						}
+					})
 					Animated.timing(
 						contentContainerAnimated.current,
 						{
@@ -165,7 +169,11 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							easing: motion.toClose.easing as EasingFunction,
 							useNativeDriver: false,
 						},
-					).start(onClosed)
+					).start(({ finished }) => {
+						if(finished && onClosed) {
+							onClosed()
+						}
+					})
 					Animated.timing(
 						contentContainerAnimated.current,
 						{
