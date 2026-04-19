@@ -12,6 +12,10 @@ import {
 	Color,
 } from "@audira/carbon-react-native-elements"
 
+import {
+	AnimatedCollapsibleChevron,
+} from "../../_internal/components"
+
 import * as CarbonStyleSheet from "../../carbon-style-sheet"
 
 import {
@@ -41,8 +45,8 @@ import {
 } from "./_HeaderBorder"
 
 import {
-	Chevron,
-} from "./_chevron"
+	Motion,
+} from "./_motion"
 
 export function Header({
 	size = "medium",
@@ -185,7 +189,8 @@ const
 	) => React.ReactNode =
 		(open, iconColorState, iconSize, iconStyle) => {
 			return (
-				<Chevron
+				<AnimatedCollapsibleChevron
+					motion={ Motion }
 					open={ open }
 					color={ iconColorState }
 					size={ iconSize }

@@ -5,29 +5,51 @@ import {
 
 import {
 	Animated as RNAnimated,
+	Easing,
 	type EasingFunction,
 } from "react-native"
 
-import ChevronDown from "@carbon/icons/svg/32/chevron--down.svg"
-
 import {
 	Motion,
-} from "../_motion"
+} from "@audira/carbon-react-native-elements"
+
+import ChevronDown from "@carbon/icons/svg/32/chevron--down.svg"
 
 import type {
-	ChevronProps,
-} from "./ChevronProps"
+	AnimatedCollapsibleChevronProps,
+} from "./AnimatedCollapsibleChevronProps"
 
 const
 	AnimatedSvgChevronDown =
 		RNAnimated.createAnimatedComponent(ChevronDown)
 
-export function Chevron({
+export function AnimatedCollapsibleChevron({
+	motion = {
+		toOpen: {
+			duration: Motion.Duration.fast_02,
+			easing: Easing.bezier(
+				Motion.Easing.entrance.productive.x1,
+				Motion.Easing.entrance.productive.y1,
+				Motion.Easing.entrance.productive.x2,
+				Motion.Easing.entrance.productive.y2,
+			),
+		},
+		toClose: {
+			duration: Motion.Duration.fast_02,
+			easing: Easing.bezier(
+				Motion.Easing.exit.productive.x1,
+				Motion.Easing.exit.productive.y1,
+				Motion.Easing.exit.productive.x2,
+				Motion.Easing.exit.productive.y2,
+			),
+		},
+	},
 	open,
 	color,
 	size,
 	style,
-}: ChevronProps) {
+	...props
+}: AnimatedCollapsibleChevronProps) {
 
 	const
 		isMounted =
@@ -51,8 +73,8 @@ export function Chevron({
 					rotateZ.current,
 					{
 						toValue: 1,
-						duration: Motion.toOpen.duration,
-						easing: Motion.toOpen.easing as EasingFunction,
+						duration: motion.toOpen.duration,
+						easing: motion.toOpen.easing as EasingFunction,
 						useNativeDriver: true,
 					},
 				).start()
@@ -61,8 +83,8 @@ export function Chevron({
 					rotateZ.current,
 					{
 						toValue: 0,
-						duration: Motion.toClose.duration,
-						easing: Motion.toClose.easing as EasingFunction,
+						duration: motion.toClose.duration,
+						easing: motion.toClose.easing as EasingFunction,
 						useNativeDriver: true,
 					},
 				).start()
@@ -71,12 +93,14 @@ export function Chevron({
 			isMounted.current = true
 		}
 	}, [
+		motion,
 		open,
 		rotateZ,
 	])
 
 	return (
 		<AnimatedSvgChevronDown
+			{ ...props }
 			fill={ color }
 			width={ size }
 			height={ size }
