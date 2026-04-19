@@ -10,7 +10,7 @@ import type {
 	CollapsibleProps,
 } from "../collapsible/CollapsibleProps"
 
-export const Motion: NonNullable<CollapsibleProps["motion"]> =
+export const Motion =
 	{
 		toOpen: {
 			duration: Motion_.Duration.fast_02,
@@ -24,4 +24,4 @@ export const Motion: NonNullable<CollapsibleProps["motion"]> =
 		toClose: {
 			duration: 0,
 		},
-	}
+	} as const satisfies NonNullable<CollapsibleProps["motion"]>
