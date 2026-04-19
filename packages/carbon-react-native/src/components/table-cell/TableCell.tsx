@@ -45,6 +45,7 @@ export const TableCell = forwardRef<TableCellRef, TableCellProps>(
 			text,
 			textProps,
 			width,
+			invisible,
 			role = "cell",
 			accessibilityLabel,
 			style,
@@ -66,6 +67,7 @@ export const TableCell = forwardRef<TableCellRef, TableCellProps>(
 				style={ [
 					CarbonStyleSheet.g.flex_auto,
 					CarbonStyleSheet.g.px_05,
+					invisible ? CarbonStyleSheet.g.invisible : undefined,
 
 					tableRowHeaderContext.inRowHeader
 						? tableRowHeaderContext.size == "extra_large"
@@ -75,6 +77,7 @@ export const TableCell = forwardRef<TableCellRef, TableCellProps>(
 
 					typeof width === "number" ? {
 						width,
+						minWidth: width,
 					} : undefined,
 					style,
 				] }

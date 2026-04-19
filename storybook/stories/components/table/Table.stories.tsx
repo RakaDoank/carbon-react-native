@@ -19,7 +19,7 @@ import IconDownload from "@carbon/icons/svg/32/download.svg"
 
 export default {
 
-	title: "Components/Data Table",
+	title: "Components/Table",
 
 	args: {
 		rowSize: "large",

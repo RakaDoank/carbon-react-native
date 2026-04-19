@@ -153,17 +153,10 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 
 		useImperativeHandle(forwardedRef, () => {
 			return Object.assign<View, CheckboxInputRefBase>(
-				viewRef.current as View,
+				viewRef.current ?? {} as View,
 				{
 					get checked() {
 						return checked
-					},
-					set checked(val) {
-						if(!controlled && interactiveState !== "read_only") {
-							ref.current.onChangeEffect = true
-							ref.current.value = val
-							setCheckedSelf(ref.current.value)
-						}
 					},
 					setChecked(value_) {
 						if(!controlled && interactiveState !== "read_only") {
@@ -237,7 +230,7 @@ export const CheckboxInput = forwardRef<CheckboxInputRef, CheckboxInputProps>(
 
 const
 	size =
-		18,
+		16,
 
 	iconSize =
 		size - 4,

@@ -87,6 +87,6 @@ const
 	styleSheet =
 		StyleSheet.create({
 			safeAreaProvider: {
-				padding: "1rem",
+				padding: 16,
 			},
 		})

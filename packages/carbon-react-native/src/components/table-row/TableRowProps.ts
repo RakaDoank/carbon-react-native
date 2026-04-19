@@ -11,7 +11,7 @@ import type {
 	TableRowSize,
 } from "./TableRowSize"
 
-export interface TableRowProps extends Omit<PressableProps, "style"> {
+export interface TableRowProps extends Omit<PressableProps, "style" | "children"> {
 	/**
 	 * You may don't want to set the row size each row individually.
 	 * Prefer to opt `rowSize` in the `Table` prop instead.
@@ -41,8 +41,14 @@ export interface TableRowProps extends Omit<PressableProps, "style"> {
 	 */
 	zebra?: boolean,
 	/**
+	 * Help this component to render it initially with selected style,
+	 * if you have `TableCellCheckbox` that checked by default.
+	 */
+	defaultSelected?: boolean,
+	/**
 	 * @default "normal"
 	 */
 	interactiveState?: TableRowInteractiveState,
+	children?: ViewProps["children"],
 	style?: ViewProps["style"],
 }

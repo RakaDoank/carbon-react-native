@@ -7,6 +7,9 @@ import type {
 	TableRowSize,
 } from "./TableRowSize"
 
+/**
+ * Shared style sheet for `TableRow` and `TableRowHeader`
+ */
 export const StyleSheetHeight =
 	StyleSheet.create({
 		extra_small: {

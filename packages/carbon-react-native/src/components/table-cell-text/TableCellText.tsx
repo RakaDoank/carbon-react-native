@@ -60,6 +60,7 @@ export const TableCellText = forwardRef<TableCellTextRef, TableCellTextProps>(
 					getStyleSheetInteractiveState({
 						rowInteractiveState: tableRowContext.interactiveState,
 						rowHovered: tableRowContext.hovered,
+						rowSelected: tableRowContext.selected,
 						inRowHeader: tableRowHeaderContext.inRowHeader,
 					}),
 					style,
@@ -81,15 +82,12 @@ const
 			disabled: {
 				color: CarbonStyleSheet.color.text_disabled,
 			},
-			selected: {
-				color: CarbonStyleSheet.color.text_primary,
-			},
-			normal_header: {
+			in_header: {
 				color: CarbonStyleSheet.color.text_primary,
 			},
 		} as const satisfies Record<
 			| TableRowContext["interactiveState"]
-			| "normal_header",
+			| "in_header",
 			TextStyle
 		>)
 
@@ -97,15 +95,16 @@ function getStyleSheetInteractiveState(
 	data: {
 		rowInteractiveState: TableRowContext["interactiveState"],
 		rowHovered: boolean,
+		rowSelected: boolean,
 		inRowHeader: boolean,
 	},
 ) {
 	if(!data.inRowHeader) {
-		if(data.rowHovered) {
-			return styleSheetInteractiveState.selected // same style as the `selected`
+		if(data.rowHovered || data.rowSelected) {
+			return styleSheetInteractiveState.in_header // even it's not in header, it has same style like the header
 		}
 		return styleSheetInteractiveState[data.rowInteractiveState]
 	}
 
-	return styleSheetInteractiveState.normal_header
+	return styleSheetInteractiveState.in_header
 }

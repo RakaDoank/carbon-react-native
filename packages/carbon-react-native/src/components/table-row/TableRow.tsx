@@ -11,6 +11,8 @@ import {
 	Pressable,
 	StyleSheet,
 	type PressableProps,
+	type View,
+	type ViewProps,
 	type ViewStyle,
 } from "react-native"
 
@@ -46,6 +48,10 @@ import {
 } from "./_TableRowContext"
 
 import {
+	TableRowContextProvider,
+} from "./_TableRowContextProvider"
+
+import {
 	StyleSheetHeight,
 } from "./_style-sheet-height"
 
@@ -53,13 +59,74 @@ export const TableRow = forwardRef<TableRowRef, TableRowProps>(
 	function TableRow(
 		{
 			interactiveState = "normal",
-			size: sizeProp,
+			size,
 			zebra,
+			defaultSelected,
 			onHoverIn: onHoverInProp,
 			onHoverOut: onHoverOutProp,
 			role = "row",
+			...props
+		},
+		ref,
+	) {
+
+		const
+			[hovered, setHovered] =
+				useState(false)
+
+		const
+			onHoverIn: NonNullable<PressableProps["onHoverIn"]> =
+				useCallback(event => {
+					setHovered(true)
+					onHoverInProp?.(event)
+				}, [
+					onHoverInProp,
+				]),
+
+			onHoverOut: NonNullable<PressableProps["onHoverOut"]> =
+				useCallback(event => {
+					setHovered(false)
+					onHoverOutProp?.(event)
+				}, [
+					onHoverOutProp,
+				])
+
+		return (
+			<TableRowContextProvider
+				interactiveState={ interactiveState }
+				hovered={ hovered }
+				defaultSelected={ defaultSelected }
+			>
+				<Content
+					ref={ ref }
+					{ ...props }
+					interactiveState={ interactiveState }
+					size={ size }
+					zebra={ zebra }
+					role={ role }
+					onHoverIn={ onHoverIn }
+					onHoverOut={ onHoverOut }
+				/>
+			</TableRowContextProvider>
+		)
+
+	},
+)
+
+interface ContentProps extends Omit<PressableProps, "style"> {
+	interactiveState: NonNullable<TableRowProps["interactiveState"]>,
+	size?: TableRowProps["size"],
+	zebra?: TableRowProps["zebra"],
+	style?: ViewProps["style"],
+}
+
+const Content = forwardRef<View, ContentProps>(
+	function Content(
+		{
+			interactiveState,
+			size: sizeProp,
+			zebra,
 			style,
-			children,
 			...props
 		},
 		ref,
@@ -82,61 +149,33 @@ export const TableRow = forwardRef<TableRowRef, TableRowProps>(
 					tableContext.rowSize,
 				]),
 
-			[hovered, setHovered] =
-				useState(false)
-
-		const
-			onHoverIn: NonNullable<PressableProps["onHoverIn"]> =
-				useCallback(event => {
-					setHovered(true)
-					onHoverInProp?.(event)
-				}, [
-					onHoverInProp,
-				]),
-
-			onHoverOut: NonNullable<PressableProps["onHoverOut"]> =
-				useCallback(event => {
-					setHovered(false)
-					onHoverOutProp?.(event)
-				}, [
-					onHoverOutProp,
-				])
+			tableRowContext =
+				useContext(TableRowContext)
 
 		return (
-			<TableRowContext.Provider
-				value={{
-					interactiveState,
-					hovered,
-				}}
-			>
-				<Pressable
-					ref={ ref }
-					{ ...props }
-					role={ role }
-					onHoverIn={ onHoverIn }
-					onHoverOut={ onHoverOut }
-					style={ [
-						styleSheet.tableRow,
-						CarbonStyleSheet.g.flex_auto,
-						CarbonStyleSheet.g.flex_row,
-						StyleSheetHeight[size],
-						getInteractiveStateStyle(
-							interactiveState,
-							{
-								layer: layerContext,
-								hovered,
-								zebra,
-							},
-						),
-						size === "extra_large"
-							? CarbonStyleSheet.g.pt_05
-							: CarbonStyleSheet.g.items_center,
-						style,
-					] }
-				>
-					{ children }
-				</Pressable>
-			</TableRowContext.Provider>
+			<Pressable
+				ref={ ref }
+				{ ...props }
+				style={ [
+					styleSheet.tableRow,
+					CarbonStyleSheet.g.flex_auto,
+					CarbonStyleSheet.g.flex_row,
+					StyleSheetHeight[size],
+					getInteractiveStateStyle(
+						interactiveState,
+						{
+							layer: layerContext,
+							hovered: tableRowContext.hovered,
+							selected: tableRowContext.selected,
+							zebra,
+						},
+					),
+					size === "extra_large"
+						? CarbonStyleSheet.g.pt_05
+						: CarbonStyleSheet.g.items_center,
+					style,
+				] }
+			/>
 		)
 
 	},
@@ -153,6 +192,7 @@ const
 						transitionProperty: "background-color, border-bottom-color",
 						transitionDuration: `${Motion.Duration.fast_01}ms`,
 						transitionTimingFunction: `cubic-bezier(${Motion.Easing.entrance.productive.x1},${Motion.Easing.entrance.productive.y1},${Motion.Easing.entrance.productive.x2},${Motion.Easing.entrance.productive.y2})`,
+						cursor: "auto",
 					},
 				}),
 			},
@@ -242,6 +282,7 @@ const
 			[Layer in ColorLayerLevel]: Record<
 				| TableRowInteractiveState
 				| "hovered"
+				| "selected"
 				| "selected_hover"
 				| "zebra",
 				ViewStyle
@@ -250,22 +291,26 @@ const
 
 function getInteractiveStateStyle(
 	interactiveState: TableRowInteractiveState,
-	data: {
+	modifier: {
 		layer: ColorLayerLevel,
+		selected: boolean,
 		hovered: boolean,
 		zebra?: boolean,
 	},
 ) {
-	if(!data.hovered) {
-		if(data.zebra && interactiveState == "normal") {
-			return styleSheetInteractiveStatePerLayer[data.layer].zebra
+	if(!modifier.hovered) {
+		if(modifier.zebra && interactiveState == "normal") {
+			return styleSheetInteractiveStatePerLayer[modifier.layer].zebra
 		}
-		return styleSheetInteractiveStatePerLayer[data.layer][interactiveState]
+		if(modifier.selected) {
+			return styleSheetInteractiveStatePerLayer[modifier.layer].selected
+		}
+		return styleSheetInteractiveStatePerLayer[modifier.layer][interactiveState]
 	}
 
-	if(interactiveState == "selected") {
-		return styleSheetInteractiveStatePerLayer[data.layer].selected_hover
+	if(modifier.selected) {
+		return styleSheetInteractiveStatePerLayer[modifier.layer].selected_hover
 	}
 
-	return styleSheetInteractiveStatePerLayer[data.layer].hovered
+	return styleSheetInteractiveStatePerLayer[modifier.layer].hovered
 }

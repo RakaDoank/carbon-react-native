@@ -27,6 +27,11 @@ export interface TableCellProps extends ViewProps {
 	 */
 	text?: string,
 	/**
+	 * You may need this to make the checkbox cell invisible,
+	 * but consist its width
+	 */
+	invisible?: boolean,
+	/**
 	 * Only applies if you use the `text` prop instead of `children`
 	 */
 	textProps?: Omit<TableCellTextProps, "children">,
