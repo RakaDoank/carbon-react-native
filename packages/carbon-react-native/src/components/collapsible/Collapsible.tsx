@@ -59,7 +59,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 			},
 			children,
 			style,
-			contentContainerStyle,
+			contentContainerProps,
 			onToggle,
 			onOpened,
 			onClosed,
@@ -232,6 +232,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 					] }
 				>
 					<Animated.View
+						{ ...contentContainerProps }
 						style={ [
 							CarbonStyleSheet.g.flex_initial,
 							{
@@ -246,7 +247,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 									}),
 								}],
 							},
-							contentContainerStyle,
+							contentContainerProps?.style,
 						] }
 						onLayout={ onLayoutContent }
 					>

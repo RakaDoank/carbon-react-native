@@ -13,7 +13,7 @@ import type {
 export interface Context {
 	size?: AccordionHeaderProps["size"],
 	flushAlignment?: AccordionHeaderProps["flushAlignment"],
-	collapsibleContentContainerStyle?: CollapsibleProps["contentContainerStyle"],
+	collapsibleContentContainerStyle?: NonNullable<CollapsibleProps["contentContainerProps"]>["style"],
 }
 
 export const Context = createContext<Context>({

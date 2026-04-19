@@ -149,11 +149,13 @@ export const Item = forwardRef<AccordionItemRef, AccordionItemProps>(
 					motion={ Motion }
 					open={ open }
 					dir={ globalConfigContext.rtl ? "rtl" : undefined }
-					contentContainerStyle={ [
-						globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
-						accordionContext.collapsibleContentContainerStyle,
-						style.panel,
-					] }
+					contentContainerProps={{
+						style: [
+							globalConfigContext.rtl ? CarbonStyleSheet.g.rtl : undefined,
+							accordionContext.collapsibleContentContainerStyle,
+							style.panel,
+						],
+					}}
 				>
 					{ children }
 				</Collapsible>

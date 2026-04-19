@@ -9,7 +9,7 @@ export interface CollapsibleProps extends ViewProps {
 		duration: number,
 		easing?: EasingFunction,
 	}>,
-	contentContainerStyle?: ViewProps["style"],
+	contentContainerProps?: Omit<ViewProps, "children">,
 	onToggle?: (value: boolean) => void,
 	onOpened?: () => void,
 	onClosed?: () => void,
