@@ -86,6 +86,12 @@ export const { items_end } = StyleSheet.create({
 	} as const,
 })
 
+export const { items_stretch } = StyleSheet.create({
+	items_stretch: {
+		alignItems: "stretch",
+	} as const,
+})
+
 export const { content_start } = StyleSheet.create({
 	content_start: {
 		alignContent: "flex-start",

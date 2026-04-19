@@ -60,6 +60,10 @@ export const items_end = {
 	alignItems: "flex-end",
 } as const satisfies ViewStyle
 
+export const items_stretch = {
+	alignItems: "stretch",
+} as const satisfies ViewStyle
+
 export const content_start = {
 	alignContent: "flex-start",
 } as const satisfies ViewStyle
