@@ -43,7 +43,7 @@ export function initSpacing() {
 			"} from \"react-native\"" +
 			"\n"
 
-		Object.entries(Spacing).map(([key, value]) => {
+		Object.entries({ ...Spacing, spacing_00: 0 }).map(([key, value]) => {
 			const token = key.replace("spacing_", "")
 
 			// +++ Margin & Padding StyleSheet +++
