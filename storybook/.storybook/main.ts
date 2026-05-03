@@ -35,6 +35,8 @@ const main: StorybookConfig = {
 	},
 
 	viteFinal(config) {
+		config.base = "/carbon-react-native"
+
 		config.resolve = {
 			...config.resolve ?? {
 			},
