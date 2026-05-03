@@ -54,5 +54,18 @@ htmlFile =
 		)
 }
 
+{
+	// For oss.sufeni.id/carbon-react-native
+	// fix all the assets and stylesheets href with forward slash
+
+	const hrefRegex = new RegExp(/\.\//g)
+
+	htmlFile =
+		htmlFile.replace(
+			hrefRegex,
+			"./carbon-react-native/",
+		)
+}
+
 node_fs.promises.writeFile(htmlFilePath, htmlFile)
 node_fs.promises.writeFile(iframeHtmlFilePath, iframeHtmlFile)
