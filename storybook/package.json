@@ -9,7 +9,7 @@
 		"prebuild": "expo prebuild",
 		"start": "expo start",
 		"storybook": "storybook dev --disable-telemetry -p 6006",
-		"storybook:build": "storybook build --disable-telemetry --output-dir .dist",
+		"storybook:build": "storybook build --disable-telemetry --output-dir .dist --preview-url=/carbon-react-native/iframe.html",
 		"test": "jest"
 	},
 	"dependencies": {
