@@ -10,7 +10,7 @@ Build React Native apps with component and shared patterns using Carbon.
 
 ## Documentation
 
-Visit [https://rakadoank.github.io/carbon-react-native](https://rakadoank.github.io/carbon-react-native) to see all the components, guides, and the utilities.
+Visit [https://oss.sufeni.id/carbon-react-native](https://oss.sufeni.id/carbon-react-native) to see all the components, guides, and the utilities.
 > ⚠️ This library is not fully documented yet
 
 ## Compatibility
