@@ -1,8 +1,8 @@
 {
 	"name": "@audira/carbon-react-native",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"license": "MIT",
-	"homepage": "https://rakadoank.github.io/carbon-react-native",
+	"homepage": "https://oss.sufeni.id/carbon-react-native",
 	"repository": "https://github.com/RakaDoank/carbon-react-native",
 	"description": "Build React Native apps with component and shared patterns using Carbon",
 	"type": "module",
