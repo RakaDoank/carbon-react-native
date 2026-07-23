@@ -1,4 +1,4 @@
-import node_path from "node:path"
+// import node_path from "node:path"
 
 import type {
 	StorybookConfig,
@@ -6,7 +6,7 @@ import type {
 
 import VitePluginSVGR from "vite-plugin-svgr"
 
-const workspaceRoot = node_path.join(import.meta.dirname, "..", "..")
+// const workspaceRoot = node_path.join(import.meta.dirname, "..", "..")
 
 const main: StorybookConfig = {
 
@@ -43,8 +43,8 @@ const main: StorybookConfig = {
 			alias: {
 				...config.resolve?.alias ?? {
 				},
-				"@audira/carbon-react-native": node_path.join(workspaceRoot, "packages", "carbon-react-native", "src"),
-				"@audira/carbon-react-native-elements": node_path.join(workspaceRoot, "packages", "carbon-react-native-elements", "src"),
+				// "@audira/carbon-react-native": node_path.join(workspaceRoot, "packages", "carbon-react-native", "src"),
+				// "@audira/carbon-react-native-elements": node_path.join(workspaceRoot, "packages", "carbon-react-native-elements", "src"),
 			},
 		}
 

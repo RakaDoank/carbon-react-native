@@ -16,21 +16,21 @@
 			".native"
 		],
 		"noEmit": true,
-		"paths": {
-			"@audira/carbon-react-native": [
-				"../packages/carbon-react-native/src/index"
-			],
-			"@audira/carbon-react-native-elements": [
-				"../packages/carbon-react-native-elements/src/index"
-			]
-		},
+		// "paths": {
+		// 	"@audira/carbon-react-native": [
+		// 		"../packages/carbon-react-native/src/index.ts"
+		// 	],
+		// 	"@audira/carbon-react-native-elements": [
+		// 		"../packages/carbon-react-native-elements/src/index.ts"
+		// 	]
+		// },
 		"types": [
 			"react-native-web"
 		]
 	},
 	"include": [
-		"../packages/carbon-react-native/src/**/*",
-		"../packages/carbon-react-native-elements/src/**/*",
+		// "../packages/carbon-react-native/src/**/*",
+		// "../packages/carbon-react-native-elements/src/**/*",
 		"./.storybook/**/*",
 		"./.storybook-rn/**/*",
 		"./App.tsx",
