@@ -22,41 +22,6 @@ import {
 	breakpoint as breakpointStyleProps,
 } from "./breakpoint"
 
-type Style = ViewStyle | TextStyle | ImageStyle
-
-type StyleBreakpoint =
-	Partial<
-		Record<
-			BreakpointToken,
-			Omit<
-				ViewStyle | TextStyle | ImageStyle,
-				ColorStyleAttr
-			>
-		>
-	>
-
-type ColorStyleAttr = Extract<
-	(keyof ViewStyle) | (keyof TextStyle) | (keyof ImageStyle),
-	| "backgroundColor"
-	| "borderColor"
-	| "borderEndColor"
-	| "borderStartColor"
-	| "borderTopColor"
-	| "borderBottomColor"
-	| "borderLeftColor"
-	| "borderRightColor"
-	| "borderBlockColor"
-	| "borderBlockEndColor"
-	| "borderBlockStartColor"
-	| "color"
-	| "outlineColor"
-	| "overlayColor"
-	| "textDecorationColor"
-	| "textShadowColor"
-	| "tintColor"
-	| "shadowColor"
->
-
 /**
  * Create style sheet to help using color token of current color scheme and current breakpoint declaratively.  
  * It makes your code way more shorter which doesn't need to create conditional of current color scheme or current breakpoint in the style prop implementation
@@ -86,7 +51,7 @@ type ColorStyleAttr = Extract<
  * 
  * 		[StyleSheet.breakpoint.medium]: {
  * 			flexDirection: 'row',
- * 			// this style will has row direction of flex box
+ * 			// the `foo` style will has row direction of flex box
  * 			// for screen that equal and larger than the medium breakpoint
  * 		},
  * 	},
@@ -217,6 +182,42 @@ export function create<Styles extends Record<string, Style | StyleBreakpoint> = 
 		}, {
 		} as Styles)
 }
+
+
+type Style = ViewStyle | TextStyle | ImageStyle
+
+type StyleBreakpoint =
+	Partial<
+		Record<
+			BreakpointToken,
+			Omit<
+				ViewStyle | TextStyle | ImageStyle,
+				ColorStyleAttr
+			>
+		>
+	>
+
+type ColorStyleAttr = Extract<
+	(keyof ViewStyle) | (keyof TextStyle) | (keyof ImageStyle),
+	| "backgroundColor"
+	| "borderColor"
+	| "borderEndColor"
+	| "borderStartColor"
+	| "borderTopColor"
+	| "borderBottomColor"
+	| "borderLeftColor"
+	| "borderRightColor"
+	| "borderBlockColor"
+	| "borderBlockEndColor"
+	| "borderBlockStartColor"
+	| "color"
+	| "outlineColor"
+	| "overlayColor"
+	| "textDecorationColor"
+	| "textShadowColor"
+	| "tintColor"
+	| "shadowColor"
+>
 
 const
 	colorStyleAttrs =
