@@ -323,7 +323,7 @@ export default EslintConfig.defineConfig([
 		],
 		settings: {
 			react: {
-				version: "detect",
+				version: "19",
 			},
 		},
 		plugins: {
