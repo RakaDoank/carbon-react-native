@@ -15,6 +15,7 @@ export default {
 	args: {
 		label: "Label",
 		interactiveState: "normal",
+		helperText: "",
 		placeholder: "Placeholder text",
 	},
 	argTypes: {
@@ -30,6 +31,9 @@ export default {
 				"read_only",
 				"warning",
 			] satisfies TextInputFieldInteractiveState[],
+		},
+		helperText: {
+			control: "text",
 		},
 		placeholder: {
 			control: "text",
