@@ -104,6 +104,9 @@ export const TextInputFluid = forwardRef<TextInputFluidRef, TextInputFluidProps>
 				</>) }
 				style={ [
 					styleSheet.textInputFluid,
+					helperText?.length
+						? styleSheet.textInputFieldMinHeight96
+						: styleSheet.textInputFieldMinHeight64,
 					style,
 				] }
 				textInputStyle={ [
@@ -124,6 +127,12 @@ const
 			textInputFluid: {
 				paddingTop: 13,
 				height: "auto", // height varies
+			},
+			textInputFieldMinHeight64: {
+				minHeight: Spacing.spacing_10,
+			},
+			textInputFieldMinHeight96: {
+				minHeight: Spacing.spacing_12,
 			},
 			label: {
 				paddingLeft: Spacing.spacing_05,
