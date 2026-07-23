@@ -1,6 +1,6 @@
 {
 	"name": "@audira/carbon-react-native",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"license": "MIT",
 	"homepage": "https://oss.sufeni.id/carbon-react-native",
 	"repository": "https://github.com/RakaDoank/carbon-react-native",
@@ -39,7 +39,6 @@
 	],
 	"publishConfig": {
 		"main": "./lib/module/index.js",
-		"module": "./lib/module/index.js",
 		"types": "./lib/typescript/module/index.d.ts",
 		"exports": {
 			".": {
