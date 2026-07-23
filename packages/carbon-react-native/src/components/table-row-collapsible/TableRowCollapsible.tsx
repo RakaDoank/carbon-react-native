@@ -2,7 +2,6 @@ import {
 	forwardRef,
 	useCallback,
 	useContext,
-	useEffect,
 	useImperativeHandle,
 	useMemo,
 	useRef,
@@ -120,10 +119,7 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 				typeof openProp !== "undefined",
 
 			open =
-				controlled ? !!openProp : openSelf,
-
-			[expanded, setExpanded] =
-				useState(!!open)
+				controlled ? !!openProp : openSelf
 
 		const
 			onPress: PressableProps["onPress"] =
@@ -138,7 +134,7 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 						setOpenSelf(s => !s)
 					}
 				}, [
-					tableCellChevronProps?.pressableProps,
+					tableCellChevronProps,
 					onPressChevron,
 					controlled,
 				]),
@@ -146,7 +142,6 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 			onClosedHandler: NonNullable<CollapsibleProps["onClosed"]> =
 				useCallback(() => {
 					onClosed?.()
-					setExpanded(false)
 				}, [
 					onClosed,
 				])
@@ -170,14 +165,6 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 			controlled,
 		])
 
-		useEffect(() => {
-			if(open) {
-				setExpanded(true)
-			}
-		}, [
-			open,
-		])
-
 		return (
 			<TableRow
 				ref={ tableRowRef }
@@ -185,9 +172,10 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 				style={ [
 					CarbonStyleSheet.g.flex_col, // override the row flex direction since TableRow is not directly the parent of children
 					CarbonStyleSheet.g.items_stretch,
-					expanded
-						? CarbonStyleSheet.g.h_auto
-						: undefined,
+					// expanded
+					// 	? CarbonStyleSheet.g.h_auto
+					// 	: undefined,
+					CarbonStyleSheet.g.h_auto,
 					styleSheet.tableRowCollapsible,
 					style,
 				] }
@@ -199,7 +187,8 @@ export const TableRowCollapsible = forwardRef<TableRowCollapsibleRef, TableRowCo
 						size === "extra_large"
 							? CarbonStyleSheet.g.pt_05
 							: CarbonStyleSheet.g.items_center,
-						expanded ? TableRowStyleSheetHeight[size] : undefined,
+						// expanded ? TableRowStyleSheetHeight[size] : undefined,
+						TableRowStyleSheetHeight[size],
 					] }
 				>
 					<TableCellChevron
