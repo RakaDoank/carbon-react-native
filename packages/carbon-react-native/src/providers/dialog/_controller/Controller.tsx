@@ -186,7 +186,8 @@ export const Controller = forwardRef<ControllerRef, ControllerProps>(
 						>
 							{ (item.overlayTouchDismiss ?? overlayTouchDismiss) && (
 								<Pressable
-									onPress={ dismissHandler as () => void }
+									// eslint-disable-next-line @typescript-eslint/no-misused-promises
+									onPress={ dismissHandler }
 									style={ StyleSheet.absoluteFill }
 								/>
 							) }
