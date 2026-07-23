@@ -115,6 +115,12 @@ importers:
 
   storybook:
     dependencies:
+      '@audira/carbon-react-native':
+        specifier: workspace:*
+        version: link:../packages/carbon-react-native
+      '@audira/carbon-react-native-elements':
+        specifier: workspace:*
+        version: link:../packages/carbon-react-native-elements
       '@carbon/icons':
         specifier: '>=11'
         version: 11.84.0
