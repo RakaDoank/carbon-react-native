@@ -163,7 +163,8 @@ export const DialogStack: StoryFn = () => {
 								button1={
 									<Button.Secondary
 										text="Dismiss"
-										onPress={ dialogContext.dismiss as () => void }
+										// eslint-disable-next-line @typescript-eslint/no-misused-promises
+										onPress={ dialogContext.dismiss }
 									/>
 								}
 								button2={

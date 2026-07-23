@@ -114,7 +114,6 @@ export const SortIcon = forwardRef<SortIconRef, SortIconProps>(
 				Icon={ (type == "none" ? IconArrowsVertical : IconArrowUp) as TableCellIconProps["Icon"] }
 				style={ [
 					{
-						/* eslint-disable react-hooks/refs */
 						opacity: opacityValue.current,
 						transform: [{
 							rotateZ: rotationValue.current.interpolate({
@@ -122,7 +121,6 @@ export const SortIcon = forwardRef<SortIconRef, SortIconProps>(
 								outputRange: ["0deg", "180deg"],
 							}),
 						}],
-						/* eslint-enable react-hooks/refs */
 					},
 					style,
 				] }

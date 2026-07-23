@@ -11,7 +11,6 @@ import {
 	Animated,
 	Easing,
 	View,
-	type EasingFunction,
 	type ViewProps,
 } from "react-native"
 
@@ -144,7 +143,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 							toValue: ref.current.contentHeight,
 							useNativeDriver: false,
 							duration: motion.toOpen.duration,
-							easing: motion.toOpen.easing as EasingFunction,
+							easing: motion.toOpen.easing,
 						},
 					).start(({ finished }) => {
 						if(finished && onOpened) {
@@ -156,7 +155,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						{
 							toValue: 1,
 							duration: motion.toOpen.duration,
-							easing: motion.toOpen.easing as EasingFunction,
+							easing: motion.toOpen.easing,
 							useNativeDriver: false,
 						},
 					).start()
@@ -166,7 +165,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						{
 							toValue: 0,
 							duration: motion.toClose.duration,
-							easing: motion.toClose.easing as EasingFunction,
+							easing: motion.toClose.easing,
 							useNativeDriver: false,
 						},
 					).start(({ finished }) => {
@@ -179,7 +178,7 @@ export const Collapsible = forwardRef<CollapsibleRef, CollapsibleProps>(
 						{
 							toValue: 0,
 							duration: motion.toClose.duration,
-							easing: motion.toClose.easing as EasingFunction,
+							easing: motion.toClose.easing,
 							useNativeDriver: false,
 						},
 					).start()

@@ -112,7 +112,6 @@ export const Overlay = forwardRef<OverlayRef>(
 						componentsConfig.current[index] &&
 						componentWrappersRef.current[index]
 					) {
-						/* eslint-disable react-hooks/immutability */
 						if(Platform.OS == "web") {
 							// @ts-expect-error Web DOM
 							const target = event.nativeEvent.target as HTMLDivElement
@@ -125,7 +124,6 @@ export const Overlay = forwardRef<OverlayRef>(
 							componentsConfig.current[index].width = event.nativeEvent.layout.width
 							componentsConfig.current[index].height = event.nativeEvent.layout.height
 						}
-						/* eslint-enable react-hooks/immutability */
 
 						componentWrappersRef.current[index].shiftX(
 							-componentsConfig.current[index].width - Gap,
@@ -146,11 +144,9 @@ export const Overlay = forwardRef<OverlayRef>(
 				useCallback((
 					index: number,
 				) => {
-					/* eslint-disable react-hooks/immutability */
 					if(componentsConfig.current[index]) {
 						componentsConfig.current[index].state++
 					}
-					/* eslint-enable react-hooks/immutability */
 
 					if(componentsConfig.current[index]?.state === 1) {
 						componentWrappersRef.current[index]?.shiftX(

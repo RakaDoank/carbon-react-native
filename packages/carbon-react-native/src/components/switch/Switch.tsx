@@ -15,7 +15,6 @@ import {
 	Pressable,
 	StyleSheet,
 	View,
-	type EasingFunction,
 	type PressableProps,
 } from "react-native"
 
@@ -205,7 +204,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					{
 						toValue: 1,
 						duration: motion.true.duration,
-						easing: motion.true.easing as EasingFunction,
+						easing: motion.true.easing,
 						useNativeDriver: true,
 					},
 				).start()
@@ -215,7 +214,7 @@ export const Switch = forwardRef<SwitchRef, SwitchProps>(
 					{
 						toValue: 0,
 						duration: motion.false.duration,
-						easing: motion.false.easing as EasingFunction,
+						easing: motion.false.easing,
 						useNativeDriver: true,
 					},
 				).start()

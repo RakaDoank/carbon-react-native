@@ -134,8 +134,7 @@ export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapper
 
 		return (
 			<Animated.View
-				onLayout={ onLayout as never }
-				/* eslint-disable react-hooks/refs */
+				onLayout={ onLayout }
 				style={ [
 					styleSheet.componentWrapper,
 					{
@@ -146,7 +145,6 @@ export const ComponentWrapper = forwardRef<ComponentWrapperRef, ComponentWrapper
 						}],
 					},
 				] }
-				/* eslint-enable react-hooks/refs */
 			>
 				{ children }
 			</Animated.View>

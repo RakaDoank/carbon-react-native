@@ -44,6 +44,6 @@ try {
 
 } catch(err) {
 
-	throw new Error(`/packages-builder/carbon-react-native/scripts/bin.mjs :: ${err instanceof Error ? `[${err.name}] :: ${err.message}` : "Unknown error"}`)
+	throw new Error(`/packages-builder/carbon-react-native/scripts/bin.mjs :: ${err instanceof Error ? `[${err.name}] :: ${err.message}` : "Unknown error"}`, { cause: err })
 
 }

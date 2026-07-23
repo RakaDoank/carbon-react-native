@@ -59,7 +59,6 @@ const Accordion_ = forwardRef<AccordionRef, AccordionProps>(
 
 		const
 			[marginRightStyleKey, setMarginRightStyleKey] =
-				// eslint-disable-next-line react-hooks/refs
 				useState(ref.current.marginRightStyleKey)
 
 		const

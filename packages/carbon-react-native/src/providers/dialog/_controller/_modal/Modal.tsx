@@ -124,7 +124,6 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 		return (
 			<Animated.View
 				{ ...props }
-				/* eslint-disable react-hooks/refs */
 				style={ [
 					StyleSheet.absoluteFill,
 					CarbonStyleSheet.g.items_center,
@@ -132,7 +131,6 @@ export const Modal = forwardRef<ModalRef, ModalProps>(
 					animationConfig.modalStyleFactory(interpolation.current, interpolationInputRange),
 					style,
 				] }
-				/* eslint-enable react-hooks/refs */
 			/>
 		)
 

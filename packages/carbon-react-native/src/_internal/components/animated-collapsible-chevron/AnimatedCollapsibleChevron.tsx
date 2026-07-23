@@ -6,7 +6,6 @@ import {
 import {
 	Animated as RNAnimated,
 	Easing,
-	type EasingFunction,
 } from "react-native"
 
 import {
@@ -74,7 +73,7 @@ export function AnimatedCollapsibleChevron({
 					{
 						toValue: 1,
 						duration: motion.toOpen.duration,
-						easing: motion.toOpen.easing as EasingFunction,
+						easing: motion.toOpen.easing,
 						useNativeDriver: true,
 					},
 				).start()
@@ -84,7 +83,7 @@ export function AnimatedCollapsibleChevron({
 					{
 						toValue: 0,
 						duration: motion.toClose.duration,
-						easing: motion.toClose.easing as EasingFunction,
+						easing: motion.toClose.easing,
 						useNativeDriver: true,
 					},
 				).start()

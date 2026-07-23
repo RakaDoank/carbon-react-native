@@ -143,7 +143,10 @@ export const TableCellHeader = forwardRef<TableCellHeaderRef, TableCellHeaderPro
 							}
 						})
 					} else if(sortProp && onChangeSort) {
+						// false positive bug
+						// eslint-disable-next-line no-useless-assignment
 						let nextSort: NonNullable<typeof sort> = "none"
+
 						if(sortProp == "none") {
 							nextSort = "asc"
 						} else if(sortProp == "asc") {
@@ -151,6 +154,7 @@ export const TableCellHeader = forwardRef<TableCellHeaderRef, TableCellHeaderPro
 						} else {
 							nextSort = "none"
 						}
+
 						onChangeSort(nextSort)
 					}
 				}, [
