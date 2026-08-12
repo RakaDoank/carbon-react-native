@@ -1,0 +1,26 @@
+{
+	"extends": [
+		"expo/tsconfig.base",
+		"../../tsconfig.base.json"
+	],
+	"compilerOptions": {
+		"allowJs": true,
+		"allowUnreachableCode": false,
+		"moduleSuffixes": [
+			"",
+			".ios",
+			".android",
+			".windows",
+			".macos",
+			".web",
+			".native"
+		],
+		"noEmit": true
+	},
+	"include": [
+		"./.storybook-rn/**/*",
+		"./stories/**/*",
+		"./carbon-icons.d.ts",
+		"./css.d.ts"
+	]
+}

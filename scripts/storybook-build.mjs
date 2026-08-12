@@ -9,17 +9,17 @@ const
 node_childProcess.execSync(
 	"npx storybook build --disable-telemetry --output-dir .dist",
 	{
-		cwd: node_path.join(root, "storybook"),
+		cwd: node_path.join(root, "storybook", "expo"),
 		stdio: "inherit",
 	},
 )
 
 const
 	htmlFilePath =
-		node_path.join(root, "storybook", ".dist", "index.html"),
+		node_path.join(root, "storybook", "expo", ".dist", "index.html"),
 
 	iframeHtmlFilePath =
-		node_path.join(root, "storybook", ".dist", "iframe.html")
+		node_path.join(root, "storybook", "expo", ".dist", "iframe.html")
 
 let
 	htmlFile =

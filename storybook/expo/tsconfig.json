@@ -1,7 +1,7 @@
 {
 	"extends": [
 		"expo/tsconfig.base",
-		"../tsconfig.base.json"
+		"../../tsconfig.base.json"
 	],
 	"compilerOptions": {
 		"allowJs": true,
@@ -16,27 +16,16 @@
 			".native"
 		],
 		"noEmit": true,
-		// "paths": {
-		// 	"@audira/carbon-react-native": [
-		// 		"../packages/carbon-react-native/src/index.ts"
-		// 	],
-		// 	"@audira/carbon-react-native-elements": [
-		// 		"../packages/carbon-react-native-elements/src/index.ts"
-		// 	]
-		// },
 		"types": [
 			"react-native-web"
 		]
 	},
 	"include": [
-		// "../packages/carbon-react-native/src/**/*",
-		// "../packages/carbon-react-native-elements/src/**/*",
 		"./.storybook/**/*",
 		"./.storybook-rn/**/*",
 		"./App.tsx",
 		"./app.config.ts",
 		"./index.js",
-		"./stories/**/*",
 		"./types/**/*"
 	]
 }

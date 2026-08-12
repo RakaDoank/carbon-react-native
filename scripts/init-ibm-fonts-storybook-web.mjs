@@ -10,7 +10,7 @@ const
 		node_path.join(root, "assets", "fonts"),
 
 	storybookFontsDir =
-		node_path.join(root, "storybook", "public", "fonts")
+		node_path.join(root, "storybook", "expo", "public", "fonts")
 
 if(!node_fs.existsSync(fontsDir)) {
 	throw new Error("/scripts/init-ibm-fonts-storybook-web :: /assets/fonts directory was not found")

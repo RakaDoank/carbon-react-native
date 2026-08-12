@@ -1,0 +1,27 @@
+{
+	"extends": [
+		"expo/tsconfig.base",
+		"../../tsconfig.base.json"
+	],
+	"compilerOptions": {
+		"allowJs": true,
+		"allowUnreachableCode": false,
+		"moduleSuffixes": [
+			"",
+			".ios",
+			".android",
+			".windows",
+			".macos",
+			".web",
+			".native"
+		],
+		"types": [
+			"react-native-web"
+		]
+	},
+	"include": [
+		"./App.tsx",
+		"./index.js",
+		"./types/**/*"
+	]
+}

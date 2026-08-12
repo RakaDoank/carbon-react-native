@@ -13,8 +13,8 @@ const main: StorybookConfig = {
 	staticDirs: ["../public"],
 
 	stories: [
-		"../stories/**/*.mdx",
-		"../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		"../../stories/**/*.mdx",
+		"../../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
 	],
 
 	addons: [

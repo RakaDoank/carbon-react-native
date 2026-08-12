@@ -33,5 +33,5 @@ jobs:
         with:
           install_command: pnpm install --frozen-lockfile
           build_command: npm run packages-builder:carbon-react-native-elements && npm run packages-builder:carbon-react-native && npm run storybook-build
-          path: ./storybook/.dist
+          path: ./storybook/expo/.dist
           checkout: false

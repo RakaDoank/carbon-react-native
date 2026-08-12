@@ -8,7 +8,13 @@
 			"path": "./packages/carbon-react-native-elements"
 		},
 		{
-			"path": "./storybook"
+			"path": "./storybook/app"
 		},
+		{
+			"path": "./storybook/expo"
+		},
+		{
+			"path": "./storybook/macos"
+		}
 	]
 }

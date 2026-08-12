@@ -6,6 +6,7 @@
 		"emitDeclarationOnly": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,
+		"jsx": "react-native",
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
@@ -20,5 +21,11 @@
 		"resolvePackageJsonImports": false,
 		"strict": true,
 		"verbatimModuleSyntax": true,
+		"types": [
+			// in project references
+			// it will fail without this
+			// Even this custom type has already declared in specific projects
+			"react-native-web"
+		]
 	}
 }

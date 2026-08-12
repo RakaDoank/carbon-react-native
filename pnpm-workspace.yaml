@@ -1,41 +1,35 @@
 allowBuilds:
   '@carbon/icon-helpers': false
   '@carbon/icons': false
-  esbuild: false
-  unrs-resolver: false
+  'esbuild': false
+  'unrs-resolver': false
 
 catalog:
-  react-native-builder-bob: 0.40.18
+  '@carbon/icons': 11.85.0
+  '@chromatic-com/storybook': 5.3.0
+  '@react-native-async-storage/async-storage': 2.2.0
+  '@react-native-community/datetimepicker': 8.4.4
+  '@storybook/addon-docs': 10.5.7
+  '@storybook/addon-ondevice-actions': 10.5.4
+  '@storybook/addon-ondevice-backgrounds': 10.5.4
+  '@storybook/addon-ondevice-controls': 10.5.4
+  '@storybook/addon-ondevice-notes': 10.5.4
+  '@storybook/react': 10.5.7
+  '@storybook/react-native': 10.5.4
+  '@storybook/react-native-web-vite': 10.5.7
+  'react-native-builder-bob': 0.43.0
+  'react-native-safe-area-context': 5.7.0
+  'react-native-svg': 15.15.5
+  'storybook': 10.5.7
 
 engineStrict: true
 
 minimumReleaseAgeExclude:
-  - '@expo/cli@57.0.10'
-  - '@expo/config-plugins@57.0.6'
-  - '@expo/config@57.0.6'
-  - '@expo/fingerprint@0.20.6'
-  - '@expo/image-utils@0.11.4'
-  - '@expo/metro-config@57.0.7'
-  - '@expo/prebuild-config@57.0.9'
-  - '@expo/require-utils@57.0.4'
-  - '@expo/router-server@57.0.4'
-  - babel-preset-expo@57.0.4
-  - expo-asset@57.0.7
-  - expo-build-properties@57.0.7
-  - expo-constants@57.0.7
-  - expo-linking@57.0.4
-  - expo-modules-autolinking@57.0.9
-  - expo-modules-core@57.0.7
-  - expo-modules-jsi@57.0.4
-  - expo-splash-screen@57.0.5
-  - expo-web-browser@57.0.2
-  - expo@57.0.8
+  - globals@17.10.0
 
 nodeLinker: hoisted
 
 packages:
   - 'packages/*'
   - 'packages-builder/*'
-  - 'storybook'
-
-shamefullyHoist: true
+  - 'storybook/*'

@@ -71,7 +71,6 @@ export const GhostDanger: StoryFn<Button.GhostDangerProps> = args => {
 }
 
 export const GhostIcon: StoryFn<Button.GhostIconProps> = args => {
-	// eslint-disable-next-line react-hooks/immutability
 	delete (args as unknown as Button.BaseProps).text
 
 	return (

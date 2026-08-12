@@ -1,0 +1,49 @@
+{
+	"name": "carbon-storybook-macos",
+	"private": true,
+	"version": "0.0.1",
+	"scripts": {
+		"build": "react-native build-macos",
+		"init": "react-native-macos-init",
+		"link-assets": "react-native link-assets",
+		"macos": "react-native run-macos",
+		"start": "react-native start"
+	},
+	"dependencies": {
+		"@audira/carbon-react-native": "workspace:*",
+		"@audira/carbon-react-native-elements": "workspace:*",
+		"@carbon/icons": "catalog:",
+		"@carbon-storybook/app": "workspace:*",
+		"@react-native-async-storage/async-storage": "catalog:",
+		"react": "19.1.4",
+		"react-native": "0.81.6",
+		"react-native-macos": "0.81.9",
+		"react-native-safe-area-context": "5.7.0",
+		"react-native-svg": "catalog:"
+	},
+	"devDependencies": {
+		"@babel/core": "^7",
+		"@babel/preset-env": "^7",
+		"@babel/runtime": "^7",
+		"@chromatic-com/storybook": "catalog:",
+		"@react-native/babel-preset": "0.81.6",
+		"@react-native/metro-config": "0.81.6",
+		"@react-native/typescript-config": "0.81.6",
+		"@rnx-kit/metro-config": "2.2.4",
+		"@rnx-kit/metro-resolver-symlinks": "0.3.1",
+		"@storybook/addon-docs": "catalog:",
+		"@storybook/addon-ondevice-actions": "catalog:",
+		"@storybook/addon-ondevice-backgrounds": "catalog:",
+		"@storybook/addon-ondevice-controls": "catalog:",
+		"@storybook/addon-ondevice-notes": "catalog:",
+		"@storybook/react": "catalog:",
+		"@storybook/react-native": "catalog:",
+		"@storybook/react-native-ui-lite": "10.5.4",
+		"@storybook/react-native-web-vite": "catalog:",
+		"react-native-asset": "2.3.0",
+		"react-native-macos-init": "2.1.3",
+		"react-native-svg-transformer": "1.5.3",
+		"react-test-renderer": "19.1.4",
+		"storybook": "catalog:"
+	}
+}

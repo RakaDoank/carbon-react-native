@@ -1,0 +1,14 @@
+{
+	"name": "@carbon-storybook/app",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"@audira/carbon-react-native": "workspace:",
+		"@audira/carbon-react-native-elements": "workspace:",
+		"@carbon/icons": "catalog:"
+	},
+	"exports": {
+		"./.storybook-rn": "./.storybook-rn/index.tsx",
+		"./.storybook-rn/lite": "./.storybook-rn/lite.tsx"
+	}
+}

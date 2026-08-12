@@ -59,6 +59,6 @@ module.exports = withStorybook(
 	mergeConfig(defaultConfig, config),
 	{
 		enabled: true,
-		configPath: node_path.join(__dirname, "./.storybook-rn"),
+		configPath: node_path.join(__dirname, "../app/.storybook-rn"),
 	},
 )
