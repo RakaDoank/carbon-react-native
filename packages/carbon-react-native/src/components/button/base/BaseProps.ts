@@ -4,6 +4,10 @@ import type {
 } from "react-native"
 
 import type {
+	ViewProps as RNWViewProps,
+} from "react-native-web"
+
+import type {
 	SvgProps,
 } from "react-native-svg"
 
@@ -56,5 +60,6 @@ export interface BaseProps extends Omit<PressableProps, "children" | "style"> {
 	inlineLoadingProps?: Omit<InlineLoadingProps, "text"> & {
 		text?: string,
 	},
+	dir?: RNWViewProps["dir"],
 	style?: ViewProps["style"],
 }

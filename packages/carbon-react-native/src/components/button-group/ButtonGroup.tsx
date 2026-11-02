@@ -69,6 +69,7 @@ export const ButtonGroup = forwardRef<ButtonGroupRef, ButtonGroupProps>(
 				<View
 					ref={ ref }
 					{ ...props }
+					// @ts-expect-error HTML
 					dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 					style={ [
 						styleFlexDir,

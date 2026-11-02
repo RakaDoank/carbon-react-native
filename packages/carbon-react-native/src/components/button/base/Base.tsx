@@ -80,6 +80,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 				{ ...props }
 				role={ role }
 				aria-label={ ariaLabel ?? text }
+				// @ts-expect-error HTML attribute
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					CarbonStyleSheet.g.flex_row,
@@ -114,6 +115,7 @@ export const Base = forwardRef<BaseRef, BaseProps>(
 							{ ...iconProps }
 							width={ iconProps?.width ?? iconSize }
 							height={ iconProps?.height ?? iconSize }
+							// @ts-expect-error HTML attribute
 							dir={ globalConfigContext.rtl ? "rtl" : undefined }
 							style={ [
 								getIconMarginTopStyle(size),

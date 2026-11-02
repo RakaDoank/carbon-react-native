@@ -4,6 +4,10 @@ import type {
 } from "react-native"
 
 import type {
+	ViewProps as RNWViewProps,
+} from "react-native-web"
+
+import type {
 	FormLabelProps,
 } from "../form-label/FormLabelProps"
 
@@ -41,4 +45,5 @@ export interface RadioButtonProps extends Omit<ViewProps, "children"> {
 	> & {
 		style?: ViewProps["style"],
 	},
+	dir?: RNWViewProps["dir"],
 }

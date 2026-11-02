@@ -4,6 +4,10 @@ import type {
 } from "react-native"
 
 import type {
+	ViewProps as RNWViewProps,
+} from "react-native-web"
+
+import type {
 	FormLabelProps,
 } from "../../form-label/FormLabelProps"
 
@@ -51,4 +55,5 @@ export interface BaseProps extends Omit<ViewProps, "children"> {
 		| "role"
 		| "aria-checked"
 	>,
+	dir?: RNWViewProps["dir"],
 }

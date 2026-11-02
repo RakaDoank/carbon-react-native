@@ -11,7 +11,7 @@
 	"description": "Build React Native apps with component and shared patterns using Carbon",
 	"type": "module",
 	"peerDependencies": {
-		"@audira/carbon-react-native-elements": "workspace:*",
+		"@audira/carbon-react-native-elements": "workspace:~",
 		"@carbon/icons": ">=11",
 		"@carbon/icon-helpers": ">=10",
 		"react": ">=17",

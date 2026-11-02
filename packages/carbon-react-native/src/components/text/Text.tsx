@@ -49,6 +49,7 @@ export const Text = forwardRef<TextRef, TextProps>(
 		return (
 			<Core
 				{ ...props }
+				// @ts-expect-error HTML
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					carbonStyle.text,

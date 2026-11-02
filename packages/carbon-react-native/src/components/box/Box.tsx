@@ -49,6 +49,7 @@ export const Box = forwardRef<BoxRef, BoxProps>(
 			<View
 				ref={ ref }
 				{ ...props }
+				// @ts-expect-error HTML attribute
 				dir={ dir }
 				style={ [
 					dir == "rtl" ? CarbonStyleSheet.g.rtl : undefined,

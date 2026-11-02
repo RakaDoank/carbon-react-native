@@ -68,6 +68,7 @@ export const RNTextInput = forwardRef<RNTextInputRef, RNTextInputProps>(
 				{ ...props }
 				editable={ interactiveState === "disabled" || interactiveState === "read_only" ? false : editable }
 				placeholderTextColor={ placeholderTextColor ?? mapPlaceholderTextColor[themeContext.colorScheme] }
+				// @ts-expect-error native HTML
 				dir={ dir ?? globalConfigContext.rtl ? "rtl" : undefined }
 				style={ [
 					styleSheet.rnTextInput as unknown as never, // FIXME: i don't know the correct type

@@ -3,6 +3,10 @@ import type {
 } from "react-native"
 
 import type {
+	ViewProps as RNWViewProps,
+} from "react-native-web"
+
+import type {
 	Size as ButtonSize,
 } from "../button/Size"
 
@@ -34,4 +38,5 @@ export interface ButtonGroupProps extends Omit<ViewProps, "children"> {
 	 * Specify the button arrangement of the set (vertically stacked or horizontal)
 	 */
 	vertical?: boolean,
+	dir?: RNWViewProps["dir"],
 }

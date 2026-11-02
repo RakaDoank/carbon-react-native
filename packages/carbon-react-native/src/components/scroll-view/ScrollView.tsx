@@ -46,6 +46,7 @@ export const ScrollView = forwardRef<ReactNativeScrollView, ScrollViewProps>(
 			<ReactNativeScrollView
 				ref={ ref }
 				{ ...props }
+				// @ts-expect-error HTML
 				dir={ dir }
 				style={ [
 					dir == "rtl" ? CarbonStyleSheet.g.rtl : undefined,

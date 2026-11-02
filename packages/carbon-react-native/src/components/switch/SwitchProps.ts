@@ -6,6 +6,10 @@ import type {
 } from "react-native"
 
 import type {
+	ViewProps as RNWViewProps,
+} from "react-native-web"
+
+import type {
 	SwitchSize,
 } from "./SwitchSize"
 
@@ -35,4 +39,5 @@ export interface SwitchProps extends Omit<PressableProps, "children"> {
 	}>,
 	onChange?: (value: boolean) => void,
 	style?: StyleProp<ViewStyle>,
+	dir?: RNWViewProps["dir"],
 }
