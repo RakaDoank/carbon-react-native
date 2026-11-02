@@ -9,9 +9,6 @@
 		"moduleSuffixes": ["", ".ios", ".android", ".windows", ".macos", ".web", ".native"],
 		"target": "esnext",
 		"types": [
-			// in project references
-			// it will fail without this
-			// Even this custom type has already declared in specific projects
 			"react-native-web"
 		]
 	}
