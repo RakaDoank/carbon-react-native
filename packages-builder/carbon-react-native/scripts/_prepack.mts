@@ -21,54 +21,23 @@ const
 		]
 
 export function prepack() {
-	try {
+	additionalSources.forEach(src => {
+		const destPath = node_path.join(packagePath, src.name)
 
-		additionalSources.forEach(src => {
-			const destPath = node_path.join(packagePath, src.name)
-
-			if(node_fs.existsSync(destPath)) {
-				node_fs.rmSync(destPath, {
-					recursive: true,
-				})
-			}
-
-			node_fs.cpSync(
-				src.path,
-				destPath,
-				{
-					recursive: true,
-				},
-			)
-		})
-
-		{
-			/**
-			 * Keep the short README.md in the package directory, and publish to npm with the long README.md (root repository)
-			 */
-
-			const destPath = node_path.join(packagePath, "README.md")
-
-			if(node_fs.existsSync(destPath)) {
-				node_fs.renameSync(
-					destPath,
-					node_path.join(packagePath, "README-original.md"),
-				)
-			}
-
-			node_fs.cpSync(
-				node_path.join(root, "README.md"),
-				destPath,
-			)
+		if(node_fs.existsSync(destPath)) {
+			node_fs.rmSync(destPath, {
+				recursive: true,
+			})
 		}
 
-		console.info("/packages-builder/carbon-react-native/scripts/_prepack.mjs :: Package has been packed successfully")
-
-	} catch(e) {
-
-		throw new Error(
-			`/packages-builder/carbon-react-native/scripts/_prepack.mjs :: `,
-			(e as Error),
+		node_fs.cpSync(
+			src.path,
+			destPath,
+			{
+				recursive: true,
+			},
 		)
+	})
 
-	}
+	console.log("/packages-builder/carbon-react-native/scripts/_prepack.mjs :: Package has been packed successfully")
 }
