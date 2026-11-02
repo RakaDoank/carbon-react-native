@@ -37,17 +37,6 @@ const main: StorybookConfig = {
 	viteFinal(config) {
 		config.base = "/carbon-react-native/"
 
-		config.resolve = {
-			...config.resolve ?? {
-			},
-			alias: {
-				...config.resolve?.alias ?? {
-				},
-				// "@audira/carbon-react-native": node_path.join(workspaceRoot, "packages", "carbon-react-native", "src"),
-				// "@audira/carbon-react-native-elements": node_path.join(workspaceRoot, "packages", "carbon-react-native-elements", "src"),
-			},
-		}
-
 		config.plugins = [
 			...config.plugins ?? [],
 			VitePluginSVGR({

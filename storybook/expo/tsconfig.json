@@ -1,31 +1,7 @@
 {
-	"extends": [
-		"expo/tsconfig.base",
-		"../../tsconfig.base.json"
-	],
-	"compilerOptions": {
-		"allowJs": true,
-		"allowUnreachableCode": false,
-		"moduleSuffixes": [
-			"",
-			".ios",
-			".android",
-			".windows",
-			".macos",
-			".web",
-			".native"
-		],
-		"noEmit": true,
-		"types": [
-			"react-native-web"
-		]
-	},
-	"include": [
-		"./.storybook/**/*",
-		"./.storybook-rn/**/*",
-		"./App.tsx",
-		"./app.config.ts",
-		"./index.js",
-		"./types/**/*"
+	"files": [],
+	"references": [
+		{ "path": "./tsconfig.node.json" },
+		{ "path": "./tsconfig.react-native.json" }
 	]
 }

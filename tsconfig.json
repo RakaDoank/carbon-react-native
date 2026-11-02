@@ -1,20 +1,12 @@
 {
 	"files": [],
 	"references": [
-		{
-			"path": "./packages/carbon-react-native"
-		},
-		{
-			"path": "./packages/carbon-react-native-elements"
-		},
-		{
-			"path": "./storybook/app"
-		},
-		{
-			"path": "./storybook/expo"
-		},
-		{
-			"path": "./storybook/macos"
-		}
+		{ "path": "./packages/carbon-react-native" },
+		{ "path": "./packages/carbon-react-native-elements" },
+		{ "path": "./packages-builder/carbon-react-native-elements" },
+		{ "path": "./storybook/app" },
+		{ "path": "./storybook/expo" },
+		{ "path": "./storybook/macos" },
+		{ "path": "./tsconfig.node.json" }
 	]
 }

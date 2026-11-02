@@ -1,5 +1,5 @@
-import node_fs from "node:fs"
-import node_path from "node:path"
+import * as node_fs from "node:fs"
+import * as node_path from "node:path"
 
 const
 	root =
@@ -67,8 +67,7 @@ export function prepack() {
 
 		throw new Error(
 			`/packages-builder/carbon-react-native/scripts/_prepack.mjs :: `,
-			`${e?.name || "Unknown Name"} :: `,
-			`${e?.message || "Unknown Error"}`,
+			(e as Error),
 		)
 
 	}

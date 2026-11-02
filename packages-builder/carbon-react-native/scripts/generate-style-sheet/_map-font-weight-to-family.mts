@@ -1,4 +1,4 @@
-export const MapFontWeightToFamily =
+export const MapFontWeightToFamily: Record<string, string> =
 	{
 		100: "IBMPlexSans-Thin",
 		200: "IBMPlexSans-ExtraLight",

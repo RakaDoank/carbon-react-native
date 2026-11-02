@@ -1,6 +1,8 @@
-import node_childProcess from "node:child_process"
-import node_fs from "node:fs"
-import node_path from "node:path"
+#!/usr/bin/env bun
+
+import * as node_childProcess from "node:child_process"
+import * as node_fs from "node:fs"
+import * as node_path from "node:path"
 
 const
 	workspacePath =
@@ -9,7 +11,7 @@ const
 	/**
 	 * It should've read the pnpm-workspace.yaml
 	 */
-	pnpmPackages =
+	workspacePackages =
 		[
 			"builder-bob",
 			"packages/carbon-react-native",
@@ -23,12 +25,12 @@ const
 	additionalPaths =
 		[
 			node_path.join(workspacePath, "node_modules"),
-			node_path.join(workspacePath, "pnpm-lock.yaml"),
+			node_path.join(workspacePath, "bun.lock"),
 		]
 
 Promise
 	.all([
-		...pnpmPackages.reduce((promises, pnpmPkgPath) => {
+		...workspacePackages.reduce<Promise<void>[]>((promises, pnpmPkgPath) => {
 			const nodeModulesPath = node_path.join(workspacePath, pnpmPkgPath, "node_modules")
 			if(node_fs.existsSync(nodeModulesPath)) {
 				promises.push(
@@ -38,7 +40,7 @@ Promise
 			return promises
 		}, []),
 
-		...additionalPaths.reduce((promises, rmPath) => {
+		...additionalPaths.reduce<Promise<void>[]>((promises, rmPath) => {
 			if(node_fs.existsSync(rmPath)) {
 				promises.push(
 					node_fs.promises.rm(rmPath, { recursive: true, force: true }),
@@ -49,7 +51,7 @@ Promise
 	])
 	.then(() => {
 		node_childProcess.execSync(
-			"pnpm install",
+			"bun install",
 			{
 				cwd: workspacePath,
 				stdio: "inherit",

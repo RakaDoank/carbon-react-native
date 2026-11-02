@@ -43,8 +43,7 @@ export function prepack() {
 
 		throw new Error(
 			`/packages-builder/carbon-react-native-elements/scripts/_prepack.mjs :: `,
-			`${e?.name || "Unknown Name"} :: `,
-			`${e?.message || "Unknown Error"}`,
+			(e as Error),
 		)
 
 	}

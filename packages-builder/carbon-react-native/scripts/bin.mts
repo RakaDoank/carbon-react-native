@@ -1,8 +1,8 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
-import node_childProcess from "node:child_process"
-import node_fs from "node:fs"
-import node_path from "node:path"
+import * as node_childProcess from "node:child_process"
+import * as node_fs from "node:fs"
+import * as node_path from "node:path"
 
 import {
 	prepack,
@@ -10,7 +10,7 @@ import {
 
 import {
 	generateStyleSheet,
-} from "./generate-style-sheet/index.mjs"
+} from "./generate-style-sheet/index.mts"
 
 const
 	workspacePath =
@@ -40,7 +40,7 @@ try {
 	}
 
 	node_childProcess.execSync(
-		"npx bob build",
+		"bunx bob build",
 		{
 			cwd: builderBobPath,
 			stdio: "inherit",

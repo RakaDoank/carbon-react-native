@@ -100,6 +100,11 @@ export default EslintConfig.defineConfig([
 							"position": "after",
 						},
 						{
+							"pattern": "react-native-web",
+							"group": "builtin",
+							"position": "after",
+						},
+						{
 							"pattern": "@storybook/**",
 							"group": "builtin",
 							"position": "after",

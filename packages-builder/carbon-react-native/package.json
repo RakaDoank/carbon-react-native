@@ -2,7 +2,7 @@
 	"name": "@packages-builder/carbon-react-native",
 	"version": "0.0.1",
 	"private": true,
-	"bin": "./scripts/bin.mjs",
+	"bin": "./scripts/bin.mts",
 	"devDependencies": {
 		"react-native-builder-bob": "catalog:"
 	}

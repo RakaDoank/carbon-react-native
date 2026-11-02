@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.base.node.json",
+    "compilerOptions": {
+        "composite": true
+    },
+    "include": [
+        "./babel.config.js",
+        "./bundo.config.mts",
+        "./react-native.config.js"
+    ]
+}

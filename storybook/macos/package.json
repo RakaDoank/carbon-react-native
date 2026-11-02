@@ -15,6 +15,8 @@
 		"@carbon/icons": "catalog:",
 		"@carbon-storybook/app": "workspace:*",
 		"@react-native-async-storage/async-storage": "catalog:",
+		"bundo-appgen": "0.0.14",
+		"bundo.rn": "0.0.8",
 		"react": "19.1.4",
 		"react-native": "0.81.6",
 		"react-native-macos": "0.81.9",

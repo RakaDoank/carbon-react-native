@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base.react-native.json",
+	"compilerOptions": {
+		"composite": true
+	},
+	"include": [
+		"./.storybook-rn/**/*",
+		"./stories/**/*",
+		"./carbon-icons.d.ts",
+		"./css.d.ts"
+	]
+}

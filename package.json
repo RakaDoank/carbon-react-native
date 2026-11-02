@@ -4,19 +4,44 @@
 	"private": true,
 	"scripts": {
 		"code-check": "npm run type-check && npm run lint",
-		"init-ibm-fonts-storybook-web": "node ./scripts/init-ibm-fonts-storybook-web.mjs",
 		"lint": "eslint .",
-		"packages-builder:carbon-react-native": "npx @packages-builder/carbon-react-native",
-		"packages-builder:carbon-react-native:generate-style-sheet": "node ./packages-builder/carbon-react-native/scripts/generate-style-sheet.mjs",
-		"packages-builder:carbon-react-native-elements": "npx @packages-builder/carbon-react-native-elements",
-		"pnpm-clean-install": "node ./scripts/pnpm-clean-install.mjs",
-		"storybook-build": "node ./scripts/storybook-build.mjs",
-		"type-check": "tsc --build",
-		"validate-color-token": "node ./scripts/validate-color-token.mjs"
+		"packages-builder:carbon-react-native": "bunx @packages-builder/carbon-react-native",
+		"packages-builder:carbon-react-native:generate-style-sheet": "bun ./packages-builder/carbon-react-native/scripts/generate-style-sheet.mts",
+		"packages-builder:carbon-react-native-elements": "bunx @packages-builder/carbon-react-native-elements",
+		"bun-clean-install": "bun ./scripts/pnpm-clean-install.mts",
+		"type-check": "bun check --build",
+		"type-check:ts": "tsc --build",
+		"validate-color-token": "bun ./scripts/validate-color-token.mts",
+		"prepare": "husky"
+	},
+	"workspaces": {
+		"catalog": {
+			"@carbon/icons": "11.85.0",
+			"@chromatic-com/storybook": "5.3.0",
+			"@react-native-async-storage/async-storage": "2.2.0",
+			"@react-native-community/datetimepicker": "8.4.4",
+			"@storybook/addon-docs": "10.5.7",
+			"@storybook/addon-ondevice-actions": "10.5.4",
+			"@storybook/addon-ondevice-backgrounds": "10.5.4",
+			"@storybook/addon-ondevice-controls": "10.5.4",
+			"@storybook/addon-ondevice-notes": "10.5.4",
+			"@storybook/react": "10.5.7",
+			"@storybook/react-native": "10.5.4",
+			"@storybook/react-native-web-vite": "10.5.7",
+			"react-native-builder-bob": "0.44.1",
+			"react-native-safe-area-context": "5.7.0",
+			"react-native-svg": "15.15.5",
+			"storybook": "10.5.7"
+		},
+		"packages": [
+			"packages/*",
+			"packages-builder/*",
+			"storybook/*"
+		]
 	},
 	"devDependencies": {
 		"@audira/carbon-react-native-elements": "workspace:*",
-		"@eslint/compat": "2.1.0",
+		"@eslint/compat": "2.1.1",
 		"@eslint/js": "10.0.1",
 		"@packages-builder/carbon-react-native": "workspace:*",
 		"@packages-builder/carbon-react-native-elements": "workspace:*",
@@ -24,22 +49,30 @@
 		"@react-native-community/cli-link-assets": "20.2.0",
 		"@react-native/eslint-config": "0.86.0",
 		"@stylistic/eslint-plugin": "5.10.0",
+		"@types/bun": "1.4.4",
 		"@types/node": "^24",
-		"@types/react": "19.2.17",
-		"@types/react-native-web": "0.19.2",
-		"eslint": "10.8.1",
+		"@types/react": "19.3.0",
+		"@types/react-native-web": "0.19.3",
+		"@types/semver": "7.8.0",
+		"eslint": "10.14.0",
 		"eslint-import-resolver-typescript": "4.4.5",
 		"eslint-plugin-import-x": "4.17.1",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.1.1",
 		"eslint-plugin-react-native": "5.0.0",
-		"globals": "^17.10.0",
+		"globals": "^17.14.0",
+		"husky": "9.1.7",
+		"lint-staged": "17.6.0",
+		"semver": "7.8.5",
 		"ttf2woff": "3.0.0",
 		"typescript": "6.0.3",
-		"typescript-eslint": "8.67.0"
+		"typescript-eslint": "8.72.1"
 	},
+	"trustedDependencies": [
+		"esbuild"
+	],
 	"engines": {
-		"node": ">=24",
-		"pnpm": ">=11"
+		"bun": "1.4.4",
+		"node": ">=24"
 	}
 }

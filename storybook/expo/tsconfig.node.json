@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.base.node.json",
+    "compilerOptions": {
+        "composite": true
+    },
+    "include": [
+        "./app.config.mts",
+        "./react-native.config.js",
+        "./scripts/**/*"
+    ]
+}

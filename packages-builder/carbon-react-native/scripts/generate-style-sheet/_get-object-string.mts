@@ -1,18 +1,12 @@
-/**
- * @typedef {{
- * 	name: string,
- * 	attrs: {
- * 		name: string,
- * 		value: number | string,
- * 	}[],
- * }} DataStyleSheet
- * 
- * @param {DataStyleSheet} data
- * @param {"ViewStyle" | "TextStyle"} satisfierType
- */
 export function getObjectString(
-	data,
-	satisfierType,
+	data: {
+		name: string,
+		attrs: {
+			name: string,
+			value: number | string,
+		}[],
+	},
+	satisfierType: "ViewStyle" | "TextStyle",
 ) {
 
 	return `\nexport const ${data.name} = {\n` +

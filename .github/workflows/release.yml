@@ -15,31 +15,26 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v6
-      - name: Use PNPM
-        uses: pnpm/action-setup@v6
-        with:
-          # temporarily stick to the 11.11.0 because 11.12.0 has issue in Action
-          # https://github.com/pnpm/action-setup/issues/276
-          version: 11.11.0
-          cache: true
+      - name: Bun
+        uses: oven-sh/setup-bun@v2
+        # use package.json - engines.bun for the Bun version
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
       - name: Validate Color Token
-        run: npm run validate-color-token
+        run: bun run validate-color-token
       - name: Build carbon-react-native-elements
         run: |
-          npm run packages-builder:carbon-react-native-elements
+          bun run packages-builder:carbon-react-native-elements
       - name: Build carbon-react-native
         run: |
-          npm run packages-builder:carbon-react-native
+          bun run packages-builder:carbon-react-native
       - name: Code check
-        run: npm run code-check
+        run: bun run code-check
       - name: Release to npm registry
         run: |
-          pnpm publish --filter @audira/carbon-react-native-elements --access public --no-git-checks
-          pnpm publish --filter @audira/carbon-react-native --access public --no-git-checks
+          bun ./scripts/release-npm.mts

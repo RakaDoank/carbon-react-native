@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import node_childProcess from "node:child_process"
 import node_fs from "node:fs"
 import node_path from "node:path"
@@ -7,19 +9,19 @@ const
 		node_path.join(import.meta.dirname, "..")
 
 node_childProcess.execSync(
-	"npx storybook build --disable-telemetry --output-dir .dist",
+	"bunx storybook build --disable-telemetry --output-dir .dist",
 	{
-		cwd: node_path.join(root, "storybook", "expo"),
+		cwd: root,
 		stdio: "inherit",
 	},
 )
 
 const
 	htmlFilePath =
-		node_path.join(root, "storybook", "expo", ".dist", "index.html"),
+		node_path.join(root, ".dist", "index.html"),
 
 	iframeHtmlFilePath =
-		node_path.join(root, "storybook", "expo", ".dist", "iframe.html")
+		node_path.join(root, ".dist", "iframe.html")
 
 let
 	htmlFile =

@@ -1,4 +1,4 @@
-import node_fs from "node:fs"
+import * as node_fs from "node:fs"
 
 /**
  * @param {Record<
@@ -9,7 +9,15 @@ import node_fs from "node:fs"
  * 	}
  * >} data
  */
-export function setStringFile(data) {
+export function setStringFile(
+	data: Record<
+		"g" | "gObject",
+		{
+			filePath: node_fs.PathOrFileDescriptor,
+			value: string,
+		}
+	>,
+) {
 
 	const str = {
 		g: `// Generated\n// ${new Date().toUTCString()}` + data.g.value + "\n",

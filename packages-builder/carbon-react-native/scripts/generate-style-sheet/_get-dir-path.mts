@@ -1,14 +1,11 @@
-import node_path from "node:path"
+import * as node_path from "node:path"
 
 import {
 	WorkspacePath,
-} from "./_workspace-path.mjs"
+} from "./_workspace-path.mts"
 
-/**
- * @param {string} fileName
- */
 export function getDirPath(
-	fileName,
+	fileName: string,
 ) {
 	return {
 		g: node_path.join(WorkspacePath, "packages", "carbon-react-native", "src", "carbon-style-sheet", "g", fileName),

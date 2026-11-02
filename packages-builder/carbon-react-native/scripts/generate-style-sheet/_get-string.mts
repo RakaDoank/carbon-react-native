@@ -1,16 +1,11 @@
-/**
- * @typedef {{
- * 	name: string,
- * 	attrs: {
- * 		name: string,
- * 		value: number | string,
- * 	}[],
- * }} DataStyleSheet
- * 
- * @param {DataStyleSheet} data
- */
 export function getString(
-	data,
+	data: {
+		name: string,
+		attrs: {
+			name: string,
+			value: number | string,
+		}[],
+	},
 ) {
 
 	return `\nexport const { ${data.name} } = StyleSheet.create({\n` +

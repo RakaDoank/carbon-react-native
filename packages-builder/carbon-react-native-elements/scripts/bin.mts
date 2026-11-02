@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import node_childProcess from "node:child_process"
 import node_fs from "node:fs"
@@ -35,7 +35,7 @@ try {
 	}
 
 	node_childProcess.execSync(
-		"npx bob build",
+		"bunx bob build",
 		{
 			cwd: builderBobPath,
 			stdio: "inherit",
